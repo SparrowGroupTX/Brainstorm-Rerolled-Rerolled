@@ -27,6 +27,8 @@ set(EXECUTABLE_SOURCES
 # Set optimization flags based on the compiler
 if(MSVC)
     set(OPTIMIZATION_FLAGS "/Ox")  # Full optimization for MSVC
+elseif(WIN32)
+    set(OPTIMIZATION_FLAGS "-O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3")
 else()
     set(OPTIMIZATION_FLAGS "-O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -ldl")  # Full optimization for GCC/Clang, plus debugging info
 endif()

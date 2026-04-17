@@ -2,15 +2,30 @@
 #define FUNCTIONS_HPP
 
 #include "instance.hpp"
+#include "perf.hpp"
 #include "rng.hpp"
 #include <string>
 
 // Note: Technically, marking everything as inline is not a proper fix. Ideally,
 // we'd place these correctly into hpp and cpp files BUT, i want to have sanity
 
+inline bool isMoneyJoker(Item joker) {
+  return joker == Item::Mail_In_Rebate || joker == Item::Reserved_Parking ||
+         joker == Item::Business_Card || joker == Item::To_Do_List ||
+         joker == Item::Midas_Mask || joker == Item::Trading_Card;
+}
+
 // Helper functions
-inline void Instance::lock(Item item) { locked[(int)item] = true; }
+inline void Instance::lock(Item item) {
+  const unsigned short itemIndex = static_cast<unsigned short>(item);
+  if (!locked[itemIndex]) {
+    touchedLocks.push_back(itemIndex);
+    locked[itemIndex] = true;
+  }
+}
+inline void Instance::lockTransient(Item item) { locked[(int)item] = true; }
 inline void Instance::unlock(Item item) { locked[(int)item] = false; }
+inline void Instance::unlockTransient(Item item) { locked[(int)item] = false; }
 inline bool Instance::isLocked(Item item) { return locked[(int)item]; }
 
 // Lock initializers
@@ -196,8 +211,9 @@ inline void Instance::initUnlocks(int ante, bool freshProfile) {
 }
 
 // Card Generators
-inline Item Instance::nextTarot(std::string source, int ante, bool soulable) {
-  std::string anteStr = anteToString(ante);
+inline Item Instance::nextTarot(const std::string &source, int ante,
+                                bool soulable) {
+  const std::string &anteStr = anteToString(ante);
   if (soulable && (params.showman || !isLocked(Item::The_Soul)) &&
       random(RandomType::Soul + RandomType::Tarot + anteStr) > 0.997) {
     return Item::The_Soul;
@@ -205,8 +221,9 @@ inline Item Instance::nextTarot(std::string source, int ante, bool soulable) {
   return randchoice(RandomType::Tarot + source + anteStr, TAROTS);
 }
 
-inline Item Instance::nextPlanet(std::string source, int ante, bool soulable) {
-  std::string anteStr = anteToString(ante);
+inline Item Instance::nextPlanet(const std::string &source, int ante,
+                                 bool soulable) {
+  const std::string &anteStr = anteToString(ante);
   if (soulable && (params.showman || !isLocked(Item::Black_Hole)) &&
       random(RandomType::Soul + RandomType::Planet + anteStr) > 0.997) {
     return Item::Black_Hole;
@@ -214,9 +231,9 @@ inline Item Instance::nextPlanet(std::string source, int ante, bool soulable) {
   return randchoice(RandomType::Planet + source + anteStr, PLANETS);
 }
 
-inline Item Instance::nextSpectral(std::string source, int ante,
+inline Item Instance::nextSpectral(const std::string &source, int ante,
                                    bool soulable) {
-  std::string anteStr = anteToString(ante);
+  const std::string &anteStr = anteToString(ante);
   if (soulable) {
     Item forcedKey = Item::RETRY;
     if ((params.showman || !isLocked(Item::The_Soul)) &&
@@ -231,9 +248,10 @@ inline Item Instance::nextSpectral(std::string source, int ante,
   return randchoice(RandomType::Spectral + source + anteStr, SPECTRALS);
 }
 
-inline JokerData Instance::nextJoker(std::string source, int ante,
+inline JokerData Instance::nextJoker(const std::string &source, int ante,
                                      bool hasStickers) {
-  std::string anteStr = anteToString(ante);
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextJoker);
+  const std::string &anteStr = anteToString(ante);
 
   // Get rarity
   Item rarity;
@@ -412,8 +430,9 @@ inline Item shopItemType(ShopInstance shop, double cdtPoll) {
   return Item::T_Spectral;
 }
 
-inline ShopItem Instance::nextShopItem(int ante) {
-  std::string anteStr = anteToString(ante);
+inline ShopItem Instance::nextShopItem(int ante, bool jokerHasStickers) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextShopItem);
+  const std::string &anteStr = anteToString(ante);
 
   ShopInstance shop = getShopInstance();
   double cdtPoll =
@@ -421,7 +440,7 @@ inline ShopItem Instance::nextShopItem(int ante) {
   Item type = shopItemType(shop, cdtPoll);
 
   if (type == Item::T_Joker) {
-    JokerData jkr = nextJoker(ItemSource::Shop, ante, true);
+    JokerData jkr = nextJoker(ItemSource::Shop, ante, jokerHasStickers);
     return ShopItem(type, jkr.joker, jkr);
   } else if (type == Item::T_Tarot) {
     return ShopItem(type, nextTarot(ItemSource::Shop, ante, false));
@@ -436,11 +455,12 @@ inline ShopItem Instance::nextShopItem(int ante) {
 
 // Packs and Pack Contents
 inline Item Instance::nextPack(int ante) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextPack);
   if (ante <= 2 && !cache.generatedFirstPack && params.version > 10099) {
     cache.generatedFirstPack = true;
     return Item::Buffoon_Pack;
   }
-  std::string anteStr = anteToString(ante);
+  const std::string &anteStr = anteToString(ante);
   return randweightedchoice(RandomType::Shop_Pack + anteStr, PACKS);
 }
 
@@ -451,7 +471,7 @@ inline Pack packInfo(Item pack) {
 }
 
 inline Card Instance::nextStandardCard(int ante) {
-  std::string anteStr = anteToString(ante);
+  const std::string &anteStr = anteToString(ante);
 
   // Enhancement
   Item enhancement;
@@ -500,7 +520,9 @@ inline Card Instance::nextStandardCard(int ante) {
 };
 
 inline std::vector<Item> Instance::nextArcanaPack(int size, int ante) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextArcanaPack);
   std::vector<Item> pack;
+  pack.reserve(size);
   for (int i = 0; i < size; i++) {
     if (isVoucherActive(Item::Omen_Globe) &&
         random(RandomType::Omen_Globe) > 0.8) {
@@ -509,43 +531,80 @@ inline std::vector<Item> Instance::nextArcanaPack(int size, int ante) {
       pack.push_back(nextTarot(ItemSource::Arcana_Pack, ante, true));
     }
     if (!params.showman) {
-      lock(pack[i]);
+      lockTransient(pack[i]);
     }
   }
   for (int i = 0; i < size; i++) {
-    unlock(pack[i]);
+    unlockTransient(pack[i]);
   }
   return pack;
 };
 
+inline ArcanaSoulPackResult Instance::scanArcanaPackForSoulJoker(int size,
+                                                                 int ante) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextArcanaPack);
+  ArcanaSoulPackResult result;
+  std::array<Item, 8> generatedItems{};
+
+  for (int i = 0; i < size; i++) {
+    Item packItem;
+    if (isVoucherActive(Item::Omen_Globe) &&
+        random(RandomType::Omen_Globe) > 0.8) {
+      packItem = nextSpectral(ItemSource::Omen_Globe, ante, true);
+    } else {
+      packItem = nextTarot(ItemSource::Arcana_Pack, ante, true);
+    }
+    generatedItems[i] = packItem;
+    if (packItem == Item::The_Soul) {
+      result.foundSoul = true;
+    }
+    if (!params.showman) {
+      lockTransient(packItem);
+    }
+  }
+
+  for (int i = 0; i < size; i++) {
+    unlockTransient(generatedItems[i]);
+  }
+
+  if (result.foundSoul) {
+    result.soulJoker = nextJoker(ItemSource::Soul, ante, false);
+  }
+
+  return result;
+};
+
 inline std::vector<Item> Instance::nextCelestialPack(int size, int ante) {
   std::vector<Item> pack;
+  pack.reserve(size);
   for (int i = 0; i < size; i++) {
     pack.push_back(nextPlanet(ItemSource::Celestial_Pack, ante, true));
     if (!params.showman)
-      lock(pack[i]);
+      lockTransient(pack[i]);
   }
   for (int i = 0; i < size; i++) {
-    unlock(pack[i]);
+    unlockTransient(pack[i]);
   }
   return pack;
 };
 
 inline std::vector<Item> Instance::nextSpectralPack(int size, int ante) {
   std::vector<Item> pack;
+  pack.reserve(size);
   for (int i = 0; i < size; i++) {
     pack.push_back(nextSpectral(ItemSource::Spectral_Pack, ante, true));
     if (!params.showman)
-      lock(pack[i]);
+      lockTransient(pack[i]);
   }
   for (int i = 0; i < size; i++) {
-    unlock(pack[i]);
+    unlockTransient(pack[i]);
   }
   return pack;
 };
 
 inline std::vector<Card> Instance::nextStandardPack(int size, int ante) {
   std::vector<Card> pack;
+  pack.reserve(size);
   for (int i = 0; i < size; i++) {
     pack.push_back(nextStandardCard(ante));
   }
@@ -553,16 +612,55 @@ inline std::vector<Card> Instance::nextStandardPack(int size, int ante) {
 };
 
 inline std::vector<JokerData> Instance::nextBuffoonPack(int size, int ante) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextBuffoonPack);
   std::vector<JokerData> pack;
+  pack.reserve(size);
   for (int i = 0; i < size; i++) {
     pack.push_back(nextJoker(ItemSource::Buffoon_Pack, ante, true));
     if (!params.showman)
-      lock(pack[i].joker);
+      lockTransient(pack[i].joker);
   }
   for (int i = 0; i < size; i++) {
-    unlock(pack[i].joker);
+    unlockTransient(pack[i].joker);
   }
   return pack;
+};
+
+inline BuffoonPackScanResult Instance::scanBuffoonPack(int size, int ante) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextBuffoonPack);
+  BuffoonPackScanResult result;
+  std::array<Item, 8> generatedJokers{};
+
+  for (int i = 0; i < size; i++) {
+    JokerData packItem = nextJoker(ItemSource::Buffoon_Pack, ante, false);
+    generatedJokers[i] = packItem.joker;
+    if (!params.showman) {
+      lockTransient(packItem.joker);
+    }
+
+    if (packItem.joker == Item::Blueprint) {
+      result.foundBlueprint = true;
+      if (packItem.edition == Item::Negative) {
+        result.foundNegativeBlueprint = true;
+      }
+    }
+    if (packItem.joker == Item::Brainstorm) {
+      result.foundBrainstorm = true;
+    }
+    if (isMoneyJoker(packItem.joker)) {
+      result.foundMoney = true;
+    }
+    if (packItem.joker == Item::Baseball_Card &&
+        packItem.edition == Item::Negative) {
+      result.foundNegativeBaseball = true;
+    }
+  }
+
+  for (int i = 0; i < size; i++) {
+    unlockTransient(generatedJokers[i]);
+  }
+
+  return result;
 };
 
 // Misc
@@ -582,6 +680,7 @@ inline void Instance::activateVoucher(Item voucher) {
 };
 
 inline Item Instance::nextVoucher(int ante) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextVoucher);
   return randchoice(RandomType::Voucher + anteToString(ante), VOUCHERS);
 }
 

@@ -99,6 +99,8 @@ local rank_list = {
   ["Queen"] = "Queen",
   ["King"] = "King",
   ["Ace"] = "Ace",
+  ["Kings or Queens"] = "Kings or Queens",
+  ["Royals"] = "Royals",
 }
 local suit_list = {
   ["Any Suit"] = "Any Suit",
@@ -123,6 +125,8 @@ local rank_keys = {
   "Queen",
   "King",
   "Ace",
+  "Kings or Queens",
+  "Royals",
 }
 local suit_keys = {
   "Any Suit",

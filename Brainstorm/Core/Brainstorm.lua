@@ -1,5 +1,6 @@
 local lovely = require("lovely")
 local nfs = require("nativefs")
+local ffi = require("ffi")
 
 Brainstorm = {}
 
@@ -56,6 +57,10 @@ Brainstorm.ar_frames = 0
 Brainstorm.ar_text = nil
 Brainstorm.ar_active = false
 Brainstorm.AR_INTERVAL = 0.01
+Brainstorm.ar_native_query = nil
+
+local immolate = nil
+local immolate_cdef_loaded = false
 
 -- Cache frequently used functions
 local math_abs = math.abs
@@ -77,6 +82,22 @@ end
 
 local function fileExists(filePath)
   return nfs.getInfo(filePath) ~= nil
+end
+
+local function ensureImmolateLoaded()
+  if not immolate_cdef_loaded then
+    ffi.cdef([[
+      const char* brainstorm(const char* seed, const char* voucher, const char* pack, const char* tag, double souls, bool observatory, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin);
+      void free_result(const char* result);
+    ]])
+    immolate_cdef_loaded = true
+  end
+
+  if immolate == nil then
+    immolate = ffi.load(Brainstorm.PATH .. "/Immolate.dll")
+  end
+
+  return immolate
 end
 
 local function applyAutoRerollFilterDefaults()
@@ -109,6 +130,40 @@ local function applyAutoRerollFilterDefaults()
   return changed
 end
 
+function Brainstorm.refreshAutoRerollQuery()
+  if type(localize) ~= "function" then
+    Brainstorm.ar_native_query = nil
+    return nil
+  end
+
+  local pack
+  if #Brainstorm.config.ar_filters.pack > 0 then
+    pack = Brainstorm.config.ar_filters.pack[1]:match("^(.*)_")
+  else
+    pack = {}
+  end
+
+  Brainstorm.ar_native_query = {
+    pack_name = localize({ type = "name_text", set = "Other", key = pack }),
+    tag_name = localize({
+      type = "name_text",
+      set = "Tag",
+      key = Brainstorm.config.ar_filters.tag_name,
+    }),
+    voucher_name = localize({
+      type = "name_text",
+      set = "Voucher",
+      key = Brainstorm.config.ar_filters.voucher_name,
+    }),
+    target_rank = Brainstorm.config.ar_filters.rank_name or "King",
+    target_suit = Brainstorm.config.ar_filters.suit_name or "Any Suit",
+    specific_rank_min = Brainstorm.config.ar_filters.rank_min or 0,
+    any_rank_min = Brainstorm.config.ar_filters.any_rank_min or 0,
+  }
+
+  return Brainstorm.ar_native_query
+end
+
 function Brainstorm.loadConfig()
   local configPath = Brainstorm.PATH .. "/config.lua"
   if not fileExists(configPath) then
@@ -124,9 +179,12 @@ function Brainstorm.loadConfig()
   if applyAutoRerollFilterDefaults() then
     Brainstorm.writeConfig()
   end
+
+  Brainstorm.refreshAutoRerollQuery()
 end
 
 function Brainstorm.writeConfig()
+  Brainstorm.refreshAutoRerollQuery()
   local configPath = Brainstorm.PATH .. "/config.lua"
   local success, err = nfs.write(configPath, STR_PACK(Brainstorm.config))
   if not success then
@@ -265,45 +323,17 @@ function Brainstorm.autoReroll()
       + G.CONTROLLER.cursor_hover.T.y * 0.874146
       + 0.412311010 * G.CONTROLLER.cursor_hover.time
   )
-  local ffi = require("ffi")
-  local lovely = require("lovely")
-  ffi.cdef([[
-	const char* brainstorm(const char* seed, const char* voucher, const char* pack, const char* tag, double souls, bool observatory, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin);
-    ]])
-  local immolate = ffi.load(Brainstorm.PATH .. "/Immolate.dll")
-  local pack
-  if #Brainstorm.config.ar_filters.pack > 0 then
-    pack = Brainstorm.config.ar_filters.pack[1]:match("^(.*)_")
-  else
-    pack = {}
+  local search_query = Brainstorm.ar_native_query
+    or Brainstorm.refreshAutoRerollQuery()
+  if not search_query then
+    return nil
   end
-  local pack_name = localize({ type = "name_text", set = "Other", key = pack })
-  local tag_name = localize({
-    type = "name_text",
-    set = "Tag",
-    key = Brainstorm.config.ar_filters.tag_name,
-  })
-  local voucher_name = localize({
-    type = "name_text",
-    set = "Voucher",
-    key = Brainstorm.config.ar_filters.voucher_name,
-  })
-  local target_rank = Brainstorm.config.ar_filters.rank_name or "King"
-  local target_suit = Brainstorm.config.ar_filters.suit_name or "Any Suit"
-  local specific_rank_min = Brainstorm.config.ar_filters.rank_min or 0
-  local any_rank_min = Brainstorm.config.ar_filters.any_rank_min or 0
-  --local custom_filter_name = localize({
-  --    type = "name_text",
-  --    set = "Other",
-  --    key = Brainstorm.config.ar_filters.custom_filter_name
-  --})
-  print(pack_name, tag_name, voucher_name)--, custom_filter_name)
-  seed_found = ffi.string(
-    immolate.brainstorm(
+  local immolate_lib = ensureImmolateLoaded()
+  local raw_result = immolate_lib.brainstorm(
       seed_found,
-      voucher_name,
-      pack_name,
-      tag_name,
+      search_query.voucher_name,
+      search_query.pack_name,
+      search_query.tag_name,
       Brainstorm.config.ar_filters.soul_skip,
       Brainstorm.config.ar_filters.inst_observatory,
       Brainstorm.config.ar_filters.inst_perkeo,
@@ -312,14 +342,20 @@ function Brainstorm.autoReroll()
       Brainstorm.config.ar_filters.bean,
       Brainstorm.config.ar_filters.burglar,
       Brainstorm.config.ar_filters.custom_filter_name,
-      target_rank,
-      target_suit,
-      specific_rank_min,
-      any_rank_min
+      search_query.target_rank,
+      search_query.target_suit,
+      search_query.specific_rank_min,
+      search_query.any_rank_min
     )
-  )
+  if raw_result ~= nil then
+    seed_found = ffi.string(raw_result)
+    immolate_lib.free_result(raw_result)
+    if seed_found == "" then
+      seed_found = nil
+    end
+  end
   if seed_found then
-    _stake = G.GAME.stake
+    local _stake = G.GAME.stake
     G:delete_run()
     G:start_run({
       stake = _stake,
@@ -330,9 +366,9 @@ function Brainstorm.autoReroll()
     G.GAME.filter_info = {
       filter_params = {
         seed_found,
-        voucher_name,
-        pack_name,
-        tag_name,
+        search_query.voucher_name,
+        search_query.pack_name,
+        search_query.tag_name,
         Brainstorm.config.ar_filters.soul_skip,
         Brainstorm.config.ar_filters.inst_observatory,
         Brainstorm.config.ar_filters.inst_perkeo,
@@ -341,10 +377,10 @@ function Brainstorm.autoReroll()
         Brainstorm.config.ar_filters.bean,
         Brainstorm.config.ar_filters.burglar,
         Brainstorm.config.ar_filters.custom_filter_name,
-        target_rank,
-        target_suit,
-        specific_rank_min,
-        any_rank_min,
+        search_query.target_rank,
+        search_query.target_suit,
+        search_query.specific_rank_min,
+        search_query.any_rank_min,
       },
     }
     G.GAME.seeded = false

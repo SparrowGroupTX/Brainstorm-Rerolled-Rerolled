@@ -1,13 +1,15 @@
 #include "items.hpp"
 #include "seed.hpp"
 #include "util.hpp"
-#include <map>
+#include <cstring>
 #include <string>
+#include <unordered_map>
 #pragma once
 
 struct Cache {
-  std::map<std::string, double> nodes;
+  std::unordered_map<std::string, double> nodes;
   bool generatedFirstPack = false;
+  Cache() { nodes.reserve(128); }
 };
 
 struct InstParams {
@@ -33,51 +35,72 @@ struct InstParams {
   }
 };
 
+struct ArcanaSoulPackResult {
+  bool foundSoul = false;
+  JokerData soulJoker = JokerData();
+};
+
+struct BuffoonPackScanResult {
+  bool foundBlueprint = false;
+  bool foundNegativeBlueprint = false;
+  bool foundBrainstorm = false;
+  bool foundMoney = false;
+  bool foundNegativeBaseball = false;
+};
+
 struct Instance {
   bool locked[(int)Item::ITEMS_END] = {false};
+  std::vector<unsigned short> touchedLocks;
   Seed &seed;
   double hashedSeed;
   Cache cache;
   InstParams params;
   LuaRandom rng;
-  Instance(Seed &s) : seed(s) {
-    hashedSeed = s.pseudohash(0);
+  void clearRunState() {
+    for (unsigned short itemIndex : touchedLocks) {
+      locked[itemIndex] = false;
+    }
+    touchedLocks.clear();
     params = InstParams();
+    cache.nodes.clear();
+    cache.generatedFirstPack = false;
+  }
+  Instance(Seed &s) : seed(s) {
+    touchedLocks.reserve(128);
+    hashedSeed = s.pseudohash(0);
+    clearRunState();
     rng = LuaRandom(0);
   };
   void reset(Seed &s) { // This is slow, use next() unless necessary
     seed = s;
     hashedSeed = s.pseudohash(0);
-    params = InstParams();
-    cache.nodes
-      .clear(); // Somehow `clear` is faster than swapping with empty map
-    cache.generatedFirstPack = false;
+    clearRunState();
   };
   void next() {
     seed.next();
     hashedSeed = seed.pseudohash(0);
-    params = InstParams();
-    cache.nodes.clear();
-    cache.generatedFirstPack = false;
+    clearRunState();
   }
-  double get_node(std::string ID) {
-    if (cache.nodes.count(ID) == 0) {
-      cache.nodes[ID] = pseudohash_from(ID, seed.pseudohash(ID.length()));
+  double get_node(const std::string &ID) {
+    auto iter = cache.nodes.find(ID);
+    if (iter == cache.nodes.end()) {
+      iter = cache.nodes
+                 .emplace(ID, pseudohash_from(ID, seed.pseudohash((int)ID.length())))
+                 .first;
     }
-    cache.nodes[ID] =
-        round13(fract(cache.nodes[ID] * 1.72431234 + 2.134453429141));
-    return (cache.nodes[ID] + hashedSeed) / 2;
+    iter->second = round13(fract(iter->second * 1.72431234 + 2.134453429141));
+    return (iter->second + hashedSeed) / 2;
   }
-  double random(std::string ID) {
+  double random(const std::string &ID) {
     rng = LuaRandom(get_node(ID));
     return rng.random();
   }
-  int randint(std::string ID, int min, int max) {
+  int randint(const std::string &ID, int min, int max) {
     rng = LuaRandom(get_node(ID));
     return rng.randint(min, max);
   }
   template <std::size_t N>
-  Item randchoice(std::string ID, const std::array<Item, N> &items) {
+  Item randchoice(const std::string &ID, const std::array<Item, N> &items) {
     rng = LuaRandom(get_node(ID));
     Item item = items[rng.randint(0, items.size() - 1)];
     if ((params.showman == false && isLocked(item)) || item == Item::RETRY) {
@@ -93,7 +116,7 @@ struct Instance {
     return item;
   }
   template <std::size_t N>
-  Item randweightedchoice(std::string ID,
+  Item randweightedchoice(const std::string &ID,
                           const std::array<WeightedItem, N> &items) {
     rng = LuaRandom(get_node(ID));
     double poll = rng.random() * items[0].weight;
@@ -108,21 +131,25 @@ struct Instance {
 
   // Functions defined in functions.hpp
   void lock(Item item);
+  void lockTransient(Item item);
   void unlock(Item item);
+  void unlockTransient(Item item);
   bool isLocked(Item item);
   void initLocks(int ante, bool freshProfile, bool freshRun);
   void initUnlocks(int ante, bool freshProfile);
-  Item nextTarot(std::string source, int ante, bool soulable);
-  Item nextPlanet(std::string source, int ante, bool soulable);
-  Item nextSpectral(std::string source, int ante, bool soulable);
-  JokerData nextJoker(std::string source, int ante, bool hasStickers);
+  Item nextTarot(const std::string &source, int ante, bool soulable);
+  Item nextPlanet(const std::string &source, int ante, bool soulable);
+  Item nextSpectral(const std::string &source, int ante, bool soulable);
+  JokerData nextJoker(const std::string &source, int ante, bool hasStickers);
   ShopInstance getShopInstance();
-  ShopItem nextShopItem(int ante);
+  ShopItem nextShopItem(int ante, bool jokerHasStickers = true);
   Item nextPack(int ante);
   std::vector<Item> nextArcanaPack(int size, int ante);
+  ArcanaSoulPackResult scanArcanaPackForSoulJoker(int size, int ante);
   std::vector<Item> nextCelestialPack(int size, int ante);
   std::vector<Item> nextSpectralPack(int size, int ante);
   std::vector<JokerData> nextBuffoonPack(int size, int ante);
+  BuffoonPackScanResult scanBuffoonPack(int size, int ante);
   std::vector<Card> nextStandardPack(int size, int ante);
   Card nextStandardCard(int ante);
   bool isVoucherActive(Item voucher);

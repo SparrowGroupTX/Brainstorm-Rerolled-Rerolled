@@ -1,5 +1,6 @@
 #include "functions.cpp"
 #include "functions.hpp"
+#include "immolate.hpp"
 #include "instance.hpp"
 #include "items.cpp"
 #include "items.hpp"
@@ -16,7 +17,7 @@
 #include <vector>
 #include <chrono>
 
-long filter(Instance inst) {
+long filter(Instance &inst) {
     bool negativePerkeo = false;
     inst.initLocks(1, false, true);
     bool observatory = false;
@@ -87,7 +88,7 @@ long filter(Instance inst) {
 
 
 //Currently filtering for bosses does not seem to work
-long filter_crimson_heart(Instance inst) {
+long filter_crimson_heart(Instance &inst) {
     inst.initLocks(1, false, true);
 	printf("Checking for Crimson Heart...\n");
 	inst.nextBoss(1);
@@ -106,7 +107,7 @@ long filter_crimson_heart(Instance inst) {
 	return 1;
 }
 
-long filter_retcon(Instance inst) {
+long filter_retcon(Instance &inst) {
     inst.initLocks(1, false, true);
 	bool directorsCut = false;
     for(int i = 1; i < 9; i++) {
@@ -123,7 +124,7 @@ long filter_retcon(Instance inst) {
     return 0;
 }
 
-long filter_blank(Instance inst) { return 0; }
+long filter_blank(Instance &inst) { return 0; }
 
 
 int main() {
@@ -132,7 +133,8 @@ int main() {
   //benchmark_quick_lucky();
   //benchmark_blank();
   //benchmark();
-  Search search(filter, "KY9AZX31", 12, 2318107019761);
+  Search search(filter, "KY9AZX31", getBrainstormSearchThreads(),
+                getBrainstormSearchLimit());
   search.highScore = 1;
   search.printDelay = 100000;
   search.exitOnFind = true;

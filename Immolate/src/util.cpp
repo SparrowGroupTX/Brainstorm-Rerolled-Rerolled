@@ -1,28 +1,10 @@
 #include "util.hpp"
+#include <array>
 #include <cstring>
 #include <limits>
 
-LuaRandom::LuaRandom(double seed) {
-  double d = seed;
-  uint64_t r = 0x11090601;
-  for (int i = 0; i < 4; i++) {
-    uint64_t m = 1ull << (r & 255);
-    r >>= 8;
-    d = d * 3.14159265358979323846 + 2.7182818284590452354;
-    dbllong u;
-    u.dbl = d;
-    if (u.ulong < m)
-      u.ulong += m;
-    state[i] = u.ulong;
-  }
-  for (int i = 0; i < 10; i++) {
-    _randint();
-  }
-}
-
-LuaRandom::LuaRandom() { LuaRandom(0); }
-
-uint64_t LuaRandom::_randint() {
+namespace {
+uint64_t luaRandomAdvance(uint64_t state[4]) {
   uint64_t z = 0;
   uint64_t r = 0;
   z = state[0];
@@ -44,6 +26,35 @@ uint64_t LuaRandom::_randint() {
   return r;
 }
 
+void luaRandomInit(double seed, uint64_t state[4]) {
+  double d = seed;
+  uint64_t r = 0x11090601;
+  for (int i = 0; i < 4; i++) {
+    uint64_t m = 1ull << (r & 255);
+    r >>= 8;
+    d = d * 3.14159265358979323846 + 2.7182818284590452354;
+    dbllong u;
+    u.dbl = d;
+    if (u.ulong < m)
+      u.ulong += m;
+    state[i] = u.ulong;
+  }
+}
+} // namespace
+
+LuaRandom::LuaRandom(double seed) {
+  luaRandomInit(seed, state);
+  for (int i = 0; i < 10; i++) {
+    _randint();
+  }
+}
+
+LuaRandom::LuaRandom() { LuaRandom(0); }
+
+uint64_t LuaRandom::_randint() {
+  return luaRandomAdvance(state);
+}
+
 uint64_t LuaRandom::randdblmem() {
   return (_randint() & 4503599627370495ull) | 4607182418800017408ull;
 }
@@ -56,6 +67,22 @@ double LuaRandom::random() {
 
 int LuaRandom::randint(int min, int max) {
   return (int)(random() * (max - min + 1)) + min;
+}
+
+double lua_random_from_seed(double seed) {
+  uint64_t state[4];
+  luaRandomInit(seed, state);
+  for (int i = 0; i < 10; ++i) {
+    luaRandomAdvance(state);
+  }
+  dbllong u;
+  u.ulong = (luaRandomAdvance(state) & 4503599627370495ull) |
+            4607182418800017408ull;
+  return u.dbl - 1.0;
+}
+
+int lua_randint_from_seed(double seed, int min, int max) {
+  return (int)(lua_random_from_seed(seed) * (max - min + 1)) + min;
 }
 
 int portable_clzll(uint64_t x) {
@@ -131,7 +158,7 @@ double fract(double x) {
   return result;
 }
 
-double pseudohash(std::string s) {
+double pseudohash(const std::string &s) {
   double num = 1;
   for (size_t i = s.length(); i > 0; i--) {
     num = fract(1.1239285023 / num * s[i - 1] * 3.141592653589793116 +
@@ -140,7 +167,7 @@ double pseudohash(std::string s) {
   return num;
 }
 
-double pseudohash_from(std::string s, double num) {
+double pseudohash_from(const std::string &s, double num) {
   for (size_t i = s.length(); i > 0; i--) {
     num = fract(1.1239285023 / num * s[i - 1] * 3.141592653589793116 +
                 3.141592653589793116 * i);
@@ -153,11 +180,32 @@ double pseudostep(char s, int pos, double num) {
                3.141592653589793116 * pos);
 }
 
-std::string anteToString(int a) {
-  if (a < 10)
-    return {(char)(0x30 + a)};
-  else
-    return {(char)(0x30 + a / 10), (char)(0x30 + a % 10)};
+const std::string &anteToString(int a) {
+  static const std::array<std::string, 100> cached = []() {
+    std::array<std::string, 100> values;
+    for (int i = 0; i < 100; ++i) {
+      if (i < 10) {
+        values[i] = {(char)(0x30 + i)};
+      } else {
+        values[i] = {(char)(0x30 + i / 10), (char)(0x30 + i % 10)};
+      }
+    }
+    return values;
+  }();
+
+  if (a >= 0 && a < static_cast<int>(cached.size())) {
+    return cached[a];
+  }
+
+  static thread_local std::string fallback;
+  fallback.clear();
+  if (a < 10) {
+    fallback.push_back((char)(0x30 + a));
+  } else {
+    fallback.push_back((char)(0x30 + a / 10));
+    fallback.push_back((char)(0x30 + a % 10));
+  }
+  return fallback;
 }
 
 const double inv_prec = std::pow(10.0, 13);

@@ -45,6 +45,10 @@ inline customFilters stringToFilter(std::string i) {
     return customFilters::NO_FILTER; // Default case
 }
 
+IMMOLATE_API int normalizeBrainstormSearchThreads(unsigned int detectedThreads);
+IMMOLATE_API int getBrainstormSearchThreads();
+IMMOLATE_API long long getBrainstormSearchLimit();
+
 // Declare the functions with IMMOLATE_API
 IMMOLATE_API std::string brainstorm_cpp(
     std::string seed,
