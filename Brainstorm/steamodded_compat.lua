@@ -1,0 +1,7 @@
+--- STEAMODDED HEADER
+--- MOD_NAME: Brainstorm-Rerolled
+--- MOD_ID: Brainstorm-Rerolled
+--- PREFIX: brainstorm
+--- MOD_AUTHOR: [ABGamma]
+--- MOD_DESCRIPTION: A newly rerolled balatro reroll mod.
+--- VERSION: 1.0.2-alpha
