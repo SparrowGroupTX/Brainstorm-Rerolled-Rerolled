@@ -2,7 +2,10 @@
 #include"immolate.hpp"
 #include "search.hpp"
 #include <cmath>
+#include <cstdlib>
 #include <cstring>
+#include <limits>
+#include <thread>
 
 Item BRAINSTORM_PACK = Item::RETRY;
 Item BRAINSTORM_TAG = Item::Charm_Tag;
@@ -68,8 +71,7 @@ int suitToCardIndex(Item suit) {
     }
 }
 
-int nextErraticCardIndex(Instance& inst) {
-    double roll = inst.random(RandomType::Erratic);
+int clampErraticCardIndex(double roll) {
     if (std::isnan(roll)) {
         return 51;
     }
@@ -84,7 +86,17 @@ int nextErraticCardIndex(Instance& inst) {
     return cardIndex;
 }
 
-bool passesRankCountFilters(Instance& inst) {
+double nextErraticNode(double erraticNode) {
+    return round13(fract(erraticNode * 1.72431234 + 2.134453429141));
+}
+
+int nextErraticCardIndex(double& erraticNode, double hashedSeed) {
+    erraticNode = nextErraticNode(erraticNode);
+    LuaRandom rng((erraticNode + hashedSeed) / 2.0);
+    return clampErraticCardIndex(rng.random());
+}
+
+bool passesRankCountFilters(Seed& seed) {
     const bool specificFilterEnabled = BRAINSTORM_SPECIFIC_RANK_MIN > 0;
     const bool anyRankFilterEnabled = BRAINSTORM_ANY_RANK_MIN > 0;
     if (!specificFilterEnabled && !anyRankFilterEnabled) {
@@ -94,34 +106,71 @@ bool passesRankCountFilters(Instance& inst) {
     const int targetRankIndex = rankToCardIndex(BRAINSTORM_TARGET_RANK);
     const int targetSuitIndex = suitToCardIndex(BRAINSTORM_TARGET_SUIT);
     const bool specificFilterPossible = specificFilterEnabled && targetRankIndex >= 0;
+    if (!specificFilterPossible && !anyRankFilterEnabled) {
+        return false;
+    }
 
+    const double hashedSeed = seed.pseudohash(0);
+    double erraticNode = pseudohash_from(RandomType::Erratic, seed.pseudohash((int)RandomType::Erratic.size()));
     int rankCounts[13] = { 0 };
     int specificCount = 0;
+    int bestAnyRankCount = 0;
     for (int i = 0; i < 52; i++) {
-        int cardIndex = nextErraticCardIndex(inst);
+        int cardIndex = nextErraticCardIndex(erraticNode, hashedSeed);
         int rankIndex = cardIndex % 13;
         int suitIndex = cardIndex / 13;
 
         rankCounts[rankIndex]++;
+        if (rankCounts[rankIndex] > bestAnyRankCount) {
+            bestAnyRankCount = rankCounts[rankIndex];
+        }
 
         if (specificFilterPossible && rankIndex == targetRankIndex && (targetSuitIndex < 0 || targetSuitIndex == suitIndex)) {
             specificCount++;
         }
-    }
 
-    int bestAnyRankCount = 0;
-    for (int count : rankCounts) {
-        if (count > bestAnyRankCount) {
-            bestAnyRankCount = count;
+        if (specificFilterPossible && specificCount >= BRAINSTORM_SPECIFIC_RANK_MIN) {
+            return true;
+        }
+        if (anyRankFilterEnabled && bestAnyRankCount >= BRAINSTORM_ANY_RANK_MIN) {
+            return true;
+        }
+
+        const int remainingCards = 51 - i;
+        const bool specificStillPossible = specificFilterPossible
+            && specificCount + remainingCards >= BRAINSTORM_SPECIFIC_RANK_MIN;
+        const bool anyRankStillPossible = anyRankFilterEnabled
+            && bestAnyRankCount + remainingCards >= BRAINSTORM_ANY_RANK_MIN;
+        if (!specificStillPossible && !anyRankStillPossible) {
+            return false;
         }
     }
 
-    const bool specificMatched = specificFilterPossible && specificCount >= BRAINSTORM_SPECIFIC_RANK_MIN;
-    const bool anyRankMatched = anyRankFilterEnabled && bestAnyRankCount >= BRAINSTORM_ANY_RANK_MIN;
-    return specificMatched || anyRankMatched;
+    return false;
+}
+
+int getBrainstormSearchThreads() {
+    const char* envValue = std::getenv("BRAINSTORM_THREADS");
+    if (envValue != nullptr) {
+        char* end = nullptr;
+        long parsed = std::strtol(envValue, &end, 10);
+        if (end != envValue && *end == '\0' && parsed > 0 && parsed <= std::numeric_limits<int>::max()) {
+            return static_cast<int>(parsed);
+        }
+    }
+
+    unsigned int detectedThreads = std::thread::hardware_concurrency();
+    if (detectedThreads == 0) {
+        return 12;
+    }
+    return static_cast<int>(detectedThreads);
 }
 
 long filter(Instance inst) {
+    if (!passesRankCountFilters(inst.seed)) {
+        return 0;
+    }
+
     switch (BRAINSTORM_FILTER) {
         case customFilters::NO_FILTER: {
             if (BRAINSTORM_PACK != Item::RETRY) {
@@ -290,7 +339,7 @@ long filter(Instance inst) {
                 }
             }
 
-            return passesRankCountFilters(inst) ? 1 : 0;
+            return 1; // Return a score of 1 if all conditions are met
         }
         case customFilters::NEGATIVE_BLUEPRINT: {
             bool bprint = false;
@@ -303,7 +352,7 @@ long filter(Instance inst) {
                 }
             }
             if (bprint) {
-                return passesRankCountFilters(inst) ? 1 : 0;
+                return 1; // Return a score of 1 if a negative blueprint is found
             }
             Pack pack = packInfo(inst.nextPack(1));
             for (int p = 0; p <= 3; p++) {
@@ -327,7 +376,7 @@ long filter(Instance inst) {
                 pack = packInfo(inst.nextPack(1));
             }
             if (bprint) {
-                return passesRankCountFilters(inst) ? 1 : 0;
+                return 1; // Return a score of 1 if a negative blueprint is found
             }
             return 0; // Return 0 if no negative blueprint is found 
         }
@@ -351,7 +400,7 @@ long filter(Instance inst) {
                 return 0; // If Perkeo is required but not found, return 0
             }
             
-			return passesRankCountFilters(inst) ? 1 : 0;
+			return 1; // Return a score of 1 if a negative Perkeo is found
 
         }
         case customFilters::NEGATIVE_PERKEO_BLUEPRINT: {
@@ -383,7 +432,7 @@ long filter(Instance inst) {
                 }
             }
             if (bprint) {
-                return passesRankCountFilters(inst) ? 1 : 0;
+                return 1; // Return a score of 1 if a negative blueprint is found
             }
             Pack pack = packInfo(inst.nextPack(1));
             for (int p = 0; p <= 2; p++) {
@@ -399,7 +448,7 @@ long filter(Instance inst) {
                 pack = packInfo(inst.nextPack(1));
             }
             if (bprint) {
-                return passesRankCountFilters(inst) ? 1 : 0;
+                return 1; // Return a score of 1 if a negative blueprint is found
             }
 
             return 0; // Return 0 if no negative blueprint is found 
@@ -427,13 +476,13 @@ long filter(Instance inst) {
             auto packContents = inst.nextBuffoonPack(pack.size, 1);
             for (int x = 0; x < pack.size; x++) {
                 if (packContents[x].joker == Item::Baseball_Card && packContents[x].edition == Item::Negative) {
-					return passesRankCountFilters(inst) ? 1 : 0;
+					return 1; // Return a score of 1 if a negative Baseball Card is found
                 }
             }
 			return 0; // Return 0 if no negative Baseball Card is found
         }
         default:
-            return passesRankCountFilters(inst) ? 1 : 0;
+            return 1;
     }
     
 };
@@ -458,7 +507,7 @@ std::string brainstorm_cpp(std::string seed, std::string voucher, std::string pa
     }
     BRAINSTORM_SPECIFIC_RANK_MIN = specificRankMin > 0 ? specificRankMin : 0;
     BRAINSTORM_ANY_RANK_MIN = anyRankMin > 0 ? anyRankMin : 0;
-    Search search(filter, seed, 12, 2318107019761);
+    Search search(filter, seed, getBrainstormSearchThreads(), 2318107019761);
     search.exitOnFind = true;
     return search.search();
 }

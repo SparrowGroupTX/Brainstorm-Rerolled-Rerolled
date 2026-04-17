@@ -5,15 +5,9 @@
 #include <atomic>
 #include <functional>
 #include <iostream>
-#include <thread>
-
-#include <atomic>
-#include <functional>
-#include <iostream>
+#include <mutex>
 #include <thread>
 #include <vector>
-#include <mutex>
-
 
 const long long BLOCK_SIZE = 1000000;
 
@@ -59,30 +53,51 @@ public:
       numSeeds = n;
     };
 
+    void flushProcessed(long long& localProcessed) {
+        if (localProcessed == 0) {
+            return;
+        }
+
+        long long previous = seedsProcessed.fetch_add(localProcessed, std::memory_order_relaxed);
+        long long current = previous + localProcessed;
+        if (printDelay > 0 && previous / printDelay != current / printDelay) {
+            for (long long bucket = previous / printDelay + 1; bucket <= current / printDelay; ++bucket) {
+                std::cout << "Seeds processed: " << bucket * printDelay << std::endl;
+            }
+        }
+        localProcessed = 0;
+    }
+
     void searchBlock(long long start, long long end) {
         Seed s = Seed(start);
         Instance inst(s);
+        long long localProcessed = 0;
         for (long long i = start; i < end; ++i) {
-            if (found) return; // Exit if a solution is found
+            if (found) {
+                flushProcessed(localProcessed);
+                return; // Exit if a solution is found
+            }
             // Perform the search on the seed
             int result = filter(inst);
-            if (result >= highScore) {
+            if (result >= highScore.load(std::memory_order_relaxed)) {
                 std::lock_guard<std::mutex> lock(mtx);
                 highScore = result;
                 foundSeed = s;
                 std::cout << "Found seed: " << s.tostring() << " (" << result << ")"
                   << std::endl;
                 if (exitOnFind) {
+                    flushProcessed(localProcessed);
                     found = true;
                     return;
                 }
             }
-            seedsProcessed++;
-            if (seedsProcessed % printDelay == 0) {
-                std::cout << "Seeds processed: " << seedsProcessed << std::endl;
+            localProcessed++;
+            if ((localProcessed & 4095) == 0) {
+                flushProcessed(localProcessed);
             }
             inst.next();
         }
+        flushProcessed(localProcessed);
     }
 
     std::string search() {
