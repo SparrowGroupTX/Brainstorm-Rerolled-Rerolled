@@ -149,6 +149,16 @@ bool passesRankCountFilters(Seed& seed) {
     return false;
 }
 
+int normalizeBrainstormSearchThreads(unsigned int detectedThreads) {
+    if (detectedThreads == 0) {
+        return 12;
+    }
+    if (detectedThreads > 24) {
+        detectedThreads -= 4;
+    }
+    return static_cast<int>(detectedThreads);
+}
+
 int getBrainstormSearchThreads() {
     const char* envValue = std::getenv("BRAINSTORM_THREADS");
     if (envValue != nullptr) {
@@ -159,11 +169,7 @@ int getBrainstormSearchThreads() {
         }
     }
 
-    unsigned int detectedThreads = std::thread::hardware_concurrency();
-    if (detectedThreads == 0) {
-        return 12;
-    }
-    return static_cast<int>(detectedThreads);
+    return normalizeBrainstormSearchThreads(std::thread::hardware_concurrency());
 }
 
 long filter(Instance inst) {
