@@ -61,6 +61,8 @@ Brainstorm.ar_native_query = nil
 
 local immolate = nil
 local immolate_cdef_loaded = false
+local immolate_runtime_libs = {}
+local immolate_runtime_loaded = false
 
 -- Cache frequently used functions
 local math_abs = math.abs
@@ -84,6 +86,45 @@ local function fileExists(filePath)
   return nfs.getInfo(filePath) ~= nil
 end
 
+local function preloadImmolateRuntime()
+  if immolate_runtime_loaded or ffi.os ~= "Windows" then
+    return
+  end
+
+  ffi.cdef([[
+    int SetDllDirectoryA(const char* lpPathName);
+  ]])
+  if ffi.C.SetDllDirectoryA(Brainstorm.PATH) == 0 then
+    error(
+      "Failed to set DLL search path for Brainstorm runtime loading."
+    )
+  end
+
+  local runtime_names = {
+    "libwinpthread-1.dll",
+    "libgcc_s_seh-1.dll",
+    "libstdc++-6.dll",
+  }
+
+  for _, runtime_name in ipairs(runtime_names) do
+    local runtime_path = Brainstorm.PATH .. "/" .. runtime_name
+    if fileExists(runtime_path) then
+      local ok, lib_or_err = pcall(ffi.load, runtime_path)
+      if not ok then
+        error(
+          "Failed to load Brainstorm runtime dependency '"
+            .. runtime_name
+            .. "': "
+            .. tostring(lib_or_err)
+        )
+      end
+      immolate_runtime_libs[#immolate_runtime_libs + 1] = lib_or_err
+    end
+  end
+
+  immolate_runtime_loaded = true
+end
+
 local function ensureImmolateLoaded()
   if not immolate_cdef_loaded then
     ffi.cdef([[
@@ -94,7 +135,18 @@ local function ensureImmolateLoaded()
   end
 
   if immolate == nil then
-    immolate = ffi.load(Brainstorm.PATH .. "/Immolate.dll")
+    preloadImmolateRuntime()
+    local ok, lib_or_err = pcall(ffi.load, Brainstorm.PATH .. "/Immolate.dll")
+    if not ok then
+      error(
+        "Failed to load Brainstorm Immolate.dll. "
+          .. "If this is a dependency error, make sure the Brainstorm folder "
+          .. "includes libgcc_s_seh-1.dll, libstdc++-6.dll, and libwinpthread-1.dll. "
+          .. "Original error: "
+          .. tostring(lib_or_err)
+      )
+    end
+    immolate = lib_or_err
   end
 
   return immolate

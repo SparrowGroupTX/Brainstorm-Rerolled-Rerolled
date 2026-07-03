@@ -166,7 +166,8 @@ bool passesRankCountFilters(Seed& seed) {
     const double hashedSeed = seed.pseudohash(0);
     double erraticNode = pseudohash_from(RandomType::Erratic, seed.pseudohash((int)RandomType::Erratic.size()));
     uint8_t rankCounts[13] = { 0 };
-    int specificCount = 0;
+    uint8_t suitedRankCounts[13] = { 0 };
+    int bestSpecificTargetCount = 0;
     int bestAnyRankCount = 0;
     const bool anySuitTarget = targetSuitIndex < 0;
     for (int i = 0; i < 52; i++) {
@@ -180,16 +181,22 @@ bool passesRankCountFilters(Seed& seed) {
 
         if (specificFilterPossible && matchesSpecificRankTarget(rankIndex)) {
             if (anySuitTarget) {
-                specificCount++;
+                if (rankCounts[rankIndex] > bestSpecificTargetCount) {
+                    bestSpecificTargetCount = rankCounts[rankIndex];
+                }
             } else {
                 int suitIndex = cardIndex / 13;
                 if (targetSuitIndex == suitIndex) {
-                    specificCount++;
+                    suitedRankCounts[rankIndex]++;
+                    if (suitedRankCounts[rankIndex] > bestSpecificTargetCount) {
+                        bestSpecificTargetCount = suitedRankCounts[rankIndex];
+                    }
                 }
             }
         }
 
-        if (specificFilterPossible && specificCount >= BRAINSTORM_SPECIFIC_RANK_MIN) {
+        if (specificFilterPossible
+            && bestSpecificTargetCount >= BRAINSTORM_SPECIFIC_RANK_MIN) {
             return finish(true);
         }
         if (anyRankFilterEnabled && bestAnyRankCount >= BRAINSTORM_ANY_RANK_MIN) {
@@ -198,7 +205,7 @@ bool passesRankCountFilters(Seed& seed) {
 
         const int remainingCards = 51 - i;
         const bool specificStillPossible = specificFilterPossible
-            && specificCount + remainingCards >= BRAINSTORM_SPECIFIC_RANK_MIN;
+            && bestSpecificTargetCount + remainingCards >= BRAINSTORM_SPECIFIC_RANK_MIN;
         const bool anyRankStillPossible = anyRankFilterEnabled
             && bestAnyRankCount + remainingCards >= BRAINSTORM_ANY_RANK_MIN;
         if (!specificStillPossible && !anyRankStillPossible) {
@@ -455,6 +462,11 @@ bool hasRankCountFiltersEnabled() {
 long filterConfigured(Instance &inst);
 
 bool isExactCharmPerkeoObservatorySearch() {
+    const char* envValue = std::getenv("BRAINSTORM_EXACT_QUERY_STRATEGY");
+    if (envValue == nullptr || envValue[0] == '\0' || envValue[0] == '0') {
+        return false;
+    }
+
     return BRAINSTORM_FILTER == customFilters::NO_FILTER
         && BRAINSTORM_PACK == Item::RETRY
         && BRAINSTORM_TAG == Item::Charm_Tag
