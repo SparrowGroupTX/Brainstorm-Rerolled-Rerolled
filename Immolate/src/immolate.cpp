@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
+#include <iostream>
 #include <limits>
 #include <thread>
 
@@ -102,8 +103,8 @@ double nextErraticNode(double erraticNode) {
 
 int nextErraticCardIndex(double& erraticNode, double hashedSeed) {
     erraticNode = nextErraticNode(erraticNode);
-    LuaRandom rng((erraticNode + hashedSeed) / 2.0);
-    return clampErraticCardIndex(rng.random());
+    return clampErraticCardIndex(
+        lua_random_from_seed((erraticNode + hashedSeed) * 0.5));
 }
 
 bool isRoyalRankIndex(int rankIndex) {
@@ -160,6 +161,40 @@ bool passesRankCountFilters(Seed& seed) {
     const bool specificFilterPossible =
         specificFilterEnabled && BRAINSTORM_TARGET_RANK_MASK != 0;
     if (!specificFilterPossible && !anyRankFilterEnabled) {
+        return finish(false);
+    }
+
+    const bool singleSpecificRankAnySuit =
+        specificFilterPossible
+        && !anyRankFilterEnabled
+        && targetSuitIndex < 0
+        && BRAINSTORM_TARGET_RANK_MODE == BrainstormRankTargetMode::Single;
+    if (singleSpecificRankAnySuit) {
+        const int targetRankIndex = rankToCardIndex(BRAINSTORM_TARGET_RANK);
+        if (targetRankIndex < 0) {
+            return finish(false);
+        }
+
+        const double hashedSeed = seed.pseudohash(0);
+        double erraticNode = pseudohash_from(
+            RandomType::Erratic,
+            seed.pseudohash((int)RandomType::Erratic.size()));
+        int count = 0;
+        for (int i = 0; i < 52; ++i) {
+            const int cardIndex = nextErraticCardIndex(erraticNode, hashedSeed);
+            if (cardIndex % 13 == targetRankIndex) {
+                ++count;
+                if (count >= BRAINSTORM_SPECIFIC_RANK_MIN) {
+                    return finish(true);
+                }
+            }
+
+            const int remainingCards = 51 - i;
+            if (count + remainingCards < BRAINSTORM_SPECIFIC_RANK_MIN) {
+                return finish(false);
+            }
+        }
+
         return finish(false);
     }
 
@@ -358,7 +393,7 @@ struct ExactCharmObservatoryEval {
                 nextChoiceNode(state, baseId, resampleNumber),
                 0,
                 static_cast<int>(items.size()) - 1)];
-            if ((item != Item::RETRY && !isLocked(item)) || resampleNumber > 1000) {
+            if ((item != Item::RETRY && !isLocked(item)) || resampleNumber >= 1000) {
                 return item;
             }
             resampleNumber++;
@@ -388,14 +423,14 @@ struct ExactCharmObservatoryEval {
         return tarot;
     }
 
-    bool passesCharmSoulPerkeo() {
+    bool passesCharmTag() {
         Item tag = drawChoice(
             tagState, tagKey(), TAGS,
             [](Item) { return false; });
-        if (tag != Item::Charm_Tag) {
-            return false;
-        }
+        return tag == Item::Charm_Tag;
+    }
 
+    bool passesSoulPerkeo() {
         bool foundSoul = false;
         for (int i = 0; i < 5; ++i) {
             if (nextArcanaTarot() == Item::The_Soul) {
@@ -412,6 +447,10 @@ struct ExactCharmObservatoryEval {
         return legendary == Item::Perkeo;
     }
 
+    bool passesCharmSoulPerkeo() {
+        return passesCharmTag() && passesSoulPerkeo();
+    }
+
     Item nextVoucher(FastChoiceNodeState &state, const std::string &key) {
         return drawChoice(
             state, key, VOUCHERS,
@@ -420,11 +459,18 @@ struct ExactCharmObservatoryEval {
             });
     }
 
+    bool passesTelescope() {
+        Item firstVoucher = nextVoucher(voucher1State, voucher1Key());
+        return firstVoucher == Item::Telescope;
+    }
+
     bool passesObservatory() {
         Item firstVoucher = nextVoucher(voucher1State, voucher1Key());
         if (firstVoucher != Item::Telescope) {
             return false;
         }
+        // Match filterConfigured's current DLL semantics: it does not call
+        // initLocks for this path, so only Telescope is locked before ante 2.
         telescopeLocked = true;
         Item secondVoucher = nextVoucher(voucher2State, voucher2Key());
         return secondVoucher == Item::Observatory;
@@ -461,16 +507,64 @@ bool hasRankCountFiltersEnabled() {
 
 long filterConfigured(Instance &inst);
 
-bool isExactCharmPerkeoObservatorySearch() {
+bool exactQueryStrategyEnabled() {
     const char* envValue = std::getenv("BRAINSTORM_EXACT_QUERY_STRATEGY");
-    if (envValue == nullptr || envValue[0] == '\0' || envValue[0] == '0') {
+    return envValue == nullptr
+        || envValue[0] == '\0'
+        || (envValue[0] != '0'
+            && std::strcmp(envValue, "false") != 0
+            && std::strcmp(envValue, "False") != 0);
+}
+
+bool verifyFastFilterEnabled() {
+    const char* envValue = std::getenv("BRAINSTORM_VERIFY_FAST_FILTER");
+    return envValue != nullptr && envValue[0] != '\0' && envValue[0] != '0';
+}
+
+bool verifyFastFilterPositive(Seed &seed) {
+    if (!verifyFastFilterEnabled()) {
+        return true;
+    }
+
+    Seed configuredSeed = seed;
+    Instance inst(configuredSeed);
+    if (filterConfigured(inst) == 0) {
+        std::cerr << "Fast exact filter mismatch on seed "
+                  << seed.tostring() << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+bool isExactCharmPerkeoTelescopeSearch() {
+    if (!exactQueryStrategyEnabled()) {
         return false;
     }
 
     return BRAINSTORM_FILTER == customFilters::NO_FILTER
         && BRAINSTORM_PACK == Item::RETRY
         && BRAINSTORM_TAG == Item::Charm_Tag
-        && BRAINSTORM_VOUCHER == Item::RETRY
+        && BRAINSTORM_VOUCHER == Item::Telescope
+        && BRAINSTORM_SOULS == 1
+        && !BRAINSTORM_OBSERVATORY
+        && BRAINSTORM_PERKEO
+        && !BRAINSTORM_EARLYCOPY
+        && !BRAINSTORM_RETCON
+        && !BRAINSTORM_ANTE8_BEAN
+        && !BRAINSTORM_ANTE6_BURGLAR;
+}
+
+bool isExactCharmPerkeoObservatorySearch() {
+    if (!exactQueryStrategyEnabled()) {
+        return false;
+    }
+
+    // Generic filterConfigured ignores BRAINSTORM_VOUCHER when Observatory is
+    // requested, so this exact detector intentionally preserves that behavior.
+    return BRAINSTORM_FILTER == customFilters::NO_FILTER
+        && BRAINSTORM_PACK == Item::RETRY
+        && BRAINSTORM_TAG == Item::Charm_Tag
         && BRAINSTORM_SOULS == 1
         && BRAINSTORM_OBSERVATORY
         && BRAINSTORM_PERKEO
@@ -480,14 +574,36 @@ bool isExactCharmPerkeoObservatorySearch() {
         && !BRAINSTORM_ANTE6_BURGLAR;
 }
 
-long exactCharmPerkeoObservatoryFilter(Seed &seed) {
+long exactCharmPerkeoTelescopeFilter(Seed &seed) {
     BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::Filter);
+    ExactCharmObservatoryEval eval(seed);
+
+    if (!eval.passesTelescope()) {
+        return 0;
+    }
+    if (!eval.passesCharmSoulPerkeo()) {
+        return 0;
+    }
     if (hasRankCountFiltersEnabled() && !passesRankCountFilters(seed)) {
         return 0;
     }
-    Seed configuredSeed = seed;
-    Instance inst(configuredSeed);
-    return filterConfigured(inst);
+    return verifyFastFilterPositive(seed) ? 1 : 0;
+}
+
+long exactCharmPerkeoObservatoryFilter(Seed &seed) {
+    BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::Filter);
+    ExactCharmObservatoryEval eval(seed);
+
+    if (!eval.passesObservatory()) {
+        return 0;
+    }
+    if (!eval.passesCharmSoulPerkeo()) {
+        return 0;
+    }
+    if (hasRankCountFiltersEnabled() && !passesRankCountFilters(seed)) {
+        return 0;
+    }
+    return verifyFastFilterPositive(seed) ? 1 : 0;
 }
 
 long filterConfigured(Instance &inst) {
@@ -653,7 +769,7 @@ long filterConfigured(Instance &inst) {
             bool bprint = false;
             for (int i = 0; i < 4; i++) {
                 ShopItem item = inst.nextShopItem(1, false);
-                if (item.type == Item::Joker) {
+                if (item.type == Item::T_Joker) {
                     if (item.jokerData.joker == Item::Blueprint && item.jokerData.edition == Item::Negative) {
                         bprint = true;
                     }
@@ -710,7 +826,7 @@ long filterConfigured(Instance &inst) {
             bool bprint = false;
             for (int i = 0; i < 2; i++) {
                 ShopItem item = inst.nextShopItem(1, false);
-                if (item.type == Item::Joker) {
+                if (item.type == Item::T_Joker) {
                     if (item.jokerData.joker == Item::Blueprint && item.jokerData.edition == Item::Negative) {
                         bprint = true;
                     }
@@ -795,6 +911,12 @@ std::string brainstorm_cpp(std::string seed, std::string voucher, std::string pa
     BRAINSTORM_ANY_RANK_MIN = anyRankMin > 0 ? anyRankMin : 0;
     const int numThreads = getBrainstormSearchThreads();
     const long long searchLimit = getBrainstormSearchLimit();
+    if (isExactCharmPerkeoTelescopeSearch()) {
+        SeedSearch search(exactCharmPerkeoTelescopeFilter, seed, numThreads, searchLimit);
+        search.exitOnFind = true;
+        search.printDelay = getBrainstormPrintDelay();
+        return search.search();
+    }
     if (isExactCharmPerkeoObservatorySearch()) {
         SeedSearch search(exactCharmPerkeoObservatoryFilter, seed, numThreads, searchLimit);
         search.exitOnFind = true;

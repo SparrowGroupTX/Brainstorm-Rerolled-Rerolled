@@ -56,7 +56,7 @@ long filter(Instance &inst) {
     bool bprint = false;
     for (int i = 0; i < 2; i++) {
         ShopItem item = inst.nextShopItem(1);
-        if (item.type == Item::Joker) {
+        if (item.type == Item::T_Joker) {
             if (item.jokerData.joker == Item::Blueprint) {
                 bprint = true;
             }

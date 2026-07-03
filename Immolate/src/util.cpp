@@ -49,7 +49,7 @@ LuaRandom::LuaRandom(double seed) {
   }
 }
 
-LuaRandom::LuaRandom() { LuaRandom(0); }
+LuaRandom::LuaRandom() : LuaRandom(0) {}
 
 uint64_t LuaRandom::_randint() {
   return luaRandomAdvance(state);
