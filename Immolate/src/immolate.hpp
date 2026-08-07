@@ -46,6 +46,8 @@ inline customFilters stringToFilter(std::string i) {
 }
 
 IMMOLATE_API int normalizeBrainstormSearchThreads(unsigned int detectedThreads);
+IMMOLATE_API int normalizeBrainstormMaximumSearchThreads(
+    unsigned int detectedThreads);
 IMMOLATE_API int getBrainstormSearchThreads();
 IMMOLATE_API long long getBrainstormSearchLimit();
 

@@ -25,13 +25,19 @@ Run these from this directory:
 ```powershell
 ./build.ps1
 ./build/charm_perkeo_mega_index_builder.exe selftest
-./build/charm_perkeo_mega_index_builder.exe build 36
+./build/charm_perkeo_mega_index_builder.exe workers
+./build/charm_perkeo_mega_index_builder.exe build
 ./build/charm_perkeo_mega_index_builder.exe status
-./build/charm_perkeo_mega_index_builder.exe verify 36
-./build/charm_perkeo_mega_index_builder.exe derive 36
-./build/charm_perkeo_mega_index_builder.exe verify-derived 36
-./build/charm_perkeo_mega_index_builder.exe crosscheck-decks 36
+./build/charm_perkeo_mega_index_builder.exe verify
+./build/charm_perkeo_mega_index_builder.exe derive
+./build/charm_perkeo_mega_index_builder.exe verify-derived
+./build/charm_perkeo_mega_index_builder.exe crosscheck-decks
 ```
+
+Worker count defaults to the current machine's detected logical-processor
+count. Pass an explicit value from 1 through 256 only for controlled
+benchmarking or to leave additional processor capacity free. The `workers`
+command reports both the detected and selected values without starting a scan.
 
 `build` divides the complete `[0, 2318107019761)` seed-ID domain into
 `2^30`-ID shards. Each completed shard contains its predicate hash, bounds,

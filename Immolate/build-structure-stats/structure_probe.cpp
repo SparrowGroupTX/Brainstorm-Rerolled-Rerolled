@@ -588,17 +588,26 @@ void writeHits(const std::filesystem::path &path,
   }
 }
 
+int parseThreadCount(const char *text) {
+  if (std::string(text) == "auto") {
+    const unsigned int detected = std::thread::hardware_concurrency();
+    return static_cast<int>(std::clamp(detected == 0 ? 1u : detected,
+                                       1u, 256u));
+  }
+  return std::clamp(std::stoi(text), 1, 256);
+}
+
 }  // namespace
 
 int main(int argc, char **argv) {
   if (argc != 6) {
     std::cerr << "usage: structure_probe <output-dir> <count-per-range> "
-                 "<threads> <parts-per-range> <comma-separated-starts>\n";
+                 "<threads|auto> <parts-per-range> <comma-separated-starts>\n";
     return 2;
   }
   const std::filesystem::path outputDir = argv[1];
   const std::uint64_t countPerRange = std::stoull(argv[2]);
-  const int threadCount = std::max(1, std::stoi(argv[3]));
+  const int threadCount = parseThreadCount(argv[3]);
   const int partsPerRange = std::max(1, std::stoi(argv[4]));
   const std::vector<std::uint64_t> starts = parseStarts(argv[5]);
   if (starts.empty()) {

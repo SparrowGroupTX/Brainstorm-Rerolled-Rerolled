@@ -1530,21 +1530,32 @@ void showStatus(const fs::path &root, const Sha256Provider &sha) {
             << '\n';
 }
 
+int automaticWorkers() {
+  return normalizeBrainstormMaximumSearchThreads(
+      std::thread::hardware_concurrency());
+}
+
 int parseWorkers(const char *text) {
+  const std::string input = text == nullptr ? "" : text;
+  if (input == "auto") return automaticWorkers();
+  std::size_t consumed = 0;
+  long long value = 0;
   try {
-    const int value = std::stoi(text);
-    if (value < 1 || value > 256) fail("worker count must be 1..256");
-    return value;
+    value = std::stoll(input, &consumed, 10);
   } catch (const std::exception &) {
-    fail("invalid worker count: " + std::string(text));
+    fail("invalid worker count: " + input);
   }
+  if (consumed != input.size()) fail("invalid worker count: " + input);
+  if (value < 1 || value > 256) fail("worker count must be 1..256");
+  return static_cast<int>(value);
 }
 
 void usage(const char *program) {
   std::cerr << "usage: " << program
-            << " selftest | build [workers=36] | status | verify [workers=36]"
-            << " | derive [workers=36] | verify-derived [workers=36]"
-            << " | crosscheck-decks [workers=36] | publish-manifest\n";
+            << " selftest | workers [count|auto] | build [workers=auto]"
+            << " | status | verify [workers=auto]"
+            << " | derive [workers=auto] | verify-derived [workers=auto]"
+            << " | crosscheck-decks [workers=auto] | publish-manifest\n";
 }
 
 } // namespace
@@ -1560,22 +1571,33 @@ int main(int argc, char **argv) {
     const std::string command = argv[1];
     if (command == "selftest") {
       selftest(root, sha);
+    } else if (command == "workers") {
+      const int workers = argc >= 3 ? parseWorkers(argv[2])
+                                    : automaticWorkers();
+      std::cout << "detected_logical_processors="
+                << std::thread::hardware_concurrency()
+                << " selected_workers=" << workers << '\n';
     } else if (command == "build") {
-      const int workers = argc >= 3 ? parseWorkers(argv[2]) : 36;
+      const int workers = argc >= 3 ? parseWorkers(argv[2])
+                                    : automaticWorkers();
       buildFull(root, workers, sha);
     } else if (command == "status") {
       showStatus(root, sha);
     } else if (command == "verify") {
-      const int workers = argc >= 3 ? parseWorkers(argv[2]) : 36;
+      const int workers = argc >= 3 ? parseWorkers(argv[2])
+                                    : automaticWorkers();
       verifyFinal(root, workers, sha);
     } else if (command == "derive") {
-      const int workers = argc >= 3 ? parseWorkers(argv[2]) : 36;
+      const int workers = argc >= 3 ? parseWorkers(argv[2])
+                                    : automaticWorkers();
       deriveBounded(root, workers, sha);
     } else if (command == "verify-derived") {
-      const int workers = argc >= 3 ? parseWorkers(argv[2]) : 36;
+      const int workers = argc >= 3 ? parseWorkers(argv[2])
+                                    : automaticWorkers();
       verifyDerived(root, workers, sha);
     } else if (command == "crosscheck-decks") {
-      const int workers = argc >= 3 ? parseWorkers(argv[2]) : 36;
+      const int workers = argc >= 3 ? parseWorkers(argv[2])
+                                    : automaticWorkers();
       crosscheckDeckStakeIndependence(root, workers, sha);
     } else if (command == "publish-manifest") {
       publishGeneralizedBaseManifest(root, sha);

@@ -55,15 +55,24 @@ Result runJob(const Job &job, void *tagContext, void *soulContext,
   return result;
 }
 
+int parseThreadCount(const char *text) {
+  if (text == nullptr || std::string(text) == "auto") {
+    const unsigned int detected = std::thread::hardware_concurrency();
+    return static_cast<int>(std::clamp(detected == 0 ? 1u : detected,
+                                       1u, 256u));
+  }
+  return std::clamp(std::stoi(text), 1, 256);
+}
+
 }  // namespace
 
 int main(int argc, char **argv) {
-  if (argc != 3) {
-    std::cerr << "usage: balanced_suffix_probe <output-dir> <threads>\n";
+  if (argc < 2 || argc > 3) {
+    std::cerr << "usage: balanced_suffix_probe <output-dir> [threads=auto]\n";
     return 2;
   }
   const std::filesystem::path outputDir = argv[1];
-  const int threadCount = std::max(1, std::stoi(argv[2]));
+  const int threadCount = parseThreadCount(argc >= 3 ? argv[2] : nullptr);
   std::filesystem::create_directories(outputDir);
 
   constexpr std::uint64_t suffix1Count = 20000000;

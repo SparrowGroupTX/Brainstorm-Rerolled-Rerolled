@@ -773,12 +773,26 @@ local function ensureImmolateLoaded()
 
   if immolate == nil then
     preloadImmolateRuntime()
-    local ok, lib_or_err = pcall(ffi.load, Brainstorm.PATH .. "/Immolate.dll")
+    local library_name
+    if ffi.os == "Windows" then
+      library_name = "Immolate.dll"
+    elseif ffi.os == "Linux" then
+      library_name = "Immolate.so"
+    else
+      error("Brainstorm native search does not support " .. tostring(ffi.os))
+    end
+    local ok, lib_or_err = pcall(
+      ffi.load,
+      Brainstorm.PATH .. "/" .. library_name
+    )
     if not ok then
       error(
-        "Failed to load Brainstorm Immolate.dll. "
-          .. "If this is a dependency error, make sure the Brainstorm folder "
-          .. "includes libgcc_s_seh-1.dll, libstdc++-6.dll, and libwinpthread-1.dll. "
+        "Failed to load Brainstorm "
+          .. library_name
+          .. ". "
+          .. (ffi.os == "Windows"
+              and "Make sure the Brainstorm folder includes libgcc_s_seh-1.dll, libstdc++-6.dll, and libwinpthread-1.dll. "
+            or "Build and place the portable native library in the Brainstorm folder. ")
           .. "Original error: "
           .. tostring(lib_or_err)
       )

@@ -17,14 +17,20 @@ Commands:
 ```powershell
 ./build.ps1
 ./build/anchor_index_builder.exe selftest
-./build/anchor_index_builder.exe build 36
+./build/anchor_index_builder.exe workers
+./build/anchor_index_builder.exe build
 ./build/anchor_index_builder.exe status
-./build/anchor_index_builder.exe verify 36
-./build/anchor_index_builder.exe derive 36
-./build/anchor_index_builder.exe verify-derived 36
-./build/anchor_index_builder.exe crosscheck-decks 36
+./build/anchor_index_builder.exe verify
+./build/anchor_index_builder.exe derive
+./build/anchor_index_builder.exe verify-derived
+./build/anchor_index_builder.exe crosscheck-decks
 ./build/anchor_index_builder.exe publish-manifest
 ```
+
+Worker count defaults to the current machine's detected logical-processor
+count. Pass an explicit value from 1 through 256 only for controlled
+benchmarking or to leave additional processor capacity free. The `workers`
+command reports both the detected and selected values without starting a scan.
 
 Completed `2^30`-ID shards are hash-validated and reused after interruption.
 Each shard is written to a unique temporary file, flushed, and atomically

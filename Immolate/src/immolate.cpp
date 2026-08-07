@@ -852,13 +852,26 @@ bool passesRankCountFilters(Seed& seed) {
 }
 
 int normalizeBrainstormSearchThreads(unsigned int detectedThreads) {
-    if (detectedThreads == 0) {
-        return 12;
+    const unsigned int available = static_cast<unsigned int>(
+        normalizeBrainstormMaximumSearchThreads(detectedThreads));
+    if (available == 1) {
+        return 1;
     }
-    if (detectedThreads > 24) {
-        detectedThreads -= 4;
-    }
-    return static_cast<int>(detectedThreads);
+    // Reserve roughly one eighth of the machine, bounded to one through four
+    // logical processors. This scales down cleanly on thin laptops while
+    // preserving the established 28-of-32 desktop schedule.
+    const unsigned int reserved = std::clamp(available / 8u, 1u, 4u);
+    return static_cast<int>(available - reserved);
+}
+
+int normalizeBrainstormMaximumSearchThreads(unsigned int detectedThreads) {
+    // hardware_concurrency() is advisory and may return zero. One worker is
+    // the universally safe fallback; the upper bound matches the offline
+    // builders and prevents accidental creation of an unreasonable pool.
+    constexpr unsigned int maximumWorkers = 256;
+    return static_cast<int>(std::clamp(
+        detectedThreads == 0 ? 1u : detectedThreads,
+        1u, maximumWorkers));
 }
 
 int getBrainstormSearchThreads() {
@@ -866,21 +879,14 @@ int getBrainstormSearchThreads() {
     if (envValue != nullptr) {
         char* end = nullptr;
         long parsed = std::strtol(envValue, &end, 10);
-        if (end != envValue && *end == '\0' && parsed > 0 && parsed <= std::numeric_limits<int>::max()) {
+        if (end != envValue && *end == '\0' && parsed > 0 && parsed <= 256) {
             return static_cast<int>(parsed);
         }
     }
 
     if (BRAINSTORM_SEARCH_THREAD_MODE.load(std::memory_order_relaxed) == 1) {
-        const unsigned int detected = std::thread::hardware_concurrency();
-        if (detected == 0) {
-            return 12;
-        }
-        // This division-heavy search benefits from slight oversubscription
-        // on 16-core/32-thread systems while Maximum mode is selected.
-        return detected == 32
-            ? 36
-            : static_cast<int>(detected);
+        return normalizeBrainstormMaximumSearchThreads(
+            std::thread::hardware_concurrency());
     }
 
     return normalizeBrainstormSearchThreads(std::thread::hardware_concurrency());

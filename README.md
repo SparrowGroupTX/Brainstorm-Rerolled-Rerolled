@@ -214,9 +214,13 @@ verification expensive.
 
 The old seeds-per-frame setting did not affect the native search and has been
 removed from the menu. **Native CPU Mode** offers Balanced scheduling or
-Maximum throughput. Maximum uses an aggressively benchmarked worker count (36
-workers on the 16-core/32-logical-processor development machine) and may make
-the game and desktop less responsive while a search is active. The common
+Maximum throughput. Both modes detect the current machine independently:
+Balanced reserves roughly one eighth of the machine (bounded to one through
+four logical processors), while Maximum uses the detected logical-processor
+count. Maximum may make the game and
+desktop less responsive while a search is active. An explicit
+`BRAINSTORM_THREADS` override remains available for controlled benchmarking.
+The common
 starting Charm/Soul/Perkeo route is evaluated directly from compact seed state
 before the general shop simulator, avoiding unnecessary maps, allocations, and
 later Ante work for rejected seeds.
@@ -245,6 +249,14 @@ explicitly disables floating-
 point contraction, because changing those operations changes Balatro's seeded
 RNG results. The resulting DLL is machine-specific and is not installed into
 the live mod automatically.
+
+For a portable Windows build, use
+`.\Immolate\tools\build_pgo.ps1 -Portable`; it retains
+runtime AVX-512/AVX2/scalar dispatch without emitting desktop-specific
+instructions in the ordinary search code. On native Linux, run
+`bash Immolate/tools/build_portable.sh` and place the resulting `Immolate.so`
+beside the mod's Lua files. The Windows build of Balatro running through
+Proton/Wine continues to use the portable Windows `Immolate.dll` instead.
 
 The trainer uses one thread and fixed, bounded seed ranges so profiles are
 reproducible. The build script also stops if any profiled source changes between

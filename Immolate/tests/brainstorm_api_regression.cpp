@@ -71,6 +71,40 @@ bool expectContains(const std::string& actual, const std::string& expected,
     return false;
 }
 
+bool workerSelectionAdaptsToDetectedHardware() {
+    struct WorkerCase {
+        unsigned int detected;
+        int balanced;
+        int maximum;
+    };
+    constexpr std::array<WorkerCase, 10> cases{{
+        {0, 1, 1},
+        {1, 1, 1},
+        {2, 1, 2},
+        {4, 3, 4},
+        {8, 7, 8},
+        {16, 14, 16},
+        {24, 21, 24},
+        {32, 28, 32},
+        {256, 252, 256},
+        {257, 252, 256},
+    }};
+    for (const WorkerCase& test : cases) {
+        const int balanced = normalizeBrainstormSearchThreads(test.detected);
+        const int maximum =
+            normalizeBrainstormMaximumSearchThreads(test.detected);
+        if (balanced != test.balanced || maximum != test.maximum) {
+            std::cerr << "worker policy mismatch for detected="
+                      << test.detected << ": expected balanced="
+                      << test.balanced << " maximum=" << test.maximum
+                      << ", got balanced=" << balanced
+                      << " maximum=" << maximum << std::endl;
+            return false;
+        }
+    }
+    return true;
+}
+
 bool readEstimateField(const std::string& estimate, const char* key,
                        double& value) {
     const std::string prefix = std::string(key) + "=";
@@ -577,6 +611,7 @@ bool positivePseudohashesMatchGeneral() {
 int main() {
     setTestEnvironment();
     bool passed = true;
+    passed &= workerSelectionAdaptsToDetectedHardware();
     passed &= oneShotLuaRandomMatchesStateful();
     passed &= positiveFractMatchesGeneral();
     passed &= positivePseudohashesMatchGeneral();
