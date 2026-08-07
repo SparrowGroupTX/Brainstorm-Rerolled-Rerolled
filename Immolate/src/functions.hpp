@@ -4,6 +4,7 @@
 #include "instance.hpp"
 #include "perf.hpp"
 #include "rng.hpp"
+#include <algorithm>
 #include <string>
 
 // Note: Technically, marking everything as inline is not a proper fix. Ideally,
@@ -17,16 +18,20 @@ inline bool isMoneyJoker(Item joker) {
 
 // Helper functions
 inline void Instance::lock(Item item) {
-  const unsigned short itemIndex = static_cast<unsigned short>(item);
-  if (!locked[itemIndex]) {
-    touchedLocks.push_back(itemIndex);
-    locked[itemIndex] = true;
-  }
+  const std::size_t itemIndex = static_cast<std::size_t>(item);
+  locked[itemIndex >> 6] |= std::uint64_t{1} << (itemIndex & 63);
 }
-inline void Instance::lockTransient(Item item) { locked[(int)item] = true; }
-inline void Instance::unlock(Item item) { locked[(int)item] = false; }
-inline void Instance::unlockTransient(Item item) { locked[(int)item] = false; }
-inline bool Instance::isLocked(Item item) { return locked[(int)item]; }
+inline void Instance::lockTransient(Item item) { lock(item); }
+inline void Instance::unlock(Item item) {
+  const std::size_t itemIndex = static_cast<std::size_t>(item);
+  locked[itemIndex >> 6] &= ~(std::uint64_t{1} << (itemIndex & 63));
+}
+inline void Instance::unlockTransient(Item item) { unlock(item); }
+inline bool Instance::isLocked(Item item) {
+  const std::size_t itemIndex = static_cast<std::size_t>(item);
+  return (locked[itemIndex >> 6]
+          & (std::uint64_t{1} << (itemIndex & 63))) != 0;
+}
 
 // Lock initializers
 inline void Instance::initLocks(int ante, bool freshProfile, bool freshRun) {
@@ -212,9 +217,10 @@ inline void Instance::initUnlocks(int ante, bool freshProfile) {
 
 // Card Generators
 inline Item Instance::nextTarot(const std::string &source, int ante,
-                                bool soulable) {
+                                bool soulable, bool allowDuplicateSoul) {
   const std::string &anteStr = anteToString(ante);
-  if (soulable && (params.showman || !isLocked(Item::The_Soul)) &&
+  if (soulable &&
+      (allowDuplicateSoul || params.showman || !isLocked(Item::The_Soul)) &&
       random(RandomType::Soul + RandomType::Tarot + anteStr) > 0.997) {
     return Item::The_Soul;
   }
@@ -232,11 +238,11 @@ inline Item Instance::nextPlanet(const std::string &source, int ante,
 }
 
 inline Item Instance::nextSpectral(const std::string &source, int ante,
-                                   bool soulable) {
+                                   bool soulable, bool allowDuplicateSoul) {
   const std::string &anteStr = anteToString(ante);
   if (soulable) {
     Item forcedKey = Item::RETRY;
-    if ((params.showman || !isLocked(Item::The_Soul)) &&
+    if ((allowDuplicateSoul || params.showman || !isLocked(Item::The_Soul)) &&
         random(RandomType::Soul + RandomType::Spectral + anteStr) > 0.997)
       forcedKey = Item::The_Soul;
     if ((params.showman || !isLocked(Item::Black_Hole)) &&
@@ -248,8 +254,43 @@ inline Item Instance::nextSpectral(const std::string &source, int ante,
   return randchoice(RandomType::Spectral + source + anteStr, SPECTRALS);
 }
 
+inline bool jokerCanReceiveEternalSticker(Item joker) {
+  return joker != Item::Gros_Michel && joker != Item::Ice_Cream &&
+         joker != Item::Cavendish && joker != Item::Luchador &&
+         joker != Item::Turtle_Bean && joker != Item::Diet_Cola &&
+         joker != Item::Popcorn && joker != Item::Ramen &&
+         joker != Item::Seltzer && joker != Item::Mr_Bones &&
+         joker != Item::Invisible_Joker;
+}
+
+inline bool jokerTargetsMayNeedEternalAwareSelling(
+    const Item *targets, std::size_t targetCount, Item stake) {
+  if (stake < Item::Black_Stake) {
+    return false;
+  }
+  for (std::size_t i = 0; i < targetCount; ++i) {
+    if (!jokerCanReceiveEternalSticker(targets[i])) {
+      continue;
+    }
+    for (std::size_t j = i + 1; j < targetCount; ++j) {
+      if (targets[i] == targets[j]) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 inline JokerData Instance::nextJoker(const std::string &source, int ante,
                                      bool hasStickers) {
+  return nextJoker(source, ante, hasStickers
+      ? JokerStickerGeneration::Full
+      : JokerStickerGeneration::None);
+}
+
+inline JokerData Instance::nextJoker(
+    const std::string &source, int ante,
+    JokerStickerGeneration stickerGeneration) {
   BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextJoker);
   const std::string &anteStr = anteToString(ante);
 
@@ -330,48 +371,40 @@ inline JokerData Instance::nextJoker(const std::string &source, int ante,
 
   // Get next joker stickers
   JokerStickers stickers = JokerStickers();
-  if (hasStickers) {
+  if (stickerGeneration != JokerStickerGeneration::None) {
     if (params.version > 10099) {
       double stickerPoll = random(((source == ItemSource::Buffoon_Pack)
                                        ? RandomType::Eternal_Perishable_Pack
                                        : RandomType::Eternal_Perishable) +
                                   anteStr);
       if (stickerPoll > 0.7 && params.stake >= Item::Black_Stake) {
-        if (joker != Item::Gros_Michel && joker != Item::Ice_Cream &&
-            joker != Item::Cavendish && joker != Item::Luchador &&
-            joker != Item::Turtle_Bean && joker != Item::Diet_Cola &&
-            joker != Item::Popcorn && joker != Item::Ramen &&
-            joker != Item::Seltzer && joker != Item::Mr_Bones &&
-            joker != Item::Invisible_Joker) {
+        if (jokerCanReceiveEternalSticker(joker)) {
           stickers.eternal = true;
         }
       }
-      if (stickerPoll > 0.4 && stickerPoll <= 0.7 &&
-          params.stake >= Item::Orange_Stake &&
-          joker != Item::Ceremonial_Dagger && joker != Item::Ride_the_Bus &&
-          joker != Item::Runner && joker != Item::Constellation &&
-          joker != Item::Green_Joker && joker != Item::Red_Card &&
-          joker != Item::Madness && joker != Item::Square_Joker &&
-          joker != Item::Vampire && joker != Item::Rocket &&
-          joker != Item::Obelisk && joker != Item::Lucky_Cat &&
-          joker != Item::Flash_Card && joker != Item::Spare_Trousers &&
-          joker != Item::Castle && joker != Item::Wee_Joker) {
-        stickers.perishable = true;
-      }
-      if (params.stake >= Item::Gold_Stake) {
-        stickers.rental = random(((source == ItemSource::Buffoon_Pack)
-                                      ? RandomType::Rental_Pack
-                                      : RandomType::Rental) +
-                                 anteStr) > 0.7;
+      if (stickerGeneration == JokerStickerGeneration::Full) {
+        if (stickerPoll > 0.4 && stickerPoll <= 0.7 &&
+            params.stake >= Item::Orange_Stake &&
+            joker != Item::Ceremonial_Dagger && joker != Item::Ride_the_Bus &&
+            joker != Item::Runner && joker != Item::Constellation &&
+            joker != Item::Green_Joker && joker != Item::Red_Card &&
+            joker != Item::Madness && joker != Item::Square_Joker &&
+            joker != Item::Vampire && joker != Item::Rocket &&
+            joker != Item::Obelisk && joker != Item::Lucky_Cat &&
+            joker != Item::Flash_Card && joker != Item::Spare_Trousers &&
+            joker != Item::Castle && joker != Item::Wee_Joker) {
+          stickers.perishable = true;
+        }
+        if (params.stake >= Item::Gold_Stake) {
+          stickers.rental = random(((source == ItemSource::Buffoon_Pack)
+                                        ? RandomType::Rental_Pack
+                                        : RandomType::Rental) +
+                                   anteStr) > 0.7;
+        }
       }
     } else {
       if (params.stake >= Item::Black_Stake) {
-        if (joker != Item::Gros_Michel && joker != Item::Ice_Cream &&
-            joker != Item::Cavendish && joker != Item::Luchador &&
-            joker != Item::Turtle_Bean && joker != Item::Diet_Cola &&
-            joker != Item::Popcorn && joker != Item::Ramen &&
-            joker != Item::Seltzer && joker != Item::Mr_Bones &&
-            joker != Item::Invisible_Joker) {
+        if (jokerCanReceiveEternalSticker(joker)) {
           stickers.eternal = random(RandomType::Eternal + anteStr) > 0.7;
         }
       }
@@ -451,6 +484,69 @@ inline ShopItem Instance::nextShopItem(int ante, bool jokerHasStickers) {
   }
   // Todo: Magic Trick support
   return ShopItem();
+}
+
+inline bool Instance::nextShopJokerOnly(int ante, bool jokerHasStickers,
+                                        JokerData &jokerOut) {
+  return nextShopJokerOnly(
+      ante, jokerHasStickers
+          ? JokerStickerGeneration::Full
+          : JokerStickerGeneration::None,
+      jokerOut);
+}
+
+inline bool Instance::nextShopJokerOnly(
+    int ante, JokerStickerGeneration stickerGeneration,
+    JokerData &jokerOut) {
+  BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextShopItem);
+  const std::string &anteStr = anteToString(ante);
+
+  ShopInstance shop = getShopInstance();
+  const double cdtPoll =
+      random(RandomType::Card_Type + anteStr) * shop.getTotalRate();
+  if (shopItemType(shop, cdtPoll) != Item::T_Joker) {
+    // Tarot/Planet/Spectral identities use independent keyed streams and do
+    // not alter locks. This method's contract deliberately leaves those
+    // unobserved streams untouched.
+    return false;
+  }
+
+  jokerOut = nextJoker(ItemSource::Shop, ante, stickerGeneration);
+  return true;
+}
+
+inline std::vector<ShopItem> Instance::nextShopItems(
+    int count, int ante, bool jokerHasStickers) {
+  std::vector<ShopItem> items;
+  if (count <= 0) {
+    return items;
+  }
+  items.reserve(count);
+  const int windowSize = 2
+      + (isVoucherActive(Item::Overstock) ? 1 : 0)
+      + (isVoucherActive(Item::Overstock_Plus) ? 1 : 0);
+
+  while (static_cast<int>(items.size()) < count) {
+    const int itemsRemaining = count - static_cast<int>(items.size());
+    const int currentWindowSize = std::min(windowSize, itemsRemaining);
+    std::array<Item, 4> visibleJokers{};
+    int visibleJokerCount = 0;
+
+    for (int i = 0; i < currentWindowSize; i++) {
+      ShopItem item = nextShopItem(ante, jokerHasStickers);
+      items.push_back(item);
+      if (!params.showman && item.type == Item::T_Joker) {
+        lockTransient(item.jokerData.joker);
+        visibleJokers[visibleJokerCount++] = item.jokerData.joker;
+      }
+    }
+
+    // A reroll clears the visible cards before generating the next window.
+    for (int i = 0; i < visibleJokerCount; i++) {
+      unlockTransient(visibleJokers[i]);
+    }
+  }
+  return items;
 }
 
 // Packs and Pack Contents
@@ -540,23 +636,27 @@ inline std::vector<Item> Instance::nextArcanaPack(int size, int ante) {
   return pack;
 };
 
-inline ArcanaSoulPackResult Instance::scanArcanaPackForSoulJoker(int size,
-                                                                 int ante) {
+inline ArcanaSoulPackResult Instance::scanArcanaPackForSoulJokers(
+    int size, int ante, bool allowDuplicateSouls) {
   BrainstormScopedPerfTimer perfTimer(BrainstormPerfMetric::NextArcanaPack);
   ArcanaSoulPackResult result;
   std::array<Item, 8> generatedItems{};
+  // Do not reserve here: almost every pack contains no Soul, so leaving the
+  // vector empty avoids a heap allocation on the dominant rejection path.
 
   for (int i = 0; i < size; i++) {
     Item packItem;
     if (isVoucherActive(Item::Omen_Globe) &&
         random(RandomType::Omen_Globe) > 0.8) {
-      packItem = nextSpectral(ItemSource::Omen_Globe, ante, true);
+      packItem = nextSpectral(ItemSource::Omen_Globe, ante, true,
+                              allowDuplicateSouls);
     } else {
-      packItem = nextTarot(ItemSource::Arcana_Pack, ante, true);
+      packItem = nextTarot(ItemSource::Arcana_Pack, ante, true,
+                           allowDuplicateSouls);
     }
     generatedItems[i] = packItem;
     if (packItem == Item::The_Soul) {
-      result.foundSoul = true;
+      result.soulCount++;
     }
     if (!params.showman) {
       lockTransient(packItem);
@@ -567,8 +667,12 @@ inline ArcanaSoulPackResult Instance::scanArcanaPackForSoulJoker(int size,
     unlockTransient(generatedItems[i]);
   }
 
-  if (result.foundSoul) {
-    result.soulJoker = nextJoker(ItemSource::Soul, ante, false);
+  for (int i = 0; i < result.soulCount; i++) {
+    JokerData soulJoker = nextJoker(ItemSource::Soul, ante, false);
+    result.soulJokers.push_back(soulJoker);
+    if (!params.showman) {
+      lock(soulJoker.joker);
+    }
   }
 
   return result;

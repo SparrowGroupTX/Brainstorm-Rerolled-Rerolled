@@ -3,5 +3,5 @@
 --- MOD_ID: Brainstorm-Rerolled
 --- PREFIX: brainstorm
 --- MOD_AUTHOR: [ABGamma]
---- MOD_DESCRIPTION: A newly rerolled balatro reroll mod.
---- VERSION: 1.0.2-alpha
+--- MOD_DESCRIPTION: Automatic seed searching with configurable cards, Jokers, packs, tags, and vouchers.
+--- VERSION: 2.10.0-alpha

@@ -2,7 +2,15 @@
 #define SEED_HPP
 
 #include <array>
+#include <cstdint>
 #include <string>
+
+inline constexpr long long SEED_DOMAIN_SIZE = 2318107019761LL;
+
+inline constexpr long long normalizeSeedId(long long id) {
+  const long long normalized = id % SEED_DOMAIN_SIZE;
+  return normalized < 0 ? normalized + SEED_DOMAIN_SIZE : normalized;
+}
 
 // Seed helper class
 // Caches hashing info recursively to save speed
@@ -30,7 +38,14 @@ struct Seed {
   int length; 
 
   // The cache. Stored as [position in seed][length of string]
-  std::array<std::array<double, 48>, 8> cache;
+  // Initialize once so default copy/assignment never reads indeterminate
+  // doubles. Validity bits still avoid clearing this 3 KiB array per seed.
+  std::array<std::array<double, 48>, 8> cache{};
+  // A zero bit means the corresponding cache slot has not been computed for
+  // the current character at that position.  Keeping validity separately
+  // avoids rewriting all 48 doubles whenever the fast-changing seed digit is
+  // advanced.
+  std::array<std::uint64_t, 8> cacheValid{};
 
   Seed();
   Seed(std::string strSeed);

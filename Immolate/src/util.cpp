@@ -4,26 +4,80 @@
 #include <limits>
 
 namespace {
+constexpr uint64_t luaRandomAdvanceWord(uint64_t z, int recurrence) {
+  switch (recurrence) {
+  case 0:
+    return (((z << 31ull) ^ z) >> 45ull) ^
+           ((z & (MAX_UINT64 << 1ull)) << 18ull);
+  case 1:
+    return (((z << 19ull) ^ z) >> 30ull) ^
+           ((z & (MAX_UINT64 << 6ull)) << 28ull);
+  case 2:
+    return (((z << 24ull) ^ z) >> 48ull) ^
+           ((z & (MAX_UINT64 << 9ull)) << 7ull);
+  default:
+    return (((z << 21ull) ^ z) >> 39ull) ^
+           ((z & (MAX_UINT64 << 17ull)) << 8ull);
+  }
+}
+
 uint64_t luaRandomAdvance(uint64_t state[4]) {
   uint64_t z = 0;
   uint64_t r = 0;
   z = state[0];
-  z = (((z << 31ull) ^ z) >> 45ull) ^ ((z & (MAX_UINT64 << 1ull)) << 18ull);
+  z = luaRandomAdvanceWord(z, 0);
   r ^= z;
   state[0] = z;
   z = state[1];
-  z = (((z << 19ull) ^ z) >> 30ull) ^ ((z & (MAX_UINT64 << 6ull)) << 28ull);
+  z = luaRandomAdvanceWord(z, 1);
   r ^= z;
   state[1] = z;
   z = state[2];
-  z = (((z << 24ull) ^ z) >> 48ull) ^ ((z & (MAX_UINT64 << 9ull)) << 7ull);
+  z = luaRandomAdvanceWord(z, 2);
   r ^= z;
   state[2] = z;
   z = state[3];
-  z = (((z << 21ull) ^ z) >> 39ull) ^ ((z & (MAX_UINT64 << 17ull)) << 8ull);
+  z = luaRandomAdvanceWord(z, 3);
   r ^= z;
   state[3] = z;
   return r;
+}
+
+// Each Tausworthe word advances independently and the recurrence is linear
+// over GF(2). Precomputing the contribution of each input byte after the 11
+// advances needed by Lua's first random() call replaces 44 dependent shift/
+// xor chains with 32 compact table lookups. The table is constexpr, so it is
+// emitted directly in the DLL and has no startup construction cost.
+using LuaRandomJump11Table =
+    std::array<std::array<std::array<uint64_t, 256>, 8>, 4>;
+
+constexpr LuaRandomJump11Table buildLuaRandomJump11Table() {
+  LuaRandomJump11Table table{};
+  for (int recurrence = 0; recurrence < 4; ++recurrence) {
+    for (int bytePosition = 0; bytePosition < 8; ++bytePosition) {
+      for (int byteValue = 0; byteValue < 256; ++byteValue) {
+        uint64_t value = static_cast<uint64_t>(byteValue)
+                         << (bytePosition * 8);
+        for (int step = 0; step < 11; ++step) {
+          value = luaRandomAdvanceWord(value, recurrence);
+        }
+        table[recurrence][bytePosition][byteValue] = value;
+      }
+    }
+  }
+  return table;
+}
+
+alignas(64) constexpr LuaRandomJump11Table LUA_RANDOM_JUMP_11 =
+    buildLuaRandomJump11Table();
+
+inline uint64_t luaRandomJump11(uint64_t value, int recurrence) {
+  uint64_t result = 0;
+  for (int bytePosition = 0; bytePosition < 8; ++bytePosition) {
+    result ^= LUA_RANDOM_JUMP_11[recurrence][bytePosition][value & 0xffu];
+    value >>= 8u;
+  }
+  return result;
 }
 
 void luaRandomInit(double seed, uint64_t state[4]) {
@@ -72,12 +126,12 @@ int LuaRandom::randint(int min, int max) {
 double lua_random_from_seed(double seed) {
   uint64_t state[4];
   luaRandomInit(seed, state);
-  for (int i = 0; i < 10; ++i) {
-    luaRandomAdvance(state);
+  uint64_t result = 0;
+  for (int recurrence = 0; recurrence < 4; ++recurrence) {
+    result ^= luaRandomJump11(state[recurrence], recurrence);
   }
   dbllong u;
-  u.ulong = (luaRandomAdvance(state) & 4503599627370495ull) |
-            4607182418800017408ull;
+  u.ulong = (result & 4503599627370495ull) | 4607182418800017408ull;
   return u.dbl - 1.0;
 }
 
@@ -168,16 +222,23 @@ double pseudohash(const std::string &s) {
 }
 
 double pseudohash_from(const std::string &s, double num) {
+  // Internal RNG keys are non-empty positive ASCII strings, and their input
+  // is a finite non-negative seed pseudohash. The resulting expression stays
+  // in fractPositive's exact domain on every production call.
   for (size_t i = s.length(); i > 0; i--) {
-    num = fract(1.1239285023 / num * s[i - 1] * 3.141592653589793116 +
-                3.141592653589793116 * i);
+    num = fractPositive(
+        1.1239285023 / num * s[i - 1] * 3.141592653589793116 +
+        3.141592653589793116 * i);
   }
   return num;
 }
 
 double pseudostep(char s, int pos, double num) {
-  return fract(1.1239285023 / num * s * 3.141592653589793116 +
-               3.141592653589793116 * pos);
+  // Seed characters and positions are positive ASCII/integer values, and the
+  // prior seed hash is finite and non-negative.
+  return fractPositive(
+      1.1239285023 / num * s * 3.141592653589793116 +
+      3.141592653589793116 * pos);
 }
 
 const std::string &anteToString(int a) {

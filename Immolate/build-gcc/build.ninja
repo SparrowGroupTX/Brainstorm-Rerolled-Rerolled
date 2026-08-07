@@ -51,63 +51,90 @@ build cmake_object_order_depends_target_Immolate: phony || .
 
 build CMakeFiles/Immolate.dir/src/immolate.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/immolate.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\immolate.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
 
 build CMakeFiles/Immolate.dir/src/items.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/items.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\items.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  OBJECT_DIR = CMakeFiles\Immolate.dir
+  OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
+
+build CMakeFiles/Immolate.dir/src/opening_batch.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/opening_batch.cpp || cmake_object_order_depends_target_Immolate
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
+  DEP_FILE = CMakeFiles\Immolate.dir\src\opening_batch.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  OBJECT_DIR = CMakeFiles\Immolate.dir
+  OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
+
+build CMakeFiles/Immolate.dir/src/opening_batch_avx2.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/opening_batch_avx2.cpp || cmake_object_order_depends_target_Immolate
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
+  DEP_FILE = CMakeFiles\Immolate.dir\src\opening_batch_avx2.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3 -mavx2 -mno-avx512f -mstackrealign
+  OBJECT_DIR = CMakeFiles\Immolate.dir
+  OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
+
+build CMakeFiles/Immolate.dir/src/opening_batch_avx512.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/opening_batch_avx512.cpp || cmake_object_order_depends_target_Immolate
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
+  DEP_FILE = CMakeFiles\Immolate.dir\src\opening_batch_avx512.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3 -mavx512f -mstackrealign
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
 
 build CMakeFiles/Immolate.dir/src/rng.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/rng.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\rng.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
 
 build CMakeFiles/Immolate.dir/src/search.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/search.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\search.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
 
 build CMakeFiles/Immolate.dir/src/seed.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/seed.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\seed.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
 
 build CMakeFiles/Immolate.dir/src/util.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/util.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\util.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
 
 build CMakeFiles/Immolate.dir/src/functions.cpp.obj: CXX_COMPILER__Immolate_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/functions.cpp || cmake_object_order_depends_target_Immolate
   CONFIG = Release
-  DEFINES = -DBUILDING_DLL -DImmolate_EXPORTS
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBUILDING_DLL -DImmolate_EXPORTS
   DEP_FILE = CMakeFiles\Immolate.dir\src\functions.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\Immolate.dir
   OBJECT_FILE_DIR = CMakeFiles\Immolate.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\Immolate.dir
@@ -120,9 +147,9 @@ build CMakeFiles/Immolate.dir/src/functions.cpp.obj: CXX_COMPILER__Immolate_unsc
 #############################################
 # Link the shared library Immolate.dll
 
-build Immolate.dll libImmolate.dll.a: CXX_SHARED_LIBRARY_LINKER__Immolate_Release CMakeFiles/Immolate.dir/src/immolate.cpp.obj CMakeFiles/Immolate.dir/src/items.cpp.obj CMakeFiles/Immolate.dir/src/rng.cpp.obj CMakeFiles/Immolate.dir/src/search.cpp.obj CMakeFiles/Immolate.dir/src/seed.cpp.obj CMakeFiles/Immolate.dir/src/util.cpp.obj CMakeFiles/Immolate.dir/src/functions.cpp.obj
+build Immolate.dll libImmolate.dll.a: CXX_SHARED_LIBRARY_LINKER__Immolate_Release CMakeFiles/Immolate.dir/src/immolate.cpp.obj CMakeFiles/Immolate.dir/src/items.cpp.obj CMakeFiles/Immolate.dir/src/opening_batch.cpp.obj CMakeFiles/Immolate.dir/src/opening_batch_avx2.cpp.obj CMakeFiles/Immolate.dir/src/opening_batch_avx512.cpp.obj CMakeFiles/Immolate.dir/src/rng.cpp.obj CMakeFiles/Immolate.dir/src/search.cpp.obj CMakeFiles/Immolate.dir/src/seed.cpp.obj CMakeFiles/Immolate.dir/src/util.cpp.obj CMakeFiles/Immolate.dir/src/functions.cpp.obj
   CONFIG = Release
-  LANGUAGE_COMPILE_FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
   LINK_FLAGS = -shared
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Immolate.dir
@@ -146,7 +173,7 @@ build cmake_object_order_depends_target_immol: phony || cmake_object_order_depen
 build CMakeFiles/immol.dir/src/main.cpp.obj: CXX_COMPILER__immol_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/main.cpp || cmake_object_order_depends_target_immol
   CONFIG = Release
   DEP_FILE = CMakeFiles\immol.dir\src\main.cpp.obj.d
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG -std=c++17
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
   OBJECT_DIR = CMakeFiles\immol.dir
   OBJECT_FILE_DIR = CMakeFiles\immol.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\immol.dir
@@ -161,7 +188,7 @@ build CMakeFiles/immol.dir/src/main.cpp.obj: CXX_COMPILER__immol_unscanned_Relea
 
 build immol.exe: CXX_EXECUTABLE_LINKER__immol_Release CMakeFiles/immol.dir/src/main.cpp.obj | libImmolate.dll.a || Immolate.dll
   CONFIG = Release
-  FLAGS = -O3 -g -std=c++20 -Wall -Wextra -Wpedantic -Wno-c++17-extensions -gdwarf-3 -O3 -DNDEBUG
+  FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = libImmolate.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\immol.dir
   POST_BUILD = cd .
@@ -170,6 +197,500 @@ build immol.exe: CXX_EXECUTABLE_LINKER__immol_Release CMakeFiles/immol.dir/src/m
   TARGET_IMPLIB = libimmol.dll.a
   TARGET_PDB = immol.exe.dbg
   TARGET_SUPPORT_DIR = CMakeFiles\immol.dir
+
+
+#############################################
+# Utility command for Experimental
+
+build Experimental: phony CMakeFiles/Experimental
+
+
+#############################################
+# Utility command for Nightly
+
+build Nightly: phony CMakeFiles/Nightly
+
+
+#############################################
+# Utility command for Continuous
+
+build Continuous: phony CMakeFiles/Continuous
+
+
+#############################################
+# Utility command for NightlyMemoryCheck
+
+build NightlyMemoryCheck: phony CMakeFiles/NightlyMemoryCheck
+
+
+#############################################
+# Utility command for NightlyStart
+
+build NightlyStart: phony CMakeFiles/NightlyStart
+
+
+#############################################
+# Utility command for NightlyUpdate
+
+build NightlyUpdate: phony CMakeFiles/NightlyUpdate
+
+
+#############################################
+# Utility command for NightlyConfigure
+
+build NightlyConfigure: phony CMakeFiles/NightlyConfigure
+
+
+#############################################
+# Utility command for NightlyBuild
+
+build NightlyBuild: phony CMakeFiles/NightlyBuild
+
+
+#############################################
+# Utility command for NightlyTest
+
+build NightlyTest: phony CMakeFiles/NightlyTest
+
+
+#############################################
+# Utility command for NightlyCoverage
+
+build NightlyCoverage: phony CMakeFiles/NightlyCoverage
+
+
+#############################################
+# Utility command for NightlyMemCheck
+
+build NightlyMemCheck: phony CMakeFiles/NightlyMemCheck
+
+
+#############################################
+# Utility command for NightlySubmit
+
+build NightlySubmit: phony CMakeFiles/NightlySubmit
+
+
+#############################################
+# Utility command for ExperimentalStart
+
+build ExperimentalStart: phony CMakeFiles/ExperimentalStart
+
+
+#############################################
+# Utility command for ExperimentalUpdate
+
+build ExperimentalUpdate: phony CMakeFiles/ExperimentalUpdate
+
+
+#############################################
+# Utility command for ExperimentalConfigure
+
+build ExperimentalConfigure: phony CMakeFiles/ExperimentalConfigure
+
+
+#############################################
+# Utility command for ExperimentalBuild
+
+build ExperimentalBuild: phony CMakeFiles/ExperimentalBuild
+
+
+#############################################
+# Utility command for ExperimentalTest
+
+build ExperimentalTest: phony CMakeFiles/ExperimentalTest
+
+
+#############################################
+# Utility command for ExperimentalCoverage
+
+build ExperimentalCoverage: phony CMakeFiles/ExperimentalCoverage
+
+
+#############################################
+# Utility command for ExperimentalMemCheck
+
+build ExperimentalMemCheck: phony CMakeFiles/ExperimentalMemCheck
+
+
+#############################################
+# Utility command for ExperimentalSubmit
+
+build ExperimentalSubmit: phony CMakeFiles/ExperimentalSubmit
+
+
+#############################################
+# Utility command for ContinuousStart
+
+build ContinuousStart: phony CMakeFiles/ContinuousStart
+
+
+#############################################
+# Utility command for ContinuousUpdate
+
+build ContinuousUpdate: phony CMakeFiles/ContinuousUpdate
+
+
+#############################################
+# Utility command for ContinuousConfigure
+
+build ContinuousConfigure: phony CMakeFiles/ContinuousConfigure
+
+
+#############################################
+# Utility command for ContinuousBuild
+
+build ContinuousBuild: phony CMakeFiles/ContinuousBuild
+
+
+#############################################
+# Utility command for ContinuousTest
+
+build ContinuousTest: phony CMakeFiles/ContinuousTest
+
+
+#############################################
+# Utility command for ContinuousCoverage
+
+build ContinuousCoverage: phony CMakeFiles/ContinuousCoverage
+
+
+#############################################
+# Utility command for ContinuousMemCheck
+
+build ContinuousMemCheck: phony CMakeFiles/ContinuousMemCheck
+
+
+#############################################
+# Utility command for ContinuousSubmit
+
+build ContinuousSubmit: phony CMakeFiles/ContinuousSubmit
+
+# =============================================================================
+# Object build statements for EXECUTABLE target brainstorm_api_regression
+
+
+#############################################
+# Order-only phony target for brainstorm_api_regression
+
+build cmake_object_order_depends_target_brainstorm_api_regression: phony || cmake_object_order_depends_target_Immolate
+
+build CMakeFiles/brainstorm_api_regression.dir/tests/brainstorm_api_regression.cpp.obj: CXX_COMPILER__brainstorm_api_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/tests/brainstorm_api_regression.cpp || cmake_object_order_depends_target_brainstorm_api_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_api_regression.dir\tests\brainstorm_api_regression.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_api_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_api_regression.dir\tests
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_api_regression.dir
+
+build CMakeFiles/brainstorm_api_regression.dir/src/seed.cpp.obj: CXX_COMPILER__brainstorm_api_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/seed.cpp || cmake_object_order_depends_target_brainstorm_api_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_api_regression.dir\src\seed.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_api_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_api_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_api_regression.dir
+
+build CMakeFiles/brainstorm_api_regression.dir/src/util.cpp.obj: CXX_COMPILER__brainstorm_api_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/util.cpp || cmake_object_order_depends_target_brainstorm_api_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_api_regression.dir\src\util.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_api_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_api_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_api_regression.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target brainstorm_api_regression
+
+
+#############################################
+# Link the executable brainstorm_api_regression.exe
+
+build brainstorm_api_regression.exe: CXX_EXECUTABLE_LINKER__brainstorm_api_regression_Release CMakeFiles/brainstorm_api_regression.dir/tests/brainstorm_api_regression.cpp.obj CMakeFiles/brainstorm_api_regression.dir/src/seed.cpp.obj CMakeFiles/brainstorm_api_regression.dir/src/util.cpp.obj | libImmolate.dll.a || Immolate.dll
+  CONFIG = Release
+  FLAGS = -O3 -DNDEBUG
+  LINK_LIBRARIES = libImmolate.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\brainstorm_api_regression.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = brainstorm_api_regression.exe
+  TARGET_IMPLIB = libbrainstorm_api_regression.dll.a
+  TARGET_PDB = brainstorm_api_regression.exe.dbg
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_api_regression.dir
+
+# =============================================================================
+# Object build statements for EXECUTABLE target brainstorm_soul_scanner_regression
+
+
+#############################################
+# Order-only phony target for brainstorm_soul_scanner_regression
+
+build cmake_object_order_depends_target_brainstorm_soul_scanner_regression: phony || .
+
+build CMakeFiles/brainstorm_soul_scanner_regression.dir/tests/brainstorm_soul_scanner_regression.cpp.obj: CXX_COMPILER__brainstorm_soul_scanner_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/tests/brainstorm_soul_scanner_regression.cpp || cmake_object_order_depends_target_brainstorm_soul_scanner_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_soul_scanner_regression.dir\tests\brainstorm_soul_scanner_regression.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir\tests
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+build CMakeFiles/brainstorm_soul_scanner_regression.dir/src/items.cpp.obj: CXX_COMPILER__brainstorm_soul_scanner_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/items.cpp || cmake_object_order_depends_target_brainstorm_soul_scanner_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_soul_scanner_regression.dir\src\items.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+build CMakeFiles/brainstorm_soul_scanner_regression.dir/src/rng.cpp.obj: CXX_COMPILER__brainstorm_soul_scanner_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/rng.cpp || cmake_object_order_depends_target_brainstorm_soul_scanner_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_soul_scanner_regression.dir\src\rng.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+build CMakeFiles/brainstorm_soul_scanner_regression.dir/src/seed.cpp.obj: CXX_COMPILER__brainstorm_soul_scanner_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/seed.cpp || cmake_object_order_depends_target_brainstorm_soul_scanner_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_soul_scanner_regression.dir\src\seed.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+build CMakeFiles/brainstorm_soul_scanner_regression.dir/src/util.cpp.obj: CXX_COMPILER__brainstorm_soul_scanner_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/util.cpp || cmake_object_order_depends_target_brainstorm_soul_scanner_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_soul_scanner_regression.dir\src\util.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+build CMakeFiles/brainstorm_soul_scanner_regression.dir/src/functions.cpp.obj: CXX_COMPILER__brainstorm_soul_scanner_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/functions.cpp || cmake_object_order_depends_target_brainstorm_soul_scanner_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_soul_scanner_regression.dir\src\functions.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target brainstorm_soul_scanner_regression
+
+
+#############################################
+# Link the executable brainstorm_soul_scanner_regression.exe
+
+build brainstorm_soul_scanner_regression.exe: CXX_EXECUTABLE_LINKER__brainstorm_soul_scanner_regression_Release CMakeFiles/brainstorm_soul_scanner_regression.dir/tests/brainstorm_soul_scanner_regression.cpp.obj CMakeFiles/brainstorm_soul_scanner_regression.dir/src/items.cpp.obj CMakeFiles/brainstorm_soul_scanner_regression.dir/src/rng.cpp.obj CMakeFiles/brainstorm_soul_scanner_regression.dir/src/seed.cpp.obj CMakeFiles/brainstorm_soul_scanner_regression.dir/src/util.cpp.obj CMakeFiles/brainstorm_soul_scanner_regression.dir/src/functions.cpp.obj
+  CONFIG = Release
+  FLAGS = -O3 -DNDEBUG
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = brainstorm_soul_scanner_regression.exe
+  TARGET_IMPLIB = libbrainstorm_soul_scanner_regression.dll.a
+  TARGET_PDB = brainstorm_soul_scanner_regression.exe.dbg
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_soul_scanner_regression.dir
+
+# =============================================================================
+# Object build statements for EXECUTABLE target brainstorm_node_cache_regression
+
+
+#############################################
+# Order-only phony target for brainstorm_node_cache_regression
+
+build cmake_object_order_depends_target_brainstorm_node_cache_regression: phony || .
+
+build CMakeFiles/brainstorm_node_cache_regression.dir/tests/node_cache_regression.cpp.obj: CXX_COMPILER__brainstorm_node_cache_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/tests/node_cache_regression.cpp || cmake_object_order_depends_target_brainstorm_node_cache_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_node_cache_regression.dir\tests\node_cache_regression.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_node_cache_regression.dir\tests
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+
+build CMakeFiles/brainstorm_node_cache_regression.dir/src/seed.cpp.obj: CXX_COMPILER__brainstorm_node_cache_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/seed.cpp || cmake_object_order_depends_target_brainstorm_node_cache_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_node_cache_regression.dir\src\seed.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_node_cache_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+
+build CMakeFiles/brainstorm_node_cache_regression.dir/src/util.cpp.obj: CXX_COMPILER__brainstorm_node_cache_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/util.cpp || cmake_object_order_depends_target_brainstorm_node_cache_regression
+  CONFIG = Release
+  DEP_FILE = CMakeFiles\brainstorm_node_cache_regression.dir\src\util.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_node_cache_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target brainstorm_node_cache_regression
+
+
+#############################################
+# Link the executable brainstorm_node_cache_regression.exe
+
+build brainstorm_node_cache_regression.exe: CXX_EXECUTABLE_LINKER__brainstorm_node_cache_regression_Release CMakeFiles/brainstorm_node_cache_regression.dir/tests/node_cache_regression.cpp.obj CMakeFiles/brainstorm_node_cache_regression.dir/src/seed.cpp.obj CMakeFiles/brainstorm_node_cache_regression.dir/src/util.cpp.obj
+  CONFIG = Release
+  FLAGS = -O3 -DNDEBUG
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = brainstorm_node_cache_regression.exe
+  TARGET_IMPLIB = libbrainstorm_node_cache_regression.dll.a
+  TARGET_PDB = brainstorm_node_cache_regression.exe.dbg
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_node_cache_regression.dir
+
+# =============================================================================
+# Object build statements for EXECUTABLE target brainstorm_opening_batch_regression
+
+
+#############################################
+# Order-only phony target for brainstorm_opening_batch_regression
+
+build cmake_object_order_depends_target_brainstorm_opening_batch_regression: phony || .
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/tests/opening_batch_regression.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/tests/opening_batch_regression.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\tests\opening_batch_regression.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\tests
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/opening_batch.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/opening_batch.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\opening_batch.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/opening_batch_avx2.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/opening_batch_avx2.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\opening_batch_avx2.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3 -mavx2 -mno-avx512f -mstackrealign
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/opening_batch_avx512.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/opening_batch_avx512.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\opening_batch_avx512.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3 -mavx512f -mstackrealign
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/items.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/items.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\items.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/rng.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/rng.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\rng.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/seed.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/seed.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\seed.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/util.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/util.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\util.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+build CMakeFiles/brainstorm_opening_batch_regression.dir/src/functions.cpp.obj: CXX_COMPILER__brainstorm_opening_batch_regression_unscanned_Release C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src/functions.cpp || cmake_object_order_depends_target_brainstorm_opening_batch_regression
+  CONFIG = Release
+  DEFINES = -DBRAINSTORM_OPENING_BATCH_AVX2 -DBRAINSTORM_OPENING_BATCH_AVX512 -DBRAINSTORM_OPENING_BATCH_TESTING
+  DEP_FILE = CMakeFiles\brainstorm_opening_batch_regression.dir\src\functions.cpp.obj.d
+  FLAGS = -O3 -DNDEBUG -std=c++20 -O3 -g -Wall -Wextra -Wpedantic -Wno-c++17-extensions -ffp-contract=off -fno-fast-math -gdwarf-3
+  INCLUDES = -IC:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/src
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  OBJECT_FILE_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target brainstorm_opening_batch_regression
+
+
+#############################################
+# Link the executable brainstorm_opening_batch_regression.exe
+
+build brainstorm_opening_batch_regression.exe: CXX_EXECUTABLE_LINKER__brainstorm_opening_batch_regression_Release CMakeFiles/brainstorm_opening_batch_regression.dir/tests/opening_batch_regression.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/opening_batch.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/opening_batch_avx2.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/opening_batch_avx512.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/items.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/rng.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/seed.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/util.cpp.obj CMakeFiles/brainstorm_opening_batch_regression.dir/src/functions.cpp.obj
+  CONFIG = Release
+  FLAGS = -O3 -DNDEBUG
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = brainstorm_opening_batch_regression.exe
+  TARGET_IMPLIB = libbrainstorm_opening_batch_regression.dll.a
+  TARGET_PDB = brainstorm_opening_batch_regression.exe.dbg
+  TARGET_SUPPORT_DIR = CMakeFiles\brainstorm_opening_batch_regression.dir
+
+
+#############################################
+# Utility command for test
+
+build CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe "
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build test: phony CMakeFiles/test.util
 
 
 #############################################
@@ -194,10 +715,242 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Custom command for CMakeFiles\Experimental
+
+build CMakeFiles/Experimental | ${cmake_ninja_workdir}CMakeFiles/Experimental: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\Nightly
+
+build CMakeFiles/Nightly | ${cmake_ninja_workdir}CMakeFiles/Nightly: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\Continuous
+
+build CMakeFiles/Continuous | ${cmake_ninja_workdir}CMakeFiles/Continuous: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyMemoryCheck
+
+build CMakeFiles/NightlyMemoryCheck | ${cmake_ninja_workdir}CMakeFiles/NightlyMemoryCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=NightlyMemoryCheck -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyStart
+
+build CMakeFiles/NightlyStart | ${cmake_ninja_workdir}CMakeFiles/NightlyStart: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyUpdate
+
+build CMakeFiles/NightlyUpdate | ${cmake_ninja_workdir}CMakeFiles/NightlyUpdate: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyConfigure
+
+build CMakeFiles/NightlyConfigure | ${cmake_ninja_workdir}CMakeFiles/NightlyConfigure: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyBuild
+
+build CMakeFiles/NightlyBuild | ${cmake_ninja_workdir}CMakeFiles/NightlyBuild: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyTest
+
+build CMakeFiles/NightlyTest | ${cmake_ninja_workdir}CMakeFiles/NightlyTest: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyCoverage
+
+build CMakeFiles/NightlyCoverage | ${cmake_ninja_workdir}CMakeFiles/NightlyCoverage: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlyMemCheck
+
+build CMakeFiles/NightlyMemCheck | ${cmake_ninja_workdir}CMakeFiles/NightlyMemCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\NightlySubmit
+
+build CMakeFiles/NightlySubmit | ${cmake_ninja_workdir}CMakeFiles/NightlySubmit: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Nightly -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalStart
+
+build CMakeFiles/ExperimentalStart | ${cmake_ninja_workdir}CMakeFiles/ExperimentalStart: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalUpdate
+
+build CMakeFiles/ExperimentalUpdate | ${cmake_ninja_workdir}CMakeFiles/ExperimentalUpdate: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalConfigure
+
+build CMakeFiles/ExperimentalConfigure | ${cmake_ninja_workdir}CMakeFiles/ExperimentalConfigure: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalBuild
+
+build CMakeFiles/ExperimentalBuild | ${cmake_ninja_workdir}CMakeFiles/ExperimentalBuild: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalTest
+
+build CMakeFiles/ExperimentalTest | ${cmake_ninja_workdir}CMakeFiles/ExperimentalTest: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalCoverage
+
+build CMakeFiles/ExperimentalCoverage | ${cmake_ninja_workdir}CMakeFiles/ExperimentalCoverage: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalMemCheck
+
+build CMakeFiles/ExperimentalMemCheck | ${cmake_ninja_workdir}CMakeFiles/ExperimentalMemCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ExperimentalSubmit
+
+build CMakeFiles/ExperimentalSubmit | ${cmake_ninja_workdir}CMakeFiles/ExperimentalSubmit: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Experimental -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousStart
+
+build CMakeFiles/ContinuousStart | ${cmake_ninja_workdir}CMakeFiles/ContinuousStart: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Start -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousUpdate
+
+build CMakeFiles/ContinuousUpdate | ${cmake_ninja_workdir}CMakeFiles/ContinuousUpdate: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Update -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousConfigure
+
+build CMakeFiles/ContinuousConfigure | ${cmake_ninja_workdir}CMakeFiles/ContinuousConfigure: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Configure -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousBuild
+
+build CMakeFiles/ContinuousBuild | ${cmake_ninja_workdir}CMakeFiles/ContinuousBuild: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Build -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousTest
+
+build CMakeFiles/ContinuousTest | ${cmake_ninja_workdir}CMakeFiles/ContinuousTest: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Test -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousCoverage
+
+build CMakeFiles/ContinuousCoverage | ${cmake_ninja_workdir}CMakeFiles/ContinuousCoverage: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Coverage -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousMemCheck
+
+build CMakeFiles/ContinuousMemCheck | ${cmake_ninja_workdir}CMakeFiles/ContinuousMemCheck: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=MemCheck -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
+
+#############################################
+# Custom command for CMakeFiles\ContinuousSubmit
+
+build CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}CMakeFiles/ContinuousSubmit: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\Immolate\build-gcc && C:\Users\trevo\scoop\apps\mingw-winlibs\current\bin\ctest.exe -DMODEL=Continuous -DACTIONS=Submit -S CMakeFiles/CTestScript.cmake -V"
+  pool = console
+
 # =============================================================================
 # Target aliases.
 
 build Immolate: phony Immolate.dll
+
+build brainstorm_api_regression: phony brainstorm_api_regression.exe
+
+build brainstorm_node_cache_regression: phony brainstorm_node_cache_regression.exe
+
+build brainstorm_opening_batch_regression: phony brainstorm_opening_batch_regression.exe
+
+build brainstorm_soul_scanner_regression: phony brainstorm_soul_scanner_regression.exe
 
 build immol: phony immol.exe
 
@@ -209,7 +962,7 @@ build immol: phony immol.exe
 #############################################
 # Folder: C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/build-gcc
 
-build all: phony Immolate.dll immol.exe
+build all: phony Immolate.dll immol.exe brainstorm_api_regression.exe brainstorm_soul_scanner_regression.exe brainstorm_node_cache_regression.exe brainstorm_opening_batch_regression.exe
 
 # =============================================================================
 # Built-in targets
@@ -218,14 +971,14 @@ build all: phony Immolate.dll immol.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/build-gcc/cmake_install.cmake: RERUN_CMAKE | C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/CMakeLists.txt C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCXXInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeGenericSystem.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeInitializeConfigs.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeLanguageInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeRCInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/GenerateExportHeader.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-Initialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-windres.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/exportheader.cmake.in CMakeCache.txt CMakeFiles/4.3.1/CMakeCXXCompiler.cmake CMakeFiles/4.3.1/CMakeRCCompiler.cmake CMakeFiles/4.3.1/CMakeSystem.cmake
+build build.ninja C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/build-gcc/cmake_install.cmake C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/build-gcc/CTestTestfile.cmake: RERUN_CMAKE | C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/CMakeLists.txt C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCXXInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeGenericSystem.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeInitializeConfigs.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeLanguageInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeRCInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CTest.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CTestTargets.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CTestUseLaunchers.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/DartConfiguration.tcl.in C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/GenerateExportHeader.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-Initialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-windres.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/exportheader.cmake.in C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Templates/CTestScript.cmake.in CMakeCache.txt CMakeFiles/4.3.1/CMakeCXXCompiler.cmake CMakeFiles/4.3.1/CMakeRCCompiler.cmake CMakeFiles/4.3.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/CMakeLists.txt C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCXXInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeGenericSystem.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeInitializeConfigs.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeLanguageInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeRCInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/GenerateExportHeader.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-Initialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-windres.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/exportheader.cmake.in CMakeCache.txt CMakeFiles/4.3.1/CMakeCXXCompiler.cmake CMakeFiles/4.3.1/CMakeRCCompiler.cmake CMakeFiles/4.3.1/CMakeSystem.cmake: phony
+build C$:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Immolate/CMakeLists.txt C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCXXInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeGenericSystem.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeInitializeConfigs.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeLanguageInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeRCInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CTest.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CTestTargets.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CTestUseLaunchers.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCXXSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Compiler/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/DartConfiguration.tcl.in C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/GenerateExportHeader.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckCompilerFlag.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckFlagCommonConfig.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Linker/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-GNU.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-Initialize.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows-windres.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/Windows.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/Platform/WindowsPaths.cmake C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Modules/exportheader.cmake.in C$:/Users/trevo/scoop/apps/mingw-winlibs/current/share/cmake-4.3/Templates/CTestScript.cmake.in CMakeCache.txt CMakeFiles/4.3.1/CMakeCXXCompiler.cmake CMakeFiles/4.3.1/CMakeRCCompiler.cmake CMakeFiles/4.3.1/CMakeSystem.cmake: phony
 
 
 #############################################

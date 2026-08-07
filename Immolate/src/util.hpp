@@ -37,6 +37,21 @@ struct LuaRandom {
 
 int portable_clzll(uint64_t x);
 double fract(double x);
+
+// Fast exact fractional part for callers whose value is known to be finite
+// and non-negative. For that domain, x - floor(x) is bit-identical to fract()
+// (Sterbenz's lemma) and maps directly to hardware rounding on modern CPUs.
+// Keep the general fract() helper for values that do not satisfy this contract.
+inline double fractPositive(double x) {
+#if defined(__SSE4_1__)
+  return x - std::floor(x);
+#else
+  // Baseline x86-64 has no scalar floor instruction. The established bitwise
+  // helper is faster there; native builds select the hardware path above.
+  return fract(x);
+#endif
+}
+
 double pseudohash(const std::string &s);
 double pseudohash_from(const std::string &s, double num);
 double pseudostep(char s, int pos, double num);

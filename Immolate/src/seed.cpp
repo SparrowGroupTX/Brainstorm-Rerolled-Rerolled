@@ -5,17 +5,13 @@
 Seed::Seed() { 
   seed.fill(-1);
   length = 0;
-  for (int i = 0; i < 8; i++) {
-    cache[i].fill(-1);
-  }
+  cacheValid.fill(0);
 }
 
 Seed::Seed(std::string strSeed) {
   seed.fill(-1);
   length = strSeed.size();
-  for (int i = 0; i < 8; i++) {
-    cache[i].fill(-1);
-  }
+  cacheValid.fill(0);
   // Note: Assumes this is safe
   for (long unsigned int i = 0; i < strSeed.size(); i++) {
     seed[strSeed.size() - 1 - i] = charSeeds[strSeed[i]];
@@ -24,9 +20,7 @@ Seed::Seed(std::string strSeed) {
 
 Seed::Seed(long long id) {
   length = 0;
-  for (int i = 0; i < 8; i++) {
-    cache[i].fill(-1);
-  }
+  cacheValid.fill(0);
   for (int i = 0; i < 8; i++) {
     if (id > 0) {
       length++;
@@ -72,7 +66,7 @@ void Seed::next() {
   } else {
     int i = 7;
     while (i >= 0) {
-      cache[i].fill(-1);
+      cacheValid[i] = 0;
       if (seed[i] == 34) {
         seed[i] = -1;
         length--;
@@ -88,25 +82,32 @@ void Seed::next() {
 // Not optimized for performance
 // I don't think this will need to be implemented in searching
 void Seed::next(int x) {
-  long long newID = (getID() + x) % 2318107019761;
+  long long newID = normalizeSeedId(getID() + x);
   *this = Seed(newID);
 }
 
 double Seed::pseudohash(int prefixLength) {
   if (length == 0) return 1; //Empty seed edge case
 
-  if (cache[length-1][prefixLength+length-1] == -1) {
+  const int cacheColumn = prefixLength + length - 1;
+  const std::uint64_t cacheBit = std::uint64_t{1} << cacheColumn;
+  if ((cacheValid[length - 1] & cacheBit) == 0) {
     int i = length - 2;
-    while (i >= 0 && cache[i][prefixLength+length-1] == -1) {
+    while (i >= 0 && (cacheValid[i] & cacheBit) == 0) {
       i--;
     }
     if (i == -1) {
-      cache[0][prefixLength+length-1] = pseudostep(seedChars[seed[0]], prefixLength+length, 1);
+      cache[0][cacheColumn] = pseudostep(
+          seedChars[seed[0]], prefixLength + length, 1);
+      cacheValid[0] |= cacheBit;
       i = 0;
     }
     for (int j = i+1; j < length; j++) {
-      cache[j][prefixLength+length-1] = pseudostep(seedChars[seed[j]], prefixLength+length-j, cache[j-1][prefixLength+length-1]);
+      cache[j][cacheColumn] = pseudostep(
+          seedChars[seed[j]], prefixLength + length - j,
+          cache[j - 1][cacheColumn]);
+      cacheValid[j] |= cacheBit;
     }
   }
-  return cache[length-1][prefixLength+length-1];
+  return cache[length - 1][cacheColumn];
 }

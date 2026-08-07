@@ -91,14 +91,14 @@ long filter(Instance &inst) {
 long filter_crimson_heart(Instance &inst) {
     inst.initLocks(1, false, true);
 	printf("Checking for Crimson Heart...\n");
-	inst.nextBoss(1);
-    printf("Boss: %s\n");
+    Item boss = inst.nextBoss(1);
+    printf("Boss: %s\n", itemToString(boss).c_str());
     for (int i = 2; i < 8; i++) {
         if (i < 7) {
             //inst.initUnlocks(i, false);
         }
-        inst.nextBoss(i);
-        printf("Boss: %s\n");
+        boss = inst.nextBoss(i);
+        printf("Boss: %s\n", itemToString(boss).c_str());
     }
 	
 	if(inst.nextBoss(8) != Item::Crimson_Heart) {
@@ -124,7 +124,7 @@ long filter_retcon(Instance &inst) {
     return 0;
 }
 
-long filter_blank(Instance &inst) { return 0; }
+long filter_blank(Instance &) { return 0; }
 
 
 int main() {

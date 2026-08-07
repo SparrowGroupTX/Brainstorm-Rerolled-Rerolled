@@ -660,7 +660,7 @@ inline std::string itemToString(Item i) {
   case Item::Square_Joker:
     return "Square Joker";
   case Item::Riff_raff:
-    return "Riff-raff";
+    return "Riff-Raff";
   case Item::Photograph:
     return "Photograph";
   case Item::Reserved_Parking:
@@ -734,7 +734,7 @@ inline std::string itemToString(Item i) {
   case Item::Madness:
     return "Madness";
   case Item::Seance:
-    return "SΘance";
+    return "S\xC3\xA9" "ance";
   case Item::Shortcut:
     return "Shortcut";
   case Item::Hologram:
@@ -1580,7 +1580,7 @@ inline std::string itemToString(Item i) {
   default:
     std::cout << "ERROR; stringToItem found no items... contact dev"
               << std::endl;
-    EXIT_FAILURE;
+    return "Unknown";
   }
 }
 inline Item stringToItem(std::string i) {
@@ -1728,7 +1728,7 @@ inline Item stringToItem(std::string i) {
   if (i == "Square Joker") {
     return Item::Square_Joker;
   };
-  if (i == "Riff-raff") {
+  if (i == "Riff-Raff" || i == "Riff-raff") {
     return Item::Riff_raff;
   };
   if (i == "Photograph") {
@@ -1839,7 +1839,7 @@ inline Item stringToItem(std::string i) {
   if (i == "Madness") {
     return Item::Madness;
   };
-  if (i == "SΘance") {
+  if (i == "S\xC3\xA9" "ance" || i == "S\xCE\x98" "ance") {
     return Item::Seance;
   };
   if (i == "Shortcut") {
