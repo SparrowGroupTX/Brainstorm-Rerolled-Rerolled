@@ -360,6 +360,25 @@ std::string runV7At(const char* seed, int soulCount,
         deck, targetJokerLocations, stakeLevel));
 }
 
+std::string runV8At(const char* seed, int soulCount,
+                    const char* targetJokers,
+                    const char* targetJokerLocations,
+                    int stakeLevel,
+                    bool rejectPerishableTargets,
+                    const char* tag = "",
+                    bool observatory = false,
+                    int observatoryDeadline = 0,
+                    const char* deck = "Red Deck",
+                    const char* voucher = "",
+                    bool retcon = false) {
+    return takeResult(brainstorm_v8(
+        seed, voucher, "", tag, soulCount, observatory,
+        observatoryDeadline, false, false, retcon, false, false,
+        "No Filter", "King", "Any Suit", 0, 0, targetJokers,
+        deck, targetJokerLocations, stakeLevel,
+        rejectPerishableTargets));
+}
+
 std::string runV5CustomAt(const char* seed, const char* customFilter,
                           const char* targetJokers,
                           const char* targetJokerLocations) {
@@ -410,6 +429,25 @@ std::string runEstimateV3(
         false, false, false, "No Filter", targetRank, targetSuit,
         specificRankMinimum, 0, targetJokers, deck,
         targetJokerLocations, budgetMs, stakeLevel));
+}
+
+std::string runEstimateV4(
+    const char* targetJokers,
+    const char* targetJokerLocations,
+    int stakeLevel,
+    bool rejectPerishableTargets,
+    int observatoryDeadline = 0,
+    int budgetMs = 25,
+    const char* deck = "Red Deck",
+    const char* targetRank = "King",
+    const char* targetSuit = "Any Suit",
+    int specificRankMinimum = 0) {
+    return takeResult(brainstorm_estimate_v4(
+        "", "", "", 0, false, observatoryDeadline, false, false,
+        false, false, false, "No Filter", targetRank, targetSuit,
+        specificRankMinimum, 0, targetJokers, deck,
+        targetJokerLocations, budgetMs, stakeLevel,
+        rejectPerishableTargets));
 }
 
 std::string runRankDeckAt(const char* seed, const char* deck,
@@ -1116,6 +1154,59 @@ int main() {
         + "Reserved Parking";
     const std::string duplicateAnteOne =
         std::string("ante_1") + locationSeparator + "ante_1";
+
+    // Preserve the old API and the disabled-option behavior first. This seed
+    // contains a Perishable Reserved Parking, but a later eligible copy means
+    // a single-slot no-Perishable query may still legitimately succeed.
+    passed &= expectEqual(
+        runV7At("1C111111", 0, "Reserved Parking", "ante_1", 8),
+        "1C111111",
+        "v7 preserves historical acceptance of a Perishable target");
+    passed &= expectEqual(
+        runV8At(
+            "1C111111", 0, "Reserved Parking", "ante_1", 8, false),
+        "1C111111",
+        "v8 with Perishable rejection disabled matches v7");
+
+    // TUMRHIPE has one eligible Reserved Parking in the inspected Ante-1
+    // route and its sticker poll is in the Perishable range. Perishable does
+    // not exist before Orange Stake, so the requirement becomes restrictive
+    // at exactly stake 7.
+    for (int stakeLevel = 1; stakeLevel <= 6; stakeLevel++) {
+        passed &= expectEqual(
+            runV8At(
+                "TUMRHIPE", 0, "Reserved Parking", "ante_1",
+                stakeLevel, true),
+            "TUMRHIPE",
+            "pre-Orange stakes cannot produce a Perishable target");
+    }
+    for (int stakeLevel = 7; stakeLevel <= 8; stakeLevel++) {
+        passed &= expectEqual(
+            runV8At(
+                "TUMRHIPE", 0, "Reserved Parking", "ante_1",
+                stakeLevel, true),
+            "",
+            "Orange-and-higher stakes reject a Perishable target");
+    }
+    passed &= expectEqual(
+        runV8At(
+            "WYIBD111", 0, "Reserved Parking", "ante_1", 8, true),
+        "WYIBD111",
+        "an Eternal non-Perishable target remains eligible");
+
+    setOpeningBatchEnabled(false);
+    const std::string scalarStickerFreePerkeo = runV8At(
+        "GPDJ3111", 0, "Perkeo", "by_ante_6", 8, true);
+    setOpeningBatchEnabled(true);
+    passed &= expectEqual(
+        scalarStickerFreePerkeo, "GPDJ3111",
+        "a Soul target remains eligible because Souls are sticker-free");
+    passed &= expectEqual(
+        runV8At(
+            "GPDJ3111", 0, "Perkeo", "by_ante_6", 8, true),
+        scalarStickerFreePerkeo,
+        "opening batching preserves no-Perishable target results");
+
     passed &= expectEqual(
         runV5At(
             "YWON1111", 0, "Reserved Parking", "ante_1"),
@@ -1155,6 +1246,12 @@ int main() {
             duplicateAnteOne.c_str(), 8),
         "1C111111",
         "Gold rental/perishable Jokers remain sellable when non-Eternal");
+    passed &= expectEqual(
+        runV8At(
+            "1C111111", 0, duplicateReservedParking.c_str(),
+            duplicateAnteOne.c_str(), 8, true),
+        "",
+        "no-Perishable mode rejects a Perishable duplicate occurrence");
     const std::string whiteDuplicateEstimate = runEstimateV3(
         duplicateReservedParking.c_str(), duplicateAnteOne.c_str(),
         1, 0, 1000);
@@ -1180,6 +1277,11 @@ int main() {
     passed &= expectContains(
         goldDuplicateEstimate, "status=ok\tmethod=exact_sample",
         "Gold duplicate estimator gathers exact stake-aware samples");
+    passed &= expectContains(
+        runEstimateV4(
+            "Reserved Parking", "ante_1", 8, true, 0, 25),
+        "status=ok",
+        "v4 estimator accepts the no-Perishable target requirement");
     passed &= estimateStakeFieldsPresent
         && whiteEstimateTested > 0.0 && goldEstimateTested > 0.0
         && goldEstimateHits / goldEstimateTested

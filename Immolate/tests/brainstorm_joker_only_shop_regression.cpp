@@ -467,6 +467,92 @@ bool compareEternalOnlyStickerMode() {
   return true;
 }
 
+bool compareEternalPerishableOnlyStickerMode() {
+  Seed fullSeed(normalizeSeedId(564738291));
+  Seed requiredSeed(normalizeSeedId(564738291));
+  std::size_t observedPerishableStickers = 0;
+  std::size_t omittedRentalStickers = 0;
+
+  for (std::size_t offset = 0; offset < 4096; ++offset) {
+    Instance full(fullSeed);
+    Instance required(requiredSeed);
+    full.initLocks(1, false, true);
+    required.initLocks(1, false, true);
+    full.setStake(Item::Gold_Stake);
+    required.setStake(Item::Gold_Stake);
+
+    for (int ante = 1; ante <= 8; ++ante) {
+      if (ante > 1) {
+        full.initUnlocks(ante, false);
+        required.initUnlocks(ante, false);
+      }
+      for (const std::string *source :
+           {&ItemSource::Shop, &ItemSource::Buffoon_Pack}) {
+        const JokerData fullJoker = full.nextJoker(*source, ante, true);
+        const JokerData requiredJoker = required.nextJoker(
+            *source, ante,
+            JokerStickerGeneration::EternalPerishableOnly);
+        if (!sameJokerIdentity(fullJoker, requiredJoker)
+            || fullJoker.stickers.eternal
+                != requiredJoker.stickers.eternal
+            || fullJoker.stickers.perishable
+                != requiredJoker.stickers.perishable) {
+          std::cerr
+              << "Eternal/Perishable-only mode changed a required sticker "
+                 "decision at seed "
+              << fullSeed.tostring() << ", ante " << ante << std::endl;
+          return false;
+        }
+        if (requiredJoker.stickers.rental) {
+          std::cerr
+              << "Eternal/Perishable-only mode retained a Rental sticker"
+              << std::endl;
+          return false;
+        }
+        if (fullJoker.stickers.perishable) {
+          ++observedPerishableStickers;
+        }
+        if (fullJoker.stickers.rental) {
+          ++omittedRentalStickers;
+        }
+      }
+    }
+
+    // The optimized mode consumes the shared Eternal/Perishable streams
+    // exactly like full generation. Rental streams are intentionally omitted.
+    if (full.random(RandomType::Eternal_Perishable + anteToString(8))
+            != required.random(
+                RandomType::Eternal_Perishable + anteToString(8))
+        || full.random(
+               RandomType::Eternal_Perishable_Pack + anteToString(8))
+            != required.random(
+                RandomType::Eternal_Perishable_Pack + anteToString(8))
+        || full.nextPack(8) != required.nextPack(8)
+        || full.nextVoucher(8) != required.nextVoucher(8)
+        || full.nextTag(8) != required.nextTag(8)) {
+      std::cerr
+          << "Eternal/Perishable-only mode changed required future RNG state"
+          << std::endl;
+      return false;
+    }
+
+    fullSeed.next();
+    requiredSeed.next();
+  }
+
+  if (observedPerishableStickers == 0 || omittedRentalStickers == 0) {
+    std::cerr
+        << "Eternal/Perishable-only coverage observed no optimized stickers"
+        << std::endl;
+    return false;
+  }
+  std::cout
+      << "Eternal/Perishable-only sticker decisions exact across 4096 seeds; "
+      << observedPerishableStickers << " Perishable decisions retained and "
+      << omittedRentalStickers << " Rental stickers omitted" << std::endl;
+  return true;
+}
+
 } // namespace
 
 int main() {
@@ -489,5 +575,6 @@ int main() {
   }
   passed &= compareStickerElisionTimeline();
   passed &= compareEternalOnlyStickerMode();
+  passed &= compareEternalPerishableOnlyStickerMode();
   return passed ? EXIT_SUCCESS : EXIT_FAILURE;
 }

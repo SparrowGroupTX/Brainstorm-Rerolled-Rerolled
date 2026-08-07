@@ -1019,6 +1019,15 @@ local function create_advanced_page()
       }),
       create_brainstorm_column({
         create_toggle({
+          label = "NO PERISHABLE TARGETS",
+          scale = 0.8,
+          ref_table = Brainstorm.config.ar_filters,
+          ref_value = "no_perishable_jokers",
+          callback = function(_set_toggle)
+            Brainstorm.writeConfig()
+          end,
+        }),
+        create_toggle({
           label = "EARLY RETCON",
           scale = 0.8,
           ref_table = Brainstorm.config.ar_filters,

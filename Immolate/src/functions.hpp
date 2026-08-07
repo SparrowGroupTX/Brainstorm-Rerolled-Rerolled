@@ -263,6 +263,17 @@ inline bool jokerCanReceiveEternalSticker(Item joker) {
          joker != Item::Invisible_Joker;
 }
 
+inline bool jokerCanReceivePerishableSticker(Item joker) {
+  return joker != Item::Ceremonial_Dagger && joker != Item::Ride_the_Bus &&
+         joker != Item::Runner && joker != Item::Constellation &&
+         joker != Item::Green_Joker && joker != Item::Red_Card &&
+         joker != Item::Madness && joker != Item::Square_Joker &&
+         joker != Item::Vampire && joker != Item::Rocket &&
+         joker != Item::Obelisk && joker != Item::Lucky_Cat &&
+         joker != Item::Flash_Card && joker != Item::Spare_Trousers &&
+         joker != Item::Castle && joker != Item::Wee_Joker;
+}
+
 inline bool jokerTargetsMayNeedEternalAwareSelling(
     const Item *targets, std::size_t targetCount, Item stake) {
   if (stake < Item::Black_Stake) {
@@ -382,20 +393,16 @@ inline JokerData Instance::nextJoker(
           stickers.eternal = true;
         }
       }
-      if (stickerGeneration == JokerStickerGeneration::Full) {
+      if (stickerGeneration == JokerStickerGeneration::Full ||
+          stickerGeneration ==
+              JokerStickerGeneration::EternalPerishableOnly) {
         if (stickerPoll > 0.4 && stickerPoll <= 0.7 &&
             params.stake >= Item::Orange_Stake &&
-            joker != Item::Ceremonial_Dagger && joker != Item::Ride_the_Bus &&
-            joker != Item::Runner && joker != Item::Constellation &&
-            joker != Item::Green_Joker && joker != Item::Red_Card &&
-            joker != Item::Madness && joker != Item::Square_Joker &&
-            joker != Item::Vampire && joker != Item::Rocket &&
-            joker != Item::Obelisk && joker != Item::Lucky_Cat &&
-            joker != Item::Flash_Card && joker != Item::Spare_Trousers &&
-            joker != Item::Castle && joker != Item::Wee_Joker) {
+            jokerCanReceivePerishableSticker(joker)) {
           stickers.perishable = true;
         }
-        if (params.stake >= Item::Gold_Stake) {
+        if (stickerGeneration == JokerStickerGeneration::Full &&
+            params.stake >= Item::Gold_Stake) {
           stickers.rental = random(((source == ItemSource::Buffoon_Pack)
                                         ? RandomType::Rental_Pack
                                         : RandomType::Rental) +

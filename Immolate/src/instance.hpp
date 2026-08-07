@@ -15,6 +15,7 @@
 enum class JokerStickerGeneration {
   None,
   EternalOnly,
+  EternalPerishableOnly,
   Full,
 };
 

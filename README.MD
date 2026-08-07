@@ -23,6 +23,11 @@ its own:
 - **Any Edition** or **Negative** requirement; and
 - appearance timing selector.
 
+The global **No Perishable Targets** option on the Advanced page rejects a seed
+if any selected Joker occurrence would have a Perishable sticker. It applies to
+all populated Joker slots, including repeated copies, while leaving Eternal and
+Rental stickers unrestricted.
+
 The preferred cumulative timings are **By End of Ante 2** through **By End of
 Ante 8**. They accept any collectible appearance in the starting Charm pack or
 the natural no-reroll shop/Buffoon timeline through that deadline. Legacy exact
@@ -67,9 +72,12 @@ Jokers may remain in the pool without selling the first copy.
 The native search automatically follows the current run's stake (or the
 selected profile stake when no run is active). On Black Stake and above,
 Eternal shop and Buffoon-pack Jokers cannot be used as the assumed sale route
-for a later duplicate. Perishable and Rental Jokers remain sellable, and
-Invisible Joker keeps its normal Eternal exemption. Jokers created directly by
-Soul or Judgement do not receive stake stickers, matching the game.
+for a later duplicate. Perishable and Rental Jokers remain sellable unless
+**No Perishable Targets** is enabled; with that option, every selected
+occurrence must be non-Perishable. Invisible Joker keeps its normal Eternal
+exemption. Jokers created directly by Soul or Judgement do not receive stake
+stickers, matching the game, so they always satisfy the non-Perishable
+requirement.
 
 Ante labels follow the RNG ante used by Balatro. The shop after defeating an
 Ante 1 boss therefore belongs to the Ante 2 window. Skipped blinds do not age

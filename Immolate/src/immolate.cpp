@@ -93,6 +93,7 @@ bool BRAINSTORM_TARGET_JOKERS_VALID = true;
 bool BRAINSTORM_V5_OCCURRENCE_MODE = false;
 bool BRAINSTORM_V5_ORDERED_MODE = false;
 bool BRAINSTORM_V6_DEADLINE_MODE = false;
+bool BRAINSTORM_REJECT_PERISHABLE_TARGETS = false;
 std::atomic<int> BRAINSTORM_SEARCH_THREAD_MODE{0};
 // Estimation probes need to preserve the skipped-Small-Blind Charm route
 // without waiting for extremely rare Soul counts to occur in every relaxed
@@ -943,6 +944,17 @@ bool isFreshRunLockedVoucher(Item voucher) {
     return false;
 }
 
+bool brainstormJokerTargetQualitiesMatch(
+    std::size_t requirement, const JokerData& joker) {
+    const bool editionMatches =
+        BRAINSTORM_TARGET_JOKER_EDITIONS[requirement]
+            == BrainstormJokerEditionRequirement::Any
+        || joker.edition == Item::Negative;
+    return editionMatches
+        && (!BRAINSTORM_REJECT_PERISHABLE_TARGETS
+            || !joker.stickers.perishable);
+}
+
 struct BrainstormJokerTargetMatcher {
     std::array<bool, BRAINSTORM_MAX_JOKER_TARGETS> matched{};
 
@@ -992,15 +1004,11 @@ struct BrainstormJokerTargetMatcher {
     bool observe(const JokerData& joker,
                  BrainstormJokerObservationSource source) {
         for (std::size_t i = 0; i < BRAINSTORM_TARGET_JOKER_COUNT; i++) {
-            const bool editionMatches =
-                BRAINSTORM_TARGET_JOKER_EDITIONS[i]
-                    == BrainstormJokerEditionRequirement::Any
-                || joker.edition == Item::Negative;
             if (!matched[i]
                 && BRAINSTORM_TARGET_JOKERS[i] == joker.joker
                 && locationAccepts(
                     BRAINSTORM_TARGET_JOKER_LOCATIONS[i], source)
-                && editionMatches) {
+                && brainstormJokerTargetQualitiesMatch(i, joker)) {
                 matched[i] = true;
                 return true;
             }
@@ -1301,9 +1309,34 @@ bool brainstormV5OrderedStartingChoicesFeasible() {
     return false;
 }
 
+bool brainstormSelectedTargetMayReceivePerishableSticker() {
+    for (std::size_t i = 0; i < BRAINSTORM_TARGET_JOKER_COUNT; i++) {
+        // Legendary targets can only be produced by a sticker-free Soul.
+        // A non-Legendary target restricted to the starting Soul pack can
+        // only come from its sticker-free Judgement card.
+        if (!isLegendaryJoker(BRAINSTORM_TARGET_JOKERS[i])
+            && BRAINSTORM_TARGET_JOKER_LOCATIONS[i]
+                != BrainstormJokerLocationRequirement::SoulPack
+            && jokerCanReceivePerishableSticker(
+                BRAINSTORM_TARGET_JOKERS[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
 bool brainstormNeedsV5ChronologicalJokerScan() {
     if (!BRAINSTORM_V5_OCCURRENCE_MODE) {
         return false;
+    }
+
+    // The legacy matcher deliberately omits shop sticker generation. Route
+    // targets that can actually receive Perishable through the chronological
+    // path, where sticker RNG uses the exact source/Ante sequence.
+    if (BRAINSTORM_REJECT_PERISHABLE_TARGETS
+        && BRAINSTORM_STAKE >= Item::Orange_Stake
+        && brainstormSelectedTargetMayReceivePerishableSticker()) {
+        return true;
     }
 
     // Repeated centers require ownership, selling, and blind-age tracking.
@@ -1564,9 +1597,7 @@ struct BrainstormV5JokerMatcher {
                 BRAINSTORM_TARGET_JOKER_LOCATIONS[requirement], source)) {
             return false;
         }
-        return BRAINSTORM_TARGET_JOKER_EDITIONS[requirement]
-                == BrainstormJokerEditionRequirement::Any
-            || joker.edition == Item::Negative;
+        return brainstormJokerTargetQualitiesMatch(requirement, joker);
     }
 
     unsigned int matchingRequirementMask(
@@ -1788,10 +1819,21 @@ int brainstormV5MaximumRequestedAnte() {
     return result;
 }
 
-bool brainstormV5TimelineNeedsStickerGeneration() {
-    return jokerTargetsMayNeedEternalAwareSelling(
-        BRAINSTORM_TARGET_JOKERS.data(),
-        BRAINSTORM_TARGET_JOKER_COUNT, BRAINSTORM_STAKE);
+JokerStickerGeneration brainstormV5TimelineStickerGeneration() {
+    if (BRAINSTORM_REJECT_PERISHABLE_TARGETS
+        && BRAINSTORM_STAKE >= Item::Orange_Stake
+        && brainstormSelectedTargetMayReceivePerishableSticker()) {
+        // Eternal and Perishable share one poll. Retain both decisions while
+        // skipping the independent Rental node, which cannot affect target
+        // eligibility or duplicate-selling behavior.
+        return JokerStickerGeneration::EternalPerishableOnly;
+    }
+    if (jokerTargetsMayNeedEternalAwareSelling(
+            BRAINSTORM_TARGET_JOKERS.data(),
+            BRAINSTORM_TARGET_JOKER_COUNT, BRAINSTORM_STAKE)) {
+        return JokerStickerGeneration::EternalOnly;
+    }
+    return JokerStickerGeneration::None;
 }
 
 bool brainstormV5HasExpiredRequirement(
@@ -2253,9 +2295,7 @@ bool passesBrainstormV5JokerTargetsOnRoute(
         && emptyMatcher.hasUnmatchedForSource(
             BrainstormJokerObservationSource::Judgement);
     const JokerStickerGeneration timelineStickerGeneration =
-        brainstormV5TimelineNeedsStickerGeneration()
-        ? JokerStickerGeneration::EternalOnly
-        : JokerStickerGeneration::None;
+        brainstormV5TimelineStickerGeneration();
     const std::vector<BrainstormV5ShopPoint> shops =
         buildBrainstormV5ShopTimeline(
             charmRoute, brainstormV5MaximumRequestedAnte());
@@ -3856,7 +3896,7 @@ bool configureBrainstormSearch(
     const std::string& targetJokers, const std::string& deck,
     const std::string& targetJokerLocations,
     bool retainJokerOccurrences, bool allowDeadlineLocations,
-    int stakeLevel) {
+    int stakeLevel, bool rejectPerishableTargets) {
     const Item parsedDeck = stringToItem(deck);
     if (!isSupportedBrainstormDeck(parsedDeck)
         || parsedDeck == Item::Challenge_Deck
@@ -3879,6 +3919,7 @@ bool configureBrainstormSearch(
     BRAINSTORM_PERKEO = perkeo;
     BRAINSTORM_V5_OCCURRENCE_MODE = retainJokerOccurrences;
     BRAINSTORM_V6_DEADLINE_MODE = allowDeadlineLocations;
+    BRAINSTORM_REJECT_PERISHABLE_TARGETS = rejectPerishableTargets;
     BRAINSTORM_FORCE_CHARM_ROUTE = false;
     BRAINSTORM_ESTIMATE_ASSUME_CHARM_TAG = false;
     BRAINSTORM_TARGET_JOKERS_VALID =
@@ -3925,7 +3966,8 @@ std::string brainstorm_versioned_cpp(
     int specificRankMin, int anyRankMin,
     std::string targetJokers, std::string deck,
     std::string targetJokerLocations, bool retainJokerOccurrences,
-    bool allowDeadlineLocations, int stakeLevel) {
+    bool allowDeadlineLocations, int stakeLevel,
+    bool rejectPerishableTargets) {
     const Item parsedDeck = stringToItem(deck);
     if (!isSupportedBrainstormDeck(parsedDeck)
         || parsedDeck == Item::Challenge_Deck
@@ -3947,6 +3989,7 @@ std::string brainstorm_versioned_cpp(
     BRAINSTORM_PERKEO = perkeo;
     BRAINSTORM_V5_OCCURRENCE_MODE = retainJokerOccurrences;
     BRAINSTORM_V6_DEADLINE_MODE = allowDeadlineLocations;
+    BRAINSTORM_REJECT_PERISHABLE_TARGETS = rejectPerishableTargets;
     BRAINSTORM_FORCE_CHARM_ROUTE = false;
     BRAINSTORM_ESTIMATE_ASSUME_CHARM_TAG = false;
 	BRAINSTORM_TARGET_JOKERS_VALID =
@@ -4208,7 +4251,7 @@ std::string brainstorm_v4_cpp(
         seed, voucher, pack, tag, souls, observatory, 0, perkeo, copymoney,
         retcon, bean, burglar, customFilter, targetRank, targetSuit,
         specificRankMin, anyRankMin, targetJokers, deck,
-        targetJokerLocations, false, false, 1);
+        targetJokerLocations, false, false, 1, false);
 }
 
 std::string brainstorm_v5_cpp(
@@ -4222,7 +4265,7 @@ std::string brainstorm_v5_cpp(
         seed, voucher, pack, tag, souls, observatory, 0, perkeo, copymoney,
         retcon, bean, burglar, customFilter, targetRank, targetSuit,
         specificRankMin, anyRankMin, targetJokers, deck,
-        targetJokerLocations, true, false, 1);
+        targetJokerLocations, true, false, 1, false);
 }
 
 std::string brainstorm_v6_cpp(
@@ -4236,7 +4279,7 @@ std::string brainstorm_v6_cpp(
         seed, voucher, pack, tag, souls, observatory,
         observatoryDeadline, perkeo, copymoney, retcon, bean, burglar,
         customFilter, targetRank, targetSuit, specificRankMin, anyRankMin,
-        targetJokers, deck, targetJokerLocations, true, true, 1);
+        targetJokers, deck, targetJokerLocations, true, true, 1, false);
 }
 
 std::string brainstorm_v7_cpp(
@@ -4250,7 +4293,24 @@ std::string brainstorm_v7_cpp(
         seed, voucher, pack, tag, souls, observatory,
         observatoryDeadline, perkeo, copymoney, retcon, bean, burglar,
         customFilter, targetRank, targetSuit, specificRankMin, anyRankMin,
-        targetJokers, deck, targetJokerLocations, true, true, stakeLevel);
+        targetJokers, deck, targetJokerLocations, true, true, stakeLevel,
+        false);
+}
+
+std::string brainstorm_v8_cpp(
+    std::string seed, std::string voucher, std::string pack, std::string tag,
+    int souls, bool observatory, int observatoryDeadline, bool perkeo,
+    bool copymoney, bool retcon, bool bean, bool burglar,
+    std::string customFilter, std::string targetRank, std::string targetSuit,
+    int specificRankMin, int anyRankMin, std::string targetJokers,
+    std::string deck, std::string targetJokerLocations, int stakeLevel,
+    bool rejectPerishableTargets) {
+    return brainstorm_versioned_cpp(
+        seed, voucher, pack, tag, souls, observatory,
+        observatoryDeadline, perkeo, copymoney, retcon, bean, burglar,
+        customFilter, targetRank, targetSuit, specificRankMin, anyRankMin,
+        targetJokers, deck, targetJokerLocations, true, true, stakeLevel,
+        rejectPerishableTargets);
 }
 
 namespace {
@@ -4599,6 +4659,7 @@ struct BrainstormEstimateTargetSnapshot {
     Item tag = Item::RETRY;
     bool forceCharmRoute = false;
     bool assumeCharmTag = false;
+    bool rejectPerishableTargets = false;
 };
 
 BrainstormEstimateTargetSnapshot captureBrainstormEstimateTargets() {
@@ -4615,6 +4676,8 @@ BrainstormEstimateTargetSnapshot captureBrainstormEstimateTargets() {
     snapshot.tag = BRAINSTORM_TAG;
     snapshot.forceCharmRoute = BRAINSTORM_FORCE_CHARM_ROUTE;
     snapshot.assumeCharmTag = BRAINSTORM_ESTIMATE_ASSUME_CHARM_TAG;
+    snapshot.rejectPerishableTargets =
+        BRAINSTORM_REJECT_PERISHABLE_TARGETS;
     return snapshot;
 }
 
@@ -4632,6 +4695,8 @@ void restoreBrainstormEstimateTargets(
     BRAINSTORM_TAG = snapshot.tag;
     BRAINSTORM_FORCE_CHARM_ROUTE = snapshot.forceCharmRoute;
     BRAINSTORM_ESTIMATE_ASSUME_CHARM_TAG = snapshot.assumeCharmTag;
+    BRAINSTORM_REJECT_PERISHABLE_TARGETS =
+        snapshot.rejectPerishableTargets;
 }
 
 void applyBrainstormEstimateTargetSubset(
@@ -4806,13 +4871,15 @@ std::string brainstorm_estimate_versioned_cpp(
     std::string customFilter, std::string targetRank, std::string targetSuit,
     int specificRankMin, int anyRankMin, std::string targetJokers,
     std::string deck, std::string targetJokerLocations, int budgetMs,
-    bool allowDeadlineLocations, int stakeLevel) {
+    bool allowDeadlineLocations, int stakeLevel,
+    bool rejectPerishableTargets) {
     if (!configureBrainstormSearch(
             voucher, pack, tag, souls, observatory, observatoryDeadline,
             perkeo, copymoney, retcon, bean, burglar, customFilter,
             targetRank, targetSuit, specificRankMin, anyRankMin,
             targetJokers, deck, targetJokerLocations, true,
-            allowDeadlineLocations, stakeLevel)) {
+            allowDeadlineLocations, stakeLevel,
+            rejectPerishableTargets)) {
         return brainstormEstimateStatus(
             "invalid", "none",
             "The selected configuration is not valid.");
@@ -5301,7 +5368,7 @@ std::string brainstorm_estimate_v1_cpp(
         voucher, pack, tag, souls, observatory, 0, perkeo, copymoney,
         retcon, bean, burglar, customFilter, targetRank, targetSuit,
         specificRankMin, anyRankMin, targetJokers, deck,
-        targetJokerLocations, budgetMs, false, 1);
+        targetJokerLocations, budgetMs, false, 1, false);
 }
 
 std::string brainstorm_estimate_v2_cpp(
@@ -5315,7 +5382,7 @@ std::string brainstorm_estimate_v2_cpp(
         voucher, pack, tag, souls, observatory, observatoryDeadline,
         perkeo, copymoney, retcon, bean, burglar, customFilter, targetRank,
         targetSuit, specificRankMin, anyRankMin, targetJokers, deck,
-        targetJokerLocations, budgetMs, true, 1);
+        targetJokerLocations, budgetMs, true, 1, false);
 }
 
 std::string brainstorm_estimate_v3_cpp(
@@ -5330,7 +5397,23 @@ std::string brainstorm_estimate_v3_cpp(
         voucher, pack, tag, souls, observatory, observatoryDeadline,
         perkeo, copymoney, retcon, bean, burglar, customFilter, targetRank,
         targetSuit, specificRankMin, anyRankMin, targetJokers, deck,
-        targetJokerLocations, budgetMs, true, stakeLevel);
+        targetJokerLocations, budgetMs, true, stakeLevel, false);
+}
+
+std::string brainstorm_estimate_v4_cpp(
+    std::string voucher, std::string pack, std::string tag, int souls,
+    bool observatory, int observatoryDeadline, bool perkeo,
+    bool copymoney, bool retcon, bool bean, bool burglar,
+    std::string customFilter, std::string targetRank, std::string targetSuit,
+    int specificRankMin, int anyRankMin, std::string targetJokers,
+    std::string deck, std::string targetJokerLocations, int budgetMs,
+    int stakeLevel, bool rejectPerishableTargets) {
+    return brainstorm_estimate_versioned_cpp(
+        voucher, pack, tag, souls, observatory, observatoryDeadline,
+        perkeo, copymoney, retcon, bean, burglar, customFilter, targetRank,
+        targetSuit, specificRankMin, anyRankMin, targetJokers, deck,
+        targetJokerLocations, budgetMs, true, stakeLevel,
+        rejectPerishableTargets);
 }
 
 std::string brainstorm_v3_cpp(
@@ -5504,6 +5587,27 @@ extern "C" {
         return copyBrainstormResult(result);
     }
 
+    const char* brainstorm_v8(
+        const char* seed, const char* voucher, const char* pack,
+        const char* tag, int souls, bool observatory,
+        int observatoryDeadline, bool perkeo, bool copymoney, bool retcon,
+        bool bean, bool burglar, const char* customFilter,
+        const char* targetRank, const char* targetSuit,
+        int specificRankMin, int anyRankMin, const char* targetJokers,
+        const char* deck, const char* targetJokerLocations,
+        int stakeLevel, bool rejectPerishableTargets) {
+        const std::string result = brainstorm_v8_cpp(
+            stringOrEmpty(seed), stringOrEmpty(voucher), stringOrEmpty(pack),
+            stringOrEmpty(tag), souls, observatory, observatoryDeadline,
+            perkeo, copymoney, retcon, bean, burglar,
+            stringOrEmpty(customFilter), stringOrEmpty(targetRank),
+            stringOrEmpty(targetSuit), specificRankMin, anyRankMin,
+            stringOrEmpty(targetJokers), stringOrEmpty(deck),
+            stringOrEmpty(targetJokerLocations), stakeLevel,
+            rejectPerishableTargets);
+        return copyBrainstormResult(result);
+    }
+
     const char* brainstorm_estimate_v1(
         const char* voucher, const char* pack, const char* tag, int souls,
         bool observatory, bool perkeo, bool copymoney, bool retcon,
@@ -5558,6 +5662,27 @@ extern "C" {
             stringOrEmpty(targetSuit), specificRankMin, anyRankMin,
             stringOrEmpty(targetJokers), stringOrEmpty(deck),
             stringOrEmpty(targetJokerLocations), budgetMs, stakeLevel);
+        return copyBrainstormResult(result);
+    }
+
+    const char* brainstorm_estimate_v4(
+        const char* voucher, const char* pack, const char* tag, int souls,
+        bool observatory, int observatoryDeadline, bool perkeo,
+        bool copymoney, bool retcon, bool bean, bool burglar,
+        const char* customFilter, const char* targetRank,
+        const char* targetSuit, int specificRankMin, int anyRankMin,
+        const char* targetJokers, const char* deck,
+        const char* targetJokerLocations, int budgetMs, int stakeLevel,
+        bool rejectPerishableTargets) {
+        const std::string result = brainstorm_estimate_v4_cpp(
+            stringOrEmpty(voucher), stringOrEmpty(pack),
+            stringOrEmpty(tag), souls, observatory, observatoryDeadline,
+            perkeo, copymoney, retcon, bean, burglar,
+            stringOrEmpty(customFilter), stringOrEmpty(targetRank),
+            stringOrEmpty(targetSuit), specificRankMin, anyRankMin,
+            stringOrEmpty(targetJokers), stringOrEmpty(deck),
+            stringOrEmpty(targetJokerLocations), budgetMs, stakeLevel,
+            rejectPerishableTargets);
         return copyBrainstormResult(result);
     }
 

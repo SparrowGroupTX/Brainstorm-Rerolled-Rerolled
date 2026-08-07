@@ -51,6 +51,7 @@ Brainstorm.config = {
       "ante_1",
       "ante_1",
     },
+    no_perishable_jokers = false,
     copy_money = false,
     bean = false,
     burglar = false,
@@ -762,9 +763,11 @@ local function ensureImmolateLoaded()
       const char* brainstorm_v5(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations);
       const char* brainstorm_v6(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations);
       const char* brainstorm_v7(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int stakeLevel);
+      const char* brainstorm_v8(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int stakeLevel, bool noPerishableJokers);
       const char* brainstorm_estimate_v1(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms);
       const char* brainstorm_estimate_v2(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms);
       const char* brainstorm_estimate_v3(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms, int stakeLevel);
+      const char* brainstorm_estimate_v4(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms, int stakeLevel, bool noPerishableJokers);
       void brainstorm_set_search_thread_mode(int mode);
       void free_result(const char* result);
     ]])
@@ -1170,6 +1173,12 @@ local function applyAutoRerollFilterDefaults()
     changed = true
   end
 
+  local no_perishable_jokers = filters.no_perishable_jokers == true
+  if filters.no_perishable_jokers ~= no_perishable_jokers then
+    filters.no_perishable_jokers = no_perishable_jokers
+    changed = true
+  end
+
   -- Suit options are stored by both name and menu index. Recompute the index
   -- from the stable name when options are added so old configs still point at
   -- the suit the player selected.
@@ -1340,8 +1349,9 @@ local function getSearchEstimateFingerprint(
     deck_name,
     search_query.joker_target_locations,
     stake_level,
+    filters.no_perishable_jokers,
   }
-  for index = 1, 19 do
+  for index = 1, 20 do
     parts[index] = tostring(parts[index] or "")
   end
   return table.concat(parts, "\29")
@@ -1502,7 +1512,7 @@ function Brainstorm.requestSearchEstimate()
         immolate_lib.brainstorm_set_search_thread_mode(
           Brainstorm.config.ar_prefs.native_cpu_mode == "maximum" and 1 or 0
         )
-        raw_result = immolate_lib.brainstorm_estimate_v3(
+        raw_result = immolate_lib.brainstorm_estimate_v4(
           search_query.voucher_name,
           search_query.pack_name,
           search_query.tag_name,
@@ -1523,7 +1533,8 @@ function Brainstorm.requestSearchEstimate()
           deck_name,
           search_query.joker_target_locations,
           Brainstorm.SEARCH_ESTIMATE_BUDGET_MS,
-          stake_level
+          stake_level,
+          Brainstorm.config.ar_filters.no_perishable_jokers
         )
       end)
       if not call_ok or raw_result == nil then
@@ -1826,7 +1837,7 @@ function Brainstorm.autoReroll()
   )
   local deck_name = getCurrentDeckName()
   local stake_level = getCurrentStakeLevel()
-  local raw_result = immolate_lib.brainstorm_v7(
+  local raw_result = immolate_lib.brainstorm_v8(
       seed_found,
       search_query.voucher_name,
       search_query.pack_name,
@@ -1847,7 +1858,8 @@ function Brainstorm.autoReroll()
       search_query.joker_targets,
       deck_name,
       search_query.joker_target_locations,
-      stake_level
+      stake_level,
+      Brainstorm.config.ar_filters.no_perishable_jokers
     )
   if raw_result ~= nil then
     seed_found = ffi.string(raw_result)
@@ -1866,12 +1878,14 @@ function Brainstorm.autoReroll()
     })
     G.GAME.used_filter = true
     G.GAME.filter_info = {
-      native_api_version = 7,
+      native_api_version = 8,
       stake_level = stake_level,
       soul_count = Brainstorm.config.ar_filters.soul_count,
       required_soul_count = Brainstorm.getRequiredSoulCount(),
       joker_targets = search_query.joker_targets,
       joker_target_locations = search_query.joker_target_locations,
+      no_perishable_jokers =
+        Brainstorm.config.ar_filters.no_perishable_jokers,
       observatory_deadline = search_query.observatory_deadline,
       deck_name = deck_name,
       multi_soul_pack_consumed = false,
@@ -1897,6 +1911,7 @@ function Brainstorm.autoReroll()
         deck_name,
         search_query.joker_target_locations,
         stake_level,
+        Brainstorm.config.ar_filters.no_perishable_jokers,
       },
     }
     G.GAME.seeded = false
