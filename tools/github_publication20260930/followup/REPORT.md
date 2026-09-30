@@ -80,3 +80,32 @@ repair; the nine packaging tests had already passed. The first failure is preser
 in [PARTIAL_RESUME_BEFORE_FIX.log](PARTIAL_RESUME_BEFORE_FIX.log), with exact helper
 hashes and controls in [RESUME_VERIFICATION.json](RESUME_VERIFICATION.json).
 The repair is a small follow-up commit to the frozen publication snapshot.
+
+## Published lightweight project
+
+The intended commit `bd8e8e83cdf357b2291a1fe5a9bfc7bc80b903ef` was published
+and independently verified through GitHub's advertised branch hash. Its tree is
+`6c33ef36c60ba6adf4a2ebf62c08a0daef9e3310`, containing no optional archive pieces.
+All11 bounded blob payloads completed. [PUBLICATION_RESULT.json](PUBLICATION_RESULT.json)
+records the final480,640-byte pack and its hash; the destination update used no force.
+Both previous temporary remote upload branches were removed only after matching
+their expected hashes. Local payload history remains in backup refs recorded in
+[TEMPORARY_REF_CLEANUP.json](TEMPORARY_REF_CLEANUP.json).
+
+A real local Git pack check exposed final-step retransmission of already held
+blobs when their containing trees differ. An exact-tree bridge alone also failed
+that check; its failure is preserved in [TREE_BRIDGE_FAILURE.log](TREE_BRIDGE_FAILURE.log).
+Two GitHub tree API attempts returned502, including a smaller metadata request;
+those failures and the undeployed experiment are retained here. No project branch
+was changed by those attempts. That route was stopped.
+
+The delivered repair builds a local reachability bitmap with `git repack -a -b`
+and enables bitmap use for the final push. It retains every previous pack and
+reference, does not garbage collect or prune, and leaves working files untouched.
+The added test uses real Git with an incompressible256KiB blob: ordinary traversal
+resends it, while bitmap traversal produces a pack below1KiB. All six uploader
+tests passed after this repair. The unchanged eleven packaging/fetch tests and
+two optional-asset publisher tests had already passed for their exact dependencies.
+
+The actual project finalization then sent only about470KiB. The optional139-piece
+data release is a separate next step; it is not yet claimed published by this receipt.

@@ -1,5 +1,6 @@
 """Manufactured temporary repositories and a local bare remote only."""
 from pathlib import Path
+import os
 import subprocess
 import tempfile
 import unittest
@@ -9,6 +10,35 @@ from tools import push_in_batches as P
 
 
 class BatchedPushTests(unittest.TestCase):
+    def test_bitmap_prevents_real_git_pack_resending_preloaded_blobs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            P.git(root, "init", "-q")
+            P.git(root, "config", "user.name", "Manufactured pack check")
+            P.git(root, "config", "user.email", "check@example.invalid")
+            (root / "base.txt").write_bytes(b"base")
+            P.git(root, "add", ".")
+            P.git(root, "commit", "-qm", "base")
+            base = P.git(root, "rev-parse", "HEAD").decode().strip()
+            (root / "original.bin").write_bytes(os.urandom(256 * 1024))
+            P.git(root, "add", ".")
+            P.git(root, "commit", "-qm", "target")
+            target = P.git(root, "rev-parse", "HEAD").decode().strip()
+            blob = P.git(root, "rev-parse", "HEAD:original.bin").decode().strip()
+            tree = P.payload_tree(root, [(blob, 256 * 1024)])
+            payload = P.git(root, "commit-tree", tree, "-p", base, data=b"payload\n").decode().strip()
+            P.git(root, "update-ref", "refs/heads/preload", payload)
+            revisions = f"{target}\n^{payload}\n".encode()
+            before = P.git(root, "pack-objects", "--revs", "--stdout", "--thin",
+                           "--no-use-bitmap-index", data=revisions)
+            P.git(root, "repack", "-a", "-b")
+            after = P.git(root, "pack-objects", "--revs", "--stdout", "--thin",
+                          "--use-bitmap-index", data=revisions)
+            self.assertGreater(len(before), 256 * 1024)
+            self.assertLess(len(after), 1024)
+            self.assertTrue(list((root / ".git/objects/pack").glob("*.bitmap")))
+            self.assertEqual(P.git(root, "rev-parse", "HEAD").decode().strip(), target)
+
     def test_dirty_repository_stops_before_fetch_or_ref_changes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

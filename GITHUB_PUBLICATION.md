@@ -2,11 +2,11 @@
 
 The mod, runtime DLLs/indexes, code, reports, fixtures and model receipts keep their
 existing layout. Historical capture databases and large analysis data are optional
-release downloads, so normal Git updates do not carry their1.52GiB archive payload.
-The catalog and tools stay in Git; every compressed piece is at most48MiB.
+release downloads, so normal Git updates do not carry their 1.52 GiB archive payload.
+The catalog and tools stay in Git; every compressed piece is at most 48 MiB.
 
 A normal mod installation does not need historical research captures. From a clone,
-use Python3.10 or newer when a historical analysis needs them:
+use Python 3.10 or newer when a historical analysis needs them:
 
 ```powershell
 # Download optional pieces, verifying sizes and SHA-256; completed pieces resume.
@@ -44,11 +44,14 @@ python -B tools/push_in_batches.py plan --batch-mib 128
 python -B tools/push_in_batches.py push --batch-mib 128
 ```
 
-Each payload carries at most128MiB of new uncompressed blobs;64MiB is also available.
+Each payload carries at most 128 MiB of new uncompressed blobs; 64 MiB is also available.
 The uploader uses temporary payload branches and verifies the original destination
 commit before cleanup. It never force pushes or publishes local backup refs. It
 excludes completed objects by identity, checks advertised heads rather than stale
-tracking refs, and skips automatic maintenance during fetch. Smaller batches improve
+tracking refs, and skips automatic maintenance during fetch. Before the final
+push it builds a local reachability bitmap, retaining old packs and recovery refs,
+so Git excludes preloaded objects even when their paths differ. This can temporarily
+increase local Git storage; it does not add files to the published project. Smaller batches improve
 recovery; they do not increase network bandwidth.
 
 ## Updating optional research data
