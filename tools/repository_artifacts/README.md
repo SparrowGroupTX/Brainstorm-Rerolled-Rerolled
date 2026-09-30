@@ -1,7 +1,7 @@
 # Optional historical research data
 
-The catalog maps135 historical database/analysis originals to lossless compressed
-pieces no larger than48MiB. The payloads are optional GitHub release assets, excluded
+The catalog maps 135 historical database/analysis originals to lossless compressed
+pieces no larger than 48 MiB. The payloads are optional GitHub release assets, excluded
 from Git; source, reports, fixtures and the download/restore tools remain in Git.
 A normal mod installation does not need this research data.
 
@@ -21,7 +21,8 @@ is involved. Local originals and already prepared archive pieces remain intact.
 
 The download metadata links to
 [the optional collection](https://github.com/SparrowGroupTX/Brainstorm-Rerolled-Rerolled/releases/tag/research-archives-20260930).
-The release becomes available after its independent upload verifies. See the
+All139 pieces are published and verified; the public download/restore path was
+checked in a fresh directory against an original SHA-256. See the
 [publication guide](../../GITHUB_PUBLICATION.md) for updating code and research assets.
 
 Old copied automatic journals listed in

@@ -18,7 +18,8 @@ python -B tools/repo_artifacts.py restore
 Both commands accept exact catalog paths for selective downloads/restoration.
 Local originals remain intact. The optional data collection is at
 [Historical research downloads](https://github.com/SparrowGroupTX/Brainstorm-Rerolled-Rerolled/releases/tag/research-archives-20260930).
-It becomes available when its separate asset upload finishes. This is a data release;
+All139 pieces are published and verified. A public download and restoration in a
+fresh directory also reproduced the exact preserved original bytes. This is a data release;
 it does not change the current mod release, installation, or simulator qualification.
 
 Old automatic journal copies listed in

@@ -1,5 +1,9 @@
 # Smaller, recoverable GitHub publication
 
+Completed: the lightweight project and optional data collection are published.
+[COMPLETION.json](COMPLETION.json) records135 preserved originals,139 bounded pieces,
+21 focused tooling tests and the successful public download/restore check.
+
 The user subsequently selected a lighter main repository with optional historical
 downloads. [OPTIONAL_LAYOUT.json](OPTIONAL_LAYOUT.json) records the additional
 backup and139 archive pieces removed only from the Git index. Those local pieces
@@ -124,3 +128,22 @@ refuses ambiguous collection tags, and reuses the existing release/assets. Four
 focused manufactured publisher tests passed, including recovery without recreating
 a draft or resending a completed asset. Recovery uses the unchanged catalog and
 local pieces; the41 missing assets are a separate explicit continuation.
+
+## Completed optional publication
+
+Recovery reused the98 verified server assets and uploaded only the41 missing
+pieces. [OPTIONAL_RELEASE_RESULT.json](OPTIONAL_RELEASE_RESULT.json) records all139
+GitHub SHA-256 receipts, totaling1,636,438,831 unique compressed bytes, for135
+original paths totaling18,586,985,983 bytes. No piece exceeds48MiB. The collection
+is public at the recorded URL and is a data prerelease, with `make_latest=false`.
+
+A download without credentials into a fresh temporary directory followed by exact
+restoration reproduced a preserved local original's byte count and SHA-256.
+[FRESH_DOWNLOAD_PROOF.json](FRESH_DOWNLOAD_PROOF.json) names that one end-to-end
+case; it is not a claim that every restored path was downloaded again. All135
+local archives/originals had already passed complete lossless verification.
+
+The final code tree excludes archive pieces and old copied automatic journals.
+Local originals, full-history backup refs, raw failures, installed451 and source
+fidelity evidence remain intact. Simulator work stays paused at checkpoint460;
+this repository publication adds no gameplay, source, installation or training claim.
