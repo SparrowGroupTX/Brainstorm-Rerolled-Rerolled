@@ -69,7 +69,8 @@ The asset publisher uses Git credential manager without writing credentials to
 files. It uploads through four connections with bounded request pacing, verifies
 GitHub's SHA-256 receipts, retains completed assets for recovery and publishes the
 data release only after every expected piece verifies. Existing assets are never
-overwritten. A different catalog needs a fresh collection tag.
+overwritten. Recovery finds unpublished drafts through the authenticated release
+list, retaining the same collection and completed pieces. A different catalog needs a fresh collection tag.
 
 ## Recovery and evidence
 

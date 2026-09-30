@@ -22,6 +22,26 @@ ROOT = A.ROOT
 API = "https://api.github.com"
 
 
+def find_release(api, base: str, tag: str):
+    """Draft releases have no published tag and can be absent from tag lookup."""
+    try:
+        return api(base + "/releases/tags/" + quote(tag))
+    except HTTPError as error:
+        if error.code != 404:
+            raise
+    matches = []
+    for page in range(1, 21):
+        rows = api(base + f"/releases?per_page=100&page={page}")
+        matches.extend(row for row in rows if row.get("tag_name") == tag)
+        if len(rows) < 100:
+            break
+    else:
+        raise ValueError("Release inventory exceeds the bounded lookup; no new draft created")
+    if len(matches) > 1:
+        raise ValueError("Multiple releases use this collection tag; no new draft created")
+    return matches[0] if matches else None
+
+
 def pieces(root: Path) -> dict:
     result = {}
     for entry in A.load(root)["files"].values():
@@ -72,11 +92,8 @@ def publish(root: Path) -> dict:
             "the downloader verifies exact sizes and SHA-256 and resumes completed pieces.\n\n"
             "This data release does not qualify simulator fidelity or authorize game/training execution.")
     base = "/repos/" + repo
-    try:
-        release = api(base + "/releases/tags/" + quote(tag))
-    except HTTPError as error:
-        if error.code != 404:
-            raise
+    release = find_release(api, base, tag)
+    if release is None:
         release = api(base + "/releases", {
             "tag_name": tag, "target_commitish": target,
             "name": "Optional historical research data — 2026-09-30", "body": body,

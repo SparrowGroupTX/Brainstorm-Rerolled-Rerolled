@@ -109,3 +109,18 @@ two optional-asset publisher tests had already passed for their exact dependenci
 
 The actual project finalization then sent only about470KiB. The optional139-piece
 data release is a separate next step; it is not yet claimed published by this receipt.
+
+## Optional asset recovery
+
+The first optional upload stopped on a Windows connection timeout after94 logged
+verifications. Read-only recovery found98 complete server assets, all with the
+expected byte counts and SHA-256 digests; no incomplete placeholders existed.
+The raw failure is preserved in [OPTIONAL_UPLOAD_ATTEMPT_001.log](OPTIONAL_UPLOAD_ATTEMPT_001.log),
+and [OPTIONAL_RECOVERY.json](OPTIONAL_RECOVERY.json) records the verified assets.
+
+The published-tag endpoint returned404 for that unpublished draft. The asset
+publisher now searches the authenticated release list before creating any draft,
+refuses ambiguous collection tags, and reuses the existing release/assets. Four
+focused manufactured publisher tests passed, including recovery without recreating
+a draft or resending a completed asset. Recovery uses the unchanged catalog and
+local pieces; the41 missing assets are a separate explicit continuation.
