@@ -1,0 +1,13 @@
+1. Preserve the combined 1 GiB observation allowance and all independent event, segment, file-count and session bounds. Recording status must remain readable after an alert disappears, with errors displayed in bounded pages. Deleting files does not silently revive an errored writer. The user-authorized cleanup is complete; future cleanup requires its own applicable authorization.
+
+2. Keep title-screen suppression narrow: known idle `MAIN_MENU`, no active/busy/resuming auto-run and no native or legacy search. Retain bounded timing state and explicit action logs. Verify active work and unknown states continue through the existing telemetry path. Do not treat the larger storage cap as evidence of lower overhead or a diagnosed freeze cause.
+
+3. A fresh bounded timing review can investigate freezing once new observations exist and applicable inspection authorization is established. Earlier v1/v2 external originals were deleted at the user's request; only existing repository audits remain. Separate original game update, advisor work, draw, journal work and frame intervals. Do not add nested durations, impute dropped/unflushed records as zero or infer CPU percentages from elapsed gaps.
+
+4. Preserve non-stopping ordinary input and explicit Stop/Resume from 325. Pending actions, terminal evidence, profile/run identity, selected recipe, consumed counters and original clocks survive a valid pause. A cancelled search must drain before an explicit Resume authorizes a distinct new request; a found seed or already-started run must not launch twice. Verified manual checkpoint continuation retains retry and session limits.
+
+5. Continue strategic pace and survival improvements through complete comparisons. Maintain flexible Yorick/Burnt development, whole-inventory Perkeo, copy order, Blue generation, cash reserves, boss restrictions and missing-Joker retention. Source experiments, calibration and genuinely unseen terminal validation require fresh authorization and frozen one-use provenance. Do not substitute score-cap increases or named-hand rules for integrated planning.
+
+6. Keep historical evidence exact. The closed gold299 cycle spent 38 jobs and all 22 unused slots remain closed; C09 never ran. C01 policy300 owns that cycle's sole selected synthetic win. Release 326 has zero experiment jobs and no decoded log or terminal observation. Broader Completionist++, Jokerless, Knife's Edge and per-challenge targets remain unproven. Preserve all remaining work, current settings, native DLLs and failed evidence; no commits, PRs, game control or scheduled continuation.
+
+Read the current generated session record, relevant architecture sections and `LOG_STORAGE_326.md`. These priorities grant no experiment authority.

@@ -1,0 +1,305 @@
+--- before/Brainstorm/Advisor/runtime.lua
++++ after/Brainstorm/Advisor/runtime.lua
+@@ -560,8 +560,12 @@
+   -- Card crossings during one drag are provisional. Keep the detached work
+   -- paused and compare the final physical arrangement once the drag ends.
+   -- Execution stays blocked until that fresh comparison has actually run.
+-  if dragging() then A.drag_pending=true;return end
+-  local s = A.snapshot.capture(G)
++  if dragging() then A.drag_pending=true;return end
++  if A.snapshot.phase(G)=='other' then
++    invalidate('Waiting for a decision...')
++    return
++  end
++  local s = A.snapshot.capture(G)
+   if not s or s.phase == 'other' then
+     invalidate('Waiting for a decision...')
+     return
+@@ -588,7 +592,7 @@
+     A.lines = {'Comparing plays, discard draws, held consumables, and Joker orders. Recommended actions will appear when the comparison is complete.'}
+     A.page = 1
+     if A.menu_open and G.OVERLAY_MENU then A.render_menu() end
+-    if s.phase == 'hand' and #s.hand > 0 or s.phase=='shop' then
++    if s.phase == 'hand' and #s.hand > 0 or s.phase=='shop' or s.phase=='pack' or s.phase=='blind' then
+       A.worker_perf=P:begin_decision(s)
+       A.worker = coroutine.create(function()
+         local result = A.decision.run(s, A, function() coroutine.yield() end,{retry=context})
+--- before/Brainstorm/Advisor/snapshot.lua
++++ after/Brainstorm/Advisor/snapshot.lua
+@@ -135,19 +135,28 @@
+   return out
+ end
+ 
+-function M.capture(g)
+-  if not g or not g.GAME or not g.STAGES or g.STAGE ~= g.STAGES.RUN then return nil end
+-  local game, states = g.GAME, g.STATES
++-- The runtime uses this small public-state check before copying a complete
++-- snapshot. Logging and execution still use capture, including other phases.
++function M.phase(g)
++  if not g or not g.GAME or not g.STAGES or g.STAGE ~= g.STAGES.RUN then return nil end
++  local states = g.STATES
+   local phase,pack_type = 'other',nil
+   if g.STATE == states.SELECTING_HAND then phase = 'hand'
+   elseif g.STATE == states.SHOP then phase = 'shop'
+   elseif g.STATE == states.BLIND_SELECT then phase = 'blind'
+   elseif g.STATE == states.ROUND_EVAL then phase = 'round'
+-  else
++  else
+     for _, name in ipairs({'TAROT_PACK', 'PLANET_PACK', 'SPECTRAL_PACK', 'STANDARD_PACK', 'BUFFOON_PACK'}) do
+       if states[name] and g.STATE == states[name] then phase = 'pack';pack_type=name end
+     end
+-  end
++  end
++  return phase,pack_type
++end
++
++function M.capture(g)
++  local phase,pack_type=M.phase(g)
++  if not phase then return nil end
++  local game=g.GAME
+   local blind, round, resets = game.blind or {}, game.current_round or {}, game.round_resets or {}
+   local back = game.selected_back and game.selected_back.effect and game.selected_back.effect.center or {}
+   local next_target, next_blind, route_blinds, route_tags, active_tags
+--- before/Brainstorm/Advisor/decision.lua
++++ after/Brainstorm/Advisor/decision.lua
+@@ -83,9 +83,11 @@
+         'Pack scoring could not complete every legal comparison; this decision uses the strategic ratings.' or
+         'Shop scoring comparison reached its limit; this decision uses the strategic ratings.'
+     end
+-    local routing_diagnostics
+-    if snapshot.phase=='blind' and modules.blind_routing and strategy.action and strategy.action.kind=='select_blind' then
+-      local route;route,routing_diagnostics=modules.blind_routing.suggest(snapshot,modules,options.blind_routing)
++    local routing_diagnostics
++    if snapshot.phase=='blind' and modules.blind_routing and strategy.action and strategy.action.kind=='select_blind' then
++      local routing_options={yield_fn=yield_fn}
++      for key,value in pairs(options.blind_routing or {}) do routing_options[key]=value end
++      local route;route,routing_diagnostics=modules.blind_routing.suggest(snapshot,modules,routing_options)
+       if route then strategy=route end
+     end
+     return {kind='strategy', strategy=strategy, action=strategy.action,
+--- before/tests/advisor_runtime.lua
++++ after/tests/advisor_runtime.lua
+@@ -1230,10 +1230,10 @@
+   A.decision.run=function()clock=clock+.012;return {kind='strategy',strategy={title='Fixture',lines={},warnings={}},
+     action={kind='select_blind'},evaluations=3}end
+   A.update(.001)
+-  equal(A.last_decision_timing.status,'completed','synchronous strategy also receives timing')
+-  equal(A.last_decision_timing.evaluations,3,'synchronous score counts are exact result field')
+-  check(math.abs(A.last_decision_timing.active_seconds-.012)<.000001,'synchronous active time measured')
+-  check(not A.worker,'synchronous instrumentation does not introduce a worker')
++  equal(A.last_decision_timing.status,'completed','short blind strategy completes in its first worker resume')
++  equal(A.last_decision_timing.evaluations,3,'short blind score counts are exact result field')
++  check(math.abs(A.last_decision_timing.active_seconds-.012)<.000001,'short blind active time measured')
++  check(not A.worker,'finished short blind worker is released immediately')
+   Brainstorm.config.advisor.player_logging=false
+   local capture=A.snapshot.capture(G);A.snapshot.fingerprint(capture)
+   check(A.performance.window==nil,'disabled recording drops timing state without logging or capture changes')
+@@ -1257,4 +1257,90 @@
+   equal(P.pending,nil,'explicit recording opt-out drops the unflushed tail')
+ end
+ 
++-- Packs and blind preparation can perform real scored comparisons. Their
++-- existing yields now pause a detached worker instead of running synchronously
++-- in refresh. No partially compared action is published or executable.
++for _,phase in ipairs({'pack','blind'}) do
++  local A=setup()
++  G.STATES.PLANET_PACK=5
++  G.STATE=phase=='pack' and G.STATES.PLANET_PACK or G.STATES.BLIND_SELECT
++  local calls,completed=0,0
++  local function decide(s,_,yield_fn)
++    calls=calls+1
++    if yield_fn then yield_fn();yield_fn() end
++    completed=completed+1
++    return {kind='strategy',evaluations=128,strategy={title=phase..' with $'..s.dollars,lines={},warnings={}},
++      action=phase=='pack' and {kind='skip_pack'} or {kind='select_blind',blind='Small'}}
++  end
++  A.decision.run=decide
++  local expected=decide(A.snapshot.capture(G),A,nil)
++  calls,completed=0,0
++  A.refresh()
++  check(A.worker and not A.result,phase..': refresh creates a worker without doing the comparison')
++  equal(calls,0,phase..': panel refresh cannot synchronously score a comparison')
++  A.update(.001)
++  check(A.worker and not A.result and not A.published_key,phase..': first yield publishes no partial result')
++  check(not A.can_execute(),phase..': partial comparison is not executable')
++  local original=A.worker
++  G.CONTROLLER.dragging.target=G.hand.cards[1]
++  A.update(.001)
++  equal(A.worker,original,phase..': input drag pauses the exact worker')
++  equal(completed,0,phase..': paused partial comparison stays incomplete')
++  G.CONTROLLER.dragging.target=nil
++  complete(A)
++  equal(A.snapshot.fingerprint(A.result),A.snapshot.fingerprint(expected),phase..': yielded and synchronous complete results are identical')
++  equal(calls,1,phase..': unchanged input does not restart comparison')
++  A.settings_changed();A.update(.001);original=A.worker
++  G.GAME.dollars=11
++  A.update(.001)
++  check(A.worker~=original and not A.result,phase..': changed cash cancels stale work before another resume')
++  complete(A)
++  equal(A.display.title,phase..' with $11',phase..': only the complete fresh economy result publishes')
++  local key=A.published_key
++  G.STATE=900
++  A.refresh()
++  check(not A.worker and not A.result and not A.key and not A.selection and not A.published_key,
++    phase..': leaving the decision phase clears all old recommendation state')
++  check(not A.execute(key),phase..': old advice cannot execute from another phase')
++end
++
++do
++  local A=setup()
++  local captures,decisions=0,0
++  local capture=A.snapshot.capture
++  A.snapshot.capture=function(g)captures=captures+1;return capture(g)end
++  A.decision.run=function(s,_,yield_fn)
++    decisions=decisions+1
++    yield_fn()
++    return {kind='play',evaluations=1,play={score=99,hand='High Card',indices={1},warnings={}},
++      action={kind='play',indices={1}}}
++  end
++  A.update(.001)
++  check(A.worker~=nil,'manufactured hand worker starts before transition')
++  local worker=A.worker
++  G.STATE=900
++  A.update(.001)
++  check(not A.worker and not A.result and not A.key and not A.published_key and not A.selection,
++    'other-phase entry cancels detached work and every published action')
++  local before=captures
++  for frame=1,120 do A.update(1/60);A.refresh() end
++  equal(captures,before,'120 other-phase frames and explicit refreshes need no full snapshots')
++  equal(decisions,1,'other-phase waiting starts no repeated decision')
++  local public=A.snapshot.capture(G)
++  equal(public.phase,'other','full public capture remains available in other phases for observation/acknowledgment')
++  check(public.hand and #public.hand==8,'other-phase public capture retains its complete card information')
++  G.STATE=G.STATES.SELECTING_HAND
++  A.update(.001)
++  check(A.worker and A.worker~=worker,'returning to the hand starts a new worker immediately')
++  equal(decisions,2,'cancelled hand continuation never resumes after phase transition')
++  complete(A)
++  check(A.result and A.published_key==A.key,'fresh hand comparison publishes after phase transition')
++  A.settings_changed();A.update(.001)
++  G.CONTROLLER.dragging.target=G.hand.cards[1];A.update(.001)
++  G.STATE=900;G.CONTROLLER.dragging.target=nil;A.update(.001)
++  check(not A.worker and not A.result and not A.published_key,'drag ending in another phase cancels obsolete work')
++  G.STATE=G.STATES.SELECTING_HAND;A.update(.001);complete(A)
++  check(A.result and not A.drag_pending,'return from other phase satisfies the final post-drag full comparison')
++end
++
+ print('advisor_runtime: ' .. checks .. ' checks passed')
+--- before/tests/advisor_phase_yield.lua
++++ after/tests/advisor_phase_yield.lua
+@@ -0,0 +1,115 @@
++-- Manufactured deterministic comparisons only; no captured state or game/source
++-- execution. Yielding changes scheduling, never candidate order or budgets.
++local Decision=dofile('Brainstorm/Advisor/decision.lua')
++local Snapshot=dofile('Brainstorm/Advisor/snapshot.lua')
++local Strategy=dofile('Brainstorm/Advisor/strategy.lua')
++local Scoring=dofile('Brainstorm/Advisor/scoring.lua')
++local Shop=dofile('Brainstorm/Advisor/shop_scoring.lua')
++local Route=dofile('Brainstorm/Advisor/blind_routing.lua')
++local Rewards=dofile('Brainstorm/Advisor/finish_rewards.lua')
++local checks=0
++local function check(v,m)assert(v,m);checks=checks+1 end
++local function eq(a,b,m)check(a==b,m..': '..tostring(a)..' ~= '..tostring(b))end
++local function state(phase)
++  local s={phase=phase,ante=2,dollars=0,bankrupt_at=0,joker_limit=5,consumable_limit=2,
++    jokers={},consumeables={},hand={},deck={},playing_cards={},pack_cards={},
++    hand_size=8,hand_limit=5,hands={Pair={level=1,played=6}},
++    round_resets={hands=4,discards=3},current_round={},hands_left=0,discards_left=0,
++    blind={key='bl_small'},modifiers={},probabilities={normal=1},interest_cap=25}
++  for i,r in ipairs({2,4,6,8,10,11,12,14}) do
++    s.playing_cards[i]={id='manufactured:'..i,rank=r,suit=({'Hearts','Clubs','Spades','Diamonds'})[(i-1)%4+1],ability={}}
++  end
++  return s
++end
++local function parity(s,modules,options,label)
++  local before=Snapshot.fingerprint(s)
++  local sync=Decision.run(s,modules,nil,options)
++  local yields,async=0,nil
++  local worker=coroutine.create(function()
++    async=Decision.run(s,modules,function()yields=yields+1;coroutine.yield()end,options)
++  end)
++  local resumes=0
++  repeat
++    local ok,why=coroutine.resume(worker);check(ok,label..': resume '..tostring(why))
++    resumes=resumes+1;check(resumes<=1000,label..': bounded fixture completion')
++    if coroutine.status(worker)~='dead' then check(async==nil,label..': no partial completed result') end
++  until coroutine.status(worker)=='dead'
++  check(yields>0,label..': real scored comparison yields')
++  eq(Snapshot.fingerprint(async),Snapshot.fingerprint(sync),label..': full result and diagnostics identical')
++  eq(Snapshot.fingerprint(s),before,label..': input remains exact')
++  check(async.evaluations>0,label..': comparison actually scores')
++  return async,yields
++end
++do
++  local s=state('pack')
++  s.pack_cards={{key='j_devious',ability={name='Devious Joker',set='Joker',t_chips=100,type='Straight'},cost=99,sell_cost=2},
++    {key='j_joker',ability={name='Joker',set='Joker',mult=4},cost=99,sell_cost=2}}
++  local result=parity(s,{strategy=Strategy,scoring=Scoring,shop_scoring=Shop},nil,'pack')
++  eq(result.action.kind,'choose','pack retains a complete selection')
++  eq(result.action.index,2,'pack keeps the same useful Joker')
++  check(result.evaluations<=50000,'pack retains the existing hard shop allowance')
++end
++do
++  local s=state('pack');s.pack_type='PLANET_PACK';s.pack_kind='Celestial';s.pack_choices=1
++  s.next_blind={key='bl_small',chips=500};s.blind={disabled=true};s.hands={}
++  for i,r in ipairs({2,2,4,4,6,6,8,8})do
++    local c=s.playing_cards[i];c.rank=r;c.nominal=r;c.key='c_base';c.ability={set='Default'}
++    s.hand[i]=c
++  end
++  local function planet(key,name,hand)
++    return {id=key,key=key,name=name,cost=3,ability={name=name,set='Planet',consumeable={hand_type=hand}}}
++  end
++  s.pack_cards={planet('c_mercury','Mercury','Pair'),planet('c_pluto','Pluto','High Card')}
++  local strategy=dofile('Brainstorm/Advisor/strategy.lua')
++  local shop=dofile('Brainstorm/Advisor/shop_scoring.lua')
++  local pack=dofile('Brainstorm/Advisor/pack_scoring.lua')
++  local consumables=dofile('Brainstorm/Advisor/consumables.lua')
++  strategy.consumables=consumables;strategy.pack_scoring=pack
++  shop.paired_deck=dofile('Brainstorm/Advisor/paired_deck.lua')
++  local modules={strategy=strategy,scoring=Scoring,shop_scoring=shop,pack_scoring=pack,consumables=consumables}
++  local result=parity(s,modules,nil,'Celestial Planet pack')
++  check(result.action.kind=='choose' and #result.pack_diagnostics.comparisons==2,
++    'Celestial choice compares both actual manufactured Planet offers')
++  check(not result.pack_diagnostics.tactical_fallback and result.strategy.scoring_evidence.samples==4,
++    'Celestial choice retains complete paired scoring evidence')
++  check(result.evaluations<=50000,'Celestial choice keeps the existing hard shop allowance')
++  local capped=parity(s,modules,{shop_scoring={max_evaluations=900}},'capped Celestial Planet pack')
++  check(capped.shop_diagnostics.truncated and capped.pack_diagnostics.tactical_fallback,
++    'yielded incomplete Planet coverage retains the complete-decision strategic fallback')
++  check(capped.evaluations<=900,'yielding cannot exceed a smaller caller allowance')
++end
++do
++  local s=state('blind');s.blind_on_deck='Big';s.blind_states={Small='Defeated',Big='Select',Boss='Upcoming'}
++  s.route_blinds={Big={key='bl_big',chips=500,dollars=4},Boss={key='bl_wall',chips=1000,dollars=5,boss=true}}
++  s.route_tags={Big={key='tag_economy',name='Economy Tag',config={max=40}}}
++  s.active_tags={};s.round_bonus={};s.dollars=30
++  local options={blind_routing={max_evaluations=192,margin=2}}
++  local modules={strategy=setmetatable({advise=function()return {action={kind='select_blind',blind='Big'}}end},{__index=Strategy}),
++    scoring=Scoring,shop_scoring=Shop,blind_routing=Route,finish_rewards=Rewards}
++  local result,yields=parity(s,modules,options,'blind route')
++  eq(result.action.kind,'select_blind','insufficient route retains the original action')
++  eq(result.evaluations,192,'route uses its original exact allowance')
++  eq(yields,3,'route callback reaches the coroutine every 64 scores')
++  eq(options.blind_routing.yield_fn,nil,'forwarding leaves caller options unchanged')
++  eq(options.blind_routing.max_evaluations,192,'forwarding preserves requested cap')
++  local hook_calls=0;local hook=function()hook_calls=hook_calls+1 end
++  options.blind_routing.yield_fn=hook
++  Decision.run(s,modules,function()error('caller route callback must remain authoritative')end,options)
++  eq(hook_calls,3,'explicit caller route callback remains authoritative')
++  eq(options.blind_routing.yield_fn,hook,'explicit caller callback is not mutated')
++end
++do
++  eq(Snapshot.phase(nil),nil,'missing game has no decision phase')
++  local g={STAGES={RUN=1},STAGE=1,GAME={},STATES={SELECTING_HAND=1,SHOP=2,BLIND_SELECT=3,ROUND_EVAL=4,
++    TAROT_PACK=5,PLANET_PACK=6,SPECTRAL_PACK=7,STANDARD_PACK=8,BUFFOON_PACK=9}}
++  for value,expected in ipairs({'hand','shop','blind','round','pack','pack','pack','pack','pack'}) do
++    g.STATE=value
++    local phase,pack_type=Snapshot.phase(g);local captured=Snapshot.capture(g)
++    eq(phase,expected,'cheap phase classification '..value)
++    eq(phase,captured.phase,'cheap and full phase agree '..value)
++    eq(pack_type,captured.pack_type,'cheap and full pack identity agree '..value)
++  end
++  g.STATE=900;eq(Snapshot.phase(g),'other','unknown state stays outside planning')
++  g.STAGE=2;eq(Snapshot.phase(g),nil,'outside-run phase is unavailable')
++end
++print('advisor_phase_yield: '..checks..' manufactured checks passed')

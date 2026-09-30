@@ -1,0 +1,86 @@
+--- a/Brainstorm/Advisor/strategy.lua
++++ b/Brainstorm/Advisor/strategy.lua
+@@ -1184,7 +1184,7 @@
+ 
+ -- Compare complete retained rows, not rarity or the incoming card alone. These
+ -- are bounded strategic utility units, not score simulations or win chances.
+-local function replacement_build_value(snapshot, stats)
++local function replacement_build_value(snapshot, stats, include_inventory)
+     local state=shallow_copy(snapshot); state.jokers={}
+     state.shop_forecast=nil; state.shop_jokers={}; state.pack_cards={}; state.phase='replacement'
+     for _,card in ipairs(snapshot.jokers or {}) do
+@@ -1233,6 +1233,12 @@
+     end
+     if engine.mult>0 and engine.chips>0 then total=total+24 end
+     if engine.mult>0 and engine.xmult>0 then total=total+36 end
++    -- A Joker sale can remove Perkeo copying or change the supported copy
++    -- chain while every held consumable remains in place. Count the complete
++    -- inventory at both replacement endpoints, including Negative copies and
++    -- Observatory. The sequence API keeps its Joker-only value below because
++    -- that planner already adds the same inventory utility separately.
++    if include_inventory then total=total+inventory_value(state) end
+     return total
+ end
+ 
+@@ -1240,7 +1246,7 @@
+     if jokerless(snapshot) or modifiers(snapshot).all_eternal or
+         #(snapshot.jokers or {})<num(snapshot.joker_limit,5) then return end
+     local stats=deck_stats(snapshot)
+-    local before=replacement_build_value(snapshot,stats)
++    local before=replacement_build_value(snapshot,stats,true)
+     local best
+     for index,sold in ipairs(snapshot.jokers or {}) do
+         local _,_,known=joker_value(snapshot,sold,stats,components(snapshot))
+@@ -1254,7 +1260,7 @@
+                 not capacity(snapshot,candidate.card,snapshot.phase=='pack') then
+                 local after=after_joker_purchase(state,candidate.card)
+                 local cost=snapshot.phase=='shop' and num(candidate.card.cost) or 0
+-                local gain=replacement_build_value(after,deck_stats(after))-before
++                local gain=replacement_build_value(after,deck_stats(after),true)-before
+                 local adjustment,evidence=shop_score_evidence(snapshot,after,candidate.card,true)
+                 local merit=gain-purchase_penalty(state,cost,candidate.card,after,evidence and evidence.after_readiness)-6
+                 if evidence then
+@@ -1992,7 +1998,7 @@
+     local sale,replacement
+     if buffoon and not jokerless(snapshot) and not modifiers(snapshot).all_eternal and
+         #(snapshot.jokers or {})>=num(snapshot.joker_limit,5) then
+-        local before=replacement_build_value(snapshot,stats)
++        local before=replacement_build_value(snapshot,stats,true)
+         -- Compare every actual offer with each supported one-sale retained row.
+         -- Selecting an incoming card first can miss a different best partner
+         -- for the Joker being retained. No unseen pack card or future buy enters.
+@@ -2017,7 +2023,7 @@
+                             diagnostics.incomplete=true
+                             diagnostics.incomplete_reason=diagnostics.incomplete_reason or entry.unavailable_reason
+                         end
+-                        local gain=replacement_build_value(after,deck_stats(after))-before
++                        local gain=replacement_build_value(after,deck_stats(after),true)-before
+                         local merit=gain-6+num(adjustment)
+                         local egg=omelette(snapshot) and sold.key=='j_egg'
+                         if egg then
+@@ -2220,6 +2226,7 @@
+ Strategy.shop_sequence_api={kind=kind,capacity=capacity,after_joker_purchase=after_joker_purchase,
+     after_joker_sale=after_joker_sale,purchase_penalty=purchase_penalty,
+     build_value=function(s) return replacement_build_value(s,deck_stats(s)) end,
++    replacement_value=function(s) return replacement_build_value(s,deck_stats(s),true) end,
+     card_value=function(s,c) return card_value(s,c,deck_stats(s),components(s)) end}
+ 
+ local function catalog_replacement_plans(snapshot,card)
+@@ -2338,7 +2345,7 @@
+             end})
+     end
+     local full_row=#(snapshot.jokers or {})>=num(snapshot.joker_limit,5)
+-    local before_build=full_row and replacement_build_value(rating,stats)
++    local before_build=full_row and replacement_build_value(rating,stats,true)
+     if full_row then context.catalog_replacement_diagnostics={candidates={},scope='Complete supported legal victim sets, at most twelve paired comparisons.'} end
+     return reroll.suggest(snapshot,function(entry,price)
+         local card=reroll.catalog.create(entry,price,snapshot)
+@@ -2386,7 +2393,7 @@
+                     local after=copy_table(plan.state);after._readiness=paired.after_readiness
+                     local liquidity=Strategy.liquidity and Strategy.liquidity.estimate(after,paired.after_readiness)
+                     local affordable=not liquidity or num(after.dollars)>=liquidity.purchase_floor
+-                    local merit=replacement_build_value(after,deck_stats(after))-before_build+num(paired.adjustment)-6-
++                    local merit=replacement_build_value(after,deck_stats(after),true)-before_build+num(paired.adjustment)-6-
+                         purchase_penalty(plan.before_purchase,price,card,after,paired.after_readiness)
+                     local gain=reroll.opening_gain(paired)
+                     records[#records+1]={sold_index=plan.sold_index,sold_key=plan.sold_key,sale_proceeds=plan.sale_proceeds,

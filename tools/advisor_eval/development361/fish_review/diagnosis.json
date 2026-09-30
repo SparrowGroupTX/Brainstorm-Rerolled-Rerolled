@@ -1,0 +1,263 @@
+{
+  "scope": "passive prefix only; no policy/scorer execution",
+  "cutoff": "2026-09-22T17:04:57Z",
+  "last_sequence": 464,
+  "evidence": [
+    {
+      "sequence": 4,
+      "at": "2026-09-22T17:00:32Z",
+      "anchor": {
+        "segment": "session-20260922T170022Z-1-000001.brj",
+        "ordinal": 4,
+        "raw_sha256": "9225b4c0ad48d200dcdee3a40c75d35b983d4d5e4197c7cd078216b286348aa0"
+      },
+      "details": {
+        "event": "explicit_start_requested",
+        "options": {
+          "budget_ms": 30000,
+          "burnt_fallback": true,
+          "deck_name": "Red Deck",
+          "first_ante": 4,
+          "interchangeable_copies": true,
+          "last_ante": 8,
+          "max_runs": 10,
+          "minimum_distinct": 0,
+          "quota_mode": "auto",
+          "search_request": {
+            "budget_ms": 30000,
+            "burnt_fallback": true,
+            "deck_name": "Red Deck",
+            "first_ante": 4,
+            "interchangeable_copies": true,
+            "last_ante": 8,
+            "legendary_fallback": true,
+            "minimum_distinct": 0,
+            "quota_mode": "auto"
+          }
+        },
+        "profile_id": 1,
+        "run_id": "game:1",
+        "scope": "User enabled advisor, Gold objective, recording and bounded automatic play/search.",
+        "teacher_quality": "unreviewed_heuristic",
+        "version": "Brainstorm v2.161.0-alpha"
+      }
+    },
+    {
+      "sequence": 5,
+      "at": "2026-09-22T17:00:33Z",
+      "anchor": {
+        "segment": "session-20260922T170022Z-1-000001.brj",
+        "ordinal": 5,
+        "raw_sha256": "3d65191813367c5bbf4e1c0ea40cdfbcdab1969dbaf5982a9a99f6efb8399a3d"
+      },
+      "details": {
+        "event": "session_started",
+        "limits": {
+          "max_actions": 500,
+          "max_runs": 10,
+          "run_seconds": 1800,
+          "search_request": {
+            "budget_ms": 30000,
+            "burnt_fallback": true,
+            "deck_name": "Red Deck",
+            "first_ante": 4,
+            "interchangeable_copies": true,
+            "last_ante": 8,
+            "legendary_fallback": true,
+            "minimum_distinct": 0,
+            "quota_mode": "auto"
+          },
+          "search_seconds": 30,
+          "session_seconds": 21600,
+          "stall_seconds": 30,
+          "teacher_batch": false
+        },
+        "profile_id": 1,
+        "schema": 1,
+        "session": 1,
+        "state": "waiting",
+        "time": 30.6257305
+      }
+    },
+    {
+      "sequence": 436,
+      "at": "2026-09-22T17:02:51Z",
+      "anchor": {
+        "segment": "session-20260922T170022Z-1-000002.brj",
+        "ordinal": 425,
+        "raw_sha256": "a40038eab9019f7e3d231a9f9e95725890fa01f9c4544d470ededd980c37538b"
+      },
+      "kind": "state_after_actions",
+      "advice": {
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 2 distinct missing Jokers.",
+          "The concealed immediate-play comparison requires at most nine held cards and a bounded deck.",
+          "Concealed identities were not used to choose an action.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "active_seconds": 2.5600000014947e-05,
+          "decision_id": 213,
+          "elapsed_seconds": 2.910000000611035e-05,
+          "evaluations": 0,
+          "finished_seconds": 168.8115238,
+          "max_resume_seconds": 2.5600000014947e-05,
+          "phase": "hand",
+          "resume_calls": 1,
+          "started_seconds": 168.8114947,
+          "status": "completed"
+        },
+        "title": "Concealed-card advice unavailable"
+      },
+      "hand_size": 10,
+      "hidden_cards": 5,
+      "ante": 3,
+      "blind": {
+        "boss": true,
+        "chips": 6400,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_fish",
+        "mult": 2,
+        "name": "The Fish"
+      },
+      "chips": 5564,
+      "hands_left": 2,
+      "discards_left": 0,
+      "teacher_profile": null
+    },
+    {
+      "sequence": 437,
+      "at": "2026-09-22T17:02:51Z",
+      "anchor": {
+        "segment": "session-20260922T170022Z-1-000002.brj",
+        "ordinal": 426,
+        "raw_sha256": "8eebfd6c15c66166333030970e29883f9fbc324f77dc5f3a17064726eadb2c0e"
+      },
+      "kind": "auto_run",
+      "advice": {
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 2 distinct missing Jokers.",
+          "The concealed immediate-play comparison requires at most nine held cards and a bounded deck.",
+          "Concealed identities were not used to choose an action.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "active_seconds": 2.5600000014947e-05,
+          "decision_id": 213,
+          "elapsed_seconds": 2.910000000611035e-05,
+          "evaluations": 0,
+          "finished_seconds": 168.8115238,
+          "max_resume_seconds": 2.5600000014947e-05,
+          "phase": "hand",
+          "resume_calls": 1,
+          "started_seconds": 168.8114947,
+          "status": "completed"
+        },
+        "title": "Concealed-card advice unavailable"
+      },
+      "hand_size": 10,
+      "hidden_cards": 5,
+      "ante": 3,
+      "blind": {
+        "boss": true,
+        "chips": 6400,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_fish",
+        "mult": 2,
+        "name": "The Fish"
+      },
+      "chips": 5564,
+      "hands_left": 2,
+      "discards_left": 0,
+      "teacher_profile": null
+    },
+    {
+      "sequence": 444,
+      "at": "2026-09-22T17:03:21Z",
+      "anchor": {
+        "segment": "session-20260922T170022Z-1-000002.brj",
+        "ordinal": 433,
+        "raw_sha256": "ec200b851cd0ccdc8e97a257b23c5dc8a2c822c54a0974cfa6729cc48b4bce1d"
+      },
+      "details": {
+        "actions": 79,
+        "event": "session_stopped",
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcomes": {
+          "losses": 0,
+          "wins": 0
+        },
+        "profile_id": 1,
+        "reason": "unsupported_stalled",
+        "run_id": "game:2",
+        "runs_started": 1,
+        "schema": 1,
+        "search_draining": false,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "start_attempts": 0,
+        "state": "stopped",
+        "time": 198.8473074,
+        "uncertain_starts": 0
+      }
+    },
+    {
+      "sequence": 444,
+      "at": "2026-09-22T17:03:21Z",
+      "anchor": {
+        "segment": "session-20260922T170022Z-1-000002.brj",
+        "ordinal": 433,
+        "raw_sha256": "ec200b851cd0ccdc8e97a257b23c5dc8a2c822c54a0974cfa6729cc48b4bce1d"
+      },
+      "kind": "auto_run",
+      "advice": {
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 2 distinct missing Jokers.",
+          "The concealed immediate-play comparison requires at most nine held cards and a bounded deck.",
+          "Concealed identities were not used to choose an action.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "active_seconds": 2.5600000014947e-05,
+          "decision_id": 213,
+          "elapsed_seconds": 2.910000000611035e-05,
+          "evaluations": 0,
+          "finished_seconds": 168.8115238,
+          "max_resume_seconds": 2.5600000014947e-05,
+          "phase": "hand",
+          "resume_calls": 1,
+          "started_seconds": 168.8114947,
+          "status": "completed"
+        },
+        "title": "Concealed-card advice unavailable"
+      },
+      "hand_size": 10,
+      "hidden_cards": 5,
+      "ante": 3,
+      "blind": {
+        "boss": true,
+        "chips": 6400,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_fish",
+        "mult": 2,
+        "name": "The Fish"
+      },
+      "chips": 5564,
+      "hands_left": 2,
+      "discards_left": 0,
+      "teacher_profile": null
+    }
+  ]
+}

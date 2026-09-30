@@ -1,0 +1,10 @@
+First ordinary synthetic fixture run failed at the test expecting every plan to
+be unavailable when only one spare card had a Purple Seal. The module correctly
+found another supported discard excluding that card. The fixture was corrected
+to put Purple Seals on every held card so that every candidate actually needs
+an unavailable generated Tarot outcome. No runtime fix was needed for this
+test assumption. Command: python -B tests/run_lua_tests.py
+tools/advisor_eval/development299/drafts/copy_order/advisor_phase_copy.lua
+Result: 0/1 fixtures passed; assertion: unknown Tarot generation is never filled
+in: table ~= nil. No source component, captured replay, search, terminal attempt,
+game process, profile, or save operation occurred.

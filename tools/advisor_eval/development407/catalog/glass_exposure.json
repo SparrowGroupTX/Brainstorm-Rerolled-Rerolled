@@ -1,0 +1,1600 @@
+[
+  {
+    "run": 2,
+    "request": 3583,
+    "ante": 2,
+    "round": 3,
+    "selected_glass": [
+      {
+        "id": "playing:52",
+        "key": "m_glass",
+        "rank": 10,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 6,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 1000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          4,
+          6,
+          7,
+          8
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#1 10S, #4 7S, #6 6S, #7 5S, #8 4S",
+        "Need 1000 more chips; 4 hands left.",
+        "Flush level 1.",
+        "Keep the last Justice for Perkeo copies.",
+        "Alternative: Pair ~540 (#1 10S, #2 10D)",
+        "Alternative: Pair ~234 (#4 7S, #5 7C)",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.002683799999999792,
+        "decision_id": 615,
+        "elapsed_seconds": 0.0026902000000177395,
+        "evaluations": 21,
+        "finished_seconds": 468.6067544,
+        "max_resume_seconds": 0.0016888999999764565,
+        "phase": "hand",
+        "resume_calls": 2,
+        "started_seconds": 468.6040642,
+        "status": "completed"
+      },
+      "title": "Play Flush (~1072)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 3585,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 3907,
+    "ante": 3,
+    "round": 6,
+    "selected_glass": [
+      {
+        "id": "playing:50",
+        "key": "m_glass",
+        "rank": 13,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 9,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      },
+      {
+        "id": "playing:37",
+        "key": "m_glass",
+        "rank": 13,
+        "suit": "Hearts",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 9,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 3200,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#1 KS, #2 KH",
+        "Need 3200 more chips; 4 hands left.",
+        "Pair level 4.",
+        "Keep the last Justice for Perkeo copies.",
+        "Alternative: Pair ~2250 (#4 10S, #5 10H)",
+        "Alternative: High Card ~630 (#1 KS)",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.0030798000000231696,
+        "decision_id": 672,
+        "elapsed_seconds": 0.0030894999999873107,
+        "evaluations": 17,
+        "finished_seconds": 504.7088583,
+        "max_resume_seconds": 0.0020605999999929736,
+        "phase": "hand",
+        "resume_calls": 2,
+        "started_seconds": 504.7057688,
+        "status": "completed"
+      },
+      "title": "Play Pair (~4500)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 3909,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4048,
+    "ante": 3,
+    "round": 7,
+    "selected_glass": [
+      {
+        "id": "playing:37",
+        "key": "m_glass",
+        "rank": 13,
+        "suit": "Hearts",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 9,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "played_this_ante": true,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 4800,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          2,
+          3
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#2 KH, #3 KC",
+        "Need 4800 more chips; 4 hands left.",
+        "Pair level 7.",
+        "Keep the last Justice for Perkeo copies.",
+        "Alternative: Pair ~8360 (#6 5S, #7 5C)",
+        "Alternative: High Card ~864 (#1 AC)",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.0024026999999477994,
+        "decision_id": 699,
+        "elapsed_seconds": 0.002408999999943262,
+        "evaluations": 16,
+        "finished_seconds": 518.0501092,
+        "max_resume_seconds": 0.0013794000000189044,
+        "phase": "hand",
+        "resume_calls": 2,
+        "started_seconds": 518.0477002,
+        "status": "completed"
+      },
+      "title": "Play Pair (~9120)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4050,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4142,
+    "ante": 3,
+    "round": 8,
+    "selected_glass": [
+      {
+        "id": "playing:37",
+        "key": "m_glass",
+        "rank": 12,
+        "suit": "Hearts",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 11,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 6400,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          4
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#3 QH, #4 QC",
+        "Need 6400 more chips; 4 hands left.",
+        "Pair level 7.",
+        "Keep the last Justice for Perkeo copies.",
+        "Alternative: High Card ~875 (#3 QH)",
+        "Alternative: High Card ~468 (#1 AS)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Club: Clubs are debuffed; their ranks still help form hands, but their scoring effects do not trigger.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.12829960000124174,
+        "decision_id": 722,
+        "elapsed_seconds": 0.35075000000006185,
+        "evaluations": 13962,
+        "finished_seconds": 528.8471643,
+        "max_resume_seconds": 0.008394100000032267,
+        "phase": "hand",
+        "resume_calls": 438,
+        "started_seconds": 528.4964143,
+        "status": "completed"
+      },
+      "title": "Play Pair (~7150)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 7150,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.008
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4144,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4210,
+    "ante": 4,
+    "round": 9,
+    "selected_glass": [
+      {
+        "id": "playing:49",
+        "key": "m_glass",
+        "rank": 13,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 9,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 9000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#1 KS, #2 KC",
+        "Need 9000 more chips; 4 hands left.",
+        "Pair level 7.",
+        "Alternative: Pair ~7920 (#4 10S, #5 10D)",
+        "Alternative: Two Pair ~3480 (#1 KS, #2 KC, #4 10S, #5 10D)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.2172702999989724,
+        "decision_id": 738,
+        "elapsed_seconds": 0.5276167000000669,
+        "evaluations": 25818,
+        "finished_seconds": 536.1301299,
+        "max_resume_seconds": 0.00882909999995718,
+        "phase": "hand",
+        "resume_calls": 808,
+        "started_seconds": 535.6025132,
+        "status": "completed"
+      },
+      "title": "Play Pair (~9360)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 218,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "The known clear has insufficient safety margin for investment."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 11475,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.01
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4212,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4305,
+    "ante": 4,
+    "round": 10,
+    "selected_glass": [
+      {
+        "id": "playing:50",
+        "key": "m_glass",
+        "rank": 10,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 6,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      },
+      {
+        "id": "playing:26",
+        "key": "m_glass",
+        "rank": 10,
+        "suit": "Diamonds",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 13,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 13500,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          2,
+          3
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#2 10S, #3 10D",
+        "Need 13500 more chips; 4 hands left.",
+        "Pair level 7.",
+        "Keep the last Justice for Perkeo copies.",
+        "Alternative: High Card ~1365 (#1 QC)",
+        "Alternative: High Card ~945 (#2 10S)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.20194589999869095,
+        "decision_id": 757,
+        "elapsed_seconds": 0.4971471000000065,
+        "evaluations": 20820,
+        "finished_seconds": 546.8481174,
+        "max_resume_seconds": 0.00706609999997454,
+        "phase": "hand",
+        "resume_calls": 652,
+        "started_seconds": 546.3509703,
+        "status": "completed"
+      },
+      "title": "Play Pair (~15720)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 15600,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.01
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4307,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4444,
+    "ante": 4,
+    "round": 11,
+    "selected_glass": [
+      {
+        "id": "playing:5",
+        "key": "m_glass",
+        "rank": 6,
+        "suit": "Clubs",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 14,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      },
+      {
+        "id": "playing:43",
+        "key": "m_glass",
+        "rank": 6,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 14,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 18000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          5,
+          6
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#5 6C, #6 6S",
+        "Need 18000 more chips; 4 hands left.",
+        "Pair level 7.",
+        "Alternative: Pair ~5664 (#2 9H, #3 9D)",
+        "Alternative: High Card ~1612 (#5 6C)",
+        "Water: there are no discards; use consumables and spare hands to improve draws.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.0014981000000489075,
+        "decision_id": 785,
+        "elapsed_seconds": 0.0015071999999918262,
+        "evaluations": 18,
+        "finished_seconds": 563.9810625,
+        "max_resume_seconds": 0.001031600000032995,
+        "phase": "hand",
+        "resume_calls": 2,
+        "started_seconds": 563.9795553,
+        "status": "completed"
+      },
+      "title": "Play Pair (~18816)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 18,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "The known clear has insufficient safety margin for investment."
+          ]
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4446,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4538,
+    "ante": 5,
+    "round": 12,
+    "selected_glass": [
+      {
+        "id": "playing:36",
+        "key": "m_glass",
+        "rank": 12,
+        "suit": "Hearts",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 11,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      },
+      {
+        "id": "playing:11",
+        "key": "m_glass",
+        "rank": 12,
+        "suit": "Clubs",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 13,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 25000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#1 QH, #2 QC",
+        "Need 25000 more chips; 4 hands left.",
+        "Pair level 9.",
+        "Alternative: Full House ~12168 (#1 QH, #2 QC, #4 9S, #5 9H, #6 9C)",
+        "Alternative: Pair ~12104 (#4 9S, #6 9C)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.20567170000117585,
+        "decision_id": 804,
+        "elapsed_seconds": 0.49121600000000853,
+        "evaluations": 22340,
+        "finished_seconds": 578.0143753,
+        "max_resume_seconds": 0.008771100000103615,
+        "phase": "hand",
+        "resume_calls": 700,
+        "started_seconds": 577.5231593,
+        "status": "completed"
+      },
+      "title": "Play Pair (~28200)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 27600,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.012
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4540,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4678,
+    "ante": 5,
+    "round": 13,
+    "selected_glass": [
+      {
+        "id": "playing:11",
+        "key": "m_glass",
+        "rank": 12,
+        "suit": "Clubs",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 13,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "played_this_ante": true,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 37500,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#1 QS, #2 QC",
+        "Need 37500 more chips; 4 hands left.",
+        "Pair level 9.",
+        "Alternative: Pair ~46150 (#5 6S, #6 6H)",
+        "Alternative: Two Pair ~6916 (#1 QS, #2 QC, #5 6S, #6 6H)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.1294922999999244,
+        "decision_id": 835,
+        "elapsed_seconds": 0.29871190000005754,
+        "evaluations": 9629,
+        "finished_seconds": 596.9484505,
+        "max_resume_seconds": 0.008769200000074306,
+        "phase": "hand",
+        "resume_calls": 302,
+        "started_seconds": 596.6497386,
+        "status": "completed"
+      },
+      "title": "Play Pair (~48750)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 55892,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.012
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4680,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 4812,
+    "ante": 6,
+    "round": 15,
+    "selected_glass": [
+      {
+        "id": "playing:24",
+        "key": "m_glass",
+        "rank": 10,
+        "suit": "Diamonds",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 13,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 60000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          2,
+          3
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#2 10C, #3 10D",
+        "Need 60000 more chips; 4 hands left.",
+        "Pair level 10.",
+        "Alternative: Pair ~45296 (#7 2C, #8 2D)",
+        "Alternative: Two Pair ~8448 (#2 10C, #3 10D, #7 2C, #8 2D)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.20736969999927624,
+        "decision_id": 867,
+        "elapsed_seconds": 0.4947108000000071,
+        "evaluations": 27238,
+        "finished_seconds": 608.8650816,
+        "max_resume_seconds": 0.00844680000000153,
+        "phase": "hand",
+        "resume_calls": 853,
+        "started_seconds": 608.3703708,
+        "status": "completed"
+      },
+      "title": "Play Pair (~79200)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 89280,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.0005
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 4814,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 2,
+    "request": 5015,
+    "ante": 6,
+    "round": 17,
+    "selected_glass": [
+      {
+        "id": "playing:38",
+        "key": "m_glass",
+        "rank": 5,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 10,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 120000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          5,
+          6
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#5 5S, #6 5H",
+        "Need 120000 more chips; 4 hands left.",
+        "Pair level 13.",
+        "Alternative: Pair ~175000 (#5 5S, #7 5D)",
+        "Alternative: Pair ~105000 (#6 5H, #7 5D)",
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+        "Plant: face cards are debuffed, so face-card scoring engines can fail.",
+        "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.19873599999971248,
+        "decision_id": 908,
+        "elapsed_seconds": 0.4817594999999528,
+        "evaluations": 28018,
+        "finished_seconds": 631.7320143,
+        "max_resume_seconds": 0.007945299999960298,
+        "phase": "hand",
+        "resume_calls": 877,
+        "started_seconds": 631.2502548,
+        "status": "completed"
+      },
+      "title": "Play Pair (~175000)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "late_margin": true,
+          "minimum_score": 170000,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.0005
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 5017,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  },
+  {
+    "run": 5,
+    "request": 10588,
+    "ante": 7,
+    "round": 20,
+    "selected_glass": [
+      {
+        "id": "playing:20",
+        "key": "m_glass",
+        "rank": 8,
+        "suit": "Spades",
+        "enhancement": "m_glass",
+        "edition": null,
+        "seal": null,
+        "cost": 1,
+        "sell_cost": 1,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Glass Card",
+          "extra": 4,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 25,
+          "mult": 0,
+          "name": "Glass Card",
+          "order": 5,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Enhanced",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 2
+        },
+        "debuff": false
+      }
+    ],
+    "need": 220000,
+    "advice": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "copy_death_review": {
+        "final_area": "hand",
+        "final_kind": "play",
+        "fishing": {
+          "attempted": false,
+          "complete": false,
+          "reason": "no_held_death",
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "schema": 1
+      },
+      "lines": [
+        "#1 AS, #2 QS, #3 10S, #4 9S, #5 8S",
+        "Need 220000 more chips; 4 hands left.",
+        "Flush level 6.",
+        "Conservative score estimate: random bonus triggers are excluded unless guaranteed.",
+        "Keep the last The Magician for Perkeo copies.",
+        "Alternative: Flush ~214148 (#1 AS, #2 QS, #3 10S, #4 9S, #6 7S)",
+        "Alternative: Flush ~211420 (#1 AS, #2 QS, #3 10S, #4 9S, #7 5S)",
+        "Tooth: every card played costs $1, including non-scoring cards.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.0030402000002140994,
+        "decision_id": 1890,
+        "elapsed_seconds": 0.0030467999999927997,
+        "evaluations": 20,
+        "finished_seconds": 1303.7532144,
+        "max_resume_seconds": 0.0015857999999298045,
+        "phase": "hand",
+        "resume_calls": 3,
+        "started_seconds": 1303.7501676,
+        "status": "completed"
+      },
+      "title": "Play Flush (~302096)",
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 0,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "schema": 1
+      }
+    },
+    "confirmed_later_observation": 10590,
+    "selected_glass_ids_absent_after": [],
+    "displayed_non_glass_clearing_alternatives": [],
+    "alternative_safety_not_replayed": true
+  }
+]

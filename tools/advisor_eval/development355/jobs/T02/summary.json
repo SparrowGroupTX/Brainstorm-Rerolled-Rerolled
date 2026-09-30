@@ -1,0 +1,56 @@
+{
+  "mode": "learn",
+  "simulator_qualified": false,
+  "real_game_win_claim": false,
+  "transitions": 127744,
+  "episodes_started": 6986,
+  "outcomes": {
+    "loss": 6859,
+    "unsupported": 119,
+    "censored": 8
+  },
+  "censored_transitions": 119,
+  "updates": 499,
+  "elapsed_seconds": 882.0620000000345,
+  "stage_seconds": {
+    "policy_and_transfer": 296.47399999853224,
+    "simulator_wait_and_record": 192.1670000012964,
+    "optimization_and_bootstrap": 371.7720000008121
+  },
+  "transition_rate": 144.82428672813816,
+  "observed_completion_lower_bound": 0.0,
+  "wilson_95_all_started": null,
+  "interval_limit": "Wilson interval emitted only when every started attempt has an actual terminal win/loss. With censoring only an observed completion lower bound is emitted. Development training trajectories change policy and are not a fixed-policy evaluation. This is not a player win rate.",
+  "mean_blinds_cleared": 0.996993987975952,
+  "device": {
+    "name": "NVIDIA GeForce RTX 5090",
+    "torch": "2.9.0.dev20250801+cu128",
+    "precision": "bf16",
+    "parameters": 5607074,
+    "input_checkpoint_sha256": "99bc2d8ed96a31f2ff041d83216af1a016ccc7f887e6dcb66aa4d02f6a57491c"
+  },
+  "objective": "completionist_distinct_v1",
+  "cohort": "public_conditioned_post_soul_training",
+  "actual_player_awards": 0,
+  "simulated_new_gold": 0,
+  "new_gold_by_outcome": {
+    "loss": 0,
+    "unsupported": 0,
+    "censored": 0
+  },
+  "mean_simulated_new_gold": 0.0,
+  "mean_limit": "Observed mean for the frozen initial collection mask; unresolved attempts are unknown. Not a real player campaign, eligible Steam award, or retail win rate.",
+  "by_policy": {
+    "learned": {
+      "attempts": 6986,
+      "outcomes": {
+        "loss": 6859,
+        "unsupported": 119,
+        "censored": 8
+      },
+      "simulated_new_gold": 0,
+      "mean_blinds_cleared": 0.996993987975952
+    }
+  },
+  "cuda_peak_bytes": 2153680384
+}

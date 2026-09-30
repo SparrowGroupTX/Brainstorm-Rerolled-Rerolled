@@ -1,0 +1,91 @@
+{
+  "link_checks": 1929,
+  "link_failures": [],
+  "watch_offers": {
+    "j_blueprint": {
+      "offered": 5,
+      "acquired": 5
+    },
+    "j_brainstorm": {
+      "offered": 4,
+      "acquired": 4
+    },
+    "j_invisible": {
+      "offered": 3,
+      "acquired": 0
+    }
+  },
+  "buffoon_reveals": 26,
+  "buffoon_reveals_confirmed": 26,
+  "death_uses": 2,
+  "death_confirmed": 2,
+  "display_score_divergences": 16,
+  "undisclosed_divergences": 0,
+  "exact_cap_decisions": {
+    "hand": 2,
+    "shop": 2,
+    "pack": 1
+  },
+  "copy_receipt_counts": {
+    "fishing": 862,
+    "pack": 142,
+    "acquisition": 13,
+    "choice": 11,
+    "focused_direct": 13,
+    "death": 117,
+    "focused_replacements": 5
+  },
+  "death_fishing_reasons": {
+    "no_held_death": 862
+  },
+  "flag_categories": [
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "comparison_receipt_without_complete_rejection_utility",
+      "count": 40
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "explicit_conservative_guard",
+      "count": 27
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "no_growth_receipt_for_this_decision",
+      "count": 3
+    },
+    {
+      "rule": "short_discard",
+      "category": "no_growth_receipt_for_this_decision",
+      "count": 123
+    },
+    {
+      "rule": "short_discard",
+      "category": "compared_five_but_none_qualified",
+      "count": 65
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "no_watched_growth_joker",
+      "count": 8
+    },
+    {
+      "rule": "short_discard",
+      "category": "no_watched_growth_joker",
+      "count": 12
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "final_boss_no_later_growth",
+      "count": 4
+    }
+  ],
+  "coverage_or_support_notes": {
+    "Note: Pack scoring could not complete every legal comparison; this decision uses the strategic ratings.": 93,
+    "Note: Every reported play is fully scored; later draws and consumable sequences outside the bounded upgrade-then-Tarot shortlist are not modeled.": 35,
+    "Held consumables remain in scoring; spending them is outside this comparison.": 18,
+    "Note: A future hand is concealed; identity-based play optimization is unsupported.": 2,
+    "Note: Not simulated: The Fool (unsupported consumable).": 28,
+    "Whole-blind finishing is unresolved: A considered future score has unsupported uncertainty or effects.": 11
+  }
+}

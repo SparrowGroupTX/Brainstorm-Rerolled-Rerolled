@@ -1,0 +1,25 @@
+{
+  "session": "session-20260927T190548Z-1",
+  "capture": "captures/001",
+  "loaded_version": "2.209.0-alpha",
+  "blind": "Amber Acorn",
+  "ante": 8,
+  "runs": [
+    {"run": 7, "first_valid_observation": 23346, "first_play_advice": 23348, "play_request": 23351, "callback": 23352,
+     "settled_observation": 23366, "stable_observation": 23369, "unsupported_advice": 23370, "abandoned": 23373,
+     "cause": "Smiley Face absent from public ability continuity whitelist",
+     "worlds_before": 120, "worlds_after_visible_events": 18, "remaining_hands": 3, "remaining_discards": 3,
+     "chips": 4860, "target": 400000, "actual_terminal": false},
+    {"run": 8, "first_valid_observation": 26024, "first_play_advice": 26027, "play_request": 26030, "callback": 26031,
+     "public_action_complete": 26041, "settled_observation": 26042, "stable_observation": 26045, "unsupported_advice": 26046, "abandoned": 26049,
+     "cause": "Supernova absent from public ability continuity whitelist",
+     "worlds_before": 120, "worlds_after_visible_events": 10, "remaining_hands": 4, "remaining_discards": 3,
+     "chips": 51552, "target": 400000, "actual_terminal": false}
+  ],
+  "shared_chain": "public inventory -> initial complete belief -> legal selected play -> callback -> public action settlement -> advance_public invalidates ability values -> no supported next decision -> verified product retirement",
+  "value_gap": "This Joker has unqualified changes during public actions.",
+  "classification": "unsupported retirements, not verified game losses",
+  "replay_executed": false,
+  "manufactured_baseline": "baseline430.lua",
+  "subsequent_wins_established": false
+}

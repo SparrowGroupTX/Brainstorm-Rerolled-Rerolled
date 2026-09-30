@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "prepared_M19_cache_comparison_manifest",
+  "status": "prepared_not_registered_not_evaluated",
+  "files": {
+    "prepare_inputs.py": "ec26a3a57dddc8cf05867719bce7753d1532c7178a57564668deb4a0e7e1e78a",
+    "compare_cache19.py": "8b110ef32e09c577b4db06aafde9e31f914ee47f6cd4c339d04b7e9f3b189a53",
+    "driver.lua": "15ad367d9ce83b8d3fe20611da4d02b654db3b61f33cea062be812140fbbc2f5",
+    "register.py": "c898ae664f41ee51f48f787ddd2bb09ee014192f010a659fcc466c19fd1e2f00",
+    "lua_bytes.py": "225a9fbd4f25f6dad61857dc30966dec2a421b48564fc6919c900e142dd89c20",
+    "module_setup.lua": "91b14161299b8797886d74ccb337111a72a2b17257f80df72d98835a6d5f97e0",
+    "engine_contract.lua": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da",
+    "baseline_record.json": "86b0bacef35fb8787554480939859800d852099f503a951ea4ec81f936ed2b87",
+    "candidate_record.json": "7444c1fce45c874f9bb2fca8829617af0f519c4bb66ceedf4b40e7020f80e7bd",
+    "candidate_score_cache.lua": "03cf12c7921ea3ff98c29fd20d5cc67201a422349cb43ddbd9f574cfdb3675c0",
+    "step85.json": "bbed67ffb836a3dedf4775c40e088d8fcc7238f262e54a531acb82e6ce1daed3",
+    "step185.json": "34819bdc733dc6a57a7080d39b769fa9e29c628b468999a5f079b196950729b1",
+    "input_provenance.json": "32d359020cc2c7451375d6f26f7794c3cacd18dd0c5c1722c585a8a98724b25b",
+    "test_driver.lua": "4acbd6c280627e30e4241d157e0095f7fce86799255be3a7b5f97465b4753803",
+    "test_spec.py": "bdc8c2bf07067ae15a84e5e28214cc4165a85f0455ca5e2233c21410e8b79c3f",
+    "INTEGRATION.md": "c53b6859f7c05d366dd18897637ac876271d8c8fe8fc27e05fb5e04ab28e5ed6"
+  },
+  "decision_order": [
+    [
+      "baseline",
+      85
+    ],
+    [
+      "candidate",
+      85
+    ],
+    [
+      "candidate",
+      185
+    ],
+    [
+      "baseline",
+      185
+    ]
+  ],
+  "maximum_seconds": 30,
+  "maximum_score_calls": 560000,
+  "per_decision_score_cap": 140000,
+  "cache_capacity": 8192,
+  "baseline": "exact certificate309_installed",
+  "candidate": "same manifest, only FIFO score_cache.lua substitution",
+  "tests": {
+    "lua_driver_fixtures": 1,
+    "synthetic_checks": 252,
+    "python_spec_tests": 4,
+    "compile_safe_serializer_tests": 5
+  },
+  "source_execution": false,
+  "captured_evaluation": false
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "runtime_target": "Brainstorm/Advisor/gold_tarot_hold.lua",
+  "before_sha256": "0d831d99900f4a19bae3bc3643d65779b29a0896f840ea0241a141d9a1508522",
+  "staged_sha256": "ae523d33cbb2fc9287bc27093b8ade4a537c046e9ad8e946dd0cf2f54eb0b18f",
+  "row_identity_count": 110,
+  "source_files": {
+    "tools/advisor_eval/runs/roi247_catalog_source/source_probe.lua": "3310afd07d9737975af3fd068150258203403f13958d86ed8c7961f601b3054c",
+    "tools/advisor_eval/runs/chicot_order_source1/source/card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "Brainstorm/Advisor/gold_goal.lua": "a997000c66802949dd102d6ed1723b0246445f4176f7effcb2aeab82484e9008"
+  },
+  "source_lines": {
+    "center_names": [
+      167,
+      316
+    ],
+    "copy_resolvers": [
+      2303,
+      2333
+    ],
+    "ending_shop": [
+      2412,
+      2428
+    ]
+  },
+  "authority": "Read-only preserved source and manufactured fixtures; no source execution, captured replay or new worker lease.",
+  "scope": "Qualified fixed-hold unused Tarot score equivalence; existing stable row identities only.",
+  "source_note": "Cartomancer included only for ending-shop copy dependency; separate exact-full inventory startup gate required in Gold/Shop.",
+  "tests": {
+    "tests/advisor_gold_tarot_rows.lua": "7292d1b6671458700b093ce98d3fe0a06b9df6e9ec1ed4abdbd43c945ea56df2"
+  },
+  "validation": [
+    {
+      "mode": "before_mixed",
+      "command": [
+        "python",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development345\\row_component\\run_before_mixed.lua"
+      ],
+      "exit_code": 1,
+      "seconds": 0.11918130004778504,
+      "log": "tools\\advisor_eval\\development345\\row_component\\before_mixed.log",
+      "sha256": "08ce288706023c1d85453e78ad01cb8e84df7300d4828b921dad043e27aa984c"
+    },
+    {
+      "mode": "candidate_final",
+      "command": [
+        "python",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development345\\row_component\\run_candidate.lua"
+      ],
+      "exit_code": 0,
+      "seconds": 0.7419056999497116,
+      "log": "tools\\advisor_eval\\development345\\row_component\\candidate_final.log",
+      "sha256": "719f176306a6326f1e00e3ea9d9f06f637343ef8d89090e107233dc9495a5e5d"
+    }
+  ],
+  "prior_validation": "validation.json",
+  "suite_cap_seconds": 60,
+  "integration_instruction": "Merge only the row_names catalog/comment block; retain separately staged pin normalization and constructor changes.",
+  "limitations": "Read-only source analysis and manufactured local fixtures; no captured-policy replay, source worker, search, terminal attempt or demonstration of rescued win."
+}

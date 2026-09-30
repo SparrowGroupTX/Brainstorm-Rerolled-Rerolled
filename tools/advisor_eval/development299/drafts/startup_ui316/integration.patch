@@ -1,0 +1,556 @@
+--- a/Brainstorm/UI/advisor.lua
++++ b/Brainstorm/UI/advisor.lua
+@@ -1,6 +1,63 @@
+ local A = Brainstorm.Advisor
+ local contents_id = 'brainstorm_advisor_contents'
+ local status_colour = {0.82, 0.86, 0.85, 1}
++local notices={seen={}}
++local function bounded_text(value,limit)
++  local text=type(value)=='string' and value or ''
++  text=text:gsub('[%z\1-\31]',' ')
++  limit=limit or 512
++  if #text>limit then text=text:sub(1,limit-3)..'...' end
++  return text
++end
++local function version()
++  local text=bounded_text(Brainstorm.VERSION,80)
++  return text~='' and text or 'Loaded version unavailable'
++end
++local function ui_time()
++  return love and love.timer and love.timer.getTime and love.timer.getTime() or os.clock()
++end
++local function report(owner)
++  local product=owner=='manual' and Brainstorm.CollectionSearchProduct or Brainstorm.AutoRun
++  if not product or type(product.status_report)~='function' then return nil end
++  local okay,value
++  if owner=='manual' then okay,value=pcall(product.status_report)
++  else okay,value=pcall(product.status_report,product) end
++  if not okay or type(value)~='table' then return nil end
++  return {requested=value.requested==true,busy=value.busy==true,owner=owner,
++    phase=bounded_text(value.phase,64),text=bounded_text(value.text)}
++end
++function A.note_search_notice(owner,text)
++  -- Called only by explicit UI callbacks after a rejected request.
++  notices.current={owner=owner=='auto' and 'auto' or 'manual',text=bounded_text(text),
++    phase='rejected',busy=false,requested=true}
++  notices.expires=ui_time()+15
++end
++function A.search_diagnostics(include_stopped)
++  local now=ui_time();local manual,auto=report('manual'),report('auto')
++  local active=auto and auto.busy and auto or manual and manual.busy and manual
++  for _,value in ipairs({manual or false,auto or false}) do
++    if value then
++      local signature=value.phase..'|'..value.text..'|'..tostring(value.busy)..'|'..tostring(value.requested)
++      if signature~=notices.seen[value.owner] then
++        notices.seen[value.owner]=signature
++        if value.requested and not value.busy then
++          if value.owner=='manual' and value.phase=='started' then
++            if notices.current and notices.current.owner=='manual' then notices.current=nil end
++          elseif value.text~='' then notices.current=value;notices.expires=now+15 end
++        end
++      end
++    end
++  end
++  if active then notices.current=active;notices.expires=now+15;return active end
++  local current=notices.current
++  if current and current.busy then
++    -- A consumed successful manual launch clears its previous busy notice.
++    if manual and manual.phase=='started' and current.owner=='manual' then notices.current=nil;return nil end
++    current=nil
++  end
++  if current and (include_stopped or now<(notices.expires or 0)) then return current end
++  return nil
++end
+ 
+ local function row(text, colour, scale)
+   return {n = G.UIT.R, config = {align = 'cm', padding = 0.035}, nodes = {
+@@ -22,27 +79,30 @@
+ end
+ 
+ local function menu_contents()
++  local diagnostic=A.search_diagnostics(A.search_detail_mode==true)
+   local all = {}
+-  for _, line in ipairs(A.lines or {'Start a normal deck or challenge run to receive advice.'}) do
++  local lines=diagnostic and {diagnostic.text,'Search phase: '..diagnostic.phase..'. Owner: '..diagnostic.owner..'.'} or
++    A.lines or {'Start a normal deck or challenge run to receive advice.'}
++  for _, line in ipairs(lines) do
+     for _, part in ipairs(wrap(line, 78)) do all[#all + 1] = part end
+   end
+   local pages = math.max(1, math.ceil(#all / 11))
+   A.page = math.max(1, math.min(A.page, pages))
+-  local nodes = {row('RUN ADVISOR', G.C.GREEN, 0.48)}
++  local nodes = {row('RUN ADVISOR / '..version(), G.C.GREEN, 0.34)}
+   if not Brainstorm.config.advisor.enabled or Brainstorm.config.advisor.challenge_only then
+     nodes[#nodes+1]=enable_normal_button()
+   end
+-  for _, part in ipairs(wrap(A.display.title, 65)) do nodes[#nodes + 1] = row(part, G.C.ORANGE, 0.40) end
+-  nodes[#nodes + 1] = row(A.display.status, status_colour, 0.28)
++  for _, part in ipairs(wrap(diagnostic and 'Search diagnostics' or A.display.title, 65)) do nodes[#nodes + 1] = row(part, G.C.ORANGE, 0.40) end
++  nodes[#nodes + 1] = row(diagnostic and (diagnostic.busy and 'Active request' or 'Last request status') or A.display.status, status_colour, 0.28)
+   for i = (A.page - 1) * 11 + 1, math.min(#all, A.page * 11) do nodes[#nodes + 1] = row(all[i]) end
+   if pages > 1 then
+     nodes[#nodes + 1] = UIBox_button({label = {'More details (' .. A.page .. '/' .. pages .. ')'}, button = 'brainstorm_advisor_page', minw = 4, minh = 0.45, scale = 0.32})
+   end
+-  if A.selection then
++  if not diagnostic and A.selection then
+     local label = A.selection.kind == 'use' and 'Select consumable targets' or ('Select cards to ' .. A.selection.kind)
+     nodes[#nodes + 1] = UIBox_button({label = {label}, button = 'brainstorm_advisor_select', colour = G.C.GREEN, minw = 4, minh = 0.6, scale = 0.38})
+   end
+-  if A.retry_status and A.active() then
++  if not diagnostic and A.retry_status and A.active() then
+     local retry=A.retry_status()
+     for _,part in ipairs(wrap(retry.text,90)) do nodes[#nodes+1]=row(part,status_colour,0.25) end
+     nodes[#nodes+1]=row('Save and restore checkpoints yourself. These controls remember decisions only.',status_colour,0.25)
+@@ -76,8 +136,9 @@
+   holder.UIBox:recalculate()
+ end
+ 
+-function A.open()
+-  if A.refresh then A.refresh() end
++local function open_menu(persistent_diagnostics)
++  A.search_detail_mode=persistent_diagnostics==true
++  if not A.search_diagnostics(A.search_detail_mode) and A.refresh then A.refresh() end
+   if not A.active() then
+     A.display.title = 'Advisor settings'
+     A.display.status = 'Settings > Brainstorm > Advisor'
+@@ -97,10 +158,13 @@
+   end
+   A.render_menu()
+ end
++function A.open() open_menu(false) end
++function A.open_search_status() open_menu(true) end
+ 
+ G.FUNCS.brainstorm_advisor_open = function() A.open() end
++G.FUNCS.brainstorm_search_status_open = function() A.open_search_status() end
+ G.FUNCS.brainstorm_advisor_close = function()
+-  A.menu_open, A.menu_overlay = false, nil
++  A.menu_open, A.menu_overlay,A.search_detail_mode = false, nil,nil
+   G.FUNCS.exit_overlay_menu()
+ end
+ G.FUNCS.brainstorm_advisor_select = function() A.select() end
+@@ -134,7 +198,7 @@
+ function Brainstorm.createAdvisorPage()
+   A.defaults()
+   return {n = G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, padding = 0.1}, nodes = {
+-    row('Run Advisor', G.C.GREEN, 0.5),
++    row('Run Advisor / '..version(), G.C.GREEN, 0.34),
+     row('Advice for normal decks and challenge runs.', nil, 0.30),
+     create_toggle({label = 'Enable advisor', ref_table = Brainstorm.config.advisor, ref_value = 'enabled', callback = G.FUNCS.brainstorm_advisor_config}),
+     create_toggle({label = 'Challenge runs only', ref_table = Brainstorm.config.advisor, ref_value = 'challenge_only', callback = G.FUNCS.brainstorm_advisor_config}),
+@@ -390,46 +454,81 @@
+   return {n=G.UIT.ROOT,config={align='cm',colour=G.C.CLEAR,padding=0.02,minw=7.7},nodes=nodes}
+ end
+ 
++local function font_wrap(text,font,width,max_lines)
++  local lines,line={},''
++  local function push()
++    if line~='' then lines[#lines+1]=line;line='' end
++  end
++  for word in bounded_text(text):gmatch('%S+') do
++    if line~='' and font:getWidth(line..' '..word)>width then push() end
++    while font:getWidth(word)>width and #word>1 do
++      local cut=#word
++      while cut>1 and font:getWidth(word:sub(1,cut))>width do cut=cut-1 end
++      if line~='' then push() end
++      lines[#lines+1]=word:sub(1,cut);word=word:sub(cut+1)
++    end
++    line=line=='' and word or line..' '..word
++  end
++  push()
++  if #lines>max_lines then
++    while #lines>max_lines do table.remove(lines) end
++    local tail=lines[max_lines]
++    while #tail>0 and font:getWidth(tail..'...')>width do tail=tail:sub(1,-2) end
++    lines[max_lines]=tail..'...'
++  end
++  return lines
++end
+ function A.draw()
+-  A.hud_bounds, A.execute_bounds, A.hud_action_key, A.hud_auto_stop = nil, nil, nil, nil
+-  if not A.active() or not Brainstorm.config.advisor.hud or G.OVERLAY_MENU or G.SETTINGS.paused or G.screenwipe then return end
+-  local graphics = love.graphics
+-  graphics.push('all')
+-  graphics.origin()
+-  local width, height = graphics.getDimensions()
+-  local scale = math.max(0.7, math.min(1.5, height / 900))
+-  local w, h = math.min(width * 0.34, 430 * scale), 82 * scale
++  A.hud_bounds,A.execute_bounds,A.hud_action_key,A.hud_auto_stop,A.hud_search_stop,A.hud_status_only=nil,nil,nil,nil,nil,nil
++  local diagnostic=A.search_diagnostics(false)
++  if (not diagnostic and (not A.active() or not Brainstorm.config.advisor.hud)) or
++    G.OVERLAY_MENU or G.SETTINGS.paused or G.screenwipe then return end
++  local graphics=love.graphics
++  graphics.push('all');graphics.origin()
++  local width,height=graphics.getDimensions()
++  local scale=math.max(0.7,math.min(1.5,height/900))
++  local w,h=math.min(width*.34,430*scale),(diagnostic and 110 or 82)*scale
+   local button_w,gap=100*scale,6*scale
+-  local x, y = width - w - button_w - gap - 12 * scale, height - h - 12 * scale
+-  A.hud_bounds = {x = x, y = y, w = w, h = h}
++  local x,y=width-w-button_w-gap-12*scale,height-h-12*scale
++  A.hud_bounds={x=x,y=y,w=w,h=h}
+   A.execute_bounds={x=x+w+gap,y=y,w=button_w,h=h}
+-  A.hud_action_key=A.published_key
++  A.hud_status_only=diagnostic~=nil
++  A.hud_action_key=not diagnostic and A.published_key or nil
+   A.hud_retry_generation=A.published_generation
+-  local auto=Brainstorm.AutoRun and Brainstorm.AutoRun:status()
+-  A.hud_auto_stop=auto and auto.busy or false
+-  if not A.font or A.font_size ~= math.floor(16 * scale) then
+-    A.font_size = math.floor(16 * scale)
+-    A.font = graphics.newFont(A.font_size)
++  A.hud_auto_stop=diagnostic and diagnostic.busy and diagnostic.owner=='auto' or false
++  A.hud_search_stop=diagnostic and diagnostic.busy and diagnostic.owner=='manual' or false
++  if not A.font or A.font_size~=math.floor(16*scale) then
++    A.font_size=math.floor(16*scale);A.font=graphics.newFont(A.font_size)
+   end
+   graphics.setFont(A.font)
+-  graphics.setColor(0.035, 0.07, 0.065, 0.94)
+-  graphics.rectangle('fill', x, y, w, h, 7 * scale, 7 * scale)
+-  graphics.setColor(0.28, 0.9, 0.65, 1)
+-  graphics.print(A.hud_auto_stop and 'AUTO-RUN  /  Any manual input stops' or 'ADVISOR  /  Click or Ctrl+H', x + 10 * scale, y + 7 * scale)
+-  graphics.setColor(1, 1, 1, 1)
+-  local title = A.hud_auto_stop and (Brainstorm.AutoRun.status_text or 'Automatic play is active') or A.display.title
+-  while A.font:getWidth(title) > w - 22 * scale and #title > 4 do title = string.sub(title, 1, -5) .. '...' end
+-  graphics.print(title, x + 10 * scale, y + 30 * scale)
+-  graphics.setColor(0.72, 0.77, 0.74, 1)
+-  graphics.printf(A.display.status, x + 10 * scale, y + 53 * scale, w - 20 * scale)
+-  local execute_ready=A.hud_auto_stop or A.can_execute and A.can_execute()
+-  if execute_ready then graphics.setColor(0.08,0.46,0.30,0.97)
+-  else graphics.setColor(0.12,0.17,0.15,0.94) end
++  graphics.setColor(.035,.07,.065,.94);graphics.rectangle('fill',x,y,w,h,7*scale,7*scale)
++  graphics.setColor(.28,.9,.65,1)
++  local heading=(A.hud_auto_stop and 'AUTO-RUN' or diagnostic and 'SEARCH' or 'ADVISOR')..' / '..version()
++  local header_scale=math.min(1,(w-20*scale)/math.max(1,A.font:getWidth(heading)))
++  graphics.print(heading,x+10*scale,y+7*scale,0,header_scale,header_scale)
++  graphics.setColor(1,1,1,1)
++  if diagnostic then
++    for i,line in ipairs(font_wrap(diagnostic.text,A.font,w-20*scale,4)) do
++      graphics.print(line,x+10*scale,y+(28+(i-1)*18)*scale)
++    end
++  else
++    local title=bounded_text(A.display.title)
++    while A.font:getWidth(title)>w-22*scale and #title>4 do title=title:sub(1,-5)..'...' end
++    graphics.print(title,x+10*scale,y+30*scale)
++    graphics.setColor(.72,.77,.74,1)
++    graphics.printf(A.display.status,x+10*scale,y+53*scale,w-20*scale)
++  end
++  local stop=A.hud_auto_stop or A.hud_search_stop
++  local execute_ready=stop or not diagnostic and A.can_execute and A.can_execute()
++  if execute_ready then graphics.setColor(.08,.46,.30,.97) else graphics.setColor(.12,.17,.15,.94) end
+   local button=A.execute_bounds
+   graphics.rectangle('fill',button.x,button.y,button.w,button.h,7*scale,7*scale)
+-  if execute_ready then graphics.setColor(1,1,1,1) else graphics.setColor(0.55,0.62,0.58,1) end
+-  graphics.printf(A.hud_auto_stop and 'STOP' or execute_ready and 'EXECUTE' or 'WAIT',button.x+3*scale,button.y+23*scale,button.w-6*scale,'center')
+-  graphics.printf(A.hud_auto_stop and 'Keep this run' or execute_ready and 'One action' or 'Fresh advice',button.x+3*scale,button.y+48*scale,button.w-6*scale,'center')
++  if execute_ready then graphics.setColor(1,1,1,1) else graphics.setColor(.55,.62,.58,1) end
++  graphics.printf(stop and 'STOP' or diagnostic and 'STATUS' or execute_ready and 'EXECUTE' or 'WAIT',
++    button.x+3*scale,button.y+23*scale,button.w-6*scale,'center')
++  graphics.printf(stop and (A.hud_search_stop and 'Cancel search' or 'Keep this run') or
++    diagnostic and 'Click details' or execute_ready and 'One action' or 'Fresh advice',
++    button.x+3*scale,button.y+48*scale,button.w-6*scale,'center')
+   graphics.pop()
+ end
+ 
+@@ -445,21 +544,28 @@
+     local advisor = Brainstorm.Advisor
+     local bounds = advisor and advisor.hud_bounds
+     local execute=advisor and advisor.execute_bounds
+-    if execute and button==1 and not G.OVERLAY_MENU and not G.SETTINGS.paused and advisor.active()
++    if execute and button==1 and not G.OVERLAY_MENU and not G.SETTINGS.paused and
++      (advisor.hud_status_only or advisor.active())
+       and x>=execute.x and x<=execute.x+execute.w and y>=execute.y and y<=execute.y+execute.h then
+       -- Swallow disabled clicks too, so they never hit a game control beneath.
+       -- Honor the button that was drawn, even if another input just stopped
+       -- the controller. A stale STOP must never become an Execute action.
++      if advisor.hud_search_stop then
++        if Brainstorm.CollectionSearchProduct then Brainstorm.CollectionSearchProduct.stop('HUD Search Stop clicked.') end
++        return
++      end
+       if advisor.hud_auto_stop then
+         if Brainstorm.AutoRun then Brainstorm.AutoRun:manual('HUD Stop clicked.') end
+         return
+       end
++      if advisor.hud_status_only then advisor.open_search_status();return end
+       if advisor.execute and advisor.hud_action_key then advisor.execute(advisor.hud_action_key,advisor.hud_retry_generation) end
+       return
+     end
+-    if bounds and button == 1 and not G.OVERLAY_MENU and advisor.active()
++    if bounds and button == 1 and not G.OVERLAY_MENU and not G.SETTINGS.paused and
++      (advisor.hud_status_only or advisor.active())
+       and x >= bounds.x and x <= bounds.x + bounds.w and y >= bounds.y and y <= bounds.y + bounds.h then
+-      advisor.open()
++      if advisor.hud_status_only then advisor.open_search_status() else advisor.open() end
+       return
+     end
+     if mousepressed then return mousepressed(x, y, button, ...) end
+--- a/Brainstorm/UI/collection_run.lua
++++ b/Brainstorm/UI/collection_run.lua
+@@ -2,16 +2,38 @@
+ -- does not start a worker, replace a run or change recorded sticker progress.
+ local B=Brainstorm
+ local quiet={text='Search is idle. Starting replaces the current run.'}
++local function bounded(value,limit)
++  local text=type(value)=='string' and value or ''
++  text=text:gsub('[%z\1-\31]',' ');limit=limit or 512
++  return #text>limit and text:sub(1,limit-3)..'...' or text
++end
++local function version()
++  local text=bounded(B.VERSION,80)
++  return text~='' and text:gsub('^Brainstorm ','') or 'Version unavailable'
++end
++local function request_failure(owner,text)
++  if B.Advisor and B.Advisor.note_search_notice then B.Advisor.note_search_notice(owner,text) end
++end
+ local function status_text()
+   if quiet.failure then return quiet.failure end
++  if B.Advisor and B.Advisor.search_diagnostics then
++    local status=B.Advisor.search_diagnostics(true)
++    if status then return status.text end
++  end
+   if quiet.owner=='manual' and B.CollectionSearchProduct then return B.CollectionSearchProduct.status or quiet.text end
+   if quiet.owner=='auto' and B.AutoRun then return B.AutoRun.status_text or quiet.text end
+   return B.AutoRun and B.AutoRun.status_text or quiet.text
+ end
+ G.FUNCS.brainstorm_collection_status=function()
+-  local text=tostring(status_text()):gsub('[\r\n\t]',' ')
+-  if #text>140 then text=text:sub(1,137)..'...' end
+-  quiet.line1=text:sub(1,70);quiet.line2=text:sub(71,140)
++  local text=bounded(status_text());local lines,line={},''
++  for word in text:gmatch('%S+') do
++    if #line>0 and #line+#word+1>80 then lines[#lines+1]=line;line='' end
++    while #word>80 do lines[#lines+1]=word:sub(1,80);word=word:sub(81) end
++    line=line=='' and word or line..' '..word
++  end
++  if line~='' then lines[#lines+1]=line end
++  if #lines>3 then lines[3]=(lines[3] or ''):sub(1,57)..'... More: Full status.' end
++  quiet.line1=lines[1] or '';quiet.line2=lines[2] or '';quiet.line3=lines[3] or ''
+ end
+ local function options()
+   local advisor=B.config.advisor
+@@ -72,17 +94,17 @@
+ end
+ G.FUNCS.brainstorm_collection_search_start=function()
+   quiet.owner='manual';quiet.failure=nil
+-  if not B.CollectionSearchProduct then quiet.failure='Bounded search is unavailable.';refresh();return end
++  if not B.CollectionSearchProduct then quiet.failure='Bounded search is unavailable.';request_failure('manual',quiet.failure);refresh();return end
+   local ok,reason=B.CollectionSearchProduct.start_manual(options())
+   quiet.text=ok and 'Searching; Stop or a manual input cancels.' or tostring(reason or 'Search could not start.')
+-  if not ok then quiet.failure=quiet.text;refresh()end
++  if not ok then quiet.failure=quiet.text;request_failure('manual',quiet.failure);refresh()end
+ end
+ G.FUNCS.brainstorm_collection_auto_start=function()
+   quiet.owner='auto';quiet.failure=nil
+-  if not B.AutoRun then quiet.failure='Auto-run is unavailable.';refresh();return end
++  if not B.AutoRun then quiet.failure='Auto-run is unavailable.';request_failure('auto',quiet.failure);refresh();return end
+   local ok,reason=B.AutoRun:start(options())
+   quiet.text=ok and 'Auto-run started. Any manual input stops it.' or tostring(reason or 'Auto-run could not start.')
+-  if not ok then quiet.failure=quiet.text;refresh()end
++  if not ok then quiet.failure=quiet.text;request_failure('auto',quiet.failure);refresh()end
+ end
+ G.FUNCS.brainstorm_collection_stop=function()
+   quiet.failure=nil
+@@ -93,7 +115,7 @@
+ function B.createCollectionRunPage()
+   local q=options()
+   local title=B.AutoRun and 'Completionist++ auto-run' or 'Quick Gold run'
+-  local nodes={row(title,G.C.GREEN,.38),
++  local nodes={row(title..' / '..version(),G.C.GREEN,.29),
+     row(q.burnt_fallback and 'Default: Yorick + Perkeo Charm. Copy by Ante 5; Burnt preferred.' or
+       'Default: Yorick + Perkeo Charm. Burnt + copy: by Ante 5.',nil,.25),
+     {n=G.UIT.R,config={align='cm',padding=.03},nodes={
+@@ -116,13 +138,13 @@
+       button(q.burnt_fallback and 'Burnt: flexible' or 'Burnt: required','brainstorm_collection_burnt',3.4)}}
+   end
+   nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.03},nodes=controls}
+-  nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={button('Stop','brainstorm_collection_stop',3.4)}}
++  nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={
++    button('Stop','brainstorm_collection_stop',3.4),button('Full status','brainstorm_search_status_open',3.4)}}
+   G.FUNCS.brainstorm_collection_status()
+-  for _,key in ipairs({'line1','line2'})do
+-    nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.015,maxw=7.7},nodes={
+-      {n=G.UIT.T,config={ref_table=quiet,ref_value=key,func='brainstorm_collection_status',colour=G.C.WHITE,scale=.23}}}}
++  for _,key in ipairs({'line1','line2','line3'})do
++    nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.005,maxw=7.7},nodes={
++      {n=G.UIT.T,config={ref_table=quiet,ref_value=key,func='brainstorm_collection_status',colour=G.C.WHITE,scale=.20}}}}
+   end
+-  nodes[#nodes+1]=row('The game awards stickers. Unknown progress prevents an automatic start.',nil,.23)
+   return {n=G.UIT.ROOT,config={align='cm',colour=G.C.CLEAR,padding=.04},nodes=nodes}
+ end
+ return {options=options}
+--- a/tests/advisor_startup_ui.lua
++++ b/tests/advisor_startup_ui.lua
+@@ -0,0 +1,150 @@
++-- Manufactured UI/time/controller doubles only; no source, native jobs or player files.
++local P='Brainstorm/UI/'
++local checks=0
++local function check(v,label)checks=checks+1;assert(v,label)end
++local function environment()
++  local e={now=0,drawn={},stops=0,auto_stops=0,executes=0,passed=0,moves=0,starts=0,refreshes=0,writes=0,active=false}
++  e.manual={requested=false,busy=false,phase='idle',text='Search is idle.',owner='manual'}
++  e.auto={requested=false,busy=false,phase='idle',text='Auto-run is off.',owner='auto'}
++  local A={display={title='Play a Pair',status='One action'},lines={'Ordinary advice.'},page=1,
++    active=function()return e.active end,defaults=function()end,refresh=function()e.refreshes=e.refreshes+1 end,
++    settings_changed=function()end,can_execute=function()return true end,
++    execute=function()e.executes=e.executes+1 end,published_key='fixture-key',published_generation=1}
++  Brainstorm={VERSION='Brainstorm v2.116.0-alpha',Advisor=A,config={advisor={enabled=true,hud=false}},
++    writeConfig=function()e.writes=e.writes+1 end}
++  Brainstorm.CollectionSearchProduct={status='Search is idle.',
++    status_report=function()return e.manual end,
++    stop=function(reason)e.stops=e.stops+1;e.manual.busy=false;e.manual.phase='stopped';e.manual.text=reason end,
++    start_manual=function()e.starts=e.starts+1;return false,e.reject or 'Manual request rejected.' end}
++  Brainstorm.AutoRun={status_text='Auto-run is off.',
++    status_report=function()return e.auto end,status=function()error('UI must use pure status_report, not status()')end,
++    stop=function(_,reason)e.auto_stops=e.auto_stops+1;e.auto.busy=false;e.auto.phase='stopped';e.auto.text=reason end,
++    manual=function(_,reason)e.auto_stops=e.auto_stops+1;e.auto.busy=false;e.auto.phase='stopped';e.auto.text=reason end,
++    start=function()e.starts=e.starts+1;return false,e.reject or 'Automatic request rejected.' end}
++  local graphics={}
++  for _,k in ipairs({'push','pop','origin','setFont','setColor','rectangle'})do graphics[k]=function()end end
++  graphics.getDimensions=function()return 1600,900 end
++  graphics.newFont=function(size)return {getWidth=function(_,text)return #text*size*.5 end}end
++  graphics.print=function(text)e.drawn[#e.drawn+1]=text end;graphics.printf=graphics.print
++  love={graphics=graphics,timer={getTime=function()return e.now end},
++    mousepressed=function()e.passed=e.passed+1 end,mousemoved=function()e.moves=e.moves+1 end}
++  Game={draw=function()end}
++  G={STAGE=0,STAGES={RUN=1},SETTINGS={},FUNCS={},UIT={ROOT='ROOT',R='R',C='C',T='T',O='O'},
++    C={GREEN={},WHITE={},CLEAR={},ORANGE={}}}
++  UIBox_button=function(args)return{n='BUTTON',config=args}end
++  create_toggle=function(args)return{n='TOGGLE',config=args}end
++  create_UIBox_generic_options=function(args)return args end
++  Moveable=function()return{remove=function()end}end
++  UIBox=function(args)
++    e.last_contents=args.definition
++    local object={definition=args.definition,elements={}}
++    function object:remove()end;function object:recalculate()end
++    function object:get_UIE_by_ID(id)return self.elements[id]end
++    local function scan(v)
++      if v.config and v.config.id then object.elements[v.config.id]={config=v.config,UIBox=object}end
++      for _,child in ipairs(v.nodes or v.contents or {})do scan(child)end
++    end
++    scan(args.definition);return object
++  end
++  G.FUNCS.overlay_menu=function(args)G.OVERLAY_MENU=UIBox(args)end
++  G.FUNCS.exit_overlay_menu=function()G.OVERLAY_MENU=nil;G.SETTINGS.paused=false end
++  dofile(P..'advisor.lua');dofile(P..'collection_run.lua')
++  Brainstorm.showCollectionRunPage=function()e.page=Brainstorm.createCollectionRunPage()end
++  function e.draw()e.drawn={};A.draw();return table.concat(e.drawn,'\n')end
++  function e.click()local b=A.execute_bounds;assert(b);love.mousepressed(b.x+1,b.y+1,1)end
++  function e.text(tree)
++    local out={};local function walk(n)
++      local c=n.config or {}
++      if c.text then out[#out+1]=c.text elseif c.ref_table and c.ref_value then
++        if c.func then G.FUNCS[c.func]()end;out[#out+1]=c.ref_table[c.ref_value]
++      end
++      for _,child in ipairs(n.nodes or {})do walk(child)end
++    end
++    walk(tree);return table.concat(out,'\n')
++  end
++  return e,A
++end
++do
++  local e,A=environment()
++  check(e.draw()=='' and not A.hud_bounds,'idle main menu does not gain an unsolicited HUD')
++  e.manual.requested=true;e.manual.busy=true;e.manual.phase='waiting'
++  e.manual.text='Waiting: controller frame_set lock remains true while the starting menu closes.'
++  local text=e.draw()
++  check(A.hud_search_stop and A.hud_status_only and A.hud_bounds.h==110,'explicit manual request appears on main menu despite HUD disabled')
++  check(text:find(Brainstorm.VERSION,1,true),'HUD shows loaded global version')
++  check(text:find('frame_set',1,true) and text:find('menu closes.',1,true),'waiting reason wraps without losing its conclusion')
++  check(not A.hud_action_key,'search display carries no Execute token')
++  for _=1,3 do e.draw();love.mousemoved(5,5);A.search_diagnostics(true)end
++  check(e.stops==0 and e.auto_stops==0 and e.starts==0 and e.executes==0,'draw, read and hover never stop/start/execute')
++  check(e.moves==3,'mouse motion still reaches existing handler')
++  love.mousepressed(5,5,1);check(e.passed==1,'unrelated click passes through original handler')
++  e.manual.busy=false;e.manual.phase='cancelled'
++  e.click()
++  check(e.stops==1 and e.executes==0,'stale manual Stop remains Stop and never Execute')
++  e.draw();check(not A.hud_search_stop and A.hud_status_only,'stopped message occupies a non-executing status button')
++  e.now=14.9;check(e.draw()~='','stopped notice lasts15seconds')
++  e.active=true;Brainstorm.config.advisor.hud=true;e.now=15.1
++  check(e.draw():find('Play a Pair',1,true) and A.hud_bounds.h==82 and not A.hud_status_only,'ordinary unchanged-size HUD returns after expiry')
++  e.click();check(e.executes==1,'ordinary Execute returns only after a fresh normal draw')
++end
++do
++  local e,A=environment()
++  e.auto.requested=true;e.auto.busy=true;e.auto.phase='waiting';e.auto.text='Waiting: overlay menu is closing.'
++  check(e.draw():find('AUTO-RUN',1,true) and A.hud_auto_stop,'auto pending visible outside normal advisor activity')
++  e.auto.busy=false;e.click()
++  check(e.auto_stops==1 and e.executes==0,'stale automatic Stop retains established behavior')
++  e.draw();G.OVERLAY_MENU={};check(e.draw()=='' and not A.execute_bounds,'overlays hide status HUD and stale hitboxes')
++  G.OVERLAY_MENU=nil;G.SETTINGS.paused=true;check(e.draw()=='' and not A.hud_bounds,'paused state hides status HUD')
++  G.SETTINGS.paused=false;e.auto.busy=true;e.auto.phase='playing';e.draw()
++  G.screenwipe=true;check(e.draw()=='' and not A.hud_bounds,'screen transition hides status HUD')
++end
++do
++  local e,A=environment()
++  e.manual.requested=true;e.manual.busy=true;e.manual.phase='waiting';e.draw()
++  e.manual.busy=false;e.manual.phase='started';e.manual.text='Started searched run.'
++  check(e.draw()=='' and not A.search_diagnostics(true),'successful manual launch clears previous request notice immediately')
++  e.reject='Cannot start: loaded collection metadata is unavailable.'
++  G.FUNCS.brainstorm_collection_search_start()
++  check(e.starts==1 and e.draw():find('collection metadata',1,true),'first rejected request is visible even with requested false or previously started')
++  check(e.text(Brainstorm.createCollectionRunPage()):find('v2.116.0-alpha',1,true),'search page shows loaded version without extra row')
++  e.now=16;check(e.draw()=='' and A.search_diagnostics(true),'expired rejected notice remains accessible in explicit details')
++  e.active=true;A.open()
++  local ordinary=e.text(e.last_contents)
++  check(e.refreshes==1 and ordinary:find('Ordinary advice.',1,true) and not ordinary:find(e.reject,1,true),
++    'ordinary Ctrl+H-style open refreshes and displays advice after notice expiry')
++  G.FUNCS.brainstorm_advisor_close()
++  G.FUNCS.brainstorm_search_status_open()
++  check(e.refreshes==1 and e.text(e.last_contents):find(e.reject,1,true),
++    'explicit Full status still shows the old reason without refreshing advice')
++  G.FUNCS.brainstorm_advisor_close()
++  A.open()
++  check(e.refreshes==2 and not A.search_detail_mode and e.text(e.last_contents):find('Ordinary advice.',1,true),
++    'closing explicit diagnostics never makes the next ordinary open persistent')
++  G.FUNCS.brainstorm_advisor_close()
++  local message=string.rep('Missing metadata needs a loaded profile record. ',8)..'END-OF-REASON'
++  A.note_search_notice('manual',message);e.draw()
++  check(e.drawn[5]:sub(-3)=='...','long HUD text explicitly truncates after four metric-wrapped lines')
++  A.open()
++  local detail=e.text(e.last_contents)
++  check(detail:find('END-OF-REASON',1,true) and detail:find(Brainstorm.VERSION,1,true),'details preserve the complete bounded reason and loaded version')
++  check(e.refreshes==2,'opening active diagnostics does not start advisor refresh work')
++  G.FUNCS.brainstorm_advisor_close()
++  A.note_search_notice('auto',string.rep('x',700));local value=A.search_diagnostics(true)
++  check(#value.text==512 and value.text:sub(-3)=='...','untrusted status text has explicit512byte bound')
++end
++do
++  local e,A=environment()
++  local page=Brainstorm.createCollectionRunPage();local original=#page.nodes
++  local status_rows=0
++  for _,node in ipairs(page.nodes)do for _,leaf in ipairs(node.nodes or {})do
++    if leaf.config and leaf.config.func=='brainstorm_collection_status' then status_rows=status_rows+1 end
++  end end
++  check(status_rows==3,'page reserves three compact live status rows')
++  e.manual.requested=true;e.manual.busy=true;e.manual.phase='waiting';e.manual.text=string.rep('longword ',80)
++  local changed=Brainstorm.createCollectionRunPage()
++  check(#changed.nodes==original,'long status does not add menu nodes or unbounded height')
++  local text=e.text(changed)
++  check(text:find('More: Full status.',1,true),'overlong page text directs to complete details')
++  check(e.starts==0 and e.stops==0 and e.auto_stops==0 and e.writes==0,'page construction/status refresh is read-only')
++end
++print('startup_ui316: '..checks..' synthetic checks passed')
+--- a/tests/advisor_collection_status.lua
++++ b/tests/advisor_collection_status.lua
+@@ -78,8 +78,8 @@
+   G.FUNCS.brainstorm_collection_count()
+   check(e.text()=='Search options changed.','explicit option change clears the previous request rejection')
+   e.manual_error=nil;G.FUNCS.brainstorm_collection_search_start()
+-  Brainstorm.CollectionSearchProduct.status=string.rep('x',160)
+-  local text=e.text();check(#text==140 and text:sub(-3)=='...','long diagnostics are visibly bounded to two rows')
++  Brainstorm.CollectionSearchProduct.status=string.rep('x',350)
++  local text=e.text();check(#text<=240 and text:find('... More: Full status.',1,true),'long diagnostics are bounded to three compact rows with details link')
+   Brainstorm.CollectionSearchProduct.status='Line one\nLine two\tready'
+   check(e.text()=='Line one Line two ready','live diagnostics cannot create unbounded extra rows')
+   G.FUNCS.brainstorm_collection_stop()
+--- a/tests/advisor_runtime.lua
++++ b/tests/advisor_runtime.lua
+@@ -971,7 +971,7 @@
+   local A,observed=setup()
+   complete(A)
+   local active,stops,executes=true,0,0
+-  Brainstorm.AutoRun={status_text='Playing run 1',status=function()return {busy=active}end,
++  Brainstorm.AutoRun={status_text='Playing run 1',status_report=function()return {busy=active,requested=true,phase=active and 'playing' or 'stopped',owner='auto',text='Playing run 1'}end,
+     manual=function()active=false;stops=stops+1 end}
+   A.execute=function()executes=executes+1 end
+   A.draw()

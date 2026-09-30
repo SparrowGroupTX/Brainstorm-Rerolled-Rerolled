@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "kind": "detached_pack_survival311_v1",
+  "base_policy": "tools/advisor_eval/runs/front310_installed/record.json",
+  "runtime_files": [
+    {
+      "draft": "tools/advisor_eval/development300/pack_survival310/pack_survival.lua",
+      "target": "Brainstorm/Advisor/pack_survival.lua",
+      "sha256": "22433019174fcf726111fcb6bcd1b02afca612ce7bef6de27ea800e6ac1bb78a",
+      "base_sha256": null
+    },
+    {
+      "draft": "tools/advisor_eval/development300/pack_survival310/strategy.lua",
+      "target": "Brainstorm/Advisor/strategy.lua",
+      "sha256": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960",
+      "base_sha256": "dcb92363042b9d74079214d450de7265241421bd085774cbccdbbb437c0a2098"
+    },
+    {
+      "draft": "tools/advisor_eval/development300/pack_survival310/blind_finishing.lua",
+      "target": "Brainstorm/Advisor/blind_finishing.lua",
+      "sha256": "14cf8a3fd95a62fb285aaecdfe0574379c0c79151537b1b1037edab5dfc58524",
+      "base_sha256": "e9e1d2c48a2134ac70d74e22860e029101032e798e3a2f3240530d3eeeaaab69"
+    },
+    {
+      "draft": "tools/advisor_eval/development300/pack_survival310/runtime.lua",
+      "target": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "524d92d34b2fbc1c6fb9eae4f7224e081e587b1546a40353e08f910fb62693b4",
+      "base_sha256": "6ea3b7bab61eade7554dea46fff984d6548958427a7eca2ccfb12af8d223405f"
+    }
+  ],
+  "checks": 171,
+  "regression_checks": {
+    "blind_finishing": 41,
+    "pack_scoring": 33,
+    "certificate": 210
+  },
+  "synthetic_fixture_score_calls": 860,
+  "extra_score_calls_from_override": 0,
+  "new_experiments": 0,
+  "fixture": {
+    "draft": "tools/advisor_eval/development300/pack_survival310/advisor_pack_survival.lua",
+    "target": "tests/advisor_pack_survival.lua",
+    "sha256": "ad3df4bb9af4250e987a83442653e48f421c4122920aecbd1ffed88df58839af",
+    "runtime_paths_rewritten": true
+  }
+}

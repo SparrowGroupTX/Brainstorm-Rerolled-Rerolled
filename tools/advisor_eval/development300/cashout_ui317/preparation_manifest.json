@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "prepared_not_registered_not_run",
+  "job": "M24",
+  "scope": "Source-only UI ownership inspection; no Lua/policy/native/game execution",
+  "adapter_files": {
+    "inspect_source.py": "2636a29a702ad23e68527b35bc0b1671aaeb659421efba9e79aafe28a2c00b13",
+    "source_lexer.py": "61cf6c360655c464c9000f101e2214e01273fc66bbad8f710914444454f9aeee",
+    "register.py": "3b0e2a460576e80e323cd3b6752653191e6b59953f222b11abf8edbd64e3b90e",
+    "spec.md": "d506dcf4e0621f06da411ad74dad915103fb309964a023e4ccc106c34b87a467",
+    "test_inspector.py": "c577a65f738cbc0c0e8c944878ce6b41127a644527471530ba3d47ac496fb0c9",
+    "synthetic_fixture_report.json": "2a48e4939194734c8638d980070f5439c56b7acadddd53a6f8c597f14c3d50f4",
+    "prior_read_only_binding.json": "cdbff8f824e89cffcea673f866215d9aa09b44254858dc8ce0c7809c0b67cbb8"
+  },
+  "policy": {
+    "checkpoint": 316,
+    "version": "2.116.0-alpha",
+    "digest": "525262ad12be834b0527fb78ea674d4d487b3ab12b2c40c75f9dcb6e463fe7bd"
+  },
+  "caps": {
+    "seconds": 30,
+    "members": 3,
+    "methods": 6,
+    "excerpt_bytes": 33000,
+    "total_output_bytes": 40000,
+    "lua_states": 0,
+    "policy_decisions": 0,
+    "native_actions": 0
+  },
+  "validation": "Four manufactured ZIP-only tests plus Python compile; no original source read during preparation"
+}

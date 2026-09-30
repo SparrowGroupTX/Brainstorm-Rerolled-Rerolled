@@ -1,0 +1,47 @@
+{
+  "job": "D-old-19773-candidate",
+  "mode": "decision",
+  "case": "old-19773",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 1.8599999999860302,
+  "log_sha256": "40eecdf70c25056870c6382afa4e0e0c61f88375dee8ab84f0d9cc90e62f3a1e",
+  "status": "complete",
+  "result": {
+    "case": "old-19773",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          4,
+          5
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 111726,
+      "play": {
+        "hand": "Full House",
+        "legal": true,
+        "score": 816,
+        "uncertain": false
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

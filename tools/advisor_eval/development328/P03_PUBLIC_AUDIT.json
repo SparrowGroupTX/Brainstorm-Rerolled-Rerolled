@@ -1,0 +1,49 @@
+{
+  "kind": "spent_public_pair_audit",
+  "job": "P03",
+  "sequence": 3829,
+  "evidence": {
+    "registration.json": "30af974206619fd18ffb9237d3f26945407e10402f08bbdf928c584731746e6d",
+    "spent.json": "2747e1b9ba9fa97761504f2fc5ca204e98c13b3fec9fa1773345473e91305949",
+    "record.json": "213d1074dbdc42549099f7bdf18890a0f03f9f6c179f6af720b3aadd87911796",
+    "snapshot.json": "44d37427f4a8d030734054e4311583b07b1c8bec10006137fe61733e26ca080e",
+    "baseline_result.json": "4c35a6f7e652648bec39709c7bfeed92d55d1609a55048e295cdbc07690d8f34",
+    "candidate_result.json": "c6403907a64bb17472cc01662f2a4fb1941b05fd107e412899fb7efb94abc2ff",
+    "baseline_summary.json": "aa48cc75701e70ab6ac634300576cdf4b0aab52834ff50a39d4986460e7fee8e",
+    "candidate_summary.json": "c5babba8fe578058c1a637f6ac8932d45f38c4433dee9d41a39235a911b2c388"
+  },
+  "baseline": {
+    "action": {
+      "area": "jokers",
+      "followup": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "index": 1,
+      "kind": "sell"
+    },
+    "calls": 16568,
+    "cash_after_purchase": 3
+  },
+  "candidate": {
+    "action": {
+      "kind": "leave_shop"
+    },
+    "calls": 11336,
+    "cash_retained": 3
+  },
+  "observed_change": "Retains Perkeo and both ordinary/Negative Mercury rather than selling Perkeo to fund Blueprint.",
+  "input_unchanged": true,
+  "no_cap_fallback": true,
+  "limits": [
+    "Single dependent public state, not a source continuation or terminal rescue.",
+    "Snapshot shop_forecast is absent and remains absent.",
+    "Both roles report next-blind readiness unsupported because random scoring is unresolved.",
+    "Existing copy_source metadata declines exact copy normalization for these cards; the retained-value heuristic is not an exact future copy or win receipt.",
+    "Baseline advice reports paired scoring improvement but does not retain the selected replacement scoring evidence object."
+  ],
+  "qualification": false,
+  "terminal_result": null,
+  "executed_new_policy_or_source": false
+}

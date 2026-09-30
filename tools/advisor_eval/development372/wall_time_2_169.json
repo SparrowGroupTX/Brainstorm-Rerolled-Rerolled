@@ -1,0 +1,191 @@
+{
+  "action_request_to_callback": {
+    "count": 1603,
+    "max_seconds": 0.016338200000063807,
+    "p50_seconds": 0.006676200000129029,
+    "p95_seconds": 0.008475099999941449,
+    "sum_seconds": 10.848174199996791
+  },
+  "action_request_to_first_settled": {
+    "count": 1603,
+    "max_seconds": 4.171736600000031,
+    "p50_seconds": 0.42305320000014035,
+    "p95_seconds": 3.2582228000001123,
+    "sum_seconds": 1228.1243562000016
+  },
+  "callback_to_first_settled": {
+    "count": 1603,
+    "max_seconds": 4.166069500000049,
+    "p50_seconds": 0.4169185999999172,
+    "p95_seconds": 3.252004500000112,
+    "sum_seconds": 1217.2761820000048
+  },
+  "coverage": {
+    "auto_run_actions": 1603,
+    "finished_runs": 10,
+    "missing_action_callbacks": 0,
+    "missing_first_settled_observations": 0,
+    "performance_windows": 0,
+    "started_runs": 10
+  },
+  "input": {
+    "bytes": 54551112,
+    "events": 17189,
+    "last_sequence": 17189,
+    "path": "tools\\advisor_eval\\win_rate_research\\20260923_2_169_ten_start\\capture\\events.jsonl",
+    "sha256": "819cb4b5f9d895e44a66bbea130b3ef61959a56107d44242d8ad7005c6a9f189"
+  },
+  "interpretation": [
+    "All sums are elapsed monotonic wall time, not CPU utilization.",
+    "Decision active time measures only resume spans; elapsed minus active includes yields, frame scheduling and other interleaved work, not identified animation time.",
+    "Callback return is not effect completion; the first settled public observation may precede later queued effects.",
+    "Callback-to-first-settled intervals may include game updates, animation, advisor refresh, logging and other work; they are not an animation timer.",
+    "Outside both recorded intervals is residual time, not an identified component.",
+    "Zero performance_window events prevent direct frame/update/draw/journal attribution in this cohort."
+  ],
+  "public_search_finished": {
+    "count": 10,
+    "elapsed_known": {
+      "count": 10,
+      "max_seconds": 0.5274942999999439,
+      "p50_seconds": 0.215027100000043,
+      "p95_seconds": 0.5274942999999439,
+      "sum_seconds": 2.579453100000187
+    },
+    "status_counts": {
+      "found": 10
+    }
+  },
+  "runs": [
+    {
+      "actions": 78,
+      "callback_to_first_settled_union_seconds": 56.30820799999991,
+      "callback_to_settled_overlap_with_decision_seconds": 2.838191000000034,
+      "decision_active_seconds": 26.14684909999878,
+      "decision_elapsed_union_seconds": 57.15524450000004,
+      "decision_wait_between_resumes_seconds": 31.00839540000126,
+      "outside_decision_and_callback_to_settled_seconds": 9.3268874000001,
+      "reported_run_seconds": 120.0080725,
+      "run_instance": "observed-game:2",
+      "run_wall_seconds": 119.95214890000001
+    },
+    {
+      "actions": 97,
+      "callback_to_first_settled_union_seconds": 79.81263139999987,
+      "callback_to_settled_overlap_with_decision_seconds": 4.73717530000016,
+      "decision_active_seconds": 37.988834199990265,
+      "decision_elapsed_union_seconds": 89.42232860000013,
+      "decision_wait_between_resumes_seconds": 51.43349440000986,
+      "outside_decision_and_callback_to_settled_seconds": 10.825033200000178,
+      "reported_run_seconds": 175.367496,
+      "run_instance": "observed-game:3",
+      "run_wall_seconds": 175.32281790000002
+    },
+    {
+      "actions": 235,
+      "callback_to_first_settled_union_seconds": 166.0158321999997,
+      "callback_to_settled_overlap_with_decision_seconds": 10.312993900000151,
+      "decision_active_seconds": 74.00547339999383,
+      "decision_elapsed_union_seconds": 184.99250970000026,
+      "decision_wait_between_resumes_seconds": 110.98703630000642,
+      "outside_decision_and_callback_to_settled_seconds": 29.66871800000024,
+      "reported_run_seconds": 370.40867719999994,
+      "run_instance": "observed-game:4",
+      "run_wall_seconds": 370.36406600000004
+    },
+    {
+      "actions": 90,
+      "callback_to_first_settled_union_seconds": 77.3939922999997,
+      "callback_to_settled_overlap_with_decision_seconds": 3.3777044999998225,
+      "decision_active_seconds": 27.823951800009468,
+      "decision_elapsed_union_seconds": 77.66198819999966,
+      "decision_wait_between_resumes_seconds": 49.83803639999019,
+      "outside_decision_and_callback_to_settled_seconds": 11.919951300000548,
+      "reported_run_seconds": 163.65141430000006,
+      "run_instance": "observed-game:5",
+      "run_wall_seconds": 163.59822730000008
+    },
+    {
+      "actions": 105,
+      "callback_to_first_settled_union_seconds": 85.69298759999913,
+      "callback_to_settled_overlap_with_decision_seconds": 5.2042499000002636,
+      "decision_active_seconds": 23.158185500011996,
+      "decision_elapsed_union_seconds": 54.087151400000266,
+      "decision_wait_between_resumes_seconds": 30.92896589998827,
+      "outside_decision_and_callback_to_settled_seconds": 12.478456500000902,
+      "reported_run_seconds": 147.10519900000008,
+      "run_instance": "observed-game:6",
+      "run_wall_seconds": 147.05434560000003
+    },
+    {
+      "actions": 75,
+      "callback_to_first_settled_union_seconds": 71.82794310000031,
+      "callback_to_settled_overlap_with_decision_seconds": 3.570881299998632,
+      "decision_active_seconds": 16.08272220000174,
+      "decision_elapsed_union_seconds": 31.902391199999215,
+      "decision_wait_between_resumes_seconds": 15.819668999997475,
+      "outside_decision_and_callback_to_settled_seconds": 8.013967599998978,
+      "reported_run_seconds": 108.21684369999991,
+      "run_instance": "observed-game:7",
+      "run_wall_seconds": 108.17342059999987
+    },
+    {
+      "actions": 265,
+      "callback_to_first_settled_union_seconds": 183.6160349000022,
+      "callback_to_settled_overlap_with_decision_seconds": 11.933961099999806,
+      "decision_active_seconds": 92.81895359996815,
+      "decision_elapsed_union_seconds": 201.28473220000046,
+      "decision_wait_between_resumes_seconds": 108.46577860003231,
+      "outside_decision_and_callback_to_settled_seconds": 32.3623464999971,
+      "reported_run_seconds": 405.3515167999999,
+      "run_instance": "observed-game:8",
+      "run_wall_seconds": 405.32915249999996
+    },
+    {
+      "actions": 244,
+      "callback_to_first_settled_union_seconds": 168.52607569999805,
+      "callback_to_settled_overlap_with_decision_seconds": 11.021310600000106,
+      "decision_active_seconds": 110.49762039998382,
+      "decision_elapsed_union_seconds": 283.5014760000008,
+      "decision_wait_between_resumes_seconds": 173.003855600017,
+      "outside_decision_and_callback_to_settled_seconds": 30.820634900001323,
+      "reported_run_seconds": 471.8719116,
+      "run_instance": "observed-game:9",
+      "run_wall_seconds": 471.8268760000001
+    },
+    {
+      "actions": 179,
+      "callback_to_first_settled_union_seconds": 149.8035697000007,
+      "callback_to_settled_overlap_with_decision_seconds": 10.393783800003803,
+      "decision_active_seconds": 50.29871869997146,
+      "decision_elapsed_union_seconds": 128.79982830000336,
+      "decision_wait_between_resumes_seconds": 78.5011096000319,
+      "outside_decision_and_callback_to_settled_seconds": 23.111798099999987,
+      "reported_run_seconds": 291.3766684999998,
+      "run_instance": "observed-game:10",
+      "run_wall_seconds": 291.32141230000025
+    },
+    {
+      "actions": 235,
+      "callback_to_first_settled_union_seconds": 178.2789071000052,
+      "callback_to_settled_overlap_with_decision_seconds": 13.687727600005474,
+      "decision_active_seconds": 57.49955180013285,
+      "decision_elapsed_union_seconds": 155.21802100000286,
+      "decision_wait_between_resumes_seconds": 97.71846919987001,
+      "outside_decision_and_callback_to_settled_seconds": 31.505028099997617,
+      "reported_run_seconds": 351.33718750000025,
+      "run_instance": "observed-game:11",
+      "run_wall_seconds": 351.3142286000002
+    }
+  ],
+  "schema": 1,
+  "totals": {
+    "callback_to_first_settled_union_seconds": 1217.2761820000048,
+    "callback_to_settled_overlap_with_decision_seconds": 77.07797900000826,
+    "decision_active_seconds": 516.3208607000623,
+    "decision_elapsed_union_seconds": 1264.025671100007,
+    "decision_wait_between_resumes_seconds": 747.7048103999447,
+    "outside_decision_and_callback_to_settled_seconds": 200.03282159999696,
+    "run_wall_seconds": 2604.2566957000004
+  }
+}

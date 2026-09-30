@@ -1,0 +1,1347 @@
+{
+  "schema": 1,
+  "scope": "Read-only decoding of supplied public journal session segments 1..11; no game execution, replay, simulation, save/profile/executable access or policy evaluation.",
+  "hash_semantics": {
+    "input_sha256": "SHA256 of exact input bytes observed for this audit; the last segment remains append-active.",
+    "stored_frame_sha256": "SHA256 of exact BRJ2 header + stored payload + newline, not decoded event bytes.",
+    "decoded_event_sha256": "SHA256 of exact reconstructed original JSONL event bytes including newline."
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000001.brj",
+      "input_sha256": "4d7f71eaf78fe5cc0cd1ae552f4142687eca1a1586a522fe8b559a74d60f8260",
+      "bytes": 77307,
+      "stat_unchanged_during_read": true,
+      "event_count": 28
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000002.brj",
+      "input_sha256": "ae2a230688ebfe5c470002c88b60ff979efbf0d5a98c90e106f9004f7016cd05",
+      "bytes": 2760063,
+      "stat_unchanged_during_read": true,
+      "event_count": 1000
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000003.brj",
+      "input_sha256": "e3b3efd582fc629197d34c9489c848646fb5389a6c7b6b8446f5c3e8510208f4",
+      "bytes": 23337,
+      "stat_unchanged_during_read": true,
+      "event_count": 8
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000004.brj",
+      "input_sha256": "c3cb91a7fe4f54ea5ee065ff104eb331bc32a79b30c3cd52e1679b8bf958f6c1",
+      "bytes": 3505605,
+      "stat_unchanged_during_read": true,
+      "event_count": 1224
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000005.brj",
+      "input_sha256": "91276534e0a279df98c5772852c411cd0a5d47e2682476abdb168b3c4fc1736c",
+      "bytes": 33245,
+      "stat_unchanged_during_read": true,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000006.brj",
+      "input_sha256": "719f8e3d8d6a36d407d9c89d8154fe39c9688f70f2b82b4be0d1a2aae7d26b8c",
+      "bytes": 780373,
+      "stat_unchanged_during_read": true,
+      "event_count": 281
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000007.brj",
+      "input_sha256": "9443c3698c28a144a41b15641624678eb90315bcfdf8c723b222b4eb7fe14f66",
+      "bytes": 21311,
+      "stat_unchanged_during_read": true,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000008.brj",
+      "input_sha256": "11f83c40df1e46016e13281f4b46736f727268146792b3a04c7047d09ab78ff2",
+      "bytes": 2513790,
+      "stat_unchanged_during_read": true,
+      "event_count": 912
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000009.brj",
+      "input_sha256": "b5a0c9341b16d053bc7ae91bb2ee974ae7a5d3cdad69a811aff8ac3005cdd2db",
+      "bytes": 28272,
+      "stat_unchanged_during_read": true,
+      "event_count": 8
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000010.brj",
+      "input_sha256": "a005f695f53efc8d8af19fb4de5a679debbd42b44c921b612feaf9e6491ad5f8",
+      "bytes": 3022224,
+      "stat_unchanged_during_read": true,
+      "event_count": 1097
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T005407Z-1-000011.brj",
+      "input_sha256": "8eaf694b22f6164e01d950391e8ec83afc5d02ce9bf02c63f38498bc93eb7491",
+      "bytes": 718485,
+      "stat_unchanged_during_read": true,
+      "event_count": 531
+    }
+  ],
+  "loaded_versions": [
+    "Brainstorm v2.140.0-alpha"
+  ],
+  "stop_or_block_events": [
+    {
+      "locator": {
+        "segment": 11,
+        "ordinal": 3,
+        "sequence": 4575,
+        "stored_frame_sha256": "174c5a9d22245700d1c3e02071af2819b415f17556a6de9f68f4c197ffa66148",
+        "decoded_event_sha256": "d529a8ae4e25c6c59237dbf5375638b268aeecf454625867ae9842b7a8212f44"
+      },
+      "at": "2026-09-16T01:18:23Z",
+      "details": {
+        "actions": 840,
+        "event": "session_stopped",
+        "outcomes": {
+          "losses": 4,
+          "wins": 1
+        },
+        "profile_id": 1,
+        "reason": "run_limit",
+        "run_id": "game:6",
+        "runs_started": 5,
+        "schema": 1,
+        "search_draining": false,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "stopped",
+        "time": 1705.9006873
+      }
+    }
+  ],
+  "events": [
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1068,
+        "sequence": 4543,
+        "stored_frame_sha256": "422a636b681065d5dfa2d952229834495fcdb15043b8ec843671d94b63ed6bc1",
+        "decoded_event_sha256": "d0af1709e2241473f05f812f0fa9de480a40dcefed5442ab8eef84f50eef18d8"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:15Z",
+      "monotonic_seconds": 1698.2040913,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "blind",
+      "blind": {
+        "chips": 0,
+        "disabled": false
+      },
+      "chips": 0,
+      "hands_left": 4,
+      "discards_left": 3,
+      "belief": {},
+      "world_count": 0,
+      "inventory_count": 0,
+      "inventory_keys": [],
+      "public_joker_observations": null,
+      "jokers_redacted": false,
+      "action": {
+        "blind": "Boss",
+        "kind": "select_blind"
+      },
+      "advice": {
+        "title": "Play the Boss Blind",
+        "status": "current",
+        "score_line": null,
+        "timing": {
+          "action_kind": "select_blind",
+          "active_seconds": 0.00024039999993874517,
+          "decision_id": 2045,
+          "elapsed_seconds": 0.000243700000055469,
+          "evaluations": 0,
+          "finished_seconds": 1698.1754992,
+          "max_resume_seconds": 0.00024039999993874517,
+          "phase": "blind",
+          "resume_calls": 1,
+          "started_seconds": 1698.1752555,
+          "status": "completed"
+        }
+      },
+      "hand": []
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1072,
+        "sequence": 4547,
+        "stored_frame_sha256": "58e720d1a669586b1216a9d44b5a3696d92dfb7fea805d7bd559cae19a3f3f19",
+        "decoded_event_sha256": "8dfaa918a2a14666966c41a234fa1c2d23fc1da4de0108ddc65bac765ac76f9b"
+      },
+      "kind": "state_after_actions",
+      "at": "2026-09-16T01:18:16Z",
+      "monotonic_seconds": 1698.9934519,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 0,
+      "hands_left": 4,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 0,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "latest_action_sequence": 4544,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1074,
+        "sequence": 4549,
+        "stored_frame_sha256": "53d092f5f74342a691a13c832b4f0b135a01c3b8678956c6e576c33b99aad56a",
+        "decoded_event_sha256": "543875f6a792e905413d7288fd009eed7c43b98721ea80d6cafee0575343cfe9"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:16Z",
+      "monotonic_seconds": 1699.5790392,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 0,
+      "hands_left": 4,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 0,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "advice": {
+        "title": "Play from the public Joker belief",
+        "status": "current",
+        "score_line": "Lowest supported score across 120 possible rows: 34069 chips.",
+        "timing": {
+          "action_kind": "play",
+          "active_seconds": 0.2186201000033634,
+          "decision_id": 2047,
+          "elapsed_seconds": 0.5259220000000369,
+          "evaluations": 26160,
+          "finished_seconds": 1699.5452399,
+          "max_resume_seconds": 0.03354689999991933,
+          "phase": "hand",
+          "resume_calls": 818,
+          "started_seconds": 1699.0193179,
+          "status": "completed"
+        }
+      },
+      "hand": [
+        {
+          "index": 1,
+          "rank": 12,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 2,
+          "rank": 11,
+          "suit": "Diamonds",
+          "enhancement": "Lucky Card"
+        },
+        {
+          "index": 3,
+          "rank": 8,
+          "suit": "Clubs",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 4,
+          "rank": 6,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 5,
+          "rank": 6,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 6,
+          "rank": 5,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 7,
+          "rank": 2,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 8,
+          "rank": 2,
+          "suit": "Diamonds",
+          "enhancement": "Default Base"
+        }
+      ]
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1077,
+        "sequence": 4552,
+        "stored_frame_sha256": "9da3dd740966db316750657e40aa46699456a16d19900a833bbdf0cc76924105",
+        "decoded_event_sha256": "a037c630427c12efb281bcd9d8fce318771f2c3c7ac2e273f69a7a14f32ff4a4"
+      },
+      "kind": "joker_public_action_complete",
+      "at": "2026-09-16T01:18:17Z",
+      "monotonic_seconds": 1700.6811935,
+      "details": {
+        "action": "play",
+        "epoch": 24,
+        "kind": "joker_public_action_complete"
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1078,
+        "sequence": 4553,
+        "stored_frame_sha256": "4d35f40b872a109dbaf2b99a35443dfc833265e0424a8fa7f0f9dcffa7a4f575",
+        "decoded_event_sha256": "442f52f79c9b84ae4914205d869f0a93c47c5e1b0061795d72ca0a2da4518eee"
+      },
+      "kind": "state_after_actions",
+      "at": "2026-09-16T01:18:17Z",
+      "monotonic_seconds": 1700.6807091,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 34069,
+      "hands_left": 3,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 1,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "latest_action_sequence": 4550,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1080,
+        "sequence": 4555,
+        "stored_frame_sha256": "c4689c04a05eafa98e0bba9852d74f3631a3dee7fd2e63f2357878e0f80716a0",
+        "decoded_event_sha256": "311092e71c4619903e5ba8c66d75097d77c7a5a373a0897d64f6c481a5bff22e"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:18Z",
+      "monotonic_seconds": 1701.2681508,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 34069,
+      "hands_left": 3,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 1,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "advice": {
+        "title": "Play from the public Joker belief",
+        "status": "current",
+        "score_line": "Lowest supported score across 120 possible rows: 34383 chips.",
+        "timing": {
+          "action_kind": "play",
+          "active_seconds": 0.21646770000597826,
+          "decision_id": 2050,
+          "elapsed_seconds": 0.5300010999999358,
+          "evaluations": 26160,
+          "finished_seconds": 1701.2392253,
+          "max_resume_seconds": 0.03143580000005386,
+          "phase": "hand",
+          "resume_calls": 818,
+          "started_seconds": 1700.7092242,
+          "status": "completed"
+        }
+      },
+      "hand": [
+        {
+          "index": 1,
+          "rank": 12,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 2,
+          "rank": 11,
+          "suit": "Diamonds",
+          "enhancement": "Lucky Card"
+        },
+        {
+          "index": 3,
+          "rank": 8,
+          "suit": "Clubs",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 4,
+          "rank": 7,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 5,
+          "rank": 7,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 6,
+          "rank": 5,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 7,
+          "rank": 2,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 8,
+          "rank": 2,
+          "suit": "Diamonds",
+          "enhancement": "Default Base"
+        }
+      ]
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1083,
+        "sequence": 4558,
+        "stored_frame_sha256": "642fd8318658fb6234bd463213c2b39e92fae7c53fd970f7acc71be6e40b1a34",
+        "decoded_event_sha256": "00d6fc70a1dbd8c784f09a2cf421c13095bf1f20b37d8cda0067713a4ab3f801"
+      },
+      "kind": "joker_public_action_complete",
+      "at": "2026-09-16T01:18:19Z",
+      "monotonic_seconds": 1702.3629856,
+      "details": {
+        "action": "play",
+        "epoch": 24,
+        "kind": "joker_public_action_complete"
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1084,
+        "sequence": 4559,
+        "stored_frame_sha256": "27fcccd133cf1f0014e6b765669bdf25ecbc733252bfd8a7b280b21ae75c261a",
+        "decoded_event_sha256": "1252b4b69521f33c88a3f71d5f4eb724c6b6e58a0d4af78cf3cc958a68d813d9"
+      },
+      "kind": "state_after_actions",
+      "at": "2026-09-16T01:18:19Z",
+      "monotonic_seconds": 1702.3625154,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 68452,
+      "hands_left": 2,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 2,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "latest_action_sequence": 4556,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1086,
+        "sequence": 4561,
+        "stored_frame_sha256": "2e05e8ee122cad27389ed90614d8072f4ce20c78e6fde2f3c21b56bdfd5ff562",
+        "decoded_event_sha256": "ef700f6657d40e9faaf27d52ecd7c040e6fcd1d07b899b33b3806e7c8e0ef498"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:20Z",
+      "monotonic_seconds": 1702.9531113,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 68452,
+      "hands_left": 2,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 2,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "advice": {
+        "title": "Play from the public Joker belief",
+        "status": "current",
+        "score_line": "Lowest supported score across 120 possible rows: 34697 chips.",
+        "timing": {
+          "action_kind": "play",
+          "active_seconds": 0.22067360000164626,
+          "decision_id": 2053,
+          "elapsed_seconds": 0.5318150000000514,
+          "evaluations": 26160,
+          "finished_seconds": 1702.9243228,
+          "max_resume_seconds": 0.0324275000000398,
+          "phase": "hand",
+          "resume_calls": 818,
+          "started_seconds": 1702.3925078,
+          "status": "completed"
+        }
+      },
+      "hand": [
+        {
+          "index": 1,
+          "rank": 14,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 2,
+          "rank": 12,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 3,
+          "rank": 11,
+          "suit": "Diamonds",
+          "enhancement": "Lucky Card"
+        },
+        {
+          "index": 4,
+          "rank": 8,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 5,
+          "rank": 8,
+          "suit": "Clubs",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 6,
+          "rank": 5,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 7,
+          "rank": 2,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 8,
+          "rank": 2,
+          "suit": "Diamonds",
+          "enhancement": "Default Base"
+        }
+      ]
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1090,
+        "sequence": 4565,
+        "stored_frame_sha256": "2057b098701d7f811b35863e839fb5561f1e33d8c24812331cee45c155bbabf2",
+        "decoded_event_sha256": "e34420d4b2c498ef67f7bdc53a765c08a9178c0338dff8fd5a500e2766b440be"
+      },
+      "kind": "joker_public_action_complete",
+      "at": "2026-09-16T01:18:21Z",
+      "monotonic_seconds": 1704.0641705,
+      "details": {
+        "action": "play",
+        "epoch": 24,
+        "kind": "joker_public_action_complete"
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1091,
+        "sequence": 4566,
+        "stored_frame_sha256": "0554d31d3f7ffc4b84460020ed77bfab61dac90a2677fe531e7fea37d2113c0e",
+        "decoded_event_sha256": "f174c63d016db945ff4ddaf92f1ef35185bb5c3dc5ac8c9617f0458d4fa08617"
+      },
+      "kind": "state_after_actions",
+      "at": "2026-09-16T01:18:21Z",
+      "monotonic_seconds": 1704.0637017,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 103149,
+      "hands_left": 1,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 3,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "latest_action_sequence": 4562,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1093,
+        "sequence": 4568,
+        "stored_frame_sha256": "92813563183739ae9d23e4c48d20f147cca92274051918cdddc29276808a49e2",
+        "decoded_event_sha256": "c3ba437f0604d7e01363f0432bd91dc5bf0c52dbf170e98ae82f125e81515369"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:21Z",
+      "monotonic_seconds": 1704.6700287,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": false,
+      "won_field": false,
+      "phase": "hand",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 103149,
+      "hands_left": 1,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 3,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          4
+        ],
+        "kind": "play"
+      },
+      "advice": {
+        "title": "Play from the public Joker belief",
+        "status": "current",
+        "score_line": "Lowest supported score across 120 possible rows: 44745 chips.",
+        "timing": {
+          "action_kind": "play",
+          "active_seconds": 0.22954129999811812,
+          "decision_id": 2056,
+          "elapsed_seconds": 0.549864800000023,
+          "evaluations": 26160,
+          "finished_seconds": 1704.6426285,
+          "max_resume_seconds": 0.03154339999991862,
+          "phase": "hand",
+          "resume_calls": 818,
+          "started_seconds": 1704.0927637,
+          "status": "completed"
+        }
+      },
+      "hand": [
+        {
+          "index": 1,
+          "rank": 14,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 2,
+          "rank": 12,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 3,
+          "rank": 11,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 4,
+          "rank": 11,
+          "suit": "Diamonds",
+          "enhancement": "Lucky Card"
+        },
+        {
+          "index": 5,
+          "rank": 5,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 6,
+          "rank": 2,
+          "suit": "Spades",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 7,
+          "rank": 2,
+          "suit": "Hearts",
+          "enhancement": "Default Base"
+        },
+        {
+          "index": 8,
+          "rank": 2,
+          "suit": "Diamonds",
+          "enhancement": "Default Base"
+        }
+      ]
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1096,
+        "sequence": 4571,
+        "stored_frame_sha256": "015cd401d752554732f53ab45fe0a0b621f14e03bae4a4f53a73a9b156d7a213",
+        "decoded_event_sha256": "cf9360bf77907c327479414600b0e9bfcb20bfcded19ac4fa420a9c39ddedf53"
+      },
+      "kind": "state_after_actions",
+      "at": "2026-09-16T01:18:22Z",
+      "monotonic_seconds": 1705.763793,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": true,
+      "won_field": true,
+      "phase": "other",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 147894,
+      "hands_left": 0,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 3,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "latest_action_sequence": 4569,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1097,
+        "sequence": 4572,
+        "stored_frame_sha256": "17915ed0d49f47578c8c4b222fd5898075fcb2b9eae79a4422eadfed8b8e5f65",
+        "decoded_event_sha256": "34fd5a7e29a36c6b02b68b54b5f337d9a442715b54df9dfe2c34d32fb7e26d3c"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:22Z",
+      "monotonic_seconds": 1705.7835306,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": true,
+      "won_field": true,
+      "phase": "other",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 147894,
+      "hands_left": 0,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 3,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:6",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:6",
+          "source": "GAME_OVER",
+          "source_won_field": true,
+          "verified": true
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 203,
+        "run_id": "game:6",
+        "run_number": 5,
+        "run_seconds": 345.99161260000005,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "terminal",
+        "time": 1705.7833463
+      }
+    },
+    {
+      "locator": {
+        "segment": 11,
+        "ordinal": 2,
+        "sequence": 4574,
+        "stored_frame_sha256": "dbcc5fb6eafd54958d123c9db32c00ca376e060369c9074899c5dc1d4c0b793e",
+        "decoded_event_sha256": "6efd9fff9d49bb44ee098c4eb8c06c4862865c228007a09d027e16ac6b459a08"
+      },
+      "kind": "joker_public_action_complete",
+      "at": "2026-09-16T01:18:23Z",
+      "monotonic_seconds": 1705.894163,
+      "details": {
+        "action": "play",
+        "epoch": 24,
+        "kind": "joker_public_action_complete"
+      }
+    },
+    {
+      "locator": {
+        "segment": 11,
+        "ordinal": 3,
+        "sequence": 4575,
+        "stored_frame_sha256": "174c5a9d22245700d1c3e02071af2819b415f17556a6de9f68f4c197ffa66148",
+        "decoded_event_sha256": "d529a8ae4e25c6c59237dbf5375638b268aeecf454625867ae9842b7a8212f44"
+      },
+      "kind": "auto_run",
+      "at": "2026-09-16T01:18:23Z",
+      "monotonic_seconds": 1705.9008205,
+      "version": "Brainstorm v2.140.0-alpha",
+      "game_over": true,
+      "won_field": true,
+      "phase": "other",
+      "blind": {
+        "chips": 400000,
+        "disabled": false,
+        "key": "bl_final_acorn"
+      },
+      "chips": 147894,
+      "hands_left": 0,
+      "discards_left": 3,
+      "belief": {
+        "complete": true,
+        "epoch": 24,
+        "revision": 4,
+        "state_valid": true,
+        "supported": true
+      },
+      "world_count": 120,
+      "inventory_count": 5,
+      "public_joker_observations": {},
+      "jokers_redacted": true,
+      "details": {
+        "actions": 840,
+        "event": "session_stopped",
+        "outcomes": {
+          "losses": 4,
+          "wins": 1
+        },
+        "profile_id": 1,
+        "reason": "run_limit",
+        "run_id": "game:6",
+        "runs_started": 5,
+        "schema": 1,
+        "search_draining": false,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "stopped",
+        "time": 1705.9006873
+      }
+    }
+  ],
+  "run_outcomes": [
+    {
+      "locator": {
+        "segment": 2,
+        "ordinal": 1000,
+        "sequence": 1028,
+        "stored_frame_sha256": "5186cb1e3b5852eb3b0378892815f239ed5cb4bae5b1e91c5492f733e382ed08",
+        "decoded_event_sha256": "98303257f9214544b1197cc2e6f95560c14328418037ed069845d99ce323897e"
+      },
+      "at": "2026-09-16T01:00:43Z",
+      "blind": "bl_serpent",
+      "outcome": "loss",
+      "run_number": 1,
+      "run_actions": 185,
+      "run_seconds": 358.736143
+    },
+    {
+      "locator": {
+        "segment": 4,
+        "ordinal": 1224,
+        "sequence": 2260,
+        "stored_frame_sha256": "ad2b6d59188d293cfe94fd5d8eb73eb820605cccc4924b75d1da7c6de8dc883b",
+        "decoded_event_sha256": "18993bb61481571a50d8a2fd8db21c449a55a7e22775105eddcbccdb5dd70ca6"
+      },
+      "at": "2026-09-16T01:05:44Z",
+      "blind": "bl_final_leaf",
+      "outcome": "win",
+      "run_number": 2,
+      "run_actions": 232,
+      "run_seconds": 300.9737341
+    },
+    {
+      "locator": {
+        "segment": 6,
+        "ordinal": 281,
+        "sequence": 2548,
+        "stored_frame_sha256": "b93338393e20f18e4d402a6f4fd8b711afa61179559c63bac49695048576771c",
+        "decoded_event_sha256": "a9add9a86430b7cd680db97e37034668fc9ce4753c46e75d73db01645884ea27"
+      },
+      "at": "2026-09-16T01:07:13Z",
+      "blind": "bl_house",
+      "outcome": "loss",
+      "run_number": 3,
+      "run_actions": 52,
+      "run_seconds": 86.04636029999995
+    },
+    {
+      "locator": {
+        "segment": 8,
+        "ordinal": 912,
+        "sequence": 3467,
+        "stored_frame_sha256": "92b62ccfb8aaa3339d1fef9d4ab3e89e87c4c7bd054e2972a3f418cbd36c73d0",
+        "decoded_event_sha256": "69aa940cc7b4fe19ea8abb63c99dd85d504387f25e4c25747e47fe95592f4f15"
+      },
+      "at": "2026-09-16T01:12:34Z",
+      "blind": "bl_wheel",
+      "outcome": "loss",
+      "run_number": 4,
+      "run_actions": 168,
+      "run_seconds": 321.1618404000001
+    },
+    {
+      "locator": {
+        "segment": 10,
+        "ordinal": 1097,
+        "sequence": 4572,
+        "stored_frame_sha256": "17915ed0d49f47578c8c4b222fd5898075fcb2b9eae79a4422eadfed8b8e5f65",
+        "decoded_event_sha256": "34fd5a7e29a36c6b02b68b54b5f337d9a442715b54df9dfe2c34d32fb7e26d3c"
+      },
+      "at": "2026-09-16T01:18:22Z",
+      "blind": "bl_final_acorn",
+      "outcome": "loss",
+      "run_number": 5,
+      "run_actions": 203,
+      "run_seconds": 345.99161260000005
+    }
+  ],
+  "session_limits": {
+    "max_actions": 500,
+    "max_runs": 5,
+    "run_seconds": 1800,
+    "search_request": {
+      "budget_ms": 30000,
+      "burnt_fallback": true,
+      "deck_name": "Red Deck",
+      "first_ante": 5,
+      "interchangeable_copies": true,
+      "last_ante": 8,
+      "legendary_fallback": true,
+      "minimum_distinct": 0,
+      "quota_mode": "auto"
+    },
+    "search_seconds": 30,
+    "session_seconds": 21600,
+    "stall_seconds": 30
+  },
+  "acorn_inventory": [
+    {
+      "key": "j_scary_face",
+      "sell_cost": 2,
+      "ability": {
+        "eternal": true,
+        "extra": 30,
+        "mult": 0,
+        "x_mult": 1
+      }
+    },
+    {
+      "key": "j_swashbuckler",
+      "sell_cost": 1,
+      "ability": {
+        "mult": 25,
+        "rental": true,
+        "x_mult": 1
+      }
+    },
+    {
+      "key": "j_fortune_teller",
+      "sell_cost": 3,
+      "ability": {
+        "extra": 1,
+        "mult": 0,
+        "x_mult": 1
+      }
+    },
+    {
+      "key": "j_perkeo",
+      "sell_cost": 10,
+      "ability": {
+        "mult": 0,
+        "x_mult": 1
+      }
+    },
+    {
+      "key": "j_yorick",
+      "sell_cost": 10,
+      "ability": {
+        "extra": {
+          "discards": 23,
+          "xmult": 1
+        },
+        "mult": 0,
+        "x_mult": 8,
+        "yorick_discards": 22
+      }
+    }
+  ],
+  "acorn_available_consumables": [
+    {
+      "key": "c_moon",
+      "edition": null
+    },
+    {
+      "key": "c_moon",
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      }
+    },
+    {
+      "key": "c_magician",
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      }
+    },
+    {
+      "key": "c_moon",
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      }
+    },
+    {
+      "key": "c_moon",
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      }
+    },
+    {
+      "key": "c_magician",
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      }
+    }
+  ],
+  "kind_counts": {
+    "performance_window": 819,
+    "action_requested": 854,
+    "action_callback_result": 854,
+    "state_after_actions": 844,
+    "auto_run": 1713,
+    "collection_search_started": 5,
+    "collection_search_finished": 5,
+    "collection_run_start": 5,
+    "joker_public_action_complete": 4
+  },
+  "conclusion": {
+    "block_observed": false,
+    "stop_reason": "run_limit",
+    "terminal_outcome": "loss",
+    "run_number": 5,
+    "wins": 1,
+    "losses": 4,
+    "terminal_chips": 147894,
+    "target": 400000,
+    "discards_left": 3,
+    "plays_in_acorn": 4,
+    "supported_worlds_each_decision": 120,
+    "public_observations_each_decision": 0,
+    "qualified_cause": "The supplied session reaches normal hand exhaustion/GAME_OVER, then the configured fifth-run limit. It does not exhibit the previous Acorn unsupported-belief safety stop. The advice policy uses only conservative immediate plays and explicitly excludes forecasting discards and consumable uses."
+  },
+  "acorn_plays": [
+    {
+      "sequence": 4549,
+      "chips_before": 0,
+      "hands_left": 4,
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.2186201000033634,
+        "decision_id": 2047,
+        "elapsed_seconds": 0.5259220000000369,
+        "evaluations": 26160,
+        "finished_seconds": 1699.5452399,
+        "max_resume_seconds": 0.03354689999991933,
+        "phase": "hand",
+        "resume_calls": 818,
+        "started_seconds": 1699.0193179,
+        "status": "completed"
+      },
+      "score_line": "Lowest supported score across 120 possible rows: 34069 chips."
+    },
+    {
+      "sequence": 4555,
+      "chips_before": 34069,
+      "hands_left": 3,
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.21646770000597826,
+        "decision_id": 2050,
+        "elapsed_seconds": 0.5300010999999358,
+        "evaluations": 26160,
+        "finished_seconds": 1701.2392253,
+        "max_resume_seconds": 0.03143580000005386,
+        "phase": "hand",
+        "resume_calls": 818,
+        "started_seconds": 1700.7092242,
+        "status": "completed"
+      },
+      "score_line": "Lowest supported score across 120 possible rows: 34383 chips."
+    },
+    {
+      "sequence": 4561,
+      "chips_before": 68452,
+      "hands_left": 2,
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5
+        ],
+        "kind": "play"
+      },
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.22067360000164626,
+        "decision_id": 2053,
+        "elapsed_seconds": 0.5318150000000514,
+        "evaluations": 26160,
+        "finished_seconds": 1702.9243228,
+        "max_resume_seconds": 0.0324275000000398,
+        "phase": "hand",
+        "resume_calls": 818,
+        "started_seconds": 1702.3925078,
+        "status": "completed"
+      },
+      "score_line": "Lowest supported score across 120 possible rows: 34697 chips."
+    },
+    {
+      "sequence": 4568,
+      "chips_before": 103149,
+      "hands_left": 1,
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          4
+        ],
+        "kind": "play"
+      },
+      "timing": {
+        "action_kind": "play",
+        "active_seconds": 0.22954129999811812,
+        "decision_id": 2056,
+        "elapsed_seconds": 0.549864800000023,
+        "evaluations": 26160,
+        "finished_seconds": 1704.6426285,
+        "max_resume_seconds": 0.03154339999991862,
+        "phase": "hand",
+        "resume_calls": 818,
+        "started_seconds": 1704.0927637,
+        "status": "completed"
+      },
+      "score_line": "Lowest supported score across 120 possible rows: 44745 chips."
+    }
+  ],
+  "observer_trace": {
+    "decoded_session_events_at_capture": 5103,
+    "joker_public_observation_event_count": 0,
+    "joker_public_action_complete_sequences": [
+      4552,
+      4558,
+      4565,
+      4574
+    ],
+    "other_joker_event_kinds": [],
+    "acorn_error_events_observed": 0,
+    "all_five_acorn_callbacks_returned_true": true,
+    "callback_reasons": "empty strings",
+    "actual_chips_by_play": [
+      34069,
+      34383,
+      34697,
+      44745
+    ],
+    "actual_equals_reported_minimum_each_play": true,
+    "hand_ranks_by_play": [
+      6,
+      7,
+      8,
+      11
+    ],
+    "unchanged_discard_count": 3,
+    "yorick_ability_unchanged": true,
+    "note": "No raw observer status report is present; absence of logged observations alone does not establish why observation hooks did not produce entries."
+  }
+}

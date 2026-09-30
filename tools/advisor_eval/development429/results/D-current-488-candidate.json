@@ -1,0 +1,88 @@
+{
+  "job": "D-current-488-candidate",
+  "mode": "decision",
+  "case": "current-488",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 1.125,
+  "log_sha256": "72d486ea01048514746486b85fed3bd0400ea7f483da838d8636feeac38802fc",
+  "status": "complete",
+  "result": {
+    "case": "current-488",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2,
+          7,
+          8
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "clear_supported": true,
+        "evaluations": 4,
+        "final_action_kind": "play",
+        "final_play_score": 1024,
+        "needed_score": 1000,
+        "reason": "Replacement draws can reduce or reorder the reserved score.",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 37768,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 1024,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 218,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Replacement draws can reduce or reorder the reserved score."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "full_batch_preference": false,
+          "late_margin": true,
+          "minimum_score": 1024,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 0.95,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.006
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

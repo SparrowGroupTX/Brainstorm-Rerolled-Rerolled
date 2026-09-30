@@ -1,0 +1,32 @@
+{
+  "card.lua": {
+    "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "snippets": [
+      {
+        "line": 883,
+        "text": "        elseif self.ability.name == 'Erosion' then loc_vars = {self.ability.extra, math.max(0,self.ability.extra*(G.playing_cards and (G.GAME.starting_deck_size - #G.playing_cards) or 0)), G.GAME.starting_deck_size}\n        elseif self.ability.name == 'Reserved Parking' then loc_vars = {self.ability.extra.dollars, ''..(G.GAME and G.GAME.probabilities.normal or 1), self.ability.extra.odds}\n        elseif self.ability.name == 'Mail-In Rebate' then loc_vars = {self.ability.extra, localize(G.GAME.current_round.mail_card.rank, 'ranks')}\n        elseif self.ability.name == 'To the Moon' then loc_vars = {self.ability.extra}\n        elseif self.ability.name == 'Hallucination' then loc_vars = {G.GAME.probabilities.normal, self.ability.extra}\n        elseif self.ability.name == 'Lucky Cat' then loc_vars = {self.ability.extra, self.ability.x_mult}\n        elseif self.ability.name == 'Baseball Card' then loc_vars = {self.ability.extra}\n        elseif self.ability.name == 'Bull' then loc_vars = {self.ability.extra, self.ability.extra*math.max(0,G.GAME.dollars) or 0}\n        elseif self.ability.name == 'Diet Cola' then loc_vars = {localize{type = 'name_text', set = 'Tag', key = 'tag_double', nodes = {}}}\n        elseif self.ability.name == 'Trading Card' then loc_vars = {self.ability.extra}\n        elseif self.ability.name == 'Flash Card' then loc_vars = {self.ability.extra, self.ability.mult}\n        elseif self.ability.name == 'Popcorn' then loc_vars = {self.ability.mult, self.ability.extra}\n        elseif self.ability.name == 'Ramen' then loc_vars = {self.ability.x_mult, self.ability.extra}\n        elseif self.ability.name == 'Ancient Joker' then loc_vars = {self.ability.extra, localize(G.GAME.current_round.ancient_card.suit, 'suits_singular'), colours = {G.C.SUITS[G.GAME.current_round.ancient_card.suit]}}"
+      },
+      {
+        "line": 989,
+        "text": "function Card:get_chip_mult()\n    if self.debuff then return 0 end\n    if self.ability.set == 'Joker' then return 0 end\n    if self.ability.effect == \"Lucky Card\" then \n        if pseudorandom('lucky_mult') < G.GAME.probabilities.normal/5 then\n            self.lucky_trigger = true\n            return self.ability.mult\n        else\n            return 0\n        end\n    else  \n        return self.ability.mult\n    end\nend"
+      },
+      {
+        "line": 1077,
+        "text": "        ret = ret +  3\n    end\n    if self.ability.p_dollars > 0 then\n        if self.ability.effect == \"Lucky Card\" then \n            if pseudorandom('lucky_money') < G.GAME.probabilities.normal/15 then\n                self.lucky_trigger = true\n                ret = ret +  self.ability.p_dollars\n            end\n        else \n            ret = ret + self.ability.p_dollars\n        end\n    end\n    if ret > 0 then \n        G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + ret"
+      },
+      {
+        "line": 3076,
+        "text": "                            extra = {message = localize('k_upgrade_ex'), colour = G.C.CHIPS},\n                            colour = G.C.CHIPS,\n                            card = self\n                        }\n                end\n                if self.ability.name == 'Lucky Cat' and context.other_card.lucky_trigger and not context.blueprint then\n                    self.ability.x_mult = self.ability.x_mult + self.ability.extra\n                    return {\n                        extra = {focus = self, message = localize('k_upgrade_ex'), colour = G.C.MULT},\n                        card = self\n                    }\n                end\n                if self.ability.name == 'Wee Joker' and\n                    context.other_card:get_id() == 2 and not context.blueprint then"
+      }
+    ]
+  },
+  "functions/state_events.lua": {
+    "sha256": "6c86aefb42d0323d737f87aaa84f53e42b755e72cd0bfd163b7d9cca5c0a99a9",
+    "snippets": [
+      {
+        "line": 700,
+        "text": "                        local eval = G.jokers.cards[k]:calculate_joker({cardarea = G.play, full_hand = G.play.cards, scoring_hand = scoring_hand, scoring_name = text, poker_hands = poker_hands, other_card = scoring_hand[i], individual = true})\n                        if eval then \n                            table.insert(effects, eval)\n                        end\n                    end\n                    scoring_hand[i].lucky_trigger = nil\n\n                    for ii = 1, #effects do\n                        --If chips added, do chip add event and add the chips to the total\n                        if effects[ii].chips then \n                            if effects[ii].card then juice_card(effects[ii].card) end\n                            hand_chips = mod_chips(hand_chips + effects[ii].chips)\n                            update_hand_text({delay = 0}, {chips = hand_chips})\n                            card_eval_status_text(scoring_hand[i], 'chips', effects[ii].chips, percent)"
+      }
+    ]
+  }
+}

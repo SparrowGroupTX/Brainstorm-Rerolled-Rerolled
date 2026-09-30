@@ -1,5 +1,41 @@
 # Brainstorm Rerolled Rerolled
 
+For GitHub publishing and byte-exact restoration of large offline research files,
+see [the publication guide](GITHUB_PUBLICATION.md). The mod keeps its existing
+installation layout; fresh clones need the restore command only for archived data.
+
+## Challenge Advisor
+
+For development continuity, read [the short advisor handoff](ADVISOR_START_HERE.md)
+first. [The comprehensive handoff](ADVISOR_HANDOFF.md) records the goal, current
+implementation, exact file locations, validation limits and prioritized backlog.
+
+An in-game advisor now works on challenge runs, independently of seed rerolling.
+Click the small **Advisor** badge or press **Ctrl+H** for recommended plays,
+sampled discards, shop purchases, pack choices, and challenge/boss guidance.
+Click **Execute** beside the badge to carry out one recommendation, including
+selecting and playing or discarding its cards. The details panel also retains
+**Select cards** for highlighting without committing the action.
+Configure it under **Settings > Brainstorm > Advisor**.
+
+The separate **Completionist++ auto-run** page offers a collection marathon
+and an explicit ten-run Red Deck / Gold Stake win-first mode. The ten-run
+button clears prior auto journals, retains manual journals, and starts bounded
+automatic play. See [current controls and limits](ADVISOR.md) and
+[installed checkpoint 400](tools/advisor_eval/SESSION_RESET_400.md) for the
+2.194 release and its evidence; loaded-game benefit remains unproven.
+
+Historical version 2.16 added played-card ordering, copy-Joker and conditional late-hand
+shop comparisons, immediate boss-disable rescues, and budgeted paid rerolls.
+**Settings > Brainstorm > Challenge opening** can search a fresh challenge
+for first-Small-Blind Charm with two Souls and optional Legendary targets.
+It supports 19 vanilla challenges, excludes Jokerless, preserves challenge
+rules, and uses the existing first-pack duplicate-Soul exception.
+See [the update and separate per-challenge estimates](tools/advisor_eval/UPDATE_2.16.md).
+
+The advisor uses estimated scoring and bounded lookahead, not a guaranteed
+optimal solution. [Read its controls, search scope, and limitations](ADVISOR.md).
+
 See the [Brainstorm v2.10.0-alpha release notes](RELEASE_NOTES_2.10.0-alpha.md)
 for the new reusable Perkeo/Mega Spectral index family, its exact scope,
 validation record, and final performance measurements. The

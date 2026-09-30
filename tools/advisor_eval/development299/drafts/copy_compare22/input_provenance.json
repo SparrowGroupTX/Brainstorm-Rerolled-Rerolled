@@ -1,0 +1,400 @@
+{
+  "schema": 1,
+  "kind": "prepared_M22_captured_copy_inputs",
+  "source_attempt": "C04",
+  "source_outcome": "timeout_censored_no_terminal_result",
+  "source_files": {
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\trace.log": "7230d5f01ef34575a7417c3f1d85c034a2114891c59278dcf82396baf002b139",
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\record.json": "51708908da000b5b548553487ce1b4606cd0bbfd5d21ffbb5d8c07dacc3f08c9",
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\registration.json": "7ae385f154059f78bd31cffa56548d44e4c1c9d71897818d77f61a93fe0b42c8",
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\audit.json": "bac4eb8605331d154d8af5f62534437fdfb4840edd0f431df5345d2c7cc64ac7"
+  },
+  "source_policy_digest": "3179b32252e53e0424af3bcd1f99384ca0bb8e5dd80db4e03cdcfe0f52c53ae8",
+  "source_adapter_digest": "701c6ef1644603fa331555da2585c2e8306c730896d11dfd6e77cd82429037a1",
+  "source_runtime_digest": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+  "source_rules_digest": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+  "gold_objective_context": {
+    "schema": 1,
+    "mode": "synthetic_fresh_all_missing_v1",
+    "enabled": true,
+    "profile": "all_unlocked_discovered_v1",
+    "initial_history": "natural_empty_loaded_joker_usage",
+    "initial_counts": {
+      "total": 150,
+      "complete": 0,
+      "missing": 150,
+      "unknown": 0
+    },
+    "missing_population": "all_150_vanilla_jokers",
+    "capture": "frozen_gold_stickers.capture_loaded_profile",
+    "policy_context": "completionist_goal",
+    "collection_policy": "frozen_gold_goal",
+    "metadata_failure": "explicit_unsupported_error_before_next_action",
+    "profile_writes": "none_by_objective_adapter; original source callbacks only",
+    "qualification": false,
+    "actual_player_profile": false
+  },
+  "profile_spec": {
+    "schema": 1,
+    "name": "all_unlocked_discovered_v1",
+    "scope": [
+      "P_CENTERS",
+      "P_TAGS",
+      "P_SEALS",
+      "P_BLINDS"
+    ],
+    "transform": "set_unlock_and_discovery_true",
+    "progress": "fresh_in_memory_no_completed_challenges",
+    "user_profile": false,
+    "qualification_compatible": false
+  },
+  "profile_spec_digest": "d02d4571ecd30c555d9b25bea7feebabfe9fad589416520432accae3da258a13",
+  "snapshots": {
+    "31": {
+      "trace_line": 239,
+      "trace_line_sha256": "11d663375193a4e2b89006064eeb951b730dab62f54e3ab4e46ae7a1faebb23f",
+      "state_fingerprint": "206e0ea02b3f1366fbe44d78cd20b7b5c0b8f508b5d2a518db0e057adebcb0d0",
+      "snapshot_canonical_sha256": "67b35663c40f9a021254f035c5f0cbf436b5031fcc1659c8fea3ea78ae903cfc",
+      "snapshot_file_sha256": "1679e125c658af50221f14b5490783a5cf048b484b72961aa2eea94d83e7da87",
+      "historical_profile": {
+        "advisor_seconds": 0.53161280008499,
+        "advisor_skipped": false,
+        "evaluations": 26378,
+        "phase": "hand",
+        "score_calls": 26378,
+        "snapshot_seconds": 0.00037040002644062,
+        "step": 31,
+        "type": "engine_episode_profile",
+        "work_scope": "advisor_decision"
+      },
+      "static_selection": {
+        "hand_count": 8,
+        "joker_keys": [
+          "j_perkeo",
+          "j_yorick",
+          "j_brainstorm",
+          "j_droll",
+          "j_supernova"
+        ],
+        "discards_left": 0,
+        "historical_action": {
+          "kind": "reorder_jokers",
+          "order": [
+            2,
+            1,
+            3,
+            4,
+            5
+          ]
+        },
+        "historical_evaluations": 26378,
+        "historical_ordering": {
+          "action": {
+            "kind": "reorder_jokers",
+            "order": [
+              2,
+              1,
+              3,
+              4,
+              5
+            ]
+          },
+          "baseline_play": {
+            "arm_cost": 0,
+            "chips": 90,
+            "created_cards": {},
+            "expected_dollars": 0,
+            "future_growth": 0,
+            "future_loss": 0,
+            "glass_exposure": {},
+            "glass_loss": 0,
+            "hand": "Full House",
+            "indices": [
+              2,
+              3,
+              4,
+              6,
+              7
+            ],
+            "legal": true,
+            "mult": 10,
+            "score": 900,
+            "scoring_indices": [
+              2,
+              3,
+              4,
+              6,
+              7
+            ],
+            "uncertain": false,
+            "warnings": {}
+          },
+          "kind": "reorder_jokers",
+          "lines": [
+            "#2 Yorick -> #1 Perkeo -> #3 Brainstorm -> #4 Droll Joker -> #5 Supernova",
+            "Then reassess the hand: Straight estimates ~1343 chips (current order ~900).",
+            "Move the Jokers into this left-to-right order first; refresh advice before selecting or playing cards.",
+            "120 completed order comparisons; all movable Joker permutations and legal hand subsets compared."
+          ],
+          "play": {
+            "arm_cost": 0,
+            "chips": 79,
+            "created_cards": {},
+            "expected_dollars": 0,
+            "future_growth": 0,
+            "future_loss": 0,
+            "glass_exposure": {},
+            "glass_loss": 0,
+            "hand": "Straight",
+            "indices": [
+              1,
+              2,
+              5,
+              6,
+              8
+            ],
+            "legal": true,
+            "mult": 17,
+            "score": 1343,
+            "scoring_indices": [
+              1,
+              2,
+              5,
+              6,
+              8
+            ],
+            "uncertain": false,
+            "warnings": {}
+          },
+          "projected_play": {
+            "arm_cost": 0,
+            "chips": 79,
+            "created_cards": {},
+            "expected_dollars": 0,
+            "future_growth": 0,
+            "future_loss": 0,
+            "glass_exposure": {},
+            "glass_loss": 0,
+            "hand": "Straight",
+            "indices": [
+              1,
+              2,
+              5,
+              6,
+              8
+            ],
+            "legal": true,
+            "mult": 17,
+            "score": 1343,
+            "scoring_indices": [
+              1,
+              2,
+              5,
+              6,
+              8
+            ],
+            "uncertain": false,
+            "warnings": {}
+          },
+          "title": "Reorder Jokers before playing",
+          "warnings": {}
+        },
+        "qualification": "Static scope evidence only; neither new policy evaluated."
+      }
+    },
+    "96": {
+      "trace_line": 709,
+      "trace_line_sha256": "834667381be77f1ff96130ed6395b15498a537f2df9f4c5faa01915f36fd7e6a",
+      "state_fingerprint": "50eb00d46fd2fb363c67e39f8b4ab0ea2e1302b3b4cdd4705171a7b663ce3e53",
+      "snapshot_canonical_sha256": "a597f169821839353d24809efa5ebb6a14b2a32c14d59db5b36ea1d23d37ade4",
+      "snapshot_file_sha256": "aa2563137109eadb1467c7921bd4d65b4dde966652dc842c939457973b5cec0b",
+      "historical_profile": {
+        "advisor_seconds": 2.41086980002,
+        "advisor_skipped": false,
+        "evaluations": 139876,
+        "phase": "hand",
+        "score_calls": 139876,
+        "snapshot_seconds": 0.00040000001899898,
+        "step": 96,
+        "type": "engine_episode_profile",
+        "work_scope": "advisor_decision"
+      },
+      "static_selection": {
+        "hand_count": 8,
+        "joker_keys": [
+          "j_perkeo",
+          "j_supernova",
+          "j_brainstorm",
+          "j_droll",
+          "j_yorick"
+        ],
+        "discards_left": 2,
+        "historical_action": {
+          "kind": "reorder_jokers",
+          "order": [
+            5,
+            2,
+            3,
+            4,
+            1
+          ]
+        },
+        "historical_evaluations": 139876,
+        "historical_ordering": {
+          "action": {
+            "kind": "reorder_jokers",
+            "order": [
+              5,
+              2,
+              3,
+              4,
+              1
+            ]
+          },
+          "baseline_play": {
+            "arm_cost": 0,
+            "chips": 70,
+            "created_cards": {},
+            "expected_dollars": 0,
+            "future_growth": 0,
+            "future_loss": 0,
+            "glass_exposure": {},
+            "glass_loss": 0,
+            "hand": "Straight",
+            "indices": [
+              1,
+              2,
+              3,
+              5,
+              7
+            ],
+            "legal": true,
+            "mult": 72,
+            "score": 5040,
+            "scoring_indices": [
+              1,
+              2,
+              3,
+              5,
+              7
+            ],
+            "uncertain": false,
+            "warnings": {}
+          },
+          "kind": "reorder_jokers",
+          "lines": [
+            "#5 Yorick -> #2 Supernova -> #3 Brainstorm -> #4 Droll Joker -> #1 Perkeo",
+            "Then reassess the hand: Straight estimates ~18480 chips (current order ~5040).",
+            "Move the Jokers into this left-to-right order first; refresh advice before selecting or playing cards.",
+            "51 completed order comparisons; bounded coverage, not an exhaustive optimum."
+          ],
+          "play": {
+            "arm_cost": 0,
+            "chips": 70,
+            "created_cards": {},
+            "expected_dollars": 0,
+            "future_growth": 0,
+            "future_loss": 0,
+            "glass_exposure": {},
+            "glass_loss": 0,
+            "hand": "Straight",
+            "indices": [
+              1,
+              2,
+              3,
+              5,
+              7
+            ],
+            "legal": true,
+            "mult": 264,
+            "score": 18480,
+            "scoring_indices": [
+              1,
+              2,
+              3,
+              5,
+              7
+            ],
+            "uncertain": false,
+            "warnings": {}
+          },
+          "projected_play": {
+            "arm_cost": 0,
+            "chips": 70,
+            "created_cards": {},
+            "expected_dollars": 0,
+            "future_growth": 0,
+            "future_loss": 0,
+            "glass_exposure": {},
+            "glass_loss": 0,
+            "hand": "Straight",
+            "indices": [
+              1,
+              2,
+              3,
+              5,
+              7
+            ],
+            "legal": true,
+            "mult": 264,
+            "score": 18480,
+            "scoring_indices": [
+              1,
+              2,
+              3,
+              5,
+              7
+            ],
+            "uncertain": false,
+            "warnings": {}
+          },
+          "title": "Reorder Jokers before playing",
+          "warnings": {}
+        },
+        "qualification": "Static scope evidence only; neither new policy evaluated."
+      }
+    }
+  },
+  "policy_digests": {
+    "baseline": "40ce8ca5f3c5860cc377309fe3b4a1bb608a6332f4bed8484ee3e68a482eacc0",
+    "candidate": "e591f83e9b8bdcdbba288ff199836db12d40711d9b38b0df958c350bbbd0228f"
+  },
+  "module_setups": {
+    "baseline": {
+      "installed_record_sha256": "10473351958cd4f3dabef72287c59edc34ed6f76622f28b6d0b5c8ca41ebc7f6",
+      "runtime_sha256": "e37d3de7e3fb96f2d0648b85f11cd6e176c0012284f45727219511d425711852",
+      "derived_setup_sha256": "ea59deae9e1b06b705c4f4dd79d531bc2c400e5ad2e95d75c04d974237cd1a07",
+      "omitted_product_integrations": [
+        "A.execution = module('execution')",
+        "A.retry_memory, A.retry_policy, A.retry_journal = module('retry_memory'), module('retry_policy'), module('retry_journal')",
+        "A.retry_generation, A.state_epoch = 0, 0",
+        "A.opening = Brainstorm.ChallengeOpening",
+        "A.jokerless_opening = Brainstorm.JokerlessOpening"
+      ]
+    },
+    "candidate": {
+      "installed_record_sha256": "4e64c0433a460faa3b7503dfa097cfb9aad1b0abef163d4083a1516e441cd886",
+      "runtime_sha256": "7d049fc735b00ec6760d676ab854e194eca046a7b12ba727dc3e2e268cea4d5e",
+      "derived_setup_sha256": "10a7bb6d22fefa9907c2e0a0c2ef6151d441573f342011020d7ecfa91a48a469",
+      "omitted_product_integrations": [
+        "A.execution = module('execution')",
+        "A.retry_memory, A.retry_policy, A.retry_journal = module('retry_memory'), module('retry_policy'), module('retry_journal')",
+        "A.retry_generation, A.state_epoch = 0, 0",
+        "A.opening = Brainstorm.ChallengeOpening",
+        "A.jokerless_opening = Brainstorm.JokerlessOpening"
+      ]
+    }
+  },
+  "changed_policy_files": [
+    "Brainstorm/Advisor/decision.lua",
+    "Brainstorm/Advisor/hand_copy_preflight.lua",
+    "Brainstorm/Advisor/runtime.lua",
+    "Brainstorm/Advisor/search.lua",
+    "Brainstorm/Core/Brainstorm.lua",
+    "Brainstorm/steamodded_compat.lua"
+  ],
+  "selection_limit": "Step185 has12held and is outside315 bound; selected31/96 are dependent development states.",
+  "qualification": false,
+  "captured_policy_evaluated": false,
+  "source_initialized": false
+}

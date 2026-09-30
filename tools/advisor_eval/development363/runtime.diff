@@ -1,0 +1,29 @@
+--- before/Brainstorm/Advisor/acorn_ordering.lua
++++ Brainstorm/Advisor/acorn_ordering.lua
+@@ -18,13 +18,16 @@
+     return no('The belief comparison requires a settled visible hand and known remaining resources.') end
+   if not scorer or not scorer.score or not finite(s.chips) or not finite((s.blind or {}).chips) then return no('Exact scoring and target resources are required.') end
+   local target=s.blind.chips-s.chips;if target<=0 then return no('The round is already cleared.') end
+-  local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true}
++  -- Glass breaks after the immediate score, not between its retriggers. The
++  -- pure scorer retains exposure without predicting a surviving population.
++  local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true,m_glass=true}
+   local random_floor=false
+   for _,c in ipairs(s.hand) do
+     if c.face_down or c.unknown or c.concealed or c.facing=='back' or not known_enhancements[c.enhancement or 'c_base'] or
+       c.seal and c.seal~='Red' then
+-      return no('Concealed, destructible, unknown or held-reward playing-card effects remain outside this immediate comparison.') end
++      return no('Concealed, unknown or held-reward playing-card effects remain outside this immediate comparison.') end
+     if c.enhancement=='m_lucky' then random_floor=true end
++    if c.enhancement=='m_glass' then diag.glass_after_scoring=true end
+     local e=c.edition
+     if type(e)=='string' then e={[e]=true} end
+     if e~=nil then
+@@ -123,6 +126,7 @@
+       public_information_fallback=not clear,joint_resource_comparison=false,
+       lines={clear and 'This fixed play reaches the modeled target in every consistent public Joker order.' or
+         'This fixed play has the strongest conservative immediate score across the consistent public Joker orders.',
++        diag.glass_after_scoring and 'Glass may break after scoring; its survival and the next hand are not predicted.' or
+         'Observe visible Joker activations and refresh the belief after the action; future draws, discards and consumable uses are not forecast here.'}},diag.evaluations,diag
+   end
+   if best.minimum>=target then return current('A current-order all-world clear avoids an unnecessary reorder comparison.') end

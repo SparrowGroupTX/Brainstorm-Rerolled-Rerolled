@@ -1,0 +1,1308 @@
+{
+  "schema": 1,
+  "scope": "Bounded read-only passive journal prefix capture and decode; no policy replay, simulations, source components, searches, save/profile reads or game control.",
+  "audit": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\passive_audit.json",
+    "sha256": "532092c5bc654205c655d7e0fd123b8135393422acbab81026facff6ced194a7"
+  },
+  "inputs": [
+    {
+      "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T060145Z-1-000001.brj",
+      "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\frozen_prefix\\session-20260916T060145Z-1-000001.brj",
+      "bytes": 29418,
+      "sha256": "c763614a6d2a105bf097f9410bd5a505710764320d387507b97c088144ceca5c",
+      "append_active": false,
+      "stat_unchanged_during_read": true,
+      "original_size_after_read": 29418,
+      "event_count": 10
+    },
+    {
+      "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T060145Z-1-000002.brj",
+      "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\frozen_prefix\\session-20260916T060145Z-1-000002.brj",
+      "bytes": 2886421,
+      "sha256": "58a30792806478a97cd042334f5b318b4dc2879d9abe69dff47ae87acc2377e5",
+      "append_active": false,
+      "stat_unchanged_during_read": true,
+      "original_size_after_read": 2886421,
+      "event_count": 1001
+    },
+    {
+      "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T060145Z-1-000003.brj",
+      "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\frozen_prefix\\session-20260916T060145Z-1-000003.brj",
+      "bytes": 21660,
+      "sha256": "0be0ba225699c049a7261e2dc9a3873f8cd101b52b2cfbfd7d76615be357723b",
+      "append_active": false,
+      "stat_unchanged_during_read": true,
+      "original_size_after_read": 21660,
+      "event_count": 7
+    },
+    {
+      "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T060145Z-1-000004.brj",
+      "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\frozen_prefix\\session-20260916T060145Z-1-000004.brj",
+      "bytes": 2553135,
+      "sha256": "a4e468424d1d5d3515b20e04aba8fd6451a721105524cbbf4c309fe52d3c5051",
+      "append_active": true,
+      "stat_unchanged_during_read": true,
+      "original_size_after_read": 2553135,
+      "event_count": 877
+    }
+  ],
+  "loaded_versions": {
+    "Brainstorm v2.147.0-alpha": 1397
+  },
+  "decode_errors": [],
+  "last_sequence": 1895,
+  "last_at": "2026-09-16T06:14:22Z",
+  "stops": [
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 836,
+        "sequence": 1854,
+        "decoded_event_sha256": "283689ef5ce048969dcc443b318f2d876b3cff4df42b79edee5a0b5dff5eeced",
+        "stored_frame_sha256": "811090e7418a487da60da95450553afe23670dcf5c3b35638c9a70ddc5dc6c3c"
+      },
+      "at": "2026-09-16T06:10:58Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {
+        "event": "session_stopped",
+        "reason": "log_unavailable",
+        "detail": "Controller data must be plain finite values.",
+        "run_id": "game:3",
+        "time": 559.9461549,
+        "actions": 344,
+        "runs_started": 2,
+        "outcomes": {
+          "losses": 1,
+          "wins": 0
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "state": "stopped"
+      },
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "pack",
+        "state": 10,
+        "dollars": 58,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    }
+  ],
+  "terminal_outcomes": [
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000002.brj",
+        "ordinal": 1001,
+        "sequence": 1011,
+        "decoded_event_sha256": "a2314239b7bdd76009ddf8240ccb215e4903c58b7c619b88b225dba9c26357df",
+        "stored_frame_sha256": "af3d041678c2691dea642e5e0ed7c2149cefcf29d709626224dc7767818788bd"
+      },
+      "at": "2026-09-16T06:07:54Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "M4BVSY11",
+      "details": {
+        "event": "run_finished",
+        "run_number": 1,
+        "run_id": "game:2",
+        "run_actions": 185,
+        "run_seconds": 360.9945756,
+        "time": 375.6424422,
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "state": "terminal"
+      },
+      "state": {
+        "ante": 6,
+        "round": 17,
+        "phase": "other",
+        "state": 4,
+        "dollars": 109,
+        "chips": 112910,
+        "blind": {
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_serpent",
+          "mult": 2,
+          "name": "The Serpent"
+        },
+        "hands_left": 0,
+        "discards_left": 0,
+        "reroll_cost": 5,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 5,
+        "consumable_limit": 6,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    }
+  ],
+  "latest_run": {
+    "seed": "YVYN2Z11",
+    "run_id": "game:3",
+    "status": "unfinished; stopped by controller logging guard",
+    "start_sequence": 1020,
+    "stop_sequence": 1854,
+    "run_seconds_before_stop": 183.99723219999998,
+    "automatic_actions": 159,
+    "confirmed_new_gold": 0,
+    "progress": {
+      "complete": 59,
+      "missing": 91,
+      "total": 150,
+      "unknown": 0
+    },
+    "state": {
+      "ante": 6,
+      "round": 16,
+      "phase": "pack",
+      "state": 10,
+      "dollars": 58,
+      "chips": 0,
+      "blind": {
+        "chips": 0,
+        "debuff": {},
+        "disabled": false,
+        "mult": 0,
+        "name": "",
+        "prepped": true
+      },
+      "hands_left": 4,
+      "discards_left": 3,
+      "reroll_cost": 5,
+      "next_blind": {
+        "ante": 6,
+        "boss": true,
+        "chips": 120000,
+        "debuff": {},
+        "key": "bl_ox",
+        "label": "Boss",
+        "mult": 2,
+        "name": "The Ox"
+      },
+      "next_blind_chips": 120000,
+      "win_ante": 8,
+      "bankrupt_at": 0,
+      "joker_limit": 6,
+      "consumable_limit": 16,
+      "consumeable_buffer": 0,
+      "ordering_safe": null,
+      "jokers_shuffling": null
+    },
+    "last_advice": {
+      "action": {
+        "area": "pack_cards",
+        "index": 3,
+        "kind": "choose",
+        "targets": {}
+      },
+      "gold_review": {
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "Levels every hand, with no Joker-space requirement.",
+        "After each choice, refresh advice for the remaining options.",
+        "Temperance can generate $43 without selling your Jokers.",
+        "Note: Shop scoring preview unavailable: Blind-start Joker changes are left to the existing strategy. Using strategy estimates.",
+        "Note: Pack scoring could not complete every legal comparison; this decision uses the strategic ratings.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "status": "current",
+      "timing": {
+        "action_kind": "choose",
+        "active_seconds": 0.08779790000005505,
+        "decision_id": 838,
+        "elapsed_seconds": 0.08780250000006617,
+        "evaluations": 0,
+        "finished_seconds": 559.2637709,
+        "max_resume_seconds": 0.08779790000005505,
+        "phase": "pack",
+        "resume_calls": 1,
+        "started_seconds": 559.1759684,
+        "status": "completed"
+      },
+      "title": "Choose Black Hole"
+    },
+    "jokers": [
+      {
+        "key": "j_caino",
+        "name": "Caino",
+        "gold_status": "complete",
+        "eternal": false
+      },
+      {
+        "key": "j_yorick",
+        "name": "Yorick",
+        "gold_status": "complete",
+        "eternal": false
+      },
+      {
+        "key": "j_cartomancer",
+        "name": "Cartomancer",
+        "gold_status": "complete",
+        "eternal": true
+      },
+      {
+        "key": "j_perkeo",
+        "name": "Perkeo",
+        "gold_status": "complete",
+        "eternal": false
+      },
+      {
+        "key": "j_devious",
+        "name": "Devious Joker",
+        "gold_status": "complete",
+        "eternal": true
+      },
+      {
+        "key": "j_brainstorm",
+        "name": "Brainstorm",
+        "gold_status": "complete",
+        "eternal": false
+      }
+    ]
+  },
+  "chronology": [
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000002.brj",
+        "ordinal": 2,
+        "sequence": 12,
+        "decoded_event_sha256": "32f0ad994806713e5bc3b961789eb61f67f6e24ed8b40adc7f9bb10658d25536",
+        "stored_frame_sha256": "45d92d879ba33e37f288bae6e7986db24bc42aa6ee9000d09e4fbea225849323"
+      },
+      "at": "2026-09-16T06:01:53Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "M4BVSY11",
+      "details": {
+        "event": "run_started",
+        "run_number": 1,
+        "run_id": "game:2",
+        "time": 14.7638855,
+        "state": "playing"
+      },
+      "state": {
+        "ante": 1,
+        "round": 0,
+        "phase": "blind",
+        "state": 7,
+        "dollars": 4,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "next_blind_chips": 300,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000002.brj",
+        "ordinal": 1001,
+        "sequence": 1011,
+        "decoded_event_sha256": "a2314239b7bdd76009ddf8240ccb215e4903c58b7c619b88b225dba9c26357df",
+        "stored_frame_sha256": "af3d041678c2691dea642e5e0ed7c2149cefcf29d709626224dc7767818788bd"
+      },
+      "at": "2026-09-16T06:07:54Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "M4BVSY11",
+      "details": {
+        "event": "run_finished",
+        "run_number": 1,
+        "run_id": "game:2",
+        "run_actions": 185,
+        "run_seconds": 360.9945756,
+        "time": 375.6424422,
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "state": "terminal"
+      },
+      "state": {
+        "ante": 6,
+        "round": 17,
+        "phase": "other",
+        "state": 4,
+        "dollars": 109,
+        "chips": 112910,
+        "blind": {
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_serpent",
+          "mult": 2,
+          "name": "The Serpent"
+        },
+        "hands_left": 0,
+        "discards_left": 0,
+        "reroll_cost": 5,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 5,
+        "consumable_limit": 6,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 2,
+        "sequence": 1020,
+        "decoded_event_sha256": "849554352377b600319302bb6b073087e920816e7d05b0a78fc08bdbae7e96c2",
+        "stored_frame_sha256": "00731bab0cc806039785501ccde86dfd70c31d967e217a230417cc935ec5994e"
+      },
+      "at": "2026-09-16T06:07:54Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {
+        "event": "run_started",
+        "run_number": 2,
+        "run_id": "game:3",
+        "time": 375.9489227,
+        "state": "playing"
+      },
+      "state": {
+        "ante": 1,
+        "round": 0,
+        "phase": "blind",
+        "state": 7,
+        "dollars": 4,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "next_blind_chips": 300,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 826,
+        "sequence": 1844,
+        "decoded_event_sha256": "ecb38f46233433835601c571dd5fde59538af593105008f680d49c62d8720da9",
+        "stored_frame_sha256": "721b707bc9d969d69c1fa4e1dc95ea854bece2a9fe1e9e255dd2205c2bb367e4"
+      },
+      "at": "2026-09-16T06:10:56Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {
+        "event": "action_attempt",
+        "run_id": "game:3",
+        "time": 557.8511729,
+        "state": "waiting"
+      },
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "round",
+        "state": 8,
+        "dollars": 52,
+        "chips": 127680,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 3,
+        "discards_left": 2,
+        "reroll_cost": 5,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 827,
+        "sequence": 1845,
+        "decoded_event_sha256": "c417a01ba0bc1b7a2bc63e5ef3d31818405cc0986984d97bdcef1e73bea7722d",
+        "stored_frame_sha256": "7003ba0ae6fa34f4f5454db67ea8f9399a83cea22d3c89aee2aa78dbb2c2d6eb"
+      },
+      "at": "2026-09-16T06:10:56Z",
+      "kind": "action_requested",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {},
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "round",
+        "state": 8,
+        "dollars": 52,
+        "chips": 127680,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 3,
+        "discards_left": 2,
+        "reroll_cost": 5,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 828,
+        "sequence": 1846,
+        "decoded_event_sha256": "e2861cf3b2ad1d1789dc06d47a2ddd8fbf2c28e0a77782bfe6392c00fff170fc",
+        "stored_frame_sha256": "5c8860081a5a2be9c5e2c7863d4265371f6fe4980928820cad829f74969c28ab"
+      },
+      "at": "2026-09-16T06:10:56Z",
+      "kind": "action_callback_result",
+      "version": null,
+      "seed": null,
+      "details": {
+        "reason": ""
+      },
+      "state": {
+        "ante": null,
+        "round": null,
+        "phase": null,
+        "state": null,
+        "dollars": null,
+        "chips": null,
+        "blind": null,
+        "hands_left": null,
+        "discards_left": null,
+        "reroll_cost": null,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": null,
+        "bankrupt_at": null,
+        "joker_limit": null,
+        "consumable_limit": null,
+        "consumeable_buffer": null,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 830,
+        "sequence": 1848,
+        "decoded_event_sha256": "c855a02d0bd69241002703c5380aacba1ebaf6c8cbb8b093dfb224121704a068",
+        "stored_frame_sha256": "bd21dd7502debef38ad7918ba7c09ff964654b621ec51b9971ff71eefba7593b"
+      },
+      "at": "2026-09-16T06:10:57Z",
+      "kind": "state_after_actions",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {},
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "shop",
+        "state": 5,
+        "dollars": 64,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 831,
+        "sequence": 1849,
+        "decoded_event_sha256": "a07c2b4ca6e915e15466073e34285f1a2f0f89d351d3d3ad251a71ae4d5a633a",
+        "stored_frame_sha256": "c24ee0c9d202391123c1e46e193af15a5311ab4a5e3b6a4002d3ad715bb74291"
+      },
+      "at": "2026-09-16T06:10:57Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {
+        "event": "action_observed",
+        "run_id": "game:3",
+        "time": 558.6539308,
+        "state": "waiting"
+      },
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "shop",
+        "state": 5,
+        "dollars": 64,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 832,
+        "sequence": 1850,
+        "decoded_event_sha256": "55bb075b79824949147a447186295e3b6d07ae3df84d992c5b48d1d100b95a0d",
+        "stored_frame_sha256": "c5d59818910f4244b94174d804deac5564aafd2af69dd5429474a0761bf591a8"
+      },
+      "at": "2026-09-16T06:10:57Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {
+        "event": "action_attempt",
+        "run_id": "game:3",
+        "time": 558.6539308,
+        "state": "waiting"
+      },
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "shop",
+        "state": 5,
+        "dollars": 64,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 833,
+        "sequence": 1851,
+        "decoded_event_sha256": "0c3afefd0ed8c74cbf656b04845982b684f04ded62ba5909b23ea4637d275cb0",
+        "stored_frame_sha256": "3488cfd87e48e8cf3c10c8faef6928ed19aaf1da09d388e4cad114fa333f9c04"
+      },
+      "at": "2026-09-16T06:10:57Z",
+      "kind": "action_requested",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {},
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "shop",
+        "state": 5,
+        "dollars": 64,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 834,
+        "sequence": 1852,
+        "decoded_event_sha256": "5bb43a474e3570f2242b79e4038f18ac2096386e0e6ddc4035211e812a5faa64",
+        "stored_frame_sha256": "e8b9e41294111b94f8720d3fb180014f1c752898520f94889c0f00266807772a"
+      },
+      "at": "2026-09-16T06:10:57Z",
+      "kind": "action_callback_result",
+      "version": null,
+      "seed": null,
+      "details": {
+        "reason": ""
+      },
+      "state": {
+        "ante": null,
+        "round": null,
+        "phase": null,
+        "state": null,
+        "dollars": null,
+        "chips": null,
+        "blind": null,
+        "hands_left": null,
+        "discards_left": null,
+        "reroll_cost": null,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": null,
+        "bankrupt_at": null,
+        "joker_limit": null,
+        "consumable_limit": null,
+        "consumeable_buffer": null,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 835,
+        "sequence": 1853,
+        "decoded_event_sha256": "d02d540c826815cd5521d82db42bdf9a24526dd49dd6e949af95efa744b19c7b",
+        "stored_frame_sha256": "210eb14e4ecf62c3d21fe7f149716cba15db7f6f39336d3037bcacce1f508bcb"
+      },
+      "at": "2026-09-16T06:10:58Z",
+      "kind": "state_after_actions",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {},
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "pack",
+        "state": 10,
+        "dollars": 58,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 836,
+        "sequence": 1854,
+        "decoded_event_sha256": "283689ef5ce048969dcc443b318f2d876b3cff4df42b79edee5a0b5dff5eeced",
+        "stored_frame_sha256": "811090e7418a487da60da95450553afe23670dcf5c3b35638c9a70ddc5dc6c3c"
+      },
+      "at": "2026-09-16T06:10:58Z",
+      "kind": "auto_run",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "details": {
+        "event": "session_stopped",
+        "reason": "log_unavailable",
+        "detail": "Controller data must be plain finite values.",
+        "run_id": "game:3",
+        "time": 559.9461549,
+        "actions": 344,
+        "runs_started": 2,
+        "outcomes": {
+          "losses": 1,
+          "wins": 0
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "state": "stopped"
+      },
+      "state": {
+        "ante": 6,
+        "round": 16,
+        "phase": "pack",
+        "state": 10,
+        "dollars": 58,
+        "chips": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "hands_left": 4,
+        "discards_left": 3,
+        "reroll_cost": 5,
+        "next_blind": {
+          "ante": 6,
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "key": "bl_ox",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Ox"
+        },
+        "next_blind_chips": 120000,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 6,
+        "consumable_limit": 16,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      }
+    }
+  ],
+  "searches": [
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000001.brj",
+        "ordinal": 8,
+        "sequence": 8,
+        "decoded_event_sha256": "a63839b14e2879a176e8d25065051e7588957fd636abf96a816bd33cb8fea594",
+        "stored_frame_sha256": "d67a862dbfa380f96dc1ae3eb99ec0b88bdfbba87f1595bfcdbc3907df23e266"
+      },
+      "at": "2026-09-16T06:01:53Z",
+      "kind": "collection_search_finished",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "H8L5ARX6",
+      "result": {
+        "budget_ms": 9000,
+        "exact_candidates": 233,
+        "route": "conditional_no_reroll_stock_and_buffoon",
+        "schema": 1,
+        "screened": 37822464,
+        "seconds": 0.0712201,
+        "seed": "M4BVSY11",
+        "status": "found",
+        "threads": 32
+      },
+      "request": {
+        "deck": "Red Deck",
+        "stake_level": 8,
+        "tag": "Charm Tag",
+        "souls": 2,
+        "target_jokers": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+        "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+        "reject_perishable_targets": true,
+        "minimum_distinct": 1,
+        "first_ante": 5,
+        "last_ante": 8,
+        "interchangeable_copies": true
+      },
+      "started_at": "Y9ZG4Y11",
+      "receipt_wall_seconds": 0.1108551000000002
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000003.brj",
+        "ordinal": 5,
+        "sequence": 1016,
+        "decoded_event_sha256": "0333c46efaf5f743d21ebca6d144f98534c03d65b6ff38fba559b642e4792c05",
+        "stored_frame_sha256": "69a7e445366ff6f76e43733fc1f63d7c250efaeeea2c416b9b0168d6aa952631"
+      },
+      "at": "2026-09-16T06:07:54Z",
+      "kind": "collection_search_finished",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "M4BVSY11",
+      "result": {
+        "budget_ms": 9000,
+        "exact_candidates": 70,
+        "route": "conditional_no_reroll_stock_and_buffoon",
+        "schema": 1,
+        "screened": 13664256,
+        "seconds": 0.029647,
+        "seed": "YVYN2Z11",
+        "status": "found",
+        "threads": 32
+      },
+      "request": {
+        "deck": "Red Deck",
+        "stake_level": 8,
+        "tag": "Charm Tag",
+        "souls": 2,
+        "target_jokers": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+        "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+        "reject_perishable_targets": true,
+        "minimum_distinct": 1,
+        "first_ante": 5,
+        "last_ante": 8,
+        "interchangeable_copies": true
+      },
+      "started_at": "N4BVSY11",
+      "receipt_wall_seconds": 0.05275869999996985
+    }
+  ],
+  "fingerprint_evidence": {
+    "controller_string_limit": 262144,
+    "largest_logged": {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 793,
+        "sequence": 1811,
+        "decoded_event_sha256": "25c253d7e975d1edfa422df650c07399a0669b7b107504cedc1de966bde37ca5",
+        "stored_frame_sha256": "54988b192404d4f5c389c574354d8eaa1eaba604520447e8ab163a7c8d77d5a3"
+      },
+      "at": "2026-09-16T06:10:43Z",
+      "kind": "snapshot_fingerprint_sha256",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "event": "action_observed",
+      "field": "after",
+      "byte_length": 259274,
+      "schema": 1,
+      "sha256": "1cd02c5e4a034b6444603729dcc05047133a887d496362a867d35e972ef21771",
+      "status": "available"
+    },
+    "last_logged": {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 832,
+        "sequence": 1850,
+        "decoded_event_sha256": "55bb075b79824949147a447186295e3b6d07ae3df84d992c5b48d1d100b95a0d",
+        "stored_frame_sha256": "c5d59818910f4244b94174d804deac5564aafd2af69dd5429474a0761bf591a8"
+      },
+      "at": "2026-09-16T06:10:57Z",
+      "kind": "snapshot_fingerprint_sha256",
+      "version": "Brainstorm v2.147.0-alpha",
+      "seed": "YVYN2Z11",
+      "event": "action_attempt",
+      "field": "fingerprint",
+      "byte_length": 258571,
+      "schema": 1,
+      "sha256": "dfa728a8c37de1d863c35822cbb5adce418612f3d7549d1dfe1b4076e58724a2",
+      "status": "available"
+    },
+    "final_fingerprint_length": "Not recorded: the controller rejected the event before the product log could hash and emit it.",
+    "source_inference": "A pending pack-open action was accepted and its settled public pack observed. The next action_observed record is absent, followed by log_unavailable with the controller clone guard string. Prior fingerprint was 258571 bytes. Controller source applies a262144-byte string limit before product log compaction. Oversized next fingerprint is strongly consistent; its exact rejected length is not directly observed. This is not evidence of a nonfinite Black Hole score."
+  },
+  "public_near_stop": {
+    "1851": {
+      "inventory_count": 16,
+      "inventory_limit": 16,
+      "inventory_classes": {
+        "c_temperance": 12,
+        "c_moon": 2,
+        "c_sun": 2
+      },
+      "negative_count": 14,
+      "tarot_certificates": {
+        "True": 16
+      },
+      "pack_type": null,
+      "pack_choices": 1,
+      "pack_cards": [],
+      "snapshot_scope": "Detached public observation; concealed identities redacted; shop catalog forecast omitted.",
+      "snapshot_compact_json_bytes": 119753,
+      "serialization_limit": "This JSON byte count is not the raw runtime fingerprint length; journal snapshots omit some runtime fields."
+    },
+    "1853": {
+      "inventory_count": 16,
+      "inventory_limit": 16,
+      "inventory_classes": {
+        "c_temperance": 12,
+        "c_moon": 2,
+        "c_sun": 2
+      },
+      "negative_count": 14,
+      "tarot_certificates": {
+        "True": 16
+      },
+      "pack_type": "PLANET_PACK",
+      "pack_choices": 1,
+      "pack_cards": [
+        {
+          "index": 1,
+          "key": "c_pluto",
+          "name": "Pluto",
+          "id": "card:521"
+        },
+        {
+          "index": 2,
+          "key": "c_mars",
+          "name": "Mars",
+          "id": "card:522"
+        },
+        {
+          "index": 3,
+          "key": "c_black_hole",
+          "name": "Black Hole",
+          "id": "card:523"
+        },
+        {
+          "index": 4,
+          "key": "c_earth",
+          "name": "Earth",
+          "id": "card:524"
+        },
+        {
+          "index": 5,
+          "key": "c_neptune",
+          "name": "Neptune",
+          "id": "card:525"
+        }
+      ],
+      "snapshot_scope": "Detached public observation; concealed identities redacted; shop catalog forecast omitted.",
+      "snapshot_compact_json_bytes": 122627,
+      "serialization_limit": "This JSON byte count is not the raw runtime fingerprint length; journal snapshots omit some runtime fields."
+    },
+    "1854": {
+      "inventory_count": 16,
+      "inventory_limit": 16,
+      "inventory_classes": {
+        "c_temperance": 12,
+        "c_moon": 2,
+        "c_sun": 2
+      },
+      "negative_count": 14,
+      "tarot_certificates": {
+        "True": 16
+      },
+      "pack_type": "PLANET_PACK",
+      "pack_choices": 1,
+      "pack_cards": [
+        {
+          "index": 1,
+          "key": "c_pluto",
+          "name": "Pluto",
+          "id": "card:521"
+        },
+        {
+          "index": 2,
+          "key": "c_mars",
+          "name": "Mars",
+          "id": "card:522"
+        },
+        {
+          "index": 3,
+          "key": "c_black_hole",
+          "name": "Black Hole",
+          "id": "card:523"
+        },
+        {
+          "index": 4,
+          "key": "c_earth",
+          "name": "Earth",
+          "id": "card:524"
+        },
+        {
+          "index": 5,
+          "key": "c_neptune",
+          "name": "Neptune",
+          "id": "card:525"
+        }
+      ],
+      "snapshot_scope": "Detached public observation; concealed identities redacted; shop catalog forecast omitted.",
+      "snapshot_compact_json_bytes": 122627,
+      "serialization_limit": "This JSON byte count is not the raw runtime fingerprint length; journal snapshots omit some runtime fields."
+    }
+  },
+  "original_event_receipts": [
+    {
+      "sequence": 1851,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1851.json",
+      "sha256": "0c3afefd0ed8c74cbf656b04845982b684f04ded62ba5909b23ea4637d275cb0"
+    },
+    {
+      "sequence": 1853,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1853.json",
+      "sha256": "d02d540c826815cd5521d82db42bdf9a24526dd49dd6e949af95efa744b19c7b"
+    },
+    {
+      "sequence": 1854,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1854.json",
+      "sha256": "283689ef5ce048969dcc443b318f2d876b3cff4df42b79edee5a0b5dff5eeced"
+    }
+  ],
+  "after_stop": {
+    "windows": 41,
+    "first_at": "2026-09-16T06:11:02Z",
+    "last_at": "2026-09-16T06:14:22Z",
+    "flags_last": {
+      "advisor_worker": false,
+      "ante": 6,
+      "auto_active": false,
+      "dragging": false,
+      "game_speed": 64,
+      "idle_menu": false,
+      "paused": false,
+      "round": 16,
+      "stage": 2,
+      "state": 10
+    },
+    "nonperformance_events": 0,
+    "last_frame_interval": {
+      "count": 1181,
+      "histogram": [
+        0,
+        53,
+        1109,
+        19,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_seconds": 0.01275399999997262,
+      "total_seconds": 5.0002119999999195
+    }
+  },
+  "source_read_hashes": {
+    "Brainstorm/Advisor/auto_run.lua": "106a2daeab802a5bef6102ebcbbefb20f7d418c737755b9a34c5eb40398c703d",
+    "Brainstorm/Advisor/player_journal.lua": "97d83097e2f91cd30d34c3c75bc63a635eec97a5ecd9c4b4eedbc93e4cb2215d"
+  },
+  "limits": [
+    "No advisor was evaluated on any captured state.",
+    "The latest run is censored at a pack; no loss or win is imputed.",
+    "No beyond-stop actions or outcomes were observed in the frozen prefix.",
+    "Previously studied seeds remain development data.",
+    "Search found receipts do not prove acquisition, retention, survival or future win odds."
+  ]
+}

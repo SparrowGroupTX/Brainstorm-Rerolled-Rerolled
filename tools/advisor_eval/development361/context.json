@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "release": 361,
+  "summary": "Add standalone user-click Clear logs and clarify that the existing ten-run teacher batch counts losses, not ten wins.",
+  "outcome_summary": "Fresh passive normal-collection prefix confirms loaded2.159, teacher_batch=false. Through2026-09-22T16:31:52Z sequence1995: four starts, three GAME_OVER losses, one start without terminal. These are selected development observations, not win-first teacher data or a representative win rate. Earlier loaded2.156 win-first record remains two wins/four losses/one user-stopped opening, zero new Gold. No2.160 or2.161 outcome or complete Jokerless win is demonstrated.",
+  "limits_summary": "Clear logs resets only recognized observation journals and their writer; no gameplay or settings change. Active/resumable sessions, busy searches and unsettled action receipts block clearing. User may clear before starting or after finishing a session. Batch was already ten starts; no cap/reset/retirement behavior changed. In-memory and full regression evidence is not live UI activation or game-performance evidence.",
+  "budget_summary": "Only manufactured in-memory UI/filesystem/controller fixtures, source review and full candidate/exact-installed regression. No live logs deleted by tools, game/save/profile control, experiments, searches, captured-policy evaluations, simulations, GPU or automation. All historical experiment allowances remain closed. User plans to start ten real logged runs themselves.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 0,
+    "error": 0,
+    "timeout": 0,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "passive_product_evidence": {
+    "loaded_version": "2.159.0-alpha",
+    "teacher_batch": false,
+    "cutoff": "2026-09-22T16:31:52Z",
+    "terminal_count_in_prefix": 3,
+    "manifest": {
+      "path": "tools\\advisor_eval\\development360\\logs1\\manifest.json",
+      "sha256": "a29207b60361bb07fb4e99ff1915d1003830a3b07bec5001fc0b2fa774ff5b3f"
+    }
+  },
+  "evidence": {
+    "authority": {
+      "path": "tools\\advisor_eval\\development361\\SCOPE.md",
+      "sha256": "79644fb06650fb355d1f7ff5d875c96511f04ae0ae86d4336c663e4c0816300c"
+    },
+    "outcomes": {
+      "path": "tools\\advisor_eval\\development360\\passive_report.json",
+      "sha256": "6e96bf02add2b1580b985a92277e269ac3ef4d95df4f7a30a645c1c005054607"
+    },
+    "budget": {
+      "path": "tools\\advisor_eval\\development361\\BUDGET.json",
+      "sha256": "e483806cc513ba5c5806f95eb9692ec6a1eec7934e9a6dcfc0ac02894a6042b9"
+    },
+    "limits": {
+      "path": "tools\\advisor_eval\\development361\\SCOPE.md",
+      "sha256": "79644fb06650fb355d1f7ff5d875c96511f04ae0ae86d4336c663e4c0816300c"
+    }
+  }
+}

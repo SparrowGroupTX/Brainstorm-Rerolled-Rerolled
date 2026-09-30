@@ -1,0 +1,633 @@
+{
+  "cases": [
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0
+          ],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "USED",
+            "p_arcana_normal_1"
+          ]
+        }
+      },
+      "id": "used_first_stored_second",
+      "reference": {
+        "events": [
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0
+          ],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "USED",
+            "p_arcana_normal_1"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "event": "pack_draw",
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_celestial_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_celestial_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_arcana_normal_1",
+            "p_celestial_normal_1"
+          ]
+        }
+      },
+      "id": "two_empty_slots",
+      "reference": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "event": "pack_draw",
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_celestial_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_celestial_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_arcana_normal_1",
+            "p_celestial_normal_1"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "booster_offer",
+            "key": "p_standard_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_standard_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_standard_normal_1",
+            "p_arcana_normal_1"
+          ]
+        }
+      },
+      "id": "two_stored_slots",
+      "reference": {
+        "events": [
+          {
+            "event": "booster_offer",
+            "key": "p_standard_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_standard_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_standard_normal_1",
+            "p_arcana_normal_1"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_standard_normal_1",
+            "slot": 2
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_standard_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 3,
+          "legal_open_indices": [],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_standard_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_arcana_normal_1",
+            "p_standard_normal_1"
+          ]
+        }
+      },
+      "id": "stored_first_empty_second_unaffordable",
+      "reference": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_standard_normal_1",
+            "slot": 2
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_standard_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 3,
+          "legal_open_indices": [],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_standard_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_arcana_normal_1",
+            "p_standard_normal_1"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [],
+        "state": {
+          "cash": 8,
+          "legal_open_indices": [],
+          "offers": [],
+          "used_packs": [
+            "USED",
+            "USED"
+          ]
+        }
+      },
+      "id": "both_used",
+      "reference": {
+        "events": [],
+        "state": {
+          "cash": 8,
+          "legal_open_indices": [],
+          "offers": [],
+          "used_packs": [
+            "USED",
+            "USED"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_standard_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_celestial_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_standard_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_celestial_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_standard_normal_1",
+            "p_celestial_normal_1"
+          ]
+        }
+      },
+      "id": "heldout_gap_before_stored",
+      "reference": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_standard_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_celestial_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_standard_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_celestial_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_standard_normal_1",
+            "p_celestial_normal_1"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 5,
+          "legal_open_indices": [
+            0
+          ],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "USED",
+            "p_arcana_normal_1"
+          ]
+        }
+      },
+      "id": "heldout_used_first_empty_second",
+      "reference": {
+        "events": [
+          {
+            "event": "pack_draw",
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 5,
+          "legal_open_indices": [
+            0
+          ],
+          "offers": [
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "USED",
+            "p_arcana_normal_1"
+          ]
+        }
+      }
+    },
+    {
+      "candidate": {
+        "events": [
+          {
+            "event": "booster_offer",
+            "key": "p_celestial_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_celestial_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_celestial_normal_1",
+            "p_arcana_normal_1"
+          ]
+        }
+      },
+      "id": "heldout_reversed_stored",
+      "reference": {
+        "events": [
+          {
+            "event": "booster_offer",
+            "key": "p_celestial_normal_1",
+            "price": 4,
+            "slot": 1
+          },
+          {
+            "event": "booster_offer",
+            "key": "p_arcana_normal_1",
+            "price": 4,
+            "slot": 2
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "legal_open_indices": [
+            0,
+            1
+          ],
+          "offers": [
+            {
+              "key": "p_celestial_normal_1",
+              "price": 4,
+              "slot": 1
+            },
+            {
+              "key": "p_arcana_normal_1",
+              "price": 4,
+              "slot": 2
+            }
+          ],
+          "used_packs": [
+            "p_celestial_normal_1",
+            "p_arcana_normal_1"
+          ]
+        }
+      }
+    }
+  ],
+  "opening": {
+    "candidate": {
+      "events": [
+        {
+          "event": "opening_callback_input",
+          "slot": 2,
+          "stored_key": "USED"
+        }
+      ],
+      "state": {
+        "cash": 0,
+        "phase": "pack_opening",
+        "used_packs": [
+          "USED",
+          "USED"
+        ]
+      }
+    },
+    "case_id": "used_first_stored_second",
+    "reference": {
+      "events": [
+        {
+          "event": "opening_callback_input",
+          "slot": 2,
+          "stored_key": "USED"
+        }
+      ],
+      "state": {
+        "cash": 0,
+        "phase": "pack_opening",
+        "used_packs": [
+          "USED",
+          "USED"
+        ]
+      }
+    }
+  },
+  "original_source_executed": false,
+  "schema": "booster_source_expected_458_v1"
+}

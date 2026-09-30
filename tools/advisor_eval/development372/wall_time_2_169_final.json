@@ -1,0 +1,625 @@
+{
+  "action_request_to_callback": {
+    "count": 1603,
+    "max_seconds": 0.016338200000063807,
+    "p50_seconds": 0.006676200000129029,
+    "p95_seconds": 0.008475099999941449,
+    "sum_seconds": 10.848174199996791
+  },
+  "action_request_to_first_settled": {
+    "count": 1603,
+    "max_seconds": 4.171736600000031,
+    "p50_seconds": 0.42305320000014035,
+    "p95_seconds": 3.2582228000001123,
+    "sum_seconds": 1228.1243562000016
+  },
+  "by_action_kind": {
+    "buy": {
+      "callback_to_first_settled": {
+        "count": 62,
+        "max_seconds": 0.2927131000001282,
+        "p50_seconds": 0.03234229999998206,
+        "p95_seconds": 0.2798627999999326,
+        "sum_seconds": 4.6151140999992535
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 62,
+        "max_seconds": 0.24083440000003975,
+        "p50_seconds": 0.03234229999998206,
+        "p95_seconds": 0.22373979999997573,
+        "sum_seconds": 4.0884260999999
+      },
+      "decision_active": {
+        "count": 62,
+        "max_seconds": 3.753630299999905,
+        "p50_seconds": 0.2677104000003965,
+        "p95_seconds": 2.8511799999998857,
+        "sum_seconds": 39.357020600007466
+      },
+      "decision_elapsed": {
+        "count": 62,
+        "max_seconds": 5.285700699999978,
+        "p50_seconds": 0.4023015000000214,
+        "p95_seconds": 3.78239659999997,
+        "sum_seconds": 63.20363260000189
+      }
+    },
+    "cash_out": {
+      "callback_to_first_settled": {
+        "count": 147,
+        "max_seconds": 0.6401920000000132,
+        "p50_seconds": 0.429048699999953,
+        "p95_seconds": 0.5508168999999725,
+        "sum_seconds": 66.00610720000086
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 147,
+        "max_seconds": 0.6008010000000468,
+        "p50_seconds": 0.40607860000000073,
+        "p95_seconds": 0.5110723000000235,
+        "sum_seconds": 59.14850730000065
+      },
+      "decision_active": {
+        "count": 147,
+        "max_seconds": 0.019246099999918442,
+        "p50_seconds": 0.00014510000005429902,
+        "p95_seconds": 0.0004036999998788815,
+        "sum_seconds": 0.0858675000004041
+      },
+      "decision_elapsed": {
+        "count": 147,
+        "max_seconds": 0.019249600000193823,
+        "p50_seconds": 0.0001469999999699212,
+        "p95_seconds": 0.000405699999873832,
+        "sum_seconds": 0.08623610000105231
+      }
+    },
+    "choose": {
+      "callback_to_first_settled": {
+        "count": 135,
+        "max_seconds": 0.839630800000009,
+        "p50_seconds": 0.499971899999764,
+        "p95_seconds": 0.7704218999999739,
+        "sum_seconds": 62.26631769999984
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 135,
+        "max_seconds": 0.839630800000009,
+        "p50_seconds": 0.499971899999764,
+        "p95_seconds": 0.7704218999999739,
+        "sum_seconds": 62.26572989999987
+      },
+      "decision_active": {
+        "count": 135,
+        "max_seconds": 1.3905602000004365,
+        "p50_seconds": 0.24031149999999712,
+        "p95_seconds": 0.929202999998779,
+        "sum_seconds": 38.611457600013864
+      },
+      "decision_elapsed": {
+        "count": 135,
+        "max_seconds": 2.984752899999876,
+        "p50_seconds": 0.5209869000000253,
+        "p95_seconds": 1.88262050000003,
+        "sum_seconds": 84.41112480000228
+      }
+    },
+    "discard": {
+      "callback_to_first_settled": {
+        "count": 283,
+        "max_seconds": 0.5408848999998099,
+        "p50_seconds": 0.3017872999998872,
+        "p95_seconds": 0.42296630000009827,
+        "sum_seconds": 82.64164260000149
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 283,
+        "max_seconds": 0.5365290999998251,
+        "p50_seconds": 0.2650651999999809,
+        "p95_seconds": 0.3955976999999393,
+        "sum_seconds": 72.84426669999712
+      },
+      "decision_active": {
+        "count": 283,
+        "max_seconds": 1.234849999999824,
+        "p50_seconds": 0.6579498000035073,
+        "p95_seconds": 1.1541493000010519,
+        "sum_seconds": 164.8216728000708
+      },
+      "decision_elapsed": {
+        "count": 283,
+        "max_seconds": 4.000431200000094,
+        "p50_seconds": 1.8199854000000641,
+        "p95_seconds": 3.5036513000000014,
+        "sum_seconds": 467.8768243000005
+      }
+    },
+    "leave_shop": {
+      "callback_to_first_settled": {
+        "count": 147,
+        "max_seconds": 0.26003179999997883,
+        "p50_seconds": 0.11863400000004276,
+        "p95_seconds": 0.20894469999984722,
+        "sum_seconds": 18.538625399999255
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 147,
+        "max_seconds": 0.26003179999997883,
+        "p50_seconds": 0.11863400000004276,
+        "p95_seconds": 0.20894469999984722,
+        "sum_seconds": 18.538625399999255
+      },
+      "decision_active": {
+        "count": 147,
+        "max_seconds": 1.8880907999969168,
+        "p50_seconds": 0.2574298999993516,
+        "p95_seconds": 1.5884314999980234,
+        "sum_seconds": 67.39263450000512
+      },
+      "decision_elapsed": {
+        "count": 147,
+        "max_seconds": 3.116979800000081,
+        "p50_seconds": 0.5260454000001573,
+        "p95_seconds": 2.4791796000001796,
+        "sum_seconds": 115.34838019999785
+      }
+    },
+    "open": {
+      "callback_to_first_settled": {
+        "count": 117,
+        "max_seconds": 1.6998590000000604,
+        "p50_seconds": 1.3328719000001001,
+        "p95_seconds": 1.6468057999999246,
+        "sum_seconds": 165.37284710000176
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 117,
+        "max_seconds": 1.604312100000243,
+        "p50_seconds": 0.8953070000000025,
+        "p95_seconds": 1.5678060999998706,
+        "sum_seconds": 121.45841579999933
+      },
+      "decision_active": {
+        "count": 117,
+        "max_seconds": 1.654504499999831,
+        "p50_seconds": 0.17808600000034858,
+        "p95_seconds": 0.5599023999992596,
+        "sum_seconds": 26.48979520000701
+      },
+      "decision_elapsed": {
+        "count": 117,
+        "max_seconds": 2.7955599000000007,
+        "p50_seconds": 0.3386363999998139,
+        "p95_seconds": 1.0760665000000245,
+        "sum_seconds": 53.97802590000134
+      }
+    },
+    "play": {
+      "callback_to_first_settled": {
+        "count": 280,
+        "max_seconds": 4.166069500000049,
+        "p50_seconds": 2.649304000000029,
+        "p95_seconds": 3.680620099999942,
+        "sum_seconds": 661.0954087000007
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 280,
+        "max_seconds": 4.166069500000049,
+        "p50_seconds": 2.649304000000029,
+        "p95_seconds": 3.6804360999999517,
+        "sum_seconds": 655.6812356000008
+      },
+      "decision_active": {
+        "count": 280,
+        "max_seconds": 1.0718867000014143,
+        "p50_seconds": 0.021470200000067052,
+        "p95_seconds": 0.8279568000198196,
+        "sum_seconds": 59.01167929996299
+      },
+      "decision_elapsed": {
+        "count": 280,
+        "max_seconds": 3.3394747999998344,
+        "p50_seconds": 0.07304790000000594,
+        "p95_seconds": 2.4039131999999768,
+        "sum_seconds": 163.49803530000278
+      }
+    },
+    "reorder_hand": {
+      "callback_to_first_settled": {
+        "count": 2,
+        "max_seconds": 0.05189710000013292,
+        "p50_seconds": 0.050392900000005625,
+        "p95_seconds": 0.05189710000013292,
+        "sum_seconds": 0.10229000000013855
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 2,
+        "max_seconds": 0.05189710000013292,
+        "p50_seconds": 0.050392900000005625,
+        "p95_seconds": 0.05189710000013292,
+        "sum_seconds": 0.10229000000013855
+      },
+      "decision_active": {
+        "count": 2,
+        "max_seconds": 0.7255166999996305,
+        "p50_seconds": 0.2634035999944899,
+        "p95_seconds": 0.7255166999996305,
+        "sum_seconds": 0.9889202999941205
+      },
+      "decision_elapsed": {
+        "count": 2,
+        "max_seconds": 2.1717307999999917,
+        "p50_seconds": 0.7639148999996905,
+        "p95_seconds": 2.1717307999999917,
+        "sum_seconds": 2.9356456999996823
+      }
+    },
+    "reorder_jokers": {
+      "callback_to_first_settled": {
+        "count": 94,
+        "max_seconds": 0.18204900000000634,
+        "p50_seconds": 0.0487418999999818,
+        "p95_seconds": 0.162538799999993,
+        "sum_seconds": 6.144131700001083
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 94,
+        "max_seconds": 0.18204900000000634,
+        "p50_seconds": 0.0487418999999818,
+        "p95_seconds": 0.162538799999993,
+        "sum_seconds": 6.144131700001083
+      },
+      "decision_active": {
+        "count": 94,
+        "max_seconds": 1.899254599997903,
+        "p50_seconds": 0.8205660999960855,
+        "p95_seconds": 1.3731638000006114,
+        "sum_seconds": 69.27585769999229
+      },
+      "decision_elapsed": {
+        "count": 94,
+        "max_seconds": 4.1188933999999335,
+        "p50_seconds": 1.849987800000008,
+        "p95_seconds": 3.730709299999944,
+        "sum_seconds": 174.74328310000072
+      }
+    },
+    "select_blind": {
+      "callback_to_first_settled": {
+        "count": 157,
+        "max_seconds": 0.6781966000000921,
+        "p50_seconds": 0.5408554000000549,
+        "p95_seconds": 0.6281193999998322,
+        "sum_seconds": 71.55941789999949
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 157,
+        "max_seconds": 0.6781966000000921,
+        "p50_seconds": 0.48911729999997533,
+        "p95_seconds": 0.6281193999998322,
+        "sum_seconds": 67.81435169999894
+      },
+      "decision_active": {
+        "count": 157,
+        "max_seconds": 0.0012951999999586405,
+        "p50_seconds": 0.00020570000003772293,
+        "p95_seconds": 0.0005463999998482905,
+        "sum_seconds": 0.0357371000000235
+      },
+      "decision_elapsed": {
+        "count": 157,
+        "max_seconds": 0.0012993000000278698,
+        "p50_seconds": 0.00020929999993768433,
+        "p95_seconds": 0.0005504000000655651,
+        "sum_seconds": 0.036447699999584415
+      }
+    },
+    "sell": {
+      "callback_to_first_settled": {
+        "count": 33,
+        "max_seconds": 0.17977719999998953,
+        "p50_seconds": 0.12232519999997749,
+        "p95_seconds": 0.15199439999992137,
+        "sum_seconds": 4.056011600000772
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 33,
+        "max_seconds": 0.12135179999995671,
+        "p50_seconds": 0.07479009999997288,
+        "p95_seconds": 0.09964669999999387,
+        "sum_seconds": 2.576541500000019
+      },
+      "decision_active": {
+        "count": 33,
+        "max_seconds": 1.0326377999954275,
+        "p50_seconds": 0.0651705000009315,
+        "p95_seconds": 0.5072648999994271,
+        "sum_seconds": 5.177670299999306
+      },
+      "decision_elapsed": {
+        "count": 33,
+        "max_seconds": 1.651240499999858,
+        "p50_seconds": 0.1484418000000005,
+        "p95_seconds": 1.2325620999999956,
+        "sum_seconds": 10.995653899999638
+      }
+    },
+    "skip_blind": {
+      "callback_to_first_settled": {
+        "count": 10,
+        "max_seconds": 1.7540440000000217,
+        "p50_seconds": 1.7346499999998741,
+        "p95_seconds": 1.7540440000000217,
+        "sum_seconds": 17.366101499999957
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 10,
+        "max_seconds": 1.7540440000000217,
+        "p50_seconds": 1.7346499999998741,
+        "p95_seconds": 1.7540440000000217,
+        "sum_seconds": 17.366101499999957
+      },
+      "decision_active": {
+        "count": 10,
+        "max_seconds": 6.540000000043733e-05,
+        "p50_seconds": 4.590000003190653e-05,
+        "p95_seconds": 6.540000000043733e-05,
+        "sum_seconds": 0.0004914999999705572
+      },
+      "decision_elapsed": {
+        "count": 10,
+        "max_seconds": 6.929999999982783e-05,
+        "p50_seconds": 4.99000000218075e-05,
+        "p95_seconds": 6.929999999982783e-05,
+        "sum_seconds": 0.0005305999997560207
+      }
+    },
+    "skip_pack": {
+      "callback_to_first_settled": {
+        "count": 2,
+        "max_seconds": 0.3455802999997104,
+        "p50_seconds": 0.1010734000001321,
+        "p95_seconds": 0.3455802999997104,
+        "sum_seconds": 0.4466536999998425
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 2,
+        "max_seconds": 0.3455802999997104,
+        "p50_seconds": 0.1010734000001321,
+        "p95_seconds": 0.3455802999997104,
+        "sum_seconds": 0.4466536999998425
+      },
+      "decision_active": {
+        "count": 2,
+        "max_seconds": 0.27751139999372754,
+        "p50_seconds": 0.03034709999928964,
+        "p95_seconds": 0.27751139999372754,
+        "sum_seconds": 0.3078584999930172
+      },
+      "decision_elapsed": {
+        "count": 2,
+        "max_seconds": 0.642138800000339,
+        "p50_seconds": 0.06457580000005692,
+        "p95_seconds": 0.642138800000339,
+        "sum_seconds": 0.7067146000003959
+      }
+    },
+    "use": {
+      "callback_to_first_settled": {
+        "count": 134,
+        "max_seconds": 0.6264562000001206,
+        "p50_seconds": 0.42836080000006405,
+        "p95_seconds": 0.535855099999992,
+        "sum_seconds": 57.06551280000032
+      },
+      "callback_to_settled_outside_decision": {
+        "count": 134,
+        "max_seconds": 0.5962877999998,
+        "p50_seconds": 0.40968520000001263,
+        "p95_seconds": 0.5098227999999381,
+        "sum_seconds": 51.72292609999961
+      },
+      "decision_active": {
+        "count": 134,
+        "max_seconds": 1.2695255000000998,
+        "p50_seconds": 0.01640270000007149,
+        "p95_seconds": 1.0977721999956884,
+        "sum_seconds": 44.76419780001601
+      },
+      "decision_elapsed": {
+        "count": 134,
+        "max_seconds": 3.6790664000000106,
+        "p50_seconds": 0.025110900000072434,
+        "p95_seconds": 3.204265699999951,
+        "sum_seconds": 126.20513629999957
+      }
+    }
+  },
+  "callback_to_first_settled": {
+    "count": 1603,
+    "max_seconds": 4.166069500000049,
+    "p50_seconds": 0.4169185999999172,
+    "p95_seconds": 3.252004500000112,
+    "sum_seconds": 1217.2761820000048
+  },
+  "coverage": {
+    "auto_run_actions": 1603,
+    "finished_runs": 10,
+    "missing_action_callbacks": 0,
+    "missing_first_settled_observations": 0,
+    "performance_windows": 0,
+    "started_runs": 10
+  },
+  "input": {
+    "bytes": 54551112,
+    "events": 17189,
+    "last_sequence": 17189,
+    "path": "tools\\advisor_eval\\win_rate_research\\20260923_2_169_ten_start\\capture\\events.jsonl",
+    "sha256": "819cb4b5f9d895e44a66bbea130b3ef61959a56107d44242d8ad7005c6a9f189"
+  },
+  "interpretation": [
+    "All sums are elapsed monotonic wall time, not CPU utilization.",
+    "Decision active time measures only resume spans; elapsed minus active includes yields, frame scheduling and other interleaved work, not identified animation time.",
+    "Callback return is not effect completion; the first settled public observation may precede later queued effects.",
+    "Callback-to-first-settled intervals may include game updates, animation, advisor refresh, logging and other work; they are not an animation timer.",
+    "Action-kind settlement sums are additive only when inter-action settlement overlap is zero.",
+    "Outside both recorded intervals is residual time, not an identified component.",
+    "Zero performance_window events prevent direct frame/update/draw/journal attribution in this cohort."
+  ],
+  "public_search_finished": {
+    "count": 10,
+    "elapsed_known": {
+      "count": 10,
+      "max_seconds": 0.5274942999999439,
+      "p50_seconds": 0.215027100000043,
+      "p95_seconds": 0.5274942999999439,
+      "sum_seconds": 2.579453100000187
+    },
+    "status_counts": {
+      "found": 10
+    }
+  },
+  "runs": [
+    {
+      "actions": 78,
+      "callback_to_first_settled_union_seconds": 56.30820799999991,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 2.838191000000034,
+      "decision_active_seconds": 26.14684909999878,
+      "decision_elapsed_union_seconds": 57.15524450000004,
+      "decision_wait_between_resumes_seconds": 31.00839540000126,
+      "outside_decision_and_callback_to_settled_seconds": 9.3268874000001,
+      "reported_run_seconds": 120.0080725,
+      "run_instance": "observed-game:2",
+      "run_wall_seconds": 119.95214890000001
+    },
+    {
+      "actions": 97,
+      "callback_to_first_settled_union_seconds": 79.81263139999987,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 4.73717530000016,
+      "decision_active_seconds": 37.988834199990265,
+      "decision_elapsed_union_seconds": 89.42232860000013,
+      "decision_wait_between_resumes_seconds": 51.43349440000986,
+      "outside_decision_and_callback_to_settled_seconds": 10.825033200000178,
+      "reported_run_seconds": 175.367496,
+      "run_instance": "observed-game:3",
+      "run_wall_seconds": 175.32281790000002
+    },
+    {
+      "actions": 235,
+      "callback_to_first_settled_union_seconds": 166.0158321999997,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 10.312993900000151,
+      "decision_active_seconds": 74.00547339999383,
+      "decision_elapsed_union_seconds": 184.99250970000026,
+      "decision_wait_between_resumes_seconds": 110.98703630000642,
+      "outside_decision_and_callback_to_settled_seconds": 29.66871800000024,
+      "reported_run_seconds": 370.40867719999994,
+      "run_instance": "observed-game:4",
+      "run_wall_seconds": 370.36406600000004
+    },
+    {
+      "actions": 90,
+      "callback_to_first_settled_union_seconds": 77.3939922999997,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 3.3777044999998225,
+      "decision_active_seconds": 27.823951800009468,
+      "decision_elapsed_union_seconds": 77.66198819999966,
+      "decision_wait_between_resumes_seconds": 49.83803639999019,
+      "outside_decision_and_callback_to_settled_seconds": 11.919951300000548,
+      "reported_run_seconds": 163.65141430000006,
+      "run_instance": "observed-game:5",
+      "run_wall_seconds": 163.59822730000008
+    },
+    {
+      "actions": 105,
+      "callback_to_first_settled_union_seconds": 85.69298759999913,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 5.2042499000002636,
+      "decision_active_seconds": 23.158185500011996,
+      "decision_elapsed_union_seconds": 54.087151400000266,
+      "decision_wait_between_resumes_seconds": 30.92896589998827,
+      "outside_decision_and_callback_to_settled_seconds": 12.478456500000902,
+      "reported_run_seconds": 147.10519900000008,
+      "run_instance": "observed-game:6",
+      "run_wall_seconds": 147.05434560000003
+    },
+    {
+      "actions": 75,
+      "callback_to_first_settled_union_seconds": 71.82794310000031,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 3.570881299998632,
+      "decision_active_seconds": 16.08272220000174,
+      "decision_elapsed_union_seconds": 31.902391199999215,
+      "decision_wait_between_resumes_seconds": 15.819668999997475,
+      "outside_decision_and_callback_to_settled_seconds": 8.013967599998978,
+      "reported_run_seconds": 108.21684369999991,
+      "run_instance": "observed-game:7",
+      "run_wall_seconds": 108.17342059999987
+    },
+    {
+      "actions": 265,
+      "callback_to_first_settled_union_seconds": 183.6160349000022,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 11.933961099999806,
+      "decision_active_seconds": 92.81895359996815,
+      "decision_elapsed_union_seconds": 201.28473220000046,
+      "decision_wait_between_resumes_seconds": 108.46577860003231,
+      "outside_decision_and_callback_to_settled_seconds": 32.3623464999971,
+      "reported_run_seconds": 405.3515167999999,
+      "run_instance": "observed-game:8",
+      "run_wall_seconds": 405.32915249999996
+    },
+    {
+      "actions": 244,
+      "callback_to_first_settled_union_seconds": 168.52607569999805,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 11.021310600000106,
+      "decision_active_seconds": 110.49762039998382,
+      "decision_elapsed_union_seconds": 283.5014760000008,
+      "decision_wait_between_resumes_seconds": 173.003855600017,
+      "outside_decision_and_callback_to_settled_seconds": 30.820634900001323,
+      "reported_run_seconds": 471.8719116,
+      "run_instance": "observed-game:9",
+      "run_wall_seconds": 471.8268760000001
+    },
+    {
+      "actions": 179,
+      "callback_to_first_settled_union_seconds": 149.8035697000007,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 10.393783800003803,
+      "decision_active_seconds": 50.29871869997146,
+      "decision_elapsed_union_seconds": 128.79982830000336,
+      "decision_wait_between_resumes_seconds": 78.5011096000319,
+      "outside_decision_and_callback_to_settled_seconds": 23.111798099999987,
+      "reported_run_seconds": 291.3766684999998,
+      "run_instance": "observed-game:10",
+      "run_wall_seconds": 291.32141230000025
+    },
+    {
+      "actions": 235,
+      "callback_to_first_settled_union_seconds": 178.2789071000052,
+      "callback_to_settled_inter_action_overlap_seconds": 0.0,
+      "callback_to_settled_overlap_with_decision_seconds": 13.687727600005474,
+      "decision_active_seconds": 57.49955180013285,
+      "decision_elapsed_union_seconds": 155.21802100000286,
+      "decision_wait_between_resumes_seconds": 97.71846919987001,
+      "outside_decision_and_callback_to_settled_seconds": 31.505028099997617,
+      "reported_run_seconds": 351.33718750000025,
+      "run_instance": "observed-game:11",
+      "run_wall_seconds": 351.3142286000002
+    }
+  ],
+  "schema": 1,
+  "totals": {
+    "callback_to_first_settled_union_seconds": 1217.2761820000048,
+    "callback_to_settled_inter_action_overlap_seconds": 0.0,
+    "callback_to_settled_overlap_with_decision_seconds": 77.07797900000826,
+    "decision_active_seconds": 516.3208607000623,
+    "decision_elapsed_union_seconds": 1264.025671100007,
+    "decision_wait_between_resumes_seconds": 747.7048103999447,
+    "outside_decision_and_callback_to_settled_seconds": 200.03282159999696,
+    "run_wall_seconds": 2604.2566957000004
+  }
+}

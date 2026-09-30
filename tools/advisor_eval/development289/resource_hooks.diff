@@ -1,0 +1,211 @@
+--- 288
+
++++ 289
+
+@@ -61,10 +61,12 @@
+
+ local function affordable_discard(s)
+   return s.dollars-num((s.modifiers or {}).discard_cost)>=min(0,num(s.bankrupt_at))
+ end
+-function M.admits(s)
++function M.admits(s,modules)
+   local hands=num(s.hands_left,(s.current_round or {}).hands_left)
+   if hands<2 or hands>5 or hands%1~=0 or num(s.discards_left)<=0 or #(s.deck or {})==0 or not visible(s) or
+     next(s.jokers or {}) or (s.used_vouchers or {}).v_observatory or (s.vouchers or {}).v_observatory then return false end
++  local uses=modules and modules.consumables and modules.consumables.resource_policy
++  if uses and uses.admits and uses.admits(s) then return true end
+   if hands>=4 or hands==3 and max(#s.hand,num(s.hand_size))>6 or hands==2 and max(#s.hand,num(s.hand_size))>8 then return true end
+   for _,area in ipairs({s.hand,s.deck}) do for _,c in ipairs(area) do if enhancement(c)=='m_lucky' then return true end end end
+   return false
+@@ -156,13 +158,24 @@
+
+     policy_exhausted_worlds=0,source_counterfactual=false,terminal_evidence=false,
+     scope='Three fixed first actions and five fixed continuation policies across four common worlds; remaining hands until clear, hand exhaustion, or explicitly labeled policy exhaustion with no admitted legal action. Original never/one-early/one-final discard policies plus repeated observed early/final discards until a reliable clear or no eligible affordable discard remains. Two structural representatives per hand category; no owned-consumable use or globally exhaustive discard-schedule guarantee.'}
+   local function no(reason) diag.reason=reason;return nil,diag.evaluations,diag end
+-  if not M.admits(s) then return no('This extension covers formerly unsupported visible no-Joker resource scopes only.') end
++  if not M.admits(s,modules) then return no('This extension covers bounded visible no-Joker resource scopes only.') end
+   if not resources_valid(s) then return no('Finite cash, credit, scoring and integer hand/discard resources are required.') end
+   local target=num((s.blind or {}).chips)-num(s.chips)
+   if not finite(target) or target<=0 then return no('A finite positive remaining blind target is required.') end
+   if reliable(result.play,target) or result.fast_clear then return no('A reliable current finish takes priority.') end
+-  for _,field in ipairs({'consumable','ordering','hand_ordering','boss_rescue','mixed_rescue','growth'}) do
++  for _,field in ipairs({'ordering','hand_ordering','boss_rescue','mixed_rescue','growth'}) do
+     if result[field] then return no('An existing tactical or investment action takes priority.') end
++  end
++  local uses=modules.consumables and modules.consumables.resource_policy
++  local use_context,use_reason
++  if uses and uses.admits and uses.admits(s) then use_context,use_reason=uses.prepare(s,modules,result) end
++  if result.consumable then
++    if not use_context or not use_context.first then return no(use_reason or 'An existing tactical or investment action takes priority.') end
++    if reliable(result.consumable.play,target) then return no('A reliable current consumable finish takes priority.') end
++  end
++  if use_context then
++    diag.consumable_use=true;diag.maximum_uses=use_context.maximum_uses;diag.first_action_limit=4;diag.use_policy_limit=2
++    diag.scope='At most four fixed first actions, five fixed discard schedules and hold/observed-use rules across four common worlds. Exact current owned use is compared when present; later targets use only the visible hand and canonical public composition. At most two ordinary owned uses; actual inventory, population, cash, plays and discards are carried until clear, hand exhaustion or explicit policy exhaustion. Fixed target/development heuristics, not an exhaustive game policy or win-rate estimate.'
+   end
+   if not result.play or not result.play.indices or not result.discard or not result.discard.indices then return no('Both incumbent play and discard actions are required.') end
+   local scorer,search,outcomes,draws,multi=modules.scoring,modules.search,modules.sampled_outcomes,modules.draws,modules.multi_discard
+@@ -212,7 +225,6 @@
+
+       firsts[#firsts+1]={kind='play',indices=list(result.discard.indices),key=same_key,same_cards=true}
+     else diag.same_cards_declined=same and same.reason or 'The identical selection is not a legal play.' end
+   end
+-  diag.first_actions=#firsts
+   local observations={}
+   local function best_play(state)
+     if not visible(state) then aborted='A future observation is concealed or exceeds ten cards.';return nil end
+@@ -252,9 +264,24 @@
+
+     if not best then aborted='No supported legal play exists in the complete declared structural family.' end
+     if best then return remember(best) end
+   end
+-  local function run(first,policy,seed)
++  if use_context then
++    local first=use_context.first
++    if first then
++      local checked,why=use_context.project(root,first.index,first.targets)
++      if not checked then return no('The exact incumbent use is unsupported: '..tostring(why)) end
++    else
++      local proposed,why=use_context.propose(root,best_play)
++      if proposed==nil then return no(aborted or why) end
++      if proposed then first={kind='use',index=proposed.index,targets=list(proposed.targets),
++        action={kind='use',area='consumeables',index=proposed.index,targets=list(proposed.targets)},
++        key='use:'..proposed.index..':'..table.concat(proposed.targets,',')} end
++    end
++    if first then firsts[#firsts+1]=first end
++  end
++  diag.first_actions=#firsts
++  local function run(first,policy,use_policy,seed)
+     local state=copy(root);state.deck=ordered(state.deck,seed)
+-    local draw_turn,plays,discards,exposure,arm,reward,later=0,0,0,0,0,0,false
++    local draw_turn,plays,discards,exposure,arm,reward,later,used=0,0,0,0,0,0,false,0
+     local actions={};local selected=first.kind=='play' and first.indices or nil;local policy_exhausted
+     local function fill()
+       draw_turn=draw_turn+1
+@@ -272,9 +299,32 @@
+
+         dollars_before=state.dollars,dollars_after=after.dollars}
+       state=after;discards=discards+1;return fill()
+     end
++    local function use(index,targets)
++      if not use_context or used>=use_context.maximum_uses then aborted='A policy exceeded its original owned-use limit.';return false end
++      local after,details=use_context.project(state,index,targets)
++      if not after or not visible(after) or not resources_valid(after) then
++        aborted='An admitted owned-use transition is unsupported: '..tostring(details);return false
++      end
++      if after.hands_left~=state.hands_left or after.discards_left~=state.discards_left or after.chips~=state.chips then
++        aborted='An ordinary owned use unexpectedly changed hand, discard or chip resources.';return false
++      end
++      used=used+1;details.use_number=used;actions[#actions+1]=details;state=after;return true
++    end
++    local function observed_uses()
++      if use_policy~='observed' or selected or #actions==0 then return true end
++      while used<use_context.maximum_uses and #(state.consumeables or {})>0 do
++        local proposed,why=use_context.propose(state,best_play)
++        if proposed==nil then aborted=aborted or why;return false end
++        if not proposed then break end
++        if not use(proposed.index,proposed.targets) then return false end
++      end
++      return true
++    end
+     if first.kind=='discard' and not discard(first.indices) then return nil end
++    if first.kind=='use' and not use(first.index,first.targets) then return nil end
+     while num(state.hands_left)>0 and #state.hand>0 and num(state.chips)<num(state.blind.chips) do
+       local play,no_legal_play
++      if not observed_uses() then return nil end
+       if not selected then play,no_legal_play=best_play(state);if not play and not no_legal_play then return nil end end
+       -- The initial action is fixed. This rule sees only a later public hand;
+       -- its discard indices are fixed before the replacement cards are drawn.
+@@ -288,6 +338,7 @@
+
+         local candidate=multi.discard_candidates(state,nil,1)[1]
+         if candidate then
+           later=true;if not discard(candidate.indices) then return nil end
++          if not observed_uses() then return nil end
+           play,no_legal_play=best_play(state);if not play and not no_legal_play then return nil end
+         else break end
+       end
+@@ -323,26 +374,28 @@
+
+     end
+     local gain=max(0,num(state.chips)-num(root.chips))
+     return {win=num(state.chips)>=num(state.blind.chips) and 1 or 0,utility=min(1,gain/target),score=gain,
+-      hands=plays,discards=discards,actions=actions,dollars_after=num(state.dollars),
++      hands=plays,discards=discards,uses=used,actions=actions,dollars_after=num(state.dollars),
+       dollars_delta=num(state.dollars)-num(root.dollars),population_loss=exposure,
+       population_removed=#(root.playing_cards or {})-#(state.playing_cards or {}),arm_cost=arm,finish_reward=reward,
+-      hands_left=num(state.hands_left),discards_left=num(state.discards_left),policy_exhausted=policy_exhausted}
++      hands_left=num(state.hands_left),discards_left=num(state.discards_left),policy_exhausted=policy_exhausted,
++      inventory_after=copy(state.consumeables),consumable_limit_after=state.consumable_limit}
+   end
+   local plans={}
+   for _,first in ipairs(firsts) do for _,policy in ipairs({'never','early','final','repeat_early','repeat_final'}) do
++    for _,use_policy in ipairs(use_context and {'hold','observed'} or {'hold'}) do
+     plans[#plans+1]={kind=first.kind,indices=list(first.indices),key=first.key,policy=policy,same_cards=first.same_cards,
+-      first=first,worlds={},probability=0,utility=0,hands=0,discards=0,dollars_delta=0,population_loss=0,arm_cost=0,finish_reward=0,
++      action=copy(first.action),use_policy=use_policy,first=first,worlds={},probability=0,utility=0,hands=0,discards=0,uses=0,dollars_delta=0,population_loss=0,arm_cost=0,finish_reward=0,
+       policy_exhausted_worlds=0}
+-  end end
++  end end end
+   for outer,seed in ipairs({2718281,3141593,1618033,1414213}) do
+     local observations={}
+-    for i,plan in ipairs(plans) do observations[i]=run(plan.first,plan.policy,seed);if not observations[i] then return no(aborted) end end
++    for i,plan in ipairs(plans) do observations[i]=run(plan.first,plan.policy,plan.use_policy,seed);if not observations[i] then return no(aborted) end end
+     for i,plan in ipairs(plans) do
+       local v=observations[i];plan.worlds[outer]=v;plan.probability=plan.probability+v.win/4
+       if v.policy_exhausted then
+         plan.policy_exhausted_worlds=plan.policy_exhausted_worlds+1;diag.policy_exhausted_worlds=diag.policy_exhausted_worlds+1
+       end
+-      for _,field in ipairs({'utility','hands','discards','dollars_delta','population_loss','arm_cost','finish_reward'}) do plan[field]=plan[field]+num(v[field])/4 end
++      for _,field in ipairs({'utility','hands','discards','uses','dollars_delta','population_loss','arm_cost','finish_reward'}) do plan[field]=plan[field]+num(v[field])/4 end
+     end
+     diag.completed_outer=outer
+   end
+@@ -351,10 +404,11 @@
+
+     for _,field in ipairs({'probability','utility'}) do if a[field]~=b[field] then return a[field]>b[field] end end
+     for _,field in ipairs({'population_loss','arm_cost'}) do if a[field]~=b[field] then return a[field]<b[field] end end
+     if a.finish_reward~=b.finish_reward then return a.finish_reward>b.finish_reward end
+-    if a.hands+a.discards~=b.hands+b.discards then return a.hands+a.discards<b.hands+b.discards end
++    if a.hands+a.discards+a.uses~=b.hands+b.discards+b.uses then return a.hands+a.discards+a.uses<b.hands+b.discards+b.uses end
+     return a.dollars_delta>b.dollars_delta
+   end
+-  local incumbent_key=result.kind=='discard' and firsts[2].key or firsts[1].key
++  local incumbent_key=use_context and use_context.first and use_context.first.key or
++    (result.kind=='discard' and firsts[2].key or firsts[1].key)
+   local baseline,best
+   for _,plan in ipairs(plans) do
+     if plan.key==incumbent_key and better(plan,baseline) then baseline=plan end
+@@ -368,18 +422,28 @@
+
+   -- These five fixed schedules still do not exhaust arbitrary discard timing
+   -- or choices. Preserve the existing274 crossed-world guard for that scope.
+   local allowed,why=search.resource_override_supported(root,baseline,best)
++  if allowed and result.consumable then
++    for i=1,4 do
++      local before,after=baseline.worlds[i],best.worlds[i]
++      if after.win<before.win or after.utility<before.utility then
++        allowed=false;why='Crossed common worlds cannot replace the exact current owned-use action.';break
++      end
++    end
++  end
+   if not allowed then
+     diag.aggregate_best=best;diag.override_rejected=why;diag.best=baseline
+     diag.estimated_probability=baseline.probability;diag.uplift=0
+     return no(why)
+   end
+-  local extra_actions=max(0,best.hands+best.discards-baseline.hands-baseline.discards)
++  local extra_actions=max(0,best.hands+best.discards+best.uses-baseline.hands-baseline.discards-baseline.uses)
+   local extra_paid=max(0,best.discards-baseline.discards)*max(0,num((root.modifiers or {}).discard_cost))
+   diag.required_uplift=max(.125,num(options.minimum_uplift,.125))+min(.25,.025*(extra_actions+extra_paid))
+   if diag.uplift<diag.required_uplift then return no('The paired clearing gain does not cover the extra action and discard costs.') end
+-  return {action={kind=best.kind,area='hand',indices=list(best.indices)},indices=list(best.indices),horizon=hands,
++  local action=best.action or {kind=best.kind,area='hand',indices=list(best.indices)}
++  return {action=copy(action),indices=best.kind~='use' and list(best.indices) or nil,horizon=hands,
++    replaces_consumable=result.consumable and true or nil,use_policy=best.use_policy,
+     probability=best.probability,baseline_probability=baseline.probability,policy=best.policy,heuristic=true,scope=diag.scope,
+-    reason=string.format('Coordinate the remaining hands and observed discards: %d of four common samples clear versus %d for the incumbent. Take only this first action, then refresh; these samples are not a win-rate estimate.',
++    reason=string.format('Coordinate the remaining hands, observed discards and admitted owned uses: %d of four common samples clear versus %d for the incumbent. Take only this first action, then refresh; these samples are not a win-rate estimate.',
+       best.probability*4,baseline.probability*4)},diag.evaluations,diag
+ end
+ return M

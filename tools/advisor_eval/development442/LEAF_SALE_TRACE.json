@@ -1,0 +1,369 @@
+[
+  {
+    "seq": 11152,
+    "kind": "teacher_observation",
+    "details": {
+      "scope": "Public state changed; no hidden future."
+    },
+    "phase": "hand",
+    "ante": 8,
+    "round": 23,
+    "blind": {
+      "boss": true,
+      "chips": 400000,
+      "debuff": {},
+      "disabled": false,
+      "key": "bl_final_leaf",
+      "mult": 2,
+      "name": "Verdant Leaf"
+    },
+    "chips": 0,
+    "action": null,
+    "lines": null,
+    "title": null
+  },
+  {
+    "seq": 11154,
+    "kind": "teacher_advice",
+    "details": {
+      "scope": "Recommendation only; not an executed action or verified outcome."
+    },
+    "phase": null,
+    "ante": null,
+    "round": null,
+    "blind": null,
+    "chips": null,
+    "action": {
+      "area": "jokers",
+      "index": 2,
+      "kind": "sell"
+    },
+    "lines": [
+      "Sell Joker #2 (Perkeo) to disable Verdant Leaf.",
+      "The comparison removes that Joker, adds $10, and updates the surviving Joker effects.",
+      "After the sale, Four of a Kind estimates 624960 chips against 400000 remaining.",
+      "Recalculate after selling before selecting or playing any cards.",
+      "Verdant Leaf: selling one non-eternal Joker disables all playing-card debuffs.",
+      "Note: This verifies an immediate boss clear, not later draws or the cost of losing this Joker in future rounds.",
+      "Note: Not simulated: The Wheel of Fortune (unsupported consumable).",
+      "Note: Joker order comparison budget reached; only completed comparisons are used.",
+      "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+      "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+    ],
+    "title": "Sell Perkeo to disable Verdant Leaf"
+  },
+  {
+    "seq": 11157,
+    "kind": "action_requested",
+    "details": {
+      "action": "advisor_execute",
+      "input": {
+        "action": {
+          "area": "jokers",
+          "index": 2,
+          "kind": "sell"
+        }
+      },
+      "source": "auto_run"
+    },
+    "phase": null,
+    "ante": null,
+    "round": null,
+    "blind": null,
+    "chips": null,
+    "action": null,
+    "lines": null,
+    "title": null
+  },
+  {
+    "seq": 11161,
+    "kind": "teacher_observation",
+    "details": {
+      "scope": "Public state changed; no hidden future."
+    },
+    "phase": "hand",
+    "ante": 8,
+    "round": 23,
+    "blind": {
+      "boss": true,
+      "chips": 400000,
+      "debuff": {},
+      "disabled": true,
+      "key": "bl_final_leaf",
+      "mult": 2,
+      "name": "Verdant Leaf"
+    },
+    "chips": 0,
+    "action": null,
+    "lines": null,
+    "title": null
+  },
+  {
+    "seq": 11163,
+    "kind": "state_after_actions",
+    "details": {
+      "action_sequences": [
+        11157
+      ],
+      "latest_action_sequence": 11157,
+      "observation": "First settled observation after callbacks; not proof every queued event completed."
+    },
+    "phase": null,
+    "ante": null,
+    "round": null,
+    "blind": null,
+    "chips": null,
+    "action": null,
+    "lines": null,
+    "title": null
+  },
+  {
+    "seq": 11166,
+    "kind": "action_requested",
+    "details": {
+      "action": "advisor_execute",
+      "input": {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "kind": "play"
+        }
+      },
+      "source": "auto_run"
+    },
+    "phase": null,
+    "ante": null,
+    "round": null,
+    "blind": null,
+    "chips": null,
+    "action": null,
+    "lines": null,
+    "title": null
+  },
+  {
+    "seq": 11170,
+    "kind": "auto_run",
+    "details": {
+      "event": "action_callback_returned",
+      "last_action": {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "kind": "play"
+        },
+        "action_token": "advice:1225",
+        "advice": {
+          "lines": [
+            "#1 8S, #2 8S, #3 8S, #4 8S",
+            "Need 400000 more chips; 4 hands left.",
+            "Four of a Kind level 4.",
+            "Alternative: Three of a Kind ~115200 (#1 8S, #2 8S, #3 8S)",
+            "Alternative: Three of a Kind ~115200 (#1 8S, #2 8S, #4 8S)",
+            "Remaining discards: 2. Automatic hand sorting can change scoring-card order.",
+            "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+          ],
+          "title": "Play Four of a Kind (~624960)"
+        },
+        "callback_reason": "true",
+        "callback_status": "accepted",
+        "run_action": 294,
+        "time": 1110.0757182
+      },
+      "profile_id": 1,
+      "run_id": "game:5",
+      "schema": 1,
+      "scope": "Callback result only; semantic action completion still requires a fresh observation.",
+      "search_id": "auto:1:1:4",
+      "session": 1,
+      "state": "waiting",
+      "time": 1110.0757182
+    },
+    "phase": null,
+    "ante": null,
+    "round": null,
+    "blind": null,
+    "chips": null,
+    "action": null,
+    "lines": null,
+    "title": null
+  },
+  {
+    "seq": 11178,
+    "kind": "auto_run",
+    "details": {
+      "event": "run_finished",
+      "evidence": {
+        "callbacks": [
+          {
+            "after": {
+              "ante": 9,
+              "boss": true,
+              "chips": 624960,
+              "deck": "b_red",
+              "deck_wins": 157,
+              "jokers": {
+                "j_blueprint": 99,
+                "j_bootstraps": 6,
+                "j_bull": 7,
+                "j_loyalty_card": 2,
+                "j_yorick": 160
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "before": {
+              "ante": 9,
+              "boss": true,
+              "chips": 624960,
+              "deck": "b_red",
+              "deck_wins": 157,
+              "jokers": {
+                "j_blueprint": 98,
+                "j_bootstraps": 5,
+                "j_bull": 6,
+                "j_loyalty_card": 1,
+                "j_yorick": 159
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "name": "set_joker_win",
+            "verified": true
+          },
+          {
+            "after": {
+              "ante": 9,
+              "boss": true,
+              "chips": 624960,
+              "deck": "b_red",
+              "deck_wins": 158,
+              "jokers": {
+                "j_blueprint": 99,
+                "j_bootstraps": 6,
+                "j_bull": 7,
+                "j_loyalty_card": 2,
+                "j_yorick": 160
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "before": {
+              "ante": 9,
+              "boss": true,
+              "chips": 624960,
+              "deck": "b_red",
+              "deck_wins": 157,
+              "jokers": {
+                "j_blueprint": 99,
+                "j_bootstraps": 6,
+                "j_bull": 7,
+                "j_loyalty_card": 2,
+                "j_yorick": 160
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "name": "set_deck_win",
+            "verified": true
+          }
+        ],
+        "event_id": "win:game:5",
+        "final_context": {
+          "ante": 8,
+          "boss": true,
+          "chips": 624960,
+          "deck": "b_red",
+          "deck_wins": 157,
+          "jokers": {
+            "j_blueprint": 98,
+            "j_bootstraps": 5,
+            "j_bull": 6,
+            "j_loyalty_card": 1,
+            "j_yorick": 159
+          },
+          "round": 23,
+          "seeded": false,
+          "stake": 8,
+          "state": 19,
+          "target": 400000,
+          "win_ante": 8,
+          "won": false
+        },
+        "game_over": false,
+        "kind": "win",
+        "result_surface_seen": false,
+        "run_id": "game:5",
+        "source": "original_win_callback",
+        "source_saved": false,
+        "threshold_met": true,
+        "verified": true
+      },
+      "gold_award": {
+        "new_count": 0,
+        "new_keys": {},
+        "schema": 1,
+        "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+        "source": "original_set_joker_win",
+        "status": "confirmed"
+      },
+      "gold_progress": {
+        "confirmed_new_count": 1,
+        "confirmed_new_keys": [
+          "j_turtle_bean"
+        ],
+        "schema": 1,
+        "unknown_wins": 0,
+        "zero_new_wins": 2
+      },
+      "outcome": "win",
+      "profile_id": 1,
+      "run_actions": 294,
+      "run_id": "game:5",
+      "run_number": 4,
+      "run_seconds": 367.4362397,
+      "schema": 1,
+      "search_id": "auto:1:1:4",
+      "session": 1,
+      "state": "terminal",
+      "time": 1110.7711115
+    },
+    "phase": null,
+    "ante": null,
+    "round": null,
+    "blind": null,
+    "chips": null,
+    "action": null,
+    "lines": null,
+    "title": null
+  }
+]

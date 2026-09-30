@@ -1,0 +1,27 @@
+--- before/Brainstorm/Advisor/blind_routing.lua
++++ Brainstorm/Advisor/blind_routing.lua
+@@ -31,7 +31,7 @@
+   if type(goal)~='table' or goal.schema~=1 or goal.goal~='gold_stickers' or
+       goal.metadata_status~='complete' or goal.catalog_status~='complete' or goal.held_status~='complete' or
+       type(goal.eligibility)~='table' or goal.eligibility.eligible~=true or type(goal.by_key)~='table' then
+-    return nil,'Complete eligible Gold-sticker metadata is required for the Bell skip.'
++    return nil,'Keep the shop opportunity: complete eligible Gold-sticker metadata is required for a final-ante skip.'
+   end
+   local counts=type(goal.counts)=='table' and goal.counts or {}
+   if counts.total~=150 or counts.unknown~=0 or not integer(counts.complete) or not integer(counts.missing) or
+@@ -156,9 +156,14 @@
+     bell=modules.bell_opening
+     if not bell or not bell.new or not bell.add or not bell.finish then return no('Complete Bell forced-card scoring is unavailable.') end
+     if not integer(s.win_ante,1) or s.ante~=s.win_ante then return no('Bell routing requires the known winning ante.') end
++    diag.bell_worlds={}
++  end
++  -- Every winning-ante shortcut gives up a remaining shop, regardless of the
++  -- final boss's scoring mechanics. A completed engine alone is no collection
++  -- progress; retain those opportunities until known missing cargo is held.
++  if integer(s.win_ante,1) and s.ante==s.win_ante then
+     local cargo,reason=gold_cargo(s);if not cargo then return no(reason) end
+     diag.gold_cargo=type(cargo)=='number' and cargo or nil
+-    diag.bell_worlds={}
+   end
+   for _,j in ipairs(s.jokers or {}) do if active(j) then
+     local a=j.ability or {}

@@ -1,0 +1,46 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tests\advisor_gold_order.lua
+PASS tests\advisor_gold_order.lua
+Running tests\advisor_shop_family_preflight.lua
+PASS tests\advisor_shop_family_preflight.lua
+Running tests\advisor_gold_acquisition.lua
+PASS tests\advisor_gold_acquisition.lua
+Running tests\advisor_gold_acquisition_runtime.lua
+PASS tests\advisor_gold_acquisition_runtime.lua
+Running tests\advisor_gold_acquisition_order.lua
+PASS tests\advisor_gold_acquisition_order.lua
+Running tests\advisor_gold_cartomancer.lua
+PASS tests\advisor_gold_cartomancer.lua
+Running tests\advisor_gold_retention.lua
+PASS tests\advisor_gold_retention.lua
+Running tests\advisor_gold_retention_runtime.lua
+PASS tests\advisor_gold_retention_runtime.lua
+Running tests\advisor_gold_retention_order.lua
+PASS tests\advisor_gold_retention_order.lua
+Running tests\advisor_gold_retention_order_runtime.lua
+PASS tests\advisor_gold_retention_order_runtime.lua
+Running tests\advisor_gold_journal.lua
+PASS tests\advisor_gold_journal.lua
+Running tests\advisor_player_journal.lua
+PASS tests\advisor_player_journal.lua
+Running tests\advisor_player_journal_timing.lua
+PASS tests\advisor_player_journal_timing.lua
+Running tests\advisor_journal_reuse.lua
+PASS tests\advisor_journal_reuse.lua
+14/14 fixtures passed
+advisor_gold_order: 164 pure physical-family checks; zero scores or RNG
+shop family preflight: 96 checks passed
+advisor_gold_acquisition: 147 manufactured checks passed; 1690 exact charged score-floor calls
+gold acquisition coroutine runtime wiring: 81 checks; 1200 actual floor passes; 18 yields; sale and fresh purchase, no source/game execution
+gold_order acquisition evidence: fixed=120 expanded=360 selected_minimum=216000 target=90000 fresh_sale_index=2 net_cash=78 fallback=120 insufficient=0
+advisor_gold_acquisition_order: 4505 checks passed
+advisor_gold_cartomancer: 20876 checks; 1080 score calls; 1080 floors; 1080 Leaf floors; 16 cooperative yields
+PASS bounded Gold retention 80 checks
+advisor_gold_retention_runtime: 45 actual production Decision checks; 1080 score passes; 1080 supported floors
+PASS bounded Gold retention order 88 checks
+PASS production Gold retention order 99 checks; 2580 score passes; 2580 supported floors
+advisor_gold_journal: 227 manufactured checks passed; compact current-only diagnostics, no gameplay
+advisor_player_journal: 25 checks passed
+player_journal_timing: 105 manufactured checks passed; elapsed wall time only
+journal_work335: 236 checks; avoided detail gathers=9; avoided full fingerprints=16; all serialized event bytes equivalent
+

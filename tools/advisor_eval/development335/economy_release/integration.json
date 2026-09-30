@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "routine_manufactured_cash_reuse_slice",
+  "created_utc": "2026-09-15T21:56:37.239277+00:00",
+  "previous_policy_digest": "ff55684a1d6e140090ce144fce9b44e09e2f09f820c3c90d733d27a316dfb5aa",
+  "policy_digest": "9ab6eb7e653c9f51bb0ea6c03ebe1e8a63203f1b8d2ddbd37a001b3ec0427277",
+  "files": {
+    "Brainstorm/Advisor/economy.lua": {
+      "before": "c3f1aa66bab70e1735357c86ae87fa391a287bc448650f8f149cdac61216e5f6",
+      "after": "0d8071887c50f35d064ac768083cb1ea136c46dd1a0eae5b58d49752ea035d69"
+    },
+    "Brainstorm/Advisor/consumables.lua": {
+      "before": "45541bbc1a56b4971d6fa2c103d39aa9b8563ee6ec8018e615783e06f0e7abdc",
+      "after": "09742ebfd68787b5a9480d186d7e0ca17656f88c7a4f1a80a3cf5a032a574ba3"
+    },
+    "tests/advisor_economy_reuse.lua": {
+      "before": null,
+      "after": "75224a48e1d4f5c5028832b6d931626cc41ce0cc7842891e9381a5c0da689d4c"
+    }
+  },
+  "new_experiments": 0,
+  "historical_authority": "closed",
+  "game_control": false,
+  "save_reads": false
+}

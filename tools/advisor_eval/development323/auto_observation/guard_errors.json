@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "kind": "preparation_integrity_guards",
+  "fixture_failure": false,
+  "staged": false,
+  "errors": [
+    {
+      "command": "finalize.py",
+      "exit_code": 1,
+      "reason": "Original snapshot dependency hash changed concurrently; all production dependency assertion rejected finalization."
+    },
+    {
+      "command": "stage.py",
+      "exit_code": 1,
+      "reason": "Old v1 manifest correctly rejected revised candidate hash; no production writes."
+    }
+  ],
+  "resolution": "Explicit dependency review/rebind and fresh fixture validation before revised manifest; original v1 inputs remain preserved."
+}

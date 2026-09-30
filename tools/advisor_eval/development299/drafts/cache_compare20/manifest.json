@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "kind": "prepared_M20_dense_cache_comparison_manifest",
+  "status": "prepared_not_registered_not_evaluated",
+  "files": {
+    "prepare_inputs.py": "575ef902380447818732f3cccc23fd99ae7cc941c8855b5632895459f502e4e4",
+    "compare_cache20.py": "d214acea915ecfdfda2e89ef88321ac346d81691a4439f822dfbff09248815c6",
+    "driver.lua": "15ad367d9ce83b8d3fe20611da4d02b654db3b61f33cea062be812140fbbc2f5",
+    "register.py": "f49c2cb865f96ae3923d1888bd165c988e5e75773de9a69598a2fe633e316142",
+    "lua_bytes.py": "225a9fbd4f25f6dad61857dc30966dec2a421b48564fc6919c900e142dd89c20",
+    "module_setup.lua": "91b14161299b8797886d74ccb337111a72a2b17257f80df72d98835a6d5f97e0",
+    "engine_contract.lua": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da",
+    "baseline_record.json": "86b0bacef35fb8787554480939859800d852099f503a951ea4ec81f936ed2b87",
+    "candidate_record.json": "9256f27c5b9f8b87f549e4a495714de4618da2063431958e107a8b71c4f1e4cc",
+    "candidate_score_cache.lua": "fa6d6d067f4fa10d1952865daf028e2f5a63efa0f054b3e0b64b6dc23d1ec9d8",
+    "step85.json": "bbed67ffb836a3dedf4775c40e088d8fcc7238f262e54a531acb82e6ce1daed3",
+    "step185.json": "34819bdc733dc6a57a7080d39b769fa9e29c628b468999a5f079b196950729b1",
+    "input_provenance.json": "ca16dcac4f5636f0cd172e02c637a5154d8ded1a75103e933c40faf17e2407dc",
+    "preparation_origins.json": "1ca70ca6571465b379919bc8433c85c312bfe3bc0b416da600a1f4cbca6c7318",
+    "test_driver.lua": "64e6cc6994091390400efaed934dacfcc36c539c575989e8396888856728ca38",
+    "test_spec.py": "a6f6bd1d0b09377a376490313ee8f7b7c5ee6d13e8ed0b430934809e48d050b2",
+    "INTEGRATION.md": "a2f2cd43b790671ec2ec7b9ca3be48cb1007662562f713661a66f78c68a9ece2"
+  },
+  "decision_order": [
+    [
+      "baseline",
+      85
+    ],
+    [
+      "candidate",
+      85
+    ],
+    [
+      "candidate",
+      185
+    ],
+    [
+      "baseline",
+      185
+    ]
+  ],
+  "maximum_seconds": 30,
+  "maximum_score_calls": 560000,
+  "per_decision_score_cap": 140000,
+  "configured_cache_capacity": 8192,
+  "reachable_entries": 8186,
+  "ways": 2,
+  "prime_buckets": 4093,
+  "baseline": "exact certificate309_installed",
+  "candidate": "same manifest, only dense2way exact-key score_cache.lua substitution",
+  "tests": {
+    "lua_driver_fixtures": 1,
+    "synthetic_checks": 252,
+    "python_spec_tests": 4,
+    "inherited_unchanged_compile_safe_serializer_tests": 5
+  },
+  "prior_negative_evidence": "M19 audit/record/comparison/registration will be frozen",
+  "negative_stop_rule": "No further cache workers after M20 if negative",
+  "source_execution": false,
+  "captured_evaluation": false
+}

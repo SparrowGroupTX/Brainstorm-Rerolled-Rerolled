@@ -1,0 +1,1183 @@
+{
+  "caps": {
+    "files": 8,
+    "physical_bytes": 67108864,
+    "decoded_bytes": 536870912,
+    "events": 12000,
+    "seconds": 55,
+    "examples": 12
+  },
+  "actual": {
+    "physical_bytes": 16074649,
+    "decoded_bytes": 303399440,
+    "wire_frame_bytes": 16074649,
+    "snapshot_events": 1313,
+    "snapshot_full_frames": 353,
+    "snapshot_reference_frames": 960,
+    "snapshot_exact_bytes": 126361789,
+    "snapshot_full_payload_bytes": 33885104,
+    "direct_frames": 518,
+    "events": 1831,
+    "files": 8,
+    "seconds": 5.890999999945052
+  },
+  "errors": [],
+  "versions_declared": {
+    "Brainstorm v2.126.0-alpha": 1313
+  },
+  "first": {
+    "file": "session-20260915T173716Z-1-000007.brj",
+    "sequence": 2629,
+    "at": "2026-09-15T17:53:55Z",
+    "state": null
+  },
+  "last": {
+    "file": "session-20260915T173716Z-1-000014.brj",
+    "sequence": 4459,
+    "at": "2026-09-15T18:09:50Z",
+    "state": null
+  },
+  "kind_counts": {
+    "performance_window": 191,
+    "auto_run": 658,
+    "collection_search_started": 3,
+    "collection_search_finished": 3,
+    "collection_run_start": 3,
+    "action_requested": 327,
+    "action_callback_result": 327,
+    "state_after_actions": 319
+  },
+  "auto_event_counts": {
+    "terminal_overlay_close_requested": 4,
+    "search_requested": 3,
+    "search_started": 3,
+    "search_found": 3,
+    "run_start_requested": 3,
+    "run_started": 3,
+    "action_attempt": 319,
+    "action_observed": 316,
+    "run_finished": 3,
+    "session_stopped": 1
+  },
+  "canonical_field_bytes": [
+    [
+      "context.snapshot",
+      123509508
+    ],
+    [
+      "details.fingerprint",
+      58157966
+    ],
+    [
+      "details.before",
+      57718707
+    ],
+    [
+      "details.after",
+      57665250
+    ],
+    [
+      "context.advice",
+      1070926
+    ],
+    [
+      "details.metrics",
+      590902
+    ],
+    [
+      "details.decisions",
+      249264
+    ],
+    [
+      "details.slow_frames",
+      226237
+    ],
+    [
+      "details.advice",
+      186650
+    ],
+    [
+      "context.snapshot_scope",
+      120796
+    ],
+    [
+      "details.found",
+      52338
+    ],
+    [
+      "details.request",
+      45032
+    ],
+    [
+      "context.version",
+      35451
+    ],
+    [
+      "details.flags",
+      28411
+    ],
+    [
+      "details.observation",
+      26796
+    ],
+    [
+      "details.completion",
+      19620
+    ],
+    [
+      "details.action",
+      19390
+    ],
+    [
+      "details.input",
+      17628
+    ]
+  ],
+  "large_string_repeats": {
+    "details.fingerprint": {
+      "occurrences": 319,
+      "unique": 319,
+      "repeated_occurrences": 0
+    },
+    "details.after": {
+      "occurrences": 316,
+      "unique": 316,
+      "repeated_occurrences": 0
+    },
+    "details.before": {
+      "occurrences": 316,
+      "unique": 316,
+      "repeated_occurrences": 0
+    }
+  },
+  "changed_snapshot_splice": {
+    "retained_fraction": {
+      "count": 345,
+      "sum": 53.49202201748176,
+      "median": 0.03425203507331095,
+      "p95_order_statistic": 0.9684795904498709,
+      "max": 1.0
+    },
+    "middle_bytes": {
+      "count": 345,
+      "sum": 28084456,
+      "median": 90048,
+      "p95_order_statistic": 103964,
+      "max": 109833
+    }
+  },
+  "timing_windows": 191,
+  "timing_metrics": {
+    "advisor.present": {
+      "count": 727,
+      "total_seconds": 0.027377399999750196,
+      "max_seconds": 0.0003368000000136817
+    },
+    "advisor.refresh": {
+      "count": 129689,
+      "total_seconds": 142.16630000000657,
+      "max_seconds": 1.850791500000014
+    },
+    "advisor_hud_draw": {
+      "count": 165841,
+      "total_seconds": 7.424563299953434,
+      "max_seconds": 0.004870000000209984
+    },
+    "advisor_update": {
+      "count": 165841,
+      "total_seconds": 253.04012670001975,
+      "max_seconds": 1.8508039999999255
+    },
+    "auto_update": {
+      "count": 165841,
+      "total_seconds": 52.00363610001,
+      "max_seconds": 0.3328837999999905
+    },
+    "checkpoint_update": {
+      "count": 165841,
+      "total_seconds": 0.19239430001584878,
+      "max_seconds": 7.129999994504033e-05
+    },
+    "decision.resume": {
+      "count": 287921,
+      "total_seconds": 135.72309159998383,
+      "max_seconds": 1.845295300000089
+    },
+    "draw_total": {
+      "count": 165841,
+      "total_seconds": 138.56560550004008,
+      "max_seconds": 0.046398400000043694
+    },
+    "frame_interval": {
+      "count": 165841,
+      "total_seconds": 959.8688867,
+      "max_seconds": 1.8703553000000284
+    },
+    "game_update": {
+      "count": 165841,
+      "total_seconds": 188.6729846999857,
+      "max_seconds": 0.3712297000001854
+    },
+    "journal.append": {
+      "count": 1847,
+      "total_seconds": 23.131641599997124,
+      "max_seconds": 0.23530490000007376
+    },
+    "journal.encode": {
+      "count": 1847,
+      "total_seconds": 5.98747320000507,
+      "max_seconds": 0.012238900000056674
+    },
+    "journal.observe": {
+      "count": 1847,
+      "total_seconds": 5.456226299998093,
+      "max_seconds": 0.0069293999999899825
+    },
+    "journal.total": {
+      "count": 1847,
+      "total_seconds": 34.5983971999982,
+      "max_seconds": 0.24682080000002316
+    },
+    "journal_update": {
+      "count": 165841,
+      "total_seconds": 7.18655940003805,
+      "max_seconds": 0.031760899999881076
+    },
+    "legacy_reroll": {
+      "count": 165841,
+      "total_seconds": 0.07753379994039733,
+      "max_seconds": 5.050000004303001e-05
+    },
+    "original_draw": {
+      "count": 165841,
+      "total_seconds": 131.05627070005949,
+      "max_seconds": 0.044399900000144044
+    },
+    "performance_emit": {
+      "count": 191,
+      "total_seconds": 1.3738638000044148,
+      "max_seconds": 0.019778699999960736
+    },
+    "search_update": {
+      "count": 165841,
+      "total_seconds": 0.27033529996174366,
+      "max_seconds": 0.01991720000000896
+    },
+    "snapshot.capture": {
+      "count": 134608,
+      "total_seconds": 53.86436150000736,
+      "max_seconds": 0.014415299999882336
+    },
+    "snapshot.fingerprint": {
+      "count": 31100,
+      "total_seconds": 90.40186490000792,
+      "max_seconds": 0.08582789999991292
+    },
+    "update_argument_dt": {
+      "count": 165841,
+      "total_seconds": 943.0896242443818,
+      "max_seconds": 0.1
+    },
+    "update_total": {
+      "count": 165841,
+      "total_seconds": 501.7059680999631,
+      "max_seconds": 1.852023299999928
+    }
+  },
+  "decision_status_counts": {
+    "completed": 727,
+    "cancelled": 121
+  },
+  "largest_decisions": [
+    {
+      "action_kind": "buy",
+      "active_seconds": 3.0446874000003845,
+      "decision_id": 1200,
+      "elapsed_seconds": 4.573857799999814,
+      "evaluations": 29385,
+      "finished_seconds": 1033.5637335,
+      "max_resume_seconds": 0.5544971000001624,
+      "phase": "shop",
+      "resume_calls": 460,
+      "started_seconds": 1028.9898757,
+      "status": "completed",
+      "sequence": 2719
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.3832383999970261,
+      "decision_id": 1510,
+      "elapsed_seconds": 4.0978353000000425,
+      "evaluations": 135878,
+      "finished_seconds": 1305.5616564,
+      "max_resume_seconds": 0.00827730000014526,
+      "phase": "hand",
+      "resume_calls": 4246,
+      "started_seconds": 1301.4638211,
+      "status": "completed",
+      "sequence": 3358
+    },
+    {
+      "action_kind": "leave_shop",
+      "active_seconds": 2.338629000003266,
+      "decision_id": 1412,
+      "elapsed_seconds": 4.056926800000156,
+      "evaluations": 50000,
+      "finished_seconds": 1198.4511331,
+      "max_resume_seconds": 0.11791329999982736,
+      "phase": "shop",
+      "resume_calls": 782,
+      "started_seconds": 1194.3942063,
+      "status": "completed",
+      "sequence": 3163
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.358680600007574,
+      "decision_id": 1416,
+      "elapsed_seconds": 3.8869106999998166,
+      "evaluations": 131045,
+      "finished_seconds": 1203.1496332,
+      "max_resume_seconds": 0.008246500000041124,
+      "phase": "hand",
+      "resume_calls": 4095,
+      "started_seconds": 1199.2627225,
+      "status": "completed",
+      "sequence": 3169
+    },
+    {
+      "action_kind": "sell",
+      "active_seconds": 2.0807567999988805,
+      "decision_id": 1431,
+      "elapsed_seconds": 3.85612859999992,
+      "evaluations": 48411,
+      "finished_seconds": 1224.4147831,
+      "max_resume_seconds": 0.09273030000008475,
+      "phase": "shop",
+      "resume_calls": 757,
+      "started_seconds": 1220.5586545,
+      "status": "completed",
+      "sequence": 3208
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.2536475000051723,
+      "decision_id": 1511,
+      "elapsed_seconds": 3.703400700000202,
+      "evaluations": 132563,
+      "finished_seconds": 1309.6967661,
+      "max_resume_seconds": 0.007307099999934508,
+      "phase": "hand",
+      "resume_calls": 4143,
+      "started_seconds": 1305.9933654,
+      "status": "completed",
+      "sequence": 3358
+    },
+    {
+      "action_kind": "use",
+      "active_seconds": 1.2551220000077592,
+      "decision_id": 1417,
+      "elapsed_seconds": 3.7022981000000073,
+      "evaluations": 133105,
+      "finished_seconds": 1207.2156602,
+      "max_resume_seconds": 0.007888399999956164,
+      "phase": "hand",
+      "resume_calls": 4159,
+      "started_seconds": 1203.5133621,
+      "status": "completed",
+      "sequence": 3179
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.1452339999964352,
+      "decision_id": 1444,
+      "elapsed_seconds": 3.682221600000048,
+      "evaluations": 128214,
+      "finished_seconds": 1241.8544296,
+      "max_resume_seconds": 0.008556799999951181,
+      "phase": "hand",
+      "resume_calls": 4006,
+      "started_seconds": 1238.172208,
+      "status": "completed",
+      "sequence": 3246
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.2047243999886632,
+      "decision_id": 1476,
+      "elapsed_seconds": 3.589131899999984,
+      "evaluations": 137435,
+      "finished_seconds": 1271.0959963,
+      "max_resume_seconds": 0.00796730000001844,
+      "phase": "hand",
+      "resume_calls": 4295,
+      "started_seconds": 1267.5068644,
+      "status": "completed",
+      "sequence": 3297
+    },
+    {
+      "action_kind": "use",
+      "active_seconds": 1.2161106999988078,
+      "decision_id": 1418,
+      "elapsed_seconds": 3.5595564000000195,
+      "evaluations": 128269,
+      "finished_seconds": 1211.3569942,
+      "max_resume_seconds": 0.008261000000175045,
+      "phase": "hand",
+      "resume_calls": 4008,
+      "started_seconds": 1207.7974378,
+      "status": "completed",
+      "sequence": 3179
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.1254387000074075,
+      "decision_id": 1345,
+      "elapsed_seconds": 3.519730900000013,
+      "evaluations": 133896,
+      "finished_seconds": 1135.1804103,
+      "max_resume_seconds": 0.007997299999942697,
+      "phase": "hand",
+      "resume_calls": 4184,
+      "started_seconds": 1131.6606794,
+      "status": "completed",
+      "sequence": 3030
+    },
+    {
+      "action_kind": "discard",
+      "active_seconds": 1.1866381999884652,
+      "decision_id": 1461,
+      "elapsed_seconds": 3.4911485000000084,
+      "evaluations": 129815,
+      "finished_seconds": 1257.9783756,
+      "max_resume_seconds": 0.008674200000086785,
+      "phase": "hand",
+      "resume_calls": 4057,
+      "started_seconds": 1254.4872271,
+      "status": "completed",
+      "sequence": 3274
+    }
+  ],
+  "largest_slow_frames": [
+    {
+      "at_seconds": 1283.842188,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 1.8703553000000284,
+      "update_seconds": 0.20590450000008786,
+      "sequence": 3329
+    },
+    {
+      "at_seconds": 1283.6179515,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 0.004167199999983495,
+      "update_seconds": 1.852023299999928,
+      "sequence": 3318
+    },
+    {
+      "at_seconds": 1295.2714969,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 9
+      },
+      "frame_interval_seconds": 1.760744299999942,
+      "update_seconds": 0.3595055000000684,
+      "sequence": 3337
+    },
+    {
+      "at_seconds": 1234.1604148,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 4,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 9,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 1.760470499999883,
+      "update_seconds": 0.2113065999999435,
+      "sequence": 3220
+    },
+    {
+      "at_seconds": 1231.3957945,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 4,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 9,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 1.7515548000001218,
+      "update_seconds": 0.23251729999992676,
+      "sequence": 3213
+    },
+    {
+      "at_seconds": 1294.9007406,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 9
+      },
+      "frame_interval_seconds": 0.004083499999978812,
+      "update_seconds": 1.7494934999999714,
+      "sequence": 3330
+    },
+    {
+      "at_seconds": 1231.1606944,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 4,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 9,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 0.0034891999998762913,
+      "update_seconds": 1.7489720000000943,
+      "sequence": 3213
+    },
+    {
+      "at_seconds": 1297.525365,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 9
+      },
+      "frame_interval_seconds": 1.7463744000001498,
+      "update_seconds": 0.4968810999998823,
+      "sequence": 3337
+    },
+    {
+      "at_seconds": 1297.0257948,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 9
+      },
+      "frame_interval_seconds": 0.0039715000000342116,
+      "update_seconds": 1.743685300000152,
+      "sequence": 3337
+    },
+    {
+      "at_seconds": 1233.9314689,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 4,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 9,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 0.004154800000151226,
+      "update_seconds": 1.742831199999955,
+      "sequence": 3220
+    },
+    {
+      "at_seconds": 1286.6224211,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 1.7307549999998173,
+      "update_seconds": 0.37144240000020545,
+      "sequence": 3329
+    },
+    {
+      "at_seconds": 1286.2333058,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 5,
+        "auto_active": true,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 12,
+        "stage": 2,
+        "state": 10
+      },
+      "frame_interval_seconds": 0.004186399999980495,
+      "update_seconds": 1.7130820999998377,
+      "sequence": 3329
+    }
+  ],
+  "action_intervals": {
+    "count": 316,
+    "sum": 621.1821963,
+    "median": 1.6611184500000036,
+    "p95_order_statistic": 4.378171399999928,
+    "max": 9.640431700000136
+  },
+  "largest_actions": [
+    {
+      "sequence": 3326,
+      "kind": "open",
+      "seconds_to_fresh_advice": 9.640431700000136,
+      "state": {
+        "phase": "shop",
+        "ante": 5,
+        "round": 12,
+        "chips": 0,
+        "dollars": 51,
+        "hands_left": 4,
+        "discards_left": 3,
+        "blind": {
+          "name": "",
+          "key": null,
+          "chips": 0,
+          "boss": null
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 3216,
+      "kind": "choose",
+      "seconds_to_fresh_advice": 5.6059671000000435,
+      "state": {
+        "phase": "pack",
+        "ante": 4,
+        "round": 9,
+        "chips": 0,
+        "dollars": 36,
+        "hands_left": 4,
+        "discards_left": 3,
+        "blind": {
+          "name": "",
+          "key": null,
+          "chips": 0,
+          "boss": null
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 3361,
+      "kind": "play",
+      "seconds_to_fresh_advice": 5.064673199999788,
+      "state": {
+        "phase": "hand",
+        "ante": 5,
+        "round": 13,
+        "chips": 0,
+        "dollars": 45,
+        "hands_left": 4,
+        "discards_left": 1,
+        "blind": {
+          "name": "Big Blind",
+          "key": "bl_big",
+          "chips": 37500,
+          "boss": false
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 2700,
+      "kind": "choose",
+      "seconds_to_fresh_advice": 5.0387518,
+      "state": {
+        "phase": "pack",
+        "ante": 1,
+        "round": 1,
+        "chips": 0,
+        "dollars": 6,
+        "hands_left": 4,
+        "discards_left": 3,
+        "blind": {
+          "name": "",
+          "key": null,
+          "chips": 0,
+          "boss": null
+        }
+      },
+      "seed": "S7PXV521"
+    },
+    {
+      "sequence": 3142,
+      "kind": "play",
+      "seconds_to_fresh_advice": 4.703769499999908,
+      "state": {
+        "phase": "hand",
+        "ante": 3,
+        "round": 8,
+        "chips": 3192,
+        "dollars": 22,
+        "hands_left": 3,
+        "discards_left": 3,
+        "blind": {
+          "name": "The Goad",
+          "key": "bl_goad",
+          "chips": 6400,
+          "boss": true
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 2917,
+      "kind": "play",
+      "seconds_to_fresh_advice": 4.6934510000000955,
+      "state": {
+        "phase": "hand",
+        "ante": 2,
+        "round": 3,
+        "chips": 0,
+        "dollars": 6,
+        "hands_left": 4,
+        "discards_left": 0,
+        "blind": {
+          "name": "Small Blind",
+          "key": "bl_small",
+          "chips": 1000,
+          "boss": false
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 3271,
+      "kind": "play",
+      "seconds_to_fresh_advice": 4.6850778999998965,
+      "state": {
+        "phase": "hand",
+        "ante": 4,
+        "round": 11,
+        "chips": 0,
+        "dollars": 45,
+        "hands_left": 4,
+        "discards_left": 2,
+        "blind": {
+          "name": "The Tooth",
+          "key": "bl_tooth",
+          "chips": 18000,
+          "boss": true
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 3608,
+      "kind": "play",
+      "seconds_to_fresh_advice": 4.656407400000035,
+      "state": {
+        "phase": "hand",
+        "ante": 2,
+        "round": 5,
+        "chips": 990,
+        "dollars": 6,
+        "hands_left": 3,
+        "discards_left": 3,
+        "blind": {
+          "name": "The Hook",
+          "key": "bl_hook",
+          "chips": 2000,
+          "boss": true
+        }
+      },
+      "seed": "YAEARC31"
+    },
+    {
+      "sequence": 3004,
+      "kind": "play",
+      "seconds_to_fresh_advice": 4.525973099999874,
+      "state": {
+        "phase": "hand",
+        "ante": 2,
+        "round": 5,
+        "chips": 0,
+        "dollars": 7,
+        "hands_left": 4,
+        "discards_left": 3,
+        "blind": {
+          "name": "The Arm",
+          "key": "bl_arm",
+          "chips": 2000,
+          "boss": true
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 3103,
+      "kind": "play",
+      "seconds_to_fresh_advice": 4.515989900000022,
+      "state": {
+        "phase": "hand",
+        "ante": 3,
+        "round": 7,
+        "chips": 4290,
+        "dollars": 17,
+        "hands_left": 3,
+        "discards_left": 0,
+        "blind": {
+          "name": "Big Blind",
+          "key": "bl_big",
+          "chips": 4800,
+          "boss": false
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 3148,
+      "kind": "cash_out",
+      "seconds_to_fresh_advice": 4.509101000000101,
+      "state": {
+        "phase": "round",
+        "ante": 4,
+        "round": 8,
+        "chips": 6456,
+        "dollars": 19,
+        "hands_left": 2,
+        "discards_left": 3,
+        "blind": {
+          "name": "",
+          "key": null,
+          "chips": 0,
+          "boss": null
+        }
+      },
+      "seed": "RH45AD21"
+    },
+    {
+      "sequence": 2928,
+      "kind": "open",
+      "seconds_to_fresh_advice": 4.497109399999999,
+      "state": {
+        "phase": "shop",
+        "ante": 2,
+        "round": 3,
+        "chips": 0,
+        "dollars": 10,
+        "hands_left": 4,
+        "discards_left": 3,
+        "blind": {
+          "name": "",
+          "key": null,
+          "chips": 0,
+          "boss": null
+        }
+      },
+      "seed": "RH45AD21"
+    }
+  ],
+  "terminal_or_stop_receipts": [
+    {
+      "file": "session-20260915T173716Z-1-000008.brj",
+      "offset": 1054595,
+      "end": 1055463,
+      "sequence": 2758,
+      "kind": "auto_run",
+      "at": "2026-09-15T17:54:38Z",
+      "monotonic_seconds": 1048.2939068,
+      "event_sha256": "d63054c58548703978220ad4e262d4c5fb25ffa3aecd3020164bd25b393ba153",
+      "event_bytes": 84572,
+      "wire_bytes": 868,
+      "seed": "S7PXV521",
+      "game_over": true,
+      "won_field": false,
+      "state": {
+        "phase": "other",
+        "ante": 1,
+        "round": 2,
+        "chips": 592,
+        "dollars": 2,
+        "hands_left": 0,
+        "discards_left": 0,
+        "blind": {
+          "name": "The Pillar",
+          "key": "bl_pillar",
+          "chips": 600,
+          "boss": true
+        }
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:4",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:4",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 22,
+        "run_id": "game:4",
+        "run_number": 3,
+        "run_seconds": 39.81885670000008,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "terminal",
+        "time": 1048.29373
+      }
+    },
+    {
+      "file": "session-20260915T173716Z-1-000010.brj",
+      "offset": 5614118,
+      "end": 5614983,
+      "sequence": 3388,
+      "kind": "auto_run",
+      "at": "2026-09-15T17:59:17Z",
+      "monotonic_seconds": 1327.3253215,
+      "event_sha256": "e453d9c5925b2552b3fa5a916a9f830911db5e9979d0ac265e17667e82a93cd7",
+      "event_bytes": 85118,
+      "wire_bytes": 865,
+      "seed": "RH45AD21",
+      "game_over": true,
+      "won_field": false,
+      "state": {
+        "phase": "other",
+        "ante": 5,
+        "round": 13,
+        "chips": 18340,
+        "dollars": 45,
+        "hands_left": 0,
+        "discards_left": 0,
+        "blind": {
+          "name": "Big Blind",
+          "key": "bl_big",
+          "chips": 37500,
+          "boss": false
+        }
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:5",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:5",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 112,
+        "run_id": "game:5",
+        "run_number": 4,
+        "run_seconds": 278.4308741000002,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "terminal",
+        "time": 1327.3251626
+      }
+    },
+    {
+      "file": "session-20260915T173716Z-1-000013.brj",
+      "offset": 825578,
+      "end": 826438,
+      "sequence": 4392,
+      "kind": "auto_run",
+      "at": "2026-09-15T18:04:26Z",
+      "monotonic_seconds": 1637.0548023,
+      "event_sha256": "c7ba8be8bb3b22d933c041abf455946f6d8b714fc059ca401abf435c9cde458d",
+      "event_bytes": 81016,
+      "wire_bytes": 860,
+      "seed": "YAEARC31",
+      "game_over": true,
+      "won_field": true,
+      "state": {
+        "phase": "other",
+        "ante": 8,
+        "round": 23,
+        "chips": 98808,
+        "dollars": 7,
+        "hands_left": 0,
+        "discards_left": 0,
+        "blind": {
+          "name": "Amber Acorn",
+          "key": "bl_final_acorn",
+          "chips": 400000,
+          "boss": true
+        }
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:6",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:6",
+          "source": "GAME_OVER",
+          "source_won_field": true,
+          "verified": true
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 185,
+        "run_id": "game:6",
+        "run_number": 5,
+        "run_seconds": 307.5315585000001,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "terminal",
+        "time": 1637.0545717
+      }
+    },
+    {
+      "file": "session-20260915T173716Z-1-000014.brj",
+      "offset": 8308,
+      "end": 16705,
+      "sequence": 4394,
+      "kind": "auto_run",
+      "at": "2026-09-15T18:04:27Z",
+      "monotonic_seconds": 1637.1673526,
+      "event_sha256": "a9626f6176a9b457e394a03b67d20b1ab9472f8e42b8cb0f74093005f4d24e21",
+      "event_bytes": 80886,
+      "wire_bytes": 8397,
+      "seed": "YAEARC31",
+      "game_over": true,
+      "won_field": true,
+      "state": {
+        "phase": "other",
+        "ante": 8,
+        "round": 23,
+        "chips": 98808,
+        "dollars": 4,
+        "hands_left": 0,
+        "discards_left": 0,
+        "blind": {
+          "name": "Amber Acorn",
+          "key": "bl_final_acorn",
+          "chips": 400000,
+          "boss": true
+        }
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "details": {
+        "actions": 802,
+        "event": "session_stopped",
+        "outcomes": {
+          "losses": 4,
+          "wins": 1
+        },
+        "profile_id": 1,
+        "reason": "run_limit",
+        "run_id": "game:6",
+        "runs_started": 5,
+        "schema": 1,
+        "search_draining": false,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "stopped",
+        "time": 1637.1672511
+      }
+    }
+  ],
+  "limits": [
+    "Selected captured suffix only; prior session prefix and first predecessor unverified.",
+    "Version strings do not attest loaded module hashes. No rescoring or alternative action simulation.",
+    "Metrics are elapsed wall time and overlap; no CPU percent or unmeasured terminal result inferred.",
+    "Canonical field-byte accounting is explanatory, not an exact decomposition of original encoded bytes."
+  ]
+}

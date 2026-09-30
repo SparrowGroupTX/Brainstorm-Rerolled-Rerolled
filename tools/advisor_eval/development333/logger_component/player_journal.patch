@@ -1,0 +1,30 @@
+--- Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -168,6 +168,7 @@
+   'sell_card','reroll_shop','skip_booster','toggle_shop','cash_out','select_blind','skip_blind'}
+ function M.attach(A,B,deps)
+   deps=deps or {};local fs=deps.fs or love and love.filesystem
++  local callback_hooks=deps.callback_hooks or A.callback_hooks
+   local archive
+   if not deps.append then
+     archive={}
+@@ -233,7 +234,10 @@
+     self.hooks=self.hooks or {}
+     for _,name in ipairs(callbacks) do
+       local original=g.FUNCS[name]
+-      if type(original)=='function' and original~=self.hooks[name] then
++      -- Another owned observer may be the outer wrapper. Its recorded ancestry
++      -- still contains this hook; wrapping again would multiply logging each frame.
++      local installed=original==self.hooks[name] or callback_hooks and callback_hooks:contains(original,self.hooks[name])
++      if type(original)=='function' and not installed then
+         local function wrapped(...)
+           local args={...};local selected={};local e=args[1]
+           for _,card in ipairs(g.hand and g.hand.highlighted or {}) do
+@@ -248,6 +252,7 @@
+           if not ok then error(outcome[2],0) end
+           return unpack(outcome,2,outcome.n)
+         end
++        if callback_hooks then callback_hooks:record(wrapped,original)end
+         self.hooks[name]=wrapped;g.FUNCS[name]=wrapped
+       end
+     end

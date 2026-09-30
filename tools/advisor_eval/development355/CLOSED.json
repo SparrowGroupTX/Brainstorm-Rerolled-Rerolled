@@ -1,0 +1,77 @@
+{
+  "schema": "learning355-closed-v1",
+  "status": "CLOSED",
+  "closed_utc": "2026-09-16T16:12:35.297882+00:00",
+  "jobs": {
+    "P01": {
+      "status": "completed",
+      "reserved_seconds": 30,
+      "actual_coordinator_seconds": 2.687999999965541,
+      "receipt_sha256": "4a7e0187c50ab5ff569ee43a5fad1ba05ef9d0959c13dafa265962c91ece7135",
+      "frozen_sha256": "aa974ece21bc06d920e3e61e3684fa40d2273a12ee4a8472524a646744aed0e3"
+    },
+    "S01": {
+      "status": "completed",
+      "reserved_seconds": 120,
+      "actual_coordinator_seconds": 17.85999999998603,
+      "receipt_sha256": "42caf0d1c537a3422aad16a26c6ddf159eb88dfb8a4b7acbb61eb3ab74b63b19",
+      "frozen_sha256": "5d48ec0255490c227f64e8660da8e47dbb33802f112bd228f75bb06f1cee2474"
+    },
+    "T01": {
+      "status": "completed",
+      "reserved_seconds": 600,
+      "actual_coordinator_seconds": 407.219000000041,
+      "receipt_sha256": "080d323f3b5f87996454de049a64bbdef710542d99e4d930fdcec629930b7676",
+      "frozen_sha256": "66e9d97466b5615841e59311548b871f58e130ad65540d352eafc38ae6641157"
+    },
+    "T02": {
+      "status": "completed",
+      "reserved_seconds": 900,
+      "actual_coordinator_seconds": 883.3429999999935,
+      "receipt_sha256": "3f8cce5513f9f87b208392eb04a7197ca0f598ec4c0b9805b2e561017550f6d5",
+      "frozen_sha256": "d89eeb9f045bf0d5fc52be7f0f9da45501ca443ca79e26fedd93afe135f645c6"
+    },
+    "T03": {
+      "status": "closed_unused",
+      "reserved_seconds": 900,
+      "actual_coordinator_seconds": 0
+    },
+    "V01": {
+      "status": "completed",
+      "reserved_seconds": 120,
+      "actual_coordinator_seconds": 2.640999999945052,
+      "receipt_sha256": "9719a9b2ab4e0c168303e5b921b21f6ea9114fa86e784ccdedd4aed222c293e0",
+      "frozen_sha256": "5d48ec0255490c227f64e8660da8e47dbb33802f112bd228f75bb06f1cee2474"
+    },
+    "V02": {
+      "status": "completed",
+      "reserved_seconds": 180,
+      "actual_coordinator_seconds": 25.18700000003446,
+      "receipt_sha256": "652f9b87e12da6621408702e3c1e7a84928025ead7da803b0b516b42a54684b4",
+      "frozen_sha256": "b1e95c921ae399dc145bb954ecf8583c07a8a54467ee9b86cb5679748d7db689"
+    },
+    "V03": {
+      "status": "completed",
+      "reserved_seconds": 180,
+      "actual_coordinator_seconds": 14.858999999938533,
+      "receipt_sha256": "fee3220cb2848eaea076acb9c78b82d514e5448b930168c83799b3004664610c",
+      "frozen_sha256": "b1e95c921ae399dc145bb954ecf8583c07a8a54467ee9b86cb5679748d7db689"
+    }
+  },
+  "reserved_coordinator_seconds": 3030,
+  "consumed_job_reservations_seconds": 2130,
+  "closed_unused_seconds": 900,
+  "actual_coordinator_seconds": 1353.796999999904,
+  "parallelism_limit": 8,
+  "summed_cpu_time_measured": false,
+  "artifact_bytes_at_closure": 219682825,
+  "reason": "Specialized policy rejected on development evidence; final evaluation complete. Unused T03 closed: more identical sparse-reward training is not justified.",
+  "no_remaining_workers_or_continuations": true,
+  "source_executable_workers": 0,
+  "seed_search": 0,
+  "live_game_control": 0,
+  "saves_or_player_profiles_read": 0,
+  "runtime_installations": 0,
+  "actual_player_awards": 0,
+  "continuation_rule": "All leases and unused capacity are closed. No reuse, replacement, renaming, new directory reset or automatic continuation."
+}

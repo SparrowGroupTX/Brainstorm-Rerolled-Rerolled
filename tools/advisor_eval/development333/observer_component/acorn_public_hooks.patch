@@ -1,0 +1,27 @@
+--- Brainstorm\Advisor\acorn_public_hooks.lua
++++ Brainstorm\Advisor\acorn_public_hooks.lua
+@@ -7,6 +7,7 @@
+   cash_out='cash_out',toggle_shop='leave_shop'}
+ function M.attach(tracker,deps)
+   deps=deps or {};local env=deps.env or _G;local hooks={};local H={}
++  local callback_hooks=deps.callback_hooks
+   local function game()return deps.game and deps.game() or env.G end
+   local function safely(method,...)
+     local ok=pcall(method,tracker,...)
+@@ -15,7 +16,7 @@
+   local function wrap(owner,name,before,after)
+     if type(owner)~='table' or type(owner[name])~='function' then return end
+     hooks[owner]=hooks[owner] or {}
+-    if owner[name]==hooks[owner][name]then return end
++    if owner[name]==hooks[owner][name] or callback_hooks and callback_hooks:contains(owner[name],hooks[owner][name])then return end
+     local original=owner[name]
+     local function wrapped(...)
+       if before then before(...)end
+@@ -30,6 +31,7 @@
+       if after then after(...)end
+       return unpack(result,2,result.n)
+     end
++    if callback_hooks then callback_hooks:record(wrapped,original)end
+     hooks[owner][name]=wrapped;owner[name]=wrapped
+   end
+   local function in_jokers(g,card)

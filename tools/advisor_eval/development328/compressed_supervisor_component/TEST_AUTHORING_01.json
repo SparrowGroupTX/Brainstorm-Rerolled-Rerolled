@@ -1,0 +1,12 @@
+{
+  "kind": "preserved_dummy_test_failure",
+  "fixture": "test_timeout_kills_and_keeps_prefix",
+  "run": "initial 12-test dummy transport suite",
+  "passed": 11,
+  "failed": 1,
+  "worker_wall_seconds": 0.8459398,
+  "finding": "Killing a timed-out child can produce pipe EOF during cleanup; the initial transport mislabeled the capture as complete despite the timeout.",
+  "repair": "Only a natural child exit with complete drainage observed before cleanup can set stdout_capture_complete. Forced-termination EOF does not qualify.",
+  "source_or_policy_executions": 0,
+  "authority_jobs_consumed": 0
+}

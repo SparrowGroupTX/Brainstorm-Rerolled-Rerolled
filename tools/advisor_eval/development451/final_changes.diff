@@ -1,0 +1,204 @@
+--- installed450/Brainstorm/Advisor/two_hand_finish.lua
++++ candidate451/Brainstorm/Advisor/two_hand_finish.lua
+@@ -43,6 +43,13 @@
+ function M.suggest(s,modules,result,yield_fn,options)
+   options=options or {};result=result or {};modules=modules or {}
+   local initial_hands=num(s.hands_left,(s.current_round or {}).hands_left)
++  local no_discard_planet=false
++  if s.phase=='hand' and s.teacher_profile=='perkeo_yorick_win_v1' and initial_hands==2 and
++      s.discards_left==0 then
++    for _,owned in ipairs(s.consumeables or {}) do
++      if upgrades[owned.key] and owned.key~='c_black_hole' and not owned.debuff then no_discard_planet=true end
++    end
++  end
+   local diag={evaluations=0,max_evaluations=min(12000,max(0,floor(num(options.max_evaluations,12000)))),
+     outer_samples=4,inner_samples=4,first_actions=2,final_discard_limit=2,complete=false,heuristic=true,
+     horizon=initial_hands,
+@@ -50,7 +57,25 @@
+     scope='Two or three plays, with the current play or discard first and at most one conditional discard before the final play. Small hands may compare one owned Planet or Black Hole before playing. A middle play follows its observed hand. Four outer x four conditional inner samples; not independent episodes.'}
+   local function no(reason) diag.reason=reason;return nil,diag.evaluations,diag end
+   local remaining=max(1,num((s.blind or {}).chips)-num(s.chips))
+-  if (initial_hands~=2 and initial_hands~=3) or num(s.discards_left)<1 or #(s.deck or {})==0 then
++  if no_discard_planet then
++    diag.no_discard_planet=true
++    diag.scope='Two plays with no discards: incumbent and greedy current-play hold policies versus each eligible Planet followed by the same incumbent first play. Complete final observed-hand play families in four common composition worlds; no later owned use or guaranteed win.'
++    local size=num(s.hand_size,#(s.hand or {}));local round=s.current_round or {}
++    if size~=size or size<1 or size>8 or size~=floor(size) or
++        #(s.consumeables or {})>8 or #(s.jokers or {})>8 then
++      return no('The no-discard Planet comparison exceeds its public hand, row or inventory bounds.')
++    end
++    if round.hands_left~=nil and round.hands_left~=2 or round.discards_left~=nil and round.discards_left~=0 then
++      return no('The no-discard Planet comparison requires consistent remaining resources.')
++    end
++    for _,area in ipairs({'hand','deck','jokers','consumeables'}) do for _,c in ipairs(s[area] or {}) do
++      if c.unknown or c.identity_unknown or c.identity_redacted or c.concealed or c.getting_sliced or
++          area~='deck' and (c.face_down or c.facing=='back') then
++        return no('The no-discard Planet comparison requires known public identities.')
++      end
++    end end
++  end
++  if (initial_hands~=2 and initial_hands~=3) or not no_discard_planet and num(s.discards_left)<1 or #(s.deck or {})==0 then
+     return no('This specialist requires two or three playable hands and a remaining discard.')
+   end
+   if initial_hands==3 and (#(s.hand or {})>6 or num(s.hand_size,#s.hand)>6) then
+@@ -58,18 +83,26 @@
+   end
+   if hidden(s) or #(s.hand or {})<1 or #s.hand>8 or #s.deck>120 then return no('Visible hands of at most eight cards and a bounded deck are required.') end
+   if reliable(result.play,remaining) or result.fast_clear then return no('A reliable current finish takes priority.') end
++  if no_discard_planet then
++    if result.kind~='play' then return no('The no-discard Planet comparison requires an incumbent play.') end
++    if result.action then
++      local current,scored=result.action.indices or {},(result.play or {}).indices or {}
++      if result.action.kind~='play' or #current~=#scored then return no('The incumbent action and scored play must match.') end
++      for i,index in ipairs(current) do if scored[i]~=index then return no('The incumbent action and scored play must match.') end end
++    end
++  end
+   for _,field in ipairs({'consumable','ordering','hand_ordering','boss_rescue','mixed_rescue','growth'}) do
+     if result[field] then return no('An existing tactical or investment action takes priority.') end
+   end
+   local prior=result.resource_comparison
+-  if not prior or not prior.full_remaining_horizon or prior.future_discards~=false or num(prior.samples)<4 then
++  if not no_discard_planet and (not prior or not prior.full_remaining_horizon or prior.future_discards~=false or num(prior.samples)<4) then
+     return no('A complete existing two-hand play-only comparison is required before extending it.')
+   end
+   if initial_hands==3 and num(prior.horizon)<3 then return no('A completed three-hand baseline is required.') end
+-  if prior.prior and num(prior.prior.probability)>=1 or prior.best and num(prior.best.probability)>=1 then
++  if not no_discard_planet and (prior.prior and num(prior.prior.probability)>=1 or prior.best and num(prior.best.probability)>=1) then
+     return no('The existing sampled finishing plan already clears every compared world.')
+   end
+-  if not result.play or not result.play.indices or not result.discard or not result.discard.indices then return no('Both current first actions are required for a fair comparison.') end
++  if not result.play or not result.play.indices or not no_discard_planet and (not result.discard or not result.discard.indices) then return no('Both current first actions are required for a fair comparison.') end
+   local scorer,search,draws,outcomes=modules.scoring,modules.search,modules.draws,modules.sampled_outcomes
+   local multi=modules.multi_discard
+   if not scorer or not scorer.score or not scorer.after_play or not scorer.after_discard or not search or
+@@ -78,8 +111,13 @@
+   end
+   local ids={}
+   for _,area in ipairs({s.hand,s.deck}) do for _,c in ipairs(area) do
+-    if c.id==nil or ids[c.id] then return no('Distinct physical identities are required for composition sampling.') end
+-    ids[c.id]=true
++    if no_discard_planet and not (type(c.id)=='string' and c.id~='' or
++        type(c.id)=='number' and c.id==c.id and math.abs(c.id)<math.huge) then
++      return no('Canonical public physical identities are required for Planet composition sampling.')
++    end
++    local id=no_discard_planet and tostring(c.id) or c.id
++    if id==nil or ids[id] then return no('Distinct physical identities are required for composition sampling.') end
++    ids[id]=true
+   end end
+   local aborted
+   local function charge()
+@@ -157,15 +195,18 @@
+     end
+     return chosen
+   end
++  local second_play
++  if no_discard_planet then second_play=best_play(s);if not second_play then return no(aborted) end end
+   local branches={{kind='play',indices=list(result.play.indices),probability=0,utility=0,population_loss=0,finish_reward=0,hands=0,discards=0},
+-    {kind='discard',indices=list(result.discard.indices),probability=0,utility=0,population_loss=0,finish_reward=0,hands=0,discards=0}}
++    {kind=no_discard_planet and 'play' or 'discard',indices=list(no_discard_planet and second_play.indices or result.discard.indices),
++      probability=0,utility=0,population_loss=0,finish_reward=0,hands=0,discards=0}}
+   local use_states,use_plays,eligible,pending={},{},{},{}
+   for index,owned in ipairs(s.consumeables or {}) do
+     local offer={index=index,key=owned.key,name=(owned.ability or {}).name or owned.name or owned.key,
+       edition=copy(owned.edition),status='declined'}
+     diag.consumable_offers[#diag.consumable_offers+1]=offer
+-    if not upgrades[owned.key] then offer.reason='Only zero-target Planets and Black Hole are admitted.'
+-    elseif #s.hand>6 or num(s.hand_size,#s.hand)>6 then offer.reason='Owned-upgrade finishing is limited to hands of at most six cards.'
++    if not upgrades[owned.key] or no_discard_planet and owned.key=='c_black_hole' then offer.reason='Only the declared zero-target upgrades are admitted.'
++    elseif not no_discard_planet and (#s.hand>6 or num(s.hand_size,#s.hand)>6) then offer.reason='Owned-upgrade finishing is limited to hands of at most six cards.'
+     elseif owned.debuff then offer.reason='The held consumable is debuffed.'
+     elseif not modules.consumables or not modules.consumables.apply or not modules.strategy or
+       not modules.strategy.preservation_cost then offer.reason='Exact use and inventory-preservation dependencies are required.'
+@@ -176,6 +217,7 @@
+     -- Negative inventory repeatedly merely to decline it after scoring.
+     for _,offer in ipairs(pending) do offer.reason='More than two eligible owned upgrades exceeds the complete comparison scope.' end
+     diag.consumable_scope_declined=true
++    if no_discard_planet then return no('More than two eligible Planets exceeds the complete no-discard comparison scope.') end
+   else
+     local unsupported
+     for _,offer in ipairs(pending) do
+@@ -190,7 +232,7 @@
+         else
+           offer.inventory_cost=cost;offer.retention_reason=retention;offer.protected_last_source=not not last
+           offer.inventory_after=#(upgraded.consumeables or {});offer.capacity_after=upgraded.consumable_limit
+-          if last then offer.reason=retention or 'A sampled finish cannot consume the last protected Perkeo source.'
++          if last and not no_discard_planet then offer.reason=retention or 'A sampled finish cannot consume the last protected Perkeo source.'
+           else eligible[#eligible+1]={offer=offer,state=upgraded} end
+         end
+       end
+@@ -198,7 +240,19 @@
+     if unsupported then return no(unsupported) end
+     for _,candidate in ipairs(eligible) do
+       local offer=candidate.offer;offer.status='admitted'
+-      local play=best_play(candidate.state)
++      local play
++      if no_discard_planet then
++        -- Match the actual first play across hold/use. The extra greedy hold
++        -- branch prevents an inferior incumbent from fabricating Planet value.
++        if not charge() then return no(aborted) end
++        play=scorer.score(candidate.state,result.play.indices)
++        if not play or play.legal==false or play.uncertain or type(play.score)~='number' or
++            play.score~=play.score or play.score<0 or play.score==math.huge then
++          offer.status='unsupported';return no('The matched post-Planet first play is unsupported.')
++        end
++        play.indices=list(result.play.indices)
++        offer.matched_first_play=list(result.play.indices)
++      else play=best_play(candidate.state) end
+       if not play then offer.status='unsupported';offer.reason=aborted;return no(aborted) end
+       use_states[offer.index]=candidate.state;use_plays[offer.index]=play
+       branches[#branches+1]={kind='use',index=offer.index,name=offer.name,inventory_cost=offer.inventory_cost,
+@@ -215,7 +269,7 @@
+       state=fill(state,seed,1);if not state then return nil end
+       selected=best_play(state);if not selected then return nil end
+     elseif branch.kind=='use' then selected=use_plays[branch.index]
+-    else selected=result.play end
++    else selected={indices=list(branch.indices)} end
+     if not charge() then return nil end
+     local after,reason,actual=outcomes.after_play(state,selected.indices,scorer,seed,1)
+     if not after then aborted='The first play transition is unsupported: '..tostring(reason);return nil end
+@@ -259,6 +313,10 @@
+     end
+     local final=final_policy(state,seed,first_loss);if not final then return nil end
+     final.discards=initial_discard+final.extra_discards
++    if no_discard_planet then
++      final.first_indices=list(selected.indices);final.first_score=actual.score
++      final.inventory_after_use=#(state.consumeables or {});final.capacity_after_use=state.consumable_limit
++    end
+     return final
+   end
+   for outer,seed in ipairs({2718281,3141593,1618033,1414213}) do
+@@ -269,6 +327,7 @@
+     end
+     -- Commit only fully paired outer sets; a later failure invalidates all sets.
+     for i,branch in ipairs(branches) do
++      if no_discard_planet then branch.worlds=branch.worlds or {};branch.worlds[outer]=copy(observations[i]) end
+       for _,field in ipairs({'probability','utility','population_loss','finish_reward','hands','discards'}) do
+         branch[field]=branch[field]+num(observations[i][field])/4
+       end
+@@ -308,6 +367,7 @@
+   end
+   diag.baseline_probability=incumbent.probability;diag.estimated_probability=best.probability
+   diag.uplift=best.probability-incumbent.probability
++  if no_discard_planet and best.kind~='use' then return no('The no-use policies remain preferable after the complete two-hand Planet comparison.') end
+   if best==incumbent then return no('The incumbent remains best after the conditional final-hand discard comparison.') end
+   local threshold=required_uplift(best,incumbent)
+   diag.required_uplift=threshold
+--- installed450/Brainstorm/Core/Brainstorm.lua
++++ candidate451/Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.225.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.226.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- installed450/Brainstorm/steamodded_compat.lua
++++ candidate451/Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.225.0-alpha
++--- VERSION: 2.226.0-alpha

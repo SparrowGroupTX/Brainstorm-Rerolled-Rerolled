@@ -1,0 +1,13 @@
+{
+  "authorization": "User explicitly requested inspection of current logs for bugs and lossless bloat reduction.",
+  "scope": "Direct public observation logs only; no saves, profiles, executable, gameplay, rescoring, search, simulation or experiment.",
+  "caps": {
+    "metadata_entries": 4096,
+    "metadata_seconds": 10,
+    "files": 8,
+    "physical_bytes": 67108864,
+    "copy_seconds": 20
+  },
+  "at_utc": "2026-09-15T18:13:01.251656+00:00",
+  "selection": "Newest BRJ2 session by timestamp filename, newest contiguous suffix of at most eight files and64MiB. Copy a fixed byte prefix at capture; preserve changing/truncated tails explicitly."
+}

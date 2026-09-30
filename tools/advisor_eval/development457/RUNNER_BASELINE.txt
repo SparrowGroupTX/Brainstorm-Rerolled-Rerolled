@@ -1,0 +1,23 @@
+test_large_error_record_precedes_python_failure_status (tools.advisor_eval.development457.test_runner_capture.RunnerCaptureTests.test_large_error_record_precedes_python_failure_status) ... FAIL
+test_large_success_record_precedes_python_status (tools.advisor_eval.development457.test_runner_capture.RunnerCaptureTests.test_large_success_record_precedes_python_status) ... FAIL
+
+======================================================================
+FAIL: test_large_error_record_precedes_python_failure_status (tools.advisor_eval.development457.test_runner_capture.RunnerCaptureTests.test_large_error_record_precedes_python_failure_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development457\test_runner_capture.py", line 46, in test_large_error_record_precedes_python_failure_status
+    self.assertLess(result.stdout.index("END_ERROR"), result.stdout.index("FAIL "))
+AssertionError: 12279 not less than 8356
+
+======================================================================
+FAIL: test_large_success_record_precedes_python_status (tools.advisor_eval.development457.test_runner_capture.RunnerCaptureTests.test_large_success_record_precedes_python_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development457\test_runner_capture.py", line 34, in test_large_success_record_precedes_python_status
+    self.assertLess(result.stdout.index("END"), result.stdout.index("PASS "))
+AssertionError: 12273 not less than 8356
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.176s
+
+FAILED (failures=2)

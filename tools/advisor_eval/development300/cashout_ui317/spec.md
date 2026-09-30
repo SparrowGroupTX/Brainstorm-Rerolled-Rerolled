@@ -1,0 +1,11 @@
+# Prospective M24: Cash Out UI ownership
+
+The retained original `common_events.lua` creates Cash Out in a separate UIBox anchored to `G.round_eval`. Production execution currently searches only inside `G.round_eval`; its fixture places the button there and therefore misses this binding difference. This inspection qualifies actual UIBox registration, ownership fields, lookup/removal and the callback's consumption of its real element. It also distinguishes the delayed button creation from permanent lookup failure.
+
+Read exactly three ZIP members: `engine/ui.lua`, `functions/button_callbacks.lua`, `engine/moveable.lua`, each at most4MiB and with at most20000 archive entries. Inspect at most six complete named methods: UIBox:init/remove/get_UIE_by_ID, UIElement:init, G.FUNCS.cash_out and Moveable:remove. The exact byte lexer is unchanged from frozen M23. Do not copy the already retained common_events constructor again from the ZIP.
+
+One fresh M24 lease,30 seconds total. Zero Lua states, policy decisions, native searches, native actions, game/process access, gameplay, player/profile/save reads or writes. Python opens the executable only as a ZIP. Whole source methods have exact member/method hashes and original byte/line positions. Missing/ambiguous/incomplete/over-budget methods remain explicit and are not presented as complete. Source excerpts are capped at33000 bytes, manifest at6000, stdout below1000, at most40000 bytes combined. Never emit partial method excerpts to fit the limit.
+
+Preregister exact installed316 whole policy and installed/final validation records, adapter/lexer/tests/spec/preparation manifest, authority, original source archive and Python executable. Policy bytes are provenance only and are never loaded or executed. No Lua runtime is loaded. The parent-only helper requires explicit `--register` and never dispatches a worker. `--describe` reserves nothing. The inspector refuses execution without matching M24 registration and one-use spent marker. The parent runner verifies every frozen/external hash immediately before dispatch.
+
+This is static source mechanics evidence. It neither cashes out a live run nor measures advisor survival, terminal outcomes or player achievement. M23's different input-hook purpose and every earlier spent record remain unchanged.

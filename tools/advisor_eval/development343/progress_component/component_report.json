@@ -1,0 +1,30 @@
+{
+  "scope": "Separate actual Gold-sticker awards from verified run wins in auto-run logging and visible status. Counts derive only from a complete bound original set_joker_win callback at stake8, before0 and afterpositive; current loaded catalog supplies only vanilla identity whitelist, never progress/history/held evidence.",
+  "source_execution": false,
+  "live_game": false,
+  "captured_replay": false,
+  "files": {
+    "Brainstorm/Advisor/auto_run.lua": {
+      "before_sha256": "5ed858a4a03b089d64e5af46fcf6d5319182108ceb832841c1243636c7cb3303",
+      "after_sha256": "106a2daeab802a5bef6102ebcbbefb20f7d418c737755b9a34c5eb40398c703d"
+    },
+    "Brainstorm/Core/auto_run_product.lua": {
+      "before_sha256": "dbc68a1768ed894e9dc73303aef3926f9cf5de00909847c6c7cd71cb802cf5d0",
+      "after_sha256": "d3d73aeb1cc8313ee0219c2d62d8a605edb0c0c988006631268c5b52ea0cbe33"
+    },
+    "tests/advisor_auto_run.lua": {
+      "before_sha256": "e2517b2188f9be5a15b47d32d4945b4994d192d9039b9e288e8e4d0bfb979576",
+      "after_sha256": "18ce917a0b2de5a1d54614b88723a8f1be7171181a653a7978ed0660a5588ba2"
+    },
+    "tests/advisor_auto_run_product.lua": {
+      "before_sha256": "7b125da1e3678792039939f903c57374a1d68f3703867e45039c02fdb3102418",
+      "after_sha256": "8fea42a838e3580e8c8f9ac07d39e13b0f021d1735fe82b5fee3825f156463da"
+    }
+  },
+  "test_evidence": {
+    "before_validation.json": "New manufactured award-accounting fixture fails against original controller because last_gold_award is absent. Original product and terminal tests passed.",
+    "after_validation.json": "904 controller +1098 product +30 original-terminal checks pass under hidden60-second cap, hashes unchanged during tests."
+  },
+  "preserved": "Win/loss qualification, original terminal receipt, run/session/action limits, Stop/Resume and checkpoint accounting. Legacy/malformed award evidence is unknown, never a zero award. Repeated terminal receipts are consumed once; cumulative new keys deduplicate even if historical counters were manually restored.",
+  "limitations": "Manufactured tests only. No new live award or terminal improvement is demonstrated."
+}

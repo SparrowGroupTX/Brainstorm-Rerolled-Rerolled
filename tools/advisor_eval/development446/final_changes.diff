@@ -1,0 +1,200 @@
+--- before445/Brainstorm/Advisor/decision.lua
++++ candidate446/Brainstorm/Advisor/decision.lua
+@@ -532,6 +532,14 @@
+     search_options.fast_clear=false
+     search_options.win_first_yorick_clear_discard=true
+   end
++  local aggregate_limit=math.max(0,math.min(140000,
++    math.floor(search_options.max_evaluations or 140000)))
++  local phase_reserve=modules.phase_copy and modules.phase_copy.comparison_reserve and
++    modules.phase_copy.comparison_reserve(snapshot,modules,options.phase_copy) or 0
++  -- An optional proof must not consume a small caller's entire incumbent pass.
++  if aggregate_limit<=phase_reserve then phase_reserve=0 end
++  local pre_phase_limit=aggregate_limit-phase_reserve
++  search_options.max_evaluations=pre_phase_limit
+   local consumable_reserve=0
+   if modules.consumables and modules.consumables.comparison_reserve then
+     local reserve,play_cost=modules.consumables.comparison_reserve(snapshot,options.consumables)
+@@ -553,6 +561,8 @@
+   end)
+   if not result then return {kind='unsupported', evaluations=0} end
+   result.consumable_reserved_evaluations=consumable_reserve
++  result.aggregate_limit=aggregate_limit
++  result.phase_copy_reserved_evaluations=phase_reserve
+   if result.reorder_only and result.copy_preflight and result.copy_preflight.complete then return result end
+   -- Search has already compared this growth discard and applied its remaining-
+   -- blind continuation veto. Optional development must not replace that actual
+@@ -595,7 +605,7 @@
+     result.clear_shortcut=clear_shortcut
+   end
+   if clear_shortcut and not preserve_search_discard then
+-    local ceiling=math.min(result.fast_clear and 70 or 140000,
++    local ceiling=math.min(result.fast_clear and math.max(0,70-phase_reserve) or pre_phase_limit,
+       math.max(0,math.floor(search_options.max_evaluations or 140000)))
+     local function available(limit)
+       return math.min(limit,math.max(0,ceiling-(result.evaluations or 0)))
+@@ -608,6 +618,10 @@
+     local function consider_growth()
+       if growth_checked or not modules.growth then return end
+       growth_checked=true
++      -- The first-discard copy comparison owns this same twelve-call growth
++      -- allowance. Spending it on the current row first can hide a supported
++      -- nonwinning Burnt setup, then make the copied-row proof impossible.
++      if phase_reserve>0 then clear_shortcut.phase_copy_comparison_deferred=true;return end
+       local growth_clear=result.play
+       local preference={exhaust_discards=exhaust_discards(snapshot),max_evaluations=available(12)}
+       local suggestion,count,diagnostics
+@@ -636,7 +650,7 @@
+     local discard_count=discard_growth and #growth.action.indices or 0
+     local death_preparation=held_death and exhaust_discards(snapshot) and discard_count<5 and
+       math.max(0,12-(result.discard_preference_work or 0))>0
+-    if (not discard_growth or death_preparation) and modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
++    if phase_reserve==0 and (not discard_growth or death_preparation) and modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
+       local suggestion,count,diagnostics=modules.consumables.develop(snapshot,modules.scoring,result.play,
+         {strategy=modules.strategy,max_development_evaluations=available(6),arm_cost=modules.search.arm_cost,
+          discard_preparation=death_preparation and {modules=modules,min_count=discard_count,
+@@ -663,7 +677,7 @@
+   local function specialist_options(name,local_limit)
+     local bounded={}
+     for key,value in pairs(options[name] or {}) do bounded[key]=value end
+-    local remaining=math.max(0,140000-(result.evaluations or 0))
++    local remaining=math.max(0,math.min(pre_phase_limit,result.fast_clear and math.max(0,70-phase_reserve) or 140000)-(result.evaluations or 0))
+     local requested=tonumber(bounded.max_evaluations) or local_limit
+     bounded.max_evaluations=math.min(local_limit,remaining,math.max(0,math.floor(requested)))
+     return bounded
+--- before445/Brainstorm/Advisor/phase_copy.lua
++++ candidate446/Brainstorm/Advisor/phase_copy.lua
+@@ -183,6 +183,21 @@
+   return out
+ end
+ local function reliable(play) return play and play.legal~=false and play.uncertain~=true and type(play.score)=='number' end
++-- Reserve existing work before search, including when Burnt is already copied:
++-- that row still needs the retained-finish proof before actually discarding.
++function M.comparison_reserve(s,modules,options)
++  local round=s.current_round or {}
++  if s.phase~='hand' or s.teacher_profile~='perkeo_yorick_win_v1' or
++      num(s.discards_used,round.discards_used)~=0 or num(s.discards_left,round.discards_left)<=0 or
++      not modules.growth or not modules.scoring or not modules.scoring.after_discard or not modules.scoring.score or
++      not modules.strategy or not modules.strategy.build_profile or not modules.search or not modules.search.hand_growth_value or
++      not available(s,modules) then return 0 end
++  local _,after=target_order(s,'j_burnt')
++  if after<2 then return 0 end
++  -- At most three held subsets in two scoring orders, plus twelve growth calls.
++  local cap=math.max(0,math.floor(num((options or {}).max_evaluations,30)))
++  return cap>=13 and math.min(18,cap) or 0
++end
+ local function burnt(s,modules,base,cap,d)
+   if base.growth and base.growth.growth and base.growth.growth.kind=='burnt_setup' then return nil,0 end
+   -- A selected independent scoring order can supersede an earlier item
+@@ -199,13 +214,16 @@
+       not modules.strategy or not modules.strategy.build_profile or not modules.search or not modules.search.hand_growth_value then return nil,0 end
+   local burnt_order,after,count=target_order(s,'j_burnt');d.orders=count
+   if after<2 then return nil,0 end
++  d.scope='first_discard_burnt'
+   local original=identity(s);local scoring_orders={original};local yorick=target_order(s,'j_yorick')
+   if not equal(yorick,original) then scoring_orders[#scoring_orders+1]=yorick end
+   local selected=indices_for(s,base)
+   local scoring_cost=#selected*#scoring_orders
++  local growth_remaining=math.max(0,12-num(base.discard_preference_work))
++  d.growth_remaining=growth_remaining;d.required_evaluations=scoring_cost+growth_remaining
+   -- Finish every admitted order on exactly the same held subsets, retaining
+   -- the existing twelve-score growth allowance as a whole afterward.
+-  if #selected==0 or cap<scoring_cost+12 then d.reason='No budget for the complete paired order and retained-clear comparison.';return nil,0 end
++  if #selected==0 or growth_remaining==0 or cap<d.required_evaluations then d.reason='No budget for the complete paired order and retained-clear comparison.';return nil,0 end
+   local scored,best,best_order=0,nil,nil
+   -- Match Growth's exact retained-finish floor before considering copy setup.
+   local exhaust=s.teacher_profile=='perkeo_yorick_win_v1'
+@@ -239,8 +257,9 @@
+   end
+   local scoped=shallow(modules);scoped.scoring=proxy
+   local growth,work,gd=modules.growth.suggest(prepared,scoped,best,
+-    {max_evaluations=12,exhaust_discards=exhaust,setup_scoring=modules.scoring})
++    {max_evaluations=growth_remaining,exhaust_discards=exhaust,setup_scoring=modules.scoring})
+   scored=scored+num(work)
++  d.growth_work=num(work)
+   d.growth=gd
+   if growth and growth.action.kind=='play' and growth.growth and growth.growth.kind=='burnt_setup' then
+     d.complete=true;d.scope='nonwinning_burnt_setup';d.finish_order=list(best_order)
+@@ -354,12 +373,15 @@
+   -- Later enumeration clears carry clear_shortcut, and retain the ordinary
+   -- allowance; only the initial shortlist carries the fast_clear contract.
+   local ceiling=result.fast_clear and 70 or s.phase=='shop' and 50000 or 140000
++  ceiling=math.min(ceiling,num(result.aggregate_limit,ceiling))
+   local remaining=math.max(0,ceiling-num(result.evaluations))
+   local cap=math.min(30,remaining,math.max(0,num(options.max_evaluations,30)))
+   local proposal,work,diagnostics=M.suggest(s,modules,result,{max_evaluations=cap})
+   local updated=shallow(result)
+   updated.evaluations=num(result.evaluations)+num(work)
++  updated.discard_preference_work=num(result.discard_preference_work)+num(diagnostics.growth_work)
+   diagnostics.aggregate_limit=ceiling;diagnostics.remaining_before=remaining
++  diagnostics.reserved_evaluations=num(result.phase_copy_reserved_evaluations)
+   updated.phase_copy_diagnostics=diagnostics
+   if not proposal then return updated end
+   updated.phase_copy=proposal.phase_copy;updated.action=proposal.action
+--- before445/Brainstorm/Advisor/player_journal.lua
++++ candidate446/Brainstorm/Advisor/player_journal.lua
+@@ -687,6 +687,7 @@
+   local out={schema=1}
+   for _,k in ipairs({'scope','complete','reason','events_before','events_after','orders',
+       'inventory_before','inventory_after','inventory_value_gain','inventory_value_tie','valuation','score_calls','aggregate_limit',
++      'remaining_before','required_evaluations','reserved_evaluations','growth_remaining','growth_work',
+       'burnt_hand','score_before','score_after','extra_arrangement_actions','incremental_growth_utility'}) do
+     local v=rawget(d,k)
+     if type(v)=='string' and #v<=256 or type(v)=='boolean' or
+--- before445/Brainstorm/Advisor/strategy.lua
++++ candidate446/Brainstorm/Advisor/strategy.lua
+@@ -2435,6 +2435,14 @@
+                 end
+                 local copy_priority=complete_family and merit~=-math.huge and
+                     (supported_copy_priority(snapshot,sold,candidate.card,after,evidence) or endpoint_certificate~=nil)
++                -- A vacant-slot funding sale must reach the same rental reserve
++                -- as the following fresh direct copy purchase. Removing a weak
++                -- Joker can inflate the original-row comparison without making
++                -- the promised purchase admissible after that sale settles.
++                local funding_copy=snapshot.phase=='shop' and capacity(snapshot,candidate.card,false) and
++                    (candidate.card.key=='j_blueprint' or candidate.card.key=='j_brainstorm')
++                local required_reserve=funding_copy and copy_cash_reserve(after) or nil
++                local reserve_shortfall=required_reserve and num(after.dollars)<required_reserve
+                 if entry then
+                     entry.merit=merit~=-math.huge and merit or nil
+                     entry.cash_after=after.dollars;entry.cost=cost
+@@ -2445,16 +2453,18 @@
+                     if copy_exception_reason then entry.copy_exception_reason=copy_exception_reason end
+                     if copy_exception then entry.copy_exception=true end
+                     entry.copy_priority=copy_priority or nil
++                    entry.required_reserve=required_reserve
++                    entry.reserve_shortfall=reserve_shortfall or nil
+                     entry.endpoint_certificate=endpoint_certificate and endpoint_certificate.kind
+                     local finish=evidence and evidence.after_finishing
+                     entry.finishing_complete=evidence and evidence.complete_finishing==true or false
+                     entry.finishing_supported=finish and finish.supported==true and finish.known_mechanics==true or false
+                     entry.finishing_all_clear=finish and finish.selected and finish.selected.clearing_samples==4 or false
+-                    entry.reason=copy_priority and (sold.key=='j_perkeo' and perkeo_copy_exchange(snapshot,after,evidence,candidate.card) and
++                    entry.reason=reserve_shortfall and 'copy_funding_reserve_shortfall' or copy_priority and (sold.key=='j_perkeo' and perkeo_copy_exchange(snapshot,after,evidence,candidate.card) and
+                         'perkeo_yorick_copy_exchange' or 'supported_copy_priority') or merit==-math.huge and 'survival_dominated' or merit<26 and not exception and not copy_exception and 'insufficient_gain' or
+                         direct and direct.score>=26 and merit<=direct.score and 'ordinary_purchase_preferred' or 'eligible'
+                 end
+-                if Strategy.joker_admission(snapshot,candidate.card,after,evidence) and
++                if not reserve_shortfall and Strategy.joker_admission(snapshot,candidate.card,after,evidence) and
+                     (merit>=26 or exception or copy_exception or copy_priority) and
+                     (copy_priority and not (direct and direct.copy_priority) or not direct or direct.score<26 or merit>direct.score) then
+                     local endpoint={score=merit,index=index,sold=sold,purchase=candidate,gain=gain,
+--- before445/Brainstorm/Core/Brainstorm.lua
++++ candidate446/Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.220.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.221.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before445/Brainstorm/steamodded_compat.lua
++++ candidate446/Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.220.0-alpha
++--- VERSION: 2.221.0-alpha

@@ -1,0 +1,103 @@
+{
+  "job": "R-old-22912-1-baseline",
+  "mode": "continuation",
+  "case": "old-22912",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 0.8439999999827705,
+  "log_sha256": "52a33139a8edfa3130c79224ead4468118f09ea072854459305913141723378c",
+  "status": "complete",
+  "result": {
+    "cards_discarded": 0,
+    "case": "old-22912",
+    "chips": 0,
+    "clear_floor": 119340,
+    "discards": 0,
+    "five_card_discards": 0,
+    "full_run": false,
+    "initial_discards_left": 1,
+    "input_unchanged": true,
+    "mode": "continuation",
+    "plays": 1,
+    "policy": "baseline",
+    "reason": "Supported immediate floor reaches target; round-end rewards not simulated",
+    "remaining_discards": 1,
+    "sorting": "rank",
+    "status": "supported_clear",
+    "steps": [
+      {
+        "before_chips": 0,
+        "before_discards": 1,
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              5
+            ],
+            "kind": "play"
+          },
+          "discard_before_clear": {
+            "category": "public_model_gap",
+            "clear_supported": true,
+            "evaluations": 3,
+            "final_action_kind": "play",
+            "final_play_score": 119340,
+            "needed_score": 110000,
+            "reason": "Automatic hand sorting can change scoring-trigger order.",
+            "remaining_discards": 1,
+            "schema": 1,
+            "selected": false,
+            "status": "exception"
+          },
+          "evaluations": 639,
+          "play": {
+            "hand": "Three of a Kind",
+            "legal": true,
+            "score": 119340,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 119,
+              "qualified": 0
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 0,
+              "max_evaluations": 12,
+              "reasons": [
+                "Automatic hand sorting can change scoring-trigger order."
+              ]
+            },
+            "risk": {
+              "bonus": 0,
+              "candidate_count": 16,
+              "compared": true,
+              "compared_five_count": 3,
+              "exact_transition": true,
+              "final_action_kind": "play",
+              "final_action_matches_search": false,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "minimum_score": 737000,
+              "qualified_count": 0,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": false,
+              "selected": false,
+              "taper": 0.0005
+            },
+            "schema": 1
+          }
+        }
+      }
+    ],
+    "target": 110000,
+    "world": 1
+  }
+}

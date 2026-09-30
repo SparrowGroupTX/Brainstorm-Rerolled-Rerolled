@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "bounded_pack_comparison314",
+  "base_policy": "tools/advisor_eval/runs/perkeo312_installed/record.json",
+  "runtime_files": [
+    {
+      "draft": "tools/advisor_eval/development300/pack_compare314/pack_survival.lua",
+      "target": "Brainstorm/Advisor/pack_survival.lua",
+      "sha256": "23fc71eff267f6d70cc17001e8824c3241e9740e75f402e23ef855cf26a1a801",
+      "base_sha256": "22433019174fcf726111fcb6bcd1b02afca612ce7bef6de27ea800e6ac1bb78a"
+    }
+  ],
+  "fixture": {
+    "draft": "tools/advisor_eval/development300/pack_compare314/advisor_pack_comparison.lua",
+    "target": "tests/advisor_pack_comparison.lua",
+    "sha256": "3952570a5aeb344b84820a82d751a344cd56a33adec91af3e54ec96ce3618ec6",
+    "production_paths": true,
+    "historical_policy_dependency": false,
+    "checks": 114
+  },
+  "detached_checks": 115,
+  "legacy_checks": 171,
+  "synthetic_score_calls": 860,
+  "extra_comparison_score_calls": 0,
+  "source_evidence_read_only": "tools/advisor_eval/development300/pack_compare314/observed_structure.json",
+  "captured_state_evaluations": 0,
+  "new_experiments": 0
+}

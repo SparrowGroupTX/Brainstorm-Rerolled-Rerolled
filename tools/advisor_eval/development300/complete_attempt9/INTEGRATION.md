@@ -1,0 +1,19 @@
+# Prospective C09; prepare only until root binds exact installed321
+
+One original unused C09 lease:180seconds/500actions under the current22:40UTC authority. Registration and worker launch are separate root actions. This package never registers, reserves or starts itself. Do not extend the authority, replace a failed attempt, or import any recorded continuation.
+
+Hypothesis: narrow played-Steel scope and a complete two-discard Yorick threshold plan may change actual growth actions or progression. M4BVSY11 follows the exact S04 recipe and fresh source initialization used by C07. Prior attempts are dependent synthetic development, not unseen holdouts; no isolated causal or win-odds claim. Errors, unsupported, timeouts, censored attempts and losses stay explicit. Gold context remains naturally fresh150missing0unknown; source retry is disabled. No player profile/save, running game, search, neural or GPU access.
+
+All16 copied adapter/recipe/verifier/checker files are exact registered C07 bytes. `run_attempt9.py` changes only job/version/checkpoint guards and previous-attempt label. Compile-only syntax validation loads seven Lua chunks without invoking them. Python setup tests import only pure argument/recipe/registration helpers; they never call engine_probe.main, the worker, policy, source or graph test.
+
+After root reports final321, `bind_installed.py --bind` requires the exact installed evidence directory, expected whole-policy digest, expected final-verification hash and independently reviewed growth hash. It checks all frozen installed policy/dependency hashes, final regression, settings/native preservation and existing inherited feature hashes. It creates separate immutable installed-binding and graph-rebinding records; no registration or execution follows automatically. Current pending development code is never substituted for installed321.
+
+Graph reuse requires byte-identical runtime.lua initialization before `function A.defaults()` and exact engine_run/policy_wiring/test_wiring/check_graph bytes against C07. It reuses the already recorded49-module/40-edge inert graph; it does not claim a newly executed graph test. The inherited typed wiring marker stays `complete_source_policy_wiring_c07_v1` because those bytes are unchanged. If any runtime import/link prefix differs, binding fails and root must qualify that difference separately.
+
+`register.py --describe` checks the preparation manifest, installed binding, fresh slot, complete180seconds before expiry, all prior workers reaped, exact S04 selection and authoritative prior audits. It does not read external source/runtime files. `--register` additionally verifies exact external Python/Lua/source hashes and invokes only cycle.register for C09. It never calls cycle.run. All policy bytes, runtime/profile/adapter provenance, source recipe receipts, prior audited outcomes and selected-audit pointers are frozen before a later root launch.
+
+Prior audits follow `selected_audit.json` when present: contained audit basename plus exact SHA256; absent pointer falls back to audit.json. The selected audit must match its record, registration and trace. For C08, preserve the pointer to audit_verified.json rather than treating the first audit-tool metadata error as authoritative.
+
+`prior_audits.json` binds each original full audit path/hash, selected pointer hash, record/registration/trace hashes, disposition and audit-issue list. Registration revalidates the original selected audits read-only and freezes this compact reference plus records, registrations, concise notes and pointers. It does not duplicate the large full audits or import their future states as policy inputs; originals remain in place.
+
+Source dispatch bypasses production UI, activation, search, cash-out readiness, auto-run controls and animation speed. This attempt cannot qualify any of those product paths. No source/policy/captured evaluation is part of preparation.

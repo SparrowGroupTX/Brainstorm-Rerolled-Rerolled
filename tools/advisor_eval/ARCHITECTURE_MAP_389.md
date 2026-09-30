@@ -1,0 +1,10 @@
+# 389 navigation — Perkeo inventory and candidate release
+
+| Question | Source and evidence |
+| --- | --- |
+| Which inventory enters Perkeo's public copying pool? | `Brainstorm/Advisor/strategy.lua:724` counts visible Perkeo/compatible copy effects; `:743–862` computes type-specific copy utility and useful stock; `:863` values the complete current pool with bounded uniform sequential copies and Observatory. Negative cards remain physical pool members. |
+| Why is Tower temporary rather than a rank-engine target? | `strategy.lua:644` explains Stone's rank/suit loss; `:743` classifies Tower, off-plan Planets and non-Flush suit Tarot only in win-first mode. The truthy hand-type guard prevents non-Planet Empress from being treated as off-plan Planet. |
+| How is a first source bought without preferring filler over a superior source? | `strategy.lua:986–1024` gives the same early empty-pool premium to any known viable first Tarot/Planet; `:1309` ranks actual visible shop offers after price/slot checks. Manufactured Tower, Strength and Death contrasts are in `tests/advisor_perkeo_filler389.lua`. |
+| How are bad Negative copies sold? | `strategy.lua:1959–2112` compares one shop use/sale against retained whole-inventory value, real sale cash/interest and action cost. It checks exact Negative capacity, source retention, Observatory, settlement buffer, known/legal stock and cash-sensitive hand-size. |
+| How is a full-slot weak source replaced? | `strategy.lua:1979` previews only a known, affordable superior Tarot/Planet purchase after an ordinary filler sale, using `best_shop_purchase` and rejecting truncated scoring. `:2113` places stock management before ordinary shop arbitration. Advice emits only the sale; `decision.lua`/product settlement reobserve before any later buy. |
+| What is exact candidate evidence? | `CANDIDATE_CHECKPOINT_389.md`, `development389/{SCOPE,REPORT}.md`, WR-034, `runs/filler389_verified_candidate/{freeze.json,validation/}`. Earlier failed/intermediate evidence is preserved separately. Installed baseline remains `SESSION_RESET_386.json`. |

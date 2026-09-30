@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "status": "ready_for_root_integration_not_installed",
+  "base_files_sha256": {
+    "Brainstorm/Advisor/player_journal.lua": "92027e848d8cb63a8b8925d078f66c38133548ce7117a32a462e606c349e882b",
+    "Brainstorm/Advisor/runtime.lua": "a8eebf5a558b0d00ec7649bf38368713e165d703bfd63faa55a7adae738b1e62"
+  },
+  "files": [
+    {
+      "source": "player_journal.lua",
+      "destination": "Brainstorm/Advisor/player_journal.lua",
+      "sha256": "38b081ea58c53f9dba98046a64ddb9601e62f9d414b35851172684ff8d379fe9",
+      "runtime": true
+    },
+    {
+      "source": "player_log_archive.lua",
+      "destination": "Brainstorm/Advisor/player_log_archive.lua",
+      "sha256": "a25fffd012ec4c52de40d7b7f945486e0e586ee0b7e675314f315b5a032b64ca",
+      "runtime": true
+    },
+    {
+      "source": "read_player_log.py",
+      "destination": "tools/advisor_eval/read_player_log.py",
+      "sha256": "81fe0b98ce1afdcf7b9670eb22ac65ce501c055b4873d9d0bfd155c3289418ea",
+      "runtime": false
+    },
+    {
+      "source": "test_player_log_archive.py",
+      "destination": "tests/test_player_log_archive.py",
+      "sha256": "164a6ffa9d7541bf51d81d5189c748a1cd54e2d5803104eb208a48fb0557e664",
+      "runtime": false
+    }
+  ],
+  "runtime_integration": "Add A.player_log_archive = module('player_log_archive') immediately before the existing player_journal module load/attach in runtime.lua.",
+  "validation": {
+    "draft_python_tests": 15,
+    "legacy_lua_checks": 21,
+    "c01_public_snapshots": 225,
+    "c01_synthetic_events_exactly_recovered": 900,
+    "c01_original_jsonl_bytes": 76190036,
+    "c01_physical_archive_bytes": 1792346,
+    "source_or_policy_executed": false
+  },
+  "limits": {
+    "original_event_bytes_excluding_newline": 1048576,
+    "encoded_segment_bytes": 8388608,
+    "logical_segment_events": 2048,
+    "logical_process_events": 300000,
+    "combined_v1_v2_physical_bytes": 134217728,
+    "combined_v1_v2_files": 4096
+  },
+  "existing_logs_modified": false,
+  "actual_player_files_accessed": false,
+  "qualification": false
+}

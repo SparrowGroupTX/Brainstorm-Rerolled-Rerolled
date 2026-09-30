@@ -1,0 +1,27 @@
+{
+  "component": "logger cooperative owned callback hook333",
+  "runtime_input": {
+    "Brainstorm/Advisor/player_journal.lua": {
+      "baseline_sha256": "5e306140c9eebb328815edcd5e960ada6931a72d913c3c4fc0f5c8a7fe66b93b",
+      "candidate": "player_journal.lua",
+      "candidate_sha256": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b"
+    }
+  },
+  "dependency": "observer_component/callback_hooks.lua sharedregistry; root must initialize A.callback_hooks before journal.attach and pass same registry to acorn_public_hooks.attach",
+  "files": {
+    "acorn_public_hooks.base.lua": "7cec3e6ac4f122b0a5915109626a7d4b4f9da7cb8de2c368f6038887daef18e6",
+    "existing_advisor_player_journal.lua": "867cef99e5306a8b87e6b8675d15339dbdd1c4e6f6ae96eb3de79410d6df1210",
+    "existing_advisor_player_journal_timing.lua": "4ce14a620532fa0c220c27ebcc6f1d7c47dc84e3134160b567008065d6a2bd65",
+    "player_journal.base.lua": "5e306140c9eebb328815edcd5e960ada6931a72d913c3c4fc0f5c8a7fe66b93b",
+    "player_journal.lua": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b",
+    "player_journal.patch": "dbc32238ab76692ebb9373c3bbc31772c77a5b51603813729af0b5c7b1b62216",
+    "report.json": "0bbc90b6caec7bd4fb8e2bb01baef42a548372e2691ef45c98bb30f4ea50a226",
+    "reproduce_hook_growth.lua": "31a3f0eb267e2b51f1ffb1423ebe718d2e510e480d682c411284232e90a44055",
+    "reproduce_hook_growth_v1.lua": "1977a16e0310f784c89ae393b31b8b1b2ba7b842c810ab1ce1d3e5f7533563ee",
+    "reproduce_hook_growth_v1_failure.txt": "ef6d84bd536a39beeebb09bb3bf007e61620b832b3c9716f48774cc4f164cdf7",
+    "run_archive_regression.py": "ca7e1f3f59f2cd259a67d374d913f23c874cf8535558862b35b0c596f8407548",
+    "test_logger_hooks.lua": "23c4c4d4770d4017529cdf7b05e7f9da2ffad52be2961b69544a76525154db3f",
+    "validation_1.log": "52dc1f9c6edefd3ef57862e45dc8e834726376a42928d33c88296f2f0337d50d",
+    "validation_2.log": "3ae24f0ff8f9c45b70f692283d165566fb7ed75f1c9b57822f5f01af42ae3594"
+  }
+}

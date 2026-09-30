@@ -1,0 +1,29 @@
+{
+  "kind": "manufactured_fixtures",
+  "source_execution": false,
+  "captured_replay": false,
+  "live_game": false,
+  "max_seconds": 60,
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tests/advisor_gold_goal.lua",
+    "tests/advisor_bell_opening.lua",
+    "tests/advisor_perkeo_inventory.lua",
+    "tests/advisor_gold_planet_policy.lua"
+  ],
+  "expected_failure": false,
+  "inputs": {
+    "Brainstorm/Advisor/gold_goal.lua": "a997000c66802949dd102d6ed1723b0246445f4176f7effcb2aeab82484e9008",
+    "Brainstorm/Advisor/perkeo_inventory.lua": "34840071e1956a8d6f743f962af30cc6945b76d024271b42ab2e518de2769710",
+    "tests/advisor_gold_goal.lua": "ec572cfdbcd8d920417010b72f4b953155c4b1a3f7d333ba20482696ef9af4e8",
+    "tests/advisor_bell_opening.lua": "eefb41c281e6a721194538bdd2fc5c0b7d7d054dcadeeb96a69685b82bf9b29b",
+    "tests/advisor_perkeo_inventory.lua": "43c231ab666ae2e0c36c49ea0b0daabb57c4cbba7e801494798d4da04e7c2246",
+    "tests/advisor_gold_planet_policy.lua": "b0fc02ef69a623095d4caec7211f5d573482773922a8ce713eac7567ca91b793"
+  },
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tests\\advisor_gold_goal.lua\nPASS tests\\advisor_gold_goal.lua\nRunning tests\\advisor_bell_opening.lua\nPASS tests\\advisor_bell_opening.lua\nRunning tests\\advisor_perkeo_inventory.lua\nPASS tests\\advisor_perkeo_inventory.lua\nRunning tests\\advisor_gold_planet_policy.lua\nPASS tests\\advisor_gold_planet_policy.lua\n4/4 fixtures passed\ngold goal real fixture: 120 scores, complete=true\ngold goal: 101 checks passed; synthetic objective coverage, no recorded stickers or win odds\nadvisor_bell_opening: 146 checks passed\nadvisor_perkeo_inventory: 153 checks passed\npace manufactured comparison: current hold 12 score calls / 0 preparation actions; full family 72 score calls / 1 consumable action\nadvisor_gold_planet_policy: 194 checks passed; 6636 actual score calls across independent synthetic cases\n",
+  "stderr": "",
+  "seconds": 1.187999999965541,
+  "inputs_unchanged": true
+}

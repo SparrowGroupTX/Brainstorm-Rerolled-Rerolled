@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "kind": "detached_manufactured_runtime_component",
+  "root_files_modified": false,
+  "source_jobs": 0,
+  "captured_policy_jobs": 0,
+  "complete_attempts": 0,
+  "search_jobs": 0,
+  "files": {
+    "baseline/strategy.lua": {
+      "sha256": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960",
+      "bytes": 146567
+    },
+    "Brainstorm/Advisor/strategy.lua": {
+      "sha256": "bce6dfbeb1fa315fbd8e3d19a6666f1a122f409794b3f14fb29cb773e17f8cfc",
+      "bytes": 147158
+    },
+    "tests/advisor_replacement_inventory.lua": {
+      "sha256": "48b973f9a10243f3a66e39b9e2d8e8bc054bccafd04197d22b21c833ce94b014",
+      "bytes": 7026
+    },
+    "tests/run_replacement_inventory.lua": {
+      "sha256": "f83d2b046cf6ac9a9c7da0c3304f3c57aab6c81c8955ebeb437748fb4c18a88b",
+      "bytes": 216
+    },
+    "tests/run_relevant.lua": {
+      "sha256": "f918ee785d3ff36dec857d5eb191541b486fd858d661ab58309d1b79f08ab130",
+      "bytes": 586
+    },
+    "README.md": {
+      "sha256": "ace80fdd0eb9fbf0b06cf79c2a47be057dc7d50000a4ac466e244e0eda877df8",
+      "bytes": 2540
+    }
+  },
+  "validation": {
+    "status": "passed",
+    "new_checks": 25,
+    "existing_checks": {
+      "strategy": 238,
+      "perkeo_timing": 21,
+      "perkeo_inventory": 110,
+      "shop_sequences": 55,
+      "shop_order": 103,
+      "owned_fool_shop": 92,
+      "shop_planet_ties": 47,
+      "catalog_replacements": 22
+    },
+    "command": "python tests/run_lua_tests.py tools/advisor_eval/development328/inventory_component/tests/run_replacement_inventory.lua tools/advisor_eval/development328/inventory_component/tests/run_relevant.lua",
+    "exit_code": 0,
+    "tool_wall_seconds": 0.8929813
+  },
+  "limits": "No captured rescoring, source mechanics execution, seed search, saves, gameplay or terminal validation. No win inference."
+}

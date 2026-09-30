@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "agreement": false,
+    "case_id": "booster_open_callback_order",
+    "classification": "manufactured",
+    "common_event_prefix": [],
+    "first_difference": {
+      "actual": "p_arcana_normal_1",
+      "expected": "USED",
+      "field": "events[0].stored_key"
+    },
+    "manifest": {
+      "candidate": "old_457_order",
+      "files_sha256": {
+        "candidate": "ea52fdf0ef19805dc2f1a6406e72a10925ae4a7a33d6f8cb3772892390534ed3",
+        "integration": "7a539e3070ec3a5cb458f9413a97f794e10643b9221444aef5f09f829614e084",
+        "reference": "8915b42bf86542ab36350016647d0e45791eaca48d4392899b2fd77fed83a50d",
+        "test": "4207817846ed4f8d6b12cf699c78770266cbda323ca92e4c0e7f4af265f60e3f"
+      },
+      "original_source_executed": false,
+      "source_member_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101"
+    },
+    "minimization_status": "not_minimized",
+    "reproduction": {
+      "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_458 -v"
+    }
+  },
+  "candidate_patch_id": "development458-source-fidelity-v6",
+  "qualifier_sha256": "12fe350d16b5cff1bb0a9c504a50846dd3b34c1802efc17f84a6842e0aa1cded",
+  "repaired": {
+    "agreement": true,
+    "case_id": "booster_open_callback_order",
+    "classification": "manufactured",
+    "common_event_prefix": [
+      {
+        "event": "opening_callback_input",
+        "slot": 2,
+        "stored_key": "USED"
+      }
+    ],
+    "first_difference": null,
+    "manifest": {
+      "candidate": "development458-source-fidelity-v6",
+      "files_sha256": {
+        "candidate": "ea52fdf0ef19805dc2f1a6406e72a10925ae4a7a33d6f8cb3772892390534ed3",
+        "integration": "7a539e3070ec3a5cb458f9413a97f794e10643b9221444aef5f09f829614e084",
+        "reference": "8915b42bf86542ab36350016647d0e45791eaca48d4392899b2fd77fed83a50d",
+        "test": "4207817846ed4f8d6b12cf699c78770266cbda323ca92e4c0e7f4af265f60e3f"
+      },
+      "original_source_executed": false,
+      "source_member_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101"
+    },
+    "minimization_status": "not_minimized",
+    "reproduction": {
+      "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_458 -v"
+    }
+  },
+  "schema": "booster_open_order_manufactured_458_v1",
+  "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+  "source_executed": false,
+  "source_member_sha256": {
+    "functions/button_callbacks.lua": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+    "game.lua": "bbc67bd3fbadd1ea3f3f0aba07ef8596118d89ff1e9758718f9e17c07a96e912"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "scope": "Guarded parent-only staging of detached runtime/status fixture changes; no install or evaluation",
+  "state": "prepared_not_staged",
+  "files": [
+    {
+      "path": "Brainstorm/Core/collection_search_product.lua",
+      "base_sha256": "2f7ffcb876ad7ea39ffbd91a8126455471cbaedda548987b01537e26193330d3",
+      "candidate_sha256": "722f9e68f51d1868b9d92da1294fec7d4cdff76a859bdbe8659c4fc39619380a",
+      "base_bytes": 28234,
+      "candidate_bytes": 30124
+    },
+    {
+      "path": "Brainstorm/Core/auto_run_product.lua",
+      "base_sha256": "332fa5235f43137e8734c02644fbbbf45df36e6736510404e55197c3a4fb1564",
+      "candidate_sha256": "0fde6af4d6f580938600a9dba9831c6e63935614920757ef9168e9518928072e",
+      "base_bytes": 18110,
+      "candidate_bytes": 19527
+    },
+    {
+      "path": "tests/advisor_collection_product.lua",
+      "base_sha256": "8bb2024a52d95fedfe32ef0662033e5ead5c93fe6f21a973576e5bf4628e4c58",
+      "candidate_sha256": "ea3c240b2bcfa3806821b8a2a0fa807bcd62f41cb5e01c263f73c6e00b6a861a",
+      "base_bytes": 19830,
+      "candidate_bytes": 24553
+    },
+    {
+      "path": "tests/advisor_auto_run_product.lua",
+      "base_sha256": "6c205d8ed64a3f1da40cca9157ba31a2d3ecfa44c0935d4ddcc2768981fe9bd9",
+      "candidate_sha256": "d73639e48780e36b595d2b821e4e2ddd85db2385e8bc16013f76f344e1ea17e4",
+      "base_bytes": 16924,
+      "candidate_bytes": 20077
+    }
+  ],
+  "validation": {
+    "path": "test_record.json",
+    "sha256": "5b93befd11a59beee2eeabf414d40f220b227ba1fa582d4cf651fd1cd588b64a",
+    "manual_checks": 189,
+    "auto_checks": 175
+  },
+  "production_fixtures": [
+    "tests/advisor_collection_product.lua",
+    "tests/advisor_auto_run_product.lua"
+  ]
+}

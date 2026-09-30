@@ -1,0 +1,283 @@
+--- before425/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -63,6 +63,23 @@
+   local left=snapshot.discards_left or (snapshot.current_round or {}).discards_left
+   return snapshot.teacher_profile=='perkeo_yorick_win_v1' and type(left)=='number' and left>0 and left<math.huge
+ end
++local function stamp_yorick_choice(result)
++  local risk=result and result.risky_yorick_clear
++  if not risk then return end
++  if risk.search_selected==nil then
++    risk.search_selected=risk.selected==true
++    risk.proposal_indices={}
++    for i,index in ipairs(result.discard and result.discard.indices or {}) do risk.proposal_indices[i]=index end
++  end
++  local actual=result.action or {};local proposed=risk.proposal_indices or {}
++  local same=actual.kind=='discard' and #proposed>0 and #(actual.indices or {})==#proposed
++  if same then for i,index in ipairs(proposed) do
++    if actual.indices[i]~=index then same=false;break end
++  end end
++  risk.final_action_kind=actual.kind
++  risk.final_action_matches_search=not not same
++  risk.selected=risk.search_selected and same or false
++end
+ local function early_yorick_comparison_available(snapshot,modules)
+   if snapshot.teacher_profile~='perkeo_yorick_win_v1' or
+     type(snapshot.ante)~='number' or snapshot.ante>8 or
+@@ -514,27 +531,28 @@
+     if yield_fn then yield_fn() end
+   end)
+   if not result then return {kind='unsupported', evaluations=0} end
+-  local function stamp_yorick_choice()
+-    if not result.risky_yorick_clear then return end
+-    local actual=result.action or {}
+-    local proposed=result.discard and result.discard.indices or {}
+-    local same=actual.kind=='discard' and #((actual.indices) or {})==#proposed
+-    if same then
+-      for i,index in ipairs(proposed) do if actual.indices[i]~=index then same=false;break end end
+-    end
+-    result.risky_yorick_clear.final_action_kind=actual.kind
+-    result.risky_yorick_clear.final_action_matches_search=not not same
+-    result.risky_yorick_clear.search_selected=result.risky_yorick_clear.selected
+-    result.risky_yorick_clear.selected=result.risky_yorick_clear.selected and same or false
+-  end
+   result.consumable_reserved_evaluations=consumable_reserve
+   if result.reorder_only and result.copy_preflight and result.copy_preflight.complete then return result end
++  -- Search has already compared this growth discard and applied its remaining-
++  -- blind continuation veto. Optional development must not replace that actual
++  -- incumbent merely because result.play also contains a clearing alternative.
++  local risk=result.risky_yorick_clear
++  local preserve_search_discard=exhaust_discards(snapshot) and result.kind=='discard' and
++    result.discard and #(result.discard.indices or {})>0 and risk and risk.selected==true and
++    risk.compared==true and risk.exact_transition==true and (risk.samples or 0)>=24
++  if preserve_search_discard and result.action then
++    local actual=result.action;local proposed=result.discard.indices
++    preserve_search_discard=actual.kind=='discard' and #(actual.indices or {})==#proposed
++    if preserve_search_discard then for i,index in ipairs(proposed) do
++      if actual.indices[i]~=index then preserve_search_discard=false;break end
++    end end
++  end
+   local clear_shortcut=result.fast_clear or result.clear_shortcut
+   local held_death=false
+   if snapshot.teacher_profile=='perkeo_yorick_win_v1' then
+     for _,c in ipairs(snapshot.consumeables or {}) do if c.key=='c_death' and not c.debuff then held_death=true end end
+   end
+-  if not clear_shortcut and held_death and result.play and result.play.legal~=false and
++  if not clear_shortcut and not preserve_search_discard and held_death and result.play and result.play.legal~=false and
+       result.play.uncertain~=true and type(result.play.score)=='number' and
+       result.play.score>=math.max(1,(snapshot.blind or {}).chips-(snapshot.chips or 0))*1.05 then
+     clear_shortcut={search_path='death_retained_clear'};result.clear_shortcut=clear_shortcut
+@@ -555,7 +573,7 @@
+     clear_shortcut={search_path='discard_before_development'}
+     result.clear_shortcut=clear_shortcut
+   end
+-  if clear_shortcut then
++  if clear_shortcut and not preserve_search_discard then
+     local ceiling=math.min(result.fast_clear and 70 or 140000,
+       math.max(0,math.floor(search_options.max_evaluations or 140000)))
+     local function available(limit)
+@@ -609,7 +627,7 @@
+     result.action=result.consumable and result.consumable.action or result.growth and result.growth.action or
+       {kind='play',area='hand',indices=result.play.indices}
+     clear_shortcut.specialists_skipped=true
+-    stamp_yorick_choice()
++    stamp_yorick_choice(result)
+     return result
+   end
+   -- All specialists share the existing ordinary decision allowance. A lower
+@@ -633,6 +651,10 @@
+     consumable_options.strategy = modules.strategy
+     local suggestion, evaluations, diagnostics = modules.consumables.suggest(
+       snapshot, modules.scoring, result, yield_fn, consumable_options)
++    if preserve_search_discard and suggestion and suggestion.development then
++      risk.development_deferred_for_discard=true
++      suggestion=nil
++    end
+     result.consumable, result.consumable_diagnostics = suggestion, diagnostics
+     result.evaluations = (result.evaluations or 0) + (evaluations or 0)
+   end
+@@ -709,7 +731,7 @@
+       result.action=stock.action
+     end
+   end
+-  stamp_yorick_choice()
++  stamp_yorick_choice(result)
+   D.mouth_cycle(snapshot,modules.scoring,result,math.min(140000,options and options.search and options.search.max_evaluations or 140000))
+   return result
+ end
+@@ -859,6 +881,9 @@
+     end
+   end
+   result=discard_preference(snapshot,modules,result,options)
++  -- Copy setup and checkpoint retry can replace or remove the action after the
++  -- ordinary arbitration. Keep the immutable proposal separate from execution.
++  stamp_yorick_choice(result)
+   if result then
+     -- Record the final selected physical Death direction after all overrides.
+     local a=result.action or {};local selected=(snapshot[a.area] or {})[a.index or 0]
+--- before425/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -540,7 +540,7 @@
+     {'compared','samples','sampled_clears','required_fraction','bonus','taper','minimum_score','late_margin',
+      'exact_transition','candidate_count','compared_five_count','qualified_count',
+      'qualified_five_count','selected_cards','search_selected','selected',
+-     'full_batch_preference',
++     'full_batch_preference','development_deferred_for_discard',
+      'final_action_kind','final_action_matches_search'})
+   copy_fields('anchor',rawget(result,'growth_anchor_diagnostics'),
+     {'considered','qualified','changed','selected_cards','selected_score'})
+--- before425/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.207.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.208.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before425/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.207.0-alpha
++--- VERSION: 2.208.0-alpha
+--- before425/tests/advisor_discard_development425.lua
++++ tests/advisor_discard_development425.lua
+@@ -0,0 +1,133 @@
++-- Entirely invented states; no captured snapshot is executed or scored.
++local F=dofile('tests/fixtures/retained418.lua');local m=F.modules()
++if DECISION425_PATH then m.decision=dofile(DECISION425_PATH) end
++local J=dofile('Brainstorm/Advisor/player_journal.lua')
++local count=0;local function check(v,msg)count=count+1;assert(v,msg)end
++local function state(key)
++ local s=F.state(false);s.ante=4;s.hand={};s.deck={};s.hand_size=8
++ s.blind={key='bl_big',name='Big Blind',chips=300}
++ for i,r in ipairs({13,13,2,4,6,8,10,12})do s.hand[i]=F.card('held425:'..i,r,'Clubs')end
++ for i=1,24 do s.deck[i]=F.card('draw425:'..i,13,'Hearts')end
++ s.jokers={F.j('j_yorick'),F.j('j_perkeo')};s.jokers[1].ability.x_mult=4
++ s.hands={Pair={chips=10,mult=2,level=1,l_chips=15,l_mult=1,played=10},
++  ['High Card']={chips=5,mult=1,level=1,l_chips=10,l_mult=1,played=0}}
++ local names={c_heirophant='The Hierophant',c_empress='The Empress',c_mercury='Mercury'}
++ s.consumeables={}
++ for i=1,3 do s.consumeables[i]={id='stock425:'..i,key=key,
++  edition=i>1 and {negative=true,type='negative'} or nil,
++  ability={name=names[key],set=key=='c_mercury' and 'Planet' or 'Tarot'}}end
++ F.population(s);return s
++end
++local options={prepared_scoring=false,search={fast_clear=false,samples=24,candidates=5,resource_samples=0}}
++local function run(s,modules,opts)
++ local before=m.snapshot.fingerprint(s)
++ local r=m.decision.run(s,modules or m,nil,opts or options)
++ check(m.snapshot.fingerprint(s)==before,'decision preserves its complete input')
++ check(r.evaluations<=140000,'ordinary work stays bounded')
++ return r
++end
++do
++ local s=state('c_heirophant');local r=run(s)
++ if EXPECT_BASELINE425 then
++  check(r.action.kind=='use' and r.consumable and r.consumable.development,'baseline uses optional Hierophant first')
++  check(r.risky_yorick_clear.search_selected and r.risky_yorick_clear.selected_cards==5,'baseline displaced a selected full discard')
++  print('Baseline425 Hierophant overrides selected discard confirmed');return
++ end
++ check(r.action.kind=='discard' and #r.action.indices==5,'qualified five-card discard beats optional Hierophant')
++ check(r.risky_yorick_clear.development_deferred_for_discard,'deferral is recorded')
++ check(not r.consumable and r.risky_yorick_clear.selected,'final arbitration retains discard')
++ local public=J.compact_yorick_review(r)
++ check(public.risk.development_deferred_for_discard and public.risk.selected,'public receipt separates deferral and final selection')
++end
++-- Refresh on invented draws, retaining real physical counters and inventory.
++for _,key in ipairs({'c_heirophant','c_empress','c_mercury'})do
++ local s=state(key)
++ for left=3,1,-1 do
++  local r=run(s)
++  check(r.action.kind=='discard' and #r.action.indices==5,key..' discards first with '..left..' remaining')
++  check(r.risky_yorick_clear.development_deferred_for_discard,key..' optional development was compared and deferred')
++  local before=s.jokers[1].ability.yorick_discards
++  s=assert(m.scoring.after_discard(s,r.action.indices))
++  check(s.discards_left==left-1 and s.jokers[1].ability.yorick_discards==before-5,'one physical five-card transition')
++  check(#s.consumeables==3,'deferred inventory remains intact')
++  while #s.hand<8 do s.hand[#s.hand+1]=table.remove(s.deck)end
++  F.population(s)
++ end
++ local r=run(s)
++ check(r.action.kind=='use' and r.consumable and r.consumable.development,key..' becomes available after last discard')
++ check(not r.risky_yorick_clear or not r.risky_yorick_clear.development_deferred_for_discard,'no stale deferral on refreshed decision')
++end
++do
++ local s=state('c_heirophant');s.consumeables[#s.consumeables+1]={id='death425',key='c_death',
++  edition={negative=true,type='negative'},ability={name='Death',set='Tarot'}}
++ local r=run(s)
++ check(r.action.kind=='discard' and #r.action.indices==5,'held Death cannot route selected five through play fallback')
++ check(r.risky_yorick_clear.selected,'held Death keeps selected search proof')
++end
++do
++ local s=state('c_mercury');s.hands.Pair={chips=100,mult=10,level=10,l_chips=15,l_mult=1,played=10}
++ s.blind.chips=5400
++ local r=run(s)
++ check(r.action.kind=='use' and r.consumable and not r.consumable.development,'actual Planet rescue is still selected')
++ check(r.consumable.play.score>=5400 and r.play.score<5400,'rescue crosses a real scoring shortfall')
++ check(not r.risky_yorick_clear or not r.risky_yorick_clear.development_deferred_for_discard,'rescue is not mislabeled as deferral')
++end
++-- Manufactured arbitration doubles isolate negative routing and exact work;
++-- the integration cases above use the real scorer, search and consumables.
++local function seam(change_s,change_r,extra,opts)
++ local s=state('c_heirophant');if change_s then change_s(s)end
++ local base={kind='discard',evaluations=29,play={score=400,legal=true,uncertain=false,indices={1,2},hand='Pair'},
++  discard={indices={3,4,5,6,7}},risky_yorick_clear={selected=true,compared=true,exact_transition=true,samples=24}}
++ if change_r then change_r(base)end
++ local scoped={scoring=m.scoring,search={run=function()return F.copy(base)end},consumables={
++  suggest=function()return {action={kind='use',area='consumeables',index=1},development={utility=20}},7,{evaluations=7}end,
++  develop=function()return {action={kind='use',area='consumeables',index=1},development={utility=20}},1,{}end}}
++ for k,v in pairs(extra or {})do scoped[k]=v end
++ local r=run(s,scoped,opts)
++ return r
++end
++do
++ local r=seam()
++ check(r.action.kind=='discard' and r.evaluations==36,'deferred comparison still charges all seven consumed evaluations')
++end
++for _,case in ipairs({
++ {'generic profile',function(s)s.teacher_profile=nil end,nil},
++ {'no remaining discards',function(s)s.discards_left=0 end,nil},
++ {'nonqualified discard',nil,function(r)r.risky_yorick_clear.selected=false end},
++ {'incomplete comparison',nil,function(r)r.risky_yorick_clear.compared=false end},
++ {'short comparison',nil,function(r)r.risky_yorick_clear.samples=23 end},
++ {'unsupported transition',nil,function(r)r.risky_yorick_clear.exact_transition=false end},
++ {'conflicting incumbent',nil,function(r)r.action={kind='play',area='hand',indices={1,2}}end},
++ {'different discard indices',nil,function(r)r.action={kind='discard',area='hand',indices={1,2,3,4,5}}end},
++ {'continuation rejected discard',nil,function(r)r.kind='play';r.risky_yorick_clear.selected=false end}})do
++ local r=seam(case[2],case[3])
++ check(r.action.kind=='use','optional use remains available for '..case[1])
++ check(not r.risky_yorick_clear.development_deferred_for_discard,'no deferral without qualified incumbent: '..case[1])
++end
++do
++ local r=seam(nil,nil,{consumables={suggest=function()
++  return {action={kind='use',area='consumeables',index=1},play={score=800}},5,{}
++ end}})
++ check(r.action.kind=='use' and not r.risky_yorick_clear.selected,'nondevelopment rescue can still supersede')
++ check(r.risky_yorick_clear.search_selected,'original proposal remains visible after override')
++end
++for _,kind in ipairs({'ordering','phase_copy','retry'})do
++ local extra,opts={},F.copy(options)
++ if kind=='ordering' then extra.ordering={suggest=function()return {action={kind='reorder_jokers',order={2,1}}},3,{}end}
++ elseif kind=='phase_copy' then extra.phase_copy={apply=function(s,modules,r)
++  r.action={kind='reorder_jokers',order={2,1}};return r
++ end}
++ else opts.retry={unavailable=true}end
++ local r=seam(nil,nil,extra,opts);local risk=J.compact_yorick_review(r).risk
++ check(risk.development_deferred_for_discard and risk.search_selected,'proposal-level deferral survives '..kind)
++ check(not risk.selected and not risk.final_action_matches_search,'final selection is honest after '..kind)
++ check(risk.final_action_kind==(kind~='retry' and 'reorder_jokers' or nil),'final action kind reflects '..kind)
++end
++do
++ local r=seam(nil,nil,{phase_copy={apply=function(s,modules,r)
++  r.discard={indices={1,2}};r.action={kind='discard',area='hand',indices={1,2}};return r
++ end}})
++ check(not r.risky_yorick_clear.selected,'a replacement discard cannot impersonate the original proposal')
++ check(not J.encode(J.compact_yorick_review(r)):find('proposal_indices',1,true),'public scalar receipt omits private proposal indices')
++end
++print('Discard development425: '..count..' manufactured assertions passed')

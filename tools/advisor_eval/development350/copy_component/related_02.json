@@ -1,0 +1,33 @@
+{
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development350\\copy_component\\run_related_02_0.lua\nPASS tools\\advisor_eval\\development350\\copy_component\\run_related_02_0.lua\nRunning tools\\advisor_eval\\development350\\copy_component\\run_related_02_1.lua\nPASS tools\\advisor_eval\\development350\\copy_component\\run_related_02_1.lua\nRunning tools\\advisor_eval\\development350\\copy_component\\run_related_02_2.lua\nPASS tools\\advisor_eval\\development350\\copy_component\\run_related_02_2.lua\nRunning tools\\advisor_eval\\development350\\copy_component\\run_related_02_3.lua\nPASS tools\\advisor_eval\\development350\\copy_component\\run_related_02_3.lua\n4/4 fixtures passed\nconcealed belief: 292 checks passed\nconcealed continuation: 602 checks passed\nnine-card concealed admission: 7584 checks passed; immediate=6096; continued=6224\nadvisor_phase_copy: 184 checks passed\n",
+  "stderr": "",
+  "schema": 1,
+  "created_utc": "2026-09-16T07:09:40.726556+00:00",
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_0.lua",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_1.lua",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_2.lua",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_3.lua"
+  ],
+  "seconds": 0.8900000000139698,
+  "max_seconds": 60,
+  "scope": "Manufactured fixtures only; no captured policy, original source, searches, attempts, save/profile access or game control.",
+  "inputs": {
+    "tools\\advisor_eval\\development350\\copy_component\\Brainstorm\\Advisor\\decision.lua": "036d72f7ad6bc0103d94aecb1380f2959aefa9a4d9677648516b36d1bd3cf97e",
+    "tools\\advisor_eval\\development350\\copy_component\\Brainstorm\\Advisor\\concealed_belief.lua": "ff9ee984d50b380e948c9b645fe9dc0b3e6a2413e1c2511db15f49ee5e3720a0",
+    "tools\\advisor_eval\\development350\\copy_component\\Brainstorm\\Advisor\\phase_copy.lua": "1b6bd93b9fcc12f010031e3207c7b0ecc7ed7385f450ef7a1cd64c8a57a30afc",
+    "tests\\advisor_concealed_belief.lua": "2ed4075a5fc562ee0d48e79e40f3028bebc837d3b1cecaeb03cd74b667133aa9",
+    "tests\\advisor_concealed_continuation.lua": "842c165977fa3bc3e0629a6ca3032b72085d9ad34a54ec1c24b4e5ace9e87659",
+    "tests\\advisor_concealed_nine_card.lua": "19a27ca47796cbcd56260a8b05ea6f9fcf030f2fffe8fcad39f94943888b602a",
+    "tests\\advisor_phase_copy.lua": "ce754a02303bdf4e2ccad3f763b2b062b782cc72f12857c96009535b8fcb2ce6",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_0.lua": "16e5071874bee808a72a0dbfef755e519b87d76e65e437b2e98e168db12172f8",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_1.lua": "080f2442bc16b459e1bdd6efb14d713546be534dcfaef8f1a9ef3625ff47a9d3",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_2.lua": "642c28ad6fa4ab24b2a0240ead029dd42c306c65c7fd6b739dc6f554c55a3aad",
+    "tools\\advisor_eval\\development350\\copy_component\\run_related_02_3.lua": "c244e328cac73cbbb8da62a03aa30465670ab84b889c315e40283b0686179602",
+    "tools\\advisor_eval\\development350\\copy_component\\validate.py": "8f58058304527eb38a407b5460726eab13082b041b182b4a803aa15e09f8fea1"
+  },
+  "inputs_unchanged": true
+}

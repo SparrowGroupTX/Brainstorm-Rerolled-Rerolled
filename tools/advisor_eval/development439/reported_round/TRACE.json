@@ -1,0 +1,143 @@
+{
+  "database_sha256": "33d5c8e71dcf300b4f7da8c8c2cfa2c74bef5d06b87318c4f7aeb3366cf72a16",
+  "loaded_version": "2.216.0-alpha",
+  "run": 6,
+  "round": 12,
+  "ante": 5,
+  "blind": "bl_small",
+  "target": 25000,
+  "settled_chips": 32320,
+  "hands_played": 1,
+  "discards_used": 0,
+  "unused_discards": 3,
+  "observed_at": "2026-09-28T06:02:10Z",
+  "observation_sequence": 16439,
+  "advice_sequence": 16441,
+  "request_sequence": 16444,
+  "callback_sequence": 16445,
+  "settled_observation_sequence": 16449,
+  "settlement_link_sequence": 16451,
+  "discard_before_clear": {
+    "category": "public_model_gap",
+    "clear_supported": true,
+    "evaluations": 5,
+    "final_action_kind": "play",
+    "final_play_score": 32320,
+    "needed_score": 25000,
+    "reason": "Automatic hand sorting can change scoring-trigger order.",
+    "remaining_discards": 3,
+    "schema": 1,
+    "selected": false,
+    "status": "exception"
+  },
+  "yorick_review": {
+    "anchor": {
+      "changed": false,
+      "considered": 381,
+      "qualified": 0
+    },
+    "growth": {
+      "bounded_growth": true,
+      "candidates": 0,
+      "max_evaluations": 12,
+      "reasons": [
+        "Automatic hand sorting can change scoring-trigger order."
+      ]
+    },
+    "risk": {
+      "bonus": 0.00864,
+      "by_size": [
+        {
+          "cards": 1,
+          "compared": 2,
+          "incomplete": 0,
+          "margin": 0,
+          "progress": 0,
+          "qualified": 0,
+          "samples": 0,
+          "survival": 0,
+          "transition": 0,
+          "utility": 2
+        },
+        {
+          "cards": 2,
+          "compared": 2,
+          "incomplete": 0,
+          "margin": 0,
+          "progress": 0,
+          "qualified": 0,
+          "samples": 0,
+          "survival": 0,
+          "transition": 0,
+          "utility": 2
+        },
+        {
+          "cards": 3,
+          "compared": 2,
+          "incomplete": 0,
+          "margin": 0,
+          "progress": 1,
+          "qualified": 0,
+          "samples": 0,
+          "survival": 1,
+          "transition": 0,
+          "utility": 2
+        },
+        {
+          "cards": 4,
+          "compared": 2,
+          "incomplete": 0,
+          "margin": 0,
+          "progress": 1,
+          "qualified": 0,
+          "samples": 0,
+          "survival": 1,
+          "transition": 0,
+          "utility": 2
+        },
+        {
+          "cards": 5,
+          "compared": 1,
+          "incomplete": 0,
+          "margin": 0,
+          "progress": 1,
+          "qualified": 0,
+          "samples": 0,
+          "survival": 1,
+          "transition": 0,
+          "utility": 1
+        }
+      ],
+      "candidate_count": 9,
+      "compared": true,
+      "compared_five_count": 1,
+      "exact_transition": true,
+      "final_action_kind": "play",
+      "final_action_matches_search": false,
+      "full_batch_preference": false,
+      "late_margin": true,
+      "minimum_score": 32320,
+      "qualified_count": 0,
+      "qualified_five_count": 0,
+      "required_fraction": 1,
+      "sampled_clears": 24,
+      "samples": 24,
+      "search_selected": false,
+      "selected": false,
+      "taper": 0.012
+    },
+    "schema": 1
+  },
+  "joker_keys": [
+    "j_perkeo",
+    "j_yorick",
+    "j_brainstorm",
+    "j_photograph",
+    "j_hanging_chad"
+  ],
+  "hand_size": 9,
+  "candidate438_also_contains_guard": true,
+  "counterfactual_evaluated": false,
+  "cohort_changed": false,
+  "diagnosis": "Growth admission rejects multi-card finishing order with Photograph/Hanging Chad; risk arbitration also does not qualify a discard. Model inability is not evidence of strategic necessity. Narrow2.217 Blue/Yorick two-play repair does not cover this row."
+}

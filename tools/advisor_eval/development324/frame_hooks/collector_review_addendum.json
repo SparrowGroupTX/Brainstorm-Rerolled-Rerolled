@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "kind": "read_only_integrated_journal_failure_review_addendum",
+  "status": "no_blocking_issue_found_in_revised_paths",
+  "created_at_utc": "2026-09-15T16:09:29.0774938Z",
+  "supersedes_prior_no_blocker_for_old_integration": true,
+  "original_review": {
+    "path": "tools/advisor_eval/development324/frame_hooks/collector_review.json",
+    "sha256": "197d2f94a926d74cb94ce48ffc827f3270fbbde7f08c32159969f1f360fd161e"
+  },
+  "note": {
+    "path": "tools/advisor_eval/development324/frame_hooks/COLLECTOR_REVIEW_ADDENDUM.md",
+    "sha256": "f8128874d958b37a10a022240009036ec566b8568692c1d9bac15c71d238e068"
+  },
+  "reviewed": [
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "c1601fdb2a11e0cb740aedbfec49f665ad28b00b2f0c0e43efa9d7c9389a2eb7"
+    },
+    {
+      "path": "Brainstorm/Advisor/performance.lua",
+      "sha256": "6595aba266db35f34237803ba85b568aeb57218879da661dafc04f78dcc9cc1c"
+    },
+    {
+      "path": "Brainstorm/Advisor/player_journal.lua",
+      "sha256": "fbf8871d82fe93e659beaf4a6d1b2cc5feef3122516d1cee34ed22dfc1c4e329"
+    },
+    {
+      "path": "tests/advisor_runtime.lua",
+      "sha256": "d673007e4d087169b0dcd1a39a99812e69ea70abecea67169af8798a1b6fb282"
+    },
+    {
+      "path": "tests/advisor_performance.lua",
+      "sha256": "7468273eb667216d26d71257fb16a790c6055311ab0774e1f9b46f81d41296db"
+    }
+  ],
+  "preserved_prior_bytes": [
+    {
+      "path": "tools/advisor_eval/development324/failed_journal_stop/runtime.lua",
+      "sha256": "e2fd46c81287deb6822e1ce1c32caacb3af2e40bd6a9c51301a380af378fbedc"
+    },
+    {
+      "path": "tools/advisor_eval/development324/failed_journal_stop/performance.lua",
+      "sha256": "660a004a34fd405759298fc2bfa49a9310a99d962ff24551c4e9ee1fcc3573f4"
+    },
+    {
+      "path": "tools/advisor_eval/development324/failed_journal_stop/advisor_runtime.lua",
+      "sha256": "d673007e4d087169b0dcd1a39a99812e69ea70abecea67169af8798a1b6fb282"
+    }
+  ],
+  "integration_assertions": 6,
+  "parent_reported_validation": {
+    "runtime_checks": 607,
+    "collector_checks": 181,
+    "full_candidate_lua_fixtures": 176,
+    "full_candidate_python_tests": 341
+  },
+  "additional_runs": 0,
+  "runtime_or_tests_changed": false,
+  "player_logs_read": false,
+  "live_measurement": false,
+  "new_experiments": 0
+}

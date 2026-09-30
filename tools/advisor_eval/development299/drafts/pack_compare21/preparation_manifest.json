@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "kind": "prepared_M21_captured_pack_adapter",
+  "status": "prepared_not_bound_not_registered_not_evaluated",
+  "files": {
+    "C05_audit.json": "32f0b74ff86150e579bf101b0c0ad9d4726dd6bd10ff358426705e3575a6aa16",
+    "C05_record.json": "65004e0e32efa25b07cf2789671558c3f1358014e17b70a6908354fd859c5e92",
+    "C05_registration.json": "2dd39ee79b29ca46fa0ac627eaf606fe217cd0d4e7eddba5bd6e7b3af412dd19",
+    "compare_pack21.py": "5d670693a4f62ea0276c251543a0f58b2cee47cffaca343f85b575ac2d3d6492",
+    "driver.lua": "26c4f6486e1ba050efcf4283e3dccda6097c28daf7ed07509a4779dd6e899804",
+    "engine_contract.lua": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da",
+    "historical_step12_receipts.json": "149a310a06f7dac276219d55d24aa82329abc7a6cc158f23a637d94072e17e88",
+    "input_provenance.json": "adf508501b1f49d982f799bcfc1ecdbf4387b3f769565cb7ed70367c8d84cd50",
+    "INTEGRATION.md": "4ade2649e2789f6d16eaa35644d57a4cc64cd84c2033da44f3b9e597a3678815",
+    "lua_bytes.py": "225a9fbd4f25f6dad61857dc30966dec2a421b48564fc6919c900e142dd89c20",
+    "module_graph.py": "d341ab41db0df77ee7112682118b0e8e6ae54ae5e3013f4c5d2b3174e7ce2782",
+    "policy_wiring.lua": "1523b09f060b2111b2c83ef42a7889c60986a25fe5cf60fb072327d7d291ab70",
+    "prepare_inputs.py": "8d1ae4331018b638dd26ff7270981605cdd3c433b93715fa84aadf60f5cb33b5",
+    "step12.json": "58f38eccace866cdeed2f0ac6b2470e1654c0f2f2818277017c3e625a915da46",
+    "test_spec.py": "893de2970ce440af1e5e6d0ba207a6b6d72e6049d55a3ef41a9572dabf0734f5"
+  },
+  "decision_order": [
+    [
+      "baseline",
+      12
+    ],
+    [
+      "candidate",
+      12
+    ]
+  ],
+  "per_decision_score_cap": 50000,
+  "aggregate_score_cap": 100000,
+  "outer_seconds": 30,
+  "tests": {
+    "python_preparation_tests": 4,
+    "inert_driver_cases": [
+      "normal",
+      "cap",
+      "mutate",
+      "throw",
+      "wire"
+    ],
+    "captured_states_evaluated": 0,
+    "source_actions": 0
+  },
+  "candidate_binding": "pending exact installed314",
+  "source_execution": false,
+  "captured_evaluation": false
+}

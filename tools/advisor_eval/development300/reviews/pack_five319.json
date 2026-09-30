@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "kind": "independent_read_only_code_review",
+  "status": "no_remaining_blocking_defect_found",
+  "development_package": "tools/advisor_eval/development300/pack_five319",
+  "runtime_version_assigned_by_this_review": null,
+  "manifest_sha256": "17b360a8e6e8772e897ef97e566ee49c5bab1acc43b06569b5b41a503e5ed5c3",
+  "reviewed_runtime_files": {
+    "multi_discard.lua": "6dd7ae33275fc5b7e234259b66280941a73f2395c244ac7831b93153b2fd8320",
+    "blind_finishing.lua": "6d8f57a42c70047edf032c659f24331ae97c1a7ce27c306d450ff09a0c8d6ffe",
+    "shop_scoring.lua": "2e2cc549e0db79660e0324f432fa2718a142b0ad806688db492c8d3f90ebc74b",
+    "pack_survival.lua": "d30af961566a3ae0c048efd4ec38404790900ecb5f877f8a978737ce675e9116"
+  },
+  "fixture_sha256": "2d31b4d03dd356a070e3ba0df030995d2187f043f4b19e4204eca016125613be",
+  "reviewed_test_receipt": {
+    "path": "tools/advisor_eval/development300/pack_five319/focused_report.json",
+    "sha256": "462fb66009aba19afbdb2b0508a1f2fed29a8551f484b3f4db4c07222fe9d9aa",
+    "reported_passed_fixtures": 5,
+    "reported_checks": 1449,
+    "tests_rerun_by_this_reviewer": false
+  },
+  "checked": [
+    "Root enables one fixed three-policy family before evaluating offers; baseline and every offer share the declaration and four worlds.",
+    "Exact-five candidate uses only the currently observed hand, includes forced cards, excludes protected Purple cards, and honestly follows its play path when unavailable.",
+    "All admitted policies share the existing 50000-score allowance; incomplete work cannot authorize the pack override.",
+    "Two- and three-policy declarations, dense policy/world lists, metadata and selected policy are compared completely.",
+    "Producer records the actual pre-discard physical IDs; scoring.after_discard synchronizes those cards into playing_cards by ID.",
+    "Discarded history is retained explicitly, with exact original nil/false/true preservation except recorded physical discards becoming true. Certificate-generated cards begin without that marker.",
+    "Unknown or duplicate IDs, missing/extra history, invented marks, restoration of a true mark, and unrelated physical mutations decline.",
+    "Final validator enforces at most four plays, one discard and one setup, with matching action counters; five- and six-play corruptions have negative fixtures.",
+    "Existing population, whole-inventory, cash, Blue generation, successful-world rewards, action/hand/discard and Yorick-development guards remain unchanged."
+  ],
+  "resolved_review_finding": "The initial receipt validator lacked an explicit four-play ceiling; final bytes add plays<=4 and preserve the earlier reviewed package under review_revisions/before_four_play_guard.",
+  "limits": [
+    "Manufactured fixture behavior is not a captured-state or complete-attempt result.",
+    "No additional original-source, captured-decision, native, seed-search or complete-attempt execution occurred during this review.",
+    "This review does not qualify the entire adapter, establish a rescued run or estimate terminal benefit.",
+    "Root owns staging, candidate regression, installation and exact-installed validation."
+  ]
+}

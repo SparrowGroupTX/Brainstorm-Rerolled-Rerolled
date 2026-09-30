@@ -1,0 +1,6 @@
+- Advisor/strategy.lua: finite teacher stock, marginal acquisition, generator shop exploration and ordinary/Negative use/sale representatives.
+- Advisor/growth.lua: single-discard post-draw Blue Joker score proof, unchanged other hazards.
+- Advisor/consumables.lua: supported-clear candidate priority, uncertain estimate labels, sequence coverage.
+- Advisor/search.lua: only reliable current clear gets clear utility bonus.
+- tests/advisor_teacher_repairs367.lua and updated advisor_growth.lua: manufactured acceptance.
+- development367: before bytes, runtime.diff, review and failed/passing evidence. Earlier unchanged architecture:366.

@@ -1,0 +1,103 @@
+--- before/Brainstorm/Advisor/acorn_belief.lua
++++ current/Brainstorm/Advisor/acorn_belief.lua
+@@ -114,7 +114,8 @@
+   eternal=true,perishable=true,perish_tally=true,set=true,t_chips=true,t_mult=true,
+   type=true,x_mult=true}
+ local checked_opaque_keys={j_green_joker=true,j_misprint=true,j_blackboard=true,
+-  j_smiley=true,j_supernova=true,j_campfire=true,j_hit_the_road=true}
++  j_smiley=true,j_supernova=true,j_campfire=true,j_hit_the_road=true,
++  j_bootstraps=true,j_turtle_bean=true}
+ local function stable_opaque_ability(j)
+   local a=j.ability or {}
+   for field,value in pairs(a) do
+@@ -144,6 +145,23 @@
+     if j.key=='j_supernova' then return a.name=='Supernova' and a.effect=='Hand played mult' and a.extra==1 end
+     local e=a.extra
+     if type(e)~='table' or getmetatable(e) then return false end
++    if j.key=='j_bootstraps' or j.key=='j_turtle_bean' then
++      -- Only the coefficients/capacity are retained. Bootstraps reads dollars
++      -- from each fresh public snapshot; Bean decays at round end, outside
++      -- these completed play/discard transitions. Neither popup identifies it.
++      local boot=j.key=='j_bootstraps'
++      if boot then
++        if a.name~='Bootstraps' or a.effect~='' or e.mult~=2 or e.dollars~=5 then return false end
++      elseif a.name~='Turtle Bean' or a.effect~=nil or e.h_mod~=1 or
++        not integer(e.h_size) or e.h_size<1 or e.h_size>5 then return false end
++      local count=0
++      for key in pairs(e) do
++        if not (boot and (key=='mult' or key=='dollars') or
++          not boot and (key=='h_mod' or key=='h_size')) then return false end
++        count=count+1
++      end
++      return count==2
++    end
+     if j.key=='j_green_joker' then
+       if a.name~='Green Joker' or a.effect~=nil or not integer(a.mult) or a.mult<0 or
+         e.hand_add~=1 or e.discard_sub~=1 then return false end
+--- before/Brainstorm/Advisor/acorn_ordering.lua
++++ current/Brainstorm/Advisor/acorn_ordering.lua
+@@ -39,8 +39,15 @@
+   if not qualified then return no('Modified public Joker abilities are outside the qualified comparison.') end
+   if s.phase~='hand' or not finite(s.hands_left) or s.hands_left<1 or s.hands_left%1~=0 or
+     not finite(s.discards_left) or s.discards_left<0 or s.discards_left%1~=0 or
+-    #(s.hand or {})<1 or #s.hand>12 or s.jokers_shuffling or s.ordering_safe==false then
++    #(s.hand or {})<1 or s.jokers_shuffling or s.ordering_safe==false then
+     return no('The belief comparison requires a settled visible hand and known remaining resources.') end
++  -- One fresh Turtle Bean can produce a public 13-card hand. Enumerating its
++  -- 2,379 subsets is bounded; scoring still uses the existing allowance and
++  -- complete-world shortlist. Larger families remain unsupported explicitly.
++  if #s.hand>13 then return no('The public hand exceeds the qualified 13-card comparison limit.') end
++  local maximum=s.hand_limit==nil and 5 or s.hand_limit
++  if not finite(maximum) or maximum<1 or maximum>5 or maximum%1~=0 then
++    return no('A whole public selection limit from one through five is required.') end
+   if not scorer or not scorer.score or not finite(s.chips) or not finite((s.blind or {}).chips) then return no('Exact scoring and target resources are required.') end
+   local target=s.blind.chips-s.chips;if target<=0 then return no('The round is already cleared.') end
+   -- Glass breaks after the immediate score, not between its retriggers. The
+@@ -48,7 +55,7 @@
+   local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true,m_glass=true,m_gold=true}
+   local random_floor=inventory_floor;local editions={}
+   for i,c in ipairs(s.hand) do
+-    if c.face_down or c.unknown or c.concealed or c.facing=='back' or not known_enhancements[c.enhancement or 'c_base'] or
++    if c.face_down or c.identity_redacted or c.unknown or c.concealed or c.facing=='back' or not known_enhancements[c.enhancement or 'c_base'] or
+       c.seal and not ({Red=true,Blue=true,Purple=true,Gold=true})[c.seal] then
+       return no('Concealed or unknown playing-card effects remain outside this immediate comparison.') end
+     if c.enhancement=='m_lucky' then random_floor=true end
+@@ -64,7 +71,7 @@
+   -- Ignore the raw live Joker array even if a caller supplied concealed payloads.
+   local root={};for k,v in pairs(s) do if k~='jokers' and k~='public_joker_belief' then root[k]=belief.copy(v) end end
+   for i,c in ipairs(root.hand) do c.edition=editions[i] end
+-  local selected,subsets={},{};local maximum=math.min(5,s.hand_limit or 5)
++  local selected,subsets={},{}
+   local function walk(start)
+     if #selected>0 then
+       local ok=true;for i,c in ipairs(s.hand) do if (c.ability or {}).forced_selection then
+--- before/Brainstorm/Core/Brainstorm.lua
++++ current/Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.219.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.220.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before/Brainstorm/steamodded_compat.lua
++++ current/Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.219.0-alpha
++--- VERSION: 2.220.0-alpha
+--- before/tools/advisor_eval/DECISION_REVIEW.md
++++ current/tools/advisor_eval/DECISION_REVIEW.md
+@@ -92,5 +92,6 @@
+ frozen comparison, untouched validation cases and a loaded follow-up measurement
+ together. Separate mechanics confidence from strategy confidence. A shared bug
+ in production and simulator is not independent confirmation. Full release gates
+-remain mandatory for runtime edits; these offline-tool tests do not qualify the
+-pending2.219 runtime or resolve its Lua timeout.
++remain mandatory for runtime edits; offline-tool tests do not qualify a runtime
++release. The former 2.219 timeout was resolved and its exact full gates passed
++in INSTALLED_CHECKPOINT_444.md; consult current checkpoints for release status.

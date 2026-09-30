@@ -1,0 +1,117 @@
+{
+  "scope": "passive public journal prefix; not a teacher batch or captured policy evaluation",
+  "loaded_version": "2.159.0-alpha",
+  "teacher_batch": false,
+  "last_sequence": 1995,
+  "cutoff": "2026-09-22T16:31:52Z",
+  "starts": [
+    {
+      "sequence": 24,
+      "seed": "M4BVSY11",
+      "at": "2026-09-22T16:21:02Z",
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000002.brj",
+        "ordinal": 2,
+        "raw_sha256": "8d29e0ae2566cb2f5747e1d440fd7d2d742b5c9620b653870a11e2daf48ba2dc"
+      }
+    },
+    {
+      "sequence": 1078,
+      "seed": "YVYN2Z11",
+      "at": "2026-09-22T16:27:32Z",
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000004.brj",
+        "ordinal": 2,
+        "raw_sha256": "9ba2c5036df3740ed4e29d6931e75ea7d37557992ca857b00268145fde4ebebb"
+      }
+    },
+    {
+      "sequence": 1437,
+      "seed": "S7PXV521",
+      "at": "2026-09-22T16:29:07Z",
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000006.brj",
+        "ordinal": 2,
+        "raw_sha256": "457c6371d4ab0e88cba8df9693d3decd208ec233a813cd1d65e88b7b0dc65fe9"
+      }
+    },
+    {
+      "sequence": 1714,
+      "seed": "RH45AD21",
+      "at": "2026-09-22T16:30:26Z",
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000008.brj",
+        "ordinal": 2,
+        "raw_sha256": "dad3b9e0ec1bb26c508e05d291293e42dd295c90569b206b81a21d41f9f72d55"
+      }
+    }
+  ],
+  "terminals": [
+    {
+      "sequence": 1069,
+      "seed": "M4BVSY11",
+      "ante": 7,
+      "blind": "bl_small",
+      "outcome": "loss",
+      "evidence": {
+        "event_id": "loss:game:2",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:2",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000002.brj",
+        "ordinal": 1047,
+        "raw_sha256": "2303261bf1ec7ba698356459c0d6c6016c2819263968202249bd947673026cb1"
+      }
+    },
+    {
+      "sequence": 1428,
+      "seed": "YVYN2Z11",
+      "ante": 3,
+      "blind": "bl_big",
+      "outcome": "loss",
+      "evidence": {
+        "event_id": "loss:game:3",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:3",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000004.brj",
+        "ordinal": 352,
+        "raw_sha256": "c48eda9d8427f5fb203b5f4b92b6b1360f7f39eb4dc22f3d5f69d1da6c7ff912"
+      }
+    },
+    {
+      "sequence": 1705,
+      "seed": "S7PXV521",
+      "ante": 2,
+      "blind": "bl_house",
+      "outcome": "loss",
+      "evidence": {
+        "event_id": "loss:game:4",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:4",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260922T161954Z-1-000006.brj",
+        "ordinal": 270,
+        "raw_sha256": "62c4f9049a53f4d18df7cac209fc9647a6711004ea584adcc0124da586ae6ebc"
+      }
+    }
+  ],
+  "unfinished_starts_in_prefix": 1,
+  "converter_status": "incompatible ordinary-journal schema; first rejection retained in logs1/summary.json",
+  "not_inferred": "No later events, win odds, last-fourth-run outcome or tool-started gameplay."
+}

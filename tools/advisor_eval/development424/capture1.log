@@ -1,0 +1,4 @@
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development424\capture.py", line 16
+    r=subprocess.run(['pwsh','-NoProfile','-Command','@(Get-Process -ErrorAction Stop | Where-Object { $_.ProcessName -ieq 'Balatro' } | Select-Object Id,StartTime) | ConvertTo-Json -Compress'],capture_output=True,text=True,check=True,creationflags=subprocess.CREATE_NO_WINDOW)
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?

@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-15T23:37:57.904806+00:00",
+  "release": 339,
+  "summary": "Add 32x and 64x to the existing Game speed option cycle alongside 8x and 16x. The current speed stays unchanged until the user selects a choice. Numeric and string labels, saved selection, additional mod speeds, layout and persistence retain the existing implementation.",
+  "outcome_summary": "Release 339 uses routine manufactured fixture/regression validation only. The updated existing speed fixture passes 549 checks covering all eight standard choices, reopened selection, one settings-save call per choice, numeric-string 32/64 selections, preserved extra speeds without duplicates, invalid input and unchanged menu arguments. These are settings/menu doubles, not live rendered or original-game timing validation. Historical closed loss328 outcomes remain three losses, one error, one timeout, one unsupported and zero wins under policies 327/329/331; they are not release339 outcomes.",
+  "limits_summary": "Only the existing speed option list is extended. Current configuration is preserved during installation and opening the menu. Native event/timer behavior, auto-run readiness and single-action gates, real-time deadlines, computation budgets and all previous strategy/performance fixes remain unchanged. No proportional gameplay-speed or live-FPS improvement is claimed. Activation waits for the user normal restart; tools do not touch the running game. Logs, current settings, native dependencies and dirty/untracked work remain preserved.",
+  "budget_summary": "All experiment allowances remain CLOSED. Release 339 starts zero source components, captured-state policy replays, searches and complete attempts. It reads no executable archive, player saves or profiles, and does not control the game. Only routine manufactured fixtures and full candidate/exact-installed regression run with 60-second caps per suite. Historical loss328 counts, outcomes and 1,200 seconds reserved/685.3740000000689 seconds actual remain unchanged; unused P05/P06 and 60 seconds remain closed. No worker, source attempt, search or scheduled continuation is pending.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 4,
+    "captured_policy_evaluations": 8,
+    "search_workers": 0,
+    "complete_attempts": 6
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 3,
+    "error": 1,
+    "timeout": 1,
+    "unsupported": 1,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+      "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_SOURCE_EVIDENCE_332.json",
+      "sha256": "b185730878f01b1974f2ed0fcfb80cf8a09a309e8235e3b0f7b9098d68235924"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_BUDGET_332.json",
+      "sha256": "ebe6ec19dc594cb8b260883b761fe8d285edb523d5db584412b68cf1ec7b097d"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development328/shop_release_notes/limits.json",
+      "sha256": "abe07aa95ae18a8bf1704748f643e3b99b27a3c72c8e1fa7eb05917d02731d8c"
+    }
+  },
+  "historical_closed_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_closed_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_closed_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "diagnostic_evidence": {
+    "previous_checkpoint": {
+      "path": "tools/advisor_eval/development335/economy_release/release_final/context.json",
+      "sha256": "8fdc45445344b8735b38363b8250fa5551c13cb55b6f5b48ebf454a6fd95ba3e"
+    },
+    "before_files": {
+      "path": "tools/advisor_eval/development339/before.json",
+      "sha256": "71b6a1d39482d0c602514644e7e0c31443a78274f9cabfe5fc78c7b8f93cfe7c"
+    },
+    "previous_speed_source": {
+      "path": "tools/advisor_eval/development339/before/Brainstorm/UI/game_speed.lua",
+      "sha256": "f4ee6c5643adaa3d1d9487a9a80352627e1393bd193921b6d3378bff9897d536"
+    },
+    "speed_source": {
+      "path": "Brainstorm/UI/game_speed.lua",
+      "sha256": "a1384cc7749f0b4ce23923e007dd43bf7ea2fcc5b9debe53a07dbc0db0e3dde0"
+    },
+    "speed_fixture": {
+      "path": "tests/advisor_game_speed.lua",
+      "sha256": "d0b3e481f9a1d9b7f848276568c10c3460c4898383cdd957053e1e836d4579e5"
+    },
+    "previous_speed_fixture": {
+      "path": "tools/advisor_eval/development339/before/tests/advisor_game_speed.lua",
+      "sha256": "f64ecea34e3390c76f5908acb8416459c1ad853e75b252dea044c05088dfb0ad"
+    },
+    "candidate_validation": {
+      "path": "tools/advisor_eval/runs/speed339_candidate/validation/report.json",
+      "sha256": "711147bc97eb403929f7f95556bec4bcd090ee0ba79d0a131f2ec85c40de732b"
+    },
+    "previous_speed_mechanics": {
+      "path": "tools/advisor_eval/ANIMATION_SPEED_318.md",
+      "sha256": "fcde8a0c4af0d9a8dcef6c0ea925bdf04aa278787048cbe39956efe3d383174f"
+    }
+  },
+  "preparation_status": "passed_candidate_exact_installed_validation_bound_separately",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "previous_checkpoint_context": {
+    "path": "tools/advisor_eval/development335/economy_release/release_final/context.json",
+    "sha256": "8fdc45445344b8735b38363b8250fa5551c13cb55b6f5b48ebf454a6fd95ba3e"
+  }
+}

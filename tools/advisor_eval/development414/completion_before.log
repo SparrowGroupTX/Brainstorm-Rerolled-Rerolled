@@ -1,0 +1,11 @@
+Initial complete.py bookkeeping assertion failed before writing completion artifacts:
+assert datetime.fromisoformat(p['StartTime']).timestamp()>(FINAL/'validation/report.json').stat().st_mtime
+AssertionError
+
+Passive evidence: user-started PID49852 began2026-09-26T18:50:48 local.
+Backed installation completed2026-09-26T18:50:02.7054074-05:00;
+exact-installed record created2026-09-26T23:50:05.553281+00:00.
+The process began after deployment finished, while detached tests were finishing.
+Both full gates passed with unchanged input hashes. No runtime repair/reinstallation
+was needed. Completion now compares launch with completed installation, preserves
+the absence-at-install rule, and leaves user-started gameplay/active journals alone.

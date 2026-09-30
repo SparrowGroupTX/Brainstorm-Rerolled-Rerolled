@@ -1,0 +1,5424 @@
+{
+  "schema": 1,
+  "kind": "read_only_logged_stall_index",
+  "source_sha256": "a19bc8bb2775f0fc904e0cf3c42dcc9d52f1ed92c8720da92731e8eaca0de686",
+  "event_kinds": {
+    "performance_window": 78
+  },
+  "windows": [
+    {
+      "sequence": 1,
+      "at": "2026-09-15T20:27:38Z",
+      "window_id": 1,
+      "start_seconds": 1.6639613,
+      "end_seconds": 985.4567756,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 146629,
+          "total_seconds": 983.0764201,
+          "maximum_seconds": 1.4165858999999728,
+          "mean_seconds": 0.006704515614919286
+        },
+        "game_update": {
+          "count": 146630,
+          "total_seconds": 432.6818238000068,
+          "maximum_seconds": 0.8211935000000494,
+          "mean_seconds": 0.002950841054354544
+        },
+        "journal_update": {
+          "count": 146630,
+          "total_seconds": 0.48503850001712046,
+          "maximum_seconds": 0.00030460000004950416,
+          "mean_seconds": 3.3079076588496246e-06
+        },
+        "advisor_update": {
+          "count": 146630,
+          "total_seconds": 1.3358588999995942,
+          "maximum_seconds": 0.00039129999993292586,
+          "mean_seconds": 9.110406465249909e-06
+        },
+        "draw_total": {
+          "count": 146629,
+          "total_seconds": 33.2390905999973,
+          "maximum_seconds": 0.004131600000050639,
+          "mean_seconds": 0.00022668838087961656
+        }
+      }
+    },
+    {
+      "sequence": 2,
+      "at": "2026-09-15T20:27:44Z",
+      "window_id": 2,
+      "start_seconds": 985.4567756,
+      "end_seconds": 990.9957342,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.56799860000001,
+          "maximum_seconds": 0.728095099999905,
+          "mean_seconds": 0.6959998250000012
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.517538399999921,
+          "maximum_seconds": 0.6998601999999892,
+          "mean_seconds": 0.6896922999999902
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.389999983482994e-05,
+          "maximum_seconds": 4.800000056093268e-06,
+          "mean_seconds": 4.237499979353743e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00026920000016161794,
+          "maximum_seconds": 6.230000008144998e-05,
+          "mean_seconds": 3.365000002020224e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008208100000047125,
+          "maximum_seconds": 0.008208100000047125,
+          "mean_seconds": 0.008208100000047125
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00821480000001884,
+          "maximum_seconds": 0.00821480000001884,
+          "mean_seconds": 0.00821480000001884
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.006742300000041723,
+          "maximum_seconds": 0.0023118999999951484,
+          "mean_seconds": 0.0008427875000052154
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "at": "2026-09-15T20:27:50Z",
+      "window_id": 3,
+      "start_seconds": 990.9957342,
+      "end_seconds": 996.5566772,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.556011699999999,
+          "maximum_seconds": 0.709368300000051,
+          "mean_seconds": 0.6945014624999999
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.537503499999843,
+          "maximum_seconds": 0.7023186000000123,
+          "mean_seconds": 0.6921879374999804
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.9200000173877925e-05,
+          "maximum_seconds": 8.299999990413198e-06,
+          "mean_seconds": 4.900000021734741e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.006073700000001736,
+          "maximum_seconds": 0.00593119999996361,
+          "mean_seconds": 0.000759212500000217
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006976199999940036,
+          "maximum_seconds": 0.006976199999940036,
+          "mean_seconds": 0.006976199999940036
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007010400000012851,
+          "maximum_seconds": 0.007010400000012851,
+          "mean_seconds": 0.007010400000012851
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.005621499999961088,
+          "maximum_seconds": 0.0009652999999616441,
+          "mean_seconds": 0.000702687499995136
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "at": "2026-09-15T20:27:55Z",
+      "window_id": 4,
+      "start_seconds": 996.5566772,
+      "end_seconds": 1002.0921075,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.532323399999996,
+          "maximum_seconds": 0.7006743999999117,
+          "mean_seconds": 0.6915404249999995
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.5053222999997615,
+          "maximum_seconds": 0.6951493000000255,
+          "mean_seconds": 0.6881652874999702
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.290000017841521e-05,
+          "maximum_seconds": 4.400000079840538e-06,
+          "mean_seconds": 4.1125000223019015e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010907799999813506,
+          "maximum_seconds": 0.003912300000024516,
+          "mean_seconds": 0.0013634749999766882
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006914499999993495,
+          "maximum_seconds": 0.006914499999993495,
+          "mean_seconds": 0.006914499999993495
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006920499999978347,
+          "maximum_seconds": 0.006920499999978347,
+          "mean_seconds": 0.006920499999978347
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.006316300000094088,
+          "maximum_seconds": 0.0012230000000954533,
+          "mean_seconds": 0.000789537500011761
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "at": "2026-09-15T20:28:01Z",
+      "window_id": 5,
+      "start_seconds": 1002.0921075,
+      "end_seconds": 1007.7253988,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.618660899999895,
+          "maximum_seconds": 0.7136258000000453,
+          "mean_seconds": 0.7023326124999869
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.603354000000081,
+          "maximum_seconds": 0.7117167000000109,
+          "mean_seconds": 0.7004192500000102
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.660000004401809e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.575000005502261e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.006980599999792503,
+          "maximum_seconds": 0.0034635999999181877,
+          "mean_seconds": 0.0008725749999740628
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008511399999974856,
+          "maximum_seconds": 0.008511399999974856,
+          "mean_seconds": 0.008511399999974856
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00851650000004156,
+          "maximum_seconds": 0.00851650000004156,
+          "mean_seconds": 0.00851650000004156
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009722099999862621,
+          "maximum_seconds": 0.001473900000064532,
+          "mean_seconds": 0.0012152624999828276
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "at": "2026-09-15T20:28:06Z",
+      "window_id": 6,
+      "start_seconds": 1007.7253988,
+      "end_seconds": 1013.2919711,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.593636900000092,
+          "maximum_seconds": 0.7196829000000662,
+          "mean_seconds": 0.6992046125000115
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.534320999999977,
+          "maximum_seconds": 0.7141174000000774,
+          "mean_seconds": 0.6917901249999971
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.2900000064728374e-05,
+          "maximum_seconds": 4.600000011123484e-06,
+          "mean_seconds": 4.112500008091047e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010754199999723824,
+          "maximum_seconds": 0.0036589000000049055,
+          "mean_seconds": 0.001344274999965478
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00729589999991731,
+          "maximum_seconds": 0.00729589999991731,
+          "mean_seconds": 0.00729589999991731
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0073019000000158485,
+          "maximum_seconds": 0.0073019000000158485,
+          "mean_seconds": 0.0073019000000158485
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00896530000011353,
+          "maximum_seconds": 0.0013177000000723638,
+          "mean_seconds": 0.0011206625000141912
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "at": "2026-09-15T20:28:12Z",
+      "window_id": 7,
+      "start_seconds": 1013.2919711,
+      "end_seconds": 1018.9037326,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.585622999999941,
+          "maximum_seconds": 0.710106900000028,
+          "mean_seconds": 0.6982028749999927
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.578632299999867,
+          "maximum_seconds": 0.7083082999999988,
+          "mean_seconds": 0.6973290374999834
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.530000003593159e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.412500004491449e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010973900000180947,
+          "maximum_seconds": 0.0036606000001029315,
+          "mean_seconds": 0.0013717375000226184
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008464399999979833,
+          "maximum_seconds": 0.008464399999979833,
+          "mean_seconds": 0.008464399999979833
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008469700000091507,
+          "maximum_seconds": 0.008469700000091507,
+          "mean_seconds": 0.008469700000091507
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00943189999986771,
+          "maximum_seconds": 0.0012226000000055137,
+          "mean_seconds": 0.0011789874999834637
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "at": "2026-09-15T20:28:17Z",
+      "window_id": 8,
+      "start_seconds": 1018.9037326,
+      "end_seconds": 1024.4198098,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.549384000000032,
+          "maximum_seconds": 0.7184061000000384,
+          "mean_seconds": 0.693673000000004
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.487466100000006,
+          "maximum_seconds": 0.6958446999999524,
+          "mean_seconds": 0.6859332625000008
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.429999969739583e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.287499962174479e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007012800000211428,
+          "maximum_seconds": 0.0034912000000986154,
+          "mean_seconds": 0.0008766000000264285
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007701799999949799,
+          "maximum_seconds": 0.007701799999949799,
+          "mean_seconds": 0.007701799999949799
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007730599999945298,
+          "maximum_seconds": 0.007730599999945298,
+          "mean_seconds": 0.007730599999945298
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009124600000063765,
+          "maximum_seconds": 0.0012499000000616434,
+          "mean_seconds": 0.0011405750000079706
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "at": "2026-09-15T20:28:23Z",
+      "window_id": 9,
+      "start_seconds": 1024.4198098,
+      "end_seconds": 1029.9710215,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.50415380000004,
+          "maximum_seconds": 0.6961012000001574,
+          "mean_seconds": 0.688019225000005
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.5196001000001615,
+          "maximum_seconds": 0.7228040999998484,
+          "mean_seconds": 0.6899500125000202
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.310000033707183e-05,
+          "maximum_seconds": 4.400000079840538e-06,
+          "mean_seconds": 4.137500042133979e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010780799999565716,
+          "maximum_seconds": 0.0036675999999715714,
+          "mean_seconds": 0.0013475999999457144
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007941800000025978,
+          "maximum_seconds": 0.007941800000025978,
+          "mean_seconds": 0.007941800000025978
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007947700000158875,
+          "maximum_seconds": 0.007947700000158875,
+          "mean_seconds": 0.007947700000158875
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.008999500000300031,
+          "maximum_seconds": 0.0011748000001716719,
+          "mean_seconds": 0.001124937500037504
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "at": "2026-09-15T20:28:29Z",
+      "window_id": 10,
+      "start_seconds": 1029.9710215,
+      "end_seconds": 1035.4787627,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.508317300000044,
+          "maximum_seconds": 0.7321852999998555,
+          "mean_seconds": 0.6885396625000055
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.476539300000468,
+          "maximum_seconds": 0.7187578999999005,
+          "mean_seconds": 0.6845674125000585
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.329999981360743e-05,
+          "maximum_seconds": 4.79999994240643e-06,
+          "mean_seconds": 4.1624999767009285e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010722900000018853,
+          "maximum_seconds": 0.0037053999999443477,
+          "mean_seconds": 0.0013403625000023567
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007550499999979365,
+          "maximum_seconds": 0.007550499999979365,
+          "mean_seconds": 0.007550499999979365
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007557299999916722,
+          "maximum_seconds": 0.007557299999916722,
+          "mean_seconds": 0.007557299999916722
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009413499999936903,
+          "maximum_seconds": 0.0013549000000239175,
+          "mean_seconds": 0.0011766874999921129
+        }
+      }
+    },
+    {
+      "sequence": 11,
+      "at": "2026-09-15T20:28:34Z",
+      "window_id": 11,
+      "start_seconds": 1035.4787627,
+      "end_seconds": 1041.0271606,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.58922369999982,
+          "maximum_seconds": 0.7332925999999134,
+          "mean_seconds": 0.6986529624999775
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.518763500000205,
+          "maximum_seconds": 0.7058070000000498,
+          "mean_seconds": 0.6898454375000256
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.310000033707183e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.137500042133979e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007203299999673618,
+          "maximum_seconds": 0.003685899999936737,
+          "mean_seconds": 0.0009004124999592023
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.009315600000036284,
+          "maximum_seconds": 0.009315600000036284,
+          "mean_seconds": 0.009315600000036284
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.009349400000019159,
+          "maximum_seconds": 0.009349400000019159,
+          "mean_seconds": 0.009349400000019159
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00929260000020804,
+          "maximum_seconds": 0.0013950000000022555,
+          "mean_seconds": 0.001161575000026005
+        }
+      }
+    },
+    {
+      "sequence": 12,
+      "at": "2026-09-15T20:28:40Z",
+      "window_id": 12,
+      "start_seconds": 1041.0271606,
+      "end_seconds": 1046.5056575,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.472899400000188,
+          "maximum_seconds": 0.7022981000000073,
+          "mean_seconds": 0.6841124250000234
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.446990599999708,
+          "maximum_seconds": 0.6972034999998868,
+          "mean_seconds": 0.6808738249999635
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.400000014153193e-05,
+          "maximum_seconds": 5.000000101063051e-06,
+          "mean_seconds": 4.250000017691491e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010535899999695175,
+          "maximum_seconds": 0.003505700000005163,
+          "mean_seconds": 0.001316987499961897
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007187700000031327,
+          "maximum_seconds": 0.007187700000031327,
+          "mean_seconds": 0.007187700000031327
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0071934000000055676,
+          "maximum_seconds": 0.0071934000000055676,
+          "mean_seconds": 0.0071934000000055676
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009204399999589441,
+          "maximum_seconds": 0.0012318999999934022,
+          "mean_seconds": 0.0011505499999486801
+        }
+      }
+    },
+    {
+      "sequence": 13,
+      "at": "2026-09-15T20:28:45Z",
+      "window_id": 13,
+      "start_seconds": 1046.5056575,
+      "end_seconds": 1051.9959514,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.502440799999931,
+          "maximum_seconds": 0.6968999999999141,
+          "mean_seconds": 0.6878050999999914
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.45863630000008,
+          "maximum_seconds": 0.6916945999998916,
+          "mean_seconds": 0.68232953750001
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.410000022086024e-05,
+          "maximum_seconds": 5.300000111674308e-06,
+          "mean_seconds": 4.26250002760753e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010818400000061956,
+          "maximum_seconds": 0.003797699999950055,
+          "mean_seconds": 0.0013523000000077445
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008109699999977238,
+          "maximum_seconds": 0.008109699999977238,
+          "mean_seconds": 0.008109699999977238
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008115599999882761,
+          "maximum_seconds": 0.008115599999882761,
+          "mean_seconds": 0.008115599999882761
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.008982000000059998,
+          "maximum_seconds": 0.0012692000000242842,
+          "mean_seconds": 0.0011227500000074997
+        }
+      }
+    },
+    {
+      "sequence": 14,
+      "at": "2026-09-15T20:28:51Z",
+      "window_id": 14,
+      "start_seconds": 1051.9959514,
+      "end_seconds": 1057.5867412,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.573736800000006,
+          "maximum_seconds": 0.7197744000000057,
+          "mean_seconds": 0.6967171000000008
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.5638984999995955,
+          "maximum_seconds": 0.7182586999999785,
+          "mean_seconds": 0.6954873124999494
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.539999966051255e-05,
+          "maximum_seconds": 6.100000064179767e-06,
+          "mean_seconds": 4.424999957564069e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007018000000243774,
+          "maximum_seconds": 0.0034984999999778665,
+          "mean_seconds": 0.0008772500000304717
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.0067065000000638975,
+          "maximum_seconds": 0.0067065000000638975,
+          "mean_seconds": 0.0067065000000638975
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006712200000038138,
+          "maximum_seconds": 0.006712200000038138,
+          "mean_seconds": 0.006712200000038138
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00941530000000057,
+          "maximum_seconds": 0.0013810000000376021,
+          "mean_seconds": 0.0011769125000000713
+        }
+      }
+    },
+    {
+      "sequence": 15,
+      "at": "2026-09-15T20:28:56Z",
+      "window_id": 15,
+      "start_seconds": 1057.5867412,
+      "end_seconds": 1063.1968874,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.606132399999979,
+          "maximum_seconds": 0.7178010000000086,
+          "mean_seconds": 0.7007665499999973
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.578066800000215,
+          "maximum_seconds": 0.7130337999999483,
+          "mean_seconds": 0.6972583500000269
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.310000033707183e-05,
+          "maximum_seconds": 4.700000090451795e-06,
+          "mean_seconds": 4.137500042133979e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.009989699999778168,
+          "maximum_seconds": 0.0033267999999679887,
+          "mean_seconds": 0.001248712499972271
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008105800000066665,
+          "maximum_seconds": 0.008105800000066665,
+          "mean_seconds": 0.008105800000066665
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00811270000008335,
+          "maximum_seconds": 0.00811270000008335,
+          "mean_seconds": 0.00811270000008335
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009199999999964348,
+          "maximum_seconds": 0.0013664999999036809,
+          "mean_seconds": 0.0011499999999955435
+        }
+      }
+    },
+    {
+      "sequence": 16,
+      "at": "2026-09-15T20:29:02Z",
+      "window_id": 16,
+      "start_seconds": 1063.1968874,
+      "end_seconds": 1068.8164574,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.632842900000014,
+          "maximum_seconds": 0.713208300000133,
+          "mean_seconds": 0.7041053625000018
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.587191200000007,
+          "maximum_seconds": 0.7115936000000147,
+          "mean_seconds": 0.6983989000000008
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.59000000571541e-05,
+          "maximum_seconds": 5.200000032345997e-06,
+          "mean_seconds": 4.487500007144263e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010005699999737772,
+          "maximum_seconds": 0.0033449000000018714,
+          "mean_seconds": 0.0012507124999672214
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008186000000023341,
+          "maximum_seconds": 0.008186000000023341,
+          "mean_seconds": 0.008186000000023341
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008192600000029415,
+          "maximum_seconds": 0.008192600000029415,
+          "mean_seconds": 0.008192600000029415
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009395100000347156,
+          "maximum_seconds": 0.0014547000000675325,
+          "mean_seconds": 0.0011743875000433945
+        }
+      }
+    },
+    {
+      "sequence": 17,
+      "at": "2026-09-15T20:29:07Z",
+      "window_id": 17,
+      "start_seconds": 1068.8164574,
+      "end_seconds": 1074.3993163,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.58048389999999,
+          "maximum_seconds": 0.7054628000000776,
+          "mean_seconds": 0.6975604874999988
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.5560427000000345,
+          "maximum_seconds": 0.7038833000001432,
+          "mean_seconds": 0.6945053375000043
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.509999987727497e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.387499984659371e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.006898200000250654,
+          "maximum_seconds": 0.003410700000131328,
+          "mean_seconds": 0.0008622750000313317
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007052500000099826,
+          "maximum_seconds": 0.007052500000099826,
+          "mean_seconds": 0.007052500000099826
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007115599999906408,
+          "maximum_seconds": 0.007115599999906408,
+          "mean_seconds": 0.007115599999906408
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00895919999970829,
+          "maximum_seconds": 0.0012181999998119863,
+          "mean_seconds": 0.0011198999999635362
+        }
+      }
+    },
+    {
+      "sequence": 18,
+      "at": "2026-09-15T20:29:13Z",
+      "window_id": 18,
+      "start_seconds": 1074.3993163,
+      "end_seconds": 1079.8980083,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.517124499999909,
+          "maximum_seconds": 0.7116290999999819,
+          "mean_seconds": 0.6896405624999886
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.45793649999996,
+          "maximum_seconds": 0.7101900999998634,
+          "mean_seconds": 0.682242062499995
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.310000010969816e-05,
+          "maximum_seconds": 4.700000090451795e-06,
+          "mean_seconds": 4.13750001371227e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.01031499999976404,
+          "maximum_seconds": 0.003466300000127376,
+          "mean_seconds": 0.001289374999970505
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.018060799999830124,
+          "maximum_seconds": 0.018060799999830124,
+          "mean_seconds": 0.018060799999830124
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.018102499999940846,
+          "maximum_seconds": 0.018102499999940846,
+          "mean_seconds": 0.018102499999940846
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.008986200000208555,
+          "maximum_seconds": 0.0012370999997983745,
+          "mean_seconds": 0.0011232750000260694
+        }
+      }
+    },
+    {
+      "sequence": 19,
+      "at": "2026-09-15T20:29:18Z",
+      "window_id": 19,
+      "start_seconds": 1079.8980083,
+      "end_seconds": 1085.3933757,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.470664100000022,
+          "maximum_seconds": 0.7187187000001813,
+          "mean_seconds": 0.6838330125000027
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.46491799999967,
+          "maximum_seconds": 0.713244799999984,
+          "mean_seconds": 0.6831147499999588
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.510000010464864e-05,
+          "maximum_seconds": 5.100000180391362e-06,
+          "mean_seconds": 4.38750001308108e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010652299999719617,
+          "maximum_seconds": 0.00359929999990527,
+          "mean_seconds": 0.001331537499964952
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.0068448999998054205,
+          "maximum_seconds": 0.0068448999998054205,
+          "mean_seconds": 0.0068448999998054205
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006871499999988373,
+          "maximum_seconds": 0.006871499999988373,
+          "mean_seconds": 0.006871499999988373
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009235300000455027,
+          "maximum_seconds": 0.0011896000000888307,
+          "mean_seconds": 0.0011544125000568783
+        }
+      }
+    },
+    {
+      "sequence": 20,
+      "at": "2026-09-15T20:29:24Z",
+      "window_id": 20,
+      "start_seconds": 1085.3933757,
+      "end_seconds": 1090.9250689,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.540360200000123,
+          "maximum_seconds": 0.7029813999999988,
+          "mean_seconds": 0.6925450250000154
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.502748199999587,
+          "maximum_seconds": 0.6978913000000375,
+          "mean_seconds": 0.6878435249999484
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.339999989293574e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.174999986616967e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007133000000294487,
+          "maximum_seconds": 0.0035545999999158084,
+          "mean_seconds": 0.0008916250000368109
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008642700000109471,
+          "maximum_seconds": 0.008642700000109471,
+          "mean_seconds": 0.008642700000109471
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008685100000093371,
+          "maximum_seconds": 0.008685100000093371,
+          "mean_seconds": 0.008685100000093371
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009443599999713115,
+          "maximum_seconds": 0.001294599999937418,
+          "mean_seconds": 0.0011804499999641394
+        }
+      }
+    },
+    {
+      "sequence": 21,
+      "at": "2026-09-15T20:29:29Z",
+      "window_id": 21,
+      "start_seconds": 1090.9250689,
+      "end_seconds": 1096.4149742,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.496622099999968,
+          "maximum_seconds": 0.6965681000001496,
+          "mean_seconds": 0.687077762499996
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.457932899999832,
+          "maximum_seconds": 0.6950134000001071,
+          "mean_seconds": 0.682241612499979
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.4200000072814873e-05,
+          "maximum_seconds": 4.899999794361065e-06,
+          "mean_seconds": 4.275000009101859e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010799500000302942,
+          "maximum_seconds": 0.0036150000000816362,
+          "mean_seconds": 0.0013499375000378677
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008122400000047492,
+          "maximum_seconds": 0.008122400000047492,
+          "mean_seconds": 0.008122400000047492
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008179100000006656,
+          "maximum_seconds": 0.008179100000006656,
+          "mean_seconds": 0.008179100000006656
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009473499999785417,
+          "maximum_seconds": 0.0015897999999197054,
+          "mean_seconds": 0.0011841874999731772
+        }
+      }
+    },
+    {
+      "sequence": 22,
+      "at": "2026-09-15T20:29:35Z",
+      "window_id": 22,
+      "start_seconds": 1096.4149742,
+      "end_seconds": 1101.9151736,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.478423000000021,
+          "maximum_seconds": 0.690964299999905,
+          "mean_seconds": 0.6848028750000026
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.467450900000131,
+          "maximum_seconds": 0.6941319000000021,
+          "mean_seconds": 0.6834313625000163
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.349999997226405e-05,
+          "maximum_seconds": 4.800000169780105e-06,
+          "mean_seconds": 4.187499996533006e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010624399999869638,
+          "maximum_seconds": 0.0035662000000229455,
+          "mean_seconds": 0.0013280499999837048
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.009326999999984764,
+          "maximum_seconds": 0.009326999999984764,
+          "mean_seconds": 0.009326999999984764
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.009333700000070166,
+          "maximum_seconds": 0.009333700000070166,
+          "mean_seconds": 0.009333700000070166
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009317399999872578,
+          "maximum_seconds": 0.0014744000000064261,
+          "mean_seconds": 0.0011646749999840722
+        }
+      }
+    },
+    {
+      "sequence": 23,
+      "at": "2026-09-15T20:29:41Z",
+      "window_id": 23,
+      "start_seconds": 1101.9151736,
+      "end_seconds": 1107.5665884,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.659739499999887,
+          "maximum_seconds": 0.7295304000001579,
+          "mean_seconds": 0.7074674374999859
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.622699500000181,
+          "maximum_seconds": 0.7278707000000395,
+          "mean_seconds": 0.7028374375000226
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.4400000231471495e-05,
+          "maximum_seconds": 5.500000042957254e-06,
+          "mean_seconds": 4.300000028933937e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00729109999974753,
+          "maximum_seconds": 0.003721699999914563,
+          "mean_seconds": 0.0009113874999684413
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007827000000133921,
+          "maximum_seconds": 0.007827000000133921,
+          "mean_seconds": 0.007827000000133921
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007833200000050056,
+          "maximum_seconds": 0.007833200000050056,
+          "mean_seconds": 0.007833200000050056
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009687899999562433,
+          "maximum_seconds": 0.0013535999999021442,
+          "mean_seconds": 0.001210987499945304
+        }
+      }
+    },
+    {
+      "sequence": 24,
+      "at": "2026-09-15T20:29:46Z",
+      "window_id": 24,
+      "start_seconds": 1107.5665884,
+      "end_seconds": 1112.61616,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 4.964684000000034,
+          "maximum_seconds": 0.762010299999929,
+          "mean_seconds": 0.7092405714285762
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.019083600000158,
+          "maximum_seconds": 0.77040420000003,
+          "mean_seconds": 0.7170119428571654
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.0900000183464726e-05,
+          "maximum_seconds": 5.000000101063051e-06,
+          "mean_seconds": 4.414285740494961e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.010994400000072346,
+          "maximum_seconds": 0.003856000000041604,
+          "mean_seconds": 0.0015706285714389065
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007213599999886355,
+          "maximum_seconds": 0.007213599999886355,
+          "mean_seconds": 0.007213599999886355
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007219699999950535,
+          "maximum_seconds": 0.007219699999950535,
+          "mean_seconds": 0.007219699999950535
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.008557699999983015,
+          "maximum_seconds": 0.0015802000000348926,
+          "mean_seconds": 0.001222528571426145
+        }
+      }
+    },
+    {
+      "sequence": 25,
+      "at": "2026-09-15T20:29:51Z",
+      "window_id": 25,
+      "start_seconds": 1112.61616,
+      "end_seconds": 1118.1384476,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.61162319999994,
+          "maximum_seconds": 0.7832026000000951,
+          "mean_seconds": 0.7014528999999925
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.495406100000309,
+          "maximum_seconds": 0.6980503999998291,
+          "mean_seconds": 0.6869257625000387
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.410000022086024e-05,
+          "maximum_seconds": 5.000000101063051e-06,
+          "mean_seconds": 4.26250002760753e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007041499999786538,
+          "maximum_seconds": 0.0035006999999041,
+          "mean_seconds": 0.0008801874999733172
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006956700000046112,
+          "maximum_seconds": 0.006956700000046112,
+          "mean_seconds": 0.006956700000046112
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006963600000062797,
+          "maximum_seconds": 0.006963600000062797,
+          "mean_seconds": 0.006963600000062797
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009428299999626688,
+          "maximum_seconds": 0.0015025000000150612,
+          "mean_seconds": 0.001178537499953336
+        }
+      }
+    },
+    {
+      "sequence": 26,
+      "at": "2026-09-15T20:29:57Z",
+      "window_id": 26,
+      "start_seconds": 1118.1384476,
+      "end_seconds": 1123.6267231,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.490473199999997,
+          "maximum_seconds": 0.6997794999999769,
+          "mean_seconds": 0.6863091499999996
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.456620000000385,
+          "maximum_seconds": 0.694693099999995,
+          "mean_seconds": 0.6820775000000481
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.410000022086024e-05,
+          "maximum_seconds": 5.200000032345997e-06,
+          "mean_seconds": 4.26250002760753e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.01087920000009035,
+          "maximum_seconds": 0.0037444999998115236,
+          "mean_seconds": 0.0013599000000112937
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008096000000023196,
+          "maximum_seconds": 0.008096000000023196,
+          "mean_seconds": 0.008096000000023196
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00810149999983878,
+          "maximum_seconds": 0.00810149999983878,
+          "mean_seconds": 0.00810149999983878
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009144600000126957,
+          "maximum_seconds": 0.0012696999999661784,
+          "mean_seconds": 0.0011430750000158696
+        }
+      }
+    },
+    {
+      "sequence": 27,
+      "at": "2026-09-15T20:30:02Z",
+      "window_id": 27,
+      "start_seconds": 1123.6267231,
+      "end_seconds": 1129.2518301,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.592279100000042,
+          "maximum_seconds": 0.7255826999999044,
+          "mean_seconds": 0.6990348875000052
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.5928347999999914,
+          "maximum_seconds": 0.7240355999999792,
+          "mean_seconds": 0.6991043499999989
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.510000010464864e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.38750001308108e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010630099999843878,
+          "maximum_seconds": 0.003581599999961327,
+          "mean_seconds": 0.0013287624999804848
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008469999999988431,
+          "maximum_seconds": 0.008469999999988431,
+          "mean_seconds": 0.008469999999988431
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008475900000121328,
+          "maximum_seconds": 0.008475900000121328,
+          "mean_seconds": 0.008475900000121328
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009515399999827423,
+          "maximum_seconds": 0.00131439999995564,
+          "mean_seconds": 0.0011894249999784279
+        }
+      }
+    },
+    {
+      "sequence": 28,
+      "at": "2026-09-15T20:30:08Z",
+      "window_id": 28,
+      "start_seconds": 1129.2518301,
+      "end_seconds": 1134.7918223,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.542415899999924,
+          "maximum_seconds": 0.7242025000000467,
+          "mean_seconds": 0.6928019874999904
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.510718700000098,
+          "maximum_seconds": 0.7131197000001066,
+          "mean_seconds": 0.6888398375000122
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.54000001152599e-05,
+          "maximum_seconds": 5.80000005356851e-06,
+          "mean_seconds": 4.4250000144074875e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007538800000020274,
+          "maximum_seconds": 0.00391869999998562,
+          "mean_seconds": 0.0009423500000025342
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006919599999946513,
+          "maximum_seconds": 0.006919599999946513,
+          "mean_seconds": 0.006919599999946513
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006924999999910142,
+          "maximum_seconds": 0.006924999999910142,
+          "mean_seconds": 0.006924999999910142
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009691900000007081,
+          "maximum_seconds": 0.0014656999999260734,
+          "mean_seconds": 0.0012114875000008851
+        }
+      }
+    },
+    {
+      "sequence": 29,
+      "at": "2026-09-15T20:30:13Z",
+      "window_id": 29,
+      "start_seconds": 1134.7918223,
+      "end_seconds": 1140.3485963,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.552661000000171,
+          "maximum_seconds": 0.7211382000000413,
+          "mean_seconds": 0.6940826250000214
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.527295700000195,
+          "maximum_seconds": 0.7172338999998829,
+          "mean_seconds": 0.6909119625000244
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.4200000072814873e-05,
+          "maximum_seconds": 4.79999994240643e-06,
+          "mean_seconds": 4.275000009101859e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010438300000032541,
+          "maximum_seconds": 0.003558999999995649,
+          "mean_seconds": 0.0013047875000040676
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006379500000093685,
+          "maximum_seconds": 0.006379500000093685,
+          "mean_seconds": 0.006379500000093685
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006385399999999208,
+          "maximum_seconds": 0.006385399999999208,
+          "mean_seconds": 0.006385399999999208
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009147300000222458,
+          "maximum_seconds": 0.0012693999999555672,
+          "mean_seconds": 0.0011434125000278073
+        }
+      }
+    },
+    {
+      "sequence": 30,
+      "at": "2026-09-15T20:30:18Z",
+      "window_id": 30,
+      "start_seconds": 1140.3485963,
+      "end_seconds": 1145.3510267,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.018818699999883,
+          "maximum_seconds": 0.7626300999997966,
+          "mean_seconds": 0.7169740999999833
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 4.976463999999851,
+          "maximum_seconds": 0.7609198999998625,
+          "mean_seconds": 0.7109234285714072
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.0800000104136416e-05,
+          "maximum_seconds": 4.999999873689376e-06,
+          "mean_seconds": 4.4000000148766305e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.007014199999730408,
+          "maximum_seconds": 0.0035001999999622058,
+          "mean_seconds": 0.0010020285713900584
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007418399999778558,
+          "maximum_seconds": 0.007418399999778558,
+          "mean_seconds": 0.007418399999778558
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007423900000048889,
+          "maximum_seconds": 0.007423900000048889,
+          "mean_seconds": 0.007423900000048889
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.008471099999951548,
+          "maximum_seconds": 0.0012746999998398678,
+          "mean_seconds": 0.0012101571428502211
+        }
+      }
+    },
+    {
+      "sequence": 31,
+      "at": "2026-09-15T20:30:24Z",
+      "window_id": 31,
+      "start_seconds": 1145.3510267,
+      "end_seconds": 1150.8660812,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.523051000000123,
+          "maximum_seconds": 0.7093200000001616,
+          "mean_seconds": 0.6903813750000154
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.484860399999889,
+          "maximum_seconds": 0.6984552999999778,
+          "mean_seconds": 0.6856075499999861
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.239999978177366e-05,
+          "maximum_seconds": 4.5999997837498086e-06,
+          "mean_seconds": 4.049999972721707e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.0105121000001418,
+          "maximum_seconds": 0.003552900000158843,
+          "mean_seconds": 0.001314012500017725
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00674010000011549,
+          "maximum_seconds": 0.00674010000011549,
+          "mean_seconds": 0.00674010000011549
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006746000000021013,
+          "maximum_seconds": 0.006746000000021013,
+          "mean_seconds": 0.006746000000021013
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00909910000018499,
+          "maximum_seconds": 0.0012904000000162341,
+          "mean_seconds": 0.0011373875000231237
+        }
+      }
+    },
+    {
+      "sequence": 32,
+      "at": "2026-09-15T20:30:29Z",
+      "window_id": 32,
+      "start_seconds": 1150.8660812,
+      "end_seconds": 1156.4359986,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.558242500000006,
+          "maximum_seconds": 0.7088114000000587,
+          "mean_seconds": 0.6947803125000007
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.538606999999956,
+          "maximum_seconds": 0.7071346999998696,
+          "mean_seconds": 0.6923258749999945
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.519999995660328e-05,
+          "maximum_seconds": 5.6999999742402e-06,
+          "mean_seconds": 4.39999999457541e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010363999999754014,
+          "maximum_seconds": 0.003461799999968207,
+          "mean_seconds": 0.0012954999999692518
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008382799999935742,
+          "maximum_seconds": 0.008382799999935742,
+          "mean_seconds": 0.008382799999935742
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008388899999999921,
+          "maximum_seconds": 0.008388899999999921,
+          "mean_seconds": 0.008388899999999921
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009193999999979496,
+          "maximum_seconds": 0.0012532000000646804,
+          "mean_seconds": 0.001149249999997437
+        }
+      }
+    },
+    {
+      "sequence": 33,
+      "at": "2026-09-15T20:30:35Z",
+      "window_id": 33,
+      "start_seconds": 1156.4359986,
+      "end_seconds": 1162.0057789,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.544200899999851,
+          "maximum_seconds": 0.7156623999999283,
+          "mean_seconds": 0.6930251124999813
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.54116560000034,
+          "maximum_seconds": 0.7301005000001624,
+          "mean_seconds": 0.6926457000000426
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.7100000326972804e-05,
+          "maximum_seconds": 5.200000032345997e-06,
+          "mean_seconds": 4.6375000408716005e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.006867399999464396,
+          "maximum_seconds": 0.0033879999998589483,
+          "mean_seconds": 0.0008584249999330495
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008885599999985061,
+          "maximum_seconds": 0.008885599999985061,
+          "mean_seconds": 0.008885599999985061
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008919500000047265,
+          "maximum_seconds": 0.008919500000047265,
+          "mean_seconds": 0.008919500000047265
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009221699999670818,
+          "maximum_seconds": 0.0015384000000722153,
+          "mean_seconds": 0.0011527124999588523
+        }
+      }
+    },
+    {
+      "sequence": 34,
+      "at": "2026-09-15T20:30:41Z",
+      "window_id": 34,
+      "start_seconds": 1162.0057789,
+      "end_seconds": 1167.6086686,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.661399500000016,
+          "maximum_seconds": 0.7464766999999028,
+          "mean_seconds": 0.707674937500002
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.572712000000365,
+          "maximum_seconds": 0.7417245000001458,
+          "mean_seconds": 0.6965890000000456
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.410000022086024e-05,
+          "maximum_seconds": 5.000000101063051e-06,
+          "mean_seconds": 4.26250002760753e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010461499999792068,
+          "maximum_seconds": 0.003561799999943105,
+          "mean_seconds": 0.0013076874999740085
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006736499999988155,
+          "maximum_seconds": 0.006736499999988155,
+          "mean_seconds": 0.006736499999988155
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006741899999951784,
+          "maximum_seconds": 0.006741899999951784,
+          "mean_seconds": 0.006741899999951784
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009168600000066363,
+          "maximum_seconds": 0.001215400000091904,
+          "mean_seconds": 0.0011460750000082953
+        }
+      }
+    },
+    {
+      "sequence": 35,
+      "at": "2026-09-15T20:30:46Z",
+      "window_id": 35,
+      "start_seconds": 1167.6086686,
+      "end_seconds": 1173.171616,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.535746000000017,
+          "maximum_seconds": 0.7096004999998513,
+          "mean_seconds": 0.6919682500000022
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.531000800000129,
+          "maximum_seconds": 0.7079628999999841,
+          "mean_seconds": 0.6913751000000161
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.559999981916917e-05,
+          "maximum_seconds": 4.600000011123484e-06,
+          "mean_seconds": 4.449999977396146e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010409399999844027,
+          "maximum_seconds": 0.0034700000001066655,
+          "mean_seconds": 0.0013011749999805033
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00871170000004895,
+          "maximum_seconds": 0.00871170000004895,
+          "mean_seconds": 0.00871170000004895
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008718099999896367,
+          "maximum_seconds": 0.008718099999896367,
+          "mean_seconds": 0.008718099999896367
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009203699999943638,
+          "maximum_seconds": 0.001243000000158645,
+          "mean_seconds": 0.0011504624999929547
+        }
+      }
+    },
+    {
+      "sequence": 36,
+      "at": "2026-09-15T20:30:52Z",
+      "window_id": 36,
+      "start_seconds": 1173.171616,
+      "end_seconds": 1178.686149,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.523729199999934,
+          "maximum_seconds": 0.7088094000000638,
+          "mean_seconds": 0.6904661499999918
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.485785300000089,
+          "maximum_seconds": 0.7057053999999425,
+          "mean_seconds": 0.6857231625000111
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.6699999782285886e-05,
+          "maximum_seconds": 5.100000180391362e-06,
+          "mean_seconds": 4.587499972785736e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007145999999920605,
+          "maximum_seconds": 0.003597500000068976,
+          "mean_seconds": 0.0008932499999900756
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008312799999885101,
+          "maximum_seconds": 0.008312799999885101,
+          "mean_seconds": 0.008312799999885101
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008318299999928058,
+          "maximum_seconds": 0.008318299999928058,
+          "mean_seconds": 0.008318299999928058
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009582199999840668,
+          "maximum_seconds": 0.0012764000000515807,
+          "mean_seconds": 0.0011977749999800835
+        }
+      }
+    },
+    {
+      "sequence": 37,
+      "at": "2026-09-15T20:30:57Z",
+      "window_id": 37,
+      "start_seconds": 1178.686149,
+      "end_seconds": 1184.1536059,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.486960500000123,
+          "maximum_seconds": 0.699777499999982,
+          "mean_seconds": 0.6858700625000154
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.436252199999672,
+          "maximum_seconds": 0.6948141000000305,
+          "mean_seconds": 0.679531524999959
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.510000010464864e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.38750001308108e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010484599999927013,
+          "maximum_seconds": 0.003489899999976842,
+          "mean_seconds": 0.0013105749999908767
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00804840000000695,
+          "maximum_seconds": 0.00804840000000695,
+          "mean_seconds": 0.00804840000000695
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008055500000182292,
+          "maximum_seconds": 0.008055500000182292,
+          "mean_seconds": 0.008055500000182292
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009164199999759148,
+          "maximum_seconds": 0.0014615000000048894,
+          "mean_seconds": 0.0011455249999698935
+        }
+      }
+    },
+    {
+      "sequence": 38,
+      "at": "2026-09-15T20:31:03Z",
+      "window_id": 38,
+      "start_seconds": 1184.1536059,
+      "end_seconds": 1189.6783649,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.478219200000012,
+          "maximum_seconds": 0.6938437000001159,
+          "mean_seconds": 0.6847774000000015
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.493501800000104,
+          "maximum_seconds": 0.7129800000000159,
+          "mean_seconds": 0.686687725000013
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.5299999808557914e-05,
+          "maximum_seconds": 4.999999873689376e-06,
+          "mean_seconds": 4.412499976069739e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010807400000203415,
+          "maximum_seconds": 0.003656399999954374,
+          "mean_seconds": 0.001350925000025427
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007826999999906548,
+          "maximum_seconds": 0.007826999999906548,
+          "mean_seconds": 0.007826999999906548
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007832600000028833,
+          "maximum_seconds": 0.007832600000028833,
+          "mean_seconds": 0.007832600000028833
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009228000000121028,
+          "maximum_seconds": 0.0012142999999014137,
+          "mean_seconds": 0.0011535000000151285
+        }
+      }
+    },
+    {
+      "sequence": 39,
+      "at": "2026-09-15T20:31:08Z",
+      "window_id": 39,
+      "start_seconds": 1189.6783649,
+      "end_seconds": 1195.2653346,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.615535500000078,
+          "maximum_seconds": 0.7251902000000428,
+          "mean_seconds": 0.7019419375000098
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.560400899999877,
+          "maximum_seconds": 0.7072058000001107,
+          "mean_seconds": 0.6950501124999846
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.8400000221372466e-05,
+          "maximum_seconds": 5.6999999742402e-06,
+          "mean_seconds": 4.800000027671558e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007132099999807906,
+          "maximum_seconds": 0.0035683000000972243,
+          "mean_seconds": 0.0008915124999759882
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006581499999811058,
+          "maximum_seconds": 0.006581499999811058,
+          "mean_seconds": 0.006581499999811058
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006588899999997011,
+          "maximum_seconds": 0.006588899999997011,
+          "mean_seconds": 0.006588899999997011
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009114499999668624,
+          "maximum_seconds": 0.0013432999999167805,
+          "mean_seconds": 0.001139312499958578
+        }
+      }
+    },
+    {
+      "sequence": 40,
+      "at": "2026-09-15T20:31:14Z",
+      "window_id": 40,
+      "start_seconds": 1195.2653346,
+      "end_seconds": 1200.8668003,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.572419299999865,
+          "maximum_seconds": 0.7047933000001194,
+          "mean_seconds": 0.6965524124999831
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.56875980000018,
+          "maximum_seconds": 0.7171144000001277,
+          "mean_seconds": 0.6960949750000225
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.569999989849748e-05,
+          "maximum_seconds": 5.399999963628943e-06,
+          "mean_seconds": 4.462499987312185e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010679499999923792,
+          "maximum_seconds": 0.0035416999999142718,
+          "mean_seconds": 0.001334937499990474
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008582700000033583,
+          "maximum_seconds": 0.008582700000033583,
+          "mean_seconds": 0.008582700000033583
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008588700000018434,
+          "maximum_seconds": 0.008588700000018434,
+          "mean_seconds": 0.008588700000018434
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00975149999999303,
+          "maximum_seconds": 0.001390599999922415,
+          "mean_seconds": 0.0012189374999991287
+        }
+      }
+    },
+    {
+      "sequence": 41,
+      "at": "2026-09-15T20:31:19Z",
+      "window_id": 41,
+      "start_seconds": 1200.8668003,
+      "end_seconds": 1206.4152069,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.572986700000001,
+          "maximum_seconds": 0.7251384000001053,
+          "mean_seconds": 0.6966233375000002
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.518085000000383,
+          "maximum_seconds": 0.7073912999999266,
+          "mean_seconds": 0.6897606250000479
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.409999999348656e-05,
+          "maximum_seconds": 4.800000169780105e-06,
+          "mean_seconds": 4.26249999918582e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010824800000136747,
+          "maximum_seconds": 0.003646300000127667,
+          "mean_seconds": 0.0013531000000170934
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00629849999995713,
+          "maximum_seconds": 0.00629849999995713,
+          "mean_seconds": 0.00629849999995713
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00630419999993137,
+          "maximum_seconds": 0.00630419999993137,
+          "mean_seconds": 0.00630419999993137
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00939040000002933,
+          "maximum_seconds": 0.001237299999957031,
+          "mean_seconds": 0.0011738000000036664
+        }
+      }
+    },
+    {
+      "sequence": 42,
+      "at": "2026-09-15T20:31:25Z",
+      "window_id": 42,
+      "start_seconds": 1206.4152069,
+      "end_seconds": 1212.0386035,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.618412300000045,
+          "maximum_seconds": 0.7597545999999511,
+          "mean_seconds": 0.7023015375000057
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.596236699999963,
+          "maximum_seconds": 0.7581296999999267,
+          "mean_seconds": 0.6995295874999954
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.550000019458821e-05,
+          "maximum_seconds": 4.79999994240643e-06,
+          "mean_seconds": 4.437500024323526e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.006930599999805054,
+          "maximum_seconds": 0.003520100000059756,
+          "mean_seconds": 0.0008663249999756317
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006666100000074948,
+          "maximum_seconds": 0.006666100000074948,
+          "mean_seconds": 0.006666100000074948
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006671999999980471,
+          "maximum_seconds": 0.006671999999980471,
+          "mean_seconds": 0.006671999999980471
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009710900000300171,
+          "maximum_seconds": 0.0013344000001325185,
+          "mean_seconds": 0.0012138625000375214
+        }
+      }
+    },
+    {
+      "sequence": 43,
+      "at": "2026-09-15T20:31:31Z",
+      "window_id": 43,
+      "start_seconds": 1212.0386035,
+      "end_seconds": 1217.7043296,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.683839699999908,
+          "maximum_seconds": 0.7601253999998789,
+          "mean_seconds": 0.7104799624999885
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.635834900000191,
+          "maximum_seconds": 0.754787800000031,
+          "mean_seconds": 0.7044793625000239
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.5700000125871156e-05,
+          "maximum_seconds": 6.299999995462713e-06,
+          "mean_seconds": 4.4625000157338945e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010550999999850319,
+          "maximum_seconds": 0.0036064999999325664,
+          "mean_seconds": 0.0013188749999812899
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006673599999885482,
+          "maximum_seconds": 0.006673599999885482,
+          "mean_seconds": 0.006673599999885482
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006679300000087096,
+          "maximum_seconds": 0.006679300000087096,
+          "mean_seconds": 0.006679300000087096
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009118299999954615,
+          "maximum_seconds": 0.0012902000000849512,
+          "mean_seconds": 0.001139787499994327
+        }
+      }
+    },
+    {
+      "sequence": 44,
+      "at": "2026-09-15T20:31:36Z",
+      "window_id": 44,
+      "start_seconds": 1217.7043296,
+      "end_seconds": 1223.159131,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.443799800000079,
+          "maximum_seconds": 0.6955370999999104,
+          "mean_seconds": 0.6804749750000099
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.422890999999709,
+          "maximum_seconds": 0.6935852999999952,
+          "mean_seconds": 0.6778613749999636
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.720000017892744e-05,
+          "maximum_seconds": 6.4000000747910235e-06,
+          "mean_seconds": 4.65000002236593e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010075799999640367,
+          "maximum_seconds": 0.0033590999998978077,
+          "mean_seconds": 0.0012594749999550459
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008722799999986819,
+          "maximum_seconds": 0.008722799999986819,
+          "mean_seconds": 0.008722799999986819
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008728499999961059,
+          "maximum_seconds": 0.008728499999961059,
+          "mean_seconds": 0.008728499999961059
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00924890000032974,
+          "maximum_seconds": 0.001222000000097978,
+          "mean_seconds": 0.0011561125000412176
+        }
+      }
+    },
+    {
+      "sequence": 45,
+      "at": "2026-09-15T20:31:42Z",
+      "window_id": 45,
+      "start_seconds": 1223.159131,
+      "end_seconds": 1228.7141703,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.5716293000000405,
+          "maximum_seconds": 0.7072067999999945,
+          "mean_seconds": 0.6964536625000051
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.527326400000447,
+          "maximum_seconds": 0.7056764999999814,
+          "mean_seconds": 0.6909158000000559
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.7200000406301115e-05,
+          "maximum_seconds": 5.200000032345997e-06,
+          "mean_seconds": 4.650000050787639e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.007266500000014275,
+          "maximum_seconds": 0.0036243999998077925,
+          "mean_seconds": 0.0009083125000017844
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00802889999999934,
+          "maximum_seconds": 0.00802889999999934,
+          "mean_seconds": 0.00802889999999934
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008034700000052908,
+          "maximum_seconds": 0.008034700000052908,
+          "mean_seconds": 0.008034700000052908
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009022600000207603,
+          "maximum_seconds": 0.00124510000000555,
+          "mean_seconds": 0.0011278250000259504
+        }
+      }
+    },
+    {
+      "sequence": 46,
+      "at": "2026-09-15T20:31:47Z",
+      "window_id": 46,
+      "start_seconds": 1228.7141703,
+      "end_seconds": 1234.2523278,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.531924599999911,
+          "maximum_seconds": 0.7016154999998889,
+          "mean_seconds": 0.6914905749999889
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.506460899999638,
+          "maximum_seconds": 0.6977182000000539,
+          "mean_seconds": 0.6883076124999548
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.6799999406866846e-05,
+          "maximum_seconds": 5.299999884300632e-06,
+          "mean_seconds": 4.599999925858356e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010452500000610598,
+          "maximum_seconds": 0.0034846000000925414,
+          "mean_seconds": 0.0013065625000763248
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008480299999973795,
+          "maximum_seconds": 0.008480299999973795,
+          "mean_seconds": 0.008480299999973795
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008487699999932374,
+          "maximum_seconds": 0.008487699999932374,
+          "mean_seconds": 0.008487699999932374
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.00919490000001133,
+          "maximum_seconds": 0.001245299999936833,
+          "mean_seconds": 0.0011493625000014163
+        }
+      }
+    },
+    {
+      "sequence": 47,
+      "at": "2026-09-15T20:31:53Z",
+      "window_id": 47,
+      "start_seconds": 1234.2523278,
+      "end_seconds": 1239.8055533,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.4943530000000464,
+          "maximum_seconds": 0.7016337000000021,
+          "mean_seconds": 0.6867941250000058
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.52245240000002,
+          "maximum_seconds": 0.7352149000000736,
+          "mean_seconds": 0.6903065500000025
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.699999979289714e-05,
+          "maximum_seconds": 5.399999963628943e-06,
+          "mean_seconds": 4.624999974112143e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010930899999721078,
+          "maximum_seconds": 0.0037182999999458843,
+          "mean_seconds": 0.0013663624999651347
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006293899999946007,
+          "maximum_seconds": 0.006293899999946007,
+          "mean_seconds": 0.006293899999946007
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006299399999988964,
+          "maximum_seconds": 0.006299399999988964,
+          "mean_seconds": 0.006299399999988964
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009085899999718094,
+          "maximum_seconds": 0.001206599999932223,
+          "mean_seconds": 0.0011357374999647618
+        }
+      }
+    },
+    {
+      "sequence": 48,
+      "at": "2026-09-15T20:31:58Z",
+      "window_id": 48,
+      "start_seconds": 1239.8055533,
+      "end_seconds": 1245.3435642,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.603545299999951,
+          "maximum_seconds": 0.7477562999999918,
+          "mean_seconds": 0.7004431624999938
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.511140299999624,
+          "maximum_seconds": 0.7124895999997989,
+          "mean_seconds": 0.688892537499953
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.639999977167463e-05,
+          "maximum_seconds": 6.70000008540228e-06,
+          "mean_seconds": 4.549999971459329e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.0070909999999457796,
+          "maximum_seconds": 0.0035146999998687534,
+          "mean_seconds": 0.0008863749999932224
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006663699999990058,
+          "maximum_seconds": 0.006663699999990058,
+          "mean_seconds": 0.006663699999990058
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006670700000086072,
+          "maximum_seconds": 0.006670700000086072,
+          "mean_seconds": 0.006670700000086072
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009226699999999255,
+          "maximum_seconds": 0.0013243000000784377,
+          "mean_seconds": 0.0011533374999999069
+        }
+      }
+    },
+    {
+      "sequence": 49,
+      "at": "2026-09-15T20:32:04Z",
+      "window_id": 49,
+      "start_seconds": 1245.3435642,
+      "end_seconds": 1250.9404607,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.564003800000137,
+          "maximum_seconds": 0.7262293999999656,
+          "mean_seconds": 0.6955004750000171
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.564071999999442,
+          "maximum_seconds": 0.7206011000000672,
+          "mean_seconds": 0.6955089999999302
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.750000041691237e-05,
+          "maximum_seconds": 5.6000001222855644e-06,
+          "mean_seconds": 4.687500052114046e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.01079589999972086,
+          "maximum_seconds": 0.0036496999998689716,
+          "mean_seconds": 0.0013494874999651074
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00831209999978455,
+          "maximum_seconds": 0.00831209999978455,
+          "mean_seconds": 0.00831209999978455
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00831800000014482,
+          "maximum_seconds": 0.00831800000014482,
+          "mean_seconds": 0.00831800000014482
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009393000000272878,
+          "maximum_seconds": 0.0012844000000313827,
+          "mean_seconds": 0.0011741250000341097
+        }
+      }
+    },
+    {
+      "sequence": 50,
+      "at": "2026-09-15T20:32:09Z",
+      "window_id": 50,
+      "start_seconds": 1250.9404607,
+      "end_seconds": 1256.443294,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": false,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.550387300000011,
+          "maximum_seconds": 0.7149625999998079,
+          "mean_seconds": 0.6937984125000014
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.463124899999912,
+          "maximum_seconds": 0.7104196000000229,
+          "mean_seconds": 0.682890612499989
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.700000024764449e-05,
+          "maximum_seconds": 5.500000042957254e-06,
+          "mean_seconds": 4.625000030955562e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.010830899999973553,
+          "maximum_seconds": 0.003658600000107981,
+          "mean_seconds": 0.0013538624999966942
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00635969999984809,
+          "maximum_seconds": 0.00635969999984809,
+          "mean_seconds": 0.00635969999984809
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006366300000081537,
+          "maximum_seconds": 0.006366300000081537,
+          "mean_seconds": 0.006366300000081537
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009633000000349057,
+          "maximum_seconds": 0.001404800000045725,
+          "mean_seconds": 0.001204125000043632
+        }
+      }
+    },
+    {
+      "sequence": 51,
+      "at": "2026-09-15T20:32:15Z",
+      "window_id": 51,
+      "start_seconds": 1256.443294,
+      "end_seconds": 1261.5882488,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.170404799999915,
+          "maximum_seconds": 0.67030079999995,
+          "mean_seconds": 0.6463005999999893
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.118888700000298,
+          "maximum_seconds": 0.6530655999999908,
+          "mean_seconds": 0.6398610875000372
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.339999989293574e-05,
+          "maximum_seconds": 4.399999852466863e-06,
+          "mean_seconds": 4.174999986616967e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00011840000001939188,
+          "maximum_seconds": 1.6100000038932194e-05,
+          "mean_seconds": 1.4800000002423985e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006909600000199134,
+          "maximum_seconds": 0.006909600000199134,
+          "mean_seconds": 0.006909600000199134
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0069148000000041066,
+          "maximum_seconds": 0.0069148000000041066,
+          "mean_seconds": 0.0069148000000041066
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009694399999716552,
+          "maximum_seconds": 0.0013453999999910593,
+          "mean_seconds": 0.001211799999964569
+        }
+      }
+    },
+    {
+      "sequence": 52,
+      "at": "2026-09-15T20:32:20Z",
+      "window_id": 52,
+      "start_seconds": 1261.5882488,
+      "end_seconds": 1267.0658697,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.431613700000071,
+          "maximum_seconds": 0.6893096000001151,
+          "mean_seconds": 0.6789517125000089
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.45558310000024,
+          "maximum_seconds": 0.6877423000000817,
+          "mean_seconds": 0.68194788750003
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.370000013092067e-05,
+          "maximum_seconds": 4.700000090451795e-06,
+          "mean_seconds": 4.212500016365084e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00012109999988751952,
+          "maximum_seconds": 1.7500000012660166e-05,
+          "mean_seconds": 1.513749998593994e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007654900000034104,
+          "maximum_seconds": 0.007654900000034104,
+          "mean_seconds": 0.007654900000034104
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00766010000006645,
+          "maximum_seconds": 0.00766010000006645,
+          "mean_seconds": 0.00766010000006645
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009925899999643661,
+          "maximum_seconds": 0.001866199999994933,
+          "mean_seconds": 0.0012407374999554577
+        }
+      }
+    },
+    {
+      "sequence": 53,
+      "at": "2026-09-15T20:32:26Z",
+      "window_id": 53,
+      "start_seconds": 1267.0658697,
+      "end_seconds": 1272.5271498,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.461575299999822,
+          "maximum_seconds": 0.691462300000012,
+          "mean_seconds": 0.6826969124999778
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.440250100000185,
+          "maximum_seconds": 0.6898839000000407,
+          "mean_seconds": 0.6800312625000231
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.580000043257314e-05,
+          "maximum_seconds": 5.000000101063051e-06,
+          "mean_seconds": 4.475000054071643e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00011619999941103742,
+          "maximum_seconds": 1.5599999869664316e-05,
+          "mean_seconds": 1.4524999926379678e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007999100000006365,
+          "maximum_seconds": 0.007999100000006365,
+          "mean_seconds": 0.007999100000006365
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008023300000104427,
+          "maximum_seconds": 0.008023300000104427,
+          "mean_seconds": 0.008023300000104427
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009448400000110269,
+          "maximum_seconds": 0.0013275999999677879,
+          "mean_seconds": 0.0011810500000137836
+        }
+      }
+    },
+    {
+      "sequence": 54,
+      "at": "2026-09-15T20:32:31Z",
+      "window_id": 54,
+      "start_seconds": 1272.5271498,
+      "end_seconds": 1277.773356,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.211560300000201,
+          "maximum_seconds": 0.7720171999999366,
+          "mean_seconds": 0.744508614285743
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.2253483999998025,
+          "maximum_seconds": 0.7702661999999236,
+          "mean_seconds": 0.7464783428571147
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.5399999887886224e-05,
+          "maximum_seconds": 6.8999997893115506e-06,
+          "mean_seconds": 5.057142841126604e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011359999984961178,
+          "maximum_seconds": 2.0100000028833165e-05,
+          "mean_seconds": 1.6228571407087395e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007589999999936481,
+          "maximum_seconds": 0.007589999999936481,
+          "mean_seconds": 0.007589999999936481
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007595300000048155,
+          "maximum_seconds": 0.007595300000048155,
+          "mean_seconds": 0.007595300000048155
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.00887179999995169,
+          "maximum_seconds": 0.0015427000000727276,
+          "mean_seconds": 0.0012673999999930987
+        }
+      }
+    },
+    {
+      "sequence": 55,
+      "at": "2026-09-15T20:32:36Z",
+      "window_id": 55,
+      "start_seconds": 1277.773356,
+      "end_seconds": 1282.873122,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.061260899999979,
+          "maximum_seconds": 0.7358059000000594,
+          "mean_seconds": 0.7230372714285684
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.080502199999955,
+          "maximum_seconds": 0.7521331999998893,
+          "mean_seconds": 0.7257860285714222
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.309999988232448e-05,
+          "maximum_seconds": 5.299999884300632e-06,
+          "mean_seconds": 4.72857141176064e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011270000004515168,
+          "maximum_seconds": 1.7299999854003545e-05,
+          "mean_seconds": 1.610000000645024e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007073199999922508,
+          "maximum_seconds": 0.007073199999922508,
+          "mean_seconds": 0.007073199999922508
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007079299999986688,
+          "maximum_seconds": 0.007079299999986688,
+          "mean_seconds": 0.007079299999986688
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.008936100000482838,
+          "maximum_seconds": 0.0015513999999257067,
+          "mean_seconds": 0.0012765857143546913
+        }
+      }
+    },
+    {
+      "sequence": 56,
+      "at": "2026-09-15T20:32:41Z",
+      "window_id": 56,
+      "start_seconds": 1282.873122,
+      "end_seconds": 1287.9637921,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.112069999999903,
+          "maximum_seconds": 0.7609466999999768,
+          "mean_seconds": 0.7302957142857005
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.071742000000086,
+          "maximum_seconds": 0.7436295999998492,
+          "mean_seconds": 0.7245345714285837
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.210000022590975e-05,
+          "maximum_seconds": 5.100000180391362e-06,
+          "mean_seconds": 4.585714317987108e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00010759999986476032,
+          "maximum_seconds": 1.6599999980826396e-05,
+          "mean_seconds": 1.5371428552108618e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006694200000083583,
+          "maximum_seconds": 0.006694200000083583,
+          "mean_seconds": 0.006694200000083583
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0067013000000315515,
+          "maximum_seconds": 0.0067013000000315515,
+          "mean_seconds": 0.0067013000000315515
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.008960899999920002,
+          "maximum_seconds": 0.001473399999895264,
+          "mean_seconds": 0.0012801285714171432
+        }
+      }
+    },
+    {
+      "sequence": 57,
+      "at": "2026-09-15T20:32:46Z",
+      "window_id": 57,
+      "start_seconds": 1287.9637921,
+      "end_seconds": 1293.0063547,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.066956800000071,
+          "maximum_seconds": 0.7396080000000893,
+          "mean_seconds": 0.7238509714285816
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.022916699999769,
+          "maximum_seconds": 0.7273571999999149,
+          "mean_seconds": 0.7175595285713955
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.349999997226405e-05,
+          "maximum_seconds": 5.900000132896821e-06,
+          "mean_seconds": 4.785714281752007e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.0001161999996384111,
+          "maximum_seconds": 1.7899999875226058e-05,
+          "mean_seconds": 1.659999994834444e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006896399999959613,
+          "maximum_seconds": 0.006896399999959613,
+          "mean_seconds": 0.006896399999959613
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006902699999955075,
+          "maximum_seconds": 0.006902699999955075,
+          "mean_seconds": 0.006902699999955075
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009298500000113563,
+          "maximum_seconds": 0.0015215000000807777,
+          "mean_seconds": 0.0013283571428733662
+        }
+      }
+    },
+    {
+      "sequence": 58,
+      "at": "2026-09-15T20:32:51Z",
+      "window_id": 58,
+      "start_seconds": 1293.0063547,
+      "end_seconds": 1298.2194614,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.15131899999983,
+          "maximum_seconds": 0.7749148999998852,
+          "mean_seconds": 0.7359027142856901
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.192799400000013,
+          "maximum_seconds": 0.7732223000000431,
+          "mean_seconds": 0.7418284857142875
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.349999997226405e-05,
+          "maximum_seconds": 6.299999995462713e-06,
+          "mean_seconds": 4.785714281752007e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011410000001887965,
+          "maximum_seconds": 1.9699999938893598e-05,
+          "mean_seconds": 1.6300000002697095e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007908199999974386,
+          "maximum_seconds": 0.007908199999974386,
+          "mean_seconds": 0.007908199999974386
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007916600000044127,
+          "maximum_seconds": 0.007916600000044127,
+          "mean_seconds": 0.007916600000044127
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009292700000287368,
+          "maximum_seconds": 0.0014983000000938773,
+          "mean_seconds": 0.0013275285714696241
+        }
+      }
+    },
+    {
+      "sequence": 59,
+      "at": "2026-09-15T20:32:56Z",
+      "window_id": 59,
+      "start_seconds": 1298.2194614,
+      "end_seconds": 1303.2694467,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.097199600000067,
+          "maximum_seconds": 0.7775105000000622,
+          "mean_seconds": 0.728171371428581
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.029904600000236,
+          "maximum_seconds": 0.7332384000001184,
+          "mean_seconds": 0.7185578000000338
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.219999985049071e-05,
+          "maximum_seconds": 5.299999884300632e-06,
+          "mean_seconds": 4.599999978641531e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011080000012952951,
+          "maximum_seconds": 1.730000008137722e-05,
+          "mean_seconds": 1.5828571447075645e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.0070897999999033345,
+          "maximum_seconds": 0.0070897999999033345,
+          "mean_seconds": 0.0070897999999033345
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007097100000009959,
+          "maximum_seconds": 0.007097100000009959,
+          "mean_seconds": 0.007097100000009959
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009420200000249679,
+          "maximum_seconds": 0.001834099999996397,
+          "mean_seconds": 0.0013457428571785255
+        }
+      }
+    },
+    {
+      "sequence": 60,
+      "at": "2026-09-15T20:33:01Z",
+      "window_id": 60,
+      "start_seconds": 1303.2694467,
+      "end_seconds": 1308.4551641,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.188448999999991,
+          "maximum_seconds": 0.7758089000001291,
+          "mean_seconds": 0.7412069999999987
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.165507500000331,
+          "maximum_seconds": 0.774034500000198,
+          "mean_seconds": 0.7379296428571901
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.650000030575029e-05,
+          "maximum_seconds": 8.800000159681076e-06,
+          "mean_seconds": 5.214285757964328e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.0001227000000199041,
+          "maximum_seconds": 2.989999984492897e-05,
+          "mean_seconds": 1.7528571431414874e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007456300000058036,
+          "maximum_seconds": 0.007456300000058036,
+          "mean_seconds": 0.007456300000058036
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007463900000175272,
+          "maximum_seconds": 0.007463900000175272,
+          "mean_seconds": 0.007463900000175272
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.00946059999978388,
+          "maximum_seconds": 0.001742100000001301,
+          "mean_seconds": 0.0013515142856834114
+        }
+      }
+    },
+    {
+      "sequence": 61,
+      "at": "2026-09-15T20:33:07Z",
+      "window_id": 61,
+      "start_seconds": 1308.4551641,
+      "end_seconds": 1313.634636,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.117813999999953,
+          "maximum_seconds": 0.7527679000002081,
+          "mean_seconds": 0.731116285714279
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.1597745999999916,
+          "maximum_seconds": 0.779841400000123,
+          "mean_seconds": 0.737110657142856
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.3300000040981104e-05,
+          "maximum_seconds": 5.500000042957254e-06,
+          "mean_seconds": 4.7571428629973e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00010950000000775617,
+          "maximum_seconds": 1.730000008137722e-05,
+          "mean_seconds": 1.5642857143965167e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007420099999990271,
+          "maximum_seconds": 0.007420099999990271,
+          "mean_seconds": 0.007420099999990271
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007425399999874571,
+          "maximum_seconds": 0.007425399999874571,
+          "mean_seconds": 0.007425399999874571
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.008947800000214556,
+          "maximum_seconds": 0.001439500000060434,
+          "mean_seconds": 0.0012782571428877937
+        }
+      }
+    },
+    {
+      "sequence": 62,
+      "at": "2026-09-15T20:33:12Z",
+      "window_id": 62,
+      "start_seconds": 1313.634636,
+      "end_seconds": 1318.7803963,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.190724799999998,
+          "maximum_seconds": 0.7884947000000011,
+          "mean_seconds": 0.741532114285714
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.126881100000219,
+          "maximum_seconds": 0.7710854000001746,
+          "mean_seconds": 0.732411585714317
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.3799999982875306e-05,
+          "maximum_seconds": 6.600000006073969e-06,
+          "mean_seconds": 4.828571426125043e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011790000007749768,
+          "maximum_seconds": 2.4200000098062446e-05,
+          "mean_seconds": 1.684285715392824e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006672200000139128,
+          "maximum_seconds": 0.006672200000139128,
+          "mean_seconds": 0.006672200000139128
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0066778999998859945,
+          "maximum_seconds": 0.0066778999998859945,
+          "mean_seconds": 0.0066778999998859945
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009160399999927904,
+          "maximum_seconds": 0.0014873999998599174,
+          "mean_seconds": 0.001308628571418272
+        }
+      }
+    },
+    {
+      "sequence": 63,
+      "at": "2026-09-15T20:33:17Z",
+      "window_id": 63,
+      "start_seconds": 1318.7803963,
+      "end_seconds": 1323.9780472,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.165160300000025,
+          "maximum_seconds": 0.7537887000000865,
+          "mean_seconds": 0.7378800428571465
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.175776900000301,
+          "maximum_seconds": 0.7673586000000796,
+          "mean_seconds": 0.739396700000043
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.320000018902647e-05,
+          "maximum_seconds": 6.200000143508078e-06,
+          "mean_seconds": 4.742857169860924e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011030000041500898,
+          "maximum_seconds": 1.939999992828234e-05,
+          "mean_seconds": 1.5757142916429855e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008957499999951324,
+          "maximum_seconds": 0.008957499999951324,
+          "mean_seconds": 0.008957499999951324
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008964500000047337,
+          "maximum_seconds": 0.008964500000047337,
+          "mean_seconds": 0.008964500000047337
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009216199999627861,
+          "maximum_seconds": 0.00175079999985428,
+          "mean_seconds": 0.0013165999999468372
+        }
+      }
+    },
+    {
+      "sequence": 64,
+      "at": "2026-09-15T20:33:22Z",
+      "window_id": 64,
+      "start_seconds": 1323.9780472,
+      "end_seconds": 1329.1353269,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.1945907000001625,
+          "maximum_seconds": 0.777938899999981,
+          "mean_seconds": 0.7420843857143089
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.136601199999859,
+          "maximum_seconds": 0.7634368000001359,
+          "mean_seconds": 0.7338001714285513
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.279999964433955e-05,
+          "maximum_seconds": 5.499999815583578e-06,
+          "mean_seconds": 4.68571423490565e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00010820000011335651,
+          "maximum_seconds": 1.6200000118260505e-05,
+          "mean_seconds": 1.5457142873336644e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00837220000016714,
+          "maximum_seconds": 0.00837220000016714,
+          "mean_seconds": 0.00837220000016714
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00838049999993018,
+          "maximum_seconds": 0.00838049999993018,
+          "mean_seconds": 0.00838049999993018
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009045199999718534,
+          "maximum_seconds": 0.0015326000000186468,
+          "mean_seconds": 0.0012921714285312191
+        }
+      }
+    },
+    {
+      "sequence": 65,
+      "at": "2026-09-15T20:33:27Z",
+      "window_id": 65,
+      "start_seconds": 1329.1353269,
+      "end_seconds": 1334.2624414,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.113962399999991,
+          "maximum_seconds": 0.7544791000000259,
+          "mean_seconds": 0.7305660571428559
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.10639789999982,
+          "maximum_seconds": 0.7522853000000396,
+          "mean_seconds": 0.7294854142856886
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.5299999808557914e-05,
+          "maximum_seconds": 8.900000011635711e-06,
+          "mean_seconds": 5.042857115508273e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011210000025130284,
+          "maximum_seconds": 2.040000003944442e-05,
+          "mean_seconds": 1.601428575018612e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.0076483999998799845,
+          "maximum_seconds": 0.0076483999998799845,
+          "mean_seconds": 0.0076483999998799845
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007654399999864836,
+          "maximum_seconds": 0.007654399999864836,
+          "mean_seconds": 0.007654399999864836
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009546300000238261,
+          "maximum_seconds": 0.0015296999999918626,
+          "mean_seconds": 0.0013637571428911802
+        }
+      }
+    },
+    {
+      "sequence": 66,
+      "at": "2026-09-15T20:33:32Z",
+      "window_id": 66,
+      "start_seconds": 1334.2624414,
+      "end_seconds": 1339.3893719,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.13927979999994,
+          "maximum_seconds": 0.751548099999809,
+          "mean_seconds": 0.73418282857142
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.107957200000101,
+          "maximum_seconds": 0.742327400000022,
+          "mean_seconds": 0.7297081714285858
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.3699999903546995e-05,
+          "maximum_seconds": 5.6000001222855644e-06,
+          "mean_seconds": 4.814285700506714e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00013990000002195302,
+          "maximum_seconds": 4.560000002129527e-05,
+          "mean_seconds": 1.998571428885043e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006202900000062073,
+          "maximum_seconds": 0.006202900000062073,
+          "mean_seconds": 0.006202900000062073
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006209600000147475,
+          "maximum_seconds": 0.006209600000147475,
+          "mean_seconds": 0.006209600000147475
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009395299999823692,
+          "maximum_seconds": 0.001674200000024939,
+          "mean_seconds": 0.0013421857142605273
+        }
+      }
+    },
+    {
+      "sequence": 67,
+      "at": "2026-09-15T20:33:38Z",
+      "window_id": 67,
+      "start_seconds": 1339.3893719,
+      "end_seconds": 1344.5007934,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.135026400000015,
+          "maximum_seconds": 0.7461975000001075,
+          "mean_seconds": 0.7335752000000022
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.092032999999674,
+          "maximum_seconds": 0.7442313999999897,
+          "mean_seconds": 0.7274332857142392
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.3400000120309414e-05,
+          "maximum_seconds": 6.100000064179767e-06,
+          "mean_seconds": 4.771428588615631e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00012929999934385705,
+          "maximum_seconds": 3.069999979743443e-05,
+          "mean_seconds": 1.8471428477693864e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006432700000004843,
+          "maximum_seconds": 0.006432700000004843,
+          "mean_seconds": 0.006432700000004843
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006440299999894705,
+          "maximum_seconds": 0.006440299999894705,
+          "mean_seconds": 0.006440299999894705
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009575599999834594,
+          "maximum_seconds": 0.0014859000000342348,
+          "mean_seconds": 0.0013679428571192278
+        }
+      }
+    },
+    {
+      "sequence": 68,
+      "at": "2026-09-15T20:33:43Z",
+      "window_id": 68,
+      "start_seconds": 1344.5007934,
+      "end_seconds": 1350.1679025,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.664829300000065,
+          "maximum_seconds": 0.7239270000000033,
+          "mean_seconds": 0.7081036625000081
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.64570569999978,
+          "maximum_seconds": 0.7221400999999332,
+          "mean_seconds": 0.7057132124999725
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.679999963424052e-05,
+          "maximum_seconds": 5.80000005356851e-06,
+          "mean_seconds": 4.599999954280065e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.0001243000001522887,
+          "maximum_seconds": 1.6899999991437653e-05,
+          "mean_seconds": 1.5537500019036088e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007682100000010905,
+          "maximum_seconds": 0.007682100000010905,
+          "mean_seconds": 0.007682100000010905
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007688599999937651,
+          "maximum_seconds": 0.007688599999937651,
+          "mean_seconds": 0.007688599999937651
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.010115699999687422,
+          "maximum_seconds": 0.001393199999938588,
+          "mean_seconds": 0.0012644624999609277
+        }
+      }
+    },
+    {
+      "sequence": 69,
+      "at": "2026-09-15T20:33:49Z",
+      "window_id": 69,
+      "start_seconds": 1350.1679025,
+      "end_seconds": 1355.8637812,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.693712599999799,
+          "maximum_seconds": 0.7289960999999039,
+          "mean_seconds": 0.7117140749999749
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.674037200000157,
+          "maximum_seconds": 0.727302699999882,
+          "mean_seconds": 0.7092546500000196
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.7100000326972804e-05,
+          "maximum_seconds": 5.80000005356851e-06,
+          "mean_seconds": 4.6375000408716005e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.0001263000001472392,
+          "maximum_seconds": 1.720000000204891e-05,
+          "mean_seconds": 1.57875000184049e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008019899999908375,
+          "maximum_seconds": 0.008019899999908375,
+          "mean_seconds": 0.008019899999908375
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008025500000030661,
+          "maximum_seconds": 0.008025500000030661,
+          "mean_seconds": 0.008025500000030661
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.010071699999571138,
+          "maximum_seconds": 0.00134370000000672,
+          "mean_seconds": 0.0012589624999463922
+        }
+      }
+    },
+    {
+      "sequence": 70,
+      "at": "2026-09-15T20:33:55Z",
+      "window_id": 70,
+      "start_seconds": 1355.8637812,
+      "end_seconds": 1361.5863697,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.713065800000095,
+          "maximum_seconds": 0.7308806000000914,
+          "mean_seconds": 0.7141332250000119
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.7002710000003844,
+          "maximum_seconds": 0.729365800000096,
+          "mean_seconds": 0.7125338750000481
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.6500000078376615e-05,
+          "maximum_seconds": 4.900000021734741e-06,
+          "mean_seconds": 4.562500009797077e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.0001249999995707185,
+          "maximum_seconds": 1.699999984339229e-05,
+          "mean_seconds": 1.5624999946339813e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00825740000004771,
+          "maximum_seconds": 0.00825740000004771,
+          "mean_seconds": 0.00825740000004771
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008264199999985067,
+          "maximum_seconds": 0.008264199999985067,
+          "mean_seconds": 0.008264199999985067
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.010137099999610655,
+          "maximum_seconds": 0.0014392999999017775,
+          "mean_seconds": 0.0012671374999513318
+        }
+      }
+    },
+    {
+      "sequence": 71,
+      "at": "2026-09-15T20:34:00Z",
+      "window_id": 71,
+      "start_seconds": 1361.5863697,
+      "end_seconds": 1367.288576,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.713908500000116,
+          "maximum_seconds": 0.7431133000000045,
+          "mean_seconds": 0.7142385625000145
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.681218700000045,
+          "maximum_seconds": 0.7409666000000925,
+          "mean_seconds": 0.7101523375000056
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.489999994599202e-05,
+          "maximum_seconds": 5.000000101063051e-06,
+          "mean_seconds": 4.362499993249003e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00012029999993501406,
+          "maximum_seconds": 1.849999989644857e-05,
+          "mean_seconds": 1.5037499991876757e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006667399999969348,
+          "maximum_seconds": 0.006667399999969348,
+          "mean_seconds": 0.006667399999969348
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006673399999954199,
+          "maximum_seconds": 0.006673399999954199,
+          "mean_seconds": 0.006673399999954199
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009939200000189885,
+          "maximum_seconds": 0.0014019000000189408,
+          "mean_seconds": 0.0012424000000237356
+        }
+      }
+    },
+    {
+      "sequence": 72,
+      "at": "2026-09-15T20:34:06Z",
+      "window_id": 72,
+      "start_seconds": 1367.288576,
+      "end_seconds": 1372.9685114,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.67559059999985,
+          "maximum_seconds": 0.7189927000001717,
+          "mean_seconds": 0.7094488249999813
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.658945199999835,
+          "maximum_seconds": 0.7174481000001833,
+          "mean_seconds": 0.7073681499999793
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.870000023198372e-05,
+          "maximum_seconds": 5.80000005356851e-06,
+          "mean_seconds": 4.837500028997965e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00012189999984002498,
+          "maximum_seconds": 1.75999998646148e-05,
+          "mean_seconds": 1.5237499980003122e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007115399999975125,
+          "maximum_seconds": 0.007115399999975125,
+          "mean_seconds": 0.007115399999975125
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007149100000106046,
+          "maximum_seconds": 0.007149100000106046,
+          "mean_seconds": 0.007149100000106046
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.009900799999968513,
+          "maximum_seconds": 0.0015842999998767482,
+          "mean_seconds": 0.001237599999996064
+        }
+      }
+    },
+    {
+      "sequence": 73,
+      "at": "2026-09-15T20:34:11Z",
+      "window_id": 73,
+      "start_seconds": 1372.9685114,
+      "end_seconds": 1378.0422158,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.07039409999993,
+          "maximum_seconds": 0.7351360000000113,
+          "mean_seconds": 0.7243420142857043
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.054045900000119,
+          "maximum_seconds": 0.7335528999999497,
+          "mean_seconds": 0.7220065571428742
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.220000007786439e-05,
+          "maximum_seconds": 5.0999999530176865e-06,
+          "mean_seconds": 4.600000011123484e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00010659999952622456,
+          "maximum_seconds": 1.6899999991437653e-05,
+          "mean_seconds": 1.5228571360889223e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00803900000005342,
+          "maximum_seconds": 0.00803900000005342,
+          "mean_seconds": 0.00803900000005342
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008045700000138822,
+          "maximum_seconds": 0.008045700000138822,
+          "mean_seconds": 0.008045700000138822
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.008751399999255227,
+          "maximum_seconds": 0.0014048999998976797,
+          "mean_seconds": 0.001250199999893604
+        }
+      }
+    },
+    {
+      "sequence": 74,
+      "at": "2026-09-15T20:34:17Z",
+      "window_id": 74,
+      "start_seconds": 1378.0422158,
+      "end_seconds": 1383.7430682,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 8,
+          "total_seconds": 5.717328700000053,
+          "maximum_seconds": 0.7401881999999205,
+          "mean_seconds": 0.7146660875000066
+        },
+        "game_update": {
+          "count": 8,
+          "total_seconds": 5.680057500000203,
+          "maximum_seconds": 0.7384125999999469,
+          "mean_seconds": 0.7100071875000253
+        },
+        "journal_update": {
+          "count": 8,
+          "total_seconds": 3.7300000030882074e-05,
+          "maximum_seconds": 5.300000111674308e-06,
+          "mean_seconds": 4.662500003860259e-06
+        },
+        "advisor_update": {
+          "count": 8,
+          "total_seconds": 0.00012229999992996454,
+          "maximum_seconds": 1.8199999885837315e-05,
+          "mean_seconds": 1.5287499991245568e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006766900000002352,
+          "maximum_seconds": 0.006766900000002352,
+          "mean_seconds": 0.006766900000002352
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0067735000000084256,
+          "maximum_seconds": 0.0067735000000084256,
+          "mean_seconds": 0.0067735000000084256
+        },
+        "draw_total": {
+          "count": 8,
+          "total_seconds": 0.010082600000032471,
+          "maximum_seconds": 0.0013613999999506632,
+          "mean_seconds": 0.001260325000004059
+        }
+      }
+    },
+    {
+      "sequence": 75,
+      "at": "2026-09-15T20:34:22Z",
+      "window_id": 75,
+      "start_seconds": 1383.7430682,
+      "end_seconds": 1388.9023493,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.128402499999993,
+          "maximum_seconds": 0.7455388999999286,
+          "mean_seconds": 0.7326289285714276
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.137736000000359,
+          "maximum_seconds": 0.7434846999999536,
+          "mean_seconds": 0.733962285714337
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.329999935886008e-05,
+          "maximum_seconds": 5.599999894911889e-06,
+          "mean_seconds": 4.757142765551439e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011220000033063116,
+          "maximum_seconds": 1.9300000076327706e-05,
+          "mean_seconds": 1.602857147580445e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008385600000110571,
+          "maximum_seconds": 0.008385600000110571,
+          "mean_seconds": 0.008385600000110571
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008391800000026706,
+          "maximum_seconds": 0.008391800000026706,
+          "mean_seconds": 0.008391800000026706
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.00925720000009278,
+          "maximum_seconds": 0.0013759000000845845,
+          "mean_seconds": 0.0013224571428703971
+        }
+      }
+    },
+    {
+      "sequence": 76,
+      "at": "2026-09-15T20:34:27Z",
+      "window_id": 76,
+      "start_seconds": 1388.9023493,
+      "end_seconds": 1394.0035814,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.116227200000139,
+          "maximum_seconds": 0.7399312000000009,
+          "mean_seconds": 0.7308896000000199
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.082113500000105,
+          "maximum_seconds": 0.7361550000000534,
+          "mean_seconds": 0.7260162142857293
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.709999964485178e-05,
+          "maximum_seconds": 8.7999999323074e-06,
+          "mean_seconds": 5.29999994926454e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.0001237000001310662,
+          "maximum_seconds": 2.8299999939918052e-05,
+          "mean_seconds": 1.767142859015231e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00627440000016577,
+          "maximum_seconds": 0.00627440000016577,
+          "mean_seconds": 0.00627440000016577
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0062814000000344095,
+          "maximum_seconds": 0.0062814000000344095,
+          "mean_seconds": 0.0062814000000344095
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009194999999863285,
+          "maximum_seconds": 0.0015794999999343418,
+          "mean_seconds": 0.0013135714285518979
+        }
+      }
+    },
+    {
+      "sequence": 77,
+      "at": "2026-09-15T20:34:32Z",
+      "window_id": 77,
+      "start_seconds": 1394.0035814,
+      "end_seconds": 1399.0962738,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.079004599999962,
+          "maximum_seconds": 0.7578158999999687,
+          "mean_seconds": 0.7255720857142803
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.071112499999799,
+          "maximum_seconds": 0.7559022000000368,
+          "mean_seconds": 0.7244446428571142
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.320000018902647e-05,
+          "maximum_seconds": 5.599999894911889e-06,
+          "mean_seconds": 4.742857169860924e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00010879999967983167,
+          "maximum_seconds": 2.0599999970727367e-05,
+          "mean_seconds": 1.554285709711881e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00818699999990713,
+          "maximum_seconds": 0.00818699999990713,
+          "mean_seconds": 0.00818699999990713
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00819709999996121,
+          "maximum_seconds": 0.00819709999996121,
+          "mean_seconds": 0.00819709999996121
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009228899999698115,
+          "maximum_seconds": 0.0015394999998079584,
+          "mean_seconds": 0.0013184142856711592
+        }
+      }
+    },
+    {
+      "sequence": 78,
+      "at": "2026-09-15T20:34:38Z",
+      "window_id": 78,
+      "start_seconds": 1399.0962738,
+      "end_seconds": 1404.4820358,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 6,
+          "total_seconds": 5.3492555999998785,
+          "maximum_seconds": 1.7517864999999802,
+          "mean_seconds": 0.8915425999999798
+        },
+        "game_update": {
+          "count": 6,
+          "total_seconds": 5.368688699999893,
+          "maximum_seconds": 1.7494976000000406,
+          "mean_seconds": 0.8947814499999822
+        },
+        "journal_update": {
+          "count": 6,
+          "total_seconds": 2.97000001410197e-05,
+          "maximum_seconds": 6.299999995462713e-06,
+          "mean_seconds": 4.950000023503283e-06
+        },
+        "advisor_update": {
+          "count": 6,
+          "total_seconds": 0.00010080000015477708,
+          "maximum_seconds": 2.470000003995665e-05,
+          "mean_seconds": 1.680000002579618e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006338899999946079,
+          "maximum_seconds": 0.006338899999946079,
+          "mean_seconds": 0.006338899999946079
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006345499999952153,
+          "maximum_seconds": 0.006345499999952153,
+          "mean_seconds": 0.006345499999952153
+        },
+        "draw_total": {
+          "count": 6,
+          "total_seconds": 0.008003500000086206,
+          "maximum_seconds": 0.0017079000001558597,
+          "mean_seconds": 0.0013339166666810343
+        }
+      }
+    }
+  ],
+  "largest_mean_frame_intervals": [
+    {
+      "sequence": 78,
+      "at": "2026-09-15T20:34:38Z",
+      "window_id": 78,
+      "start_seconds": 1399.0962738,
+      "end_seconds": 1404.4820358,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 6,
+          "total_seconds": 5.3492555999998785,
+          "maximum_seconds": 1.7517864999999802,
+          "mean_seconds": 0.8915425999999798
+        },
+        "game_update": {
+          "count": 6,
+          "total_seconds": 5.368688699999893,
+          "maximum_seconds": 1.7494976000000406,
+          "mean_seconds": 0.8947814499999822
+        },
+        "journal_update": {
+          "count": 6,
+          "total_seconds": 2.97000001410197e-05,
+          "maximum_seconds": 6.299999995462713e-06,
+          "mean_seconds": 4.950000023503283e-06
+        },
+        "advisor_update": {
+          "count": 6,
+          "total_seconds": 0.00010080000015477708,
+          "maximum_seconds": 2.470000003995665e-05,
+          "mean_seconds": 1.680000002579618e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006338899999946079,
+          "maximum_seconds": 0.006338899999946079,
+          "mean_seconds": 0.006338899999946079
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006345499999952153,
+          "maximum_seconds": 0.006345499999952153,
+          "mean_seconds": 0.006345499999952153
+        },
+        "draw_total": {
+          "count": 6,
+          "total_seconds": 0.008003500000086206,
+          "maximum_seconds": 0.0017079000001558597,
+          "mean_seconds": 0.0013339166666810343
+        }
+      }
+    },
+    {
+      "sequence": 54,
+      "at": "2026-09-15T20:32:31Z",
+      "window_id": 54,
+      "start_seconds": 1272.5271498,
+      "end_seconds": 1277.773356,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.211560300000201,
+          "maximum_seconds": 0.7720171999999366,
+          "mean_seconds": 0.744508614285743
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.2253483999998025,
+          "maximum_seconds": 0.7702661999999236,
+          "mean_seconds": 0.7464783428571147
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.5399999887886224e-05,
+          "maximum_seconds": 6.8999997893115506e-06,
+          "mean_seconds": 5.057142841126604e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011359999984961178,
+          "maximum_seconds": 2.0100000028833165e-05,
+          "mean_seconds": 1.6228571407087395e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007589999999936481,
+          "maximum_seconds": 0.007589999999936481,
+          "mean_seconds": 0.007589999999936481
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007595300000048155,
+          "maximum_seconds": 0.007595300000048155,
+          "mean_seconds": 0.007595300000048155
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.00887179999995169,
+          "maximum_seconds": 0.0015427000000727276,
+          "mean_seconds": 0.0012673999999930987
+        }
+      }
+    },
+    {
+      "sequence": 64,
+      "at": "2026-09-15T20:33:22Z",
+      "window_id": 64,
+      "start_seconds": 1323.9780472,
+      "end_seconds": 1329.1353269,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.1945907000001625,
+          "maximum_seconds": 0.777938899999981,
+          "mean_seconds": 0.7420843857143089
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.136601199999859,
+          "maximum_seconds": 0.7634368000001359,
+          "mean_seconds": 0.7338001714285513
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.279999964433955e-05,
+          "maximum_seconds": 5.499999815583578e-06,
+          "mean_seconds": 4.68571423490565e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00010820000011335651,
+          "maximum_seconds": 1.6200000118260505e-05,
+          "mean_seconds": 1.5457142873336644e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.00837220000016714,
+          "maximum_seconds": 0.00837220000016714,
+          "mean_seconds": 0.00837220000016714
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.00838049999993018,
+          "maximum_seconds": 0.00838049999993018,
+          "mean_seconds": 0.00838049999993018
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009045199999718534,
+          "maximum_seconds": 0.0015326000000186468,
+          "mean_seconds": 0.0012921714285312191
+        }
+      }
+    },
+    {
+      "sequence": 62,
+      "at": "2026-09-15T20:33:12Z",
+      "window_id": 62,
+      "start_seconds": 1313.634636,
+      "end_seconds": 1318.7803963,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.190724799999998,
+          "maximum_seconds": 0.7884947000000011,
+          "mean_seconds": 0.741532114285714
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.126881100000219,
+          "maximum_seconds": 0.7710854000001746,
+          "mean_seconds": 0.732411585714317
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.3799999982875306e-05,
+          "maximum_seconds": 6.600000006073969e-06,
+          "mean_seconds": 4.828571426125043e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011790000007749768,
+          "maximum_seconds": 2.4200000098062446e-05,
+          "mean_seconds": 1.684285715392824e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006672200000139128,
+          "maximum_seconds": 0.006672200000139128,
+          "mean_seconds": 0.006672200000139128
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.0066778999998859945,
+          "maximum_seconds": 0.0066778999998859945,
+          "mean_seconds": 0.0066778999998859945
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009160399999927904,
+          "maximum_seconds": 0.0014873999998599174,
+          "mean_seconds": 0.001308628571418272
+        }
+      }
+    },
+    {
+      "sequence": 60,
+      "at": "2026-09-15T20:33:01Z",
+      "window_id": 60,
+      "start_seconds": 1303.2694467,
+      "end_seconds": 1308.4551641,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.188448999999991,
+          "maximum_seconds": 0.7758089000001291,
+          "mean_seconds": 0.7412069999999987
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.165507500000331,
+          "maximum_seconds": 0.774034500000198,
+          "mean_seconds": 0.7379296428571901
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.650000030575029e-05,
+          "maximum_seconds": 8.800000159681076e-06,
+          "mean_seconds": 5.214285757964328e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.0001227000000199041,
+          "maximum_seconds": 2.989999984492897e-05,
+          "mean_seconds": 1.7528571431414874e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007456300000058036,
+          "maximum_seconds": 0.007456300000058036,
+          "mean_seconds": 0.007456300000058036
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007463900000175272,
+          "maximum_seconds": 0.007463900000175272,
+          "mean_seconds": 0.007463900000175272
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.00946059999978388,
+          "maximum_seconds": 0.001742100000001301,
+          "mean_seconds": 0.0013515142856834114
+        }
+      }
+    },
+    {
+      "sequence": 63,
+      "at": "2026-09-15T20:33:17Z",
+      "window_id": 63,
+      "start_seconds": 1318.7803963,
+      "end_seconds": 1323.9780472,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.165160300000025,
+          "maximum_seconds": 0.7537887000000865,
+          "mean_seconds": 0.7378800428571465
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.175776900000301,
+          "maximum_seconds": 0.7673586000000796,
+          "mean_seconds": 0.739396700000043
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.320000018902647e-05,
+          "maximum_seconds": 6.200000143508078e-06,
+          "mean_seconds": 4.742857169860924e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011030000041500898,
+          "maximum_seconds": 1.939999992828234e-05,
+          "mean_seconds": 1.5757142916429855e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.008957499999951324,
+          "maximum_seconds": 0.008957499999951324,
+          "mean_seconds": 0.008957499999951324
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.008964500000047337,
+          "maximum_seconds": 0.008964500000047337,
+          "mean_seconds": 0.008964500000047337
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009216199999627861,
+          "maximum_seconds": 0.00175079999985428,
+          "mean_seconds": 0.0013165999999468372
+        }
+      }
+    },
+    {
+      "sequence": 58,
+      "at": "2026-09-15T20:32:51Z",
+      "window_id": 58,
+      "start_seconds": 1293.0063547,
+      "end_seconds": 1298.2194614,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.15131899999983,
+          "maximum_seconds": 0.7749148999998852,
+          "mean_seconds": 0.7359027142856901
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.192799400000013,
+          "maximum_seconds": 0.7732223000000431,
+          "mean_seconds": 0.7418284857142875
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.349999997226405e-05,
+          "maximum_seconds": 6.299999995462713e-06,
+          "mean_seconds": 4.785714281752007e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00011410000001887965,
+          "maximum_seconds": 1.9699999938893598e-05,
+          "mean_seconds": 1.6300000002697095e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.007908199999974386,
+          "maximum_seconds": 0.007908199999974386,
+          "mean_seconds": 0.007908199999974386
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.007916600000044127,
+          "maximum_seconds": 0.007916600000044127,
+          "mean_seconds": 0.007916600000044127
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009292700000287368,
+          "maximum_seconds": 0.0014983000000938773,
+          "mean_seconds": 0.0013275285714696241
+        }
+      }
+    },
+    {
+      "sequence": 66,
+      "at": "2026-09-15T20:33:32Z",
+      "window_id": 66,
+      "start_seconds": 1334.2624414,
+      "end_seconds": 1339.3893719,
+      "flags": {
+        "advisor_worker": false,
+        "ante": 1,
+        "auto_active": false,
+        "dragging": false,
+        "game_speed": 16,
+        "idle_menu": false,
+        "paused": true,
+        "round": 0,
+        "stage": 2,
+        "state": 7
+      },
+      "metrics": {
+        "frame_interval": {
+          "count": 7,
+          "total_seconds": 5.13927979999994,
+          "maximum_seconds": 0.751548099999809,
+          "mean_seconds": 0.73418282857142
+        },
+        "game_update": {
+          "count": 7,
+          "total_seconds": 5.107957200000101,
+          "maximum_seconds": 0.742327400000022,
+          "mean_seconds": 0.7297081714285858
+        },
+        "journal_update": {
+          "count": 7,
+          "total_seconds": 3.3699999903546995e-05,
+          "maximum_seconds": 5.6000001222855644e-06,
+          "mean_seconds": 4.814285700506714e-06
+        },
+        "advisor_update": {
+          "count": 7,
+          "total_seconds": 0.00013990000002195302,
+          "maximum_seconds": 4.560000002129527e-05,
+          "mean_seconds": 1.998571428885043e-05
+        },
+        "journal.total": {
+          "count": 1,
+          "total_seconds": 0.006202900000062073,
+          "maximum_seconds": 0.006202900000062073,
+          "mean_seconds": 0.006202900000062073
+        },
+        "performance_emit": {
+          "count": 1,
+          "total_seconds": 0.006209600000147475,
+          "maximum_seconds": 0.006209600000147475,
+          "mean_seconds": 0.006209600000147475
+        },
+        "draw_total": {
+          "count": 7,
+          "total_seconds": 0.009395299999823692,
+          "maximum_seconds": 0.001674200000024939,
+          "mean_seconds": 0.0013421857142605273
+        }
+      }
+    }
+  ],
+  "interpretation": [
+    "Only this captured prefix; loaded version is absent because these are compact timing records.",
+    "Existing direct journal event costs and game_update costs are measured separately. Nested timings must not be summed.",
+    "Hook-chain growth is separately reproduced with manufactured callbacks; timing cannot identify GC or prove the sole live cause.",
+    "No live FPS recovery or new-source/policy evaluation is measured."
+  ]
+}

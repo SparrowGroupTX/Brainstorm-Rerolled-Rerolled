@@ -1,0 +1,375 @@
+{
+  "manufactured_only": true,
+  "result": {
+    "cards_discarded": 15,
+    "case": "invented_preflight",
+    "chips": 15,
+    "discards": 3,
+    "final_resources_supported": true,
+    "five_card_discards": 3,
+    "full_run": false,
+    "initial": {
+      "consumables": {},
+      "deck_remaining": 12,
+      "discards_left": 3,
+      "dollars": 20,
+      "hand_size": 8,
+      "hands": {},
+      "hands_left": 3,
+      "held": [
+        {
+          "enhancement": "c_base",
+          "id": "card0",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card1",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card2",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card3",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card4",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card5",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card6",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card7",
+          "rank": 13,
+          "suit": "Clubs"
+        }
+      ],
+      "jokers": {},
+      "population": 20
+    },
+    "input_unchanged": true,
+    "plays": 1,
+    "reason": "Actual supported play reaches target",
+    "remaining_discards": 0,
+    "resources": {
+      "consumables": {},
+      "deck_remaining": 0,
+      "discards_left": 0,
+      "dollars": 20,
+      "hand_size": 8,
+      "hands": {
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 1
+        }
+      },
+      "hands_left": 2,
+      "held": [
+        {
+          "enhancement": "c_base",
+          "id": "card18",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card19",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card8",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "enhancement": "c_base",
+          "id": "card9",
+          "rank": 13,
+          "suit": "Clubs"
+        }
+      ],
+      "jokers": {},
+      "population": 20
+    },
+    "resources_prefix_supported": true,
+    "role": "policy",
+    "round_rewards_modeled": false,
+    "score_evaluations": 76,
+    "status": "supported_clear",
+    "steps": [
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 3,
+        "card_ids": [
+          "card1",
+          "card2",
+          "card3",
+          "card4",
+          "card5"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 5,
+            "final_action_kind": "discard",
+            "reason": "supported_retained_clear",
+            "remaining_discards": 3,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 21,
+          "play": {
+            "hand": "High Card",
+            "score": 15,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 16,
+              "portfolio_attempts": 1,
+              "portfolio_evaluations": 5,
+              "qualified": 16,
+              "selected_cards": 1,
+              "selected_score": 15
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 5,
+              "max_evaluations": 12
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 2,
+        "card_ids": [
+          "card10",
+          "card11",
+          "card12",
+          "card6",
+          "card7"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 5,
+            "final_action_kind": "discard",
+            "reason": "supported_retained_clear",
+            "remaining_discards": 2,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 21,
+          "play": {
+            "hand": "High Card",
+            "score": 15,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 16,
+              "portfolio_attempts": 1,
+              "portfolio_evaluations": 5,
+              "qualified": 16,
+              "selected_cards": 1,
+              "selected_score": 15
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 5,
+              "max_evaluations": 12
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 1,
+        "card_ids": [
+          "card13",
+          "card14",
+          "card15",
+          "card16",
+          "card17"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 5,
+            "final_action_kind": "discard",
+            "reason": "supported_retained_clear",
+            "remaining_discards": 1,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 21,
+          "play": {
+            "hand": "High Card",
+            "score": 15,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 16,
+              "portfolio_attempts": 1,
+              "portfolio_evaluations": 5,
+              "qualified": 16,
+              "selected_cards": 1,
+              "selected_score": 15
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 5,
+              "max_evaluations": 12
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1
+          ],
+          "kind": "play"
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": [
+          "card0"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1
+            ],
+            "kind": "play"
+          },
+          "evaluations": 13,
+          "play": {
+            "hand": "High Card",
+            "score": 15,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 0,
+              "qualified": 0
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 0,
+              "max_evaluations": 12
+            },
+            "schema": 1
+          }
+        }
+      }
+    ],
+    "target": 1,
+    "world": 0
+  },
+  "raw_sha256": "172e4479437432ff6f655f8b123f15cc8aae34411965d6651846bc89e0474e79",
+  "qualification_inputs_sha256": "3a876d6c4fd6dd9514e9344cdb413b5dac11d050d5650d1c0e98c8d19838d05d"
+}

@@ -1,0 +1,51 @@
+{
+  "job": "S01",
+  "status": "completed",
+  "started_utc": "2026-09-16T15:25:23.802972+00:00",
+  "spec": {
+    "module": "tools.advisor_learning.train",
+    "seconds": 120,
+    "transitions": 10000,
+    "episodes": 512,
+    "purpose": "Deterministic heuristic/interface smoke and throughput"
+  },
+  "manifest_sha256": "84ab08497703f5d23cb048a18865500f106b0245a601099e280363d9e2aaee4e",
+  "arguments": [
+    "--mode",
+    "heuristic",
+    "--namespace",
+    "L355SMOKE",
+    "--workers",
+    "8",
+    "--stake",
+    "8"
+  ],
+  "python": "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-u",
+    "-m",
+    "tools.advisor_learning.train",
+    "--mode",
+    "heuristic",
+    "--namespace",
+    "L355SMOKE",
+    "--workers",
+    "8",
+    "--stake",
+    "8",
+    "--job-dir",
+    "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development355\\jobs\\S01",
+    "--wall-seconds",
+    "120",
+    "--max-transitions",
+    "10000",
+    "--max-episodes",
+    "512"
+  ],
+  "frozen_sha256": "5d48ec0255490c227f64e8660da8e47dbb33802f112bd228f75bb06f1cee2474",
+  "pid": 17916,
+  "returncode": 0,
+  "elapsed_seconds": 17.85999999998603,
+  "finished_utc": "2026-09-16T15:25:41.665916+00:00"
+}

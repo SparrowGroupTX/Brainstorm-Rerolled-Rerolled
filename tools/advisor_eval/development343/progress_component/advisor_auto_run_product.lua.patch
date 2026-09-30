@@ -1,0 +1,70 @@
+--- before/tests/advisor_auto_run_product.lua
++++ tests/advisor_auto_run_product.lua
+@@ -20,7 +20,8 @@
+   local complete=false
+   A.gold_stickers={capture=function()return{schema=1,goal='gold_stickers',profile_id=g.SETTINGS.profile,
+     metadata_status='complete',catalog_status='complete',stake_status='complete',
+-    counts={total=150,complete=complete and 150 or 149,missing=complete and 0 or 1,unknown=0}}end}
++    counts={total=150,complete=complete and 150 or 149,missing=complete and 0 or 1,unknown=0},
++    by_key={j_yorick={key='j_yorick',status=complete and 'complete' or 'missing'}}}end}
+   local logfail=false
+   A.player_log={status='test'}
+   function A.player_log:enabled()return B.config.advisor.player_logging end
+@@ -66,8 +67,14 @@
+     A.settings_changed();publish();return true
+   end
+   local f={end_round=function()g.GAME.won=true;g.GAME.round_resets.ante=9 end}
+-  f.set_joker_win=function()g.PROFILES[1].joker_usage.j_yorick={wins={[8]=1}}end
+-  f.set_deck_win=function()g.PROFILES[1].deck_usage.b_red={wins={[8]=1}}end
++  f.set_joker_win=function()
++    local previous=g.PROFILES[1].joker_usage.j_yorick
++    g.PROFILES[1].joker_usage.j_yorick={wins={[8]=(previous and previous.wins[8] or 0)+1}}
++  end
++  f.set_deck_win=function()
++    local previous=g.PROFILES[1].deck_usage.b_red
++    g.PROFILES[1].deck_usage.b_red={wins={[8]=(previous and previous.wins[8] or 0)+1}}
++  end
+   local queued_win
+   g.FUNCS={overlay_menu=function(args)
+     check(api:owned(),'delayed original winning overlay has a narrow callback scope')
+@@ -125,7 +132,30 @@
+   check(x.api:status().state=='terminal' and x.api:status().active,'outcome is logged before the separate terminal decision')
+ end
+ 
+--- Explicit Stop in the one-update gap after run_finished must not let Resume
++do
++  local x=terminal_fixture({max_runs=1})
++  x.g.PROFILES[1].joker_usage.j_yorick={wins={[8]=7}}
++  terminal_result(x,'win');x.api:update()
++  local s=x.api:status()
++  check(s.outcomes.wins==1 and s.gold_progress.confirmed_new_count==0 and s.gold_progress.zero_new_wins==1,
++    'original already-Gold counter increment is a real win with zero new stickers')
++  check(x.api.status_text:find('New Gold: 0; wins with no new Gold: 1.',1,true),
++    'visible status distinguishes zero achievement progress from a run win')
++  check(x.g.OVERLAY_MENU~=nil and not s.active and s.reason=='run_limit','Gold accounting does not bypass the final result or run cap')
++  local run
++  for _,event in ipairs(x.events) do if event.data.event=='run_finished' then run=event.data end end
++  check(run and run.gold_award.status=='confirmed' and run.gold_award.new_count==0,
++    'passive log records source-confirmed zero sticker award separately from the win')
++  x=terminal_fixture({max_runs=1});local capture=x.A.gold_stickers.capture
++  x.A.gold_stickers.capture=function()local g=capture();g.by_key=nil;return g end
++  terminal_result(x,'win');x.api:update();s=x.api:status()
++  check(s.outcomes.wins==1 and s.gold_progress.unknown_wins==1 and s.gold_progress.zero_new_wins==0,
++    'unavailable vanilla identity evidence retains win with unknown achievement progress')
++  check(x.api.status_text:find('Sticker progress unknown for 1 win(s).',1,true),
++    'unavailable award evidence is visible as unknown rather than zero')
++end
++
++-- Explicit Stop in the one-update gap after run_finished must not let Resume
+ -- discard a final result before fresh completion, metadata and cap checks.
+ for _,reason in ipairs({'run_limit','collection_complete','goal_unavailable','session_time_limit'})do
+   local x=terminal_fixture({max_runs=1,session_seconds=10})
+@@ -197,7 +227,7 @@
+       check(x.g.OVERLAY_MENU==overlay and x.stats().closed==closes,'last permitted result retains the exact original loss overlay')
+       check(status.runs_started==5 and status.max_runs==5 and status.actions==5 and status.outcomes.wins==1 and status.outcomes.losses==4,
+         'run cap, action count and all five manufactured outcomes are retained')
+-      check(x.api.status_text=='Auto-run stopped: run limit reached (5 of 5 runs; wins: 1, losses: 4).',
++      check(x.api.status_text=='Auto-run stopped: run limit reached (5 of 5 runs; wins: 1, losses: 4). New Gold: 1; wins with no new Gold: 0.',
+         'visible cap stop explains the limit and retained counts in plain language')
+       check(x.api:status_report().text==x.api.status_text,'status report carries the readable cap message')
+       check(not x.api:resume(),'exhausted cap cannot be silently resumed')

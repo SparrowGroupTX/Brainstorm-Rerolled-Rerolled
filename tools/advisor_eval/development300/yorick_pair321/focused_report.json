@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "scope": "Manufactured ordinary Lua regression only; no captured or original-source execution",
+  "command": [
+    "python",
+    "tests/run_lua_tests.py",
+    "tools/advisor_eval/development300/yorick_pair321/run_candidate.lua",
+    "tools/advisor_eval/development300/yorick_pair321/run_existing.lua"
+  ],
+  "exit_code": 0,
+  "new_checks": 18630,
+  "existing_checks": 2680,
+  "total_checks": 21310,
+  "draw_orders": 720,
+  "count_families": 24,
+  "selected_card_orders": 120,
+  "fixture_count": 6,
+  "driver_count": 2,
+  "created_utc": "2026-09-14T21:22:11.386310+00:00",
+  "output_sha256": "e78d7fc494257e2f1787f39ec8fc488ac01985e4af8d93b4ef16aa2841b51ab1",
+  "files": {
+    "growth.lua": "d0de330671d31888fb49c886326cc470274552645d616836ad3fb588c139d688",
+    "test_advisor_yorick_pair.lua": "b7aa6401a64516fd56ef94ae0b2c8ded21ac9f1435cb7d85c20c7c22acef4a7b",
+    "run_candidate.lua": "8ebd2c0ce620303e7f0f2f1a76998efe58614cb280fa0785cea1ec140267e050",
+    "run_existing.lua": "6019d21160ca72d94b03aa5740558e25bf955cd0f1a9cc08f98b16336a26f54a"
+  },
+  "prior_development_errors": [
+    {
+      "kind": "fixture_expectation",
+      "detail": "The first manufactured full Decision target allowed a smaller Pair clear with insufficient growth margin. Target increased in the manufactured fixture so its reserved Flush was actually selected; no runtime preference changed."
+    },
+    {
+      "kind": "diagnostic_expectation",
+      "detail": "Existing finite-input rejection fixtures expected a sorting diagnostic; the new plain-input explanation now describes sorting and detached transitions."
+    },
+    {
+      "kind": "fixture_coverage",
+      "detail": "Reviewer caught a set-based draw helper collapsing within-batch order; corrected to append requested IDs and assert720 distinct order signatures before the reported pass."
+    }
+  ]
+}

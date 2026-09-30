@@ -1,0 +1,1186 @@
+{
+  "scope": "Descriptive public physical evidence. First settlement can precede queued purchase payment; later public inventory and dollars are shown separately. No counterfactual scorer or policy evaluation.",
+  "database_sha256": "fb405333af2ae9a73aa6e95e751e1796ca6f3f45a6d0af404d0c3f0e327c2f41",
+  "actions": [
+    {
+      "request": {
+        "sequence": 9396,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 305,
+        "raw_sha256": "5f04ac8d5d1d8be27a546643f7e05d99b7735f40c536376f7a0417f5dff25850"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "observation": {
+        "sequence": 9390,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 299,
+        "raw_sha256": "6035cf1989e9b8e9fc1fd9ce5c6011b2dfa5752a01c93df1b3c1579a36d12518"
+      },
+      "advice_anchor": {
+        "sequence": 9393,
+        "kind": "teacher_advice",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 302,
+        "raw_sha256": "1f46a1450e0790f4e924d4c461be901270e9bd01973f5b65d6f34d818ce8cc69"
+      },
+      "advice": {
+        "action": {
+          "kind": "leave_shop"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 11606,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Upcoming boss - Water: there are no discards; use consumables and spare hands to improve draws.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "phase_copy_review": {
+          "aggregate_limit": 50000,
+          "complete": false,
+          "final_action_kind": "leave_shop",
+          "reason": "Perkeo has no copying inventory.",
+          "schema": 1,
+          "scope": "shop_perkeo",
+          "score_calls": 0,
+          "selected": false
+        },
+        "reroll_review": {
+          "cash": 6,
+          "cost": 5,
+          "development": {
+            "cash": 6,
+            "cost": 5,
+            "mode": "durable_engine_development",
+            "schema": 1,
+            "status": "copy_already_owned"
+          },
+          "mode": "durable_engine_development",
+          "schema": 1,
+          "selected_action": "leave_shop",
+          "status": "copy_already_owned",
+          "surplus": {
+            "cash": 6,
+            "cash_after": 1,
+            "cost": 5,
+            "cost_cap": 12,
+            "credited_slots": 1,
+            "interest_floor": 25,
+            "late_surplus": false,
+            "mode": "surplus_catalog_opportunity",
+            "purchase_floor": 28,
+            "required_after": 40,
+            "schema": 2,
+            "scoring_claim": false,
+            "status": "cash_floor",
+            "survival_reserve": 3
+          }
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "leave_shop",
+          "active_seconds": 0.3114913999986584,
+          "decision_id": 1556,
+          "elapsed_seconds": 0.4947239000000536,
+          "evaluations": 11606,
+          "finished_seconds": 1166.2574625,
+          "max_resume_seconds": 0.09481920000007449,
+          "phase": "shop",
+          "resume_calls": 182,
+          "started_seconds": 1165.7627386,
+          "status": "completed"
+        },
+        "title": "Leave the shop and save your money"
+      },
+      "following_public_observations": [
+        {
+          "anchor": {
+            "sequence": 9400,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000012.brj",
+            "ordinal": 309,
+            "raw_sha256": "7dc7ae7b8850857da73d70709414de07f70ff7468e0cbf5613429f83c8d773f4"
+          },
+          "phase": "blind",
+          "dollars": 6,
+          "row": [
+            [
+              "card:1131",
+              "j_perkeo"
+            ],
+            [
+              "card:1132",
+              "j_yorick"
+            ],
+            [
+              "card:1139",
+              "j_burnt"
+            ],
+            [
+              "card:1133",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": []
+        },
+        {
+          "anchor": {
+            "sequence": 9410,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000012.brj",
+            "ordinal": 319,
+            "raw_sha256": "9ceaf42de92c6dded85dc5b4bcb1f13a11714ea925ee7536f9c69c3594097114"
+          },
+          "phase": "hand",
+          "dollars": 6,
+          "row": [
+            [
+              "card:1131",
+              "j_perkeo"
+            ],
+            [
+              "card:1132",
+              "j_yorick"
+            ],
+            [
+              "card:1139",
+              "j_burnt"
+            ],
+            [
+              "card:1133",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": []
+        },
+        {
+          "anchor": {
+            "sequence": 9413,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000012.brj",
+            "ordinal": 322,
+            "raw_sha256": "dbc8278527cc2613d4ea045695eadf404a5ae7e651772ab715ad4e6a864ff79e"
+          },
+          "phase": "hand",
+          "dollars": 6,
+          "row": [
+            [
+              "card:1131",
+              "j_perkeo"
+            ],
+            [
+              "card:1132",
+              "j_yorick"
+            ],
+            [
+              "card:1139",
+              "j_burnt"
+            ],
+            [
+              "card:1133",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": []
+        },
+        {
+          "anchor": {
+            "sequence": 9420,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000012.brj",
+            "ordinal": 329,
+            "raw_sha256": "ef29edf2c1832896f033fea2238fc690d86cdb9353fde8527eacbb5b382e4190"
+          },
+          "phase": "hand",
+          "dollars": 6,
+          "row": [
+            [
+              "card:1132",
+              "j_yorick"
+            ],
+            [
+              "card:1131",
+              "j_perkeo"
+            ],
+            [
+              "card:1139",
+              "j_burnt"
+            ],
+            [
+              "card:1133",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": []
+        }
+      ]
+    },
+    {
+      "request": {
+        "sequence": 10309,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 339,
+        "raw_sha256": "9cca98f1236b878b34dce9da273cc7d74feeb8a67a9a99bd9e5514a4bff875c6"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "observation": {
+        "sequence": 10302,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 332,
+        "raw_sha256": "c788fdb3cf1b4efcf2a74315e46d4448aa9f7929712903ffe29ef1db95c7c665"
+      },
+      "advice_anchor": {
+        "sequence": 10306,
+        "kind": "teacher_advice",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 336,
+        "raw_sha256": "8df8d1358b6ce40fbf6a49ded35c1d721858bb8091a7e748ffca8938251fdb88"
+      },
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 40266,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Use a single-card first discard to remove a weak card and earn money. The first discard must legally destroy exactly one card; discard cost and the retained finish need their own comparison. Conditional income opportunity is unverified; no cash forecast is supplied. Rental drains $3 every round.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Manacle: reduced hand size favors small, repeatable hand types.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "shop_sequence_review": {
+          "continuation": {},
+          "evidence": {
+            "adjustment": -14,
+            "after_mean": 722.25,
+            "after_target": 1500,
+            "before_mean": 722.25,
+            "before_target": 1500,
+            "complete_finishing": true,
+            "ratio": 1,
+            "samples": 4,
+            "uncertain": false
+          },
+          "final_action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "plan": {
+            "cash_after": 13,
+            "complete": true,
+            "liquidity_penalty": 0,
+            "utility": -4.300000000000001
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 3.3005536999992273,
+          "decision_id": 1711,
+          "elapsed_seconds": 5.183712399999877,
+          "evaluations": 40266,
+          "finished_seconds": 1264.8958693,
+          "max_resume_seconds": 0.6228662000000895,
+          "phase": "shop",
+          "resume_calls": 630,
+          "started_seconds": 1259.7121569,
+          "status": "completed"
+        },
+        "title": "Buy Trading Card ($1)"
+      },
+      "following_public_observations": [
+        {
+          "anchor": {
+            "sequence": 10314,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000013.brj",
+            "ordinal": 344,
+            "raw_sha256": "75cea3304ef38379acdacd9edb1ec350f5c69035eeb28f3a11c1442b36d1df0b"
+          },
+          "phase": "shop",
+          "dollars": 12,
+          "row": [
+            [
+              "card:1218",
+              "j_perkeo"
+            ],
+            [
+              "card:1225",
+              "j_hiker"
+            ],
+            [
+              "card:1221",
+              "j_stencil"
+            ],
+            [
+              "card:1241",
+              "j_trading"
+            ]
+          ],
+          "stock": []
+        },
+        {
+          "anchor": {
+            "sequence": 10317,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000013.brj",
+            "ordinal": 347,
+            "raw_sha256": "eb332dd6cdc9ed363a56d102040b611f0b48731626b769626c3af141b14eed4b"
+          },
+          "phase": "shop",
+          "dollars": 11,
+          "row": [
+            [
+              "card:1218",
+              "j_perkeo"
+            ],
+            [
+              "card:1225",
+              "j_hiker"
+            ],
+            [
+              "card:1221",
+              "j_stencil"
+            ],
+            [
+              "card:1241",
+              "j_trading"
+            ]
+          ],
+          "stock": []
+        },
+        {
+          "anchor": {
+            "sequence": 10326,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000013.brj",
+            "ordinal": 356,
+            "raw_sha256": "b788da4386988069ee708fcc8fd59981b824688c234bddab42f9542fb62d7976"
+          },
+          "phase": "blind",
+          "dollars": 11,
+          "row": [
+            [
+              "card:1218",
+              "j_perkeo"
+            ],
+            [
+              "card:1225",
+              "j_hiker"
+            ],
+            [
+              "card:1221",
+              "j_stencil"
+            ],
+            [
+              "card:1241",
+              "j_trading"
+            ]
+          ],
+          "stock": []
+        },
+        {
+          "anchor": {
+            "sequence": 10336,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000013.brj",
+            "ordinal": 366,
+            "raw_sha256": "13a7b54591bf3ecda8e811d0c67d20f0596fcdbb16a1ccbaaabf4e0f7d220aeb"
+          },
+          "phase": "hand",
+          "dollars": 11,
+          "row": [
+            [
+              "card:1218",
+              "j_perkeo"
+            ],
+            [
+              "card:1225",
+              "j_hiker"
+            ],
+            [
+              "card:1221",
+              "j_stencil"
+            ],
+            [
+              "card:1241",
+              "j_trading"
+            ]
+          ],
+          "stock": []
+        }
+      ]
+    },
+    {
+      "request": {
+        "sequence": 11048,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 509,
+        "raw_sha256": "8fa0d2a649f5458ec4f96060641d82c032e78825913c0e6dda642726451c17e7"
+      },
+      "action": {
+        "area": "jokers",
+        "followup": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        },
+        "index": 2,
+        "kind": "sell"
+      },
+      "observation": {
+        "sequence": 11042,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 503,
+        "raw_sha256": "079325534a598f5d686bdef534c5fd2cb4b2498cf508e95e020cd5b4a169707c"
+      },
+      "advice_anchor": {
+        "sequence": 11045,
+        "kind": "teacher_advice",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 506,
+        "raw_sha256": "ab62e12207115297d749d1bb8193eba57dc05902b4111f17795a2c495e58c0cf"
+      },
+      "advice": {
+        "action": {
+          "area": "jokers",
+          "followup": {
+            "area": "pack_cards",
+            "index": 1,
+            "kind": "choose"
+          },
+          "index": 2,
+          "kind": "sell"
+        },
+        "copy_death_review": {
+          "choice": {
+            "cash_after": 34,
+            "complete": true,
+            "reason": "supported_copy_priority",
+            "schema": 1,
+            "selected_offer": 1,
+            "selected_sale": 2
+          },
+          "final_area": "jokers",
+          "final_index": 2,
+          "final_kind": "sell",
+          "pack": {
+            "candidates": [
+              {
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": false,
+                "offer_id": "card:1334",
+                "reason": "The owned Joker cannot be safely sold or its sale does not free a legal slot.",
+                "sold_id": "card:1305",
+                "sold_index": 1,
+                "status": "blocked"
+              },
+              {
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": false,
+                "offer_id": "card:1335",
+                "reason": "The owned Joker cannot be safely sold or its sale does not free a legal slot.",
+                "sold_id": "card:1305",
+                "sold_index": 1,
+                "status": "blocked"
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -11.736224,
+                "admitted": true,
+                "after_mean": 5692,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": true,
+                "ratio": 2,
+                "reason": "perkeo_yorick_copy_exchange",
+                "score": -124.40393242199946,
+                "sold_id": "card:1306",
+                "sold_index": 2,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": false,
+                "after_mean": 3196,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": false,
+                "offer_id": "card:1335",
+                "preserves_score": true,
+                "ratio": 1.1229796205200282,
+                "reason": "temporary_core_bridge_guard",
+                "score": -273.49931516465364,
+                "sold_id": "card:1306",
+                "sold_index": 2,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -15.131888,
+                "admitted": false,
+                "after_mean": 2328,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": false,
+                "ratio": 0.8179901616303584,
+                "reason": "survival_ratio_guard",
+                "score": 28.909055603006223,
+                "sold_id": "card:1313",
+                "sold_index": 3,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -16.263776,
+                "admitted": false,
+                "after_mean": 1364,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "preserves_score": false,
+                "ratio": 0.4792691496837667,
+                "reason": "survival_ratio_guard",
+                "score": -324.02667646355303,
+                "sold_id": "card:1313",
+                "sold_index": 3,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": true,
+                "after_mean": 3442,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": true,
+                "ratio": 1.2094167252283907,
+                "reason": "eligible_endpoint",
+                "score": 87.44401945912642,
+                "sold_id": "card:1314",
+                "sold_index": 4,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -15.131888,
+                "admitted": false,
+                "after_mean": 2071,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "preserves_score": false,
+                "ratio": 0.7276879831342234,
+                "reason": "survival_ratio_guard",
+                "score": -267.5466720476824,
+                "sold_id": "card:1314",
+                "sold_index": 4,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": true,
+                "after_mean": 3492,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": true,
+                "ratio": 1.2269852424455376,
+                "reason": "eligible_endpoint",
+                "score": 95.83352947040962,
+                "sold_id": "card:1324",
+                "sold_index": 5,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -15.131888,
+                "admitted": false,
+                "after_mean": 2096,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "preserves_score": false,
+                "ratio": 0.7364722417427969,
+                "reason": "survival_ratio_guard",
+                "score": -259.30092056488576,
+                "sold_id": "card:1324",
+                "sold_index": 5,
+                "status": "complete",
+                "uncertain": false
+              }
+            ],
+            "complete": true,
+            "truncated": false
+          },
+          "schema": 1
+        },
+        "gold_review": {
+          "schema": 1,
+          "shop_evaluations": 26224,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Then choose Brainstorm.",
+          "Copy your strongest compatible Joker; placement determines the target. Eternal: this slot is permanent.",
+          "The copy improves the paired opening score and preserves all four supported next-blind finishes; that evidence outweighs the additive Joker rating.",
+          "Sell only this Joker, then refresh advice before taking the next action.",
+          "Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 2846 -> 5692 chips across 4 paired deck samples, allowing copy-target order shortlist (2/4 layouts); upcoming Small Blind; target 3200. Samples are not a blind-win probability.",
+          "Keep the last Pluto for Perkeo copies.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "sell",
+          "active_seconds": 0.9131443999979183,
+          "decision_id": 1846,
+          "elapsed_seconds": 1.5855510000001232,
+          "evaluations": 26224,
+          "finished_seconds": 1346.2910084,
+          "max_resume_seconds": 0.06823400000007496,
+          "phase": "pack",
+          "resume_calls": 410,
+          "started_seconds": 1344.7054574,
+          "status": "completed"
+        },
+        "title": "Sell Perkeo #2 ($10)"
+      },
+      "following_public_observations": [
+        {
+          "anchor": {
+            "sequence": 11052,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 513,
+            "raw_sha256": "1c8660fad22fe4ae0eacc22fe8d14169c2ef9f0bcb91a1d5f3c3dbba7c1680fe"
+          },
+          "phase": "pack",
+          "dollars": 34,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ]
+          ]
+        },
+        {
+          "anchor": {
+            "sequence": 11060,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 521,
+            "raw_sha256": "706720238337e61ffc581d87e5c0c7173db49406472a51a865a5a03fea1ea58a"
+          },
+          "phase": "pack",
+          "dollars": 34,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ]
+          ]
+        },
+        {
+          "anchor": {
+            "sequence": 11063,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 524,
+            "raw_sha256": "ca1d0aa96658893a4bd0f5a69e53a45cebb66fe6b96426e12709bbcb57135fa8"
+          },
+          "phase": "shop",
+          "dollars": 34,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ]
+          ]
+        },
+        {
+          "anchor": {
+            "sequence": 11075,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 536,
+            "raw_sha256": "e077a5e158f60a456959d9b9cfb83fc4660b71e612a8249d5767c5f613941d52"
+          },
+          "phase": "shop",
+          "dollars": 31,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ],
+            [
+              "card:1330",
+              "c_hanged_man"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "request": {
+        "sequence": 11058,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 519,
+        "raw_sha256": "6255686269d4a2ad1bb7f91e159f4995023349ed655f8a0487747f32c383bf3b"
+      },
+      "action": {
+        "area": "pack_cards",
+        "index": 1,
+        "kind": "choose"
+      },
+      "observation": {
+        "sequence": 11052,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 513,
+        "raw_sha256": "1c8660fad22fe4ae0eacc22fe8d14169c2ef9f0bcb91a1d5f3c3dbba7c1680fe"
+      },
+      "advice_anchor": {
+        "sequence": 11055,
+        "kind": "teacher_advice",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 516,
+        "raw_sha256": "fbc4d23fce6cc1c55b2c9ed051b7298f1ddbac107b80c6bc91f9be382d1b0751"
+      },
+      "advice": {
+        "action": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        },
+        "copy_death_review": {
+          "final_area": "pack_cards",
+          "final_index": 1,
+          "final_kind": "choose",
+          "pack": {
+            "candidates": [
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -11.736224,
+                "admitted": true,
+                "after_mean": 5692,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "choose",
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "ratio": 2,
+                "reason": "endpoint_compared",
+                "score": 142.5960675780005,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": false,
+                "after_mean": 3196,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "choose",
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "ratio": 1.1229796205200282,
+                "reason": "endpoint_compared",
+                "score": -6.499315164653687,
+                "status": "complete",
+                "uncertain": false
+              }
+            ],
+            "complete": true,
+            "truncated": false
+          },
+          "schema": 1
+        },
+        "gold_review": {
+          "schema": 1,
+          "shop_evaluations": 7306,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Copy your strongest compatible Joker; placement determines the target. Eternal: this slot is permanent. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 2846 -> 5692 chips across 4 paired deck samples, allowing copy-target order shortlist (2/4 layouts); upcoming Small Blind; target 3200. Samples are not a blind-win probability.",
+          "After each choice, refresh advice for the remaining options.",
+          "Use Pluto to level High Card before committing a scoring hand; keep it only for a deliberate Observatory plan.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "choose",
+          "active_seconds": 0.24405820000038148,
+          "decision_id": 1847,
+          "elapsed_seconds": 0.40050640000004023,
+          "evaluations": 7306,
+          "finished_seconds": 1346.8234411,
+          "max_resume_seconds": 0.06596569999987878,
+          "phase": "pack",
+          "resume_calls": 115,
+          "started_seconds": 1346.4229347,
+          "status": "completed"
+        },
+        "title": "Choose Brainstorm"
+      },
+      "following_public_observations": [
+        {
+          "anchor": {
+            "sequence": 11060,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 521,
+            "raw_sha256": "706720238337e61ffc581d87e5c0c7173db49406472a51a865a5a03fea1ea58a"
+          },
+          "phase": "pack",
+          "dollars": 34,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ]
+          ]
+        },
+        {
+          "anchor": {
+            "sequence": 11063,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 524,
+            "raw_sha256": "ca1d0aa96658893a4bd0f5a69e53a45cebb66fe6b96426e12709bbcb57135fa8"
+          },
+          "phase": "shop",
+          "dollars": 34,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ]
+          ]
+        },
+        {
+          "anchor": {
+            "sequence": 11075,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 536,
+            "raw_sha256": "e077a5e158f60a456959d9b9cfb83fc4660b71e612a8249d5767c5f613941d52"
+          },
+          "phase": "shop",
+          "dollars": 31,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ],
+            [
+              "card:1330",
+              "c_hanged_man"
+            ]
+          ]
+        },
+        {
+          "anchor": {
+            "sequence": 11082,
+            "kind": "teacher_observation",
+            "segment": "session-20260927T045909Z-1-000015.brj",
+            "ordinal": 543,
+            "raw_sha256": "b4de5f582c3103fc0b9b8751c000590487b656c9ceef898a7b56f65fd5c19612"
+          },
+          "phase": "other",
+          "dollars": 31,
+          "row": [
+            [
+              "card:1305",
+              "j_yorick"
+            ],
+            [
+              "card:1313",
+              "j_wrathful_joker"
+            ],
+            [
+              "card:1314",
+              "j_banner"
+            ],
+            [
+              "card:1324",
+              "j_blue_joker"
+            ],
+            [
+              "card:1334",
+              "j_brainstorm"
+            ]
+          ],
+          "stock": [
+            [
+              "card:1329",
+              "c_pluto"
+            ],
+            [
+              "card:1330",
+              "c_hanged_man"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

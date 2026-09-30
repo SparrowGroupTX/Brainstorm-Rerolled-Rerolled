@@ -1,0 +1,59 @@
+{
+  "schema": "plain_golden_round_cashout_v1",
+  "rental_rate": 3,
+  "cases": [
+    {
+      "id": "golden_final_life_minimal",
+      "cash": 0,
+      "jokers": [
+        {"physical_id": 501, "center_key": "j_golden", "perishable": true, "tally": 1, "debuff": false, "rental": false, "edition": null}
+      ]
+    },
+    {
+      "id": "golden_final_life_rental",
+      "cash": 10,
+      "jokers": [
+        {"physical_id": 502, "center_key": "j_golden", "perishable": true, "tally": 1, "debuff": false, "rental": true, "edition": null}
+      ]
+    },
+    {
+      "id": "golden_tally_two",
+      "cash": 0,
+      "jokers": [
+        {"physical_id": 503, "center_key": "j_golden", "perishable": true, "tally": 2, "debuff": false, "rental": false, "edition": null}
+      ]
+    },
+    {
+      "id": "golden_already_expired",
+      "cash": 0,
+      "jokers": [
+        {"physical_id": 504, "center_key": "j_golden", "perishable": true, "tally": 0, "debuff": true, "rental": false, "edition": null}
+      ]
+    },
+    {
+      "id": "golden_nonperishable",
+      "cash": 0,
+      "jokers": [
+        {"physical_id": 505, "center_key": "j_golden", "perishable": false, "tally": 5, "debuff": false, "rental": false, "edition": null}
+      ]
+    },
+    {
+      "id": "heldout_golden_row",
+      "cash": 10,
+      "jokers": [
+        {"physical_id": 601, "center_key": "j_golden", "perishable": true, "tally": 1, "debuff": false, "rental": false, "edition": null},
+        {"physical_id": 602, "center_key": "j_joker", "perishable": false, "tally": 5, "debuff": false, "rental": true, "edition": null},
+        {"physical_id": 603, "center_key": "j_golden", "perishable": false, "tally": 5, "debuff": false, "rental": false, "edition": null}
+      ]
+    },
+    {
+      "id": "heldout_golden_row_reversed",
+      "cash": 10,
+      "jokers": [
+        {"physical_id": 603, "center_key": "j_golden", "perishable": false, "tally": 5, "debuff": false, "rental": false, "edition": null},
+        {"physical_id": 602, "center_key": "j_joker", "perishable": false, "tally": 5, "debuff": false, "rental": true, "edition": null},
+        {"physical_id": 601, "center_key": "j_golden", "perishable": true, "tally": 1, "debuff": false, "rental": false, "edition": null}
+      ]
+    }
+  ]
+}

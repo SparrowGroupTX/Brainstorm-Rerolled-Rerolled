@@ -1,0 +1,691 @@
+{
+  "exit_code": 0,
+  "seconds": 2.0160000000032596,
+  "log_sha256": "e093643981c81b4cdde13570480d6205b97497053c57a4587a46b989a30900e9",
+  "status": "complete",
+  "result": {
+    "cards_discarded": 8,
+    "case": "27883",
+    "chips": 24633,
+    "discards": 2,
+    "final_resources_supported": true,
+    "five_card_discards": 0,
+    "full_run": false,
+    "initial": {
+      "consumables": [
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:2729",
+          "key": "c_hanged_man"
+        },
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:2735",
+          "key": "c_hanged_man"
+        }
+      ],
+      "deck_remaining": 29,
+      "discards_left": 2,
+      "dollars": 16,
+      "hand_size": 8,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 2
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 60,
+          "level": 1,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 3
+        },
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 0
+        },
+        "Pair": {
+          "chips": 10,
+          "level": 1,
+          "mult": 2,
+          "played": 8
+        },
+        "Straight": {
+          "chips": 30,
+          "level": 1,
+          "mult": 4,
+          "played": 1
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "chips": 30,
+          "level": 1,
+          "mult": 3,
+          "played": 0
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 10
+        }
+      },
+      "hands_left": 1,
+      "held": [
+        {
+          "debuff": false,
+          "id": "playing:40",
+          "rank": 13,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:28",
+          "rank": 13,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:5",
+          "rank": 8,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:35",
+          "rank": 6,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:24",
+          "rank": 6,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:3",
+          "rank": 5,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:31",
+          "rank": 2,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:1",
+          "rank": 2,
+          "suit": "Clubs"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Joker Mult",
+            "extra": 3,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "mult": 0,
+            "name": "Abstract Joker",
+            "order": 34,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2686",
+          "key": "j_abstract"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 7,
+            "yorick_discards": 11
+          },
+          "debuff": false,
+          "id": "card:2658",
+          "key": "j_yorick"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 3,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Red Card",
+            "order": 63,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2664",
+          "key": "j_red_card"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Clever Joker",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 80,
+            "t_mult": 0,
+            "type": "Two Pair",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2674",
+          "key": "j_clever"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2657",
+          "key": "j_perkeo"
+        }
+      ],
+      "population": 42
+    },
+    "input_unchanged": true,
+    "plays": 1,
+    "reason": "Hands exhausted",
+    "remaining_discards": 0,
+    "resources": {
+      "consumables": [
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:2729",
+          "key": "c_hanged_man"
+        },
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:2735",
+          "key": "c_hanged_man"
+        }
+      ],
+      "deck_remaining": 21,
+      "discards_left": 0,
+      "dollars": 16,
+      "hand_size": 8,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 2
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 60,
+          "level": 1,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 3
+        },
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 0
+        },
+        "Pair": {
+          "chips": 10,
+          "level": 1,
+          "mult": 2,
+          "played": 8
+        },
+        "Straight": {
+          "chips": 30,
+          "level": 1,
+          "mult": 4,
+          "played": 1
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "chips": 30,
+          "level": 1,
+          "mult": 3,
+          "played": 0
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 11
+        }
+      },
+      "hands_left": 0,
+      "held": [
+        {
+          "debuff": false,
+          "id": "playing:20",
+          "rank": 12,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:15",
+          "rank": 8,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:34",
+          "rank": 5,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:14",
+          "rank": 5,
+          "suit": "Diamonds"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Joker Mult",
+            "extra": 3,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "mult": 0,
+            "name": "Abstract Joker",
+            "order": 34,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2686",
+          "key": "j_abstract"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 7,
+            "yorick_discards": 3
+          },
+          "debuff": false,
+          "id": "card:2658",
+          "key": "j_yorick"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 3,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Red Card",
+            "order": 63,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2664",
+          "key": "j_red_card"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Clever Joker",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 80,
+            "t_mult": 0,
+            "type": "Two Pair",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2674",
+          "key": "j_clever"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:2657",
+          "key": "j_perkeo"
+        }
+      ],
+      "population": 42
+    },
+    "resources_prefix_supported": true,
+    "role": "default",
+    "round_rewards_modeled": false,
+    "score_evaluations": 123754,
+    "status": "modeled_failure",
+    "steps": [
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            3,
+            6,
+            7,
+            8
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 2,
+        "card_ids": [
+          "playing:5",
+          "playing:3",
+          "playing:31",
+          "playing:1"
+        ],
+        "intervention": "default"
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 1,
+        "card_ids": [
+          "playing:35",
+          "playing:24",
+          "playing:32",
+          "playing:12"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 0,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 1,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 94536,
+          "play": {
+            "hand": "Two Pair",
+            "score": 24633,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "kind": "play"
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:40",
+          "playing:28",
+          "playing:6",
+          "playing:16"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              2,
+              4,
+              5
+            ],
+            "kind": "play"
+          },
+          "evaluations": 29218,
+          "play": {
+            "hand": "Two Pair",
+            "score": 24633,
+            "uncertain": false
+          }
+        }
+      }
+    ],
+    "target": 25000,
+    "world": 2
+  },
+  "job": "27883_w2_default",
+  "case": "27883",
+  "mode": "continuation",
+  "role": "default",
+  "world": 2
+}

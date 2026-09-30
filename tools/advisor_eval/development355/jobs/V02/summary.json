@@ -1,0 +1,64 @@
+{
+  "mode": "evaluate",
+  "simulator_qualified": false,
+  "real_game_win_claim": false,
+  "transitions": 3268,
+  "episodes_started": 64,
+  "outcomes": {
+    "loss": 51,
+    "unsupported": 11,
+    "censored": 2
+  },
+  "censored_transitions": 13,
+  "updates": 0,
+  "elapsed_seconds": 24.0,
+  "stage_seconds": {
+    "policy_and_transfer": 16.104000000748783,
+    "simulator_wait_and_record": 3.736999999266118
+  },
+  "transition_rate": 136.16666666666666,
+  "observed_completion_lower_bound": 0.0,
+  "wilson_95_all_started": null,
+  "interval_limit": "Wilson interval emitted only when every started attempt has an actual terminal win/loss. With censoring only an observed completion lower bound is emitted. Development training trajectories change policy and are not a fixed-policy evaluation. This is not a player win rate.",
+  "mean_blinds_cleared": 2.328125,
+  "device": {
+    "name": "NVIDIA GeForce RTX 5090",
+    "torch": "2.9.0.dev20250801+cu128",
+    "precision": "bf16",
+    "parameters": 5607074,
+    "input_checkpoint_sha256": "86d4c62a0a375c9ab5e44a07732f7fa7051528ad773bd1369ddb51d2b7883086"
+  },
+  "objective": "completionist_distinct_v1",
+  "cohort": "public_conditioned_post_soul_training",
+  "actual_player_awards": 0,
+  "simulated_new_gold": 0,
+  "new_gold_by_outcome": {
+    "loss": 0,
+    "unsupported": 0,
+    "censored": 0
+  },
+  "mean_simulated_new_gold": 0.0,
+  "mean_limit": "Observed mean for the frozen initial collection mask; unresolved attempts are unknown. Not a real player campaign, eligible Steam award, or retail win rate.",
+  "by_policy": {
+    "heuristic": {
+      "attempts": 32,
+      "outcomes": {
+        "loss": 23,
+        "unsupported": 9
+      },
+      "simulated_new_gold": 0,
+      "mean_blinds_cleared": 3.15625
+    },
+    "learned": {
+      "attempts": 32,
+      "outcomes": {
+        "loss": 28,
+        "unsupported": 2,
+        "censored": 2
+      },
+      "simulated_new_gold": 0,
+      "mean_blinds_cleared": 1.5
+    }
+  },
+  "cuda_peak_bytes": 161842688
+}

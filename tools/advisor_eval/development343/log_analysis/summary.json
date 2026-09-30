@@ -1,0 +1,2187 @@
+{
+  "schema": 1,
+  "scope": "Read-only passive journal decoding; no source execution, policy replay, saves/profile reads, search, simulations or game control.",
+  "hash_semantics": {
+    "input_sha256": "Exact bytes observed on this read, not a permanent hash for append-active input.",
+    "stored_frame_sha256": "BRJ2 header plus stored payload plus newline.",
+    "decoded_event_sha256": "Exact reconstructed original JSONL event bytes including newline."
+  },
+  "input_observations": [
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000001.brj",
+      "bytes": 17301,
+      "input_sha256": "5d9dfb60f74db970ad6ad0ef5489801a250c9c88ab2deb1904f5e497d1475bca",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 9
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000002.brj",
+      "bytes": 2740689,
+      "input_sha256": "3f2fa3b7dcba4bdb021f50b7bd627f3939c2d5bb1e61141c66ee107dd4d48475",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 992
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000003.brj",
+      "bytes": 21373,
+      "input_sha256": "2f580a47a444461b8131cf2f67cd574903482dd6b3d83296a67c0a3bc53e848a",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000004.brj",
+      "bytes": 3497213,
+      "input_sha256": "a70a36f1ebf99f14090627426f108ec7b97343b066af24e52b0814f601b62748",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 1221
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000005.brj",
+      "bytes": 33217,
+      "input_sha256": "9cf14d51cb7a534fb2e1b86acaa553c76f65ee5b58d4931b804e321a65c92f61",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000006.brj",
+      "bytes": 779055,
+      "input_sha256": "a535243f2ebd7479966fb65bebb4e4f31d98df1bff35202ef98eb28ce071ea1b",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 280
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000007.brj",
+      "bytes": 21311,
+      "input_sha256": "cfd65760f448f1029c668b4d69e0bb81f71d2f5a369c068f7c8b34dc4c588d14",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000008.brj",
+      "bytes": 2504637,
+      "input_sha256": "b7cbda37096ecfd017040b82723cd9bd7ad5771ad4bb25b949dd9228d9a6f673",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 906
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000009.brj",
+      "bytes": 28190,
+      "input_sha256": "48c8719d792c5fa7c800ef7baaf41c4953092992ad28decebf3af1a9ed426a81",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 8
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000010.brj",
+      "bytes": 3026001,
+      "input_sha256": "030409882d5458ad606afeb024443363ab4c0df66a18ef74a05ca941f59ef408",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 1117
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000011.brj",
+      "bytes": 42291,
+      "input_sha256": "02c38339ba3e0cde807624cf5dcc61f465fe72da7f3ddabb32c9358203511b3a",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 26
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000012.brj",
+      "bytes": 37552,
+      "input_sha256": "c24532c3a030dd09dccb0aba0c27d9a37c13cd9169b7e6fac13808164a6b3393",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 16
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000013.brj",
+      "bytes": 3722931,
+      "input_sha256": "8266934c08465f9a749456070aef785327caa13a0b23e9a191b0059143d57bcb",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 1333
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000014.brj",
+      "bytes": 33116,
+      "input_sha256": "a9d303bd47aa67907dcac615e46b85fc6266f1d1a90f4b75a7d22578897ee843",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T031815Z-1-000015.brj",
+      "bytes": 1631906,
+      "input_sha256": "d50ef59e26fcf1999b7cdbd43473faf8a988ac971e5bccb55e85db21491f4249",
+      "stat_unchanged_during_read": true,
+      "append_active": true,
+      "event_count": 593
+    }
+  ],
+  "decode_errors": [],
+  "index_status": "Selected auditable summaries, not a lossless replacement for the original journals. Original inputs untouched; highest segment append-active.",
+  "full_index": {
+    "path": "tools\\advisor_eval\\development343\\log_analysis\\zero_sticker_win_audit.json",
+    "sha256": "9330883650126d945ad1ea5309c7c6c43e593864d797c602910db57b7b8cce9b"
+  },
+  "reported_run": {
+    "seed": "I8VUSV31",
+    "loaded_version": "Brainstorm v2.142.0-alpha",
+    "run_id": "game:8",
+    "started": {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 2,
+      "sequence": 4598,
+      "decoded_event_sha256": "00ed2b8970cb01f6bb998ccfb3b4a8914c0794fdd83d4b9eac3513584ad61ecf",
+      "stored_frame_sha256": "fef01c2fe022f5fdaf037f899be2d22724ab5534aab7962c1319012258c242c1"
+    },
+    "terminal": {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 1333,
+      "sequence": 5929,
+      "decoded_event_sha256": "9fc151f28549f8dfb8dc0f614fe8b4f22e24d628a4bc899554dedbe9a8b2ddf5",
+      "stored_frame_sha256": "7767997c1b31155126958d180b87296dafa78e8d1afeb261aff61e7ab02acdbc"
+    },
+    "terminal_at": "2026-09-16T03:50:02Z",
+    "terminal_cash": 207,
+    "final_score": 1503126,
+    "target": 400000,
+    "boss": "bl_final_heart / Crimson Heart",
+    "elapsed_seconds": 447.4890818000001,
+    "auto_run_actions": 248,
+    "action_kinds": {
+      "skip_blind": 1,
+      "choose": 24,
+      "select_blind": 23,
+      "discard": 34,
+      "play": 40,
+      "cash_out": 22,
+      "open": 22,
+      "leave_shop": 22,
+      "buy": 9,
+      "use": 19,
+      "reorder_jokers": 30,
+      "sell": 2
+    },
+    "start_gold_counts": {
+      "complete": 59,
+      "missing": 91,
+      "total": 150,
+      "unknown": 0
+    },
+    "terminal_gold_counts": {
+      "complete": 59,
+      "missing": 91,
+      "total": 150,
+      "unknown": 0
+    },
+    "next_run_gold_counts": {
+      "complete": 59,
+      "missing": 91,
+      "total": 150,
+      "unknown": 0
+    },
+    "next_run_anchor": {
+      "segment": "session-20260916T031815Z-1-000015.brj",
+      "ordinal": 2,
+      "sequence": 5938,
+      "decoded_event_sha256": "9663199d9cb1a63f33e1d5951fc80c4edfc77f8eed69ece7fc51a426f428c7a1",
+      "stored_frame_sha256": "e18dfe90921c4cf42a1c581355c4b984225ed7b82b75dab3953dcddfb0ee55b5"
+    },
+    "max_observed_held_target_count": 0,
+    "terminal_jokers": [
+      {
+        "key": "j_yorick",
+        "name": "Yorick",
+        "cost": 20,
+        "sell_cost": 10,
+        "debuff": false,
+        "ability": {},
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_perkeo",
+        "name": "Perkeo",
+        "cost": 20,
+        "sell_cost": 10,
+        "debuff": true,
+        "ability": {},
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_swashbuckler",
+        "name": "Swashbuckler",
+        "cost": 4,
+        "sell_cost": 2,
+        "debuff": false,
+        "ability": {},
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_devious",
+        "name": "Devious Joker",
+        "cost": 4,
+        "sell_cost": 2,
+        "debuff": false,
+        "ability": {},
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_brainstorm",
+        "name": "Brainstorm",
+        "cost": 1,
+        "sell_cost": 1,
+        "edition": {
+          "chips": 50,
+          "foil": true,
+          "type": "foil"
+        },
+        "debuff": false,
+        "ability": {
+          "eternal": true,
+          "rental": true
+        },
+        "gold_status": "complete"
+      }
+    ],
+    "terminal_evidence": {
+      "callbacks": [
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1503126,
+            "deck": "b_red",
+            "deck_wins": 12,
+            "jokers": {
+              "j_brainstorm": 26,
+              "j_devious": 8,
+              "j_perkeo": 41,
+              "j_swashbuckler": 4,
+              "j_yorick": 21
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1503126,
+            "deck": "b_red",
+            "deck_wins": 12,
+            "jokers": {
+              "j_brainstorm": 25,
+              "j_devious": 7,
+              "j_perkeo": 40,
+              "j_swashbuckler": 3,
+              "j_yorick": 20
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_joker_win",
+          "verified": true
+        },
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1503126,
+            "deck": "b_red",
+            "deck_wins": 13,
+            "jokers": {
+              "j_brainstorm": 26,
+              "j_devious": 8,
+              "j_perkeo": 41,
+              "j_swashbuckler": 4,
+              "j_yorick": 21
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1503126,
+            "deck": "b_red",
+            "deck_wins": 12,
+            "jokers": {
+              "j_brainstorm": 26,
+              "j_devious": 8,
+              "j_perkeo": 41,
+              "j_swashbuckler": 4,
+              "j_yorick": 21
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_deck_win",
+          "verified": true
+        }
+      ],
+      "event_id": "win:game:8",
+      "final_context": {
+        "ante": 8,
+        "boss": true,
+        "chips": 1503126,
+        "deck": "b_red",
+        "deck_wins": 12,
+        "jokers": {
+          "j_brainstorm": 25,
+          "j_devious": 7,
+          "j_perkeo": 40,
+          "j_swashbuckler": 3,
+          "j_yorick": 20
+        },
+        "round": 23,
+        "seeded": false,
+        "stake": 8,
+        "state": 19,
+        "target": 400000,
+        "win_ante": 8,
+        "won": false
+      },
+      "game_over": false,
+      "kind": "win",
+      "result_surface_seen": false,
+      "run_id": "game:8",
+      "source": "original_win_callback",
+      "source_saved": false,
+      "threshold_met": true,
+      "verified": true
+    }
+  },
+  "missed_visible_offer_shop_exits": [
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 85,
+        "sequence": 4681,
+        "decoded_event_sha256": "f676b28a4887fa3eebcba8c86119b70469065d91136dfae1da6fbd3b7683d87e",
+        "stored_frame_sha256": "38840180c85c33d90c58aa33a6d8b1456151adbcdc952898499c0d82dfe42942"
+      },
+      "at": "2026-09-16T03:42:55Z",
+      "monotonic_seconds": 1533.6078701,
+      "ante": 1,
+      "round": 1,
+      "cash": 1,
+      "next_blind": {
+        "ante": 1,
+        "boss": true,
+        "chips": 600,
+        "debuff": {
+          "suit": "Hearts"
+        },
+        "key": "bl_head",
+        "label": "Boss",
+        "mult": 2,
+        "name": "The Head"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Head: Hearts are debuffed. Favor other suits for scoring cards.",
+        "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.04626600000005965,
+        "decision_id": 2099,
+        "elapsed_seconds": 0.06692769999995107,
+        "evaluations": 1744,
+        "finished_seconds": 1533.521327,
+        "max_resume_seconds": 0.02488309999989724,
+        "phase": "shop",
+        "resume_calls": 28,
+        "started_seconds": 1533.4543993,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_misprint",
+          "name": "Misprint",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_vampire",
+          "name": "Vampire",
+          "cost": 7,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        },
+        {
+          "key": "j_obelisk",
+          "name": "Obelisk",
+          "cost": 8,
+          "sell_cost": 4,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 153,
+        "sequence": 4749,
+        "decoded_event_sha256": "24fdfeea427c3b20a72015f4e099c0afb4f3787739931564247981cac9514a65",
+        "stored_frame_sha256": "147c6c09c49e2aeb3b4c5dc6ff8258690415fcf5c0be20ccdd011b1b9a6bbe79"
+      },
+      "at": "2026-09-16T03:43:13Z",
+      "monotonic_seconds": 1551.4615377,
+      "ante": 2,
+      "round": 3,
+      "cash": 0,
+      "next_blind": {
+        "ante": 2,
+        "boss": false,
+        "chips": 1500,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Arm: the played hand loses a level before scoring, down to level 1.",
+        "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.046571600000561375,
+        "decision_id": 2139,
+        "elapsed_seconds": 0.06651570000008178,
+        "evaluations": 1744,
+        "finished_seconds": 1551.4013589,
+        "max_resume_seconds": 0.025104299999838986,
+        "phase": "shop",
+        "resume_calls": 28,
+        "started_seconds": 1551.3348432,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_misprint",
+          "name": "Misprint",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_arrowhead",
+          "name": "Arrowhead",
+          "cost": 7,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_scholar",
+          "name": "Scholar",
+          "cost": 1,
+          "sell_cost": 1,
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 180,
+        "sequence": 4776,
+        "decoded_event_sha256": "1342156cba76c584c6e92c2e9aa6b61f9334daaea690987c2d9d54d2abf438e1",
+        "stored_frame_sha256": "923723a5391931b4bdedaeef03703b2f36e9875f0c6dfb537dad01be00389692"
+      },
+      "at": "2026-09-16T03:43:19Z",
+      "monotonic_seconds": 1557.5017794,
+      "ante": 2,
+      "round": 4,
+      "cash": 4,
+      "next_blind": {
+        "ante": 2,
+        "boss": true,
+        "chips": 2000,
+        "debuff": {},
+        "key": "bl_arm",
+        "label": "Boss",
+        "mult": 2,
+        "name": "The Arm"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Arm: the played hand loses a level before scoring, down to level 1.",
+        "Keep the last The Magician for Perkeo copies.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.04872839999961798,
+        "decision_id": 2155,
+        "elapsed_seconds": 0.06953060000000733,
+        "evaluations": 1744,
+        "finished_seconds": 1557.4396062,
+        "max_resume_seconds": 0.02605570000014268,
+        "phase": "shop",
+        "resume_calls": 28,
+        "started_seconds": 1557.3700756,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_misprint",
+          "name": "Misprint",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_arrowhead",
+          "name": "Arrowhead",
+          "cost": 7,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_flash",
+          "name": "Flash Card",
+          "cost": 5,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 281,
+        "sequence": 4877,
+        "decoded_event_sha256": "8c5a70e8d8e75f16053fec53ad6b7ece7e8f6bab62d8c16f3a3f1e9668065091",
+        "stored_frame_sha256": "7cba845e86e4e6ed342d298439b96f79bc55136405a882ef8da01cb1e42c7657"
+      },
+      "at": "2026-09-16T03:43:52Z",
+      "monotonic_seconds": 1589.8223538,
+      "ante": 3,
+      "round": 6,
+      "cash": 0,
+      "next_blind": {
+        "ante": 3,
+        "boss": false,
+        "chips": 4800,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Fish: draws after playing are face down; use discards to find visible cards.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.07471600000008038,
+        "decision_id": 2212,
+        "elapsed_seconds": 0.11651770000003125,
+        "evaluations": 3268,
+        "finished_seconds": 1589.7607822,
+        "max_resume_seconds": 0.026011899999957677,
+        "phase": "shop",
+        "resume_calls": 52,
+        "started_seconds": 1589.6442645,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_misprint",
+          "name": "Misprint",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_arrowhead",
+          "name": "Arrowhead",
+          "cost": 7,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_certificate",
+          "name": "Certificate",
+          "cost": 6,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 352,
+        "sequence": 4948,
+        "decoded_event_sha256": "cfeeb778c02971fe97d8d6c321344fac35a5235526694e872867b40ebbbe41a3",
+        "stored_frame_sha256": "1069059f80db28ca716b4b28b3beba6150bc36a7b19e96280ba47747fac3f717"
+      },
+      "at": "2026-09-16T03:44:20Z",
+      "monotonic_seconds": 1618.1390894,
+      "ante": 4,
+      "round": 8,
+      "cash": 36,
+      "next_blind": {
+        "ante": 4,
+        "boss": false,
+        "chips": 9000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Club: Clubs are debuffed; their ranks still help form hands, but their scoring effects do not trigger.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.278622199997244,
+        "decision_id": 2250,
+        "elapsed_seconds": 0.5596479000000727,
+        "evaluations": 24416,
+        "finished_seconds": 1618.0793011,
+        "max_resume_seconds": 0.02658760000008442,
+        "phase": "shop",
+        "resume_calls": 382,
+        "started_seconds": 1617.5196532,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_misprint",
+          "name": "Misprint",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_arrowhead",
+          "name": "Arrowhead",
+          "cost": 7,
+          "sell_cost": 3,
+          "debuff": true,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_crazy",
+          "name": "Crazy Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 415,
+        "sequence": 5011,
+        "decoded_event_sha256": "d7194ddda5d37a1d1281f6da8eb1ae6d462c5fcd3001e7ea0fd298a253d147a4",
+        "stored_frame_sha256": "f38ad66ac5440340cbe536895dc6b3626413011f7069b5e029fc15202ffe0347"
+      },
+      "at": "2026-09-16T03:44:39Z",
+      "monotonic_seconds": 1637.4281075,
+      "ante": 4,
+      "round": 9,
+      "cash": 33,
+      "next_blind": {
+        "ante": 4,
+        "boss": false,
+        "chips": 13500,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Club: Clubs are debuffed; their ranks still help form hands, but their scoring effects do not trigger.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.07831770000052529,
+        "decision_id": 2283,
+        "elapsed_seconds": 0.09841660000006414,
+        "evaluations": 1744,
+        "finished_seconds": 1637.3677434,
+        "max_resume_seconds": 0.05439269999988028,
+        "phase": "shop",
+        "resume_calls": 28,
+        "started_seconds": 1637.2693268,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_misprint",
+          "name": "Misprint",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_turtle_bean",
+          "name": "Turtle Bean",
+          "cost": 6,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 536,
+        "sequence": 5132,
+        "decoded_event_sha256": "1ed3622dbe985db31b452f2004b082bc06fb1cc328ce4224c8734ee769bf2122",
+        "stored_frame_sha256": "3b78fd8dbc8d0027118e8938e5f13b742980c887f276d7eea82e5a4872b08e7f"
+      },
+      "at": "2026-09-16T03:45:07Z",
+      "monotonic_seconds": 1665.3605297,
+      "ante": 5,
+      "round": 11,
+      "cash": 38,
+      "next_blind": {
+        "ante": 5,
+        "boss": false,
+        "chips": 25000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.21872680000319633,
+        "decision_id": 2334,
+        "elapsed_seconds": 0.4319330999999238,
+        "evaluations": 20056,
+        "finished_seconds": 1665.2989298,
+        "max_resume_seconds": 0.027354800000011892,
+        "phase": "shop",
+        "resume_calls": 314,
+        "started_seconds": 1664.8669967,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_madness",
+          "name": "Madness",
+          "cost": 7,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "eternal": true
+          },
+          "gold_status": "missing"
+        },
+        {
+          "key": "j_runner",
+          "name": "Runner",
+          "cost": 5,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {
+            "eternal": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 595,
+        "sequence": 5191,
+        "decoded_event_sha256": "595a9ff161cd8bd711aa73bf7e2a642a9f96f0550303103d9038b1ac6da451ac",
+        "stored_frame_sha256": "0f8c061261075760f1d66ec32a06687131c42a7c471f504438b93aecd651f603"
+      },
+      "at": "2026-09-16T03:45:25Z",
+      "monotonic_seconds": 1683.1523943,
+      "ante": 5,
+      "round": 12,
+      "cash": 36,
+      "next_blind": {
+        "ante": 5,
+        "boss": false,
+        "chips": 37500,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.31201019999730306,
+        "decision_id": 2363,
+        "elapsed_seconds": 0.7645411999999396,
+        "evaluations": 36624,
+        "finished_seconds": 1683.0897968,
+        "max_resume_seconds": 0.028760400000010122,
+        "phase": "shop",
+        "resume_calls": 573,
+        "started_seconds": 1682.3252556,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_joker",
+          "name": "Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        },
+        {
+          "key": "j_supernova",
+          "name": "Supernova",
+          "cost": 5,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {
+            "eternal": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 642,
+        "sequence": 5238,
+        "decoded_event_sha256": "36767368b3a20982d41e2a8e2aaf6239828f6772026e1250df71e8d55e92fc12",
+        "stored_frame_sha256": "64bcfe9ae39d0db47d0a3262cb1fcb4149445c0759a748410b79e672d2602559"
+      },
+      "at": "2026-09-16T03:45:38Z",
+      "monotonic_seconds": 1696.2729538,
+      "ante": 5,
+      "round": 13,
+      "cash": 37,
+      "next_blind": {
+        "ante": 5,
+        "boss": true,
+        "chips": 50000,
+        "debuff": {},
+        "key": "bl_pillar",
+        "label": "Boss",
+        "mult": 2,
+        "name": "The Pillar"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.37991640000041116,
+        "decision_id": 2386,
+        "elapsed_seconds": 0.8437352000000828,
+        "evaluations": 38368,
+        "finished_seconds": 1696.2110026,
+        "max_resume_seconds": 0.02787029999990409,
+        "phase": "shop",
+        "resume_calls": 600,
+        "started_seconds": 1695.3672674,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_seeing_double",
+          "name": "Seeing Double",
+          "cost": 6,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 695,
+        "sequence": 5291,
+        "decoded_event_sha256": "48dd90a1c1e224ebb420dc883a692c747d1b6a66e5a9b1d7129349380a983192",
+        "stored_frame_sha256": "b72bc32e281ffaeede4c6f61a1a0392b8265feaba5d4cebccd4a108ed87115a9"
+      },
+      "at": "2026-09-16T03:45:54Z",
+      "monotonic_seconds": 1712.0208259,
+      "ante": 6,
+      "round": 14,
+      "cash": 32,
+      "next_blind": {
+        "ante": 6,
+        "boss": false,
+        "chips": 60000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Random scoring cannot establish next-blind readiness.",
+        "Upcoming boss - Tooth: every card played costs $1, including non-scoring cards.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.12666369999851668,
+        "decision_id": 2408,
+        "elapsed_seconds": 0.246334700000034,
+        "evaluations": 10464,
+        "finished_seconds": 1711.9572978,
+        "max_resume_seconds": 0.030583799999931216,
+        "phase": "shop",
+        "resume_calls": 164,
+        "started_seconds": 1711.7109631,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_castle",
+          "name": "Castle",
+          "cost": 6,
+          "sell_cost": 3,
+          "debuff": false,
+          "ability": {
+            "eternal": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 760,
+        "sequence": 5356,
+        "decoded_event_sha256": "80a851f57df2e31703a6074a8df7e8813e107e986979847481bd1a53e5c298aa",
+        "stored_frame_sha256": "e236c616d222cb063978f138dc9e64314ddedab2a80ee24de757c3af61720b3a"
+      },
+      "at": "2026-09-16T03:46:19Z",
+      "monotonic_seconds": 1737.6305219,
+      "ante": 6,
+      "round": 15,
+      "cash": 28,
+      "next_blind": {
+        "ante": 6,
+        "boss": false,
+        "chips": 90000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Upcoming boss - Tooth: every card played costs $1, including non-scoring cards.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.436308599998938,
+        "decision_id": 2439,
+        "elapsed_seconds": 1.1463415000000623,
+        "evaluations": 45344,
+        "finished_seconds": 1737.5661066,
+        "max_resume_seconds": 0.018404200000077253,
+        "phase": "shop",
+        "resume_calls": 709,
+        "started_seconds": 1736.4197651,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_wily",
+          "name": "Wily Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 848,
+        "sequence": 5444,
+        "decoded_event_sha256": "cd14862387ffb68648ed59988978edce287bae395575c17d07a7467cc3b4a237",
+        "stored_frame_sha256": "8a9029a499daec2f4c886b6112584e82452a8bc8511a22053aaec4b578792f55"
+      },
+      "at": "2026-09-16T03:46:55Z",
+      "monotonic_seconds": 1773.677017,
+      "ante": 6,
+      "round": 16,
+      "cash": 53,
+      "next_blind": {
+        "ante": 6,
+        "boss": true,
+        "chips": 120000,
+        "debuff": {},
+        "key": "bl_tooth",
+        "label": "Boss",
+        "mult": 2,
+        "name": "The Tooth"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Upcoming boss - Tooth: every card played costs $1, including non-scoring cards.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.42635840000002645,
+        "decision_id": 2473,
+        "elapsed_seconds": 0.9657199999999193,
+        "evaluations": 45344,
+        "finished_seconds": 1773.613691,
+        "max_resume_seconds": 0.018258599999853686,
+        "phase": "shop",
+        "resume_calls": 709,
+        "started_seconds": 1772.647971,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_sly",
+          "name": "Sly Joker",
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        },
+        {
+          "key": "j_walkie_talkie",
+          "name": "Walkie Talkie",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {
+            "eternal": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1193,
+        "sequence": 5789,
+        "decoded_event_sha256": "b06f508b8106d509b6a324b112258614a4ef8f30246d06d9f401456eceeeeaac",
+        "stored_frame_sha256": "778df98c99adb05452a2db55218e3550eb3207462e7a5c9dc3d91b7d2e5ac83f"
+      },
+      "at": "2026-09-16T03:49:02Z",
+      "monotonic_seconds": 1900.0009965,
+      "ante": 8,
+      "round": 21,
+      "cash": 166,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 300000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Upcoming boss - Crimson Heart: one Joker is disabled each hand; check the new scoring estimate after every play.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.24349759999813614,
+        "decision_id": 2620,
+        "elapsed_seconds": 0.7284947999999076,
+        "evaluations": 36576,
+        "finished_seconds": 1899.9343164,
+        "max_resume_seconds": 0.016783900000064023,
+        "phase": "shop",
+        "resume_calls": 572,
+        "started_seconds": 1899.2058216,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_crazy",
+          "name": "Crazy Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "missing"
+        },
+        {
+          "key": "j_acrobat",
+          "name": "Acrobat",
+          "cost": 1,
+          "sell_cost": 1,
+          "debuff": false,
+          "ability": {
+            "perishable": true,
+            "rental": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1280,
+        "sequence": 5876,
+        "decoded_event_sha256": "086d8a0a1b81340925ae653095d29ae332a2d2b76550785950b23eaf5d8f8e0d",
+        "stored_frame_sha256": "decd8d4c50c13243516791a767fce9d68eb75210c25fc843519f5f7528e76732"
+      },
+      "at": "2026-09-16T03:49:36Z",
+      "monotonic_seconds": 1934.6415834,
+      "ante": 8,
+      "round": 22,
+      "cash": 170,
+      "next_blind": {
+        "ante": 8,
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "key": "bl_final_heart",
+        "label": "Boss",
+        "mult": 2,
+        "name": "Crimson Heart"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "title": "Leave the shop and save your money",
+      "lines": [
+        "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+        "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+        "Joker slots are full; compare a sellable weak Joker before replacing it.",
+        "Upcoming boss - Crimson Heart: one Joker is disabled each hand; check the new scoring estimate after every play.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Keep the last The Hermit for Perkeo copies.",
+        "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.39333250000277076,
+        "decision_id": 2658,
+        "elapsed_seconds": 0.9728351999999632,
+        "evaluations": 44196,
+        "finished_seconds": 1934.5781666,
+        "max_resume_seconds": 0.01893100000006598,
+        "phase": "shop",
+        "resume_calls": 691,
+        "started_seconds": 1933.6053314,
+        "status": "completed"
+      },
+      "held_jokers": [
+        {
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_swashbuckler",
+          "name": "Swashbuckler",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {},
+          "gold_status": "complete"
+        },
+        {
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          },
+          "debuff": false,
+          "ability": {
+            "eternal": true,
+            "rental": true
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "missing_offers": [
+        {
+          "key": "j_shoot_the_moon",
+          "name": "Shoot the Moon",
+          "cost": 5,
+          "sell_cost": 2,
+          "debuff": false,
+          "ability": {
+            "perishable": true
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "held_target_count": 0
+    }
+  ],
+  "final_shop_consumables": [
+    {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 1193,
+      "sequence": 5789,
+      "decoded_event_sha256": "b06f508b8106d509b6a324b112258614a4ef8f30246d06d9f401456eceeeeaac",
+      "stored_frame_sha256": "778df98c99adb05452a2db55218e3550eb3207462e7a5c9dc3d91b7d2e5ac83f",
+      "counts": {
+        "c_magician": 14,
+        "c_hermit": 1
+      },
+      "negative_count": 15,
+      "gold_diagnostics_present_in_raw": false
+    },
+    {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 1280,
+      "sequence": 5876,
+      "decoded_event_sha256": "086d8a0a1b81340925ae653095d29ae332a2d2b76550785950b23eaf5d8f8e0d",
+      "stored_frame_sha256": "decd8d4c50c13243516791a767fce9d68eb75210c25fc843519f5f7528e76732",
+      "counts": {
+        "c_magician": 13,
+        "c_hermit": 1
+      },
+      "negative_count": 14,
+      "gold_diagnostics_present_in_raw": false
+    },
+    {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 1285,
+      "sequence": 5881,
+      "decoded_event_sha256": "4e9419eab6d9857e821eb93969ee167190d9eec38d9b40ca17b42bc52df076cb",
+      "stored_frame_sha256": "6bb3450447bf13ac6872a33b72c71316d6066fb591934b2a482bed5e3ac86bdc",
+      "counts": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "negative_count": 16,
+      "gold_diagnostics_present_in_raw": false
+    },
+    {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 1329,
+      "sequence": 5925,
+      "decoded_event_sha256": "fbce4be686435c1357388da1323e799173debc6eff7e32df8fdbf43f17b693cb",
+      "stored_frame_sha256": "602a1afff2078ae95639a80faf7e8a2f15be4d658575414aa0102f2d483fade1",
+      "counts": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "negative_count": 16,
+      "gold_diagnostics_present_in_raw": false
+    },
+    {
+      "segment": "session-20260916T031815Z-1-000013.brj",
+      "ordinal": 1333,
+      "sequence": 5929,
+      "decoded_event_sha256": "9fc151f28549f8dfb8dc0f614fe8b4f22e24d628a4bc899554dedbe9a8b2ddf5",
+      "stored_frame_sha256": "7767997c1b31155126958d180b87296dafa78e8d1afeb261aff61e7ab02acdbc",
+      "counts": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "negative_count": 16,
+      "gold_diagnostics_present_in_raw": false
+    }
+  ],
+  "findings": [
+    "User report confirmed: a verified Gold Stake Ante8 win with zero newly Gold Jokers, $170 at final shop exit and $207 at terminal.",
+    "All five terminal Jokers were already complete. Gold count remained59/150 through the next run.",
+    "The controller recorded248automatic advisor actions; no shop rerolls. Only blind skip was initial searched Charm opening.",
+    "Fourteen of22shop exits showed a missing Joker; price, perishable/rental/eternal and score implications vary. This is not proof buying one would have preserved the win.",
+    "Latest two shops show affordable missing Crazy/Acrobat and Shoot the Moon. Advisor instead protected Perkeo copies and left with strategic-rating/budget-limit fallback language.",
+    "Raw advice omits gold_diagnostics; its exact internal failure reason cannot be recovered from these records. No policy replay or counterfactual win claim made."
+  ]
+}

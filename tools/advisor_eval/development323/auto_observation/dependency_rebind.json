@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "kind": "separate_root_dependency_change",
+  "file": "Brainstorm/Advisor/snapshot.lua",
+  "before_sha256": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8",
+  "after_sha256": "bfabf63f93db6d5ccb74f7976298ebfa3be7f9cca01494e90478617b070278c5",
+  "preserved_before": "tools\\advisor_eval\\runs\\pace322_installed\\policy\\Brainstorm\\Advisor\\snapshot.lua",
+  "review": "Only excludes current_round.current_hand HUD aggregate during snapshot capture; copy and fingerprint implementations unchanged. Root owns qualification of that separate runtime change.",
+  "diff": "--- \n+++ \n@@ -208,6 +208,12 @@\n   if filter_info then filter_info.search=nil end\n   local discarded = {}\n   for _, card in ipairs(g.discard and g.discard.cards or {}) do discarded[card] = true end\n+  -- update_hand_text writes this HUD display aggregate independently of the\n+  -- scoring state. Actual hand levels, accumulated chips and round\n+  -- resources are captured independently; no policy reads current_hand.\n+  -- Excluding only this presentation table keeps unchanged advice reusable.\n+  local public_round=M.copy(round)\n+  public_round.current_hand=nil\n   local snapshot = {\n     phase = phase, state = g.STATE, challenge = game.challenge, round = game.round,\n     filter_info = filter_info,\n@@ -233,7 +239,7 @@\n     starting_deck_size = game.starting_deck_size,\n     consumeable_usage_total = M.copy(game.consumeable_usage_total),\n     consumeable_usage = M.copy(game.consumeable_usage),\n-    current_round = M.copy(round), round_resets = M.copy(resets),\n+    current_round = public_round, round_resets = M.copy(resets),\n     probabilities = M.copy(game.probabilities or {normal = 1}),\n     joker_limit = g.jokers and g.jokers.config.card_limit or 0,\n     consumable_limit = g.consumeables and g.consumeables.config.card_limit or 0,\n",
+  "requires_repeat_manufactured_validation": true
+}

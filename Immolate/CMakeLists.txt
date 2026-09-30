@@ -222,6 +222,7 @@ set(LIB_SOURCES
     src/functions.hpp
     src/instance.hpp
     src/immolate.cpp
+    src/challenge_opening.cpp
     src/items.cpp
     ${BRAINSTORM_ARBITRARY_NEGATIVE_BATCH_SOURCES}
     ${BRAINSTORM_NEGATIVE_BLUEPRINT_BATCH_SOURCES}
@@ -355,6 +356,25 @@ if(BUILD_TESTING)
     )
     target_include_directories(brainstorm_api_regression PRIVATE src)
     add_test(NAME brainstorm_api_regression COMMAND brainstorm_api_regression)
+
+    set(BRAINSTORM_COLLECTION_TEST_SOURCES ${LIB_SOURCES})
+    list(REMOVE_ITEM BRAINSTORM_COLLECTION_TEST_SOURCES src/immolate.cpp)
+    add_executable(brainstorm_collection_targets_regression
+        tests/collection_targets_regression.cpp ${BRAINSTORM_COLLECTION_TEST_SOURCES})
+    target_include_directories(brainstorm_collection_targets_regression PRIVATE src)
+    target_link_libraries(brainstorm_collection_targets_regression PRIVATE brainstorm_build_options ${CMAKE_DL_LIBS})
+    target_compile_definitions(brainstorm_collection_targets_regression PRIVATE
+        BUILDING_DLL ${BRAINSTORM_ARBITRARY_NEGATIVE_BATCH_DEFINITIONS}
+        ${BRAINSTORM_NEGATIVE_BLUEPRINT_BATCH_DEFINITIONS} ${BRAINSTORM_OPENING_BATCH_DEFINITIONS})
+    add_test(NAME brainstorm_collection_targets_regression COMMAND brainstorm_collection_targets_regression)
+
+    add_executable(brainstorm_challenge_opening_regression
+        tests/challenge_opening_regression.cpp
+        src/items.cpp src/rng.cpp src/seed.cpp src/util.cpp src/functions.cpp)
+    target_link_libraries(brainstorm_challenge_opening_regression PRIVATE
+        ${PROJECT_NAME} brainstorm_build_options)
+    target_include_directories(brainstorm_challenge_opening_regression PRIVATE src)
+    add_test(NAME brainstorm_challenge_opening_regression COMMAND brainstorm_challenge_opening_regression)
 
     add_executable(brainstorm_soul_scanner_regression
         tests/brainstorm_soul_scanner_regression.cpp

@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "status": "CLOSED",
+  "installed_version": "2.121.0-alpha",
+  "policy_digest": "fd5c42031000f79ecba48ceee72f000aa3d1b7a0c51ed54895d36cfab53e4da5",
+  "context": {
+    "path": "tools\\advisor_eval\\runs\\gold299_20260914\\status321closed\\context.json",
+    "sha256": "aac44c8a5f654541183c4ae9225d7dd0c901fae8b1ee722c710b26af64956002"
+  },
+  "evidence": {
+    "closed_cycle": {
+      "path": "tools\\advisor_eval\\runs\\gold299_20260914\\CLOSED.json",
+      "sha256": "3699b13e0dbe829c5bfd8486ab4f235118200f3ee3f20a7ac28614e12a7c0f91"
+    },
+    "installed_record": {
+      "path": "tools\\advisor_eval\\runs\\pair321_installed\\record.json",
+      "sha256": "4e56c05b9ca1788f9f5a76e8456f50a22ab8cc4e99160ba5cd6dece3e34ab721"
+    },
+    "immutable_release_final": {
+      "path": "tools\\advisor_eval\\runs\\pair321_final\\final_verification.json",
+      "sha256": "268fc4f65cdefb34b575876f3df778290ecc587e993ed11e7d076e86d107260d"
+    },
+    "immutable_reset_md": {
+      "path": "tools\\advisor_eval\\SESSION_RESET_321.md",
+      "sha256": "d7a7cd0da332de7f93b33d283ca61aa6b878cbf9fd80c4690f57eed1b105d9a9"
+    },
+    "immutable_reset_json": {
+      "path": "tools\\advisor_eval\\SESSION_RESET_321.json",
+      "sha256": "79b7f703a078ee188d2fce80bbc95b8b93007091bf04768f709b0577457d6167"
+    },
+    "candidate_validation": {
+      "path": "tools\\advisor_eval\\runs\\pair321_candidate\\validation\\report.json",
+      "sha256": "0a17ad709a7067f55638908be7d46ecacc22ba51ceb57270e4fc870d5fb302dc"
+    },
+    "installed_validation": {
+      "path": "tools\\advisor_eval\\runs\\pair321_installed_validation\\report.json",
+      "sha256": "fd9bc430798f3a6a135abcebe4438595ba2d6e499f630b851a27b43d1980ce65"
+    },
+    "C09_unrun_review": {
+      "path": "tools\\advisor_eval\\development300\\reviews\\review_c09.json",
+      "sha256": "5a5c2f9210bdae14dcb288a5c7866f675f1471f803a968a59e838cec8bf813d5"
+    },
+    "C07_audit": {
+      "path": "tools\\advisor_eval\\runs\\gold299_20260914\\C07\\audit.json",
+      "sha256": "bbd24e7cd6745774999907041d2f31d9413d815550fff9a2867991d382985217"
+    },
+    "C08_selected_audit": {
+      "path": "tools\\advisor_eval\\runs\\gold299_20260914\\C08\\selected_audit.json",
+      "sha256": "a05973af753ba8f9cea8b2710bebcfe6d032fc93a055bbd1e6d53eb2c323edec"
+    }
+  },
+  "complete_attempt_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0
+  },
+  "budget": {
+    "authorized_slots": 60,
+    "authorized_cap_seconds": 5400,
+    "spent_jobs": 38,
+    "spent_reserved_seconds": 2340,
+    "actual_worker_seconds_decimal": "1012.71499999973457357",
+    "actual_worker_seconds": 1012.7149999997346,
+    "unused_slots": [
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24"
+    ],
+    "unused_cap_seconds": 3060,
+    "by_kind": {
+      "S": {
+        "spent_jobs": 6,
+        "spent_reserved_seconds": 180,
+        "actual_worker_seconds_decimal": "4.93800000002374873",
+        "unused_slots": [
+          "S07",
+          "S08",
+          "S09",
+          "S10",
+          "S11",
+          "S12"
+        ]
+      },
+      "M": {
+        "spent_jobs": 24,
+        "spent_reserved_seconds": 720,
+        "actual_worker_seconds_decimal": "53.46599999966565484",
+        "unused_slots": []
+      },
+      "C": {
+        "spent_jobs": 8,
+        "spent_reserved_seconds": 1440,
+        "actual_worker_seconds_decimal": "954.31100000004517",
+        "unused_slots": [
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C23",
+          "C24"
+        ]
+      }
+    }
+  },
+  "C09": "never_registered_reserved_or_run",
+  "prior_navigation_archived": {
+    "ADVISOR_START_HERE.md": {
+      "path": "tools\\advisor_eval\\runs\\status321_closed_final\\previous_navigation\\ADVISOR_START_HERE.md",
+      "sha256": "c171b8d560054e21cb7a187c3f1949e76ac4d0fea8fadba08fcf39f0f6fc74b9"
+    },
+    "ADVISOR_RESUME_PROMPT.md": {
+      "path": "tools\\advisor_eval\\runs\\status321_closed_final\\previous_navigation\\ADVISOR_RESUME_PROMPT.md",
+      "sha256": "17baa89396eeb745db66e3f7b115f28e769a1fcf29a2da9628a474308deea1f0"
+    },
+    "ADVISOR_HANDOFF.md": {
+      "path": "tools\\advisor_eval\\runs\\status321_closed_final\\previous_navigation\\ADVISOR_HANDOFF.md",
+      "sha256": "395b4e2fceeba2a14523f87c140938afb06dac88f22e8e036db6a3368f144750"
+    }
+  }
+}

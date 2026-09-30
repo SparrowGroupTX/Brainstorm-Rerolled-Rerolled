@@ -1,0 +1,49 @@
+--- a/Brainstorm/Advisor/snapshot.lua
++++ b/Brainstorm/Advisor/snapshot.lua
+@@ -50,10 +50,17 @@
+   }
+ end
+ 
+-local function cards(area, discarded)
++local function hidden_joker(card)
++  return card.facing=='back' or card.sprite_facing=='back' or card.flipping=='b2f' or
++    card.face_down==true or card.identity_redacted==true
++end
++local function cards(area, discarded, joker_row)
+   local result = {}
+   for _, card in ipairs(area and area.cards or {}) do
+-    local observation = M.card(card)
++    -- Do not read identity, ability or copying metadata before redacting a
++    -- Joker whose visible sprite is still a back.
++    local observation = joker_row and hidden_joker(card) and
++      {face_down=true,identity_redacted=true,public_slot=#result+1} or M.card(card)
+     -- Discard alignment turns even publicly seen cards back-side up. The
+     -- source retains wheel_flipped only for identities that stayed concealed;
+     -- its remaining-deck UI uses that same marker. Do not infer visibility for
+@@ -157,6 +164,8 @@
+   local phase,pack_type=M.phase(g)
+   if not phase then return nil end
+   local game=g.GAME
++  local concealed_jokers=false
++  for _,card in ipairs(g.jokers and g.jokers.cards or {})do if hidden_joker(card)then concealed_jokers=true end end
+   local blind, round, resets = game.blind or {}, game.current_round or {}, game.round_resets or {}
+   local back = game.selected_back and game.selected_back.effect and game.selected_back.effect.center or {}
+   local next_target, next_blind, route_blinds, route_tags, active_tags
+@@ -227,7 +236,7 @@
+     phase = phase, state = g.STATE, challenge = game.challenge, round = game.round,
+     filter_info = filter_info,
+     opening_pack = phase=='pack' and not not (g.pack_cards and g.pack_cards.brainstorm_challenge_opening),
+-    hand = cards(g.hand), deck = cards(g.deck), jokers = cards(g.jokers),
++    hand = cards(g.hand), deck = cards(g.deck), jokers = cards(g.jokers,nil,true),
+     consumeables = cards(g.consumeables), playing_cards = cards({cards = g.playing_cards}, discarded),
+     shop_jokers = phase == 'shop' and cards(g.shop_jokers) or {},
+     shop_vouchers = phase == 'shop' and cards(g.shop_vouchers) or {},
+@@ -256,7 +265,7 @@
+     hand_size = g.hand and g.hand.config.card_limit or 8,
+     stake = game.stake,
+     normal_opening = M.normal_opening and M.normal_opening.capture(g) or nil,
+-    certificate_pool = M.certificate and M.certificate.capture(g) or nil,
++    certificate_pool = not concealed_jokers and M.certificate and M.certificate.capture(g) or nil,
+     deck_key = back.key, blind_choices = M.copy(resets.blind_choices or {}),
+     blind_states = M.copy(resets.blind_states or {}), skip_tags = M.copy(resets.blind_tags or {}),
+     blind_on_deck = game.blind_on_deck, ante = resets.ante or 1,

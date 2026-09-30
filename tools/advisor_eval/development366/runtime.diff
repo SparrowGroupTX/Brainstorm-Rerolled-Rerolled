@@ -1,0 +1,385 @@
+--- before/Brainstorm\steamodded_compat.lua
++++ Brainstorm\steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.165.0-alpha
++--- VERSION: 2.166.0-alpha
+--- before/Brainstorm\Advisor\acorn_ordering.lua
++++ Brainstorm\Advisor\acorn_ordering.lua
+@@ -59,6 +59,45 @@
+   local requested_order=options.max_order_evaluations or 30000
+   if not finite(requested) or not finite(requested_order) then return no('Finite score allowances are required.') end
+   local budget=math.min(140000,math.max(0,math.floor(requested)))
++  local legal_subset_count=#subsets
++  -- Restrict actions, never public worlds. Build a deterministic visible-card
++  -- shortlist before scoring, balanced across play sizes. Each selected action
++  -- still receives every world, and no incomplete prefix can be recommended.
++  if #subsets*#b.worlds>budget and #b.worlds>=120 and #b.worlds<=720 then
++    local count=math.min(64,math.floor(budget/#b.worlds))
++    if count>=16 then
++      local groups={};for i=1,5 do groups[i]={} end
++      local function quality(indices)
++        local ranks,suits={},{};local value=0
++        for _,i in ipairs(indices) do local c=s.hand[i]
++          local rank=c.rank or (c.base or {}).id or 0
++          ranks[rank]=(ranks[rank] or 0)+1
++          local suit=c.suit or '';suits[suit]=(suits[suit] or 0)+1
++        end
++        for _,n in pairs(ranks) do value=value+n*n*4 end
++        for _,n in pairs(suits) do value=value+n*n end
++        return value
++      end
++      for _,indices in ipairs(subsets) do groups[#indices][#groups[#indices]+1]={indices=indices,value=quality(indices)} end
++      for _,group in ipairs(groups) do table.sort(group,function(a,c)
++        if a.value~=c.value then return a.value>c.value end
++        return table.concat(a.indices,',')<table.concat(c.indices,',')
++      end) end
++      subsets={};local rank=1
++      while #subsets<count do
++        local added=false
++        for size=5,1,-1 do local entry=groups[size][rank]
++          if entry and #subsets<count then subsets[#subsets+1]=entry.indices;added=true end
++        end
++        if not added then break end;rank=rank+1
++      end
++      diag.action_family='bounded_visible_subset_shortlist'
++      diag.all_legal_subsets=false
++      diag.scope='Complete public worlds for a deterministic visible-card shortlist; not exhaustive actions or future resource planning.'
++    end
++  end
++  diag.legal_subsets=legal_subset_count
++  if diag.all_legal_subsets==nil then diag.all_legal_subsets=true end
+   local needed=#subsets*#b.worlds
+   local order_needed=(#orders-1)*needed
+   local order_budget=math.min(30000,math.max(0,math.floor(requested_order)),math.max(0,budget-needed))
+@@ -126,7 +165,8 @@
+       belief_epoch=b.epoch,belief_revision=b.revision,immediate_clear_all_worlds=clear,
+       public_information_fallback=not clear,joint_resource_comparison=false,
+       lines={clear and 'This fixed play reaches the modeled target in every consistent public Joker order.' or
+-        'This fixed play has the strongest conservative immediate score across the consistent public Joker orders.',
++        (diag.all_legal_subsets and 'This fixed play has the strongest conservative immediate score across the consistent public Joker orders.' or
++          'This fixed play has the strongest conservative immediate score in the bounded shortlist, checked against every public Joker world.'),
+         diag.unplanned_rewards and 'Immediate score only; held Gold and seal rewards are not planned against discards or future hands.' or
+         diag.glass_after_scoring and 'Glass may break after scoring; its survival and the next hand are not predicted.' or
+         'Observe visible Joker activations and refresh the belief after the action; future draws, discards and consumable uses are not forecast here.'}},diag.evaluations,diag
+--- before/Brainstorm\Advisor\decision.lua
++++ Brainstorm\Advisor\decision.lua
+@@ -1,6 +1,42 @@
+ -- One decision entry point for the in-game advisor and headless evaluation.
+ -- Dependencies are detached modules, never live game callbacks.
+ local D = {}
++-- Mouth rejects scoring categories, not the engine's play button. When no
++-- scoring/resource action remains, spend one spare hand to expose fresh cards.
++-- This is a public cycle, not a predicted draw, score, or winning continuation.
++function D.mouth_cycle(s,scorer,result,cap)
++  local b=s.blind or {};local round=s.current_round or {}
++  if s.phase~='hand' or b.disabled or not (b.key=='bl_mouth' or b.name=='The Mouth') or
++    type(b.only_hand)~='string' or (s.hands_left or round.hands_left or 0)<=1 or
++    (s.discards_left or round.discards_left or 0)~=0 or #(s.deck or {})==0 or
++    result.action or result.play or not scorer or not scorer.score or (result.evaluations or 0)+2>cap then return end
++  for _,c in ipairs(s.hand or {}) do if c.face_down or c.identity_redacted or c.unknown or
++    type(c.rank)~='number' or c.rank<2 or c.rank>14 or c.rank%1~=0 then return end end
++  for _,j in ipairs(s.jokers or {}) do if j.face_down or j.identity_redacted or j.unknown then return end end
++  local ranks={};for _,c in ipairs(s.hand) do ranks[c.rank]=(ranks[c.rank] or 0)+1 end
++  local indices,spare={},{}
++  for i,c in ipairs(s.hand) do
++    if (c.ability or {}).forced_selection then indices[#indices+1]=i
++    elseif ranks[c.rank]==1 and c.enhancement~='m_gold' and c.enhancement~='m_steel' and c.seal~='Blue' then spare[#spare+1]=i end
++  end
++  table.sort(spare,function(i,j) return s.hand[i].rank<s.hand[j].rank end)
++  for _,i in ipairs(spare) do if #indices<5 then indices[#indices+1]=i end end
++  if #indices==0 then indices={#s.hand} end
++  if #indices>5 then return end
++  table.sort(indices)
++  local actual=scorer.score(s,indices);result.evaluations=(result.evaluations or 0)+1
++  if not actual or actual.legal~=false or actual.reason~='The Mouth requires '..b.only_hand..'.' then return end
++  local probe={};for k,v in pairs(s) do probe[k]=v end
++  probe.blind={};for k,v in pairs(b) do probe.blind[k]=v end;probe.blind.only_hand=nil
++  local supported=scorer.score(probe,indices);result.evaluations=result.evaluations+1
++  if not supported or supported.legal==false or #(supported.warnings or {})>0 then return end
++  local action={kind='play',area='hand',indices=indices}
++  result.kind='strategy';result.action=action
++  result.strategy={action=action,title='Cycle a non-scoring hand under The Mouth',warnings={},lines={
++    'This hand scores zero under the locked category. Spend one spare hand to draw fresh cards.',
++    'No future draw or successful continuation is assumed; refresh advice after the play.'}}
++  result.mouth_cycle={score=0,future_draw_known=false}
++end
+ local function discard_growth_available(snapshot)
+   local round=snapshot.current_round or {}
+   local left=snapshot.discards_left or round.discards_left
+@@ -424,6 +460,7 @@
+   elseif result.play then
+     result.action = {kind='play', area='hand', indices=result.play.indices}
+   end
++  D.mouth_cycle(snapshot,modules.scoring,result,math.min(140000,options and options.search and options.search.max_evaluations or 140000))
+   return result
+ end
+ function D.run(snapshot,modules,yield_fn,options)
+--- before/Brainstorm\Advisor\growth.lua
++++ Brainstorm\Advisor\growth.lua
+@@ -400,7 +400,8 @@
+       local utility,growth,endpoints=0,0,{}
+       for i,j in ipairs(state.jokers) do if j.key=='j_yorick' then
+         local a=j.ability;local left,x,gain=next_yorick(a,count)
+-        utility=utility+80*count/a.extra.discards*a.extra.xmult/math.max(1,a.x_mult)*math.min(1,profile.horizon/6)*(copy_credit[i] or 1)
++        local early=s.teacher_profile=='perkeo_yorick_win_v1' and num(s.ante,1)<=3 and num(a.x_mult,1)<=4
++        utility=utility+(early and 120 or 80)*count/a.extra.discards*a.extra.xmult/math.max(1,a.x_mult)*math.min(1,profile.horizon/6)*(copy_credit[i] or 1)
+         growth=growth+gain
+         endpoints[#endpoints+1]={id=j.id,discard_count=left,x_mult=x,physical=true}
+       end end
+@@ -632,7 +633,8 @@
+         local utility=0
+         for _,j in ipairs(yoricks) do
+           local a=j.ability or {};local extra=type(a.extra)=='table' and a.extra or {}
+-          utility=utility+80*#indices/math.max(1,num(extra.discards,23))*num(extra.xmult,1)/math.max(1,num(a.x_mult,1))*math.min(1,profile.horizon/6)*(copy_credit[yorick_positions[j]] or 1)
++          local early=s.teacher_profile=='perkeo_yorick_win_v1' and num(s.ante,1)<=3 and num(a.x_mult,1)<=4
++          utility=utility+(early and 120 or 80)*#indices/math.max(1,num(extra.discards,23))*num(extra.xmult,1)/math.max(1,num(a.x_mult,1))*math.min(1,profile.horizon/6)*(copy_credit[yorick_positions[j]] or 1)
+         end
+         utility=utility+15*num(effects.yorick_growth)
+         if effects.burnt_hand and modules.search and modules.search.hand_growth_value then
+--- before/Brainstorm\Advisor\strategy.lua
++++ Brainstorm\Advisor\strategy.lua
+@@ -656,6 +656,35 @@
+ -- next draw's pool. Enumerate at most four events/eight equivalent types. The
+ -- larger-pool fallback retains exact additive means and labels its nonlinear
+ -- Observatory approximation; neither branch is a survival forecast.
++local function stock_capacity(snapshot,card,profile)
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' then return math.huge end
++    local suits={c_world='Spades',c_sun='Hearts',c_moon='Clubs',c_star='Diamonds'}
++    if suits[card.key] then
++        if not profile.hand:find('Flush',1,true) then return 1 end
++        return math.huge
++    end
++    if card.key=='c_hermit' or card.key=='c_temperance' then
++        local payout=card.key=='c_hermit' and math.min(20,math.max(0,num(snapshot.dollars))) or math.min(50,joker_sell_value(snapshot))
++        if payout<=0 then return 1 end
++        -- Cash beyond this planning reserve is not itself the win objective.
++        return math.max(1,math.ceil(math.max(0,25+20*profile.horizon-num(snapshot.dollars))/payout))
++    end
++    local targets={c_empress='m_mult',c_heirophant='m_bonus',c_magician='m_lucky',c_chariot='m_steel',c_justice='m_glass',c_devil='m_gold'}
++    if targets[card.key] and type(snapshot.playing_cards)=='table' and #snapshot.playing_cards>0 then
++        local available=0
++        for _,c in ipairs(snapshot.playing_cards) do
++            -- This is the public whole-deck population, not an ordered draw.
++            -- Shop cards render face down; that flag does not erase known deck
++            -- composition. Explicitly redacted/unknown population stays unqualified.
++            if c.unknown or c.identity_redacted or not c.rank then return math.huge end
++            -- Stock investment does not assume overwriting another enhancement.
++            if not c.enhancement or c.enhancement=='c_base' then available=available+1 end
++        end
++        local per_use=(card.key=='c_empress' or card.key=='c_heirophant' or card.key=='c_magician') and 2 or 1
++        return math.min(math.ceil(available/per_use),math.max(1,math.ceil(profile.horizon*2)))
++    end
++    return math.huge
++end
+ inventory_value=function(snapshot,inventory,options)
+     options=options or {}
+     inventory=inventory or snapshot.consumeables or {}
+@@ -669,7 +698,7 @@
+         local key=tostring(card.key or name(card))..(card.debuff and ':debuff' or ':active')
+         local group=by_key[key]
+         if not group then
+-            group={key=key,card=card,count=0,utility=copy_utility(snapshot,card,profile),
++            group={key=key,card=card,count=0,utility=copy_utility(snapshot,card,profile),capacity=stock_capacity(snapshot,card,profile),
+                 matching=not card.debuff and hand_type(card)==profile.hand}
+             by_key[key]=group;groups[#groups+1]=group
+         end
+@@ -685,14 +714,19 @@
+         -- Cap strategic utility, never the game's actual score multiplier.
+         return 24*(math.min(32,1.5^count)-1)
+     end
+-    local direct=0
+-    for _,g in ipairs(groups) do direct=direct+g.count*g.utility end
++    local function direct_value(stock)
++        local value=0
++        for i,g in ipairs(groups) do value=value+math.min(stock[i],g.capacity)*g.utility end
++        return value
++    end
++    local direct=direct_value(counts)
+     local held=held_value(counts)
++    local saturated=false;for _,g in ipairs(groups) do saturated=saturated or g.capacity<math.huge end
+     local memo={}
+     local function recurse(left,size)
+         local key=left..':'..table.concat(counts,',')
+         if memo[key] then return memo[key] end
+-        if left==0 then return held_value(counts) end
++        if left==0 then return held_value(counts)+(saturated and direct_value(counts) or 0) end
+         local value=0
+         for i=1,#groups do
+             local p=counts[i]/size
+@@ -705,20 +739,22 @@
+     local mean=total>0 and direct/total or 0
+     local projected_held=held
+     local approximate=false
+-    if events>0 and total>0 and observatory then
+-        if #groups<=8 then projected_held=recurse(events,total)
++    local projected_direct=direct+events*mean
++    if events>0 and total>0 and (observatory or saturated) then
++        if #groups<=8 then
++            projected_held=recurse(events,total);if saturated then projected_direct=0 end
+         else
+             -- Explicitly bounded approximation only for the strategic premium.
+             approximate=true
+             local matching=0;for _,g in ipairs(groups) do if g.matching then matching=matching+g.count end end
+-            projected_held=24*(math.min(32,1.5^(matching+events*matching/total))-1)
+-        end
+-    end
+-    local future=events*mean+projected_held-held
++            if observatory then projected_held=24*(math.min(32,1.5^(matching+events*matching/total))-1) end
++        end
++    end
++    local future=saturated and (projected_direct+projected_held-direct-held) or (events*mean+projected_held-held)
+     local probabilities={}
+     for _,g in ipairs(groups) do probabilities[g.card.key or name(g.card)]=(probabilities[g.card.key or name(g.card)] or 0)+g.count/math.max(1,total) end
+     return direct+held+future,{direct=direct,held=held,future=future,events=events,
+-        effects=effects,probabilities=probabilities,approximate=approximate,profile=profile}
++        effects=effects,probabilities=probabilities,approximate=approximate,profile=profile,saturated=saturated or nil}
+ end
+ 
+ inventory_marginal=function(before,after,options)
+@@ -1430,11 +1466,60 @@
+     end
+ end
+ 
++local function manage_teacher_stock(snapshot)
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or snapshot.phase~='shop' or
++        perkeo_effects(snapshot)==0 or #(snapshot.consumeables or {})>64 then return end
++    local profile=build_profile(snapshot)
++    local old,info=inventory_value(snapshot,nil,{profile=profile})
++    if info.approximate then return end
++    local seen,counts={},{};for _,c in ipairs(snapshot.consumeables or {}) do counts[c.key]=(counts[c.key] or 0)+1 end
++    local best
++    local observatory=(snapshot.used_vouchers or {}).v_observatory or (snapshot.vouchers or {}).v_observatory
++    local supported={c_empress=true,c_heirophant=true,c_magician=true,c_chariot=true,c_justice=true,c_devil=true,
++        c_world=true,c_sun=true,c_moon=true,c_star=true,c_hermit=true,c_temperance=true}
++    for index,card in ipairs(snapshot.consumeables or {}) do
++      if not seen[card.key] and not card.debuff and not ability(card).eternal and (supported[card.key] or hand_type(card)) then
++        seen[card.key]=true
++        local after=shallow_copy(snapshot);after.consumeables={}
++        for i,c in ipairs(snapshot.consumeables) do if i~=index then after.consumeables[#after.consumeables+1]=c end end
++        if edition(card,'negative') then after.consumable_limit=math.max(0,num(snapshot.consumable_limit,2)-1) end
++        if #after.consumeables<=num(after.consumable_limit,2) then
++          local removed,retained=inventory_value(after,nil,{profile=profile})
++          local payout=card.key=='c_hermit' and math.min(20,math.max(0,num(snapshot.dollars))) or
++              card.key=='c_temperance' and math.min(50,joker_sell_value(snapshot)) or 0
++          local hand=hand_type(card)
++          local use_gain=payout*2
++          if hand==profile.hand and not observatory and counts[card.key]>1 then use_gain=copy_utility(snapshot,card,profile) end
++          -- Use utility already includes the consumed card's benefit; compare
++          -- copying/held opportunity cost, not a second direct inventory charge.
++          local use_merit=use_gain-math.max(0,info.future-retained.future)-math.max(0,info.held-retained.held)-4
++          if use_gain>0 and use_merit>0 and (#after.consumeables>0 or info.events==0) and (not best or use_merit>best.merit) then
++            best={merit=use_merit,kind='use',index=index,card=card}
++          end
++          if not (observatory and hand==profile.hand) and type(card.sell_cost)=='number' and card.sell_cost>=0 and card.sell_cost<math.huge then
++            after.dollars=num(snapshot.dollars)+card.sell_cost
++            local value,detail=inventory_value(after,nil,{profile=profile})
++            local merit=value-old+card.sell_cost*2-4
++            if not detail.approximate and merit>0 and (not best or merit>best.merit) then
++              best={merit=merit,kind='sell',index=index,card=card}
++            end
++          end
++        end
++      end
++    end
++    if best then return {title=(best.kind=='use' and 'Use ' or 'Sell surplus ')..name(best.card),warnings={},
++        action={kind=best.kind,area='consumeables',index=best.index},lines={
++          'Compare remaining usable stock, the complete random Perkeo pool, cash and action cost.',
++          'Refresh after this single action; no particular future copy or draw is assumed.'},
++        stock_review={kind=best.kind,index=best.index,merit=best.merit,whole_inventory=true}} end
++end
++Strategy.manage_teacher_stock=manage_teacher_stock
+ local function shop_advice(snapshot, stats, engine)
+     if Strategy.joker_retirement then
+         local retired=Strategy.joker_retirement.suggest(snapshot,Strategy)
+         if retired then return retired end
+     end
++    local stock=manage_teacher_stock(snapshot);if stock then return stock end
+     local context=snapshot._shop_scoring
+     local readiness=context and context.readiness and context:readiness(snapshot)
+     snapshot._readiness=readiness
+--- before/Brainstorm\Core\Brainstorm.lua
++++ Brainstorm\Core\Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.165.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.166.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before/Brainstorm\Core\collection_search_product.lua
++++ Brainstorm\Core\collection_search_product.lua
+@@ -207,13 +207,41 @@
+   end
+   local function cursor()
+     local index=B.collection_search_cursor
++    if not B.collection_cursor_loaded then
++      local fs=deps.cursor_fs or love and love.filesystem
++      if not fs or not fs.getInfo or not fs.read or not fs.write then return nil,'Persistent search cursor storage is unavailable.' end
++      local ok,info=pcall(fs.getInfo,'brainstorm_collection_cursor_v1.txt')
++      if not ok then return nil,'Persistent search cursor could not be inspected.' end
++      if info then
++        if info.type~='file' or not whole(info.size,1,64) then return nil,'Persistent search cursor is malformed.' end
++        local read_ok,bytes=pcall(fs.read,'brainstorm_collection_cursor_v1.txt')
++        local saved=read_ok and type(bytes)=='string' and bytes:match('^cursor1:(%d+)\n$')
++        saved=tonumber(saved)
++        if not whole(saved,1,DOMAIN) then return nil,'Persistent search cursor is malformed; it was not reset.' end
++        index=math.max(index or 1,saved)
++      end
++      B.collection_search_cursor=index;B.collection_cursor_loaded=true
++    end
+     if index==nil then
+       local ok,seconds=pcall(deps.wall_time or os.time)
+       if not ok or not whole(seconds,0,9007199254740991)then return nil,'An independent seed cursor could not be initialized.' end
+-      index=seconds%(DOMAIN-1)+1;B.collection_search_cursor=index
++      -- Spread first installation away from nearby wall-time cursors. Once
++      -- initialized, durable monotonic progression, not reseeding, owns search.
++      index=((seconds%4294967296)*104729)%(DOMAIN-1)+1;B.collection_search_cursor=index
+     end
+     if not whole(index,1,DOMAIN-1)then return nil,'The independent seed cursor is exhausted or invalid.' end
+     return index
++  end
++  local function persist_cursor(index)
++    local fs=deps.cursor_fs or love and love.filesystem
++    if not whole(index,1,DOMAIN) or not fs then return nil,'Search cursor exhausted or storage unavailable.' end
++    local bytes='cursor1:'..string.format('%.0f',index)..'\n'
++    local ok,written=pcall(fs.write,'brainstorm_collection_cursor_v1.txt',bytes)
++    if not ok or not written then return nil,'Search cursor could not be reserved durably.' end
++    local read_ok,actual=pcall(fs.read,'brainstorm_collection_cursor_v1.txt')
++    if not read_ok or actual~=bytes then return nil,'Search cursor reservation verification failed.' end
++    B.collection_search_cursor=index
++    return true
+   end
+   function api.begin(request,owner)
+     if not owner_ok(owner) then return nil,'An explicit search owner is required.' end
+@@ -224,6 +252,7 @@
+     local p,reason=progress();if not p or p.token~=request.profile_token then return nil,reason or 'The loaded Gold population changed.' end
+     local stamp=input();if stamp==nil then return nil,'Input ownership is unavailable.' end
+     local index,err=cursor();if not index then return nil,err end
++    local reserved,storage_error=persist_cursor(index+1);if not reserved then return nil,storage_error end
+     local seed=M.seed_at(index)
+     local job={owner=owner,request=copy(record.snapshot),input=stamp,identity=run_identity(game()),start_index=index,
+       start_seed=seed,exited=false,status='searching',stage=1,stage_receipts={}}
+@@ -292,6 +321,8 @@
+     q.target_locations=table.concat({'soul_pack','by_ante_5','ante_1','soul_pack','ante_1'},'\31')
+     q.burnt_required=false;q.budget_ms=remaining
+     local index,err=cursor();if not index then job.status='error';job.reason=err;return false end
++    local reserved,storage_error=persist_cursor(index+1)
++    if not reserved then job.status='error';job.reason=storage_error;return false end
+     job.stage=2;job.start_index=index;job.start_seed=M.seed_at(index);job.effective_query=q
+     job.native_reserved_ms=job.native_reserved_ms+remaining
+     job.exited=false;job.status='searching';job.reason=nil;B.collection_search_cursor=index+1
+@@ -345,7 +376,8 @@
+       if native and whole(native.screened,0,DOMAIN-1)then
+         local next_index=job.start_index+math.max(1,native.screened)
+         if done.status=='found' then next_index=(M.seed_id(native.seed)or job.start_index)+1 end
+-        B.collection_search_cursor=math.max(B.collection_search_cursor or 1,next_index)
++        local saved,why=persist_cursor(math.max(B.collection_search_cursor or 1,next_index))
++        if not saved then job.status='error';job.reason=why;return output(job) end
+       end
+       if (done.status=='not_found' or done.status=='timeout') and relax_burnt(job)then return output(job)end
+       if done.status=='found' and native and M.seed_id(native.seed)then

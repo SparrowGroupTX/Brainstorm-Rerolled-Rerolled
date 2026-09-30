@@ -1,0 +1,25 @@
+{
+  "passive_only": true,
+  "old_complete_cases": 17,
+  "same_cases_new": 17,
+  "old_cards": 190,
+  "new_cards": 211,
+  "old_discards": 49,
+  "new_discards": 54,
+  "same_cases_target": 216,
+  "baseline_lua_gate": {
+    "name": "lua",
+    "command": [
+      "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "tests/run_lua_tests.py",
+      "--lua-library",
+      "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll"
+    ],
+    "status": "passed",
+    "exit_code": 0,
+    "seconds": 54.469000000011874
+  },
+  "current_passes_before_timeout": 264,
+  "current_gate_seconds": 60,
+  "timing_comparison_limit": "Different active system load; no causal attribution of timeout to runtime patch."
+}

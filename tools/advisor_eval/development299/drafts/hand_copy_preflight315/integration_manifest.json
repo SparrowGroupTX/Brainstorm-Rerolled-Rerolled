@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "kind": "detached_hand_copy_preflight315",
+  "status": "ready_for_review_not_staged_or_installed",
+  "files": {
+    "hand_copy_preflight.lua": "95bc204b45facde6c19d11ee6f46e7a8bbbb6c3dd483baa4acd6a96e0da94b7f",
+    "search.lua": "63d0294f2825b2cfa740eadd84d0c24fa25dbb93f385ea4023866cb1289c6785",
+    "decision.lua": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac",
+    "runtime.lua": "7d049fc735b00ec6760d676ab854e194eca046a7b12ba727dc3e2e268cea4d5e",
+    "test_preflight.lua": "c2f9412a954f7a49f6829fc62d477370f94006db88230f23f7970bf65f5b5224",
+    "test_legacy.lua": "16c86e8a26037d86fb8b16513e494360a41e40f338ce25ac193b2b327e26f4f3",
+    "INTEGRATION.md": "07e05e1e1822a636db82c3f90d0b55b0754427b517886c4e80da6cec6a11be5d",
+    "base_hashes.json": "446a45182a6d42c984d371d09ba1610b99605d01d47a1175f3ab6e3b7126c0ab",
+    "inspect_input_shapes.py": "c2e5bd1352f9b2b30df23da7c527af99daab531d7aff047b7dd78a509e51db05",
+    "C04_INPUT_SIZE_REVIEW.json": "b2a8b6a937cfc91509ef3d95c661e37bb22148316861beea442a0e1a8f6cad6a"
+  },
+  "base_hashes": {
+    "Brainstorm/Advisor/search.lua": "66e61a8b3e1801356952b44b53b371d8504c1b7c5053a22964de76efeb2b8338",
+    "Brainstorm/Advisor/decision.lua": "a5768f9250d9151372e2a7e490fb4b77033633fd8e2c53d644cfb3ffa85a8cb8",
+    "Brainstorm/Advisor/runtime.lua": "e37d3de7e3fb96f2d0648b85f11cd6e176c0012284f45727219511d425711852",
+    "tools/advisor_eval/runs/planet_pool_source1/source/card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453"
+  },
+  "runtime_targets": {
+    "hand_copy_preflight.lua": "Brainstorm/Advisor/hand_copy_preflight.lua",
+    "search.lua": "Brainstorm/Advisor/search.lua",
+    "decision.lua": "Brainstorm/Advisor/decision.lua",
+    "runtime.lua": "Brainstorm/Advisor/runtime.lua"
+  },
+  "runtime_merge_note": "If runtime base changed, merge only the added A.hand_copy_preflight load; do not overwrite newer work.",
+  "validation": {
+    "focused_checks": 205,
+    "legacy_checks": 416,
+    "legacy_bodies": 7,
+    "fixture_entries_passed": 2,
+    "source_or_captured_execution": false
+  },
+  "bounds": {
+    "hand_cards": 8,
+    "jokers": 8,
+    "layouts": 2,
+    "max_subsets_per_layout": 218,
+    "new_after_play_scores": 436,
+    "initial_plus_new_score_bound": 658,
+    "ordinary_cap": 140000,
+    "fast_clear_cap_unchanged": 70,
+    "max_non_scoring_discard_transitions": 436
+  },
+  "source_read": "Existing preserved card.lua only; no executable ZIP access",
+  "source_or_captured_experiment": false,
+  "installation": false,
+  "future_source_adapter_root_module": "hand_copy_preflight",
+  "input_limits": {
+    "value_nodes": 32768,
+    "depth": 12,
+    "string_or_key_bytes": 4096,
+    "total_string_or_key_bytes": 524288,
+    "playing_cards": 128,
+    "deck": 128,
+    "consumeables": 32,
+    "plain_acyclic_finite": true,
+    "metatables_or_callable_values": false
+  },
+  "guard_behavior": "Reject whole shortcut; never truncate inventory/population/metadata; bounded equality on returned resources.",
+  "read_only_shape_audit": "C04_INPUT_SIZE_REVIEW.json",
+  "prior_manifest": "integration_manifest_before_input_guards.json"
+}

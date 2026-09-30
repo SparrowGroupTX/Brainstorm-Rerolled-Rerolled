@@ -1,0 +1,877 @@
+{
+  "baseline_mismatch_file": "MISMATCH_BEFORE.json",
+  "comparisons": [
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 101
+          }
+        ],
+        "state": {
+          "cash": 7,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 101,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "rental_juggler_last_tally",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 101
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development453-source-fidelity-v2",
+          "fixture_sha256": "621b93837584a29f8654e1c4b5bc1b1a263b356d7b81df9ca8cadf8b99b017c4",
+          "reference": "source-derived handwritten rule model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "overlay_integration": "5f0466275ce46ab78aa8faaec03834eef43810d23a8acc628cb604839a527760",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "qualification_writer": "f057ed4b213bea66c2594d1675bfca0cc4b7ae59bf9424f87769be86bc0b52b2",
+            "reference_model": "f98b9d1fabf2a942f15443bffe1cc940cff1233413959858d1c3d3ff674e72a9",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "cdfa7abc298028138aca1d360a63951c142d8627c730950faa1b62d676772354"
+          }
+        },
+        "minimization_status": "manufactured_minimal",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_453 -v",
+          "fixture_id": "rental_juggler_last_tally"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 101
+          }
+        ],
+        "state": {
+          "cash": 7,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 101,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 2
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 102
+          }
+        ],
+        "state": {
+          "cash": 7,
+          "hand_size": 9,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": false,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 102,
+              "rental": true,
+              "tally": 1
+            }
+          ],
+          "phase": "round_end"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "rental_juggler_tally_two",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 2
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 102
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development453-source-fidelity-v2",
+          "fixture_sha256": "1b6ca273f24d2d33806670c1ce8d38d125d93fe1d4aa8d8c3b40003b7abf083e",
+          "reference": "source-derived handwritten rule model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "overlay_integration": "5f0466275ce46ab78aa8faaec03834eef43810d23a8acc628cb604839a527760",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "qualification_writer": "f057ed4b213bea66c2594d1675bfca0cc4b7ae59bf9424f87769be86bc0b52b2",
+            "reference_model": "f98b9d1fabf2a942f15443bffe1cc940cff1233413959858d1c3d3ff674e72a9",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "cdfa7abc298028138aca1d360a63951c142d8627c730950faa1b62d676772354"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_453 -v",
+          "fixture_id": "rental_juggler_tally_two"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 2
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 102
+          }
+        ],
+        "state": {
+          "cash": 7,
+          "hand_size": 9,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": false,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 102,
+              "rental": true,
+              "tally": 1
+            }
+          ],
+          "phase": "round_end"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 103
+          }
+        ],
+        "state": {
+          "cash": 7,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 103,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "already_expired_rental_juggler",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 103
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development453-source-fidelity-v2",
+          "fixture_sha256": "8b6a23c7f3a8c4013046eb668bf746c8ee516a31ce782e8a92b128c0c17626bf",
+          "reference": "source-derived handwritten rule model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "overlay_integration": "5f0466275ce46ab78aa8faaec03834eef43810d23a8acc628cb604839a527760",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "qualification_writer": "f057ed4b213bea66c2594d1675bfca0cc4b7ae59bf9424f87769be86bc0b52b2",
+            "reference_model": "f98b9d1fabf2a942f15443bffe1cc940cff1233413959858d1c3d3ff674e72a9",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "cdfa7abc298028138aca1d360a63951c142d8627c730950faa1b62d676772354"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_453 -v",
+          "fixture_id": "already_expired_rental_juggler"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "cash": 7,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 103
+          }
+        ],
+        "state": {
+          "cash": 7,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 103,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "cash": 10,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 104
+          }
+        ],
+        "state": {
+          "cash": 10,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 104,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "nonrental_juggler_last_tally",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "cash": 10,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 104
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development453-source-fidelity-v2",
+          "fixture_sha256": "7cd1307fa9f09b6e5833a67ffad764b3de3489c5fd73c5f8b7799f9c378c376d",
+          "reference": "source-derived handwritten rule model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "overlay_integration": "5f0466275ce46ab78aa8faaec03834eef43810d23a8acc628cb604839a527760",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "qualification_writer": "f057ed4b213bea66c2594d1675bfca0cc4b7ae59bf9424f87769be86bc0b52b2",
+            "reference_model": "f98b9d1fabf2a942f15443bffe1cc940cff1233413959858d1c3d3ff674e72a9",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "cdfa7abc298028138aca1d360a63951c142d8627c730950faa1b62d676772354"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_453 -v",
+          "fixture_id": "nonrental_juggler_last_tally"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "cash": 10,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 10,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 104
+          }
+        ],
+        "state": {
+          "cash": 10,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 104,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "cash": 14,
+              "debuff": true,
+              "hand_size": 9,
+              "tally": 0
+            },
+            "before": {
+              "cash": 14,
+              "debuff": false,
+              "hand_size": 10,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 201
+          },
+          {
+            "after": {
+              "cash": 11,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 5
+            },
+            "before": {
+              "cash": 14,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 5
+            },
+            "center_key": "j_joker",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 202
+          },
+          {
+            "after": {
+              "cash": 8,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 11,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 203
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 201,
+              "rental": false,
+              "tally": 0
+            },
+            {
+              "center_key": "j_joker",
+              "debuff": false,
+              "edition": null,
+              "h_size": 0,
+              "perishable": false,
+              "physical_id": 202,
+              "rental": true,
+              "tally": 5
+            },
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 203,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "heldout_juggler_rental_order",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "cash": 14,
+              "debuff": true,
+              "hand_size": 9,
+              "tally": 0
+            },
+            "before": {
+              "cash": 14,
+              "debuff": false,
+              "hand_size": 10,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 201
+          },
+          {
+            "after": {
+              "cash": 11,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 5
+            },
+            "before": {
+              "cash": 14,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 5
+            },
+            "center_key": "j_joker",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 202
+          },
+          {
+            "after": {
+              "cash": 8,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 11,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 203
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development453-source-fidelity-v2",
+          "fixture_sha256": "c96fa926014bcdc07d7d3a5dfcf6c5a39590052349f760f0cc3aa86e6daf4eb4",
+          "reference": "source-derived handwritten rule model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "overlay_integration": "5f0466275ce46ab78aa8faaec03834eef43810d23a8acc628cb604839a527760",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "qualification_writer": "f057ed4b213bea66c2594d1675bfca0cc4b7ae59bf9424f87769be86bc0b52b2",
+            "reference_model": "f98b9d1fabf2a942f15443bffe1cc940cff1233413959858d1c3d3ff674e72a9",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "cdfa7abc298028138aca1d360a63951c142d8627c730950faa1b62d676772354"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_453 -v",
+          "fixture_id": "heldout_juggler_rental_order"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "cash": 14,
+              "debuff": true,
+              "hand_size": 9,
+              "tally": 0
+            },
+            "before": {
+              "cash": 14,
+              "debuff": false,
+              "hand_size": 10,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 201
+          },
+          {
+            "after": {
+              "cash": 11,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 5
+            },
+            "before": {
+              "cash": 14,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 5
+            },
+            "center_key": "j_joker",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 202
+          },
+          {
+            "after": {
+              "cash": 8,
+              "debuff": true,
+              "hand_size": 8,
+              "tally": 0
+            },
+            "before": {
+              "cash": 11,
+              "debuff": false,
+              "hand_size": 9,
+              "tally": 1
+            },
+            "center_key": "j_juggler",
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 203
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "hand_size": 8,
+          "jokers": [
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 201,
+              "rental": false,
+              "tally": 0
+            },
+            {
+              "center_key": "j_joker",
+              "debuff": false,
+              "edition": null,
+              "h_size": 0,
+              "perishable": false,
+              "physical_id": 202,
+              "rental": true,
+              "tally": 5
+            },
+            {
+              "center_key": "j_juggler",
+              "debuff": true,
+              "edition": null,
+              "h_size": 1,
+              "perishable": true,
+              "physical_id": 203,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "round_end"
+        }
+      }
+    }
+  ],
+  "execution": {
+    "Balatro_process": false,
+    "episode": false,
+    "original_source_callbacks": false,
+    "save_or_profile_read": false
+  },
+  "fixture_set_sha256": "38902adf157fdea43a4c169aa7f7f96ae703aeb02ce10b8861e0c17b9c947272",
+  "negative_order_control": {
+    "agreement": false,
+    "case_id": "heldout_juggler_rental_order_wrong_order",
+    "classification": "manufactured_negative_control",
+    "common_event_prefix": [],
+    "first_difference": {
+      "actual": 11,
+      "expected": 14,
+      "field": "events[0].after.cash"
+    },
+    "manifest": {
+      "candidate_patch": "development453-source-fidelity-v2",
+      "fixture_sha256": "c96fa926014bcdc07d7d3a5dfcf6c5a39590052349f760f0cc3aa86e6daf4eb4",
+      "reference": "source-derived handwritten rule model; original callbacks not executed",
+      "sources_sha256": {
+        "candidate_overlay": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+        "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+        "overlay_integration": "5f0466275ce46ab78aa8faaec03834eef43810d23a8acc628cb604839a527760",
+        "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+        "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+        "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+        "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+        "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+        "qualification_writer": "f057ed4b213bea66c2594d1675bfca0cc4b7ae59bf9424f87769be86bc0b52b2",
+        "reference_model": "f98b9d1fabf2a942f15443bffe1cc940cff1233413959858d1c3d3ff674e72a9",
+        "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+        "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+        "test_harness": "cdfa7abc298028138aca1d360a63951c142d8627c730950faa1b62d676772354"
+      }
+    },
+    "minimization_status": "not_minimized",
+    "reproduction": {
+      "fixture_id": "heldout_juggler_rental_order",
+      "mutation": "swap first two events"
+    }
+  },
+  "patch_id": "development453-source-fidelity-v2",
+  "schema": "round_end_plain_juggler_v1",
+  "status": "manufactured_tested_only",
+  "unsupported_cases": [
+    {
+      "comparison_executed": false,
+      "fixture": {
+        "active_jokers": [
+          "j_mime"
+        ],
+        "held_cards": [
+          {
+            "debuff": false,
+            "enhancement": "gold",
+            "h_dollars": 3,
+            "physical_id": 401,
+            "seal": null
+          }
+        ],
+        "id": "held_gold_mime_repetition",
+        "qualification": "unsupported",
+        "source_derived_held_dollars": 6
+      },
+      "reason": "fidelity_mime_round_end_repetition"
+    }
+  ]
+}

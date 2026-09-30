@@ -1,0 +1,11 @@
+The first full shared-decision fixture expected the ordinary scorer to undo the
+Burnt arrangement, but its low 600-chip target was already beaten by Three of a
+Kind with uncopied Yorick. The scorer correctly returned another supported
+growth discard. To test the intended phase conflict, the synthetic Yorick and
+target were changed to X40 / 23,000 chips: a copied Ace clears with 25,600 while
+the uncopied Three of a Kind reaches only 18,240. No runtime change followed
+from this mistaken fixture assumption. Original assertion: ordinary scorer
+alone wants to undo Burnt setup: discard ~= reorder_jokers. Command: python -B
+tests/run_lua_tests.py tools/advisor_eval/development299/drafts/copy_order/advisor_phase_copy.lua
+Result: 0/1 fixtures passed. Routine synthetic validation only; no new source,
+replay, search, terminal attempt, game, profile, or save operation.

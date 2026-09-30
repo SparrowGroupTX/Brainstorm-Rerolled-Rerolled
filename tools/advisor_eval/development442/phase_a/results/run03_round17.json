@@ -1,0 +1,3547 @@
+{
+  "status": "complete",
+  "seconds": 2.547000000020489,
+  "exit_code": 0,
+  "output_sha256": "6013b6dafcfda2b98edea63f825320489fdf58895fa6f92cc2da6f647943a4c8",
+  "result": {
+    "cards_discarded": 17,
+    "case": "run03_round17",
+    "chips": 158598,
+    "discards": 4,
+    "final_resources_supported": true,
+    "five_card_discards": 1,
+    "full_run": false,
+    "initial": {
+      "consumables": [
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:964",
+          "key": "c_empress"
+        },
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:974",
+          "key": "c_empress"
+        },
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:975",
+          "key": "c_empress"
+        }
+      ],
+      "deck_remaining": 41,
+      "discards_left": 4,
+      "dollars": 25,
+      "hand_size": 9,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 0
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 120,
+          "level": 3,
+          "mult": 13,
+          "played": 1
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 1
+        },
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 4
+        },
+        "Pair": {
+          "chips": 100,
+          "level": 7,
+          "mult": 8,
+          "played": 6
+        },
+        "Straight": {
+          "chips": 90,
+          "level": 3,
+          "mult": 10,
+          "played": 5
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "chips": 30,
+          "level": 1,
+          "mult": 3,
+          "played": 0
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 2
+        }
+      },
+      "hands_left": 4,
+      "held": [
+        {
+          "debuff": false,
+          "id": "playing:31",
+          "rank": 14,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:10",
+          "rank": 13,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:46",
+          "rank": 12,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:18",
+          "rank": 8,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:29",
+          "rank": 7,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:5",
+          "rank": 7,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:4",
+          "rank": 6,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:27",
+          "rank": 5,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_steel",
+          "id": "playing:37",
+          "rank": 4,
+          "suit": "Spades"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Set Mult",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 15,
+            "mult": 27,
+            "name": "Swashbuckler",
+            "order": 110,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:912",
+          "key": "j_swashbuckler"
+        },
+        {
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 14,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:900",
+          "key": "j_blueprint"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:790",
+          "key": "j_perkeo"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "mult": 0,
+            "name": "Blue Joker",
+            "order": 53,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:870",
+          "key": "j_blue_joker"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 10,
+            "yorick_discards": 3
+          },
+          "debuff": false,
+          "id": "card:791",
+          "key": "j_yorick"
+        }
+      ],
+      "population": 50
+    },
+    "input_unchanged": true,
+    "plays": 1,
+    "reason": "Actual supported play reaches target",
+    "remaining_discards": 0,
+    "resources": {
+      "consumables": [
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:975",
+          "key": "c_empress"
+        }
+      ],
+      "deck_remaining": 24,
+      "discards_left": 0,
+      "dollars": 25,
+      "hand_size": 9,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 0
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 120,
+          "level": 3,
+          "mult": 13,
+          "played": 1
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 1
+        },
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 4
+        },
+        "Pair": {
+          "chips": 100,
+          "level": 7,
+          "mult": 8,
+          "played": 7
+        },
+        "Straight": {
+          "chips": 90,
+          "level": 3,
+          "mult": 10,
+          "played": 5
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "chips": 30,
+          "level": 1,
+          "mult": 3,
+          "played": 0
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 2
+        }
+      },
+      "hands_left": 3,
+      "held": [
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:7",
+          "rank": 9,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:16",
+          "rank": 6,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:1",
+          "rank": 3,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:13",
+          "rank": 2,
+          "suit": "Diamonds"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 14,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:900",
+          "key": "j_blueprint"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Set Mult",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 15,
+            "mult": 27,
+            "name": "Swashbuckler",
+            "order": 110,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:912",
+          "key": "j_swashbuckler"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:790",
+          "key": "j_perkeo"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "mult": 0,
+            "name": "Blue Joker",
+            "order": 53,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:870",
+          "key": "j_blue_joker"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 11,
+            "yorick_discards": 9
+          },
+          "debuff": false,
+          "id": "card:791",
+          "key": "j_yorick"
+        }
+      ],
+      "population": 50
+    },
+    "resources_prefix_supported": true,
+    "role": "candidate_2_217",
+    "round_rewards_modeled": false,
+    "score_evaluations": 182084,
+    "status": "supported_clear",
+    "steps": [
+      {
+        "action": {
+          "kind": "reorder_jokers",
+          "order": [
+            2,
+            1,
+            3,
+            4,
+            5
+          ]
+        },
+        "before_chips": 0,
+        "before_discards": 4,
+        "card_ids": {},
+        "decision": {
+          "action": {
+            "kind": "reorder_jokers",
+            "order": [
+              2,
+              1,
+              3,
+              4,
+              5
+            ]
+          },
+          "evaluations": 113905,
+          "play": {
+            "hand": "Straight",
+            "score": 82820,
+            "uncertain": false
+          },
+          "resource_comparison": {
+            "best": {
+              "indices": [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 2,
+              "probability": 1,
+              "value": 0.9999999999999998,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "compared_discards": [
+              {
+                "indices": [
+                  1,
+                  3,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1.6666666666666667,
+                "probability": 1,
+                "value": 0.9999999999999998,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1,
+                  3,
+                  4
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1.6666666666666667,
+                "probability": 1,
+                "value": 0.9999999999999998,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1.6666666666666667,
+                "probability": 1,
+                "value": 0.9999999999999998,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              }
+            ],
+            "full_remaining_horizon": true,
+            "future_discards": false,
+            "horizon": 4,
+            "play": {
+              "indices": [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 2,
+              "probability": 1,
+              "value": 0.9999999999999998,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior": {
+              "indices": [
+                1,
+                3,
+                5
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1.6666666666666667,
+              "probability": 1,
+              "value": 0.9999999999999998,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior_discard": {
+              "indices": [
+                1,
+                3,
+                5
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1.6666666666666667,
+              "probability": 1,
+              "value": 0.9999999999999998,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "sampled_effects": "shared Glass/Hook/Heart and qualified Lucky outcomes, including supported owned rows; uncalibrated Monte Carlo",
+            "samples": 6,
+            "scope": "remaining_blind"
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 24448,
+            "discard_candidates": 16,
+            "discard_pass_cost": 6096,
+            "discard_samples_limited": true,
+            "sampled_clear_scope": "Supported score floors count as clears; random means and hidden identities do not."
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 4,
+        "card_ids": [
+          "playing:31",
+          "playing:46",
+          "playing:18",
+          "playing:29"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              3,
+              4,
+              5
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 11,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 4,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 17331,
+          "play": {
+            "hand": "Straight",
+            "score": 137360,
+            "uncertain": false
+          },
+          "resource_comparison": {
+            "best": {
+              "indices": [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "compared_discards": [
+              {
+                "indices": [
+                  1,
+                  3,
+                  4,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1.125,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 2,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  3
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              }
+            ],
+            "full_remaining_horizon": true,
+            "future_discards": false,
+            "horizon": 4,
+            "play": {
+              "indices": [
+                4,
+                5,
+                7,
+                8,
+                9
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior": {
+              "indices": [
+                1,
+                3,
+                4,
+                5
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1.125,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior_discard": {
+              "indices": [
+                1,
+                3,
+                4,
+                5
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1.125,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 2,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "sampled_effects": "shared Glass/Hook/Heart and qualified Lucky outcomes, including supported owned rows; uncalibrated Monte Carlo",
+            "samples": 8,
+            "scope": "remaining_blind"
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 24448,
+            "discard_candidates": 9,
+            "discard_pass_cost": 3438,
+            "discard_samples_limited": false,
+            "discard_shortlist_reduced": true,
+            "sampled_clear_scope": "Supported score floors count as clears; random means and hidden identities do not.",
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 126,
+              "qualified": 37,
+              "selected_cards": 5,
+              "selected_score": 137360
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 6,
+              "max_evaluations": 12
+            },
+            "risk": {
+              "bonus": 0.0036,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 2,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 3,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 4,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 5,
+                  "compared": 1,
+                  "incomplete": 0,
+                  "margin": 1,
+                  "progress": 0,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                }
+              ],
+              "candidate_count": 9,
+              "compared": true,
+              "compared_five_count": 1,
+              "development_deferred_for_discard": true,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": true,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "mature_or_final_scope": true,
+              "minimum_score": 132132,
+              "qualified_count": 8,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "safe_batch_preference": false,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": true,
+              "selected": true,
+              "selected_cards": 4,
+              "taper": 0.0005
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            2,
+            7,
+            8,
+            9
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 3,
+        "card_ids": [
+          "playing:33",
+          "playing:4",
+          "playing:27",
+          "playing:37"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              7,
+              8,
+              9
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 11,
+            "final_action_kind": "discard",
+            "reason": "supported_retained_clear",
+            "remaining_discards": 3,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 16191,
+          "play": {
+            "hand": "Pair",
+            "score": 136488,
+            "uncertain": false
+          },
+          "resource_comparison": {
+            "best": {
+              "indices": [
+                1,
+                2,
+                4,
+                5,
+                6
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "compared_discards": [
+              {
+                "indices": [
+                  1,
+                  4,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1,
+                  2,
+                  4,
+                  5
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              }
+            ],
+            "full_remaining_horizon": true,
+            "future_discards": false,
+            "horizon": 4,
+            "play": {
+              "indices": [
+                1,
+                2,
+                4,
+                5,
+                6
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior": {
+              "indices": [
+                1,
+                4,
+                5
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior_discard": {
+              "indices": [
+                1,
+                4,
+                5
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "sampled_effects": "shared Glass/Hook/Heart and qualified Lucky outcomes, including supported owned rows; uncalibrated Monte Carlo",
+            "samples": 8,
+            "scope": "remaining_blind"
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 24448,
+            "discard_candidates": 9,
+            "discard_pass_cost": 3438,
+            "discard_samples_limited": false,
+            "discard_shortlist_reduced": true,
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": true,
+              "considered": 126,
+              "qualified": 21,
+              "selected_cards": 5,
+              "selected_score": 136488
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 6,
+              "max_evaluations": 12
+            },
+            "risk": {
+              "bonus": 0.0024545454545454545,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 2,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 3,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 1,
+                  "progress": 0,
+                  "qualified": 1,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 4,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 2,
+                  "progress": 1,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 1
+                },
+                {
+                  "cards": 5,
+                  "compared": 1,
+                  "incomplete": 0,
+                  "margin": 1,
+                  "progress": 0,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                }
+              ],
+              "candidate_count": 9,
+              "compared": true,
+              "compared_five_count": 1,
+              "development_deferred_for_discard": true,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": false,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "mature_or_final_scope": true,
+              "minimum_score": 132132,
+              "qualified_count": 5,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "retained_batch_upgrade": true,
+              "safe_batch_preference": false,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": true,
+              "selected": false,
+              "selected_cards": 3,
+              "taper": 0.0005
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            6,
+            8,
+            9
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 2,
+        "card_ids": [
+          "playing:20",
+          "playing:40",
+          "playing:38",
+          "playing:15"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              6,
+              8,
+              9
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 11,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 2,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 16545,
+          "play": {
+            "hand": "Pair",
+            "score": 155232,
+            "uncertain": false
+          },
+          "resource_comparison": {
+            "best": {
+              "indices": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "compared_discards": [
+              {
+                "indices": [
+                  1,
+                  6,
+                  8,
+                  9
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1,
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  1
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              }
+            ],
+            "full_remaining_horizon": true,
+            "future_discards": false,
+            "horizon": 4,
+            "play": {
+              "indices": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior": {
+              "indices": [
+                1,
+                6,
+                8,
+                9
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior_discard": {
+              "indices": [
+                1,
+                6,
+                8,
+                9
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "sampled_effects": "shared Glass/Hook/Heart and qualified Lucky outcomes, including supported owned rows; uncalibrated Monte Carlo",
+            "samples": 8,
+            "scope": "remaining_blind"
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 24448,
+            "discard_candidates": 9,
+            "discard_pass_cost": 3438,
+            "discard_samples_limited": false,
+            "discard_shortlist_reduced": true,
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": true,
+              "considered": 126,
+              "qualified": 32,
+              "selected_cards": 5,
+              "selected_score": 142560
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 6,
+              "max_evaluations": 12
+            },
+            "risk": {
+              "bonus": 0.003272727272727273,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 2,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 3,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 4,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 5,
+                  "compared": 1,
+                  "incomplete": 0,
+                  "margin": 1,
+                  "progress": 0,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                }
+              ],
+              "candidate_count": 9,
+              "compared": true,
+              "compared_five_count": 1,
+              "development_deferred_for_discard": true,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": true,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "mature_or_final_scope": true,
+              "minimum_score": 148896,
+              "qualified_count": 8,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "safe_batch_preference": false,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": true,
+              "selected": true,
+              "selected_cards": 4,
+              "taper": 0.0005
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            3,
+            4,
+            6,
+            7,
+            9
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 1,
+        "card_ids": [
+          "playing:22",
+          "playing:34",
+          "playing:50",
+          "playing:35",
+          "playing:5"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              3,
+              4,
+              6,
+              7,
+              9
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 0,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 1,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 18071,
+          "play": {
+            "hand": "Pair",
+            "score": 186120,
+            "uncertain": false
+          },
+          "resource_comparison": {
+            "best": {
+              "indices": [
+                1,
+                4,
+                6,
+                8,
+                9
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "compared_discards": [
+              {
+                "indices": [
+                  3,
+                  4,
+                  6,
+                  7,
+                  9
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  3,
+                  4,
+                  6,
+                  7
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              },
+              {
+                "indices": [
+                  4
+                ],
+                "kind": "discard",
+                "mean": 120000,
+                "mean_hands": 1,
+                "probability": 1,
+                "value": 1,
+                "worlds": [
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  },
+                  {
+                    "score": 120000,
+                    "turns": 1,
+                    "utility": 1,
+                    "win": 1
+                  }
+                ]
+              }
+            ],
+            "full_remaining_horizon": true,
+            "future_discards": false,
+            "horizon": 4,
+            "play": {
+              "indices": [
+                1,
+                4,
+                6,
+                8,
+                9
+              ],
+              "kind": "play",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior": {
+              "indices": [
+                3,
+                4,
+                6,
+                7,
+                9
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "prior_discard": {
+              "indices": [
+                3,
+                4,
+                6,
+                7,
+                9
+              ],
+              "kind": "discard",
+              "mean": 120000,
+              "mean_hands": 1,
+              "probability": 1,
+              "value": 1,
+              "worlds": [
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                },
+                {
+                  "score": 120000,
+                  "turns": 1,
+                  "utility": 1,
+                  "win": 1
+                }
+              ]
+            },
+            "sampled_effects": "shared Glass/Hook/Heart and qualified Lucky outcomes, including supported owned rows; uncalibrated Monte Carlo",
+            "samples": 8,
+            "scope": "remaining_blind"
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 24448,
+            "discard_candidates": 9,
+            "discard_pass_cost": 3438,
+            "discard_samples_limited": false,
+            "discard_shortlist_reduced": true,
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "risk": {
+              "bonus": 0.004090909090909091,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 1,
+                  "progress": 0,
+                  "qualified": 1,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 2,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 3,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 4,
+                  "compared": 2,
+                  "incomplete": 0,
+                  "margin": 1,
+                  "progress": 0,
+                  "qualified": 1,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                },
+                {
+                  "cards": 5,
+                  "compared": 1,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 0,
+                  "qualified": 1,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                }
+              ],
+              "candidate_count": 9,
+              "compared": true,
+              "compared_five_count": 1,
+              "development_deferred_for_discard": true,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": true,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "mature_or_final_scope": true,
+              "minimum_score": 140976,
+              "qualified_count": 7,
+              "qualified_five_count": 1,
+              "required_fraction": 1,
+              "safe_batch_preference": false,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": true,
+              "selected": true,
+              "selected_cards": 5,
+              "taper": 0.0005
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "consumeables",
+          "index": 1,
+          "kind": "use",
+          "targets": [
+            1,
+            3
+          ]
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": {},
+        "decision": {
+          "action": {
+            "area": "consumeables",
+            "index": 1,
+            "kind": "use",
+            "targets": [
+              1,
+              3
+            ]
+          },
+          "evaluations": 14,
+          "play": {
+            "hand": "Pair",
+            "score": 140976,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "consumeables",
+          "index": 1,
+          "kind": "use",
+          "targets": [
+            4,
+            7
+          ]
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": {},
+        "decision": {
+          "action": {
+            "area": "consumeables",
+            "index": 1,
+            "kind": "use",
+            "targets": [
+              4,
+              7
+            ]
+          },
+          "evaluations": 14,
+          "play": {
+            "hand": "Pair",
+            "score": 158598,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "kind": "play"
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:10",
+          "playing:49",
+          "playing:11",
+          "playing:12",
+          "playing:30"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "kind": "play"
+          },
+          "evaluations": 13,
+          "play": {
+            "hand": "Pair",
+            "score": 158598,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 5,
+              "qualified": 0
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 0,
+              "max_evaluations": 12,
+              "reasons": [
+                "Automatic hand sorting can change scoring-card order."
+              ]
+            },
+            "schema": 1
+          }
+        }
+      }
+    ],
+    "target": 120000,
+    "world": 0
+  },
+  "job": "run03_round17"
+}

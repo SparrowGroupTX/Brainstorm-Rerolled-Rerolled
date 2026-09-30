@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "kind": "release329_existing_loss328_validation_limits",
+  "status": "ACTIVE",
+  "fresh_authority": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+    "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+  },
+  "initial_status": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/status_initial.json",
+    "sha256": "70e000b2efb2fae5df72e4eedfa365ac9bd54ddb0730bbd9893e5d6208b5e081"
+  },
+  "historical_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_authority": "CLOSED",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 0,
+    "error": 0,
+    "timeout": 0,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 6
+  },
+  "registered_jobs": 0,
+  "launched_jobs": 0,
+  "reserved_worker_seconds": 0,
+  "actual_worker_seconds": 0,
+  "fresh_limits": {
+    "detached_comparison_jobs": 6,
+    "seconds_per_comparison_job": 30,
+    "complete_attempt_jobs": 6,
+    "seconds_per_complete_attempt": 180,
+    "total_worker_seconds": 1260,
+    "search_jobs": 0,
+    "other_source_component_jobs": 0
+  },
+  "remaining_authority_seconds": 1260,
+  "unused_capacity": "retained_under_existing_authority",
+  "release_scope": "Public-only preserved-log postmortems, repository implementation and manufactured regressions; no experiment job and no additional authority.",
+  "score_caps": {
+    "ordinary": 140000,
+    "shop": 50000,
+    "consumable": 25000,
+    "fast_clear": 70
+  },
+  "diagnostic_evidence": {
+    "scoring_manifest": {
+      "path": "tools/advisor_eval/development328/scaling_component/manifest.json",
+      "sha256": "69c8afd3d95096bd7ac81deb4cef709e6d68e72f152c1548c525aef8bbc920f5"
+    },
+    "inventory_manifest": {
+      "path": "tools/advisor_eval/development328/inventory_component/manifest.json",
+      "sha256": "45396b63948312ae13cca9bb31f3b960fe5000cc71626c317f66513dd887c0c6"
+    },
+    "run4_public_trace": {
+      "path": "tools/advisor_eval/development328/public_trace/run4.json",
+      "sha256": "147f8cf804c384bf9199c30f6b96d2227614df8765703a0a4ee575a857eb94ed"
+    },
+    "run5_public_trace": {
+      "path": "tools/advisor_eval/development328/public_trace/run5.json",
+      "sha256": "ebbdf08e43566779d3c2a30e23a4ae194c513282e17fe46f6f2ca87f015cb8e6"
+    }
+  },
+  "outcome_limits": "Selected dependent development seeds and manufactured fixtures are not representative calibration or unseen holdouts. No verified complete Jokerless win, numerical player win odds, fifty/seventy-five percent per-challenge target, achievement completion or human superiority is demonstrated. Use only redacted public snapshots and recorded advice/action metadata; old raw internal fingerprint text may contain concealed identities. Preserve all original logs, failures, unsupported/timeouts and censored outcomes. No saves/profiles for evaluation, seed search, game control, native changes, training or automation. Installed activation remains a normal user restart. Existing score, population, inventory, retry and session safeguards remain unchanged. Acorn hidden-Joker order fairness and mixed-inventory midrun Planet planning remain unresolved; prospective validation must decline the concealed-Joker boundary equally for both policies until qualified.",
+  "remaining_gaps": [
+    "Acorn concealed-Joker order fairness; equal unsupported boundary required in source validation",
+    "Midrun mixed Perkeo inventory owned-Planet and draw planning"
+  ],
+  "unchanged": [
+    "Deterministic complete common-world comparisons",
+    "Actual paid affordability and full family fallback",
+    "Whole inventory and capacity",
+    "Population and Glass safeguards",
+    "Current settings and every native DLL",
+    "Persistent manual retry and product session caps",
+    "Original current logs and historical evidence"
+  ]
+}

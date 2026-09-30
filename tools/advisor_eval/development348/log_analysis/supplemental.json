@@ -1,0 +1,759 @@
+{
+  "schema": 1,
+  "scope": "Bounded read-only passive journal prefix capture and decode; no policy replay, simulations, source components, searches, save/profile reads or game control.",
+  "latest_audit": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\passive_audit.json",
+    "sha256": "532092c5bc654205c655d7e0fd123b8135393422acbab81026facff6ced194a7"
+  },
+  "prior_session": {
+    "prefix": "session-20260916T053031Z-1",
+    "inputs": [
+      {
+        "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T053031Z-1-000001.brj",
+        "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\prior_frozen_prefix\\session-20260916T053031Z-1-000001.brj",
+        "bytes": 29834,
+        "sha256": "4045206db77a51ab1c26f1a5b05357237ba9bde49cc347f2336de6e3190095fd",
+        "append_active": false,
+        "qualification": "Named earlier session; original may change later. Hash binds captured prefix only.",
+        "stat_unchanged_during_read": true,
+        "original_size_after_read": 29834,
+        "event_count": 10
+      },
+      {
+        "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T053031Z-1-000002.brj",
+        "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\prior_frozen_prefix\\session-20260916T053031Z-1-000002.brj",
+        "bytes": 2894204,
+        "sha256": "cc25b8e9a9e771fda8066d56538c91d9cc33a4170e0c450d3d75350544007445",
+        "append_active": false,
+        "qualification": "Named earlier session; original may change later. Hash binds captured prefix only.",
+        "stat_unchanged_during_read": true,
+        "original_size_after_read": 2894204,
+        "event_count": 1003
+      },
+      {
+        "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T053031Z-1-000003.brj",
+        "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\prior_frozen_prefix\\session-20260916T053031Z-1-000003.brj",
+        "bytes": 21650,
+        "sha256": "cefec01b10f9b1a516450913caf9d10e2f9a462bdd499cdd6083ab8d180f6259",
+        "append_active": false,
+        "qualification": "Named earlier session; original may change later. Hash binds captured prefix only.",
+        "stat_unchanged_during_read": true,
+        "original_size_after_read": 21650,
+        "event_count": 7
+      },
+      {
+        "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T053031Z-1-000004.brj",
+        "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\prior_frozen_prefix\\session-20260916T053031Z-1-000004.brj",
+        "bytes": 2830388,
+        "sha256": "0ecd88e1130939b56aa6479fda24f2805140052bd66005347887c3b203669359",
+        "append_active": false,
+        "qualification": "Named earlier session; original may change later. Hash binds captured prefix only.",
+        "stat_unchanged_during_read": true,
+        "original_size_after_read": 2830388,
+        "event_count": 1095
+      }
+    ],
+    "loaded_versions": {
+      "Brainstorm v2.146.0-alpha": 1397
+    },
+    "event_counts": {
+      "performance_window": 372,
+      "auto_run": 701,
+      "collection_search_started": 2,
+      "collection_search_finished": 2,
+      "collection_run_start": 2,
+      "action_requested": 346,
+      "action_callback_result": 346,
+      "state_after_actions": 344
+    },
+    "decode_errors": [],
+    "searches": [
+      {
+        "anchor": {
+          "segment": "session-20260916T053031Z-1-000001.brj",
+          "ordinal": 8,
+          "sequence": 8,
+          "stored_frame_sha256": "589d8dbd189c7a70644c20545b2baafab066d55e72f33619174d5b972bdbb889",
+          "decoded_event_sha256": "1aa5837588ad9fb6f6062f040f1e67edf42be4ae9e7fb2fe008730b24ba7ee69"
+        },
+        "at": "2026-09-16T05:30:37Z",
+        "loaded_version": "Brainstorm v2.146.0-alpha",
+        "preceding_start": {
+          "anchor": {
+            "segment": "session-20260916T053031Z-1-000001.brj",
+            "ordinal": 6,
+            "sequence": 6,
+            "stored_frame_sha256": "361ae833439f723792bd590996fc3d552df62514a26696b99bd731a4c61a9997",
+            "decoded_event_sha256": "436dd9ece22729b63ba27811c2cb8ee1fe97fdcecbc2bce6228fa1b6c45bbfa3"
+          },
+          "at": "2026-09-16T05:30:37Z",
+          "start_seed": "WRXG4Y11"
+        },
+        "status": "found",
+        "result": {
+          "budget_ms": 9000,
+          "exact_candidates": 233,
+          "route": "conditional_no_reroll_stock_and_buffoon",
+          "schema": 1,
+          "screened": 37847040,
+          "seconds": 0.0747696,
+          "seed": "M4BVSY11",
+          "status": "found",
+          "threads": 32
+        },
+        "request": {
+          "deck": "Red Deck",
+          "stake_level": 8,
+          "tag": "Charm Tag",
+          "souls": 2,
+          "target_jokers": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+          "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+          "reject_perishable_targets": true,
+          "minimum_distinct": 1,
+          "first_ante": 5,
+          "last_ante": 8,
+          "interchangeable_copies": true
+        },
+        "receipt_wall_seconds": 0.11547949999999929
+      },
+      {
+        "anchor": {
+          "segment": "session-20260916T053031Z-1-000003.brj",
+          "ordinal": 5,
+          "sequence": 1018,
+          "stored_frame_sha256": "990d5e95b447f02c673bc422047855a94ac86907659dda240936386f5d539581",
+          "decoded_event_sha256": "f8a2b69c664212acb8a61080cb2712127fde5d1e8b87bffa8474ee681e2540cd"
+        },
+        "at": "2026-09-16T05:36:49Z",
+        "loaded_version": "Brainstorm v2.146.0-alpha",
+        "preceding_start": {
+          "anchor": {
+            "segment": "session-20260916T053031Z-1-000003.brj",
+            "ordinal": 3,
+            "sequence": 1016,
+            "stored_frame_sha256": "77bc48da90cd0a88c8f057a3c84dc97ae93e9854e9556ecd66689cae37030207",
+            "decoded_event_sha256": "ca5c98fd483af9379d6a877662b9ada01ec2b4c25841b4082e74661ec557c894"
+          },
+          "at": "2026-09-16T05:36:49Z",
+          "start_seed": "N4BVSY11"
+        },
+        "status": "found",
+        "result": {
+          "budget_ms": 9000,
+          "exact_candidates": 70,
+          "route": "conditional_no_reroll_stock_and_buffoon",
+          "schema": 1,
+          "screened": 13664256,
+          "seconds": 0.0385959,
+          "seed": "YVYN2Z11",
+          "status": "found",
+          "threads": 32
+        },
+        "request": {
+          "deck": "Red Deck",
+          "stake_level": 8,
+          "tag": "Charm Tag",
+          "souls": 2,
+          "target_jokers": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+          "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+          "reject_perishable_targets": true,
+          "minimum_distinct": 1,
+          "first_ante": 5,
+          "last_ante": 8,
+          "interchangeable_copies": true
+        },
+        "receipt_wall_seconds": 0.06583280000000968
+      }
+    ]
+  },
+  "latest_searches": [
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000001.brj",
+        "ordinal": 8,
+        "sequence": 8,
+        "stored_frame_sha256": "d67a862dbfa380f96dc1ae3eb99ec0b88bdfbba87f1595bfcdbc3907df23e266",
+        "decoded_event_sha256": "a63839b14e2879a176e8d25065051e7588957fd636abf96a816bd33cb8fea594"
+      },
+      "at": "2026-09-16T06:01:53Z",
+      "loaded_version": "Brainstorm v2.147.0-alpha",
+      "preceding_start": {
+        "anchor": {
+          "segment": "session-20260916T060145Z-1-000001.brj",
+          "ordinal": 6,
+          "sequence": 6,
+          "stored_frame_sha256": "a0baff35b81dc9a99fe7f238a848d47fc58c1cb6cfdbc7c6d2be8c30611d8320",
+          "decoded_event_sha256": "1482c3cc0a34ba81178ce600c603364106fc51b6c7ca203a31e25811112d9dec"
+        },
+        "at": "2026-09-16T06:01:53Z",
+        "start_seed": "Y9ZG4Y11"
+      },
+      "status": "found",
+      "result": {
+        "budget_ms": 9000,
+        "exact_candidates": 233,
+        "route": "conditional_no_reroll_stock_and_buffoon",
+        "schema": 1,
+        "screened": 37822464,
+        "seconds": 0.0712201,
+        "seed": "M4BVSY11",
+        "status": "found",
+        "threads": 32
+      },
+      "request": {
+        "deck": "Red Deck",
+        "stake_level": 8,
+        "tag": "Charm Tag",
+        "souls": 2,
+        "target_jokers": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+        "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+        "reject_perishable_targets": true,
+        "minimum_distinct": 1,
+        "first_ante": 5,
+        "last_ante": 8,
+        "interchangeable_copies": true
+      },
+      "receipt_wall_seconds": 0.1108551000000002
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000003.brj",
+        "ordinal": 5,
+        "sequence": 1016,
+        "stored_frame_sha256": "69a7e445366ff6f76e43733fc1f63d7c250efaeeea2c416b9b0168d6aa952631",
+        "decoded_event_sha256": "0333c46efaf5f743d21ebca6d144f98534c03d65b6ff38fba559b642e4792c05"
+      },
+      "at": "2026-09-16T06:07:54Z",
+      "loaded_version": "Brainstorm v2.147.0-alpha",
+      "preceding_start": {
+        "anchor": {
+          "segment": "session-20260916T060145Z-1-000003.brj",
+          "ordinal": 3,
+          "sequence": 1014,
+          "stored_frame_sha256": "2b5d59031d1ed5b6316305d85aad38f0b4301ca2c57ac4e8e6d041119bdd0e8b",
+          "decoded_event_sha256": "fa6e9032ce7f3204ac18b8d770a0b9b134cd50834b49b4fc6ab2dd141d555cac"
+        },
+        "at": "2026-09-16T06:07:54Z",
+        "start_seed": "N4BVSY11"
+      },
+      "status": "found",
+      "result": {
+        "budget_ms": 9000,
+        "exact_candidates": 70,
+        "route": "conditional_no_reroll_stock_and_buffoon",
+        "schema": 1,
+        "screened": 13664256,
+        "seconds": 0.029647,
+        "seed": "YVYN2Z11",
+        "status": "found",
+        "threads": 32
+      },
+      "request": {
+        "deck": "Red Deck",
+        "stake_level": 8,
+        "tag": "Charm Tag",
+        "souls": 2,
+        "target_jokers": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+        "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+        "reject_perishable_targets": true,
+        "minimum_distinct": 1,
+        "first_ante": 5,
+        "last_ante": 8,
+        "interchangeable_copies": true
+      },
+      "receipt_wall_seconds": 0.05275869999996985
+    }
+  ],
+  "repeated_search_pairs": {
+    "prior": [
+      [
+        "WRXG4Y11",
+        "M4BVSY11"
+      ],
+      [
+        "N4BVSY11",
+        "YVYN2Z11"
+      ]
+    ],
+    "latest": [
+      [
+        "Y9ZG4Y11",
+        "M4BVSY11"
+      ],
+      [
+        "N4BVSY11",
+        "YVYN2Z11"
+      ]
+    ],
+    "exact_pair_sequence_equal": false,
+    "qualification": "Exact observed cursor/result repetition across distinct recorded sessions. Restart itself is not independently recorded by this passive audit."
+  },
+  "eternal_choices": [
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 75,
+        "sequence": 1093,
+        "stored_frame_sha256": "3425bed8ffd398b0a1ef51eaeb1a247fc7a2fe6a00404798d4b6ae8aeb29db25",
+        "decoded_event_sha256": "9dddf10da7ace6479b7682ea3c50d4104e5b3149d3e03668f74bf1c73c308cb1"
+      },
+      "at": "2026-09-16T06:08:14Z",
+      "seed": "YVYN2Z11",
+      "loaded_version": "Brainstorm v2.147.0-alpha",
+      "kind": "Pack choice, not a shop Joker purchase",
+      "action": {
+        "area": "pack_cards",
+        "index": 1,
+        "kind": "choose"
+      },
+      "state": {
+        "ante": 1,
+        "round": 1,
+        "phase": "pack",
+        "dollars": 4,
+        "pack_type": "BUFFOON_PACK",
+        "pack_choices": 1,
+        "joker_limit": 5
+      },
+      "selected_card": {
+        "id": "card:346",
+        "key": "j_cartomancer",
+        "name": "Cartomancer",
+        "cost": 9,
+        "sell_cost": 4,
+        "edition": {
+          "holo": true,
+          "mult": 10,
+          "type": "holo"
+        },
+        "eternal": true,
+        "perishable": false,
+        "rental": false,
+        "gold_record": {
+          "key": "j_cartomancer",
+          "status": "complete"
+        }
+      },
+      "pack_cards": [
+        {
+          "id": "card:346",
+          "key": "j_cartomancer",
+          "name": "Cartomancer",
+          "cost": 9,
+          "sell_cost": 4,
+          "edition": {
+            "holo": true,
+            "mult": 10,
+            "type": "holo"
+          },
+          "eternal": true,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_cartomancer",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:347",
+          "key": "j_fibonacci",
+          "name": "Fibonacci",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": null,
+          "eternal": false,
+          "perishable": true,
+          "rental": true,
+          "gold_record": {
+            "key": "j_fibonacci",
+            "status": "complete"
+          }
+        }
+      ],
+      "jokers_before": [
+        {
+          "id": "card:339",
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "eternal": false,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_yorick",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:340",
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "eternal": false,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_perkeo",
+            "status": "complete"
+          }
+        }
+      ],
+      "advice": {
+        "action": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        },
+        "gold_review": {
+          "schema": 1,
+          "shop_evaluations": 3219,
+          "shop_truncated": false,
+          "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+          "status": "current"
+        },
+        "lines": [
+          "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Creates resources that improve the deck over later rounds. Eternal: this slot is permanent.",
+          "After each choice, refresh advice for the remaining options.",
+          "Note: Pack scoring could not complete every legal comparison; this decision uses the strategic ratings.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "choose",
+          "active_seconds": 0.17716830000006212,
+          "decision_id": 483,
+          "elapsed_seconds": 0.2743988000000286,
+          "evaluations": 3219,
+          "finished_seconds": 395.2276112,
+          "max_resume_seconds": 0.03481840000000602,
+          "phase": "pack",
+          "resume_calls": 51,
+          "started_seconds": 394.9532124,
+          "status": "completed"
+        },
+        "title": "Choose Cartomancer"
+      },
+      "callback": {
+        "anchor": {
+          "segment": "session-20260916T060145Z-1-000004.brj",
+          "ordinal": 76,
+          "sequence": 1094,
+          "stored_frame_sha256": "45eacee86af0fd791e79a4a07f9d935ff5c38622cfafbfcc86a81a9b30a5b900",
+          "decoded_event_sha256": "bb11de58f262b5a5fd64349341df303a50f2da1de78dc88cdc6ae08c4a2031d6"
+        },
+        "details": {
+          "action_sequence": 1093,
+          "callback_returned": true,
+          "completion": "Callback result only; queued effects may still be pending.",
+          "reason": ""
+        }
+      },
+      "after": {
+        "anchor": {
+          "segment": "session-20260916T060145Z-1-000004.brj",
+          "ordinal": 77,
+          "sequence": 1095,
+          "stored_frame_sha256": "c52894f36ea2801aff2ac9c3983b2fa025a5414268b3f2fbb323564df3c21f44",
+          "decoded_event_sha256": "3c6381fec0914e4eeaf332a1ff5104d9451c5b7f887634af82ba097e0765e4d5"
+        },
+        "at": "2026-09-16T06:08:14Z",
+        "state": {
+          "ante": 1,
+          "round": 1,
+          "phase": "shop",
+          "dollars": 4
+        },
+        "selected_card_now_held": [
+          {
+            "id": "card:346",
+            "key": "j_cartomancer",
+            "name": "Cartomancer",
+            "cost": 9,
+            "sell_cost": 4,
+            "edition": {
+              "holo": true,
+              "mult": 10,
+              "type": "holo"
+            },
+            "eternal": true,
+            "perishable": false,
+            "rental": false,
+            "gold_record": {
+              "key": "j_cartomancer",
+              "status": "complete"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T060145Z-1-000004.brj",
+        "ordinal": 117,
+        "sequence": 1135,
+        "stored_frame_sha256": "9a573f864a951b5ff60a620592491490f6a5516ab4088ffffed6c967b51d2fb1",
+        "decoded_event_sha256": "5f0227e8ded98e3ef402be2ff6fbde860ac1e0d41f64ee2a8744257b659008d4"
+      },
+      "at": "2026-09-16T06:08:24Z",
+      "seed": "YVYN2Z11",
+      "loaded_version": "Brainstorm v2.147.0-alpha",
+      "kind": "Pack choice, not a shop Joker purchase",
+      "action": {
+        "area": "pack_cards",
+        "index": 1,
+        "kind": "choose"
+      },
+      "state": {
+        "ante": 2,
+        "round": 2,
+        "phase": "pack",
+        "dollars": 4,
+        "pack_type": "BUFFOON_PACK",
+        "pack_choices": 1,
+        "joker_limit": 5
+      },
+      "selected_card": {
+        "id": "card:358",
+        "key": "j_devious",
+        "name": "Devious Joker",
+        "cost": 4,
+        "sell_cost": 2,
+        "edition": null,
+        "eternal": true,
+        "perishable": false,
+        "rental": false,
+        "gold_record": {
+          "key": "j_devious",
+          "status": "complete"
+        }
+      },
+      "pack_cards": [
+        {
+          "id": "card:358",
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "edition": null,
+          "eternal": true,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_devious",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:359",
+          "key": "j_todo_list",
+          "name": "To Do List",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": null,
+          "eternal": false,
+          "perishable": false,
+          "rental": true,
+          "gold_record": {
+            "key": "j_todo_list",
+            "status": "missing"
+          }
+        }
+      ],
+      "jokers_before": [
+        {
+          "id": "card:339",
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "eternal": false,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_yorick",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:340",
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "eternal": false,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_perkeo",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:346",
+          "key": "j_cartomancer",
+          "name": "Cartomancer",
+          "cost": 9,
+          "sell_cost": 4,
+          "edition": {
+            "holo": true,
+            "mult": 10,
+            "type": "holo"
+          },
+          "eternal": true,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_cartomancer",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:351",
+          "key": "j_caino",
+          "name": "Caino",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "eternal": false,
+          "perishable": false,
+          "rental": false,
+          "gold_record": {
+            "key": "j_caino",
+            "status": "complete"
+          }
+        }
+      ],
+      "advice": {
+        "action": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        },
+        "gold_review": {
+          "schema": 1,
+          "shop_evaluations": 0,
+          "shop_truncated": false,
+          "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+          "status": "current"
+        },
+        "lines": [
+          "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Adds Chips to support your hand levels and Mult. Eternal: this slot is permanent.",
+          "After each choice, refresh advice for the remaining options.",
+          "Keep the last The Hierophant for Perkeo copies.",
+          "Note: Shop scoring preview unavailable: Blind-start Joker changes are left to the existing strategy. Using strategy estimates.",
+          "Note: Pack scoring could not complete every legal comparison; this decision uses the strategic ratings.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "choose",
+          "active_seconds": 0.018741499999975986,
+          "decision_id": 507,
+          "elapsed_seconds": 0.018744900000001508,
+          "evaluations": 0,
+          "finished_seconds": 404.3462636,
+          "max_resume_seconds": 0.018741499999975986,
+          "phase": "pack",
+          "resume_calls": 1,
+          "started_seconds": 404.3275187,
+          "status": "completed"
+        },
+        "title": "Choose Devious Joker"
+      },
+      "callback": {
+        "anchor": {
+          "segment": "session-20260916T060145Z-1-000004.brj",
+          "ordinal": 118,
+          "sequence": 1136,
+          "stored_frame_sha256": "7aa9178efdf8a536a8de966519a53855f9efa9d7404dde7bd71ca8042368f79f",
+          "decoded_event_sha256": "12d9874cd27d51f843e6b93d8006ec8be10d27e45cc9b7e2f64ab24397a8be6c"
+        },
+        "details": {
+          "action_sequence": 1135,
+          "callback_returned": true,
+          "completion": "Callback result only; queued effects may still be pending.",
+          "reason": ""
+        }
+      },
+      "after": {
+        "anchor": {
+          "segment": "session-20260916T060145Z-1-000004.brj",
+          "ordinal": 119,
+          "sequence": 1137,
+          "stored_frame_sha256": "5b320e0be2a364a3df6cf7ecda066769e98a07b7a50888c3f36d2acd184414cb",
+          "decoded_event_sha256": "9de468cb63e2cb1279a85e3e156bd235d47a5149b2fe7a54ab3194f796778229"
+        },
+        "at": "2026-09-16T06:08:24Z",
+        "state": {
+          "ante": 2,
+          "round": 2,
+          "phase": "shop",
+          "dollars": 4
+        },
+        "selected_card_now_held": [
+          {
+            "id": "card:358",
+            "key": "j_devious",
+            "name": "Devious Joker",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "eternal": true,
+            "perishable": false,
+            "rental": false,
+            "gold_record": {
+              "key": "j_devious",
+              "status": "complete"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "original_event_receipts": [
+    {
+      "sequence": 1093,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1093.json",
+      "sha256": "9dddf10da7ace6479b7682ea3c50d4104e5b3149d3e03668f74bf1c73c308cb1"
+    },
+    {
+      "sequence": 1094,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1094.json",
+      "sha256": "bb11de58f262b5a5fd64349341df303a50f2da1de78dc88cdc6ae08c4a2031d6"
+    },
+    {
+      "sequence": 1095,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1095.json",
+      "sha256": "3c6381fec0914e4eeaf332a1ff5104d9451c5b7f887634af82ba097e0765e4d5"
+    },
+    {
+      "sequence": 1135,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1135.json",
+      "sha256": "5f0227e8ded98e3ef402be2ff6fbde860ac1e0d41f64ee2a8744257b659008d4"
+    },
+    {
+      "sequence": 1136,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1136.json",
+      "sha256": "12d9874cd27d51f843e6b93d8006ec8be10d27e45cc9b7e2f64ab24397a8be6c"
+    },
+    {
+      "sequence": 1137,
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development348\\log_analysis\\original_event_1137.json",
+      "sha256": "9de468cb63e2cb1279a85e3e156bd235d47a5149b2fe7a54ab3194f796778229"
+    }
+  ],
+  "limits": [
+    "No advisor or scoring evaluator was executed.",
+    "Only named previous-session byte prefixes were newly read; latest-session data came from already sealed bytes.",
+    "The latest interrupted run remains unfinished; no new terminal outcome is imputed.",
+    "Observed pack choices and advice do not establish that those choices were optimal."
+  ]
+}

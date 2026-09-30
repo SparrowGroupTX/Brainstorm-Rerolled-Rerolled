@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "kind": "preserved_C01_archive_serialization_roundtrip",
+  "source_executed": false,
+  "policy_decisions_executed": 0,
+  "actual_player_journal": false,
+  "snapshots": 225,
+  "synthetic_envelopes_per_snapshot": 4,
+  "exact_original_events_recovered": 900,
+  "original_jsonl_bytes": 76190036,
+  "events": 900,
+  "physical_bytes": 1792346,
+  "segments": 1,
+  "trace_sha256": "982d52f155c6ceac74023c0a4d2960fd6c2db62bd1757cc699007f8a8bef63a1",
+  "files": {
+    "player_journal.lua": "38b081ea58c53f9dba98046a64ddb9601e62f9d414b35851172684ff8d379fe9",
+    "player_log_archive.lua": "a25fffd012ec4c52de40d7b7f945486e0e586ee0b7e675314f315b5a032b64ca",
+    "read_player_log.py": "81fe0b98ce1afdcf7b9670eb22ac65ce501c055b4873d9d0bfd155c3289418ea",
+    "test_archive.py": "a9abddd6c8ecf59f5f2d02ff3701c1ee97b8bc311b27da04ded6c832b1bede84",
+    "validate_c01_archive.py": "82df0df479cedc02ce1801bfe2e4f3349883a1a28f359391235eb093655e8dc7"
+  },
+  "scope": "Actual draft public redaction/serialization/archive plus Python zlib and fake filesystem. No game/RNG/policy step or player files.",
+  "limits": "Selected synthetic C01 size evidence only; no live LOVE codec timing or future-player storage forecast."
+}

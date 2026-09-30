@@ -1,0 +1,69 @@
+{
+  "started_utc": "2026-09-26T19:33:01.701690+00:00",
+  "manifest_sha256": "e9871ca6d7942d1a870ac8c8313cd3ade417aedb84e3807013ebc2dc50622130",
+  "runs": [
+    {
+      "pattern": "test_advisor_*.py",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_advisor_*.py"
+      ],
+      "exit_code": 0,
+      "tests": 441,
+      "passed": true,
+      "seconds": 14.093999999997322,
+      "log": "python_0.log",
+      "log_sha256": "d16efc6d977375f5bb7067144f167c1d685c8ec54c1bd43d8cd4e8e82b3c85c9"
+    },
+    {
+      "pattern": "test_teacher_decision_timing.py",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_teacher_decision_timing.py"
+      ],
+      "exit_code": 0,
+      "tests": 9,
+      "passed": true,
+      "seconds": 0.15600000000267755,
+      "log": "python_1.log",
+      "log_sha256": "e51fa61dd0bc165317777440536df3a309ebd931d3a89b80d8b6741825cd9558"
+    },
+    {
+      "pattern": "test_wall_time_decomposition.py",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_wall_time_decomposition.py"
+      ],
+      "exit_code": 0,
+      "tests": 2,
+      "passed": true,
+      "seconds": 0.125,
+      "log": "python_2.log",
+      "log_sha256": "b8b717fa0a9602d80e893aea3aaece7def82b1e01dc3074b5b97e9d8149b3944"
+    }
+  ],
+  "runtime_unchanged": true,
+  "tests_unchanged": true,
+  "provenance_unchanged": true,
+  "passed": true,
+  "total_python_tests": 452,
+  "no_runtime_release": true
+}

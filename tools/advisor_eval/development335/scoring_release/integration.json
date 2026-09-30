@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-15T21:45:12.331230+00:00",
+  "kind": "routine_manufactured_fixture_runtime_slice",
+  "release": 336,
+  "version": "2.136.0-alpha",
+  "previous_release": 335,
+  "previous_installed_record": {
+    "path": "tools/advisor_eval/runs/journal335_installed/record.json",
+    "sha256": "689be1fbd61ebd60c1fe4285e4b02dcfce9594318db3b9b14831cb616eb3364c"
+  },
+  "previous_policy_digest": "3a7546c34abf0310a4b437aca9b104792044fb91ebda47e53ef3507d5587d9a9",
+  "policy_digest": "8fe8afb9d46d53e3614e46bff5b79c0cc2a8820c5b269780ec02821fd6822e0f",
+  "changed_runtime": {
+    "Brainstorm/Advisor/scoring.lua": {
+      "before": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+      "after": "f625c294eb5ba9cf0b6da5eb8f871c58be0835aecf92396c09151becef1c80e9"
+    },
+    "Brainstorm/Core/Brainstorm.lua": {
+      "before": "205620baeb5523b143b3c3a1c1d0210a39de8e526e49f547e67bf997f06b7c76",
+      "after": "8a9dcab8894b04ce869f1e15f3309e9963bca201856ebd91d5da95ae81d1abea"
+    },
+    "Brainstorm/steamodded_compat.lua": {
+      "before": "7c3e18aba46d801c7541bbd0dcda5ed118db5b57f1f26d20354d73963eacfa1c",
+      "after": "d6b0224142f8e31760c3cb247d2b7687977eb8bcd55c55a1af23b586e59cbcb6"
+    }
+  },
+  "new_test": {
+    "path": "tests/advisor_scoring_work336.lua",
+    "sha256": "9bbe84a8b4119c82bb788792789d1cbd3896ce179c484586da8f0fd94a998fee"
+  },
+  "new_test_dependencies": [
+    {
+      "path": "tests/fixtures/advisor_scoring_reuse336/scoring_before.lua",
+      "sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf"
+    }
+  ],
+  "fixture_dependency_scope": "All Lua fixture dependencies are under tests and frozen by validate_checkpoint.",
+  "source_workers": 0,
+  "captured_replays": 0,
+  "complete_attempts": 0,
+  "searches": 0,
+  "game_control": false,
+  "saves_read": false,
+  "experiments": "all historical allowances remain closed"
+}

@@ -1,0 +1,237 @@
+--- a/Brainstorm/Advisor/shop_scoring.lua
++++ b/Brainstorm/Advisor/shop_scoring.lua
+@@ -492,7 +492,8 @@
+       first_used_hand_level=s.first_used_hand_level,deck_key=s.deck_key,
+       round_resets=clone(s.round_resets),bankrupt_at=s.bankrupt_at,interest_amount=s.interest_amount,
+       consumable_limit=s.consumable_limit,consumeable_buffer=s.consumeable_buffer,
+-      ante=s.ante,win_ante=s.win_ante,rental_rate=s.rental_rate,interest_cap=s.interest_cap}
++      ante=s.ante,win_ante=s.win_ante,rental_rate=s.rental_rate,interest_cap=s.interest_cap,
++      jokers_shuffling=s.jokers_shuffling,ordering_safe=s.ordering_safe}
+     refresh_derived(state)
+     -- Chicot's queued disable follows setting_blind. Applying it before Dagger
+     -- chooses a victim can promise an inactive boss after Chicot is destroyed.
+@@ -660,6 +661,13 @@
+       cache[plan.key]=best;return best
+     end
+     local scores,opening_scores,opening_hands,opening_sizes,total,uncertain,worlds={},{},{},{},0,false,{}
++    local fixed={}
++    if Shop.blind_finishing then for index,order in ipairs(plan.orders) do
++      local row={};local changed=false
++      for i,j in ipairs(order) do row[i]=plan.state.jokers[j];changed=changed or i~=j end
++      fixed[index]={mean=0,scores={},opening_scores={},opening_hands={},opening_sizes={},worlds={},
++        order=clone(order),identity=encode(row),changed=changed}
++    end end
+     local supported_random_choices=true
+     for draw,permutation in ipairs(plan.draws) do
+       local sampled_hand,sampled_deck={},{}
+@@ -674,7 +682,7 @@
+       for order_index,order in ipairs(plan.orders) do
+         local row={}; for i,index in ipairs(order) do row[i]=state.jokers[index] end
+         local trial={}; for k,v in pairs(state) do trial[k]=v end; trial.jokers=row
+-        local opening_play
++        local opening_play,order_best,order_hand,order_size
+         for _,selected in ipairs(plan.selections) do
+           context.evaluations=context.evaluations+1
+           if yield_fn and context.evaluations%64==0 then yield_fn() end
+@@ -691,14 +699,27 @@
+           uncertain=uncertain or result.uncertain
+           if result.uncertain and not (Shop.blind_finishing and Shop.blind_finishing.choice_supported and
+             Shop.blind_finishing.choice_supported(trial,result)) then supported_random_choices=false end
+-          if Shop.blind_finishing and scenario_index==1 and order_index==1 and result.legal~=false then
++          if Shop.blind_finishing and scenario_index==1 and result.legal~=false then
+             result.indices=clone(selected)
+             if Shop.blind_finishing.better_play(trial,result,opening_play) then opening_play=result end
+           end
+           if result.legal~=false and (not best or result.score>best) then best,best_hand,best_size=result.score,result.hand,#selected end
++          if result.legal~=false and (not order_best or result.score>order_best) then
++            order_best,order_hand,order_size=result.score,result.hand,#selected
++          end
+         end
+-        if Shop.blind_finishing and scenario_index==1 and order_index==1 then
+-          worlds[draw]={state=clone(trial),opening_play=clone(opening_play)}
++        if Shop.blind_finishing then
++          local candidate=fixed[order_index]
++          if not order_best then cache[plan.key]=false;return unavailable('A fixed layout has no legal opening play.') end
++          candidate.scores[draw]=num(candidate.scores[draw])+scenario.weight*order_best
++          candidate.mean=candidate.mean+scenario.weight*order_best/4
++          if scenario_index==1 then
++            candidate.opening_scores[draw]=order_best;candidate.opening_hands[draw]=order_hand;candidate.opening_sizes[draw]=order_size
++            -- Retain the physical input row. The forecast must actually apply
++            -- and count this legal reorder before using its opening play.
++            candidate.worlds[draw]={state=clone(state),opening_play=clone(opening_play),
++              setup_action=candidate.changed and {kind='reorder_jokers',area='jokers',order=clone(order)} or nil}
++          end
+         end
+       end
+       if not best then cache[plan.key]=false; return unavailable('No legal opening play was found.') end
+@@ -709,6 +730,19 @@
+     end
+     local value={mean=total/4,scores=scores,opening_scores=opening_scores,opening_hands=opening_hands,opening_sizes=opening_sizes,uncertain=not not uncertain,worlds=worlds,
+       supported_random_choices=supported_random_choices}
++    if Shop.blind_finishing then
++      -- One fixed arrangement is chosen once across ALL four common worlds,
++      -- before forecasting either continuation. This reuses already complete
++      -- opening comparisons; it never picks the winning order per future world.
++      local best
++      for _,candidate in ipairs(fixed) do
++        if not best or candidate.mean>best.mean or candidate.mean==best.mean and candidate.identity<best.identity then best=candidate end
++      end
++      value=best;value.uncertain=not not uncertain;value.supported_random_choices=supported_random_choices
++      value.ordering={order=clone(best.order),identity=best.identity,action_count=best.changed and 1 or 0,
++        selection='one_fixed_layout_by_complete_common_opening_mean',layouts=#fixed,samples=4,
++        scope='Legal projected first-hand reorder, then one fixed observed continuation; future actions require fresh advice.'}
++    end
+     context.metrics.completed_profiles=context.metrics.completed_profiles+1
+     cache[plan.key]=value; return value
+   end
+@@ -782,6 +816,7 @@
+     local result={status=status,supported=true,target=target,hands=hands,discards=state.discards_left,
+       samples=4,opening_min=low,opening_max=high,opening_mean=total/4,clearing_samples=clears,
+       opening_hands=clone(value.opening_hands),opening_sizes=clone(value.opening_sizes),opening_scores=clone(value.opening_scores),capacity_proxy=capacity,
++      ordering=clone(value.ordering),
+       requires_discards=status=='sampled_deficit' and state.discards_left>0 or nil,
+       reason=status=='sampled_safe' and 'All four composition samples have a supported opening clear with at least 25% margin; this is not a win probability.' or
+         status=='sampled_deficit' and 'Even the strongest sampled opening repeated across the available hands falls short; a better draw or timely scoring upgrade is needed. This pressure proxy is not a global score bound.' or
+@@ -852,8 +887,16 @@
+       opportunities.shop_scoring_gain_weight=(opportunities.shop_scoring_gain_weight or 0)+1
+     end
+     local before_readiness,after_readiness=readiness(left,a,before,not complete_finishing),readiness(right,b,after,not complete_finishing)
++    local ordering_cost
++    if complete_finishing then
++      local prior,following=num(af.selected.mean_setup_actions),num(bf.selected.mean_setup_actions)
++      ordering_cost={before_actions=prior,after_actions=following,extra_actions=following-prior,
++        adjustment=-2*(following-prior),seconds_per_action=1.5,calibrated=false,
++        scope='One actual projected Joker reorder costs the existing two action-utility units; no free restoration.'}
++    end
+     local work_cost
+     if Shop.policy_weights then adjustment=adjustment*Shop.policy_weights.get('shop_scoring_gain_weight') end
++    if ordering_cost then adjustment=adjustment+ordering_cost.adjustment end
+     if Shop.work_cost and left.key~=right.key then
+       work_cost=Shop.work_cost.compare(left_state,right_state,before_readiness,after_readiness,
+         Shop.policy_weights and Shop.policy_weights.get('computation_cost_scale') or 1)
+@@ -888,6 +931,7 @@
+     end
+     return {adjustment=adjustment,ratio=ratio,capacity_ratio=capacity_ratio,before_mean=a.mean,after_mean=b.mean,samples=4,
+       before_readiness=before_readiness,after_readiness=after_readiness,work_cost=work_cost,
++      before_ordering=clone(a.ordering),after_ordering=clone(b.ordering),ordering_cost=ordering_cost,
+       before_finishing=clone(af),after_finishing=clone(bf),complete_finishing=not not complete_finishing,
+       before_startup=clone(a.startup),after_startup=clone(b.startup),
+       blind=upcoming and upcoming.key or nil,boss_fallback=not upcoming and boss_fallback or nil,
+--- a/Brainstorm/Advisor/blind_finishing.lua
++++ b/Brainstorm/Advisor/blind_finishing.lua
+@@ -160,6 +160,33 @@
+   return strict
+ end
+ 
++-- Apply a fully specified physical permutation; this is one actual projected
++-- action, not permission to invent a different scoring row for each play.
++local function setup(world)
++  local state=copy(world.state);local action=world.setup_action
++  if action==nil then return state,nil end
++  local row=state.jokers or {};local order=type(action)=='table' and action.order
++  if type(action)~='table' or action.kind~='reorder_jokers' or action.area~='jokers' or
++      type(order)~='table' or #order~=#row or #row<2 or #row>12 or state.jokers_shuffling or
++      state.ordering_safe==false or (state.blind or {}).shuffle_pending or
++      not (state.blind or {}).disabled and (state.blind or {}).key=='bl_final_acorn' then
++    return nil,'The projected Joker setup is not a legal settled reorder.'
++  end
++  local next_row,seen,changed,ids={},{},false,{}
++  for i,index in ipairs(order) do
++    local j=row[index]
++    if type(index)~='number' or index%1~=0 or not j or seen[index] or j.face_down or j.facing=='back' or
++        (j.pinned or (j.ability or {}).pinned) and i~=index then
++      return nil,'The projected Joker setup changes a pinned/hidden card or physical membership.'
++    end
++    seen[index]=true;next_row[i]=j;changed=changed or i~=index
++    ids[i]=j.id or j.key
++  end
++  if not changed then return nil,'A no-op setup must not be counted as an action.' end
++  state.jokers=next_row
++  return state,{kind='reorder_jokers',area='jokers',order=copy(order),joker_ids=ids,projected=true}
++end
++
+ function M.forecast(worlds,scorer,charge)
+   local diagnostic={complete=false,supported=false,samples=4,policies={},candidate_limit=32,
+     policy_scope='Four common composition worlds; fixed play-only or one targeted observed discard policy; up to four hands, eight cards, and 32 future-play candidates.',
+@@ -169,8 +196,11 @@
+     not M.multi_discard or not scorer.after_play or not scorer.after_discard then
+     return no('Whole-blind transition or observed-candidate dependencies are unavailable.')
+   end
+-  for _,world in ipairs(worlds) do
+-    local s=world.state
++  local prepared={}
++  for index,world in ipairs(worlds) do
++    local s,action=setup(world)
++    if not s then return no(action) end
++    prepared[index]={state=s,opening_play=world.opening_play,setup_action=action}
+     if not valid(s) or num(s.hands_left)<1 or num(s.hands_left)>4 or not finite((s.blind or {}).chips) or s.blind.chips<=0 then
+       return no('Whole-blind comparison requires visible hands up to eight cards and one to four playable hands with a known target.')
+     end
+@@ -215,6 +245,8 @@
+     local state=copy(world.state);local first=true;local discarded=false
+     local seed=({977,1999,3253,4751})[index];local hands,discards,loss,rewards=0,0,0,0
+     local actions={};local initial_cash=state.dollars;local resources
++    local setup_actions=world.setup_action and 1 or 0
++    if world.setup_action then actions[1]=copy(world.setup_action) end
+     while num(state.hands_left)>0 and #state.hand>0 and num(state.chips)<state.blind.chips do
+       local play=first and copy(world.opening_play) or best_play(state);first=false
+       if not play then return nil end
+@@ -258,19 +290,20 @@
+     local target=state.blind.chips;local score=num(state.chips)
+     return {clear=score>=target,score=score,shortfall=math.max(0,target-score),progress=math.min(1,score/target),
+       hands_used=hands,discards_used=discards,dollars_delta=num(state.dollars)-num(initial_cash),
+-      dollars_after=state.dollars,population_loss=loss,finish_reward=rewards,resources=resources,actions=actions}
++      dollars_after=state.dollars,population_loss=loss,finish_reward=rewards,resources=resources,actions=actions,
++      setup_actions=setup_actions,action_count=#actions}
+   end
+   local best
+   for _,policy in ipairs({'play_only','one_targeted_discard'}) do
+     local record={name=policy,worlds={},clearing_samples=0,mean_score=0,mean_shortfall=0,mean_progress=0,
+-      mean_hands_used=0,mean_discards_used=0,max_discards_used=0,population_loss=0,finish_reward=0}
++      mean_hands_used=0,mean_discards_used=0,mean_setup_actions=0,mean_action_count=0,max_discards_used=0,population_loss=0,finish_reward=0}
+     diagnostic.policies[#diagnostic.policies+1]=record
+-    for index,world in ipairs(worlds) do
++    for index,world in ipairs(prepared) do
+       local outcome=run(world,index,policy=='one_targeted_discard')
+       if not outcome then return no(aborted) end
+       record.worlds[index]=outcome
+       record.clearing_samples=record.clearing_samples+(outcome.clear and 1 or 0)
+-      for _,field in ipairs({'score','shortfall','progress','hands_used','discards_used'}) do record['mean_'..field]=record['mean_'..field]+outcome[field]/4 end
++      for _,field in ipairs({'score','shortfall','progress','hands_used','discards_used','setup_actions','action_count'}) do record['mean_'..field]=record['mean_'..field]+outcome[field]/4 end
+       record.max_discards_used=math.max(record.max_discards_used,outcome.discards_used)
+       record.population_loss=record.population_loss+outcome.population_loss/4
+       record.finish_reward=record.finish_reward+outcome.finish_reward/4
+--- a/Brainstorm/Advisor/shop_sequences.lua
++++ b/Brainstorm/Advisor/shop_sequences.lua
+@@ -174,13 +174,25 @@
+         world.clear~=(world.progress==1) or not whole(world.hands_used) or not whole(world.discards_used) or
+         not finite(world.dollars_after) or not finite(world.population_loss) or world.population_loss<0 or
+         not finite(world.finish_reward) or type(world.actions)~='table' or
+-        #world.actions~=world.hands_used+world.discards_used then return end
+-    local hands,discards=0,0
+-    for _,action in ipairs(world.actions) do
++        not whole(world.setup_actions or 0) or (world.setup_actions or 0)>1 or
++        #world.actions~=world.hands_used+world.discards_used+(world.setup_actions or 0) then return end
++    local hands,discards,setups=0,0,0
++    for position,action in ipairs(world.actions) do
+       if type(action)~='table' then return end
+-      if action.kind=='play' then hands=hands+1 elseif action.kind=='discard' then discards=discards+1 else return end
+-    end
+-    if hands~=world.hands_used or discards~=world.discards_used then return end
++      if action.kind=='play' then hands=hands+1 elseif action.kind=='discard' then discards=discards+1
++      elseif action.kind=='reorder_jokers' and action.area=='jokers' and action.projected==true and position==1 and
++          type(action.order)=='table' and #action.order>=2 and #action.order<=12 and
++          type(action.joker_ids)=='table' and #action.joker_ids==#action.order then
++        local seen={};local changed=false
++        for i,index in ipairs(action.order) do
++          if not whole(index) or index<1 or index>#action.order or seen[index] then return end
++          seen[index]=true;changed=changed or index~=i
++        end
++        if not changed then return end
++        setups=setups+1
++      else return end
++    end
++    if hands~=world.hands_used or discards~=world.discards_used or setups~=(world.setup_actions or 0) then return end
+     mean=mean+world.progress/4;clears=clears+(world.clear and 1 or 0)
+   end
+   if not finite(finish.selected.mean_progress) or math.abs(mean-finish.selected.mean_progress)>0.000001 or

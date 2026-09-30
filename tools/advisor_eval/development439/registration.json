@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-09-28T05:59:09.959384+00:00",
+  "max_jobs": 20,
+  "max_workers": 4,
+  "job_seconds": 40,
+  "reserved_seconds": 800,
+  "overall_seconds": 600,
+  "action_cap": 16,
+  "retries": 0,
+  "round_rewards_modeled": false,
+  "case_selection": "CASE_SELECTION.json",
+  "world_rule": "Label439:case:world0. Seed=uint32(first8 hex SHA256(label)) modulo1,000,000,000. Deck order=SHA256(label:physicalID), lexical-ID tie; rank sorting. Separate deterministic Bell/Acorn/Glass/Lucky/Heart channels.",
+  "benchmark": "4 times initial available discards; completed failures included; all20 outcomes and censored prefixes retained",
+  "authorization": "User: run20 more simulated rounds and count average discards; counterfactuals from current in-progress10-run session.",
+  "pre_registration_correction": "Restrict SHA-derived seeds to the already-qualified adapter integer range; preliminary_seed1 preserves earlier unexecuted mapping."
+}

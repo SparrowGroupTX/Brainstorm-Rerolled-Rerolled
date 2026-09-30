@@ -1,0 +1,12 @@
+--- Brainstorm/Advisor/runtime.lua
++++ Brainstorm/Advisor/runtime.lua
+@@ -7,6 +7,9 @@
+ A.snapshot, A.scoring, A.search, A.strategy = module('snapshot'), module('scoring'), module('search'), module('strategy')
+ A.gold_stickers = module('gold_stickers')
+ A.gold_perkeo = module('gold_perkeo')
++A.perkeo_inventory = module('perkeo_inventory')
++A.gold_planet_policy = module('gold_planet_policy')
++A.snapshot.perkeo_inventory = A.perkeo_inventory
+ A.bell_opening = module('bell_opening')
+ A.certificate=module('certificate')
+ A.snapshot.certificate=A.certificate

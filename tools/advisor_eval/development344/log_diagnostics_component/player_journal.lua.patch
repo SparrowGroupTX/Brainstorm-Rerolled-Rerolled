@@ -1,0 +1,81 @@
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -166,6 +166,61 @@
+ end
+ local callbacks={'play_cards_from_highlighted','discard_cards_from_highlighted','buy_from_shop','use_card',
+   'sell_card','reroll_shop','skip_booster','toggle_shop','cash_out','select_blind','skip_blind'}
++-- Bounded scalar review of the current decision only. Candidate families,
++-- projected snapshots and memoization keys remain outside the journal.
++local function compact_gold_review(result)
++  if type(result)~='table' or getmetatable(result) then return nil end
++  local out,fields,omitted={schema=1,status='current'},0,0
++  local function scalar(prefix,source,key,kind,limit)
++    local value=rawget(source,key)
++    if value==nil then return end
++    local valid=type(value)==kind
++    if kind=='number' then
++      valid=valid and value==value and value>=0 and value<=limit and value%1==0
++    elseif kind=='string' then valid=valid and #value<=limit end
++    if valid then
++      out[prefix..key]=kind=='string' and value:gsub('[%z\1-\31]',' ') or value;fields=fields+1
++    else omitted=omitted+1 end
++  end
++  local function endpoint_count(value)
++    if type(value)~='table' or getmetatable(value) then return nil end
++    local count=0
++    for key in next,value do
++      count=count+1
++      if count>64 or type(key)~='number' or key%1~=0 or key<1 or key>64 then return nil end
++    end
++    for i=1,count do if rawget(value,i)==nil then return nil end end
++    return count
++  end
++  for _,entry in ipairs({{'acquisition_', 'gold_acquisition_diagnostics'},{'final_', 'gold_diagnostics'},{'shop_', 'shop_diagnostics'}}) do
++    local prefix,source=entry[1],rawget(result,entry[2])
++    if type(source)=='table' and not getmetatable(source) then
++      for _,key in ipairs({'complete','projection_complete','evidence_complete','truncated'}) do scalar(prefix,source,key,'boolean') end
++      for _,key in ipairs({'scope','reason','unavailable_reason'}) do scalar(prefix,source,key,'string',512) end
++      for _,key in ipairs({'evaluations','max_evaluations','comparisons','score_calls','context_evaluations'}) do scalar(prefix,source,key,'number',1000000000) end
++      for _,key in ipairs({'before_missing','after_missing'}) do scalar(prefix,source,key,'number',150) end
++      if rawget(source,'endpoints')~=nil then
++        local count=endpoint_count(rawget(source,'endpoints'))
++        if count then out[prefix..'endpoint_count']=count;fields=fields+1 else omitted=omitted+1 end
++      end
++      local selected=rawget(source,'selected')
++      if type(selected)=='table' and not getmetatable(selected) then
++        scalar(prefix..'selected_',selected,'carried_missing','number',150)
++        for _,key in ipairs({'cash_after','minimum_opening_score','minimum_score_delta'}) do
++          local value=rawget(selected,key)
++          if value~=nil then
++            if type(value)=='number' and value==value and math.abs(value)<=1e300 then
++              out[prefix..'selected_'..key]=value;fields=fields+1
++            else omitted=omitted+1 end
++          end
++        end
++      end
++    elseif source~=nil then omitted=omitted+1 end
++  end
++  if fields==0 and omitted==0 then return nil end
++  if omitted>0 then out.omitted_fields=omitted end
++  return out
++end
+ function M.attach(A,B,deps)
+   deps=deps or {};local fs=deps.fs or love and love.filesystem
+   local callback_hooks=deps.callback_hooks or A.callback_hooks
+@@ -204,7 +259,7 @@
+     local g=deps.game and deps.game() or G;local s=A.snapshot.capture(g)
+     -- A missing publication or different game already proves advice is not
+     -- current. The full observation remains fresh in every case.
+-    local current=s and A.published_key~=nil and A.published_game==g.GAME and
++    local current=s and A.published_key~=nil and A.published_game==g.GAME and A.published_generation==A.retry_generation and
+       A.snapshot.fingerprint(s)==A.published_key
+     local game=g.GAME or {};local profile=(g.SETTINGS or {}).profile
+     return {version=B.VERSION,profile=profile,seed=(game.pseudorandom or {}).seed,stake=game.stake,
+@@ -212,6 +267,7 @@
+       snapshot=M.public_snapshot(s),snapshot_scope='Detached public observation; concealed identities redacted; shop catalog forecast omitted.',
+       advice={status=current and 'current' or A.result and 'stale' or A.worker and 'computing' or 'unavailable',
+         timing=current and A.last_decision_result==A.result and A.last_decision_timing or nil,
++        gold_review=current and compact_gold_review(A.result) or nil,
+         title=A.display and A.display.title,lines=A.lines,action=A.result and A.result.action}}
+   end
+   local J=M.new({enabled=function()return B.config.advisor.player_logging==true end,append=deps.append,

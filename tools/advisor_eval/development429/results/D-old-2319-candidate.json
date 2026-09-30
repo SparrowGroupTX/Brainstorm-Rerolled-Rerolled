@@ -1,0 +1,49 @@
+{
+  "job": "D-old-2319-candidate",
+  "mode": "decision",
+  "case": "old-2319",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 2.264999999984866,
+  "log_sha256": "862343d7d1d5f348bad995c1475349c6cd24522cf4e8b277a9fc05628f0891d7",
+  "status": "complete",
+  "result": {
+    "case": "old-2319",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          5,
+          6,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 6,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 139997,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 71995,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

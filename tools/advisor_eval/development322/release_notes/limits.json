@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "kind": "release322_closed_historical_limits",
+  "status": "CLOSED",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "historical_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_complete_attempt_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "original_cycle_expires_at_utc": "2026-09-14T22:40:00+00:00",
+  "closure_written_at_utc": "2026-09-15T01:30:51.437405+00:00",
+  "remaining_authority_seconds": 0,
+  "C09": "never_registered_reserved_or_run",
+  "closed_unused_slots": [
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24"
+  ],
+  "prior_evidence": {
+    "latest_closed_status": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/status321closed/context.json",
+      "sha256": "aac44c8a5f654541183c4ae9225d7dd0c901fae8b1ee722c710b26af64956002"
+    },
+    "original_release_context": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/release321final/context.json",
+      "sha256": "6c8e58a8f49ee861e2346538076d9747b6da4c08b5661037b30707d23ebb94f9"
+    },
+    "closed_cycle": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/CLOSED.json",
+      "sha256": "3699b13e0dbe829c5bfd8486ab4f235118200f3ee3f20a7ac28614e12a7c0f91"
+    },
+    "current_status": {
+      "path": "tools/advisor_eval/SESSION_STATUS_321_CLOSED.json",
+      "sha256": "f74d77398052705062bea049ca27350b56ff104aa8dc928e4c618b4b9e575f6c"
+    }
+  },
+  "historical_budget": {
+    "authorized_slots": 60,
+    "authorized_cap_seconds": 5400,
+    "spent_jobs": 38,
+    "spent_reserved_seconds": 2340,
+    "actual_worker_seconds_decimal": "1012.71499999973457357",
+    "actual_worker_seconds": 1012.7149999997346,
+    "unused_slots": [
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24"
+    ],
+    "unused_cap_seconds": 3060,
+    "by_kind": {
+      "S": {
+        "spent_jobs": 6,
+        "spent_reserved_seconds": 180,
+        "actual_worker_seconds_decimal": "4.93800000002374873",
+        "unused_slots": [
+          "S07",
+          "S08",
+          "S09",
+          "S10",
+          "S11",
+          "S12"
+        ]
+      },
+      "M": {
+        "spent_jobs": 24,
+        "spent_reserved_seconds": 720,
+        "actual_worker_seconds_decimal": "53.46599999966565484",
+        "unused_slots": []
+      },
+      "C": {
+        "spent_jobs": 8,
+        "spent_reserved_seconds": 1440,
+        "actual_worker_seconds_decimal": "954.31100000004517",
+        "unused_slots": [
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C23",
+          "C24"
+        ]
+      }
+    }
+  },
+  "public_observations": {
+    "kind": "separate_read_only_opt_in_public_log_review_not_source_experiments",
+    "note": {
+      "path": "tools/advisor_eval/development322/PUBLIC_LOG_REVIEW.md",
+      "sha256": "11152f486be4a4244b536b26f07dc5d84f6af76cc5ec7c20a8635b8ab0b2a133"
+    },
+    "report": {
+      "path": "tools/advisor_eval/development322/public_run_report_final.json",
+      "sha256": "0f8ef1514aed9555288185c92dbe0f3df08b403572e6dac1747a007b47b6c582"
+    }
+  },
+  "release_scope": "Manufactured fixture/regression implementation and read-only repository/public-log analysis only. No source executable read or source/captured/search/complete evaluation. No save/profile files or live game control.",
+  "limits": "Historical C01 policy300 alone has one selected synthetic win. Later policies inherit none. No player odds, unseen holdout, general adapter qualification, current322 terminal result, verified Jokerless win or human superiority. Incomplete public-log prefixes are not source timeouts or terminal outcomes."
+}

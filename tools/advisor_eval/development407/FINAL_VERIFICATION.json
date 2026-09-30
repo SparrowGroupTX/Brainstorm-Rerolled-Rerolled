@@ -1,0 +1,314 @@
+{
+  "verified_utc": "2026-09-26T20:18:07.951624+00:00",
+  "status": "completed_passive_cohort_audit",
+  "runtime_version": "2.195.0-alpha",
+  "runtime_digest": "6a7281852e571cbf4b3ff9bedf742fc5bfbe80a8374192aac80cc408cd855cea",
+  "runtime_files_per_tree": 109,
+  "runtime_and_installation_unchanged": true,
+  "native_files_per_tree": 7,
+  "prior_test_files_unchanged": 314,
+  "prior_helper_and_runtime_provenance_unchanged": true,
+  "prior406_artifacts_verified": 32,
+  "prior_navigation_bytes_preserved": true,
+  "prior_git_status_entries_preserved": true,
+  "current_captured_segments": 25,
+  "source_comparison_at_delivery": [
+    {
+      "name": "session-20260926T185618Z-1-000001.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000002.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000003.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000004.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000005.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000006.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000007.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000008.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000009.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000010.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000011.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000012.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000013.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000014.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000015.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000016.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000017.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000018.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000019.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000020.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000021.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000022.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000023.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000024.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    },
+    {
+      "name": "session-20260926T185618Z-1-000025.brj",
+      "source_present": true,
+      "matches_copied_capture": true
+    }
+  ],
+  "capture_and_index_unchanged": true,
+  "public_label": {
+    "Brainstorm v2.195.0-alpha": 20328
+  },
+  "outcomes": {
+    "win": 4,
+    "unsupported": 2,
+    "loss": 4
+  },
+  "linked_policy_actions": 1929,
+  "suspect_flags": 282,
+  "diagnostic_checks": 29,
+  "diagnostic_fixture_files": 2,
+  "diagnostic_scope": "invented production-module reproductions, not repairs or full-controller acceptance",
+  "runtime_full_gate_rerun": false,
+  "new_runtime_freeze_or_install": false,
+  "game_control": false,
+  "save_or_profile_access": false,
+  "captured_policy_or_scorer_replay": false,
+  "new_experiment_training_or_automation": false,
+  "configuration_writes": false,
+  "passive_process_at_delivery": [],
+  "normal_exit_confirmed_for_latest_session": false,
+  "commands": {
+    "capture": "python tools/advisor_eval/development407/capture_logs.py",
+    "index": "python tools/advisor_eval/development407/index_public.py",
+    "analysis": "python tools/advisor_eval/development407/analyze_public.py",
+    "deep_authoritative": "python tools/advisor_eval/development407/deep_audit_v2.py",
+    "catalog": "python tools/advisor_eval/development407/audit_catalog.py",
+    "followup": "python tools/advisor_eval/development407/followup_audit.py",
+    "late_chains": "python tools/advisor_eval/development407/late_chains.py",
+    "diagnostic_core": "python tests/run_lua_tests.py tools/advisor_eval/development407/manufactured_diagnostics.lua",
+    "diagnostic_pack": "python tests/run_lua_tests.py tools/advisor_eval/development407/manufactured_pack_diagnostics.lua",
+    "tables": "python tools/advisor_eval/development407/write_tables.py",
+    "navigation": "python tools/advisor_eval/development407/update_navigation.py",
+    "verification": "python tools/advisor_eval/development407/verify_delivery.py"
+  },
+  "python_version": "3.12.4",
+  "artifact_hashes": {
+    "ADVISOR_HANDOFF.md": "cf3c8908a78879d77afad935dfc4f6480cbac9a240ceeaf348a65bfa5438357b",
+    "ADVISOR_RESUME_PROMPT.md": "9397f70252869240c7e7970e179346f3e4c096d741f5754cda4c593f92b3ad93",
+    "ADVISOR_START_HERE.md": "c5c79da028db7bc80069ee505bf02ec402694adfbaba9557143e00b3897797e6",
+    "tools/advisor_eval/ARCHITECTURE_MAP_404.md": "db5d92a0ceddda78eb1a5f9547c5601bbb884a7f6a224a8afcd848c4db85b10f",
+    "tools/advisor_eval/AUDIT_CHECKPOINT_407.md": "9c0d815d17574cb2029ae083dbcd1075d67692ef4ed4686acec68d96daf8b6f0",
+    "tools/advisor_eval/development407/analysis/blind_entries.json": "b8853d91268b0b9128d0c985d2785eddd3217a2d8e536ab6902292804d43820e",
+    "tools/advisor_eval/development407/analysis/buffoon_opportunities.json": "a69d0d9327fb65fbdb3860a42ebc007c49bd4562d337e7ed77461b4aa4fd5c3a",
+    "tools/advisor_eval/development407/analysis/copy_opportunities.json": "114370983b280adf78ce19052097b05b5bab02a15c9001ca598f32f5eaba1210",
+    "tools/advisor_eval/development407/analysis/death_actions.json": "1f6b41c3ee7786a0bbb6b7e5cc7cfa59f570d1fbcad5e5189950b8cb538cac5b",
+    "tools/advisor_eval/development407/analysis/decisions.json": "3db6aec62e8e485e2cc8a94ee65cac464374dc1642c21edf50610757526f4738",
+    "tools/advisor_eval/development407/analysis/observations.json": "462626489eaddf8cd83ef76bce0e477370ada94cc260a1930f9c36d690e453d2",
+    "tools/advisor_eval/development407/analysis/runs.json": "c2f9c49fb6d034621d30ccffed646735114665e940a478d10f424e9834e0ee5f",
+    "tools/advisor_eval/development407/analysis/shop_exits.json": "b6e51c780805097b41352628e2089c06e5b4b6851cf86845dab91a4ce6712c68",
+    "tools/advisor_eval/development407/analysis/summary.json": "c97e1bff916e6a4e8c1d31befe084d4743e866f6a6025ba7e5283626f74434d9",
+    "tools/advisor_eval/development407/analysis/timings.json": "8beb360328f4ab8693306f66bbd217b1df508878aecaf3287c92c2c3138864be",
+    "tools/advisor_eval/development407/ANALYSIS_REVISION.md": "b265ede44bfd68bf07e6d495da86cc22d659e01cc4fd2652396ab58dcf15e03d",
+    "tools/advisor_eval/development407/analyze_public.log": "4fd1f4fff89397ae837744e6419827b23da81cfe247c72f735004c1033671554",
+    "tools/advisor_eval/development407/analyze_public.py": "5b0b07f1ef017d36564ee775d71bb143e5899c1ea7d5df4857e5976f30ca6458",
+    "tools/advisor_eval/development407/audit_catalog.log": "3820ec5e0f054f33dd0abffd9beb360e25ae872dfa44f48e272e9c8a25c65cb5",
+    "tools/advisor_eval/development407/audit_catalog.py": "1114d4afb66faa173e12a3fca8f2b894338a2e1054d06cfc831fbf1a941a3e38",
+    "tools/advisor_eval/development407/before/ADVISOR_HANDOFF.md": "841a11ca26a12130dbf466937d10f8a7b6cf76bf64af03ddd8618580876afff1",
+    "tools/advisor_eval/development407/before/ADVISOR_RESUME_PROMPT.md": "a37e449834c0c402bb1997e4909bb06d70ea1a9fefed31a9c75a822ee229a73d",
+    "tools/advisor_eval/development407/before/ADVISOR_START_HERE.md": "6b15e2d395bdd8bd91cf851005117e136b786569b096ee14e46be990609be6fe",
+    "tools/advisor_eval/development407/before/tools/advisor_eval/ARCHITECTURE_MAP_404.md": "55b71c69452dd776b247fad7f25fa8b8ef5e58dfc43948c074c7774ffd5df509",
+    "tools/advisor_eval/development407/before/tools/advisor_eval/NEXT_PRIORITIES_404.md": "6b7c295fd131311315dd8fce877c22e430a2480e6151d5e2e5ee9a491ef66c59",
+    "tools/advisor_eval/development407/before/tools/advisor_eval/WIN_RATE_RESEARCH.md": "f9657c4d7a670c3ea538d1622503aca6a2afc38d71127b1ef270f82fa61c9beb",
+    "tools/advisor_eval/development407/capture/manifest.json": "6275b72a779d4f677a859ec4cc0d642d387f5e1f00d1ec84c0d7a398a7493a56",
+    "tools/advisor_eval/development407/capture/verification.json": "3e31a8109e656234800c1555d8f48f0931c584f285cf69ad28432d1fa7a2c14f",
+    "tools/advisor_eval/development407/capture_logs.py": "fdf99fc082b3a4470348c2473c906f214114b7243f5f92fcfd78a45a87d88a3f",
+    "tools/advisor_eval/development407/catalog/all_offers.json": "98f6c4d0cf72f5c6b63f3e10c852392c7156ab8dac9a782efed9bdb9aa184e83",
+    "tools/advisor_eval/development407/catalog/buffoon_offers.json": "d3b1254e14dea9b224631a8dfabf7f929dc006c74742709e9bfcffb3c1b1783b",
+    "tools/advisor_eval/development407/catalog/death_offers.json": "93048a4e644659ad29a660840cf8867bf2bf14051ea1906efdfa9343fa289930",
+    "tools/advisor_eval/development407/catalog/glass_exposure.json": "1720f404f19f749096416aea1b82974674e9162d53581debf9b1c361635f6244",
+    "tools/advisor_eval/development407/catalog/inventory_maxima.json": "39f7f2aef1b2a4519125e6fc0acdb195d5ebefcea265818f4f288200f12e794a",
+    "tools/advisor_eval/development407/catalog/summary.json": "9eb5b70261092ff5eb3246ae6c6269fc460914df0bbc888835be4586bb18e833",
+    "tools/advisor_eval/development407/deep/death.json": "1a8f1fa1bcb940c9557f46dffcb78803de648da95dc14de07e0902897ecdc5cf",
+    "tools/advisor_eval/development407/deep/flag_adjudication.json": "2db1074397d0e057c3e89562951f1c2f24e6499349b0cc5e2f3b95bec8dc23d4",
+    "tools/advisor_eval/development407/deep/links.json": "4a290a2bb2a2f8c77ffe8baa4041a40424fe360c8e89742551233c73d15488b8",
+    "tools/advisor_eval/development407/deep/pack_choices.json": "1b2f1a74905bc2f3334a40869f852a48502dcb30997ebb6894d05e369f92cc97",
+    "tools/advisor_eval/development407/deep/pack_reveal_checks.json": "2b87c8d0b8f7344595cd0e75a15ee61b5574691cb41e3787b0422200b0ff22f7",
+    "tools/advisor_eval/development407/deep/score_divergences.json": "e22bbd00b5597460075d95a701d3abc00790c9d86378dc24e1abd6dab5f8cb82",
+    "tools/advisor_eval/development407/deep/shop_exits.json": "fc599ad51b3e23b53cf9d7f5c6bbd930313a22715381f564eaced8b87dfe084c",
+    "tools/advisor_eval/development407/deep/summary.json": "80056a8e06caa77ddb9dcf48b75a9d97ba5f1d17f83251a7ad76d8d5f2c1b27a",
+    "tools/advisor_eval/development407/deep/transactions.json": "7e3538306b3dc1d79ea22628d6a01b3f35649f77bba39189becd5a421b06a6d7",
+    "tools/advisor_eval/development407/deep2/death.json": "cb1fb425d869210798df960265e510fbd188608478123f7366ad9a44f841c662",
+    "tools/advisor_eval/development407/deep2/flag_adjudication.json": "2db1074397d0e057c3e89562951f1c2f24e6499349b0cc5e2f3b95bec8dc23d4",
+    "tools/advisor_eval/development407/deep2/links.json": "4a290a2bb2a2f8c77ffe8baa4041a40424fe360c8e89742551233c73d15488b8",
+    "tools/advisor_eval/development407/deep2/pack_choices.json": "1b2f1a74905bc2f3334a40869f852a48502dcb30997ebb6894d05e369f92cc97",
+    "tools/advisor_eval/development407/deep2/pack_reveal_checks.json": "2b87c8d0b8f7344595cd0e75a15ee61b5574691cb41e3787b0422200b0ff22f7",
+    "tools/advisor_eval/development407/deep2/score_divergences.json": "e22bbd00b5597460075d95a701d3abc00790c9d86378dc24e1abd6dab5f8cb82",
+    "tools/advisor_eval/development407/deep2/shop_exits.json": "fc599ad51b3e23b53cf9d7f5c6bbd930313a22715381f564eaced8b87dfe084c",
+    "tools/advisor_eval/development407/deep2/summary.json": "0d5f4d65cf1f83e2911821b86f0f3623f7c6196ddde49318cbb58fe20300558a",
+    "tools/advisor_eval/development407/deep2/transactions.json": "7e3538306b3dc1d79ea22628d6a01b3f35649f77bba39189becd5a421b06a6d7",
+    "tools/advisor_eval/development407/deep_audit.log": "bddc5bee16f407665cfea4f8d89c9e97087373ca63b869d3c8626fab358b45b8",
+    "tools/advisor_eval/development407/deep_audit.py": "fdf1dbebf38580ab6b10bc57388c7f3c8458ef4471320b29925827b731136d2a",
+    "tools/advisor_eval/development407/deep_audit_v2.log": "a892fd033a9f30637088789bcff62340a347384256ef2f4df9e73ca42faf6600",
+    "tools/advisor_eval/development407/deep_audit_v2.py": "532690dfefbecc30bd64209ecbeac21f8e017562cb863c142fd546468de06954",
+    "tools/advisor_eval/development407/events.sqlite3": "0fee7d82abbafab6deeec2dfacdd2a4de51a1e8fc6bfc7a4d53d5e9051e21f37",
+    "tools/advisor_eval/development407/followup/buffoon.json": "7d2800348ae4406c86bd1eccdba86567ab0fb55e091a5e826ebd719bd4ea9d44",
+    "tools/advisor_eval/development407/followup/critical_decisions.json": "ff367bd4a47203b91fab12a291bbf929f5e173461bccc572542b8e7a5c034766",
+    "tools/advisor_eval/development407/followup/death.json": "92dd1ad9280443cc8fc6b4dfd4d4c1fc1826d993f0976ab30cc6b97c62ff489d",
+    "tools/advisor_eval/development407/followup/joker_pack_choices.json": "2cb5f1d311eb65916eb4cd6cd6330ee5e8ac55d7aa65c66904d2aa50c695b9ee",
+    "tools/advisor_eval/development407/followup/last_shops_before_loss.json": "a82d1cd9fccce2e186259fc9c412f5c29e2418b0b671e30b1c60e6e811dd0010",
+    "tools/advisor_eval/development407/followup/score_divergences.json": "420ecf48dbcf0dcdc211a357f0b85128b0d3e22528a6f7a4b5fc94fd5917ded5",
+    "tools/advisor_eval/development407/followup/summary.json": "6fa65ddb9a63dd15b32cd38a992ca067589d5be07b491a9a8cf070651304c0fc",
+    "tools/advisor_eval/development407/followup_audit.log": "e307122ce22c47017c8d6508c6a3db798599776afc8c5812bad855fb5c1a75c7",
+    "tools/advisor_eval/development407/followup_audit.py": "77089666e714c7c11b2f5d6cd3a10811a6aa8b0ecc76d39e82089918efed3109",
+    "tools/advisor_eval/development407/git_status_after.txt": "495979da2af416d5f9453a429381a9a4eba5d42e9617726be5c512d07447d0d8",
+    "tools/advisor_eval/development407/git_status_before.txt": "2a5ed6e92fe9607c2faed3c46a0b7ee335e783c256c337cb2d4072ff3276de39",
+    "tools/advisor_eval/development407/index_public.log": "9544e0d8acc5a100b5c6091c71246d5ef5febf341168de28ba2b873a1f4e85e5",
+    "tools/advisor_eval/development407/index_public.py": "043599da41b8cb66009e36ebd3c16fa4086181b2f380a7fcee092dc281cc4e04",
+    "tools/advisor_eval/development407/late/joker_sales.json": "74d42b8097570fd91e7e0649ae0e18b22bc577e00164e5c161e9ffd9a8d1b027",
+    "tools/advisor_eval/development407/late/loss_blind_entries.json": "3ca71afdc8f61f5d12b0f19edd3c32233903eaedce2da24dcedd6bf36b4d844f",
+    "tools/advisor_eval/development407/late/reroll_statuses.json": "5881d626cf22db3fcbbf615afef2b2f53b3ec6b36937b33b6c2ab89560a01bae",
+    "tools/advisor_eval/development407/late/run9_chariot.json": "a030fe905731ee6661f79b33cdafffae4f9791999c9082000deb0a01cdfeba4e",
+    "tools/advisor_eval/development407/late_chains.log": "fd514493c30cdc576edcdd4edc2c01886072ee2d9990a21e7f03b52340fb8ca5",
+    "tools/advisor_eval/development407/late_chains.py": "e7a36c52779a64207eddd798d29568a044cacc1853c0a0cb5198ac16bf9aa4c2",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000001.brj": "669c23f4501ad9280f0012b6cdf97aa989cf57224c7eb721ab359c375c6ec85e",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000002.brj": "b1a93a929e89235b599275adb06d77f067e76d2d0cc1c8a4cd1a2dd682f69845",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000003.brj": "264e4ef2f3ef2c54c1b01e50db3a038f7526a402ca776e4750ccb39f4cbd9118",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000004.brj": "171f146d858c6bac6346aca8fdc8623c909ff24429982345c1f034907cf26b19",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000005.brj": "a9a8b14c4fc7ff44479c7669a12d55f137798336cb2da3a581bb27b32ddf53dc",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000006.brj": "73718d64b62d075e32d7a1c5705156e65e32f8fc383c27f4d0ef2e7eef965044",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000007.brj": "5e6b2f442f95b223f51c2c532901f0ab86260b1a51e05ab6f44f59709530a45b",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000008.brj": "c2fe9ee5ea42c9925a5ed10b11d4d07829ba098e6f9f1af9ba914b0383bd5c57",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000009.brj": "182949e2339722d57ec3b7879f88ec0e2f837194ac5581d08dc5da214beeccb7",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000010.brj": "fbdfaeb9bfbd1c08da068d9b630e486dbd047d2a8d75226c75653c7d45a8205e",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000011.brj": "cc9bb5d1ecde5f94f2517d00772cb2eebebcd61562dcefcde420ef063ee7c0c1",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000012.brj": "c7ffa57070a8aafb78af15ba4ca8717082d46dc22cc294a79ae47d238ba364fc",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000013.brj": "6935cfbe9cd8514609a77309963e1e84e011ff53b9da0ba9274c35224d9abef5",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000014.brj": "543046828d842d5866193ac14cd1c36c9e4f26e89864d1aeb6b6dd68607c045a",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000015.brj": "2536f96c8fdf475731ac080f6c03ff617e2969e500d16b451df03f799e79aeab",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000016.brj": "f4d025924efd5b3d2b46a8ee4a424b6a41702fd6dd95dffcae149aee6d152b40",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000017.brj": "073de654fdf3a29e8505545304f8c3545ac01bf39292317f9f9370ceb18f1166",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000018.brj": "1a2eb67caeb2bd1dd65c67344ae34d97f030d99a25e05c46de8fd03a3ef80dac",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000019.brj": "b2db4a7426f7774c1a06be767a58aaef5dcc139fbaa005c5fdab9630124d5623",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000020.brj": "6a9173afe58e5583efb2609afcaf78e4b7e601fc6fc4e34e6ba0b915203d0208",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000021.brj": "903bffa388908d634933141437f2da42f1c7afbaa021afc56a9e7c55f9f2a980",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000022.brj": "f06a4901bbfb2d53fcefecbba9befd3596c4716bc383ac71ed69206210663ad2",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000023.brj": "82e236c490dd3521d63d2ddb5653f292963aab164fde6811f8cdad03abe7bc3c",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000024.brj": "e108e6d60f667f316ccaf77354e45c1cfc1d92ef97670316bc0218f37dbed4aa",
+    "tools/advisor_eval/development407/logs1/session-20260926T185618Z-1-000025.brj": "f9ebf8e4224981f01ed3e00e509de1d0af37ff99886fab0eb168572d2b1703ad",
+    "tools/advisor_eval/development407/manufactured_attempt1.log": "bc7f7b552473b180f3d2931b032477ce20b81653701ad26aae60876c7b54fb37",
+    "tools/advisor_eval/development407/manufactured_diagnostics.lua": "610563de6d636ac5b5d3bb4d985c3ef2058e74794b2019b242b5fe146a6a62cb",
+    "tools/advisor_eval/development407/manufactured_pack_attempt1.log": "72651b94a84bd071ecbbac007bba9ea1b5c789cd642b674fcf1b9de57f64615b",
+    "tools/advisor_eval/development407/manufactured_pack_attempt1.lua": "c185a099c27697d773af2f87174c0395fe463173d42e6b28c3299cf41b732a87",
+    "tools/advisor_eval/development407/manufactured_pack_attempt2.log": "8239813039c8c5d736ba9432234ece0edaffc6a4c9fddccfad4903efd7bd70ff",
+    "tools/advisor_eval/development407/manufactured_pack_attempt2.lua": "b01def3d0dd1576b35ef8f9f31c098e79d5706a2261e681651f225a2ac5d8330",
+    "tools/advisor_eval/development407/manufactured_pack_diagnostics.lua": "55fda67debc5320d84c845f116212bf66b0bc27ff6b5ae5cfedcac9302ab68ca",
+    "tools/advisor_eval/development407/manufactured_pack_final.log": "99899275672da37e63966f23d25e45e8a98d204a37ea5bdc4c8de9544a9d8da4",
+    "tools/advisor_eval/development407/manufactured_pack_probe.log": "f7860c1b6808e49f7a3df021cc194141e456363f31443a305bb9f9611cd4261b",
+    "tools/advisor_eval/development407/manufactured_pack_probe.lua": "05bc8b54b03c5c006ecc936a8d131837f4132ae3ddf6196367c636bafac83755",
+    "tools/advisor_eval/development407/OPPORTUNITIES.md": "048320bd8c3dde35f760f78d038f11f8a6bb1a381ea264c705d9bb93efa337c5",
+    "tools/advisor_eval/development407/prework.json": "e7a3f26e50ba22d99e9fef56c562ce17f187c5c60c8220a7b601d39c4fc9b939",
+    "tools/advisor_eval/development407/process_at_delivery.json": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "tools/advisor_eval/development407/REPAIR_SPEC.md": "f33d9aa435f9b7bcb5089c575ab19fa5e59d0a288d10059bd1fbe3434abf8096",
+    "tools/advisor_eval/development407/REPORT.md": "698d6182c5fb6f742940322be19772a68cc62840899cfc548f8ba5f79accfb63",
+    "tools/advisor_eval/development407/REVIEW.md": "ad19980426c6d1b493cdb1388642fb8681c500c05551b5f699bf600836ca91a7",
+    "tools/advisor_eval/development407/RUN_TIMELINES.md": "cfdc681fff28a7e83d625beec0f4c0a123c429d9577a6e3b76bde8e4e94048bc",
+    "tools/advisor_eval/development407/screen/adjudication.json": "f913e4c81a57eeb9d21bde413c1dd93082bb89b01e55722370cbe126a7f857bc",
+    "tools/advisor_eval/development407/screen/report.json": "9c3e4b086351f6230cb4f057dbd15cfb0071cc1ea93f0a5d9dff9c489ef9f478",
+    "tools/advisor_eval/development407/screen/REPORT.md": "d6e762ac141e5c39cd5935cd5743156ca9b4dd6d2b90785da0cd59fc0ef3f71e",
+    "tools/advisor_eval/development407/SCREEN_ADJUDICATION.md": "ea9668d7941b06d7551f61458892ccbcbe7c6e1103514c69fa4387e87eb40ba5",
+    "tools/advisor_eval/development407/update_navigation.log": "f13d11e0871cd74014bdd56220d96d6ed80561b1364eec4254009e03e7ab7a28",
+    "tools/advisor_eval/development407/update_navigation.py": "61eface8903221b42f59145eea67afa26abf9cfa86822886a9a8388af1fefb0f",
+    "tools/advisor_eval/development407/verify_delivery.py": "1008d12f668623b523364133746dee699ba53b53bd7c598f42b49230afb60c6b",
+    "tools/advisor_eval/development407/verify_delivery_attempt1.log": "2db78e3da27b30bb484c7953e60432bd4cb1c9a1dc8402d55d4d5efc1f32d5f7",
+    "tools/advisor_eval/development407/verify_delivery_attempt1.py": "f779a4cc05997c5b0a7d46f3c8444cbb0d585c52c86fef6002d576210bb93223",
+    "tools/advisor_eval/development407/write_tables.log": "4a08eaed248cbf8f6c067d2763e56c5371934f4400a30750cf869abd71b8c884",
+    "tools/advisor_eval/development407/write_tables.py": "7c0037c926f924530c3540ca6b14226a063cf5b333192bc129b21a5cf6c2770a",
+    "tools/advisor_eval/NEXT_PRIORITIES_404.md": "022865cb4e6726613ccbbcf1945cb6bea2752a0400fa92aa4010ebc7ac79b2d9",
+    "tools/advisor_eval/WIN_RATE_RESEARCH.md": "51178903e0994d0d9842252d18b4aeaf8e0f20d426f512a0d3ea14c8939e66cf"
+  }
+}

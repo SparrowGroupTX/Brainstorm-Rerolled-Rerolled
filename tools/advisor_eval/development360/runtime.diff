@@ -1,0 +1,73 @@
+--- tools\advisor_eval\development360\decision.before.lua
++++ Brainstorm\Advisor\decision.lua
+@@ -269,6 +269,16 @@
+   local search_options={strategy=modules.strategy,finish_rewards=modules.finish_rewards,
+     draws=modules.draws,sampled_outcomes=modules.sampled_outcomes}
+   for k,v in pairs(options.search or {}) do search_options[k]=v end
++  local consumable_reserve=0
++  if modules.consumables and modules.consumables.comparison_reserve then
++    local reserve,play_cost=modules.consumables.comparison_reserve(snapshot,options.consumables)
++    local requested=math.max(0,math.min(140000,math.floor(search_options.max_evaluations or 140000)))
++    -- Keep the complete current-play pass plus score-floor probes, and never
++    -- reduce the seventy-score fast-clear contract or a smaller caller cap.
++    local ceiling=math.max(70,(play_cost or 0)+4,140000-reserve)
++    search_options.max_evaluations=math.min(requested,ceiling)
++    consumable_reserve=requested-search_options.max_evaluations
++  end
+   if modules.hand_copy_preflight and options.hand_copy_preflight~=false then
+     local plan=modules.hand_copy_preflight.prepare(snapshot,modules,options.retry)
+     if plan then search_options.copy_preflight={compare=function(scorer,family,context)
+@@ -279,6 +289,7 @@
+     if yield_fn then yield_fn() end
+   end)
+   if not result then return {kind='unsupported', evaluations=0} end
++  result.consumable_reserved_evaluations=consumable_reserve
+   if result.reorder_only and result.copy_preflight and result.copy_preflight.complete then return result end
+   local clear_shortcut=result.fast_clear or result.clear_shortcut
+   if clear_shortcut then
+--- tools\advisor_eval\development360\consumables.before.lua
++++ Brainstorm\Advisor\consumables.lua
+@@ -65,6 +65,43 @@
+   local name = (card.ability or {}).name or card.name
+   -- A custom key that happens to share a vanilla name may run extra callbacks.
+   return card.key and definitions[card.key] or (not card.key and by_name[name])
++end
++-- Scheduling only: reserve room for complete current-play comparisons before
++-- ordinary draw search spends the shared allowance. Legality, transformations,
++-- retained inventory and action selection remain owned by suggest/apply.
++function M.comparison_reserve(snapshot, options)
++  options=options or {}
++  local maximum=math.max(0,math.min(25000,math.floor(number(options.max_evaluations,25000))))
++  local n=#(snapshot.hand or {})
++  local limit=math.min(5,snapshot.hand_limit or 5)
++  if snapshot.phase~='hand' or n==0 or n>20 or limit<1 then return 0 end
++  local cost=count_plays(n,limit)
++  if cost>maximum then return 0 end
++  local probes=0
++  for index,owned in ipairs(snapshot.consumeables or {}) do
++    local d=definition(owned)
++    if d and not owned.debuff and d.kind~='generator' then
++      local config=(owned.ability or {}).consumeable or {}
++      local minimum=math.max(d.minimum,number(config.min_highlighted,d.minimum))
++      local targets=math.min(n,d.maximum,number(config.max_highlighted,d.maximum),limit)
++      local admitted=false
++      local function probe(indices)
++        if admitted or probes>=8 or #indices<minimum then return end
++        probes=probes+1
++        local after=M.apply(snapshot,index,indices)
++        local size=after and #(after.hand or {}) or 0
++        admitted=size>0 and size<=20 and count_plays(size,limit)<=maximum
++      end
++      -- A small admission shortlist, not a new target-search policy. Failure
++      -- to admit leaves ordinary allocation unchanged. apply owns all metadata,
++      -- forced-target, population and module guards, including Negative costs.
++      if d.maximum==0 then probe({})
++      elseif targets>=minimum then combinations(n,targets,probe) end
++      if admitted then return maximum,cost end
++      if probes>=8 then return 0 end
++    end
++  end
++  return 0
+ end
+ -- Exchange only adjacent, fully equal public consumables. Ignoring the one
+ -- physical id is safe here: either removal leaves the same ORDERED metadata,

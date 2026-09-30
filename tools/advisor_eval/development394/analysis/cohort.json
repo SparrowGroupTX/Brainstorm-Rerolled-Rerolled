@@ -1,0 +1,3005 @@
+{
+  "scope": "Completed copied public session; action requests linked to their observation, advice and callback. Callback return does not alone prove settled gameplay.",
+  "session": "session-20260925T214542Z-1",
+  "events": 18641,
+  "starts": 10,
+  "outcome_counts": {
+    "loss": 8,
+    "win": 2
+  },
+  "run_summary": [
+    {
+      "run_id": "game:2",
+      "number": 1,
+      "start_sequence": 21,
+      "end_sequence": 2104,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 6,
+      "observation_count": 312,
+      "action_count": 191,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 19,
+        "select_blind": 16,
+        "discard": 36,
+        "play": 23,
+        "cash_out": 15,
+        "open": 20,
+        "leave_shop": 15,
+        "buy": 7,
+        "use": 12,
+        "skip_pack": 3,
+        "reroll": 15,
+        "sell": 8,
+        "reorder_jokers": 1
+      },
+      "discard_count": 36,
+      "short_discards": 25,
+      "cards_discarded": 130,
+      "plays_with_discards": 9,
+      "shop_actions": 70,
+      "shop_leaves_50_plus": 8,
+      "max_cash_seen": 97,
+      "last_state": {
+        "phase": "other",
+        "ante": 6,
+        "round": 16,
+        "blind": "Big Blind",
+        "blind_key": "bl_big",
+        "target": 90000,
+        "chips": 62010,
+        "hands_left": 0,
+        "discards_left": 0,
+        "discards_used": 3,
+        "dollars": 50,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 6,
+        "deck_size": 21,
+        "population_size": 52,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_yorick",
+            "cost": 15,
+            "sell_cost": 7,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 6,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_stuntman",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": true,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "chip_mod": 250,
+              "h_size": 2
+            }
+          },
+          {
+            "key": "j_perkeo",
+            "cost": 15,
+            "sell_cost": 7,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_troubadour",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": true,
+            "eternal": true,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "h_plays": -1,
+              "h_size": 2
+            }
+          },
+          {
+            "key": "j_droll",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": {
+              "chips": 50,
+              "foil": true,
+              "type": "foil"
+            },
+            "rental": null,
+            "eternal": true,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "consumables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 2,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 1,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 1,
+            "played": 0,
+            "chips": 40,
+            "mult": 4
+          },
+          "High Card": {
+            "level": 2,
+            "played": 3,
+            "chips": 15,
+            "mult": 2
+          },
+          "Pair": {
+            "level": 1,
+            "played": 4,
+            "chips": 10,
+            "mult": 2
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1,
+            "chips": 30,
+            "mult": 4
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 2,
+            "played": 4,
+            "chips": 50,
+            "mult": 5
+          },
+          "Two Pair": {
+            "level": 2,
+            "played": 8,
+            "chips": 40,
+            "mult": 3
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 2101,
+        "segment": "session-20260925T214542Z-1-000003.brj",
+        "ordinal": 40,
+        "raw_sha256": "93225631c726b50e37b901d9cb7250e285ab4fadd9d76c08d5bc77afb3115c35"
+      }
+    },
+    {
+      "run_id": "game:3",
+      "number": 2,
+      "start_sequence": 2125,
+      "end_sequence": 2372,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 1,
+      "observation_count": 41,
+      "action_count": 22,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 2,
+        "select_blind": 2,
+        "discard": 6,
+        "play": 6,
+        "cash_out": 1,
+        "open": 1,
+        "skip_pack": 1,
+        "buy": 1,
+        "leave_shop": 1
+      },
+      "discard_count": 6,
+      "short_discards": 6,
+      "cards_discarded": 18,
+      "plays_with_discards": 0,
+      "shop_actions": 3,
+      "shop_leaves_50_plus": 0,
+      "max_cash_seen": 10,
+      "last_state": {
+        "phase": "other",
+        "ante": 1,
+        "round": 2,
+        "blind": "The Club",
+        "blind_key": "bl_club",
+        "target": 600,
+        "chips": 304,
+        "hands_left": 0,
+        "discards_left": 0,
+        "discards_used": 3,
+        "dollars": 0,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 5,
+        "deck_size": 22,
+        "population_size": 52,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_constellation",
+            "cost": 6,
+            "sell_cost": 3,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": 0.1
+          }
+        ],
+        "consumables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 1,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 1,
+            "played": 0,
+            "chips": 40,
+            "mult": 4
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0,
+            "chips": 5,
+            "mult": 1
+          },
+          "Pair": {
+            "level": 1,
+            "played": 2,
+            "chips": 10,
+            "mult": 2
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1,
+            "chips": 30,
+            "mult": 4
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 1,
+            "chips": 30,
+            "mult": 3
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 1,
+            "chips": 20,
+            "mult": 2
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 2369,
+        "segment": "session-20260925T214542Z-1-000005.brj",
+        "ordinal": 252,
+        "raw_sha256": "c4e962210179d7b9efca2c15ebf6513001cc079a9948484bfee6ff4c8c4a9c54"
+      }
+    },
+    {
+      "run_id": "game:4",
+      "number": 3,
+      "start_sequence": 2390,
+      "end_sequence": 5206,
+      "outcome": "win",
+      "reason": null,
+      "max_ante": 9,
+      "observation_count": 416,
+      "action_count": 255,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 14,
+        "select_blind": 23,
+        "discard": 50,
+        "play": 30,
+        "cash_out": 22,
+        "open": 20,
+        "skip_pack": 9,
+        "leave_shop": 22,
+        "buy": 8,
+        "use": 29,
+        "reorder_jokers": 24,
+        "sell": 3
+      },
+      "discard_count": 50,
+      "short_discards": 39,
+      "cards_discarded": 170,
+      "plays_with_discards": 13,
+      "shop_actions": 68,
+      "shop_leaves_50_plus": 10,
+      "max_cash_seen": 166,
+      "last_state": {
+        "phase": "round",
+        "ante": 9,
+        "round": 23,
+        "blind": "Violet Vessel",
+        "blind_key": "bl_final_vessel",
+        "target": 1200000,
+        "chips": 1313664,
+        "hands_left": 4,
+        "discards_left": 4,
+        "discards_used": 0,
+        "dollars": 160,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 0,
+        "deck_size": 40,
+        "population_size": 47,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 8,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_greedy_joker",
+            "cost": 5,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": true,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "s_mult": 3,
+              "suit": "Diamonds"
+            }
+          },
+          {
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_family",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 4,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_brainstorm",
+            "cost": 10,
+            "sell_cost": 5,
+            "edition": null,
+            "rental": null,
+            "eternal": true,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "consumables": [
+          {
+            "key": "c_fool",
+            "cost": 3,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 5,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1,
+            "chips": 40,
+            "mult": 4
+          },
+          "High Card": {
+            "level": 2,
+            "played": 3,
+            "chips": 15,
+            "mult": 2
+          },
+          "Pair": {
+            "level": 1,
+            "played": 5,
+            "chips": 10,
+            "mult": 2
+          },
+          "Straight": {
+            "level": 2,
+            "played": 2,
+            "chips": 60,
+            "mult": 7
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 1,
+            "chips": 30,
+            "mult": 3
+          },
+          "Two Pair": {
+            "level": 26,
+            "played": 13,
+            "chips": 520,
+            "mult": 27
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 5204,
+        "segment": "session-20260925T214542Z-1-000008.brj",
+        "ordinal": 774,
+        "raw_sha256": "7f9a13d90d842cd1b47cbb641706babf27013a2c45b6e2f00c8e23426fc99499"
+      }
+    },
+    {
+      "run_id": "game:5",
+      "number": 4,
+      "start_sequence": 5227,
+      "end_sequence": 6690,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 5,
+      "observation_count": 229,
+      "action_count": 131,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 9,
+        "select_blind": 12,
+        "discard": 33,
+        "play": 25,
+        "cash_out": 11,
+        "open": 10,
+        "skip_pack": 3,
+        "leave_shop": 11,
+        "buy": 5,
+        "use": 8,
+        "reorder_jokers": 1,
+        "sell": 2
+      },
+      "discard_count": 33,
+      "short_discards": 26,
+      "cards_discarded": 110,
+      "plays_with_discards": 7,
+      "shop_actions": 28,
+      "shop_leaves_50_plus": 0,
+      "max_cash_seen": 17,
+      "last_state": {
+        "phase": "other",
+        "ante": 5,
+        "round": 12,
+        "blind": "Small Blind",
+        "blind_key": "bl_small",
+        "target": 25000,
+        "chips": 7710,
+        "hands_left": 0,
+        "discards_left": 0,
+        "discards_used": 3,
+        "dollars": 9,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 7,
+        "deck_size": 21,
+        "population_size": 52,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 5,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_delayed_grat",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": 2
+          },
+          {
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_card_sharp",
+            "cost": 6,
+            "sell_cost": 3,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "Xmult": 3
+            }
+          }
+        ],
+        "consumables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 2,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 1,
+            "played": 5,
+            "chips": 40,
+            "mult": 4
+          },
+          "High Card": {
+            "level": 1,
+            "played": 4,
+            "chips": 5,
+            "mult": 1
+          },
+          "Pair": {
+            "level": 1,
+            "played": 3,
+            "chips": 10,
+            "mult": 2
+          },
+          "Straight": {
+            "level": 1,
+            "played": 4,
+            "chips": 30,
+            "mult": 4
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 1,
+            "chips": 30,
+            "mult": 3
+          },
+          "Two Pair": {
+            "level": 2,
+            "played": 6,
+            "chips": 40,
+            "mult": 3
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 6687,
+        "segment": "session-20260925T214542Z-1-000010.brj",
+        "ordinal": 1468,
+        "raw_sha256": "b97db25144008226f3d1960dea55c870a7980b359251b2784634c795f1475ff7"
+      }
+    },
+    {
+      "run_id": "game:6",
+      "number": 5,
+      "start_sequence": 6707,
+      "end_sequence": 6954,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 1,
+      "observation_count": 41,
+      "action_count": 22,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 3,
+        "select_blind": 2,
+        "discard": 6,
+        "play": 7,
+        "cash_out": 1,
+        "open": 1,
+        "leave_shop": 1
+      },
+      "discard_count": 6,
+      "short_discards": 4,
+      "cards_discarded": 21,
+      "plays_with_discards": 1,
+      "shop_actions": 2,
+      "shop_leaves_50_plus": 0,
+      "max_cash_seen": 9,
+      "last_state": {
+        "phase": "other",
+        "ante": 1,
+        "round": 2,
+        "blind": "The Window",
+        "blind_key": "bl_window",
+        "target": 600,
+        "chips": 590,
+        "hands_left": 0,
+        "discards_left": 0,
+        "discards_used": 3,
+        "dollars": 5,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 3,
+        "deck_size": 20,
+        "population_size": 52,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_faceless",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "dollars": 5,
+              "faces": 3
+            }
+          }
+        ],
+        "consumables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 1,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 1,
+            "played": 0,
+            "chips": 40,
+            "mult": 4
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0,
+            "chips": 5,
+            "mult": 1
+          },
+          "Pair": {
+            "level": 1,
+            "played": 3,
+            "chips": 10,
+            "mult": 2
+          },
+          "Straight": {
+            "level": 1,
+            "played": 2,
+            "chips": 30,
+            "mult": 4
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 30,
+            "mult": 3
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 1,
+            "chips": 20,
+            "mult": 2
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 6951,
+        "segment": "session-20260925T214542Z-1-000012.brj",
+        "ordinal": 252,
+        "raw_sha256": "b8d9e541c00b170db014d4b4854914e12a1197282383e3364348a9d7b3ab9da4"
+      }
+    },
+    {
+      "run_id": "game:7",
+      "number": 6,
+      "start_sequence": 6971,
+      "end_sequence": 8609,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 6,
+      "observation_count": 252,
+      "action_count": 149,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 6,
+        "select_blind": 16,
+        "discard": 39,
+        "play": 27,
+        "cash_out": 15,
+        "buy": 5,
+        "open": 6,
+        "leave_shop": 15,
+        "use": 13,
+        "reorder_jokers": 1,
+        "sell": 3,
+        "skip_pack": 2
+      },
+      "discard_count": 39,
+      "short_discards": 20,
+      "cards_discarded": 153,
+      "plays_with_discards": 6,
+      "shop_actions": 30,
+      "shop_leaves_50_plus": 0,
+      "max_cash_seen": 14,
+      "last_state": {
+        "phase": "other",
+        "ante": 6,
+        "round": 16,
+        "blind": "Big Blind",
+        "blind_key": "bl_big",
+        "target": 90000,
+        "chips": 69489,
+        "hands_left": 0,
+        "discards_left": 0,
+        "discards_used": 3,
+        "dollars": 10,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 6,
+        "deck_size": 0,
+        "population_size": 29,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_swashbuckler",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 23,
+            "extra": null
+          },
+          {
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 7,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_blue_joker",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": true,
+            "eternal": true,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": 2
+          },
+          {
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_wily",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "consumables": [
+          {
+            "key": "c_mars",
+            "cost": 3,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_neptune",
+            "cost": 3,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_neptune",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 2,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 1,
+            "played": 5,
+            "chips": 40,
+            "mult": 4
+          },
+          "High Card": {
+            "level": 1,
+            "played": 4,
+            "chips": 5,
+            "mult": 1
+          },
+          "Pair": {
+            "level": 2,
+            "played": 3,
+            "chips": 25,
+            "mult": 3
+          },
+          "Straight": {
+            "level": 1,
+            "played": 5,
+            "chips": 30,
+            "mult": 4
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 3,
+            "chips": 30,
+            "mult": 3
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 5,
+            "chips": 20,
+            "mult": 2
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 8606,
+        "segment": "session-20260925T214542Z-1-000014.brj",
+        "ordinal": 1643,
+        "raw_sha256": "f3567bd51dc5f72d21d5138060600ea6a60672543427af32063f5d5e15f6c40c"
+      }
+    },
+    {
+      "run_id": "game:8",
+      "number": 7,
+      "start_sequence": 8628,
+      "end_sequence": 11293,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 8,
+      "observation_count": 378,
+      "action_count": 237,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 23,
+        "select_blind": 23,
+        "discard": 42,
+        "play": 35,
+        "cash_out": 22,
+        "open": 21,
+        "buy": 7,
+        "leave_shop": 22,
+        "reorder_jokers": 36,
+        "sell": 2,
+        "reorder_hand": 1,
+        "use": 2
+      },
+      "discard_count": 42,
+      "short_discards": 17,
+      "cards_discarded": 171,
+      "plays_with_discards": 23,
+      "shop_actions": 70,
+      "shop_leaves_50_plus": 7,
+      "max_cash_seen": 71,
+      "last_state": {
+        "phase": "other",
+        "ante": 8,
+        "round": 23,
+        "blind": "Amber Acorn",
+        "blind_key": "bl_final_acorn",
+        "target": 400000,
+        "chips": 277248,
+        "hands_left": 0,
+        "discards_left": 3,
+        "discards_used": 0,
+        "dollars": 59,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 6,
+        "deck_size": 31,
+        "population_size": 52,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": null,
+            "cost": null,
+            "sell_cost": null,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": null,
+            "unknown": null,
+            "face_down": true,
+            "x_mult": null,
+            "mult": null,
+            "extra": null
+          },
+          {
+            "key": null,
+            "cost": null,
+            "sell_cost": null,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": null,
+            "unknown": null,
+            "face_down": true,
+            "x_mult": null,
+            "mult": null,
+            "extra": null
+          },
+          {
+            "key": null,
+            "cost": null,
+            "sell_cost": null,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": null,
+            "unknown": null,
+            "face_down": true,
+            "x_mult": null,
+            "mult": null,
+            "extra": null
+          },
+          {
+            "key": null,
+            "cost": null,
+            "sell_cost": null,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": null,
+            "unknown": null,
+            "face_down": true,
+            "x_mult": null,
+            "mult": null,
+            "extra": null
+          },
+          {
+            "key": null,
+            "cost": null,
+            "sell_cost": null,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": null,
+            "unknown": null,
+            "face_down": true,
+            "x_mult": null,
+            "mult": null,
+            "extra": null
+          }
+        ],
+        "consumables": [
+          {
+            "key": "c_fool",
+            "cost": 3,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_mercury",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_fool",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 3,
+            "played": 11,
+            "chips": 65,
+            "mult": 8
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 2,
+            "played": 0,
+            "chips": 90,
+            "mult": 10
+          },
+          "Full House": {
+            "level": 2,
+            "played": 1,
+            "chips": 65,
+            "mult": 6
+          },
+          "High Card": {
+            "level": 3,
+            "played": 2,
+            "chips": 25,
+            "mult": 3
+          },
+          "Pair": {
+            "level": 4,
+            "played": 11,
+            "chips": 55,
+            "mult": 5
+          },
+          "Straight": {
+            "level": 3,
+            "played": 1,
+            "chips": 90,
+            "mult": 10
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 2,
+            "played": 2,
+            "chips": 50,
+            "mult": 5
+          },
+          "Two Pair": {
+            "level": 3,
+            "played": 7,
+            "chips": 60,
+            "mult": 4
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 11290,
+        "segment": "session-20260925T214542Z-1-000017.brj",
+        "ordinal": 622,
+        "raw_sha256": "f08908451cc2eaa0800dc5c17f1d37f918f667bfd52f51d9e8c515ccec5dfaf9"
+      }
+    },
+    {
+      "run_id": "game:9",
+      "number": 8,
+      "start_sequence": 11315,
+      "end_sequence": 13736,
+      "outcome": "win",
+      "reason": null,
+      "max_ante": 9,
+      "observation_count": 359,
+      "action_count": 221,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 19,
+        "select_blind": 23,
+        "discard": 45,
+        "play": 29,
+        "cash_out": 22,
+        "buy": 5,
+        "open": 16,
+        "leave_shop": 22,
+        "reorder_jokers": 22,
+        "sell": 1,
+        "use": 16
+      },
+      "discard_count": 45,
+      "short_discards": 16,
+      "cards_discarded": 185,
+      "plays_with_discards": 14,
+      "shop_actions": 53,
+      "shop_leaves_50_plus": 6,
+      "max_cash_seen": 146,
+      "last_state": {
+        "phase": "round",
+        "ante": 9,
+        "round": 23,
+        "blind": "Violet Vessel",
+        "blind_key": "bl_final_vessel",
+        "target": 1200000,
+        "chips": 1305558,
+        "hands_left": 0,
+        "discards_left": 3,
+        "discards_used": 0,
+        "dollars": 143,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 0,
+        "deck_size": 40,
+        "population_size": 50,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_perkeo",
+            "cost": 15,
+            "sell_cost": 7,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_half",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": {
+              "mult": 20,
+              "size": 3
+            }
+          },
+          {
+            "key": "j_blueprint",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": true,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_yorick",
+            "cost": 15,
+            "sell_cost": 7,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 9,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_blue_joker",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": 2
+          }
+        ],
+        "consumables": [
+          {
+            "key": "c_devil",
+            "cost": 6,
+            "sell_cost": 3,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_devil",
+            "cost": 6,
+            "sell_cost": 3,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_devil",
+            "cost": 6,
+            "sell_cost": 3,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 60,
+            "mult": 7
+          },
+          "Full House": {
+            "level": 2,
+            "played": 0,
+            "chips": 65,
+            "mult": 6
+          },
+          "High Card": {
+            "level": 6,
+            "played": 25,
+            "chips": 55,
+            "mult": 6
+          },
+          "Pair": {
+            "level": 2,
+            "played": 1,
+            "chips": 25,
+            "mult": 3
+          },
+          "Straight": {
+            "level": 2,
+            "played": 1,
+            "chips": 60,
+            "mult": 7
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 2,
+            "played": 1,
+            "chips": 50,
+            "mult": 5
+          },
+          "Two Pair": {
+            "level": 2,
+            "played": 1,
+            "chips": 40,
+            "mult": 3
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 13734,
+        "segment": "session-20260925T214542Z-1-000020.brj",
+        "ordinal": 379,
+        "raw_sha256": "3391e6cbf268808fc85a93b0036c97fe6f6dd7404731bc3d4f74409a5180871b"
+      }
+    },
+    {
+      "run_id": "game:10",
+      "number": 9,
+      "start_sequence": 13757,
+      "end_sequence": 15918,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 7,
+      "observation_count": 331,
+      "action_count": 197,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 15,
+        "select_blind": 20,
+        "discard": 47,
+        "play": 31,
+        "cash_out": 19,
+        "open": 15,
+        "leave_shop": 19,
+        "sell": 1,
+        "buy": 7,
+        "reorder_jokers": 2,
+        "use": 16,
+        "skip_pack": 3,
+        "reorder_hand": 1
+      },
+      "discard_count": 47,
+      "short_discards": 23,
+      "cards_discarded": 195,
+      "plays_with_discards": 10,
+      "shop_actions": 42,
+      "shop_leaves_50_plus": 0,
+      "max_cash_seen": 29,
+      "last_state": {
+        "phase": "other",
+        "ante": 7,
+        "round": 20,
+        "blind": "The Mark",
+        "blind_key": "bl_mark",
+        "target": 220000,
+        "chips": 124092,
+        "hands_left": 0,
+        "discards_left": 2,
+        "discards_used": 1,
+        "dollars": 17,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 6,
+        "deck_size": 14,
+        "population_size": 34,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_abstract",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": true,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": 3
+          },
+          {
+            "key": "j_jolly",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_perkeo",
+            "cost": 10,
+            "sell_cost": 5,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_sly",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_yorick",
+            "cost": 10,
+            "sell_cost": 5,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 9,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          }
+        ],
+        "consumables": [
+          {
+            "key": "c_hanged_man",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_hanged_man",
+            "cost": 4,
+            "sell_cost": 2,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 2,
+            "played": 0,
+            "chips": 155,
+            "mult": 15
+          },
+          "Flush": {
+            "level": 2,
+            "played": 0,
+            "chips": 50,
+            "mult": 6
+          },
+          "Flush Five": {
+            "level": 2,
+            "played": 0,
+            "chips": 210,
+            "mult": 19
+          },
+          "Flush House": {
+            "level": 2,
+            "played": 0,
+            "chips": 180,
+            "mult": 18
+          },
+          "Four of a Kind": {
+            "level": 2,
+            "played": 0,
+            "chips": 90,
+            "mult": 10
+          },
+          "Full House": {
+            "level": 2,
+            "played": 2,
+            "chips": 65,
+            "mult": 6
+          },
+          "High Card": {
+            "level": 2,
+            "played": 3,
+            "chips": 15,
+            "mult": 2
+          },
+          "Pair": {
+            "level": 9,
+            "played": 23,
+            "chips": 130,
+            "mult": 10
+          },
+          "Straight": {
+            "level": 2,
+            "played": 2,
+            "chips": 60,
+            "mult": 7
+          },
+          "Straight Flush": {
+            "level": 2,
+            "played": 1,
+            "chips": 140,
+            "mult": 12
+          },
+          "Three of a Kind": {
+            "level": 2,
+            "played": 0,
+            "chips": 50,
+            "mult": 5
+          },
+          "Two Pair": {
+            "level": 2,
+            "played": 0,
+            "chips": 40,
+            "mult": 3
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 15915,
+        "segment": "session-20260925T214542Z-1-000023.brj",
+        "ordinal": 118,
+        "raw_sha256": "365218ab649433a0bdbdc03223e471a3e5e2def46f028a4b68e945b0a2ce6d53"
+      }
+    },
+    {
+      "run_id": "game:11",
+      "number": 10,
+      "start_sequence": 15937,
+      "end_sequence": 18639,
+      "outcome": "loss",
+      "reason": null,
+      "max_ante": 7,
+      "observation_count": 401,
+      "action_count": 252,
+      "action_kinds": {
+        "skip_blind": 1,
+        "choose": 20,
+        "select_blind": 20,
+        "discard": 42,
+        "play": 36,
+        "cash_out": 19,
+        "open": 19,
+        "leave_shop": 19,
+        "skip_pack": 1,
+        "reorder_hand": 1,
+        "buy": 6,
+        "reorder_jokers": 23,
+        "sell": 3,
+        "use": 22,
+        "reroll": 20
+      },
+      "discard_count": 42,
+      "short_discards": 28,
+      "cards_discarded": 153,
+      "plays_with_discards": 22,
+      "shop_actions": 81,
+      "shop_leaves_50_plus": 9,
+      "max_cash_seen": 102,
+      "last_state": {
+        "phase": "other",
+        "ante": 7,
+        "round": 20,
+        "blind": "The Wheel",
+        "blind_key": "bl_wheel",
+        "target": 220000,
+        "chips": 25676,
+        "hands_left": 0,
+        "discards_left": 3,
+        "discards_used": 0,
+        "dollars": 61,
+        "interest_cap": 25,
+        "reroll_cost": 5,
+        "hand_size": 6,
+        "deck_size": 14,
+        "population_size": 37,
+        "profile": "perkeo_yorick_win_v1",
+        "jokers": [
+          {
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 7,
+            "mult": 0,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          },
+          {
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_space",
+            "cost": 5,
+            "sell_cost": 2,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": true,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": 4
+          },
+          {
+            "key": "j_brainstorm",
+            "cost": 10,
+            "sell_cost": 5,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "j_certificate",
+            "cost": 1,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": true,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "consumables": [
+          {
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_heirophant",
+            "cost": 3,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_chariot",
+            "cost": 3,
+            "sell_cost": 1,
+            "edition": null,
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          },
+          {
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "rental": null,
+            "eternal": null,
+            "debuff": false,
+            "unknown": null,
+            "face_down": false,
+            "x_mult": 1,
+            "mult": 0,
+            "extra": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0,
+            "chips": 120,
+            "mult": 12
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 35,
+            "mult": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0,
+            "chips": 160,
+            "mult": 16
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0,
+            "chips": 140,
+            "mult": 14
+          },
+          "Four of a Kind": {
+            "level": 2,
+            "played": 4,
+            "chips": 90,
+            "mult": 10
+          },
+          "Full House": {
+            "level": 7,
+            "played": 12,
+            "chips": 190,
+            "mult": 16
+          },
+          "High Card": {
+            "level": 2,
+            "played": 1,
+            "chips": 15,
+            "mult": 2
+          },
+          "Pair": {
+            "level": 2,
+            "played": 10,
+            "chips": 25,
+            "mult": 3
+          },
+          "Straight": {
+            "level": 2,
+            "played": 6,
+            "chips": 60,
+            "mult": 7
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0,
+            "chips": 100,
+            "mult": 8
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 1,
+            "chips": 30,
+            "mult": 3
+          },
+          "Two Pair": {
+            "level": 2,
+            "played": 2,
+            "chips": 40,
+            "mult": 3
+          }
+        },
+        "observatory": false
+      },
+      "last_observation_anchor": {
+        "sequence": 18636,
+        "segment": "session-20260925T214542Z-1-000026.brj",
+        "ordinal": 659,
+        "raw_sha256": "acedd3433a2317cc360e95086742b40687ad5e9945b4d73ebf9eb8ec89edfc80"
+      }
+    }
+  ]
+}

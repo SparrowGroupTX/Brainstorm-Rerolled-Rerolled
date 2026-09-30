@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "scope": "Synthetic fixture only; no native/source worker",
+  "failure": "Final UI forwarding assertion reused an earlier fixture object after other fixtures replaced global G callbacks, so it called the later Off fixture instead of its earlier Auto fixture.",
+  "observed": "3/4 fixtures passed: query29, auto facade99, product121; adaptive fixture failed at final actual UI Auto request assertion.",
+  "repair": "Create a fresh final UI fixture immediately before invoking its Auto callback.",
+  "production_change_caused_by_failure": false,
+  "preserved": true
+}

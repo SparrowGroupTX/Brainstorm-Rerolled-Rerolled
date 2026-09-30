@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-16T04:52:19.266136+00:00",
+  "scope": "Manufactured Decision budget/postprocessor fixture only.",
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tests/advisor_gold_retention_budget.lua"
+  ],
+  "max_seconds": 60,
+  "seconds": 0.10899999993853271,
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tests\\advisor_gold_retention_budget.lua\nPASS tests\\advisor_gold_retention_budget.lua\n1/1 fixtures passed\nPASS Gold retention shared budget 51 checks\n",
+  "stderr": "",
+  "inputs": {
+    "Brainstorm/Advisor/decision.lua": "4223fc61a18c2d97732edad69778a76c13bf6e4d0e73fbb344099503b1b39bab",
+    "Brainstorm/Advisor/gold_retention.lua": "b9d514f2ebc57e602c9dae8ccc0ddd202454a92b3174801a56f6c940354d3bb8",
+    "Brainstorm/Advisor/runtime.lua": "a4c8ee27343b4018d8e7c52917c9306997e9035304df9b7f01e9776aca74d8aa",
+    "Brainstorm/Advisor/player_journal.lua": "e4374657c4d84dce1350ea4631e1bf0cdfde73d575e0ba3e5286b9a5a34a6ffd",
+    "tests/advisor_gold_retention_budget.lua": "e53f3bc08eb69b05c9b06d16174db50c0198d30e768d6c309d7f5bb9b612acbc"
+  },
+  "inputs_unchanged": true,
+  "review": "Actual-call accounting shares the total shop cap across acquisition, ordinary and retention work. The reserved8000 is subtracted before ordinary work; remainingactual allowance is computed afterordinary/fallback. Only a complete retained leave_shop proof suppresses later phase_copy reordering; ordinary, optedout and invalidproof postprocessing is unchanged.",
+  "tests": "51 checks: allthreeworkstages, reserve, unusedordinarycapacity, truncationfallback, actualcallmismatch/exhaustion, lowercallercaps, acquisitionexhaustion, optout/noheldtargets, protectedexit and unprotectedpostprocessor sentinels.",
+  "source_execution": false,
+  "captured_policy_replay": false,
+  "save_or_profile_reads": false,
+  "live_game_control": false
+}

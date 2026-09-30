@@ -1,0 +1,4 @@
+Initial ordinary synthetic fixture compilation failed before executing any test.
+shop_scoring.lua:891: unexpected symbol near '='
+Cause: Lua local declaration used `local prior=...,following=...` instead of
+`local prior,following=...,...`. Fixed without source/game/search execution.

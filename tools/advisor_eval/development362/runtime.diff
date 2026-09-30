@@ -1,0 +1,21 @@
+--- before/Brainstorm/Advisor/concealed_belief.lua
++++ Brainstorm/Advisor/concealed_belief.lua
+@@ -199,12 +199,15 @@
+   options=options or {};local d={supported=false,evaluations=0,complete=false,scope='immediate_fixed_play',comparisons={}}
+   local hands=s.hands_left or (s.current_round or {}).hands_left or 0
+   if hands<1 then return unsupported('No playable hands remain.',d) end
+-  if #(s.hand or {})<1 or #s.hand>9 or #(s.deck or {})>120 then
+-    return unsupported('The concealed immediate-play comparison requires at most nine held cards and a bounded deck.',d)
++  if #(s.hand or {})<1 or #s.hand>10 or #(s.deck or {})>120 then
++    return unsupported('The concealed immediate-play comparison requires at most ten held cards and a bounded deck.',d)
+   end
+   for _,j in ipairs(s.jokers or {}) do if j.face_down or j.facing=='back' then return unsupported('A concealed Joker row is not supported.',d) end end
+   local o,why=M.observe(s);if not o then return unsupported(why,d) end
+-  local count=math.max(4,math.min(32,math.floor(options.samples or 16)))
++  -- Ten held cards have 637 one-to-five-slot actions: twelve common worlds
++  -- cost 7,644 scores. Smaller hands retain sixteen; explicit sample requests
++  -- still face the complete-family budget check below, never partial scoring.
++  local count=math.max(4,math.min(32,math.floor(options.samples or (#s.hand==10 and 12 or 16))))
+   local candidates={};combinations(#s.hand,math.min(5,s.hand_limit or 5),function(indices)
+     local selected={};for _,i in ipairs(indices) do selected[i]=true end
+     for i,c in ipairs(o.state.hand) do if (c.ability or {}).forced_selection and not selected[i] then return end end

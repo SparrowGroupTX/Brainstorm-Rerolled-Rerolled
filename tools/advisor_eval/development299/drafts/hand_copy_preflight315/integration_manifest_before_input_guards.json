@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "kind": "detached_hand_copy_preflight315",
+  "status": "ready_for_review_not_staged_or_installed",
+  "files": {
+    "hand_copy_preflight.lua": "9ff317fa63aba3d0a8dc8b851dd2c423045a329fd7753449f02fe0f8e7445623",
+    "search.lua": "63d0294f2825b2cfa740eadd84d0c24fa25dbb93f385ea4023866cb1289c6785",
+    "decision.lua": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac",
+    "runtime.lua": "7d049fc735b00ec6760d676ab854e194eca046a7b12ba727dc3e2e268cea4d5e",
+    "test_preflight.lua": "c581eb3de87a1f841b144209486f579ec7c095962b3c52623714795b0e69de38",
+    "test_legacy.lua": "16c86e8a26037d86fb8b16513e494360a41e40f338ce25ac193b2b327e26f4f3",
+    "INTEGRATION.md": "092c4ad23117f23ac264ef28699e58e9fdf682b4a07fe78a2cc2d9a6ef5096af",
+    "base_hashes.json": "446a45182a6d42c984d371d09ba1610b99605d01d47a1175f3ab6e3b7126c0ab"
+  },
+  "base_hashes": {
+    "Brainstorm/Advisor/search.lua": "66e61a8b3e1801356952b44b53b371d8504c1b7c5053a22964de76efeb2b8338",
+    "Brainstorm/Advisor/decision.lua": "a5768f9250d9151372e2a7e490fb4b77033633fd8e2c53d644cfb3ffa85a8cb8",
+    "Brainstorm/Advisor/runtime.lua": "e37d3de7e3fb96f2d0648b85f11cd6e176c0012284f45727219511d425711852",
+    "tools/advisor_eval/runs/planet_pool_source1/source/card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453"
+  },
+  "runtime_targets": {
+    "hand_copy_preflight.lua": "Brainstorm/Advisor/hand_copy_preflight.lua",
+    "search.lua": "Brainstorm/Advisor/search.lua",
+    "decision.lua": "Brainstorm/Advisor/decision.lua",
+    "runtime.lua": "Brainstorm/Advisor/runtime.lua"
+  },
+  "runtime_merge_note": "If runtime base changed, merge only the added A.hand_copy_preflight load; do not overwrite newer work.",
+  "validation": {
+    "focused_checks": 163,
+    "legacy_checks": 416,
+    "legacy_bodies": 7,
+    "fixture_entries_passed": 2,
+    "source_or_captured_execution": false
+  },
+  "bounds": {
+    "hand_cards": 8,
+    "jokers": 8,
+    "layouts": 2,
+    "max_subsets_per_layout": 218,
+    "new_after_play_scores": 436,
+    "initial_plus_new_score_bound": 658,
+    "ordinary_cap": 140000,
+    "fast_clear_cap_unchanged": 70,
+    "max_non_scoring_discard_transitions": 436
+  },
+  "source_read": "Existing preserved card.lua only; no executable ZIP access",
+  "source_or_captured_experiment": false,
+  "installation": false,
+  "future_source_adapter_root_module": "hand_copy_preflight"
+}

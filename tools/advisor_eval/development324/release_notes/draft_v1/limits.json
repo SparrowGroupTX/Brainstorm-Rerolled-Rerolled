@@ -1,0 +1,250 @@
+{
+  "schema": 1,
+  "kind": "release324_closed_historical_limits",
+  "status": "CLOSED",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "historical_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_complete_attempt_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "original_cycle_expires_at_utc": "2026-09-14T22:40:00+00:00",
+  "closure_written_at_utc": "2026-09-15T01:30:51.437405+00:00",
+  "remaining_authority_seconds": 0,
+  "C09": "never_registered_reserved_or_run",
+  "closed_unused_slots": [
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24"
+  ],
+  "prior_evidence": {
+    "latest_closed_status": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/status321closed/context.json",
+      "sha256": "aac44c8a5f654541183c4ae9225d7dd0c901fae8b1ee722c710b26af64956002"
+    },
+    "original_release_context": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/release321final/context.json",
+      "sha256": "6c8e58a8f49ee861e2346538076d9747b6da4c08b5661037b30707d23ebb94f9"
+    },
+    "closed_cycle": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/CLOSED.json",
+      "sha256": "3699b13e0dbe829c5bfd8486ab4f235118200f3ee3f20a7ac28614e12a7c0f91"
+    },
+    "current_status": {
+      "path": "tools/advisor_eval/SESSION_STATUS_321_CLOSED.json",
+      "sha256": "f74d77398052705062bea049ca27350b56ff104aa8dc928e4c618b4b9e575f6c"
+    },
+    "release322_context": {
+      "path": "tools/advisor_eval/development322/release_notes/context.json",
+      "sha256": "1cb7bd5b02bc6778e263a15ff7743f6ef3c9e2ef5a72e517b509fb1d610f273c"
+    },
+    "release322_final": {
+      "path": "tools/advisor_eval/runs/pace322_final/final_verification.json",
+      "sha256": "540044b165662bf1adaad9672c072ed7ad961292856554aa547a0e28d1401082"
+    },
+    "release322_reset": {
+      "path": "tools/advisor_eval/SESSION_RESET_322.json",
+      "sha256": "297e08251aba09f956dc10aaef1202118b327a32415a59432aa4257b6eac64a1"
+    },
+    "release323_context": {
+      "path": "tools/advisor_eval/development323/release_notes/context.json",
+      "sha256": "b81eef709990af37766e60dd10ef5159c21a5435d9ae8ff417898230a66fbc2a"
+    },
+    "release323_final": {
+      "path": "tools/advisor_eval/runs/idle323_final/final_verification.json",
+      "sha256": "9031962a8ce2486b79ff059364b9f01037f8651c5c8afa7e4c65f090cac9febe"
+    },
+    "release323_reset": {
+      "path": "tools/advisor_eval/SESSION_RESET_323.json",
+      "sha256": "748d85ec77ae4c7f5c88541ea69e407a53d465e8f3835326941c2d676685d5bf"
+    }
+  },
+  "historical_budget": {
+    "authorized_slots": 60,
+    "authorized_cap_seconds": 5400,
+    "spent_jobs": 38,
+    "spent_reserved_seconds": 2340,
+    "actual_worker_seconds_decimal": "1012.71499999973457357",
+    "actual_worker_seconds": 1012.7149999997346,
+    "unused_slots": [
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24"
+    ],
+    "unused_cap_seconds": 3060,
+    "by_kind": {
+      "S": {
+        "spent_jobs": 6,
+        "spent_reserved_seconds": 180,
+        "actual_worker_seconds_decimal": "4.93800000002374873",
+        "unused_slots": [
+          "S07",
+          "S08",
+          "S09",
+          "S10",
+          "S11",
+          "S12"
+        ]
+      },
+      "M": {
+        "spent_jobs": 24,
+        "spent_reserved_seconds": 720,
+        "actual_worker_seconds_decimal": "53.46599999966565484",
+        "unused_slots": []
+      },
+      "C": {
+        "spent_jobs": 8,
+        "spent_reserved_seconds": 1440,
+        "actual_worker_seconds_decimal": "954.31100000004517",
+        "unused_slots": [
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C23",
+          "C24"
+        ]
+      }
+    }
+  },
+  "public_observations": {
+    "kind": "separate_bounded_read_only_opt_in_public_journal_audit_not_source_experiments",
+    "manifest": {
+      "path": "tools/advisor_eval/development324/log_audit/manifest.json",
+      "sha256": "476b9d586321b630a3d2f31fcb0b8ba22e7308cc36060fcf6932168152424955"
+    },
+    "note": {
+      "path": "tools/advisor_eval/development324/log_audit/AUDIT.md",
+      "sha256": "488b5dcbae33aed04f43933ddd76876186fa85e0a1c3959196a566f6fc3399a2"
+    },
+    "summary": {
+      "path": "tools/advisor_eval/development324/log_audit/summary.json",
+      "sha256": "26cd6547b5a6b5def3ba2d871f0a710e3a8506f841403a0995fc6728fce74ab1"
+    },
+    "report": {
+      "path": "tools/advisor_eval/development324/log_audit/report.json",
+      "sha256": "3fb9db2627de63fa0eaf4be1ab2100a91e2315232bae09344ddca28eef42b377"
+    },
+    "loaded_version_declaration": "Brainstorm v2.123.0-alpha",
+    "loaded_hashes_attested": false,
+    "session": "session-20260915T062915Z-1",
+    "segments": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "first_at_utc": "2026-09-15T06:46:17Z",
+    "last_at_utc": "2026-09-15T06:56:24Z",
+    "caps": {
+      "files": 6,
+      "physical_bytes": 33554432,
+      "decoded_bytes": 536870912,
+      "events": 6000,
+      "parse_seconds": 50
+    },
+    "actual": {
+      "files": 6,
+      "physical_bytes": 14440402,
+      "decoded_bytes": 280567235,
+      "events": 1519,
+      "parse_seconds": 4.375
+    },
+    "selected_tail_integrity_errors": 0,
+    "earlier_session_prefix_read": false,
+    "newly_audited_complete_receipts": {
+      "loss": 2,
+      "win": 0
+    },
+    "out_of_tail_aggregate_win": "Recorded session counter only; earlier claimed win not independently verified by this selected tail.",
+    "timing_scope": "295 mixed action-to-fresh-advice wall intervals; median1.6685807999999724seconds,maximum10.033090599999923seconds. Not CPU/freeze causality or release speedup.",
+    "additional_external_reads_for_release_notes": 0
+  },
+  "release_scope": "Routine manufactured/regression validation, read-only repository review and one expressly bounded passive public-journal tail audit. Zero source/captured/search/complete jobs. No executable/original-source archive, game control, save/profile file, rescoring or replay.",
+  "limits": "Historical C01 policy300 alone has one selected synthetic win; later releases inherit none. No player odds, unseen holdout, general adapter qualification, release324 terminal result, verified Jokerless win or human superiority. Public journal receipts remain separate; out-of-tail aggregate outcomes are not newly audited.",
+  "cpu_scope": "Prospective low-overhead opt-in elapsed wall diagnostics, with precise journal anchors and compact bounded summaries no more than once per5seconds. Live CPU percentage, freeze cause, telemetry overhead and full-run speed improvement are unmeasured. Final collector limits/code/tests/install details pending root finalization.",
+  "known_inactive_proposal": "The earlier development323/journal sketch remains preserved and inactive. New324 journal timing is a separate reviewed/frozen implementation; exact finalization pending.",
+  "preparation_status": "draft_runtime_test_install_details_pending",
+  "prior_public_observations": {
+    "kind": "separate_read_only_opt_in_public_log_review_not_source_experiments",
+    "note": {
+      "path": "tools/advisor_eval/development322/PUBLIC_LOG_REVIEW.md",
+      "sha256": "11152f486be4a4244b536b26f07dc5d84f6af76cc5ec7c20a8635b8ab0b2a133"
+    },
+    "report": {
+      "path": "tools/advisor_eval/development322/public_run_report_final.json",
+      "sha256": "0f8ef1514aed9555288185c92dbe0f3df08b403572e6dac1747a007b47b6c582"
+    },
+    "reuse_only_no_new_log_read": true
+  },
+  "release_activation": "pending_user_normal_restart; only prior loaded2.123 string observed in selected public logs"
+}

@@ -1,0 +1,7 @@
+--- STEAMODDED HEADER
+--- MOD_NAME: Brainstorm-Rerolled
+--- MOD_ID: Brainstorm-Rerolled
+--- PREFIX: brainstorm
+--- MOD_AUTHOR: [ABGamma]
+--- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+--- VERSION: 2.147.0-alpha

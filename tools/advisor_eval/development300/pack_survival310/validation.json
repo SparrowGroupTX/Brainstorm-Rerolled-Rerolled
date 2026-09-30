@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "kind": "pure_pack_survival311_validation",
+  "new_checks": 171,
+  "legacy_checks": 284,
+  "total_checks": 455,
+  "extra_override_scores": 0,
+  "synthetic_family_scores": 860,
+  "source_workers": 0,
+  "native_searches": 0,
+  "runtime_changed": false,
+  "status": "passed",
+  "commands": [
+    "python -B tests/run_lua_tests.py tools/advisor_eval/development300/pack_survival310/test_pack_survival.lua",
+    "python -B tests/run_lua_tests.py tools/advisor_eval/development300/pack_survival310/regression_blind_finishing.lua tools/advisor_eval/development300/pack_survival310/regression_pack_scoring.lua tools/advisor_eval/development300/pack_survival310/regression_certificate.lua"
+  ]
+}

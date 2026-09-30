@@ -1,0 +1,38 @@
+diff --git "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before\\Brainstorm\\Core\\auto_run_product.lua" "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Core\\auto_run_product.lua"
+index 0d42b66..bec47e3 100644
+--- "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before\\Brainstorm\\Core\\auto_run_product.lua"
++++ "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Core\\auto_run_product.lua"
+@@ -289,6 +289,9 @@ function M.attach(B,deps)
+       state.input_wait and 'Auto-run is waiting for your controls or menu to settle.' or
+       search_text or
+       state.busy and ('Auto-run: '..tostring(state.state)..'; '..tostring(state.runs_started or 0)..' runs, '..tostring(state.actions or 0)..' actions.') or
++      state.reason=='run_limit' and ('Auto-run stopped: run limit reached ('..tostring(state.runs_started)..
++        ' of '..tostring(state.max_runs)..' runs; wins: '..tostring(state.outcomes.wins)..
++        ', losses: '..tostring(state.outcomes.losses)..').') or
+       state.reason and ('Auto-run stopped: '..tostring(state.detail or state.reason)) or 'Auto-run is off.'
+     if state.resume_available and not state.busy then
+       self.status_text=resume_error and ('Resume unavailable: '..resume_error) or 'Auto-run stopped. Resume continues this session.'
+@@ -460,9 +463,13 @@ function M.attach(B,deps)
+       if not terminal:arm(run_id(g)) then return halt('Restored checkpoint cannot bind new terminal evidence.') end
+       checkpoint_loaded=nil;return self:status()
+     end
+-    -- The original result overlay is dismissed only after its verified
+-    -- terminal event has been logged in an earlier controller update.
++    -- The earlier update logged the verified outcome. Reread the goal and
++    -- remaining allowance before dismissing its original result surface;
++    -- completion or a hard stop must leave that surface available to the user.
+     if state.active and state.state=='terminal' then
++      terminal:install_hooks()
++      state=controller.tick()
++      if not state.active or state.state~='terminal' or state.input_wait then return self:status()end
+       local overlay=terminal:owned_overlay(run_id(g))
+       if overlay then
+         if not log({event='terminal_overlay_close_requested',run_id=run_id(g)})then halt('Observation recording stopped');return self:status()end
+@@ -472,6 +479,7 @@ function M.attach(B,deps)
+         if not okay then halt('The result screen could not close: '..tostring(why))end
+         return self:status()
+       end
++      return self:status()
+     end
+     terminal:install_hooks()
+     controller.tick();return self:status()

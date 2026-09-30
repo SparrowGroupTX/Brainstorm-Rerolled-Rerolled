@@ -1,0 +1,120 @@
+--- a/Brainstorm/Advisor/search.lua
++++ b/Brainstorm/Advisor/search.lua
+@@ -820,7 +820,7 @@
+     local shortlist=((collect and options.fast_clear~=false) or (not collect and options.future_clear~=false))
+       and obvious_candidates(state,max_cards) or {}
+     for _,indices in ipairs(shortlist) do if inspect(indices)==false then break end end
+-    local function conserve()
++    local function conserve(search_path)
+       if not clear then return end
+       local start=evaluations
+       local proposals={}
+@@ -891,13 +891,14 @@
+         end
+       end
+       fast_diagnostics={reliable_clear=true,shortlist_limit=32,conservation_limit=16,
+-        conservation_evaluations=evaluations-start,clear_found_at=start}
++        conservation_evaluations=evaluations-start,clear_found_at=start,search_path=search_path,
++        aggregate_limit=search_path=='shortlist' and 70 or 140000}
+       initial_play_complete=false
+       return best
+     end
+     if clear then
+       if not collect then future_clear_stops=future_clear_stops+1;return best end
+-      return conserve()
++      return conserve('shortlist')
+     end
+     local pool
+     if limited then
+@@ -925,7 +926,7 @@
+     end
+     if clear then
+       if not collect then future_clear_stops=future_clear_stops+1;return best end
+-      return conserve()
++      return conserve('enumeration')
+     end
+     if limited then truncated = true end
+     if collect then initial_play_complete = not limited end
+@@ -948,7 +949,12 @@
+       truncated = function() return truncated end,
+   }
+   local function finish(result)
+-    if fast_diagnostics then result.fast_clear=fast_diagnostics end
++    if fast_diagnostics then
++      -- A reliable clear can also stop later enumeration. Only the initial
++      -- shortlist has the seventy-score whole-decision fast-clear contract.
++      if fast_diagnostics.search_path=='shortlist' then result.fast_clear=fast_diagnostics
++      else result.clear_shortcut=fast_diagnostics end
++    end
+     if not fast_diagnostics and not truncated and not cycle_evaluated then choose_cycle(s, scorer, result, options, cycle_context) end
+     if not fast_diagnostics and #s.hand > CONTINUATION_HAND_LIMIT then
+       result.search_diagnostics = result.search_diagnostics or {}
+--- a/Brainstorm/Advisor/decision.lua
++++ b/Brainstorm/Advisor/decision.lua
+@@ -98,24 +98,30 @@
+     if yield_fn then yield_fn() end
+   end)
+   if not result then return {kind='unsupported', evaluations=0} end
+-  if result.fast_clear then
+-    result.fast_clear.development_limit=6
+-    result.fast_clear.growth_limit=12
+-    result.fast_clear.post_clear_limit=34
++  local clear_shortcut=result.fast_clear or result.clear_shortcut
++  if clear_shortcut then
++    local ceiling=result.fast_clear and 70 or 140000
++    local function available(limit)
++      return math.min(limit,math.max(0,ceiling-(result.evaluations or 0)))
++    end
++    clear_shortcut.development_limit=6
++    clear_shortcut.growth_limit=12
++    clear_shortcut.post_clear_limit=34
++    clear_shortcut.aggregate_limit=ceiling
+     if modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
+       local suggestion,count,diagnostics=modules.consumables.develop(snapshot,modules.scoring,result.play,
+-        {strategy=modules.strategy,max_development_evaluations=6,arm_cost=modules.search.arm_cost})
++        {strategy=modules.strategy,max_development_evaluations=available(6),arm_cost=modules.search.arm_cost})
+       result.consumable,result.consumable_diagnostics=suggestion,diagnostics
+       result.evaluations=(result.evaluations or 0)+(count or 0)
+     end
+     if not result.consumable and modules.growth then
+-      local suggestion,count,diagnostics=modules.growth.suggest(snapshot,modules,result.play,{max_evaluations=12})
++      local suggestion,count,diagnostics=modules.growth.suggest(snapshot,modules,result.play,{max_evaluations=available(12)})
+       result.growth,result.growth_diagnostics=suggestion,diagnostics
+       result.evaluations=(result.evaluations or 0)+(count or 0)
+     end
+     result.action=result.consumable and result.consumable.action or result.growth and result.growth.action or
+       {kind='play',area='hand',indices=result.play.indices}
+-    result.fast_clear.specialists_skipped=true
++    clear_shortcut.specialists_skipped=true
+     return result
+   end
+   -- All specialists share the existing ordinary decision allowance. A lower
+--- a/Brainstorm/Advisor/phase_copy.lua
++++ b/Brainstorm/Advisor/phase_copy.lua
+@@ -270,12 +270,15 @@
+ function M.apply(s,modules,result,options)
+   if not result or not result.action then return result end
+   options=options or {}
++  -- Later enumeration clears carry clear_shortcut, and retain the ordinary
++  -- allowance; only the initial shortlist carries the fast_clear contract.
+   local ceiling=result.fast_clear and 70 or s.phase=='shop' and 50000 or 140000
+   local remaining=math.max(0,ceiling-num(result.evaluations))
+   local cap=math.min(30,remaining,math.max(0,num(options.max_evaluations,30)))
+   local proposal,work,diagnostics=M.suggest(s,modules,result,{max_evaluations=cap})
+   local updated=shallow(result)
+   updated.evaluations=num(result.evaluations)+num(work)
++  diagnostics.aggregate_limit=ceiling;diagnostics.remaining_before=remaining
+   updated.phase_copy_diagnostics=diagnostics
+   if not proposal then return updated end
+   updated.phase_copy=proposal.phase_copy;updated.action=proposal.action
+--- a/Brainstorm/Advisor/retry_policy.lua
++++ b/Brainstorm/Advisor/retry_policy.lua
+@@ -172,7 +172,7 @@
+   return true
+ end
+ local function hand_candidates(s,r,modules)
+-  if not plain_hand(s) or r.truncated or r.fast_clear then return nil,'Hand retry needs complete plain visible scoring without protected effects.' end
++  if not plain_hand(s) or r.truncated or r.fast_clear or r.clear_shortcut then return nil,'Hand retry needs complete plain visible scoring without protected effects.' end
+   for _,field in ipairs({'consumable','growth','ordering','hand_ordering','boss_rescue','mixed_rescue','multi_discard','two_hand_finish','resource_comparison'}) do
+     if r[field] then return nil,'A specialist continuation cannot be replaced by a shallower retry comparison.' end
+   end

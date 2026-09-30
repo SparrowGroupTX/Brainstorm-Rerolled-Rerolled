@@ -1,0 +1,14 @@
+# Next priorities after 327
+
+Use compact public-log indexes and exact selected-event extraction for subsequent investigations. Preserve current logs and captured originals; the prior one-time deletion request was completed in 326 and is not continuing authority. A summary omits context rows explicitly and does not replace the exact original evidence.
+
+1. Confirm the user’s normal restart activates the new release before attributing later observations to it. The selected 1,831-event suffix declares loaded 2.126, which is not an attestation of module hashes. Keep post-install observations separate and do not claim a measured speedup from fixture results.
+2. Inspect remaining long operations with bounded timing evidence. Pack/blind cooperative workers and avoiding full runtime snapshots outside decision phases address concrete integration defects. A 0.5544971000001624-second shop resume, worker-slice fingerprints, logging work and game/update/draw work remain possible contributors. Nested durations overlap; elapsed gaps do not identify CPU utilization or prove animations are the cause.
+3. Preserve prospective public-log redaction: raw internal fingerprint strings must not escape through `fingerprint`, `before`, `after` or interrupted-action metadata. Keep opaque identity/length receipts, explicit unavailable status, full redacted public snapshots and the existing internal execution/freshness safeguards. Existing evidence stays unchanged.
+
+   Preserved older raw fingerprints are not public strategic evidence: postmortems must use redacted `context.snapshot` and time/action metadata without decoding concealed identities from those internal strings. Sizes and hashes remain suitable for storage diagnostics.
+4. Keep BRJ2 deployment and decoding coherent. The detached BRJ3 investigation is preserved development work, not a pending installation or authorization. Do not restart it merely because its files exist; the final scope removes the raw large-string export it was intended to compress.
+5. Continue strategic survival and pace through complete supported comparisons, respecting cash, cargo, copy order, Yorick/Burnt growth, Perkeo inventory and boss restrictions. The selected tail contains three losses; the out-of-tail aggregate win is not audited. None of this is representative calibration or evidence that the latest policy can win autonomously.
+6. Any genuinely new original-source, captured-state policy, seed-search or terminal experiment requires its own concrete fresh authority and frozen one-use limits. All historical quotas remain closed. No installed update renews product session limits, retry counts or experiment budgets.
+
+The broader Completionist++, Jokerless, Knife's Edge and twenty-challenge objectives remain unfinished. Preserve all dirty/untracked work, current settings, native DLLs and failed evidence. No commits, PRs, save evaluation, game control or automations.

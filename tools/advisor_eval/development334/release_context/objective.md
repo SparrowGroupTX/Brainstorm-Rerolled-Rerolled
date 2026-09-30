@@ -1,0 +1,5 @@
+Avoid repeated work on equivalent owned copies while preserving useful distinct actions, exact inventory and complete bounded comparisons.
+
+Restore responsive ordinary play by fixing the observed callback accumulation without discarding logged information. Live FPS recovery awaits the user normal restart.
+
+Fix concrete causes of recorded losses while minimizing expected real time to earn the remaining Gold Joker stickers and complete all twenty challenges, including failed attempts, retries, search/opening costs, computation, purchases and user actions. Use public information, flexible sufficient scaling and complete bounded comparisons; preserve cash, population/Glass, Blue generation, Perkeo/Negative/Observatory inventory and persistent retry protections. The public Joker slice adds visible-effect inference and immediate common-world play/order comparisons. It does not demonstrate global optimality, joint resource planning, a terminal rescue, achievement completion, numerical win odds or superiority over a good human player. Jokerless and Knife's Edge remain unfinished broader priorities.

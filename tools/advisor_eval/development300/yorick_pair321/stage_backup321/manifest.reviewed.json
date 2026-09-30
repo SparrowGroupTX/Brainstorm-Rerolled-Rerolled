@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "kind": "detached_yorick_pair321_integration",
+  "status": "ready_for_root_review",
+  "runtime_changed": false,
+  "source_experiments": false,
+  "integration": [
+    {
+      "source": "growth.lua",
+      "target": "Brainstorm/Advisor/growth.lua",
+      "base_sha256": "757a7bbefee73a8ad2690257ae5fc0b7df3ad130e9c8386680eaf8eecddee2f1",
+      "sha256": "d0de330671d31888fb49c886326cc470274552645d616836ad3fb588c139d688"
+    },
+    {
+      "source": "test_advisor_yorick_pair.lua",
+      "target": "tests/advisor_yorick_pair.lua",
+      "base_sha256": null,
+      "sha256": "b7aa6401a64516fd56ef94ae0b2c8ded21ac9f1435cb7d85c20c7c22acef4a7b"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "Brainstorm/Advisor/scoring.lua",
+      "sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf"
+    },
+    {
+      "path": "Brainstorm/Advisor/strategy.lua",
+      "sha256": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960"
+    },
+    {
+      "path": "Brainstorm/Advisor/search.lua",
+      "sha256": "63d0294f2825b2cfa740eadd84d0c24fa25dbb93f385ea4023866cb1289c6785"
+    },
+    {
+      "path": "Brainstorm/Advisor/snapshot.lua",
+      "sha256": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8"
+    },
+    {
+      "path": "Brainstorm/Advisor/decision.lua",
+      "sha256": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac"
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+    },
+    {
+      "path": "tests/advisor_growth.lua",
+      "sha256": "48c17c17feff1ee170e99bfcc9e90c56ace71503ba6c280842a9c964570c31d7"
+    },
+    {
+      "path": "tests/advisor_growth_additive.lua",
+      "sha256": "80cbc5b039559ece57ab5ff2ea97200016a14af94b297ab1f0a8499d850d87a3"
+    },
+    {
+      "path": "tests/advisor_growth_retained_steel.lua",
+      "sha256": "d3f8af29c1c5fbd59c473c3ca145454e2810a52a668cfcc00b287abfa8c7777b"
+    },
+    {
+      "path": "tests/advisor_growth_opportunities.lua",
+      "sha256": "0fc42277ba3a5b586dd8417b2f4d6d23d4741cc5646cbd188642f94771a2b8cb"
+    },
+    {
+      "path": "tests/advisor_weighted_growth.lua",
+      "sha256": "a25d4f05175175c22046dbe08f9d3e9f226286d89818f30deb756baef5648e5e"
+    }
+  ],
+  "preserved_source": {
+    "path": "tools/advisor_eval/runs/planet_pool_source1/source/card.lua",
+    "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "methods": {
+      "get_chip_x_mult": 999,
+      "get_chip_h_x_mult": 1011
+    }
+  },
+  "validation": {
+    "new_checks": 18630,
+    "existing_checks": 2680,
+    "total_checks": 21310,
+    "draw_orders": 720,
+    "selected_card_orders": 120,
+    "count_families": 24,
+    "report": "focused_report.json",
+    "report_sha256": "4289e46bab5914680f1c5d2f240e837d467ce86efa402664f493a21f71a71a27"
+  },
+  "package_files": [
+    {
+      "path": "focused_output.txt",
+      "sha256": "e78d7fc494257e2f1787f39ec8fc488ac01985e4af8d93b4ef16aa2841b51ab1"
+    },
+    {
+      "path": "focused_report.json",
+      "sha256": "4289e46bab5914680f1c5d2f240e837d467ce86efa402664f493a21f71a71a27"
+    },
+    {
+      "path": "growth.base.lua",
+      "sha256": "757a7bbefee73a8ad2690257ae5fc0b7df3ad130e9c8386680eaf8eecddee2f1"
+    },
+    {
+      "path": "growth.lua",
+      "sha256": "d0de330671d31888fb49c886326cc470274552645d616836ad3fb588c139d688"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "3c2674893a63c47b416008d3ac77f8adcc5da7a985f5efda524e0b8d820273b7"
+    },
+    {
+      "path": "origins.json",
+      "sha256": "a97f369275f5849103d7ed09e701f22b790bcbc5e07a878e5a76968f612e890c"
+    },
+    {
+      "path": "run_candidate.lua",
+      "sha256": "8ebd2c0ce620303e7f0f2f1a76998efe58614cb280fa0785cea1ec140267e050"
+    },
+    {
+      "path": "run_existing.lua",
+      "sha256": "6019d21160ca72d94b03aa5740558e25bf955cd0f1a9cc08f98b16336a26f54a"
+    },
+    {
+      "path": "stage.py",
+      "sha256": "db5fc7625664de44f334a7960619bd623678d5cbab18426f2cb753d50376d908"
+    },
+    {
+      "path": "test_advisor_yorick_pair.lua",
+      "sha256": "b7aa6401a64516fd56ef94ae0b2c8ded21ac9f1435cb7d85c20c7c22acef4a7b"
+    }
+  ]
+}

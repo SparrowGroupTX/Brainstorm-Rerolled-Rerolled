@@ -1,0 +1,76 @@
+--- candidate448/Brainstorm/Advisor/growth.lua
++++ candidate449/Brainstorm/Advisor/growth.lua
+@@ -366,7 +366,33 @@
+   end
+   return true
+ end
+--- Canonical Glass doubles commute with each other and identity operations.
++local function public_product_idol(s,j)
++  if j.key~='j_idol' or not small_order_joker(j) or
++      j.name~=nil and j.name~='The Idol' or j.face_down or j.facing=='back' or
++      j.unknown or j.identity_unknown or j.identity_redacted or j.concealed or j.getting_sliced then return false end
++  local target=plain(s.current_round) and s.current_round.idol_card
++  if not plain(target) or not small_integer(target.id) or target.id<2 or target.id>14 or
++      not ({Clubs=true,Spades=true,Diamonds=true,Hearts=true})[target.suit] then return false end
++  local rank=({[11]='Jack',[12]='Queen',[13]='King',[14]='Ace'})[target.id] or tostring(target.id)
++  if target.rank~=nil and target.rank~=rank then return false end
++  for key in pairs(target) do if key~='id' and key~='rank' and key~='suit' then return false end end
++  -- This new certificate must not consume retained payload from any concealed
++  -- contributor. Deck orientation is ordinary; hidden identity is not.
++  for _,other in ipairs(s.jokers or {}) do
++    if other.face_down or other.facing=='back' or other.unknown or other.identity_unknown or
++        other.identity_redacted or other.concealed or other.getting_sliced then return false end
++  end
++  for _,area in ipairs({s.hand,s.deck or {}}) do for _,c in ipairs(area) do
++    if c.unknown or c.identity_unknown or c.identity_redacted or c.concealed or
++        area==s.hand and (c.face_down or c.facing=='back') then return false end
++    local base=c.base or {};local id=c.rank or base.id;local suit=c.suit or base.suit
++    if not small_integer(id) or id<2 or id>14 or
++        not ({Clubs=true,Spades=true,Diamonds=true,Hearts=true})[suit] then return false end
++  end end
++  return true
++end
++-- Canonical Glass and fixed public Idol doubles commute with each other.
++-- Idol's match and ordinary per-card retrigger counts do not depend on order.
+ -- Lucky contributes zero Mult/cash in the supported lower-bound mode. With no
+ -- card-stage +Mult, first-card retrigger, or fractional card multiplier, every
+ -- permutation has the same card-stage Mult; integer chips commute separately.
+@@ -379,7 +405,8 @@
+   local card_mult={j_smiley=true,j_scholar=true,j_even_steven=true,j_greedy_joker=true,
+     j_lusty_joker=true,j_wrathful_joker=true,j_gluttenous_joker=true,j_hanging_chad=true}
+   for _,j in ipairs(s.jokers) do
+-    if not ordinary_additive_joker(j,false) or not j.debuff and card_mult[j.key] then return false end
++    if not ordinary_additive_joker(j,false) and not public_product_idol(s,j) or
++        not j.debuff and card_mult[j.key] then return false end
+   end
+   for _,i in ipairs(clear.indices) do
+     local c=s.hand[i];local a=c.ability;local key=c.enhancement or 'c_base'
+@@ -470,7 +497,8 @@
+         return 'Replacement draws can reduce or reorder the reserved score.'
+       end end
+     end
+-    if not complete_small_order and not j.debuff and #clear.indices>1 and scoring_order[name(j)] and not
++    if not complete_small_order and not (j.key=='j_idol' and product_order) and
++        not j.debuff and #clear.indices>1 and scoring_order[name(j)] and not
+         (j.key=='j_hanging_chad' and s.teacher_profile=='perkeo_yorick_win_v1' and additive_order_safe(s,clear,true)) then
+       return 'Automatic hand sorting can change scoring-trigger order.'
+     end
+--- candidate448/Brainstorm/Core/Brainstorm.lua
++++ candidate449/Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.223.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.224.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- candidate448/Brainstorm/steamodded_compat.lua
++++ candidate449/Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.223.0-alpha
++--- VERSION: 2.224.0-alpha

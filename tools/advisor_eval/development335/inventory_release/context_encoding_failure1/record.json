@@ -1,0 +1,20 @@
+{
+  "kind": "documentation_preparation_encoding_error",
+  "created_at_utc": "2026-09-15T21:56:08.361836+00:00",
+  "failed_command": "python tools/advisor_eval/development335/inventory_release/prepare_context.py",
+  "exit_code": 1,
+  "error": "UnicodeDecodeError: utf-8 cannot decode byte 0x97 at position 33 in COMPONENT_DRAFT.md",
+  "preserved_files": {
+    "prepare_context.py": "39f108a691b9416d53cb637d8ba1d548f4752e332203ddb3bdad1725379f4614",
+    "COMPONENT_DRAFT.md": "f292e5eec786147c86c8521fa2e6ead33e655a38c8c49d18a1afa2a87d1fd300",
+    "ARCHITECTURE_DRAFT.md": "382a3af3659984179069311067a8fb916bc961c9324dfa7cd115b5fbe927bdec"
+  },
+  "preserved_partial_context": {
+    "path": "release_context/context.json",
+    "sha256": "5341f9171bae10cd8288d206e7d32df4350148e904bfa5daa78fbe89a269a5fd"
+  },
+  "runtime_changes": 0,
+  "regressions_failed": 0,
+  "experiments_started": 0,
+  "recovery": "Normalize the two cp1252 drafts to UTF-8; preserve original preparation and partial context; write replacement context in release_context_v2."
+}

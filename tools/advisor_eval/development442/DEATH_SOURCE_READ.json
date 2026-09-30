@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\Balatro.exe",
+  "static_read_only": true,
+  "original_source_executed": false,
+  "entries": [
+    {
+      "entry": "card.lua",
+      "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+      "start_line": 97,
+      "end_line": 141,
+      "excerpt": "function Card:set_base(card, initial)\n    card = card or {}\n\n    self.config.card = card\n    for k, v in pairs(G.P_CARDS) do\n        if card == v then self.config.card_key = k end\n    end\n    \n    if next(card) then\n        self:set_sprites(nil, card)\n    end\n\n    local suit_base_nominal_original = nil\n    if self.base and self.base.suit_nominal_original then suit_base_nominal_original = self.base.suit_nominal_original end\n    self.base = {\n        name = self.config.card.name,\n        suit = self.config.card.suit,\n        value = self.config.card.value,\n        nominal = 0,\n        suit_nominal = 0,\n        face_nominal = 0,\n        colour = G.C.SUITS[self.config.card.suit],\n        times_played = 0\n    }\n\n    if self.base.value == '2' then self.base.nominal = 2; self.base.id = 2\n    elseif self.base.value == '3' then self.base.nominal = 3; self.base.id = 3\n    elseif self.base.value == '4' then self.base.nominal = 4; self.base.id = 4\n    elseif self.base.value == '5' then self.base.nominal = 5; self.base.id = 5\n    elseif self.base.value == '6' then self.base.nominal = 6; self.base.id = 6\n    elseif self.base.value == '7' then self.base.nominal = 7; self.base.id = 7\n    elseif self.base.value == '8' then self.base.nominal = 8; self.base.id = 8\n    elseif self.base.value == '9' then self.base.nominal = 9; self.base.id = 9\n    elseif self.base.value == '10' then self.base.nominal = 10; self.base.id = 10\n    elseif self.base.value == 'Jack' then self.base.nominal = 10; self.base.face_nominal = 0.1; self.base.id = 11\n    elseif self.base.value == 'Queen' then self.base.nominal = 10; self.base.face_nominal = 0.2; self.base.id = 12\n    elseif self.base.value == 'King' then self.base.nominal = 10; self.base.face_nominal = 0.3; self.base.id = 13\n    elseif self.base.value == 'Ace' then self.base.nominal = 11; self.base.face_nominal = 0.4; self.base.id = 14 end\n\n    if initial then self.base.original_value = self.base.value end\n\n    if self.base.suit == 'Diamonds' then self.base.suit_nominal = 0.01; self.base.suit_nominal_original = suit_base_nominal_original or 0.001 \n    elseif self.base.suit == 'Clubs' then self.base.suit_nominal = 0.02; self.base.suit_nominal_original = suit_base_nominal_original or 0.002 \n    elseif self.base.suit == 'Hearts' then self.base.suit_nominal = 0.03; self.base.suit_nominal_original = suit_base_nominal_original or 0.003 \n    elseif self.base.suit == 'Spades' then self.base.suit_nominal = 0.04;  self.base.suit_nominal_original = suit_base_nominal_original or 0.004 end "
+    },
+    {
+      "entry": "functions/common_events.lua",
+      "sha256": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+      "start_line": 2156,
+      "end_line": 2180,
+      "excerpt": "function copy_card(other, new_card, card_scale, playing_card, strip_edition)\n    local new_card = new_card or Card(other.T.x, other.T.y, G.CARD_W*(card_scale or 1), G.CARD_H*(card_scale or 1), G.P_CARDS.empty, G.P_CENTERS.c_base, {playing_card = playing_card})\n    new_card:set_ability(other.config.center)\n    new_card.ability.type = other.ability.type\n    new_card:set_base(other.config.card)\n    for k, v in pairs(other.ability) do\n        if type(v) == 'table' then \n            new_card.ability[k] = copy_table(v)\n        else\n            new_card.ability[k] = v\n        end\n    end\n\n    if not strip_edition then \n        new_card:set_edition(other.edition or {}, nil, true)\n    end\n    check_for_unlock({type = 'have_edition'})\n    new_card:set_seal(other.seal, true)\n    if other.params then\n        new_card.params = other.params\n        new_card.params.playing_card = playing_card\n    end\n    new_card.debuff = other.debuff\n    new_card.pinned = other.pinned\n    return new_card"
+    }
+  ]
+}

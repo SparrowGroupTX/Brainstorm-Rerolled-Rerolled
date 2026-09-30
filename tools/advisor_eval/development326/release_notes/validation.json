@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "kind": "read_only_context_reference_validation",
+  "status": "passed",
+  "context": {
+    "path": "tools/advisor_eval/development326/release_notes/context.json",
+    "sha256": "a986a9120b8fef118665c1db0a6f2632adfe24af9eb20f8ca3a1e0f3f0c2c612"
+  },
+  "historical_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "new_experiments": 0,
+  "new_release_complete_win": false,
+  "finalizer_main_executed": false,
+  "runtime_tests_current_navigation_changed_by_notes_agent": false,
+  "notes_agent_external_reads": 0,
+  "decoded_log_contents_read": false,
+  "authorized_cleanup_receipt_verified": true,
+  "references": [
+    {
+      "path": "tools/advisor_eval/development326/release_notes/context.json",
+      "sha256": "a986a9120b8fef118665c1db0a6f2632adfe24af9eb20f8ca3a1e0f3f0c2c612"
+    },
+    {
+      "path": "tools/advisor_eval/development326/release_notes/limits.json",
+      "sha256": "c4ca990db351bd527dffaafbcd6cab674031fbbab008394082f24712acf9c7f6"
+    },
+    {
+      "path": "tools/advisor_eval/development326/release_notes/objective.md",
+      "sha256": "84e2fbc74d5d7bfd1c9aea5acfc23dbfe2e543e5c4c143652fc35aa2467cc4ec"
+    },
+    {
+      "path": "tools/advisor_eval/development326/release_notes/priorities.md",
+      "sha256": "7c14eb84bc926f0620909b4d98274bc18174e22d21c2e913cfbac8b930d74353"
+    },
+    {
+      "path": "tools/advisor_eval/development326/release_notes/architecture.md",
+      "sha256": "0223ed7c7d9e171f1fc5c085bd98ecc4f3e02b509f7a9222eb7457050e95b04e"
+    },
+    {
+      "path": "tools/advisor_eval/LOG_STORAGE_326.md",
+      "sha256": "7084bf22cdb1e0eae3f0c250d08910be60636849f88599652404df040d197d29"
+    },
+    {
+      "path": "tools/advisor_eval/development326/storage_metadata.json",
+      "sha256": "d7b8e403f5a936442c6ed76e7881bca01d32715820cfa8ea6299a047c0c02180"
+    },
+    {
+      "path": "tools/advisor_eval/development326/log_cleanup.json",
+      "sha256": "f52ec8becda45e3268e8a680eb81eca08ebae0f45a52cc20cf5e595512d9d573"
+    },
+    {
+      "path": "tools/advisor_eval/development326/log_ui/manifest.json",
+      "sha256": "613a099e185dfbe034be92a6e0ea8de6dae68cb75102f45c7795d68747a925bc"
+    }
+  ],
+  "validation_scope": "Context invariants and repository reference hashes only; no runtime test, freeze or installation assertion."
+}

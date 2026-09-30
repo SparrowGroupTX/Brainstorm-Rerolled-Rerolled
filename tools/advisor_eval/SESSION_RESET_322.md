@@ -1,0 +1,45 @@
+# Current checkpoint — installed 2.122.0-alpha
+
+Installed checkpoint: **2.122.0-alpha**, 2026-09-15T00:48:55.6119169-05:00.
+All 77 deployment and 93 frozen product/dependency files match repository and installation.
+Candidate and exact-installed full regression: **171 Lua fixtures / 318 Python tests pass**, unchanged frozen policy and tests; 60s cap per suite.
+Policy digest: `5a1345f12a85498d501593cc4b8a0d6c8749ad18fb8b4cb3f54ab782ab650883`.
+Backup: `C:\Users\trevo\AppData\Roaming\Balatro\Mods\Brainstorm\deployment-backups\advisor-20260915-004854`.
+Current settings and every existing native DLL were preserved. Active native file: `Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll`. Activation of this installation has not been confirmed; it waits for the user's normal restart. Any earlier observed loaded version is recorded separately in the component evidence.
+
+Bounded finishing pace: preserve the current qualified Planet inventory and Joker row when every checked final-boss opening exceeds 2x target; admit complete Bell forced-card skip routes under existing resource and score limits. No measured full-run speed or win improvement.
+
+Component/source/test scope: `PACE_322.md`.
+
+Evidence: `runs/pace322_candidate/validation/report.json`, `runs/pace322_installed/record.json` and `policy/`, `runs/pace322_installed_validation/report.json`, and `runs/pace322_final/final_verification.json`. Exact current checkpoint hashes are also in `SESSION_RESET_322.json`.
+
+Release322 introduces no new source, captured, search or complete experiment. The original gold299 cycle is CLOSED; every count below belongs to that historical cycle. This checkpoint neither reopens unused slots nor grants new authority.
+
+Historical complete-attempt totals remain1 selected synthetic win (C01, frozen policy300 only),3 losses (C03/C05/C08),4 timeouts (C02/C04/C06/C07),0 errors,0 unsupported and0 separately labeled censored outcomes. C01 won RedGold final Cerulean Bell705600/400000 in172.14000000001397s, with225 actions/28 exact plays; its13 ordinary score-cap overruns remain preserved. C07 policy320 timed out with all163 shared C06 inputs/actions unchanged. C08 policy320 lost Ante1 Pillar592/600 with all22 C05 inputs/actions unchanged; its corrected selected-audit pointer preserves earlier audit-tool errors. Policies321 and322 have no complete-attempt result. C09 was never registered, reserved or run. Separately, the read-only loaded321 public journal review records one Ante8 Big loss277272/300000 and one continuing prefix; these are not new synthetic experiments or322 outcomes.
+
+Historical attempts are selected dependent synthetic all_unlocked_discovered_v1 development observations, not player odds, unseen holdouts, an actual achievement, general source-adapter qualification or human superiority. There is no verified complete Jokerless win or demonstrated50%/75% per-challenge target. Runtime fixtures and fixed composition/forced-card comparisons do not establish full-run speed or win improvement. The public journal declares loaded2.121, without attesting loaded hashes or animation speed; new322 activation waits for the user normal restart. Existing errors/timeouts/unsupported/censored evidence and player retry caps remain intact.
+
+The original cycle expired2026-09-14T22:40UTC and is CLOSED. Of60 original slots/5400s maximum authority,38 jobs spent2340s of registered caps and exactly1012.71499999973457357s from decimal recorded worker times (closure float1012.7149999997346). The22 unused slots, including C09 and3060s unused cap, are closed; remaining authority is zero. Original job counts are18 source components,6 captured-pair jobs/18 policy evaluations,6 search workers and8 complete attempts. Release322 adds zero to every count. No replacement, renewal, source worker, search or scheduled continuation is pending; future experiments require fresh authorization and frozen one-use provenance.
+
+The current cycle is closed; its unused capacity remains closed and this installation grants no additional jobs.
+
+Exact current-cycle evidence and authority references: `tools\advisor_eval\development322\release_notes\context.json`.
+
+Preserve every tracked and untracked change on codex/exact-search-speedups. No commit/reset/clean/deletion/PR. Tools must never launch Balatro.exe, foreground/restart/stop/control the running game, execute live gameplay, or read/evaluate player saves. Product save/load remains user-keyed. Product autonomous execution requires an explicit user-started mode, with a stop control; installing an update does not activate it. Never restore old settings. Preserve existing native DLLs; changed native work requires its existing sidecar/evidence gate. No neural/GPU training or scheduled tasks. Retry 270 keeps its persistent five-report protection; metadata restoration or changing marks never renews the count. Source evaluation keeps retries disabled and clean.
+
+
+
+Latest steering, September15: the user watched auto-run and reports that it appeared to overbuild, keep playing blinds and optimize unnecessarily after gaining a large lead. Reduce avoidable actions and computation where a complete bounded comparison shows adequate capacity. An impressive score against an earlier blind is not evidence of sufficient capacity against the later boss, and lower local action time is not necessarily lower expected time after failures and retries.
+
+The ongoing objective is an explicit, stoppable autonomous Completionist++ assistant minimizing expected real time to Gold-sticker every missing Joker, including search, failed attempts, actual acquisition/retention, cash, inventory, boss restrictions, computation and user actions. The requested normal Red Deck Gold Stake opening has Yorick and Perkeo from the starting Charm pack, Blueprint or Brainstorm as an interchangeable copy target by Ante5, and optional Burnt Joker by Ante5; omit Burnt when the strict search would exceed the same30-second total. Preserve no-perishable targets and maximum native CPU mode. Skip the opening Small Blind for its actual visible Charm Tag, rather than treating all of Ante1 as skippable. Other decks or openings can be compared without assuming a strong catalog match survives or affords its targets.
+
+The bounded public journal review now reports a loaded-version declaration of Brainstorm v2.121.0-alpha. Its completed run lost Ante8 Big at277,272/300,000, and a second run has only an ongoing prefix. These passive public observations are separate from synthetic source experiments. They confirm the logged version declaration, not loaded module hashes, selected animation speed, decision CPU latency or the benefit of a counterfactual skip. Source legality checks do not qualify production UI. Release322 activation still waits for the user's normal restart; tools must never launch, foreground, restart, stop or control Balatro.
+
+The user confirmed prior search startup and cash-out progression. Options→Game→Game Speed includes the implemented8x/16x choices; exact whole-run speedup and live timing remain unmeasured. The user permits opt-in public state/advice/action logging and user-keyed Z+1–5 save/X+1–5 load repairs. Do not read player saves or profile files for evaluation. Public logged matching is not hidden RNG/save equivalence. Persistent retry caps never renew on marking or restoration.
+
+Keep phase-correct copying: Perkeo at shop exit, Burnt at the first actual discard, and scoring effects when playing. Useful5-card Yorick development is flexible rather than compulsory; Burnt targets depend on current deck, levels and resources. Account for whole ordinary/Negative consumable inventory, Observatory, Death/Strength development, thinning and money/Planet copies. Sell redundant support for missing Jokers only through supported complete endpoint comparisons; an empty target cargo does not justify sacrificing the final acquisition opportunity.
+
+Every original gold299 source/search/captured/complete experiment allowance expired and is CLOSED. The former September14 class deadline is historical and grants no current authority. C09 was never registered/reserved/run, and all22 unused slots were closed. Release322 uses routine manufactured fixtures/regressions and read-only public-log/source analysis only. Fresh experiments require concrete hypotheses, caps, total costs, explicit authorization and new frozen provenance with one-use limits.
+
+Preserve deterministic complete common-world comparisons,140000 ordinary/50000 shop/25000 consumable score ceilings and70-score fast clear; Glass/population, cash, user-action, whole-inventory Perkeo/Negative/Observatory, Kings Strength/Death, exact Yorick/Burnt and safe growth safeguards. No local forecast, passing fixture, partial progression or online hypothesis establishes player odds. The broader twenty-challenge roadmap remains, with Jokerless and Knife's Edge priorities; no verified complete Jokerless win, demonstrated50%/75% per-challenge target or stronger-than-human performance exists.
+

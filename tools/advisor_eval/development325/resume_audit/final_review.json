@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "status": "no_remaining_blocking_dispatch_or_lifecycle_defect_found_in_reviewed_bytes",
+  "scope": "Independent read-only integrated325 controller/product review against exact frozen324",
+  "primary_sources": [
+    {
+      "path": "Brainstorm/Advisor/auto_run.lua",
+      "sha256": "301303671238c4795ab960fcb74ec3d6fa33253517de8348f189a7c2cdb664ac",
+      "bytes": 27810
+    },
+    {
+      "path": "Brainstorm/Core/auto_run_product.lua",
+      "sha256": "73741fd90326790142240041a7f40936f4caa3d2785250fc905f5f545af65996",
+      "bytes": 26698
+    }
+  ],
+  "frozen324_baselines": [
+    {
+      "path": "tools/advisor_eval/runs/timing324_installed/policy/Brainstorm/Advisor/auto_run.lua",
+      "sha256": "9d7b3734094ca7c4fd344cfe7d5be2970f3ae5c6876af2a705b17074e526a4bf",
+      "bytes": 20539
+    },
+    {
+      "path": "tools/advisor_eval/runs/timing324_installed/policy/Brainstorm/Core/auto_run_product.lua",
+      "sha256": "db73ff21f768719961da9b40b3e36fb59e25496ea977c82e6e814f71eb2b5795",
+      "bytes": 20547
+    }
+  ],
+  "integration_sources_at_binding": [
+    {
+      "path": "Brainstorm/Core/auto_terminal.lua",
+      "sha256": "985b9da3405506bfdd552d0d62b8eaaca1f3136c00452a872e8f90b7496fc230",
+      "bytes": 10477
+    },
+    {
+      "path": "Brainstorm/Core/checkpoint_runtime.lua",
+      "sha256": "f3a09005f08716a248a9eea049b1ad10726d4484f1b66bdec0afb7d3cb2289aa",
+      "bytes": 8782
+    },
+    {
+      "path": "Brainstorm/Core/Brainstorm.lua",
+      "sha256": "1b47524df8e05db6d63bd9cd5c11c6d20df4801f11adaa4d53b251fdb472bc80",
+      "bytes": 75757
+    },
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "7c845e4cf63ba015dc181614c1b3c6e8723cfbb1c5e9c5bea2d06e9c5d3eef3c",
+      "bytes": 39762
+    },
+    {
+      "path": "Brainstorm/UI/advisor.lua",
+      "sha256": "5ff37af0aaa52c817e167b9b5f71c13ae425e324d04fddefae2d24904c3a3e64",
+      "bytes": 31485
+    },
+    {
+      "path": "Brainstorm/UI/collection_run.lua",
+      "sha256": "d9f16127c82ae74c2d874ed991b5fabb8dc4ad05317b3d9aa9ec61dfcc53bd26",
+      "bytes": 9891
+    }
+  ],
+  "reviewed_terminal_comment_sha256": "985b9da3405506bfdd552d0d62b8eaaca1f3136c00452a872e8f90b7496fc230",
+  "terminal_comment_correction": "Read-only diff versus frozen324 confirmed comments only",
+  "input_guard_addendum": "Core fast-reroll hotkey now returns before replacing the run while auto is engaged; same existing ownership predicate as search hotkey",
+  "resolved_findings": [
+    "Nonresumable clock/observation failure while stopped clears the resume point and diagnostic",
+    "Verified terminal receipt precedes hard limits and Resume complete/unknown goal rejection",
+    "Already-finalized terminal cannot starve later search polling/deadlines",
+    "Input/Stop exclusion clamps watchdog timestamp to present rather than granting future time",
+    "Resume readiness clock rejects observed regression between wait frames",
+    "Checkpoint eligibility wait retains hard session/run checks and bounded additional wait",
+    "Staged ordinary-input paths preserve auto search ownership; explicit Stop is distinct",
+    "Verified activated checkpoint notification enables explicit logged manual continuation"
+  ],
+  "confirmed_invariants": [
+    "Resume does not reset session/run counters, immutable configuration or hard elapsed origins",
+    "Playing, pending-action, accepted-found and accepted-starting Resume do not search",
+    "Pending action is not replayed; exact settled unsupported publication can acknowledge it",
+    "Owned cancelled search drains and late found is discarded",
+    "Explicit Resume after cancelled search logs distinct new product-search authorization",
+    "Original terminal binding survives explicit Stop; manual restoration starts only new future evidence",
+    "Live fingerprint/action/generation/GAME validation remains at both Execute gates",
+    "Profile identity, uncertain callbacks, logging and elapsed limits remain explicit"
+  ],
+  "search_semantics": {
+    "after_explicit_stop_and_verified_drain": "Explicit Resume authorizes a distinct new bounded product search",
+    "prior_allocation": "Cancelled and preserved; never refunded/reused",
+    "preserved": [
+      "session identity",
+      "configuration",
+      "counters",
+      "cursor",
+      "absolute session limit"
+    ],
+    "not_claimed": "One cumulative30-second native allowance across separate explicit Resume clicks",
+    "tool_experiment_authority": "None; all historical tool experiment budgets remain CLOSED"
+  },
+  "reviewer_execution_counts": {
+    "fixtures": 0,
+    "policy": 0,
+    "source": 0,
+    "search": 0,
+    "captured": 0,
+    "gameplay": 0
+  },
+  "external_reads": {
+    "player_logs": 0,
+    "saves": 0,
+    "profiles": 0,
+    "game_executable": 0
+  },
+  "validation": {
+    "test_owner_receipt": {
+      "path": "tools/advisor_eval/development325/resume_tests/focused_report.json",
+      "sha256": "8a2790c17fd8ae9a308f7082a127dbae304f7ccb4971d54d5b2f5431f8c648a8",
+      "bytes": 3226
+    },
+    "checks": {
+      "advisor_auto_run": 680,
+      "advisor_auto_run_product": 640
+    },
+    "total_checks": 1320,
+    "reviewer_executed": false,
+    "limit": "Exact full regression and installation validation remain separate release records"
+  },
+  "earlier_design_evidence_preserved": [
+    {
+      "path": "tools/advisor_eval/development325/resume_audit/AUDIT.md",
+      "sha256": "959bafebc03c48ceab34ba7ad61438d4bf0a9bd7626768ca299d0916520d3340",
+      "bytes": 8360
+    },
+    {
+      "path": "tools/advisor_eval/development325/resume_audit/report.json",
+      "sha256": "1b225776dacb55b9265c772ebd8a552a3f099849d5e2825a63bd469d50e6f24b",
+      "bytes": 7583
+    },
+    {
+      "path": "tools/advisor_eval/development325/resume_audit/manifest.json",
+      "sha256": "14412d67b7fc3643cdd2f4a701e8ffa1df53a321670182f60d667624f6867963",
+      "bytes": 476
+    }
+  ],
+  "review_note": {
+    "path": "tools/advisor_eval/development325/resume_audit/FINAL_REVIEW.md",
+    "sha256": "1ee999848b71c1e2e1b44a18497f357750a4a5e0130d9400e1b7e1918685b2f7",
+    "bytes": 3390
+  },
+  "limits": [
+    "No gameplay or performance result",
+    "No loaded activation confirmation",
+    "No win-rate/cohort qualification",
+    "No claim that manual public-state changes identify hidden RNG"
+  ]
+}

@@ -1,0 +1,31 @@
+# Current architecture —324
+
+Current installation, outcomes, exact hashes and authority: `SESSION_RESET_324.md`
+and `.json`. Current work: `NEXT_PRIORITIES_324.md`. Later status supersedes
+historical pending wording. This navigation grants no experiment authority.
+
+Changed-source/test/component scope: `TIMING_324.md`.
+
+Unchanged architecture inherits `ARCHITECTURE_MAP_323.md`. This324 navigation input binds the integrated timing design; authoritative full-test counts and policy/install hashes belong to `TIMING_324.md` and generated exact release records. It grants no experiment authority.
+
+| Area | Source / current draft | Relevant validation | Scope / evidence |
+| --- | --- | --- | --- |
+| Bounded elapsed-time collector | Advisor/performance.lua | advisor_performance.lua | Fixed histograms at0.001/0.004/0.008/0.016/0.033/0.05/0.1/0.25/1/5seconds plus overflow; max8 slow frames/32 decision receipts per window, max1 pending+1 current, max1 compact summary/5seconds. Elapsed wall time, not CPU utilization. |
+| Core update subphases | Core/Brainstorm.lua; development324/frame_hooks/ package | advisor_frame_timing.lua | Original game, checkpoint, search, journal, advisor, auto and legacy update timings; update total/frame gaps and scalar public state flags. Call order, arguments, returns and errors preserved. |
+| Draw regions | UI/advisor.lua; development324/frame_hooks/ package | advisor_frame_timing.lua | Original draw, advisor HUD draw and total draw. Inclusive nested measurements cannot be added as independent work. |
+| Snapshot/key/worker/decision regions | Advisor/runtime.lua | advisor_runtime.lua; performance fixture | Capture/fingerprint/refresh/presentation/resume wall timing without extra snapshots/solver calls. Exact completed-result counts, cancelled/error counts unknown; current result-object linkage. Synchronous exceptions still propagate without error timing receipt. |
+| Precise event anchors and journal cost | Advisor/player_journal.lua; development324/journal_timing/ package | advisor_player_journal_timing.lua and existing journal/archive/decoder suites | Event-entry monotonic anchor retains UTC/sequence; explicit unavailable clock status; journal observation/encoding/append/total. Compact timing event has empty context and never creates a full observation. |
+| Archive and retry preservation | Advisor/player_log_archive.lua and read_player_log.py, existing contracts | Archive roundtrip/integrity/storage-bound tests | Exact original events, compression/hashes/readback, segmentation/storage caps, linkage and retry protections remain. Summary emission cannot lose its own newly recorded write metrics. |
+| Offline timing analysis | tools/advisor_eval/analyze_player_timing.py | test_advisor_player_timing.py:23 manufactured tests | Bounded explicit-file input, exact archive scope/hash validation, independent metric/histogram aggregation, bucket-bound percentiles, no unknown-score/tail imputation or cross-session clock subtraction. development324/timing_analyzer/manifest.json. |
+| Fresh passive public-log audit | development324/log_audit/audit.py and finalizer | manifest.json, summary.json, report.json, AUDIT.md | Selected session062915 segments9–14,1519events,14,440,402physical/280,567,235decoded bytes,4.375seconds; valid selected chains. Loaded2.123 declaration,10.033-second longest matched interval; no freeze causality or loaded-hash attestation. |
+| Preserved323 idle behavior | Advisor/runtime.lua, snapshot.lua, Core/auto_run_product.lua | advisor_runtime.lua, advisor_snapshot_idle.lua, advisor_auto_observation.lua and existing suites | Drag coalescing, HUD-only key omission, blocked active action-data omission with ready unsupported acknowledgment and exact execution gates. No measured live CPU percentage. |
+| Historical/current accounting | finalize_runtime_checkpoint.py and development324/release_notes/context.json | Read-only schema/reference validation | Original CLOSED cohort/counts/outcomes retained, explicit zero324release_counts and no inherited release win. Public journal outcomes stay separately labeled. |
+
+Collector samples and decision receipts affected by invalid clocks remain unknown; bounded histories expose drop counts, while disabled recording/crash/shutdown can leave an unflushed tail. Summary-write cost belongs to a later window. A real journal I/O error retains the bounded pending/current windows and stops additional writes/retries; explicit config-off clears them. `development324/failed_journal_stop/` preserves the failing focused reproduction and old code/test bytes, followed by the narrow predicate/flush repair. `runs/timing324_candidate` is an unvalidated superseded freeze, not a failed full regression; finalization selects fresh `_candidate2`.
+
+No earlier source/search/captured/complete worker or old unused slot is reopened. The current log audit is a bounded passive file read; its earlier out-of-tail aggregate win is not newly qualified.324 activation remains pending the user's normal restart; only the loaded2.123 string is observed in the selected logs. Preserve all failed/revised development evidence separately, and bind the final accepted package rather than an earlier draft.
+
+
+Preserved earlier navigation: `ARCHITECTURE_MAP_323.md`; read only
+relevant sections. Earlier documents and their verification receipts remain
+intact. They are not current installation or experiment authority.

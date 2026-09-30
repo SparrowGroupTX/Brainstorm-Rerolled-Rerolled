@@ -1,0 +1,827 @@
+{
+  "Balatro_process_started": false,
+  "attempt": "source_attempt_001",
+  "cases": [
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "USED",
+          "p_arcana_normal_1"
+        ]
+      },
+      "case_id": "used_first_stored_second",
+      "differences": {},
+      "reference": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "USED",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "USED",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 0,
+        "offers": 1,
+        "used1": "USED",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_summary": {
+        "cash": 4,
+        "draws": 0,
+        "offers": 1,
+        "open_count": 1,
+        "open_seen": "USED",
+        "used1": "USED",
+        "used2": "USED"
+      },
+      "source_trace": [
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        },
+        {
+          "key": "USED",
+          "kind": "OPEN",
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_arcana_normal_1",
+          "p_celestial_normal_1"
+        ]
+      },
+      "case_id": "two_empty_slots",
+      "differences": {},
+      "reference": {
+        "draws": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_arcana_normal_1",
+          "p_celestial_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_arcana_normal_1",
+          "p_celestial_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 2,
+        "offers": 2,
+        "used1": "p_arcana_normal_1",
+        "used2": "p_celestial_normal_1"
+      },
+      "source_summary": {
+        "cash": 8,
+        "draws": 2,
+        "offers": 2,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "p_arcana_normal_1",
+        "used2": "p_celestial_normal_1"
+      },
+      "source_trace": [
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "DRAW",
+          "slot": 1
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 1
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "OFFER",
+          "slot": 1
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "DRAW",
+          "slot": 2
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_standard_normal_1",
+          "p_arcana_normal_1"
+        ]
+      },
+      "case_id": "two_stored_slots",
+      "differences": {},
+      "reference": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_standard_normal_1",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_standard_normal_1",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 0,
+        "offers": 2,
+        "used1": "p_standard_normal_1",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_summary": {
+        "cash": 4,
+        "draws": 0,
+        "offers": 2,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "p_standard_normal_1",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_trace": [
+        {
+          "key": "p_standard_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 1
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "OFFER",
+          "slot": 1
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_standard_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_arcana_normal_1",
+          "p_standard_normal_1"
+        ]
+      },
+      "case_id": "stored_first_empty_second_unaffordable",
+      "differences": {},
+      "reference": {
+        "draws": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_standard_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_arcana_normal_1",
+          "p_standard_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_standard_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_arcana_normal_1",
+          "p_standard_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 1,
+        "offers": 2,
+        "used1": "p_arcana_normal_1",
+        "used2": "p_standard_normal_1"
+      },
+      "source_summary": {
+        "cash": 3,
+        "draws": 1,
+        "offers": 2,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "p_arcana_normal_1",
+        "used2": "p_standard_normal_1"
+      },
+      "source_trace": [
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 1
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "OFFER",
+          "slot": 1
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "DRAW",
+          "slot": 2
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [],
+        "offers": [],
+        "used_packs": [
+          "USED",
+          "USED"
+        ]
+      },
+      "case_id": "both_used",
+      "differences": {},
+      "reference": {
+        "draws": [],
+        "offers": [],
+        "used_packs": [
+          "USED",
+          "USED"
+        ]
+      },
+      "source": {
+        "draws": [],
+        "offers": [],
+        "used_packs": [
+          "USED",
+          "USED"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 0,
+        "offers": 0,
+        "used1": "USED",
+        "used2": "USED"
+      },
+      "source_summary": {
+        "cash": 8,
+        "draws": 0,
+        "offers": 0,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "USED",
+        "used2": "USED"
+      },
+      "source_trace": []
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_standard_normal_1",
+          "p_celestial_normal_1"
+        ]
+      },
+      "case_id": "heldout_gap_before_stored",
+      "differences": {},
+      "reference": {
+        "draws": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_standard_normal_1",
+          "p_celestial_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_standard_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_standard_normal_1",
+          "p_celestial_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 1,
+        "offers": 2,
+        "used1": "p_standard_normal_1",
+        "used2": "p_celestial_normal_1"
+      },
+      "source_summary": {
+        "cash": 4,
+        "draws": 1,
+        "offers": 2,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "p_standard_normal_1",
+        "used2": "p_celestial_normal_1"
+      },
+      "source_trace": [
+        {
+          "key": "p_standard_normal_1",
+          "kind": "DRAW",
+          "slot": 1
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 1
+        },
+        {
+          "key": "p_standard_normal_1",
+          "kind": "OFFER",
+          "slot": 1
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "USED",
+          "p_arcana_normal_1"
+        ]
+      },
+      "case_id": "heldout_used_first_empty_second",
+      "differences": {},
+      "reference": {
+        "draws": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "USED",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "offers": [
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "USED",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 1,
+        "offers": 1,
+        "used1": "USED",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_summary": {
+        "cash": 5,
+        "draws": 1,
+        "offers": 1,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "USED",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_trace": [
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "DRAW",
+          "slot": 2
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "agreement": true,
+      "candidate": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_celestial_normal_1",
+          "p_arcana_normal_1"
+        ]
+      },
+      "case_id": "heldout_reversed_stored",
+      "differences": {},
+      "reference": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_celestial_normal_1",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source": {
+        "draws": [],
+        "offers": [
+          {
+            "key": "p_celestial_normal_1",
+            "slot": 1
+          },
+          {
+            "key": "p_arcana_normal_1",
+            "slot": 2
+          }
+        ],
+        "used_packs": [
+          "p_celestial_normal_1",
+          "p_arcana_normal_1"
+        ]
+      },
+      "source_stock_summary": {
+        "draws": 0,
+        "offers": 2,
+        "used1": "p_celestial_normal_1",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_summary": {
+        "cash": 4,
+        "draws": 0,
+        "offers": 2,
+        "open_count": 0,
+        "open_seen": "<nil>",
+        "used1": "p_celestial_normal_1",
+        "used2": "p_arcana_normal_1"
+      },
+      "source_trace": [
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 1
+        },
+        {
+          "key": "p_celestial_normal_1",
+          "kind": "OFFER",
+          "slot": 1
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "UI",
+          "slot": null
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "MATERIALIZE",
+          "slot": 2
+        },
+        {
+          "key": "p_arcana_normal_1",
+          "kind": "OFFER",
+          "slot": 2
+        }
+      ]
+    }
+  ],
+  "prepared_manifest_sha256": "89319182932454a41483f0a0f9bf6ef659532ad6f755d1af7f6dc2fc1a6e7e7e",
+  "profile_or_save_read": false,
+  "returncode": 0,
+  "source_execution_status": "confirmed_case_output",
+  "source_worker_count": 1,
+  "status": "completed",
+  "wall_seconds": 0.10411869999370538
+}

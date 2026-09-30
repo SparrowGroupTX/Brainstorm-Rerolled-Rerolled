@@ -1,0 +1,140 @@
+diff --git "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before\\tests\\advisor_auto_run_product.lua" "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tests\\advisor_auto_run_product.lua"
+index 305402c..03a7fa4 100644
+--- "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before\\tests\\advisor_auto_run_product.lua"
++++ "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tests\\advisor_auto_run_product.lua"
+@@ -98,6 +98,124 @@ local function fixture(fingerprint_hash)
+     time=function(t)now=t end,logfail=function()logfail=true end,complete=function()complete=true end,
+     lock_exit=function()lock_exit=true end,poll_held=function(v)poll_held=v end,cancel_held=function(v)cancel_held=v end}
+ end
++-- Manufactured terminal lifecycle regressions; no live game, saved state or RNG.
++local function terminal_fixture(options)
++  local x=fixture()
++  local launch=x.search.launch
++  x.search.launch=function(...)
++    local accepted=launch(...)
++    x.g.STATE=3;x.g.loss_drawn=nil;x.g.GAME.won=false;x.g.GAME.chips=0
++    x.g.GAME.blind.boss=false;x.g.GAME.round_resets.ante=1;x.publish()
++    return accepted
++  end
++  check(x.api:start(options),'terminal fixture accepts explicit bounded Start')
++  for _=1,5 do x.api:update()end
++  check(x.stats().starts==1 and x.stats().actions==1,'terminal fixture starts one manufactured run')
++  return x
++end
++local function terminal_events(x,name)
++  local n=0;for _,row in ipairs(x.events)do if row.data.event==name then n=n+1 end end;return n
++end
++local function terminal_result(x,kind,queued)
++  if kind=='win'then
++    x.g.GAME.chips=1000;x.g.GAME.blind.boss=true;x.g.GAME.round_resets.ante=8;x.g.GAME.round=23
++    x.f.end_round();x.f.win_game();if not queued then x.win_ui()end
++  else x.g.STATE=99;x.game_class.update_game_over(x.g)end
++  x.api:update()
++  check(x.api:status().state=='terminal' and x.api:status().active,'outcome is logged before the separate terminal decision')
++end
++
++do
++  local x=terminal_fixture({max_runs=5,max_actions=3,run_seconds=100,session_seconds=500})
++  local origin=x.api:status().session_started_at
++  for number,kind in ipairs({'loss','win','loss','loss','loss'})do
++    terminal_result(x,kind)
++    local overlay=x.g.OVERLAY_MENU;local closes=x.stats().closed
++    check(overlay~=nil and terminal_events(x,'run_finished')==number,'each manufactured outcome is logged once with its result still visible')
++    x.api:update()
++    if number<5 then
++      check(x.api:status().active and not x.g.OVERLAY_MENU and x.stats().closed==closes+1,
++        'under-limit terminal dismisses only its owned result and stays active')
++      check(x.stats().begins==number,'overlay-dismissal update starts no extra search')
++      x.api:update();check(x.stats().begins==number+1,'fresh settled observation starts the next bounded search')
++      x.api:update();x.api:update();x.api:update()
++    else
++      local status=x.api:status()
++      check(not status.active and status.reason=='run_limit' and status.run_limit_reached and not status.resume_available,
++        'last permitted result hard-stops without creating Resume allowance')
++      check(x.g.OVERLAY_MENU==overlay and x.stats().closed==closes,'last permitted result retains the exact original loss overlay')
++      check(status.runs_started==5 and status.max_runs==5 and status.actions==5 and status.outcomes.wins==1 and status.outcomes.losses==4,
++        'run cap, action count and all five manufactured outcomes are retained')
++      check(x.api.status_text=='Auto-run stopped: run limit reached (5 of 5 runs; wins: 1, losses: 4).',
++        'visible cap stop explains the limit and retained counts in plain language')
++      check(x.api:status_report().text==x.api.status_text,'status report carries the readable cap message')
++      check(not x.api:resume(),'exhausted cap cannot be silently resumed')
++      for _=1,4 do x.api:update()end
++      check(x.stats().begins==5 and x.stats().starts==5 and x.stats().actions==5 and terminal_events(x,'run_finished')==5,
++        'stopped terminal never searches, launches, executes or logs the same outcome again')
++      check(terminal_events(x,'terminal_overlay_close_requested')==4 and terminal_events(x,'session_stopped')==1,
++        'final cap emits one stop and no final overlay-close request')
++      check(x.api:status().session_serial==1 and x.api:status().session_started_at==origin and x.g.OVERLAY_MENU==overlay,
++        'repeated stopped updates preserve session history, origin and visible result')
++    end
++  end
++end
++
++do
++  local x=terminal_fixture({max_runs=1});terminal_result(x,'win',true)
++  check(not x.g.OVERLAY_MENU,'manufactured win receipt precedes delayed original result UI')
++  x.api:update();check(x.api:status().reason=='run_limit','cap stops without waiting for a closeable result surface')
++  x.win_ui();local overlay=x.g.OVERLAY_MENU;x.api:update()
++  check(overlay~=nil and x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and x.stats().begins==1,
++    'late original winning result remains available after the cap stop')
++  check(terminal_events(x,'run_finished')==1 and x.api:status().outcomes.wins==1,'delayed winning surface does not recount its terminal outcome')
++end
++
++do
++  local x=terminal_fixture({max_runs=1});terminal_result(x,'win');local overlay=x.g.OVERLAY_MENU
++  x.complete();x.api:update()
++  check(x.api:status().complete and x.api:status().reason=='collection_complete' and x.api:status().max_runs==1,
++    'fresh collection completion takes precedence over simultaneous exhausted run cap')
++  check(x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and terminal_events(x,'run_finished')==1,
++    'collection completion keeps its winning surface and unique receipt')
++  x=terminal_fixture({max_runs=1});terminal_result(x,'loss');overlay=x.g.OVERLAY_MENU
++  x.A.gold_stickers.capture=function()return nil end;x.api:update()
++  check(x.api:status().reason=='goal_unavailable' and x.g.OVERLAY_MENU==overlay and x.stats().closed==0,
++    'fresh unavailable collection metadata fails closed before cap handling or overlay dismissal')
++end
++
++do
++  local x=terminal_fixture({max_runs=2});terminal_result(x,'loss')
++  local foreign={manual=true};x.g.OVERLAY_MENU=foreign;x.api:update()
++  check(x.g.OVERLAY_MENU==foreign and x.stats().closed==0 and x.stats().begins==1,
++    'fresh terminal check never grants ownership to an unrelated replacement menu')
++  x=terminal_fixture({max_runs=1});terminal_result(x,'loss');local overlay=x.g.OVERLAY_MENU
++  x.g.CONTROLLER.text_input_hook={};x.api:update()
++  check(x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and x.stats().begins==1,
++    'ordinary input cannot cause the capped terminal overlay to close')
++  x.g.CONTROLLER.text_input_hook=nil;x.api:update()
++  check(x.api:status().reason=='run_limit' and x.g.OVERLAY_MENU==overlay,'settled input permits the same fresh capped stop')
++end
++
++do
++  local x=terminal_fixture({max_runs=2});terminal_result(x,'loss');local overlay=x.g.OVERLAY_MENU
++  x.api:stop();x.api:update()
++  check(x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and x.api:status().resume_available,
++    'explicit Stop retains its result overlay and original resumable session')
++  check(x.api:resume(),'explicit Resume may continue a below-cap terminal session')
++  x.api:update();x.api:update()
++  check(x.api:status().max_runs==2 and x.api:status().runs_started==1 and terminal_events(x,'run_finished')==1,
++    'explicit terminal Resume preserves cap, consumed run and unique outcome')
++  x=terminal_fixture({max_runs=2,session_seconds=1});terminal_result(x,'loss');overlay=x.g.OVERLAY_MENU
++  x.time(1);x.api:update()
++  check(x.api:status().reason=='session_time_limit' and x.g.OVERLAY_MENU==overlay and x.stats().closed==0,
++    'fresh absolute session deadline stops before overlay dismissal')
++  x=terminal_fixture({max_runs=2});terminal_result(x,'loss');overlay=x.g.OVERLAY_MENU
++  x.logfail();x.api:update()
++  check(not x.api:status().active and x.g.OVERLAY_MENU==overlay and x.stats().closed==0,
++    'recording failure retains the result screen and prevents continuation')
++end
++
+ do
+   local x=fixture();x.api:update();check(x.stats().begins==0 and x.stats().actions==0,'inactive facade never searches or plays')
+   x.g.OVERLAY_MENU={manual_start=true};x.g.SETTINGS.paused=true
+@@ -118,8 +236,8 @@ do
+   x.api:update();check(x.stats().begins==1 and x.api:status().active,'verified accounting waits for its queued result surface before another search')
+   x.win_ui();x.complete()
+   check(x.api:status().outcomes.wins==1 and x.g.OVERLAY_MENU~=nil,'verified terminal is logged before original result overlay is dismissed')
+-  x.api:update();check(x.stats().closed==2 and not x.g.OVERLAY_MENU,'a later update dismisses exactly the original winning overlay')
+-  x.api:update();check(x.api:status().complete and not x.api:status().active,'fresh exact-zero missing metadata ends collection')
++  x.api:update();check(x.stats().closed==1 and x.g.OVERLAY_MENU~=nil,'fresh collection completion preserves the original winning overlay')
++  check(x.api:status().complete and not x.api:status().active,'fresh exact-zero missing metadata ends collection before dismissal')
+ end
+ do
+   local x=fixture();x.api:start();x.api:update();x.api:update()

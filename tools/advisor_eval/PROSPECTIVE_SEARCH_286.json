@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "kind": "fixed_search286_proposal",
+  "status": "READY_FOR_AUTHORIZATION",
+  "authorization_status": "PROPOSAL_NOT_AUTHORIZED",
+  "qualification": false,
+  "creates_allowance": false,
+  "registered_jobs": 0,
+  "reserved_jobs": 0,
+  "reserved_seconds": 0,
+  "consumed_jobs": 0,
+  "consumed_seconds": 0,
+  "broader_proposal_status": "unapproved_A_B_C_harnesses_not_ready",
+  "supersedes_only": "D scheduling in PROSPECTIVE_EVAL_286; no A/B/C authority",
+  "limits": {
+    "jobs": [
+      {
+        "id": "D1",
+        "policy": "285",
+        "target_planet": "c_mars",
+        "start": 11123177
+      },
+      {
+        "id": "D2",
+        "policy": "286",
+        "target_planet": "c_mars",
+        "start": 11123177
+      },
+      {
+        "id": "D3",
+        "policy": "286",
+        "target_planet": "c_jupiter",
+        "start": 11223177
+      },
+      {
+        "id": "D4",
+        "policy": "285",
+        "target_planet": "c_jupiter",
+        "start": 11223177
+      }
+    ],
+    "indices_per_job": 100000,
+    "batch_limit": 1000,
+    "match_cap": 16,
+    "worker_seconds": 15,
+    "total_seconds": 60,
+    "serial": true,
+    "replacements": 0
+  },
+  "unique_new_indices": 200000,
+  "policy_index_evaluations": 400000,
+  "policies": {
+    "285": {
+      "version": "2.85.0-alpha",
+      "policy_digest": "94ab92fc5fc074c8f6dd05c513083c77d23bb9992fff0dd2732083e2772e1095",
+      "record": {
+        "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\blind_value285_installed\\record.json",
+        "sha256": "b6b162280110c5be73902ceb711febcd04302a47fc4cf4193846a161033ce6c3"
+      },
+      "model": {
+        "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\blind_value285_installed\\policy\\Brainstorm\\Core\\jokerless_opening.lua",
+        "sha256": "a6f857d4a1a929a1332d9c530ddfb0e8ab0c241b85b024c6b9f1098205353934"
+      }
+    },
+    "286": {
+      "version": "2.86.0-alpha",
+      "policy_digest": "85cb3c96b767067cf545f9a77ab01ee9a24e797424b557bea23637ab3237cbc3",
+      "record": {
+        "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\search286_installed\\record.json",
+        "sha256": "57d9e231baef884fdf14f3a77cab7ca141f176187f7cf80dd0e0038ca1de0719"
+      },
+      "model": {
+        "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\search286_installed\\policy\\Brainstorm\\Core\\jokerless_opening.lua",
+        "sha256": "714b33f2d98b0149af19f6c74f349f6d97a0b57fa0dd8d5622b71fa6aa9cc49f"
+      }
+    }
+  },
+  "candidate_final_verification": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\search286_final\\final_verification.json",
+    "sha256": "00d408760232448423d1b9ac1c8c45b56b6889b93537879cc41216a01cd57f0b"
+  },
+  "profile": "all_unlocked_discovered_v1",
+  "profile_qualification": "synthetic_unqualified_for_players",
+  "catalog": {
+    "source_record": {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\jokerless271_push_20260912_214242\\seed_source07_catalog_admission\\result.json",
+      "sha256": "13c738e58c0dd1afbb2509dc38d83bb74d83a690342ec781b8fc7d604776f248"
+    },
+    "json_path": [
+      "initial",
+      "detached_catalog"
+    ],
+    "catalog_digest": "3fc4bbd9c2bcdfce2b506f0121ebeff72c3c219ff8c864cc2d270339c2d1dd5f",
+    "derivation": "read_preserved_JSON_only_no_source_execution"
+  },
+  "runtime": {
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll",
+    "sha256": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+    "identity_status": "copied_historical_metadata_not_freshly_read",
+    "copied_from": {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\jokerless271_push_20260912_214242\\seed_search06_mars_jupiter\\request.json",
+      "sha256": "8295d2dbcf1b5565f562d561df2afbe112336a899a031074eac69db854f21813"
+    }
+  },
+  "adapter_files": {
+    "python": {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\fixed_search_comparison.py",
+      "sha256": "cc8aaf8d115cfac73031cd91020af4329d7c44f4f3342a6053144cfd64ffe7ba"
+    },
+    "lua": {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\fixed_search_comparison.lua",
+      "sha256": "c4ec647096058ef59e35adffe204b7bd9b6979dd21a7e49fa39027eaefae7903"
+    }
+  },
+  "python_observation": {
+    "executable": "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "version": "3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]"
+  },
+  "source_access": "none",
+  "save_access": "none",
+  "game_control": "none",
+  "new_native_seed_search_library_access": false,
+  "historical_budgets": "all_closed_no_carry_forward",
+  "coverage_receipts": [
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\jokerless271_push_20260912_214242\\seed_search05_blue_steel_contiguous\\partial_result.json",
+      "sha256": "d6db0685f6d5592fd034013a69b8380c5d3b653e984b3c8559dceed582325bb4"
+    },
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\jokerless271_push_20260912_214242\\seed_search06_mars_jupiter\\result.json",
+      "sha256": "0028c708b553fc2ff8a6be7078ff1a04813b049f2c4f014ec5b187e694decf3a"
+    }
+  ],
+  "last_complete_next_index": 11123177,
+  "censored_excluded_range": [
+    7023177,
+    7123177
+  ],
+  "intervening_search_requires_revised_proposal": true,
+  "criteria": {
+    "require_coupon": true,
+    "require_telescope": true,
+    "min_blue": 2,
+    "min_steel": 1,
+    "target_planet": "per_job"
+  },
+  "outputs": [
+    "full_and_prefix_ordered_match_recipe_digests",
+    "wall_seconds_including_startup_and_result_processing",
+    "search_call_os_clock_intervals_not_qualified_as_CPU_only",
+    "completed_and_unresolved_indices",
+    "timeout_error_unsupported_not_started",
+    "deadline_overshoot_if_observed"
+  ],
+  "one_use_authority": "fresh_explicit_user_approval_bound_to_exact_proposal_and_single_absolute_ledger_directory",
+  "additional_components_attempts_or_scheduled_continuation": false,
+  "win_or_survival_inference": false,
+  "narrative": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\PROSPECTIVE_SEARCH_286.md",
+    "sha256": "ba5bd67f520145fb9c90007abc4c86eee52bbb49267a03619afc8fcf7f713e07"
+  },
+  "mock_test_file": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\fixed_search286_development\\test_fixed_search_comparison.py",
+    "sha256": "d921c52ab15a3fce7c8e5c47c46e902ba5ac9506619708059bed9be49b0d07d5"
+  },
+  "focused_validation_receipt": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\fixed_search286_development\\synthetic_20260913T211256560894Z\\record.json",
+    "sha256": "ab0fe90a689268f72c5978ca70054ada6ebefbc7acc01cc627fddc41fe506880"
+  },
+  "driver_fixture_validation": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\fixed_search286_driver_development\\focused2\\report.json",
+    "sha256": "701b1e8378cffe49bc719f3f2dcd66ec564871c84865f2969b39715b9d516eab",
+    "checks": 10,
+    "scope": "routine injected-model Lua fixture, no actual search"
+  },
+  "driver_fixture_previous_failure": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\fixed_search286_driver_development\\focused1\\report.json",
+    "sha256": "e5be634436cb9f96df2c9af3fd41217e9e5ee8fa7335df44fa65c116b2939aa2",
+    "reason": "fixture used obsolete cpu_seconds field; production driver unchanged"
+  }
+}

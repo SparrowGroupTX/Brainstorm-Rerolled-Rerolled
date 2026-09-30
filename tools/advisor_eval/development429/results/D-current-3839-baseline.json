@@ -1,0 +1,66 @@
+{
+  "job": "D-current-3839-baseline",
+  "mode": "decision",
+  "case": "current-3839",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 0.8129999999946449,
+  "log_sha256": "c41777c812a9656663d1fbeeb41f23173fd0019d08bf7b7f988f120926662d1d",
+  "status": "complete",
+  "result": {
+    "case": "current-3839",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "clear_supported": true,
+        "evaluations": 2,
+        "final_action_kind": "play",
+        "final_play_score": 413707,
+        "needed_score": 165000,
+        "reason": "Automatic hand sorting can change scoring-card order.",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 17,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 413707,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 15,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

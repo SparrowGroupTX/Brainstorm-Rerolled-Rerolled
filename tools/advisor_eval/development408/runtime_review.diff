@@ -1,0 +1,656 @@
+--- before/Brainstorm/Advisor/acorn_belief.lua
++++ Brainstorm/Advisor/acorn_belief.lua
+@@ -119,7 +119,26 @@
+     if not stable_ability_fields[field] or type(value)=='table' and field~='extra' then return false end
+   end
+   if a.set~=nil and a.set~='Joker' or a.type~=nil and a.type~='' then return false end
+-  if j.key=='j_raised_fist' then
++  if j.key=='j_green_joker' or j.key=='j_misprint' or j.key=='j_blackboard' then
++    -- These remain opaque to popup filtering. In particular Green's rendered
++    -- before-play increment precedes the completed-action inventory update.
++    local defaults={bonus=0,d_size=0,h_dollars=0,h_mult=0,h_size=0,h_x_mult=0,
++      p_dollars=0,perma_bonus=0,t_chips=0,t_mult=0,x_mult=1}
++    for k,v in pairs(defaults) do if a[k]~=nil and a[k]~=v then return false end end
++    if j.key~='j_green_joker' and a.mult~=nil and a.mult~=0 then return false end
++    if j.key=='j_blackboard' then return a.name=='Blackboard' and a.effect==nil and a.extra==3 end
++    local e=a.extra
++    if type(e)~='table' or getmetatable(e) then return false end
++    if j.key=='j_green_joker' then
++      if a.name~='Green Joker' or a.effect~=nil or not integer(a.mult) or a.mult<0 or
++        e.hand_add~=1 or e.discard_sub~=1 then return false end
++      for k in pairs(e) do if k~='hand_add' and k~='discard_sub' then return false end end
++      return true
++    end
++    if a.name~='Misprint' or a.effect~='Random Mult' or e.min~=0 or e.max~=23 then return false end
++    for k in pairs(e) do if k~='min' and k~='max' then return false end end
++    return true
++  elseif j.key=='j_raised_fist' then
+     return a.name=='Raised Fist' and a.effect=='Socialized Mult' and a.extra==nil
+   elseif j.key=='j_banner' then
+     return a.name=='Banner' and a.effect=='Discard Chips' and a.extra==30
+@@ -177,6 +196,19 @@
+   end
+   return false
+ end
++-- Validate the newly supported forms before the FIRST score too, not only
++-- after a public action. Other inventory support remains with the scorer.
++function M.qualified_values(b)
++  if not M.validate(b) or not b.state_valid then return false end
++  local floor=false
++  for _,j in ipairs(b.inventory) do
++    if j.key=='j_green_joker' or j.key=='j_misprint' or j.key=='j_blackboard' then
++      if not stable_opaque_ability(j) then return false end
++      floor=floor or j.key=='j_misprint' and not j.debuff
++    end
++  end
++  return true,floor
++end
+ local function signatures(b,world,slot)
+   local j=b.inventory[world[slot]];local out={}
+   local function edition(card)
+@@ -258,6 +290,7 @@
+ function M.advance_public(b,event)
+   if not M.validate(b) or type(event)~='table' or event.epoch~=b.epoch or event.observed_complete~=true then return nil,'An observed completed public action in the current epoch is required.' end
+   if not b.state_valid then return M.invalidate_values(b,b.value_gap) end
++  if not M.qualified_values(b) then return M.invalidate_values(b,'Modified public ability cannot be advanced.') end
+   if event.kind~='play' and event.kind~='discard' then return M.invalidate_values(b,'This public action has no qualified ability transition.') end
+   if event.kind=='discard' and (not integer(event.discarded_count) or event.discarded_count<1 or event.discarded_count>5) then
+     return M.invalidate_values(b,'The public discard count is unavailable.')
+@@ -279,6 +312,10 @@
+         else a.yorick_discards=a.yorick_discards-1 end
+       end
+     end
++    if j.key=='j_green_joker' and not j.debuff then
++      -- One physical before-play/discard trigger, not one per card or copy.
++      j.ability.mult=math.max(0,j.ability.mult+(event.kind=='play' and 1 or -1))
++    end
+     -- Fortune Teller changes only with Tarot usage; Swashbuckler reads retained
+     -- sale values; Scary Face is a fixed scoring effect. Ordinary play/discard
+     -- changes none of these in this qualified row. Uses/sales/round changes are
+--- before/Brainstorm/Advisor/acorn_discard.lua
++++ Brainstorm/Advisor/acorn_discard.lua
+@@ -109,6 +109,7 @@
+     not draws or not draws.fill or not public_candidates or not complete_population(s) then
+     return no('The final-hand public redraw scope is unavailable.')
+   end
++  if belief.qualified_values and not belief.qualified_values(b) then return no('Modified public Joker abilities are outside the qualified redraw comparison.') end
+   local target=blind.chips-s.chips
+   if not finite(target) or target<=0 then return no('A finite remaining target is required.') end
+   local baseline=0
+--- before/Brainstorm/Advisor/acorn_ordering.lua
++++ Brainstorm/Advisor/acorn_ordering.lua
+@@ -33,7 +33,10 @@
+     joint_resource_comparison=false,consumables_unchanged=true,discards_unchanged=true,
+     scope='All public legal subsets over every consistent inventory world in the current slot order; optional complete common-world reorder family. Immediate-play metric only, no future discard/use or blind-win forecast.'}
+   local function no(reason) diag.reason=reason;return nil,diag.evaluations,diag end
+-  if not belief or not belief.validate(b) or b.state_valid~=true then return no('Current public inventory abilities are not qualified.') end
++  if not belief or not belief.validate(b) or b.state_valid~=true then return no('Current public inventory abilities are not qualified.') end
++  local qualified,inventory_floor=true,false
++  if belief.qualified_values then qualified,inventory_floor=belief.qualified_values(b) end
++  if not qualified then return no('Modified public Joker abilities are outside the qualified comparison.') end
+   if s.phase~='hand' or not finite(s.hands_left) or s.hands_left<1 or s.hands_left%1~=0 or
+     not finite(s.discards_left) or s.discards_left<0 or s.discards_left%1~=0 or
+     #(s.hand or {})<1 or #s.hand>12 or s.jokers_shuffling or s.ordering_safe==false then
+@@ -43,7 +46,7 @@
+   -- Glass breaks after the immediate score, not between its retriggers. The
+   -- pure scorer retains exposure without predicting a surviving population.
+   local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true,m_glass=true,m_gold=true}
+-  local random_floor=false;local editions={}
++  local random_floor=inventory_floor;local editions={}
+   for i,c in ipairs(s.hand) do
+     if c.face_down or c.unknown or c.concealed or c.facing=='back' or not known_enhancements[c.enhancement or 'c_base'] or
+       c.seal and not ({Red=true,Blue=true,Purple=true,Gold=true})[c.seal] then
+@@ -56,7 +59,7 @@
+     editions[i]=e
+   end
+   if random_floor and type(scorer.lower_bound)~='function' then
+-    return no('Lucky cards require a supported conservative score floor in every public Joker world.') end
++    return no('Random card or Joker effects require a supported conservative score floor in every public Joker world.') end
+   diag.supported_random_floor=random_floor
+   -- Ignore the raw live Joker array even if a caller supplied concealed payloads.
+   local root={};for k,v in pairs(s) do if k~='jokers' and k~='public_joker_belief' then root[k]=belief.copy(v) end end
+--- before/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -144,7 +144,7 @@
+   local lines={}
+   for _,line in ipairs(action.lines or {}) do lines[#lines+1]=line end
+   lines[#lines+1]=tostring(#b.worlds)..' public identity worlds; the displayed score is their conservative local minimum.'
+-  if proof.supported_random_floor then lines[#lines+1]='Lucky effects use supported score floors, not average or assumed successful triggers.' end
++  if proof.supported_random_floor then lines[#lines+1]='Random card and Joker effects use supported score floors, not average or assumed successful triggers.' end
+   if discard then
+     proof.bound_kind='sampled_public_joker_redraw'
+     proof.scope='Complete retained public Joker worlds and a declared first-discard/next-play family on common sampled draws; no full-run forecast.'
+@@ -208,7 +208,8 @@
+     end
+     local opening=modules.opening and modules.opening.advice(snapshot)
+     if opening then return {kind='strategy',strategy=opening,action=opening.action,evaluations=prehand_work} end
+-    if snapshot.phase=='shop' and modules.joker_retirement then
++    if snapshot.phase=='shop' and modules.joker_retirement and
++        not (snapshot.shop_sequence_commitment and snapshot.shop_sequence_commitment.status=='matched') then
+       local retired,receipt=modules.joker_retirement.suggest(snapshot,modules.strategy)
+       if retired then return {kind='strategy',strategy=retired,action=retired.action,evaluations=prehand_work,
+         retirement_diagnostics=receipt} end
+@@ -216,8 +217,21 @@
+     local acquisition_diagnostics
+     local shop_options=options.shop_scoring
+     local requested=shop_options and shop_options.max_evaluations
+-    local shop_limit=type(requested)=='number' and requested==requested and math.abs(requested)<math.huge and
+-      math.max(0,math.min(50000,math.floor(requested))) or requested==nil and 50000 or 0
++    local shop_limit=type(requested)=='number' and requested==requested and math.abs(requested)<math.huge and
++      math.max(0,math.min(50000,math.floor(requested))) or requested==nil and 50000 or 0
++    local continuation_diagnostics
++    if snapshot.phase=='shop' and snapshot.shop_sequence_commitment and modules.shop_sequences and
++      modules.shop_sequences.resume and modules.shop_scoring then
++      local lease={};for k,v in pairs(shop_options or {}) do lease[k]=v end
++      lease.max_evaluations=math.max(0,shop_limit-prehand_work)
++      local ctx=modules.shop_scoring.new(snapshot,modules.scoring,yield_fn,lease)
++      local resumed;resumed,continuation_diagnostics=modules.shop_sequences.resume(snapshot,modules,ctx)
++      prehand_work=prehand_work+ctx.evaluations
++      if resumed then return {kind='strategy',strategy=resumed,action=resumed.action,evaluations=prehand_work,
++        shop_diagnostics={evaluations=ctx.evaluations,truncated=ctx.truncated,continuation=continuation_diagnostics}} end
++      shop_options={};for k,v in pairs(options.shop_scoring or {}) do shop_options[k]=v end
++      shop_options.max_evaluations=math.max(0,shop_limit-prehand_work)
++    end
+     local copy_diagnostics
+     if snapshot.phase=='shop' and snapshot.teacher_profile=='perkeo_yorick_win_v1' and
+         modules.strategy.copy_acquisition and modules.shop_scoring then
+@@ -311,7 +325,7 @@
+       sequence,sequence_diagnostics=modules.shop_sequences.suggest(snapshot,modules,strategy,context,options.shop_sequences)
+       if sequence then strategy=sequence end
+       if modules.shop_sequences.with_continuation then
+-        strategy=modules.shop_sequences.with_continuation(strategy,sequence_diagnostics)
++        strategy=modules.shop_sequences.with_continuation(strategy,sequence_diagnostics,snapshot,modules)
+       end
+     end
+     if snapshot.phase=='shop' and modules.strategy.shortfall_reroll and context and not context.truncated then
+@@ -392,7 +406,7 @@
+       copy_acquisition_diagnostics=copy_diagnostics,
+       gold_retention_diagnostics=retention_diagnostics,
+       pack_diagnostics=strategy.pack_diagnostics,
+-      shop_diagnostics=context and {evaluations=context.evaluations,truncated=context.truncated,
++      shop_diagnostics=context and {evaluations=context.evaluations,truncated=context.truncated,continuation=continuation_diagnostics,
+         unavailable_reason=context.unavailable_reason,metrics=context.metrics,sequences=sequence_diagnostics,
+         replacements=context.replacement_diagnostics,
+         catalog_replacements=context.catalog_replacement_diagnostics,
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -587,7 +587,9 @@
+             legal=entry.legal,score=entry.score,incoming_score=entry.incoming_score,admitted=entry.admitted,
+             objective_admitted=entry.collection_admitted,preserves_score=entry.preserves_score,ratio=e.ratio,
+             reason=entry.unavailable_reason or entry.reason,after_mean=e.after_mean,after_target=e.after_target,
+-            uncertain=e.uncertain,complete_finishing=e.complete_finishing})
++            uncertain=e.uncertain,complete_finishing=e.complete_finishing,
++            acquisition_hurdle=e.acquisition_hurdle,adjustment=e.adjustment,
++            free_planet_acquisition_hurdle=entry.free_planet_acquisition_hurdle})
+           rows[#rows+1]=out.pack_candidate or {};out.pack_candidate=nil
+         end
+       end
+@@ -600,8 +602,33 @@
+     local a=result.action or {};out.final_kind=a.kind;out.final_area=a.area;out.final_index=a.index
+     return out
+   end
+-end
+-function M.attach(A,B,deps)
++end
++-- Compact public continuation receipt, never the private matching key or sampled worlds.
++function M.compact_shop_sequence_review(result)
++  if type(result)~='table' or getmetatable(result) then return end
++  local plan=result.strategy and result.strategy.shop_sequence
++  local continuation=result.shop_diagnostics and result.shop_diagnostics.continuation
++  if type(plan)~='table' and type(continuation)~='table' then return end
++  local function scalars(source,keys)
++    local out={};if type(source)~='table' or getmetatable(source) then return out end
++    for _,k in ipairs(keys) do local v=rawget(source,k)
++      if type(v)=='string' and #v<=256 or type(v)=='boolean' or
++        type(v)=='number' and v==v and math.abs(v)<1e300 then out[k]=v end
++    end
++    return out
++  end
++  local out={schema=1,plan=scalars(plan,{'id','complete','resuming','cash_after','joker_count','joker_limit','utility','liquidity_penalty'}),
++    continuation=scalars(continuation,{'id','status','complete','reason','cash_after','before_mean','after_mean'}),
++    final_action=scalars(result.action,{'kind','area','index'})}
++  out.steps={}
++  for i=1,math.min(4,type(plan)=='table' and type(plan.steps)=='table' and #plan.steps or 0) do
++    out.steps[i]=scalars(plan.steps[i],{'kind','area','index','id','key','cost'})
++  end
++  local e=type(plan)=='table' and plan.scoring_evidence
++  out.evidence=scalars(e,{'adjustment','ratio','before_mean','after_mean','before_target','after_target','samples','complete_finishing','uncertain'})
++  return out
++end
++function M.attach(A,B,deps)
+   deps=deps or {};local fs=deps.fs or love and love.filesystem
+   local callback_hooks=deps.callback_hooks or A.callback_hooks
+   local archive
+@@ -663,7 +690,8 @@
+         gold_review=current and compact_gold_review(A.result) or nil,
+         replacement_review=current and M.compact_replacement_review(A.result) or nil,
+         yorick_review=current and M.compact_yorick_review(A.result) or nil,
+-        copy_death_review=current and M.compact_copy_death_review(A.result) or nil,
++        copy_death_review=current and M.compact_copy_death_review(A.result) or nil,
++        shop_sequence_review=current and M.compact_shop_sequence_review(A.result) or nil,
+       reroll_review=current and M.compact_reroll_review(A.result) or nil,
+         title=A.display and A.display.title,lines=A.lines,action=A.result and A.result.action}}
+   end
+--- before/Brainstorm/Advisor/runtime.lua
++++ Brainstorm/Advisor/runtime.lua
+@@ -149,6 +149,9 @@
+       snapshot.teacher_profile=A.teacher_profile
+     end
+   end
++  if snapshot and A.shop_sequence_game==g.GAME and A.shop_sequence_pending then
++    snapshot.shop_sequence_commitment=A.shop_sequences.observe_commitment(snapshot,A.shop_sequence_pending)
++  end
+   P:finish('snapshot.capture',started)
+   return snapshot
+ end
+@@ -777,6 +780,12 @@
+     return false
+   end
+   local action=A.snapshot.copy(A.result.action)
++  local shop_commitment=A.shop_sequences.prepare_commitment(live,A.result.strategy,A)
++  if A.result.strategy and A.snapshot.fingerprint(action)~=A.snapshot.fingerprint(A.result.strategy.action) then shop_commitment=nil end
++  if action.kind=='sell' and A.result.strategy and A.result.strategy.shop_sequence and not shop_commitment then
++    invalidate('Sale-funded continuation could not be bound to the public shop')
++    return false,'The sale needs fresh identifiable continuation evidence.'
++  end
+   local context,id,ledger=retry_context(live)
+   local pending,record_reason
+   if context.matched then
+@@ -817,6 +826,8 @@
+     if not saved then A.retry_notice=tostring(reason) end
+     A.retry_generation=A.retry_generation+1
+   end
++  A.shop_sequence_pending=shop_commitment
++  A.shop_sequence_game=G.GAME
+   return true
+ end
+ 
+--- before/Brainstorm/Advisor/shop_scoring.lua
++++ Brainstorm/Advisor/shop_scoring.lua
+@@ -1043,8 +1043,13 @@
+     if complete_finishing and af.selected.mean_progress>0 then
+       capacity_ratio=bf.selected.mean_progress/af.selected.mean_progress
+     end
+-    local adjustment=math.max(-35,math.min(35,36*math.log(math.max(capacity_ratio,0.000001))/math.log(2)-14))
++    local gain_adjustment=36*math.log(math.max(capacity_ratio,0.000001))/math.log(2)
++    local adjustment=math.max(-35,math.min(35,gain_adjustment-14))
++    -- Expose the actually applied hurdle after clipping/weighting. A free
++    -- pack Planet can compare the same evidence without pricing a purchase.
++    local acquisition_hurdle=math.max(-35,math.min(35,gain_adjustment))-adjustment
+     if left.key==right.key then adjustment=0 end
++    if left.key==right.key then acquisition_hurdle=0 end
+     self.metrics.coefficient_opportunities=self.metrics.coefficient_opportunities or {}
+     local opportunities=self.metrics.coefficient_opportunities
+     if math.abs(adjustment)>0.000001 then
+@@ -1061,7 +1066,10 @@
+         scope='One actual projected Joker reorder costs the existing two action-utility units; no free restoration.'}
+     end
+     local work_cost
+-    if Shop.policy_weights then adjustment=adjustment*Shop.policy_weights.get('shop_scoring_gain_weight') end
++    if Shop.policy_weights then
++      local weight=Shop.policy_weights.get('shop_scoring_gain_weight')
++      adjustment=adjustment*weight;acquisition_hurdle=acquisition_hurdle*weight
++    end
+     if ordering_cost then adjustment=adjustment+ordering_cost.adjustment end
+     if Shop.work_cost and left.key~=right.key then
+       work_cost=Shop.work_cost.compare(left_state,right_state,before_readiness,after_readiness,
+@@ -1102,7 +1110,7 @@
+       if left_target>0 and a.scores[i]>=left_target then clears_before=clears_before+1 end
+       if right_target>0 and b.scores[i]>=right_target then clears_after=clears_after+1 end
+     end
+-    return {adjustment=adjustment,ratio=ratio,capacity_ratio=capacity_ratio,before_mean=a.mean,after_mean=b.mean,samples=4,
++    return {adjustment=adjustment,acquisition_hurdle=acquisition_hurdle,ratio=ratio,capacity_ratio=capacity_ratio,before_mean=a.mean,after_mean=b.mean,samples=4,
+       before_readiness=before_readiness,after_readiness=after_readiness,work_cost=work_cost,
+       forced_comparison=clone(forced_comparison),score_kind=bell and 'forced_card_lower_bound' or nil,
+       before_ordering=clone(a.ordering),after_ordering=clone(b.ordering),ordering_cost=ordering_cost,
+--- before/Brainstorm/Advisor/shop_sequences.lua
++++ Brainstorm/Advisor/shop_sequences.lua
+@@ -150,13 +150,19 @@
+ -- Enriching an unchanged incumbent is essential: a later reroll comparison must
+ -- see the same visible continuation that the sequence comparison already used.
+ -- This is evidence for fresh advice, never a queue of actions to execute later.
+-function M.with_continuation(base,diagnostics)
++function M.with_continuation(base,diagnostics,snapshot,modules)
+   if not base or not diagnostics or not diagnostics.complete then return base end
+   local plan=(diagnostics.best_by_first_action or {})[signature(base.action)]
+   if not plan or not plan.complete or not plan.scoring_evidence then return base end
+   local result=copy(base)
+   result.shop_sequence=copy(plan)
+   result.scoring_evidence=copy(plan.scoring_evidence)
++  if snapshot and result.action.kind=='sell' then
++    local lease=M.prepare_commitment(snapshot,result,modules)
++    if not lease then return base end
++    result.shop_sequence.id=lease.id;result.shop_sequence.steps=lease.steps
++    result.shop_sequence.joker_count=lease.joker_count;result.shop_sequence.joker_limit=lease.joker_limit
++  end
+   return result
+ end
+ local function describe(action,state)
+@@ -439,6 +445,9 @@
+       -- objective; a later Planet/use cannot excuse a permanent completed slot.
+       local admitted,admission=true,nil
+       if slots then admitted,admission=slots.endpoint(root,node.state,evidence,node.actions) end
++      if admitted and strategy.shop_sequence_admission then
++        admitted,admission=strategy.shop_sequence_admission(root,node.state,evidence,node.actions)
++      end
+       plan.gold_slot_admission=copy(admission)
+       if admitted~=true then reject(admission and admission.reason or 'Collection slot admission declined the final endpoint.') end
+       diagnostics.plans[#diagnostics.plans+1]={actions=copy(node.actions),titles=copy(node.titles),merit=merit,
+@@ -479,7 +488,113 @@
+   local lines={'The complete visible sequence improves the sampled scoring plan after its cash, interest, inventory and action costs.',
+     table.concat(best.node.titles,'; then ')..'.',best.evidence.reason,
+     'Take only this first step, then refresh advice. Later hands, discards and unseen offers are not promised.'}
+-  return {title=best.node.titles[1],lines=lines,warnings={},action=copy(best.node.actions[1]),
+-    scoring_evidence=best.evidence,shop_sequence=continuation(best)},diagnostics
++  local result={title=best.node.titles[1],lines=lines,warnings={},action=copy(best.node.actions[1]),
++    scoring_evidence=best.evidence,shop_sequence=continuation(best)}
++  if result.action.kind=='sell' then
++    local lease=M.prepare_commitment(snapshot,result,modules)
++    if not lease then return stop('A sale-funded endpoint requires identifiable public offers and a bound fresh continuation.') end
++    result.shop_sequence.id=lease.id;result.shop_sequence.steps=lease.steps
++    result.shop_sequence.joker_count=lease.joker_count;result.shop_sequence.joker_limit=lease.joker_limit
++  end
++  return result,diagnostics
++end
++
++-- A commitment is created only after Execute accepts an actual sale. It is
++-- scoped by the runtime to this G.GAME and by exact public shop state here.
++-- This is a bounded re-evaluation lease, never an executable action queue.
++local function public_shop_key(s)
++  local out={}
++  for _,k in ipairs({'phase','ante','round','dollars','bankrupt_at','joker_limit','consumable_limit',
++    'consumeable_buffer','hand_size','hand_limit','hands','last_tarot_planet','modifiers','used_vouchers',
++    'vouchers','next_blind','teacher_profile','completionist_goal','collection_progress',
++    'round_resets','probabilities','win_ante','stake','challenge','current_round','hands_played_total',
++    'consumeable_usage','consumeable_usage_total','rental_rate','starting_deck_size','interest_cap','interest_amount',
++    'round_bonus','active_tags','certificate_pool','deck_key','first_used_hand_level','unused_discards',
++    'next_blind_chips','chips','hands_left','discards_left','hands_played','discards_used'}) do out[k]=s[k] end
++  for _,area in ipairs({'jokers','consumeables','shop_jokers','shop_vouchers','shop_booster','playing_cards'}) do
++    out[area]={}
++    for i,c in ipairs(s[area] or {}) do
++      if type(c.id)~='string' or c.id=='' or c.unknown or c.identity_redacted or c.face_down then return nil end
++      local row={}
++      for _,k in ipairs({'id','key','rank','nominal','base','suit','enhancement','edition','seal','debuff','pinned','cost','base_cost','sell_cost','rarity','blueprint_compat','vampired','copy_source','tarot_hold_source'}) do row[k]=c[k] end
++      row.ability=copy(c.ability or {})
++      -- This is a public tooltip cache; it changes when adjacency is refreshed.
++      row.ability.blueprint_compat=nil
++      out[area][i]=row
++    end
++  end
++  out.pricing={discount_percent=(s.shop_forecast or {}).discount_percent,inflation=(s.shop_forecast or {}).inflation}
++  return encode(out)
++end
++function M.prepare_commitment(s,result,modules)
++  local plan=result and result.shop_sequence
++  local action=result and result.action
++  if s.phase~='shop' or not plan or plan.complete~=true or not action or
++      type(plan.actions)~='table' or #plan.actions<2 or #plan.actions>4 or
++      signature(action)~=signature(plan.actions[1]) or
++      not (action.kind=='sell' and action.area=='jokers' or plan.resuming==true) then return end
++  local after=M.transition(s,action,modules)
++  if not after then return end
++  local key=public_shop_key(after);if not key then return end
++  local remaining,titles={},{}
++  for i=2,#plan.actions do remaining[#remaining+1]=copy(plan.actions[i]);titles[#titles+1]=(plan.titles or {})[i] end
++  local final=after;local steps={}
++  for _,a in ipairs(remaining) do
++    local c=((final[a.area] or {})[a.index] or {})
++    steps[#steps+1]={kind=a.kind,area=a.area,index=a.index,id=c.id,key=c.key,cost=c.cost}
++    final=M.transition(final,a,modules);if not final then return end
++  end
++  return {schema=1,id=plan.id or ('shop408:'..tostring(s.ante)..':'..tostring(s.round)..':'..
++    tostring(((s[action.area] or {})[action.index] or {}).id)),expected=key,actions=remaining,titles=titles,
++    steps=steps,cash_after=final.dollars,joker_count=#(final.jokers or {}),joker_limit=final.joker_limit}
++end
++function M.observe_commitment(s,plan)
++  if not plan or plan.schema~=1 or s.phase~='shop' then return end
++  if public_shop_key(s)~=plan.expected then return {schema=1,id=plan.id,status='public_context_changed'} end
++  return {schema=1,id=plan.id,status='matched',actions=copy(plan.actions),titles=copy(plan.titles)}
++end
++function M.resume(s,modules,context)
++  local pending=s.shop_sequence_commitment
++  local d={schema=1,status=pending and pending.status or 'none',complete=false,id=pending and pending.id}
++  local function no(reason)d.status=reason;return nil,d end
++  if not pending or pending.status~='matched' then return nil,d end
++  if not context or not context.compare or type(pending.actions)~='table' or
++    #pending.actions<1 or #pending.actions>3 then return no('continuation_scope_unavailable') end
++  local root=copy(s);local after=root;local steps={}
++  for _,action in ipairs(pending.actions) do
++    local c=((after[action.area] or {})[action.index] or {})
++    steps[#steps+1]={kind=action.kind,area=action.area,index=action.index,id=c.id,key=c.key,cost=c.cost}
++    local next_state,why=M.transition(after,action,modules)
++    if not next_state then d.reason=why;return no('continuation_transition_changed') end
++    after=next_state
++  end
++  local evidence=context:compare(root,after)
++  if not evidence or context.truncated or not evidence.after_readiness or
++    not evidence.after_readiness.supported or evidence.uncertain or
++    not evidence.complete_finishing or modules.strategy.survival_dominated and
++      modules.strategy.survival_dominated(evidence) then return no('continuation_support_incomplete') end
++  local slots=modules.gold_slot or modules.strategy.gold_slot
++  if slots then local ok,why=slots.endpoint(root,after,evidence,pending.actions)
++    if not ok then d.reason=why and why.reason;return no('continuation_admission_changed') end end
++  if modules.strategy.shop_sequence_admission then
++    local ok,why=modules.strategy.shop_sequence_admission(root,after,evidence,pending.actions)
++    if not ok then d.reason=why and why.reason;return no('continuation_admission_changed') end
++  end
++  local a,b=evidence.before_finishing,evidence.after_finishing
++  local aw,bw=finishing_worlds(a),finishing_worlds(b)
++  if evidence.incomplete or evidence.samples~=4 or not aw or not bw then return no('continuation_support_incomplete') end
++  for i=1,4 do if bw[i].progress<aw[i].progress then return no('continuation_no_longer_improves') end end
++  if
++    b.selected.mean_progress<a.selected.mean_progress or num(evidence.ratio,0)<1 then
++    return no('continuation_no_longer_improves')
++  end
++  d.status='revalidated';d.complete=true;d.cash_after=after.dollars;d.actions=copy(pending.actions)
++  d.before_mean=evidence.before_mean;d.after_mean=evidence.after_mean
++  return {title=(pending.titles or {})[1] or 'Complete the funded shop plan',warnings={},
++    lines={'The executed sale funded this visible continuation. Exact public state, legal prices and the complete remaining endpoint have been revalidated.',
++      'Take this one action, then obtain fresh advice again.'},action=copy(pending.actions[1]),scoring_evidence=evidence,
++    shop_sequence={id=pending.id,complete=true,resuming=true,actions=copy(pending.actions),titles=copy(pending.titles),
++      steps=steps,joker_count=#(after.jokers or {}),joker_limit=after.joker_limit,
++      cash_after=after.dollars,scoring_evidence=evidence}},d
+ end
+ return M
+--- before/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -62,6 +62,10 @@
+         if left.clear then clears=clears+1 end
+     end
+     return clears==before.selected.clearing_samples
++end
++local function future_core_horizon(s)
++    local next_blind=s.next_blind or {}
++    return not ((next_blind.boss==true or next_blind.label=='Boss') and num(next_blind.ante,num(s.ante,1))>=num(s.win_ante,8))
+ end
+ 
+ -- Acquiring a completed Eternal spends collection capacity permanently. Keep
+@@ -116,8 +120,45 @@
+         return false,{schema=1,kind='win_first_permanent_slot_guard',
+             reason='An early ordinary-slot Eternal common needs a complete paired next-blind survival rescue before its permanent commitment.'}
+     end
++    if after and before.teacher_profile=='perkeo_yorick_win_v1' and future_core_horizon(before) and not sampled_rescue(evidence) then
++        local cores={j_yorick=true,j_perkeo=true,j_blueprint=true,j_brainstorm=true}
++        local old,kept={},{};local incoming_core=false
++        for _,c in ipairs(before.jokers or {}) do old[c.id or c.key]=true end
++        for _,c in ipairs(after.jokers or {}) do
++            kept[c.id or c.key]=true
++            incoming_core=incoming_core or cores[c.key] and not old[c.id or c.key] and not c.debuff and not ability(c).perishable
++        end
++        if not incoming_core then for _,c in ipairs(before.jokers or {}) do
++            if cores[c.key] and not c.debuff and not ability(c).perishable and not kept[c.id or c.key] then
++                return false,{kind='core_sequence_horizon_guard',reason='A non-core endpoint cannot liquidate the durable engine without a complete paired immediate rescue.'}
++            end
++        end end
++    end
+     if not Strategy.gold_slot then return true end
+     return Strategy.gold_slot.admit(before,card,after,evidence)
++end
++
++function Strategy.shop_sequence_admission(before,after,evidence)
++    local retained,original={},{}
++    for _,c in ipairs(before.jokers or {}) do original[c.id or c.key]=true end
++    local new_core=false
++    local cores={j_yorick=true,j_perkeo=true,j_blueprint=true,j_brainstorm=true}
++    for _,c in ipairs(after.jokers or {}) do
++      retained[c.id or c.key]=true
++      if not original[c.id or c.key] then
++        local ok,why=Strategy.joker_admission(before,c,after,evidence)
++        if not ok then return false,why end
++        new_core=new_core or cores[c.key] and not c.debuff and not ability(c).perishable
++      end
++    end
++    if before.teacher_profile=='perkeo_yorick_win_v1' and future_core_horizon(before) and not new_core and not sampled_rescue(evidence) then
++      for _,c in ipairs(before.jokers or {}) do
++        if cores[c.key] and not c.debuff and not ability(c).perishable and not retained[c.id or c.key] then
++          return false,{kind='core_sequence_horizon_guard',reason='A non-core endpoint cannot liquidate the durable engine without a complete paired immediate rescue.'}
++        end
++      end
++    end
++    return true
+ end
+ 
+ local function omelette(snapshot)
+@@ -794,8 +835,23 @@
+     return hand and hand~=profile.hand or false
+ end
+ 
++local function unusable_fool_stock(snapshot,card,profile)
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or card.key~='c_fool' or
++        perkeo_effects(snapshot)==0 then return false end
++    -- The supported hand stock cycle copies Jupiter for a Flush plan. Preserve
++    -- its intermediate generated-Jupiter step; other stock has no owned route
++    -- with Perkeo. Revealed pack Fool is an immediate effect, handled separately.
++    local jupiter=snapshot.last_tarot_planet=='c_jupiter'
++    if snapshot.last_tarot_planet=='c_fool' then
++      for _,held in ipairs(snapshot.consumeables or {}) do
++        if held.key=='c_jupiter' and not held.debuff then jupiter=true end
++      end
++    end
++    return profile.hand~='Flush' or not jupiter
++end
+ local function copy_utility(snapshot,card,profile)
+     if card.debuff then return 0 end
++    if unusable_fool_stock(snapshot,card,profile) then return 0 end
+     -- Rank-hand wins do not improve by repeatedly making Stone or off-plan
+     -- suit/hand cards. A small positive seed value lets Perkeo copy *something*
+     -- early, but it must not turn every Negative duplicate into permanent stock.
+@@ -841,6 +897,7 @@
+ -- Observatory approximation; neither branch is a survival forecast.
+ local function stock_capacity(snapshot,card,profile)
+     if snapshot.teacher_profile~='perkeo_yorick_win_v1' then return math.huge end
++    if unusable_fool_stock(snapshot,card,profile) then return 0 end
+     if weak_copy_filler(snapshot,card,profile) then return 1 end
+     if card.key=='c_strength' then
+         -- Physical Negative copies still enter the random Perkeo pool, but an
+@@ -1031,11 +1088,17 @@
+     local value,reason=base_consumable_value(snapshot,card,stats)
+     if value<=0 then return value,reason end
+     local profile=build_profile(snapshot,stats)
++    if snapshot.phase~='pack' and unusable_fool_stock(snapshot,card,profile) then
++      return 0,'This Fool stock has no supported owned-use route for the current Perkeo hand plan.'
++    end
+     local _,before=inventory_value(snapshot,nil,{profile=profile})
+     if before.events==0 and before.held==0 and not ((snapshot.used_vouchers or {}).v_observatory or (snapshot.vouchers or {}).v_observatory) then return value,reason end
+     -- A pack consumable is used immediately. A shop purchase remains in inventory;
+     -- no illegal target use is invented to hide its copy-pool dilution.
+-    if snapshot.phase=='pack' then return copy_utility(snapshot,card,profile),reason end
++    if snapshot.phase=='pack' then
++      if card.key=='c_fool' then return value,reason end
++      return copy_utility(snapshot,card,profile),reason
++    end
+     local inventory={};for i,c in ipairs(snapshot.consumeables or {}) do inventory[i]=c end
+     inventory[#inventory+1]=card
+     -- The offered card is paid for once. Existing cash-copy sources must also
+@@ -2217,7 +2280,7 @@
+     local supported={c_empress=true,c_heirophant=true,c_magician=true,c_chariot=true,c_justice=true,c_devil=true,
+         c_world=true,c_sun=true,c_moon=true,c_star=true,c_hermit=true,c_temperance=true,
+         c_emperor=true,c_high_priestess=true,c_judgement=true,c_wheel_of_fortune=true,c_hanged_man=true,
+-        c_strength=true,c_tower=true,c_lovers=true}
++        c_strength=true,c_tower=true,c_lovers=true,c_fool=true}
+     local function visible_replacement(after,old_card)
+         -- Only an ordinary full-slot filler sale can create the space that a
+         -- known, currently visible superior consumable needs. A Negative sale
+@@ -2256,6 +2319,7 @@
+       local category=tostring(card.key)..(edition(card,'negative') and ':negative' or ':ordinary')
+       if not seen[category] and not card.debuff and not card.unknown and not card.identity_redacted and
+           not card.face_down and card.facing~='back' and not ability(card).eternal and
++          (card.key~='c_fool' or unusable_fool_stock(snapshot,card,profile)) and
+           (supported[card.key] or hand_type(card)) then
+         seen[category]=true
+         local after=shallow_copy(snapshot);after.consumeables={}
+@@ -2309,7 +2373,8 @@
+             local capacity=stock_capacity(snapshot,card,profile)
+             local redundant_negative=edition(card,'negative') and capacity<math.huge and
+                 (active_counts[card.key] or 0)>capacity
+-            local cheap_cleanup=filler or redundant_negative
++          local dead_fool=unusable_fool_stock(snapshot,card,profile)
++          local cheap_cleanup=filler or redundant_negative or dead_fool
+             local retained_good,retained_source=false,false
+             for _,other in ipairs(after.consumeables) do
+                 if not other.debuff and not other.unknown and not other.identity_redacted and
+@@ -3011,11 +3076,17 @@
+                 if evidence then
+                     -- Keep the existing target/population safeguards and long-term
+                     -- development value; add only bounded next-blind evidence.
+-                    score=score+num(evidence.adjustment)
++                    local free_planet=hand_type(card)~=nil
++                    local released_hurdle=free_planet and num(evidence.acquisition_hurdle) or 0
++                    score=score+num(evidence.adjustment)+released_hurdle
++                    if entry then
++                      entry.free_planet_acquisition_hurdle=released_hurdle
++                    end
+                     reason=reason..' '..evidence.reason
+                 end
+                 if diagnostics then
+-                    diagnostics.comparisons[#diagnostics.comparisons+1]={index=index,kind='develop',score=score,
++                    diagnostics.comparisons[#diagnostics.comparisons+1]={index=index,offer_id=card.id,key=card.key,kind='develop',score=score,
++                        free_planet_acquisition_hurdle=entry and entry.free_planet_acquisition_hurdle,
+                         evidence=evidence,transition=after and transition or nil,
+                         status=evidence and 'complete' or 'unavailable',
+                         unavailable_reason=not evidence and (not after and transition or snapshot._shop_scoring.unavailable_reason) or nil}
+@@ -3029,8 +3100,8 @@
+             if diagnostics then
+                 for _,comparison in ipairs(diagnostics.comparisons) do
+                     if comparison.index==index and comparison.kind=='choose' then
+-                        comparison.collection_admitted=admitted
+-                        comparison.admitted=admitted and score>0
++                        comparison.collection_admitted=admitted
++                        comparison.admitted=admitted and score>0
+                         comparison.reason=not admitted and 'objective_admission_rejected' or
+                             not evidence and 'unsupported_comparison' or 'endpoint_compared'
+                     end
+@@ -3128,21 +3199,21 @@
+                             if edition(sold,'foil') then penalty=penalty+20 end
+                             if edition(sold,'holo') then penalty=penalty+28 end
+                             if edition(sold,'polychrome') then penalty=penalty+30 end
+-                            merit=snapshot.teacher_profile=='perkeo_yorick_win_v1' and merit-penalty or score-penalty+num(adjustment)
++                            merit=snapshot.teacher_profile=='perkeo_yorick_win_v1' and merit-penalty or score-penalty+num(adjustment)
+                         end
+                         local preserves_score=not evidence or evidence.ratio>=0.85
+-                        entry.score=merit;entry.incoming_score=score;entry.utility_gain=gain;entry.cash_after_selection=after.dollars
++                        entry.score=merit;entry.incoming_score=score;entry.utility_gain=gain;entry.cash_after_selection=after.dollars
+                         entry.known=candidate_known;entry.preserves_score=preserves_score
+-                        local admitted,admission_reason=Strategy.joker_admission(snapshot,card,after,evidence)
+-                        entry.collection_admitted=admitted
+-                        local priority=snapshot.teacher_profile~='perkeo_yorick_win_v1' and supported_copy_priority(snapshot,sold,card,after,evidence)
+-                        entry.copy_priority=priority or nil
+-                        local valuable=priority or merit>=26 and (snapshot.teacher_profile=='perkeo_yorick_win_v1' or score>=26)
+-                        entry.admitted=not not (admitted and candidate_known and valuable and preserves_score)
+-                        entry.reason=not admitted and (type(admission_reason)=='table' and admission_reason.kind or 'objective_admission_rejected') or
+-                            not candidate_known and 'unknown_candidate' or not preserves_score and 'survival_ratio_guard' or
+-                            not valuable and 'insufficient_endpoint_merit' or 'eligible_endpoint'
+-                        if entry.admitted and
++                        local admitted,admission_reason=Strategy.joker_admission(snapshot,card,after,evidence)
++                        entry.collection_admitted=admitted
++                        local priority=snapshot.teacher_profile~='perkeo_yorick_win_v1' and supported_copy_priority(snapshot,sold,card,after,evidence)
++                        entry.copy_priority=priority or nil
++                        local valuable=priority or merit>=26 and (snapshot.teacher_profile=='perkeo_yorick_win_v1' or score>=26)
++                        entry.admitted=not not (admitted and candidate_known and valuable and preserves_score)
++                        entry.reason=not admitted and (type(admission_reason)=='table' and admission_reason.kind or 'objective_admission_rejected') or
++                            not candidate_known and 'unknown_candidate' or not preserves_score and 'survival_ratio_guard' or
++                            not valuable and 'insufficient_endpoint_merit' or 'eligible_endpoint'
++                        if entry.admitted and
+                             (priority and not (best and best.copy_priority) or not best or best.score<26 or merit>best.score) and
+                             (not replacement or priority and not replacement.copy_priority or
+                               (not not priority)==(not not replacement.copy_priority) and merit>replacement.score) then

@@ -1,0 +1,9 @@
+Candidate source files are `strategy.lua` and `consumables.lua`; `.base.lua` files preserve source text at start of the component (line endings normalized). Exact original bytes for release are separately preserved in `inventory_release/payload/tests/fixtures/inventory337/` and must match the installed 336 policy before integration.
+
+Final component fixture receipt: `fixture_receipt4.json` (257 checks). Relevant existing regression receipt: `existing_receipt2.json` (seven fixtures, 1,736 checks). Every process had a 60-second timeout. Earlier attempts/receipts remain preserved; no production/runtime/test files or installs were modified by this component.
+
+Work saved in the ten-Negative-Death eight-card fixture: 56 profile builds to one; 28 original inventory values to one. All 28 retained values and 6,104 complete score calls remain. Mixed Perkeo/Blueprint/Brainstorm/Observatory: profiles 84 to one, starting pool values 42 to one, with retained values 42 and score calls 1,302 unchanged. These counts establish removed repeated work, not measured live performance.
+
+The optional strategy context holds only the original profile and original inventory value and lives inside one suggest/develop invocation. Every after inventory is recomputed under the before profile. After-state gains, source guards, duplicate grouping, action indices, inventory counts/order, Negative capacity and bounded sequence/score budgets remain unchanged. Legacy custom strategies retain exact prior argument counts. Calls made on the same snapshot table after intervening state changes build a fresh profile and cannot mutate old returned advice.
+
+Prepared root-only release scripts/notes and production fixture payload are under `../inventory_release/`; they target 2.137.0-alpha / internal 337 after scoring336. Preparation does not execute these scripts or install anything. All source/search/captured-state/complete-attempt allowances remain closed.

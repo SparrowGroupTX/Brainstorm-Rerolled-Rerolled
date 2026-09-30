@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "job": "M11",
+  "status": "complete",
+  "members": {
+    "game.lua": {
+      "status": "read",
+      "archive_member": "game.lua",
+      "bytes": 537,
+      "sha256": "95891eb063dc58a7cc8ec82249c63e532487d71bef26b6a1fc80c02012f6eeeb"
+    },
+    "functions/misc_functions.lua": {
+      "status": "read",
+      "archive_member": "functions/misc_functions.lua",
+      "bytes": 42,
+      "sha256": "16591c2161e35385faae18f292aff8a0814a866347ea0e5e8afa9476e0a9a027"
+    },
+    "functions/common_events.lua": {
+      "status": "read",
+      "archive_member": "functions/common_events.lua",
+      "bytes": 25,
+      "sha256": "a8dc78c0f17297b0d09e2945b487756f817badffd407ee6bd5c3121f829b55af"
+    },
+    "functions/UI_definitions.lua": {
+      "status": "read",
+      "archive_member": "functions/UI_definitions.lua",
+      "bytes": 87,
+      "sha256": "aa5785713466fe9afc8ef021921311835683adbfa471ccf4b73ff9dbc2e8ae82"
+    },
+    "functions/button_callbacks.lua": {
+      "status": "read",
+      "archive_member": "functions/button_callbacks.lua",
+      "bytes": 247,
+      "sha256": "2fb3943c1043fafa76b31d7bdf9ad0fbd783c5c68143e611f70c762975ef8ae1"
+    }
+  },
+  "methods": [
+    {
+      "status": "found",
+      "start_line": 7,
+      "end_line": 19,
+      "full_method_bytes": 324,
+      "full_method_sha256": "8cc6f4557cadb2c5b53312cb5da8d28eba3100c16a4338152aef0d0149a02c4a",
+      "excerpt_sha256": "8cc6f4557cadb2c5b53312cb5da8d28eba3100c16a4338152aef0d0149a02c4a",
+      "shown_lines": 13,
+      "line_limit": 160,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "update_game_over",
+      "source_member": "game.lua",
+      "declaration_pattern": "function\\s+Game:update_game_over\\s*\\(",
+      "excerpt_file": "update_game_over.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 1,
+      "end_line": 1,
+      "full_method_bytes": 42,
+      "full_method_sha256": "16591c2161e35385faae18f292aff8a0814a866347ea0e5e8afa9476e0a9a027",
+      "excerpt_sha256": "16591c2161e35385faae18f292aff8a0814a866347ea0e5e8afa9476e0a9a027",
+      "shown_lines": 1,
+      "line_limit": 140,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "win_game",
+      "source_member": "functions/misc_functions.lua",
+      "declaration_pattern": "function\\s+win_game\\s*\\(",
+      "excerpt_file": "win_game.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 1,
+      "end_line": 1,
+      "full_method_bytes": 47,
+      "full_method_sha256": "6be7e912063a70cded892193e01975600e97239b89b7b788740b936be73f69c2",
+      "excerpt_sha256": "6be7e912063a70cded892193e01975600e97239b89b7b788740b936be73f69c2",
+      "shown_lines": 1,
+      "line_limit": 220,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "game_over_ui",
+      "source_member": "functions/UI_definitions.lua",
+      "declaration_pattern": "function\\s+create_UIBox_game_over\\s*\\(",
+      "excerpt_file": "game_over_ui.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 2,
+      "end_line": 2,
+      "full_method_bytes": 39,
+      "full_method_sha256": "b92c7f14ec78f8c38d15bf8c81a42212b17f24af5fb8e17512a07e9f2c3d50c6",
+      "excerpt_sha256": "b92c7f14ec78f8c38d15bf8c81a42212b17f24af5fb8e17512a07e9f2c3d50c6",
+      "shown_lines": 1,
+      "line_limit": 160,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "win_ui",
+      "source_member": "functions/UI_definitions.lua",
+      "declaration_pattern": "function\\s+create_UIBox_win\\s*\\(",
+      "excerpt_file": "win_ui.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 1,
+      "end_line": 1,
+      "full_method_bytes": 66,
+      "full_method_sha256": "257cbad23773a8f4da574f0b27afaef1e2e8720ee8593264fb170e1d992f7dc4",
+      "excerpt_sha256": "257cbad23773a8f4da574f0b27afaef1e2e8720ee8593264fb170e1d992f7dc4",
+      "shown_lines": 1,
+      "line_limit": 60,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "exit_overlay_menu",
+      "source_member": "functions/button_callbacks.lua",
+      "declaration_pattern": "G\\.FUNCS\\.exit_overlay_menu\\s*=\\s*function\\b",
+      "excerpt_file": "exit_overlay_menu.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 2,
+      "end_line": 2,
+      "full_method_bytes": 61,
+      "full_method_sha256": "8d9b070f6ebce8f0e8130966f86570cbf68f9ddf607dea8701d915768c48654a",
+      "excerpt_sha256": "8d9b070f6ebce8f0e8130966f86570cbf68f9ddf607dea8701d915768c48654a",
+      "shown_lines": 1,
+      "line_limit": 100,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "overlay_menu",
+      "source_member": "functions/button_callbacks.lua",
+      "declaration_pattern": "G\\.FUNCS\\.overlay_menu\\s*=\\s*function\\b",
+      "excerpt_file": "overlay_menu.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 3,
+      "end_line": 3,
+      "full_method_bytes": 58,
+      "full_method_sha256": "ff308a20b77f41abd2aae28ec49dcb45356483e9fd1eac5af387c85a98856ca4",
+      "excerpt_sha256": "ff308a20b77f41abd2aae28ec49dcb45356483e9fd1eac5af387c85a98856ca4",
+      "shown_lines": 1,
+      "line_limit": 80,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "start_run",
+      "source_member": "functions/button_callbacks.lua",
+      "declaration_pattern": "G\\.FUNCS\\.start_run\\s*=\\s*function\\b",
+      "excerpt_file": "start_run.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 4,
+      "end_line": 4,
+      "full_method_bytes": 59,
+      "full_method_sha256": "38f4a4c549a5e19b10dfd587e5af3e44b2160642b2bc8db567b1b1df64466497",
+      "excerpt_sha256": "38f4a4c549a5e19b10dfd587e5af3e44b2160642b2bc8db567b1b1df64466497",
+      "shown_lines": 1,
+      "line_limit": 60,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "go_to_menu",
+      "source_member": "functions/button_callbacks.lua",
+      "declaration_pattern": "G\\.FUNCS\\.go_to_menu\\s*=\\s*function\\b",
+      "excerpt_file": "go_to_menu.lua"
+    }
+  ],
+  "scope": "Original executable ZIP read only; no original Lua, policy, game process or player-file execution/access.",
+  "qualification": false,
+  "method_maximum_bytes": 40000,
+  "combined_excerpt_limit_bytes": 120000,
+  "game_update_callsites": [
+    {
+      "start_line": 16,
+      "end_line": 22,
+      "sha256": "9221e8260b9ae4a29eb59d90db00bd64647562d0fe73981e732431399b0d9353",
+      "excerpt_file": "game_update_callsite_1.lua"
+    }
+  ],
+  "method_excerpt_bytes": 696
+}

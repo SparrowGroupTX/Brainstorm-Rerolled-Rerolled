@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-16T06:22:18.351947+00:00",
+  "component": "348 controller event projection before strict data cloning",
+  "status": "test_staged_only_runtime_owned_by_root",
+  "files": {
+    "tools\\advisor_eval\\development348\\log_projection_component\\tests\\advisor_auto_log_projection.lua": "f29b0e9d303d046c986341eef8ea70f57340ac9b75b780c3d315809c2da90f24",
+    "tools\\advisor_eval\\development348\\log_projection_component\\candidate_01.json": "4a4c3824a0c29ac9ba6ccb282eaaecc38ff6f6d5c1315008e53f6e32a60dce6f",
+    "tools\\advisor_eval\\development348\\log_projection_component\\baseline347_01.json": "581cf8c6a050aba54067f7078e0703f4b41a2b000b7183379441d43be0089b1e",
+    "tools\\advisor_eval\\development348\\log_projection_component\\before_01.json": "8962bee7072565bf9437c1e0b3aeba0d04ab9decfdbf9ea21ab920aee4908e0e",
+    "tools\\advisor_eval\\development348\\log_projection_component\\before\\Brainstorm\\Advisor\\auto_run.lua": "4b8763a1062b16f76a5594889be2caeda7a3d6defb387feb3c8655f244ad6bcf",
+    "tools\\advisor_eval\\development348\\log_projection_component\\validate.py": "334bcf7e1e468d612a5a881eb903d90a6966ac2fd292a6905514d06003cc3760",
+    "tools\\advisor_eval\\development348\\log_projection_component\\seal.py": "73bbc303060d994667452f51b58d461a2116adc2e929734ad80d949110d60827"
+  },
+  "candidate_runtime_sha256": "4b8763a1062b16f76a5594889be2caeda7a3d6defb387feb3c8655f244ad6bcf",
+  "baseline_runtime_sha256": "106a2daeab802a5bef6102ebcbbefb20f7d418c737755b9a34c5eb40398c703d",
+  "validation": {
+    "candidate_record": "candidate_01.json",
+    "candidate_checks": 215,
+    "candidate_pass": true,
+    "baseline_record": "baseline347_01.json",
+    "baseline_pass": false,
+    "baseline_failure": "The immutable installed347 controller rejects the oversized raw action fingerprint before its projection callback can export a bounded descriptor."
+  },
+  "preserved_harness_note": "before_01.json is not prechange evidence. The first local copy occurred after root had already edited the shared controller and therefore contains candidate bytes; its passing record and copied file remain preserved. baseline347_01.json subsequently tests the immutable actual347 policy with the same manufactured fixture.",
+  "coverage": [
+    "Projection sees the entire raw key while actual freshness and Execute callbacks continue receiving the exact raw key.",
+    "Exported action-attempt and action-observed records contain only bounded descriptors; changed advice tokens do not repeat pending actions.",
+    "Absent and identity callbacks preserve legacy behavior, including the unchanged strict oversized-string rejection without projection.",
+    "Present nonfunction callbacks reject at construction.",
+    "Throw, nil, scalar, metatable, cycle, nonfinite numbers, function payloads and oversized unrelated strings fail logging without executing or falling back to raw data.",
+    "Rejected journal records still fail closed; consumed action counters and stopped status prevent silent retries or allowance renewal."
+  ],
+  "scope": "Manufactured injected callbacks only; no real search workers, source execution, captured policy evaluation, save/profile access, game control or terminal experiments. Runtime edits were made by root, not this component."
+}

@@ -1,0 +1,174 @@
+--- before/Brainstorm/Core/auto_run_product.lua
++++ after/Brainstorm/Core/auto_run_product.lua
+@@ -82,9 +82,48 @@
+       c.dragging and c.dragging.target or B.Checkpoints and (B.Checkpoints.pending or B.Checkpoints.saving) or
+       B.checkpoint_busy or B.save_pending or B.config.advisor.enabled==false)
+   end
++  local function public_fingerprint(value)
++    local record={schema=1,kind='snapshot_fingerprint_sha256',status='unavailable'}
++    if type(value)~='string' then record.reason='invalid_fingerprint_type';return record end
++    record.byte_length=#value
++    local hash=deps.fingerprint_hash
++    if hash==nil then
++      if not (love and love.data and type(love.data.hash)=='function') then
++        record.reason='hash_unavailable';return record
++      end
++      hash=function(bytes)
++        local raw=love.data.hash('sha256',bytes)
++        assert(type(raw)=='string' and #raw==32,'Invalid SHA256 result.')
++        return (raw:gsub('.',function(c)return string.format('%02x',string.byte(c))end))
++      end
++    end
++    local okay,digest=pcall(hash,value)
++    if not okay then record.reason='hash_failed';return record end
++    if type(digest)~='string' or #digest~=64 or digest:find('[^0-9a-fA-F]') then
++      record.reason='invalid_hash_result';return record
++    end
++    record.status,record.sha256='available',digest:lower()
++    return record
++  end
+   local function log(event)
+     if not logging()then return false end
+-    local okay,accepted=pcall(A.player_log.event,A.player_log,'auto_run',event)
++    -- Internal freshness keys serialize the full detached scoring state. The
++    -- separate public observation redacts concealed identities, so these keys
++    -- must not bypass that boundary. Keep exact keys inside the controller and
++    -- export opaque identity/length only; a missing hash never exposes raw data.
++    local exported={}
++    for key,value in pairs(event)do
++      if key=='fingerprint' or key=='before' or key=='after' then exported[key]=public_fingerprint(value)
++      else exported[key]=value end
++    end
++    if event.event=='manual_checkpoint_continuation' and type(event.interrupted_action)=='table' then
++      local interrupted={}
++      for key,value in pairs(event.interrupted_action)do
++        interrupted[key]=key=='fingerprint' and public_fingerprint(value) or value
++      end
++      exported.interrupted_action=interrupted
++    end
++    local okay,accepted=pcall(A.player_log.event,A.player_log,'auto_run',exported)
+     return okay and accepted==true
+   end
+   local function busy(g,ignore_overlay)
+--- before/tests/advisor_auto_run_product.lua
++++ after/tests/advisor_auto_run_product.lua
+@@ -4,7 +4,7 @@
+ local snapshot=dofile('Brainstorm/Advisor/snapshot.lua')
+ local checks=0
+ local function check(v,why)checks=checks+1;assert(v,why)end
+-local function fixture()
++local function fixture(fingerprint_hash)
+   local now,events,actions,begins,starts=0,{},0,0,0
+   local polls,cancels,settings_changes=0,0,0
+   local poll_held,cancel_held=false,false
+@@ -85,7 +85,8 @@
+   end}
+   local card={calculate_joker=function()return nil end}
+   local closed,lock_exit=0,false
+-  api=F.attach(B,{game=function()return g end,advisor=A,search=search,controller=C,terminal=T,
++  api=F.attach(B,{game=function()return g end,advisor=A,search=search,controller=C,terminal=T,
++    fingerprint_hash=fingerprint_hash,
+     globals=f,card=card,game_class=game_class,now=function()return now end,exit_overlay=function()
+       check(api:owned(),'overlay close has an internal ownership marker')
+       closed=closed+1;g.OVERLAY_MENU=nil;g.SETTINGS.paused=false
+@@ -588,4 +589,100 @@
+   check(not x.api:status().active and not x.api:engaged() and x.stats().actions==1 and x.stats().starts==1,
+     'backwards time between blocked Resume updates fails closed without gameplay or startup')
+ end
++-- Internal exact freshness strings include scoring-only identities. Export only
++-- opaque metadata at the product log boundary; do not change controller keys.
++local function last_event(x,name)
++  for i=#x.events,1,-1 do if x.events[i].data.event==name then return x.events[i].data end end
++end
++do
++  local Journal=dofile('Brainstorm/Advisor/player_journal.lua')
++  local secret='CONCEALED_SENTINEL_327'
++  local hashed={}
++  local x=fixture(function(bytes)
++    hashed[#hashed+1]=bytes
++    return string.rep(bytes:find('string:chips=number:0',1,true) and 'A' or 'b',64)
++  end)
++  local capture=x.A.snapshot.capture
++  x.A.snapshot.capture=function()
++    local s=capture();s.hand={{id='hidden:1',rank=14,suit=secret,face_down=true,ability={description=secret}}}
++    s.deck={{id='deck:1',rank=7,suit='Hearts',face_down=true,ability={}}}
++    s.playing_cards=snapshot.copy({s.hand[1],s.deck[1]});s.marker='UTF8 \195\169'
++    return s
++  end
++  run_to_play(x,{search_request={note='Ordinary user string',before='User-provided before value'}})
++  local first=last_event(x,'action_attempt');local identity=first.fingerprint
++  check(type(identity)=='table' and identity.schema==1 and identity.kind=='snapshot_fingerprint_sha256',
++    'action identity has an explicit versioned opaque schema')
++  check(identity.status=='available' and identity.sha256==string.rep('a',64),'valid uppercase SHA256 normalizes to lowercase')
++  check(identity.byte_length==#hashed[1] and hashed[1]:find(secret,1,true),
++    'hash input and byte count retain exact internal UTF8 fingerprint bytes')
++  local raw=x.A.published_key
++  check(type(raw)=='string' and raw:find(secret,1,true),'logging never replaces the internal exact published key')
++  local safe=Journal.public_snapshot(x.A.snapshot.capture())
++  check(safe.hand[1].identity_redacted and safe.deck[1].identity_redacted,'ordinary public snapshot redaction is preserved')
++  local bytes=assert(Journal.encode({details=first,context={snapshot=safe}}))
++  check(not bytes:find(secret,1,true),'encoded event does not leak concealed identities through details or public snapshot')
++  check(first.action.kind=='play' and first.action.indices[1]==1 and first.advice.title=='Advice',
++    'explicit action and human-readable advice remain complete')
++  local start=last_event(x,'session_started')
++  check(start.limits.search_request.before=='User-provided before value' and start.limits.search_request.note=='Ordinary user string',
++    'unrelated nested user strings are not recursively rewritten')
++  x.api:update();check(x.stats().actions==1,'stale advice still cannot repeat the pending action')
++  x.publish();x.api:update()
++  local observed=last_event(x,'action_observed');local second=last_event(x,'action_attempt')
++  check(x.stats().actions==2,'changed exact state and fresh advice still acknowledge and dispatch')
++  check(observed.before.sha256==identity.sha256 and observed.after.sha256==second.fingerprint.sha256,
++    'opaque before and after identities remain joinable to corresponding action records')
++  check(observed.before.byte_length==identity.byte_length and observed.after.byte_length==second.fingerprint.byte_length,
++    'opaque before and after byte lengths match the exact corresponding fingerprints')
++  check(observed.before.sha256~=observed.after.sha256,'different manufactured exact states export different hash results')
++  local old=x.A.published_key
++  x.g.GAME=snapshot.copy(x.g.GAME);x.g.GAME.chips=0;x.publish()
++  x.api:manual('Verified manufactured checkpoint loaded','checkpoint_loaded');x.api:update()
++  local restored=last_event(x,'manual_checkpoint_continuation')
++  check(restored and restored.interrupted_action and type(restored.interrupted_action.fingerprint)=='table',
++    'verified checkpoint interruption also redacts its defined nested fingerprint')
++  check(restored.interrupted_action.fingerprint.byte_length==#old and restored.interrupted_action.action_token and
++    restored.interrupted_action.time~=nil,'checkpoint interruption retains identity length, action token and time')
++  local restored_bytes=assert(Journal.encode(restored))
++  check(not restored_bytes:find(secret,1,true),'checkpoint interruption has no raw concealed identity fallback')
++  check(x.api:status().actions==2 and x.api:status().manual_continuations==1,
++    'prospective export does not reset or renew checkpoint/session accounting')
++end
++do
++  local x=fixture(function()return string.rep('c',64)end)
++  run_to_play(x);x.publish();x.api:update()
++  check(x.stats().actions==2,'even manufactured identical export digests do not replace exact internal change checks')
++end
++do
++  local original_love=love
++  local received={}
++  love={data={hash=function(algorithm,bytes)
++    received[#received+1]={algorithm=algorithm,bytes=bytes};return string.rep('\0',32)
++  end}}
++  local x=fixture();run_to_play(x)
++  local record=last_event(x,'action_attempt').fingerprint
++  check(#received==1 and received[1].algorithm=='sha256','default path requests SHA256 from the game hash API')
++  check(record.sha256==string.rep('0',64) and record.byte_length==#received[1].bytes,
++    'default raw 32-byte digest converts to exact lowercase hex including zero bytes')
++  love=original_love
++end
++do
++  local original_love=love;love=nil
++  for _,case in ipairs({{name='missing',reason='hash_unavailable'},
++    {name='failed',hash=function(bytes)error('must not log raw bytes: '..bytes)end,reason='hash_failed'},
++    {name='short',hash=function()return 'abc'end,reason='invalid_hash_result'},
++    {name='nonhex',hash=function()return string.rep('z',64)end,reason='invalid_hash_result'},
++    {name='nonstring',hash=function()return {}end,reason='invalid_hash_result'}})do
++    local x=fixture(case.hash);run_to_play(x)
++    local first=last_event(x,'action_attempt').fingerprint
++    check(first.status=='unavailable' and first.reason==case.reason and first.sha256==nil and first.byte_length>0,
++      case.name..': failed/unavailable hash exports explicit bounded metadata without a raw fallback')
++    local fields=0;for _ in pairs(first)do fields=fields+1 end
++    check(fields==5,case.name..': failure exposes only schema, kind, status, byte length and static reason')
++    x.publish();x.api:update()
++    check(x.stats().actions==2,case.name..': hash availability does not alter exact internal freshness or consume a new session')
++  end
++  love=original_love
++end
+ print('advisor_auto_run_product: '..checks..' checks passed')

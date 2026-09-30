@@ -1,0 +1,249 @@
+--- before/Advisor\consumables.lua
++++ Brainstorm\Advisor\consumables.lua
+@@ -619,14 +619,19 @@
+   local remaining=math.max(1,number((snapshot.blind or {}).chips)-number(snapshot.chips))
+   local baseline=search_result.play
+   local baseline_score=baseline and baseline.score or 0
+-  local clearing=baseline and baseline_score>=remaining
++  local function supported_clear(play)
++    return play and play.legal~=false and play.score>=remaining and (not play.uncertain or
++      play.reliable_bound==true and play.bound_kind=='supported_random_floor')
++  end
++  local clearing=supported_clear(baseline)
+   local discard=search_result.kind=='discard' and search_result.discard or nil
+   local blind=snapshot.blind or {}
+   local arm=not blind.disabled and (blind.key=='bl_arm' or blind.name=='The Arm')
+   local best, sequence_best, completed, one_card_clear = nil,nil,{},false
+   local function better_play(a,b)
+     if not b then return true end
+-    if a.score>=remaining and b.score>=remaining then
++    if supported_clear(a)~=supported_clear(b) then return supported_clear(a) and true or false end
++    if supported_clear(a) and supported_clear(b) then
+       if (a.arm_cost or 0)~=(b.arm_cost or 0) then return (a.arm_cost or 0)<(b.arm_cost or 0) end
+       if #a.indices~=#b.indices then return #a.indices<#b.indices end
+     end
+@@ -671,19 +676,20 @@
+         if modeled then
+           completed[#completed+1]=candidate
+           if d.kind=='planet' or d.kind=='all_hands' then candidate.state=state end
+-          if play and play.score>=remaining then one_card_clear=true end
++          if supported_clear(play) then one_card_clear=true end
+         end
+         if play and modeled then
+           local score=play.score
+           local permanent=d.kind=='planet' or d.kind=='all_hands'
+           local safe_upgrade=permanent and score>baseline_score
+           if clearing and arm and (not options.arm_cost or (play.arm_cost or 0)>(baseline.arm_cost or 0)) then safe_upgrade=false end
+-          local wins=score>=remaining
++          local wins=supported_clear(play)
+           local reference=math.max(baseline_score,discard and number(discard.mean) or 0)
+           local useful=false
+           if clearing then useful=safe_upgrade
+           elseif wins then useful=not discard or number(discard.probability)<0.98 or safe_upgrade
+-          elseif (snapshot.hands_left or 1)>1 then useful=score>reference+math.max(10,reference*0.15) end
++          elseif (snapshot.hands_left or 1)>1 or play.uncertain and score>=remaining then
++            useful=score>reference+math.max(10,reference*0.15) end
+           local inventory_cost,retention,last_source=0,nil,false
+           local development=0
+           if options.strategy and options.strategy.preservation_cost then
+@@ -713,7 +719,7 @@
+             candidate.value=(wins and 1000000000 or 0)+math.min(score,remaining)+(safe_upgrade and 0.25 or 0)+
+               development*0.01-inventory_cost*0.01
+             local prefer=not best
+-            if best and wins and best.play.score>=remaining and (play.arm_cost or 0)~=(best.play.arm_cost or 0) then
++            if best and wins and supported_clear(best.play) and (play.arm_cost or 0)~=(best.play.arm_cost or 0) then
+               prefer=(play.arm_cost or 0)<(best.play.arm_cost or 0)
+             elseif best then prefer=candidate.value>best.value or (candidate.value==best.value and #candidate.targets<#best.targets) end
+             if prefer then best=candidate end
+@@ -840,7 +846,8 @@
+   end
+   lines[#lines+1]='Then '..best.play.hand..' is estimated at '..tostring(best.play.score)..' chips.'
+   if best.retention_exception then lines[#lines+1]='Spend the last copying source because this use provides the needed modeled clear.' end
+-  if best.play.score>=remaining and not clearing then lines[#lines+1]='This reaches the remaining blind target in the scoring model.'
++  if supported_clear(best.play) and not clearing then lines[#lines+1]='This reaches the remaining blind target within the supported score.'
++  elseif best.play.uncertain then lines[#lines+1]='This is an uncertain score estimate, not a guaranteed clear.'
+   elseif clearing then lines[#lines+1]='The permanent hand upgrade preserves the current clearing play.' end
+   return {title='Use '..best.definition.name..' before playing',lines=lines,warnings=warnings,
+     action={kind='use',area='consumeables',index=best.index,targets=list(best.targets)},play=best.play},evaluations,diagnostics
+--- before/Advisor\growth.lua
++++ Brainstorm\Advisor\growth.lua
+@@ -209,7 +209,7 @@
+   if not b.disabled and (blocked[b.key] or names[b.name]) then return 'Draw or play changes the finishing conditions.' end
+   local scoring_order={Photograph=true,Triboulet=true,['Ancient Joker']=true,['The Idol']=true,Bloodstone=true,['Hanging Chad']=true}
+   for _,j in ipairs(s.jokers or {}) do
+-    if not j.debuff and (name(j)=='Blackboard' or name(j)=='Raised Fist' or name(j)=='Blue Joker' or name(j)=='Shoot the Moon') then return 'Replacement draws can reduce or reorder the reserved score.' end
++    if not j.debuff and (name(j)=='Blackboard' or name(j)=='Raised Fist' or name(j)=='Shoot the Moon') then return 'Replacement draws can reduce or reorder the reserved score.' end
+     if not j.debuff and #clear.indices>1 and scoring_order[name(j)] then return 'Automatic hand sorting can change scoring-trigger order.' end
+   end
+   local additive_safe
+@@ -490,7 +490,20 @@
+   end
+   local best
+   local function accept(action,state,indices,merit,title,lines,metadata)
+-    local finish=score(state,indices)
++    -- Blue Joker depends on count alone. Charge every replacement draw before
++    -- proving the retained clear. Do not pick or add hypothetical drawn cards.
++    local proof=state
++    local blue=false
++    for _,j in ipairs(state.jokers or {}) do if not j.debuff and name(j)=='Blue Joker' then blue=true end end
++    if blue then
++      if action.kind~='discard' then return end
++      local draws=draw_count(s,state)
++      proof=copy(state);proof.deck={}
++      -- Values in this unordered population are not scored as known draws.
++      for i=1,math.max(0,#(state.deck or {})-draws) do proof.deck[i]=state.deck[i] end
++      metadata.blue_joker_draw_cost={draws=draws,remaining_deck=#proof.deck}
++    end
++    local finish=score(proof,indices)
+     if not reliable(finish) or num(finish.score)<math.max(1,num((state.blind or {}).chips)-num(state.chips))*1.05 then return end
+     -- Draws are not required for this score; permitted held effects can only
+     -- add to it. Check the actual final hand after every real action/draw.
+--- before/Advisor\search.lua
++++ Brainstorm\Advisor\search.lua
+@@ -1397,7 +1397,7 @@
+         count=candidate.count,mean=candidate.mean,probability=candidate.probability,value=candidate.value,growth=candidate.growth}
+     end
+   end
+-  local play_value = play and (0.7 * math.min(play.score / remaining, 1) + (play.score >= remaining and 0.3 or 0)) or 0
++  local play_value = play and (0.7 * math.min(play.score / remaining, 1) + (reliable_clear(play,remaining) and 0.3 or 0)) or 0
+   if best_discard and (not play or last_hand or best_discard.value > play_value + weight('discard_action_penalty',0.06) / math.max(1, s.discards_left)) then
+     result.kind = 'discard'
+   end
+--- before/Advisor\strategy.lua
++++ Brainstorm\Advisor\strategy.lua
+@@ -658,11 +658,19 @@
+ -- Observatory approximation; neither branch is a survival forecast.
+ local function stock_capacity(snapshot,card,profile)
+     if snapshot.teacher_profile~='perkeo_yorick_win_v1' then return math.huge end
++    if hand_type(card) and hand_type(card)~=profile.hand then return 1 end
+     local suits={c_world='Spades',c_sun='Hearts',c_moon='Clubs',c_star='Diamonds'}
+     if suits[card.key] then
+         if not profile.hand:find('Flush',1,true) then return 1 end
+-        return math.huge
+-    end
++        if type(snapshot.playing_cards)~='table' or #snapshot.playing_cards==0 then return math.huge end
++        local available=0
++        for _,c in ipairs(snapshot.playing_cards) do
++            if c.unknown or c.identity_redacted or not c.suit then return math.huge end
++            if c.suit~=suits[card.key] then available=available+1 end
++        end
++        return math.min(math.ceil(available/3),math.max(1,math.ceil(profile.horizon*2)))
++    end
++    if card.key=='c_emperor' or card.key=='c_high_priestess' or card.key=='c_judgement' or card.key=='c_wheel_of_fortune' then return 1 end
+     if card.key=='c_hermit' or card.key=='c_temperance' then
+         local payout=card.key=='c_hermit' and math.min(20,math.max(0,num(snapshot.dollars))) or math.min(50,joker_sell_value(snapshot))
+         if payout<=0 then return 1 end
+@@ -822,7 +830,9 @@
+     local delta=after.future-before.future+after.held-before.held
+     if delta<-1 then reason=reason..' Its weaker copying pool dilutes the current Perkeo engine.'
+     elseif delta>1 then reason=reason..' Holding it strengthens the copying pool or matching Observatory engine.' end
+-    return copy_utility(purchased,card,profile)+delta,reason
++    local direct=copy_utility(purchased,card,profile)
++    if snapshot.teacher_profile=='perkeo_yorick_win_v1' then direct=after.direct-before.direct end
++    return direct+delta,reason
+ end
+ 
+ local function playing_value(snapshot, card, stats)
+@@ -1476,10 +1486,12 @@
+     local best
+     local observatory=(snapshot.used_vouchers or {}).v_observatory or (snapshot.vouchers or {}).v_observatory
+     local supported={c_empress=true,c_heirophant=true,c_magician=true,c_chariot=true,c_justice=true,c_devil=true,
+-        c_world=true,c_sun=true,c_moon=true,c_star=true,c_hermit=true,c_temperance=true}
++        c_world=true,c_sun=true,c_moon=true,c_star=true,c_hermit=true,c_temperance=true,
++        c_emperor=true,c_high_priestess=true,c_judgement=true,c_wheel_of_fortune=true}
+     for index,card in ipairs(snapshot.consumeables or {}) do
+-      if not seen[card.key] and not card.debuff and not ability(card).eternal and (supported[card.key] or hand_type(card)) then
+-        seen[card.key]=true
++      local category=tostring(card.key)..(edition(card,'negative') and ':negative' or ':ordinary')
++      if not seen[category] and not card.debuff and not ability(card).eternal and (supported[card.key] or hand_type(card)) then
++        seen[category]=true
+         local after=shallow_copy(snapshot);after.consumeables={}
+         for i,c in ipairs(snapshot.consumeables) do if i~=index then after.consumeables[#after.consumeables+1]=c end end
+         if edition(card,'negative') then after.consumable_limit=math.max(0,num(snapshot.consumable_limit,2)-1) end
+@@ -1489,12 +1501,37 @@
+               card.key=='c_temperance' and math.min(50,joker_sell_value(snapshot)) or 0
+           local hand=hand_type(card)
+           local use_gain=payout*2
++          -- Shop exploration, not a terminal rescue or a simulated generated
++          -- identity. Only public capacity is known; refresh after one reveal.
++          local generator_field=card.key=='c_emperor' and 'tarots' or card.key=='c_high_priestess' and 'planets'
++          local generated
++          if generator_field and not card.face_down then
++            local config=ability(card).consumeable or {}
++            local count=config[generator_field]
++            local capacity=snapshot.consumable_limit
++            local valid=type(count)=='number' and count%1==0 and count>=1 and count<=2 and
++                type(capacity)=='number' and capacity%1==0 and capacity>=0 and capacity<math.huge and
++                (not ability(card).set or ability(card).set=='Tarot') and
++                (not ability(card).name or ability(card).name==(card.key=='c_emperor' and 'The Emperor' or 'The High Priestess')) and
++                num(snapshot.consumeable_buffer)==0
++            for key in pairs(config) do if key~=generator_field then valid=false end end
++            if valid then
++                generated=math.min(count,math.max(0,num(after.consumable_limit,2)-#after.consumeables))
++                -- Conservative exploratory utility per revealed option; no
++                -- premium for hypothetical future Perkeo copies of that option.
++                use_gain=generated*12
++            end
++          end
+           if hand==profile.hand and not observatory and counts[card.key]>1 then use_gain=copy_utility(snapshot,card,profile) end
+           -- Use utility already includes the consumed card's benefit; compare
+           -- copying/held opportunity cost, not a second direct inventory charge.
+-          local use_merit=use_gain-math.max(0,info.future-retained.future)-math.max(0,info.held-retained.held)-4
+-          if use_gain>0 and use_merit>0 and (#after.consumeables>0 or info.events==0) and (not best or use_merit>best.merit) then
+-            best={merit=use_merit,kind='use',index=index,card=card}
++          -- An unknown generated pool can dilute even the retained sources.
++          -- Charge all current future-copy utility instead of crediting a
++          -- removal-only pool improvement before the new identities exist.
++          local future_cost=generated and math.max(0,info.future) or math.max(0,info.future-retained.future)
++          local use_merit=use_gain-future_cost-math.max(0,info.held-retained.held)-4
++          if use_gain>0 and use_merit>0 and (#after.consumeables>0 or info.events==0 or generated and generated>0) and (not best or use_merit>best.merit) then
++            best={merit=use_merit,kind='use',index=index,card=card,generated=generated}
+           end
+           if not (observatory and hand==profile.hand) and type(card.sell_cost)=='number' and card.sell_cost>=0 and card.sell_cost<math.huge then
+             after.dollars=num(snapshot.dollars)+card.sell_cost
+@@ -1511,7 +1548,8 @@
+         action={kind=best.kind,area='consumeables',index=best.index},lines={
+           'Compare remaining usable stock, the complete random Perkeo pool, cash and action cost.',
+           'Refresh after this single action; no particular future copy or draw is assumed.'},
+-        stock_review={kind=best.kind,index=best.index,merit=best.merit,whole_inventory=true}} end
++        stock_review={kind=best.kind,index=best.index,merit=best.merit,whole_inventory=true,
++            generated_capacity=best.generated,generated_identity_known=false}} end
+ end
+ Strategy.manage_teacher_stock=manage_teacher_stock
+ local function shop_advice(snapshot, stats, engine)
+--- before/Core\Brainstorm.lua
++++ Brainstorm\Core\Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.166.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.167.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before/steamodded_compat.lua
++++ Brainstorm\steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.166.0-alpha
++--- VERSION: 2.167.0-alpha
+--- before/tests\advisor_growth.lua
++++ tests\advisor_growth.lua
+@@ -56,7 +56,13 @@
+ s.jokers[#s.jokers]=joker('j_raised_fist','Raised Fist')
+ eq(suggest(s),nil,'Raised Fist draw dependency fails closed')
+ s.jokers[#s.jokers]=joker('j_blue_joker','Blue Joker',{extra=2})
+-eq(suggest(s),nil,'Blue Joker deck depletion cannot invalidate the retained clear')
++g=suggest(s)
++check(g and g.growth.blue_joker_draw_cost,'Blue Joker uses an explicit depleted-deck proof')
++local blue_after=assert(Scoring.after_discard(s,g.action.indices))
++local blue_draws=math.min(#blue_after.deck,s.hand_size-#blue_after.hand)
++local blue_deck={};for i=1,#blue_after.deck-blue_draws do blue_deck[i]=blue_after.deck[i] end;blue_after.deck=blue_deck
++eq(g.play.score,Scoring.score(blue_after,g.play.indices).score,'Blue proof includes every replacement draw')
++check(g.play.score>=s.blind.chips*1.05,'Blue depletion retains105% margin')
+ s.jokers[#s.jokers]=joker('j_shoot_the_moon','Shoot the Moon')
+ eq(suggest(s),nil,'automatic held-card sorting cannot reorder Moon and Steel arithmetic')
+ s.jokers[#s.jokers]=nil;s.blind.key='bl_final_bell'

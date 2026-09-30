@@ -1,0 +1,400 @@
+{
+  "comparisons": [
+    {
+      "agreement": true,
+      "case_id": "used_first_stored_second",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "booster_offer",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "25d5a68b80c8879c9320410b1f310de2179387277f8bf335b981326b0756f56d",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "used_first_stored_second"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "two_empty_slots",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "pack_draw",
+          "key": "p_arcana_normal_1",
+          "slot": 1
+        },
+        {
+          "event": "pack_draw",
+          "key": "p_celestial_normal_1",
+          "slot": 2
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 1
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_celestial_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "cfe9bc0b1ddf593d146c66b705debe27d5194422d772a0b2fdbfa6aaf4d5ec53",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "two_empty_slots"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "two_stored_slots",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "booster_offer",
+          "key": "p_standard_normal_1",
+          "price": 4,
+          "slot": 1
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "de78bb990f2f4bca5b9693d362d79c703b06c5d58b3def882fe54a37a6212e51",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "two_stored_slots"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "stored_first_empty_second_unaffordable",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "pack_draw",
+          "key": "p_standard_normal_1",
+          "slot": 2
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 1
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_standard_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "13c5c6a34dcd250d58db37f96b6ec11d0f96b439c07bfe615f80c2e514b8c5e7",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "stored_first_empty_second_unaffordable"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "both_used",
+      "classification": "manufactured",
+      "common_event_prefix": [],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "96428def51ee8de99b0a9c32607e9ef9768d9441970408cfdc2a22729337d8a1",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "both_used"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "heldout_gap_before_stored",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "pack_draw",
+          "key": "p_standard_normal_1",
+          "slot": 1
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_standard_normal_1",
+          "price": 4,
+          "slot": 1
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_celestial_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "2daeb1c65fe3a9d4e437d1e4c6a1768c73aa7b633e7320d9de41b0774212b687",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "heldout_gap_before_stored"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "heldout_used_first_empty_second",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "pack_draw",
+          "key": "p_arcana_normal_1",
+          "slot": 2
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "92ef9abfe2a0a9b90f53d6770c82a2837a4ecda0ec697cb5773f3f204d9db43c",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "heldout_used_first_empty_second"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "heldout_reversed_stored",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "booster_offer",
+          "key": "p_celestial_normal_1",
+          "price": 4,
+          "slot": 1
+        },
+        {
+          "event": "booster_offer",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "b507c143ab0b2f89b7c3968938214979156d5f11db9e3e8f6701bd4618fd2312",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m unittest tools.advisor_learning.test_lifecycle_457 -v",
+        "fixture": "heldout_reversed_stored"
+      }
+    },
+    {
+      "agreement": true,
+      "case_id": "used_first_stored_second_open",
+      "classification": "manufactured",
+      "common_event_prefix": [
+        {
+          "event": "booster_open",
+          "key": "p_arcana_normal_1",
+          "price": 4,
+          "slot": 2
+        }
+      ],
+      "first_difference": null,
+      "manifest": {
+        "candidate": "development457-source-fidelity-v5",
+        "classification": "manufactured_source_rule; original shop source not executed",
+        "files_sha256": {
+          "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+          "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+          "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+          "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+          "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+          "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+          "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+        },
+        "fixture_sha256": "25d5a68b80c8879c9320410b1f310de2179387277f8bf335b981326b0756f56d",
+        "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+      },
+      "minimization_status": "not_minimized",
+      "reproduction": {
+        "command": "python -B -m tools.advisor_eval.development457.qualify_manufactured"
+      }
+    }
+  ],
+  "negative_control": {
+    "agreement": false,
+    "case_id": "used_first_stored_second_wrong_position",
+    "classification": "manufactured",
+    "common_event_prefix": [],
+    "first_difference": {
+      "actual": 1,
+      "expected": 2,
+      "field": "events[0].slot"
+    },
+    "manifest": {
+      "candidate": "development457-source-fidelity-v5",
+      "classification": "manufactured_source_rule; original shop source not executed",
+      "files_sha256": {
+        "adapter_and_tests": "f6d51e2dd0dd75bf3340a9235af80e4ea8615e3690911d3d449282e757012257",
+        "candidate": "2bfef93040a2e31539fdfeefad2ce091a0ab9ee03b72b3cc97f786cdb052ee53",
+        "fixtures": "0a3524054af26701e4f3a1bad45befbc3631710acfdf1fe4a2d44b1b2e47523d",
+        "integration": "ba7111a4ca9a478f1563931fe703231d6beeb1f0e5bbfe493e576ea615b87018",
+        "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+        "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+        "reference": "f6103b963bddc476f631109c4a7a2637f35815310f5e355afc7236ee82750ec9"
+      },
+      "fixture_sha256": "25d5a68b80c8879c9320410b1f310de2179387277f8bf335b981326b0756f56d",
+      "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47"
+    },
+    "minimization_status": "not_minimized",
+    "reproduction": {
+      "mutation": "change offered physical slot from 2 to 1"
+    }
+  },
+  "old_integration_sha256": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+  "original_source_executed": false,
+  "qualification_script_sha256": "388a33d00eecdb121576abc200a6b6de9a7019d3428762b27d69dbfb09359787",
+  "runner_after_sha256": "e206eba989b9728b71f1e2217fdc63c14bbb8a1b50de5cfe3f0809e200a900c2",
+  "runner_before_sha256": "29a71323a334df5f63fc98f9345e3d57e00ef1c4bfe757a06336678297a1b142",
+  "schema": "manufactured_booster_slot_qualification_457_v1",
+  "source_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+  "source_member_sha256": {
+    "card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "functions/button_callbacks.lua": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+    "functions/common_events.lua": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+    "game.lua": "bbc67bd3fbadd1ea3f3f0aba07ef8596118d89ff1e9758718f9e17c07a96e912"
+  }
+}

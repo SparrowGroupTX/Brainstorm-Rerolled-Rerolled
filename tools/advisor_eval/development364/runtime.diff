@@ -1,0 +1,320 @@
+--- before/Brainstorm\Advisor\acorn_ordering.lua
++++ Brainstorm\Advisor\acorn_ordering.lua
+@@ -14,20 +14,21 @@
+   if not belief or not belief.validate(b) or b.state_valid~=true then return no('Current public inventory abilities are not qualified.') end
+   if s.phase~='hand' or not finite(s.hands_left) or s.hands_left<1 or s.hands_left%1~=0 or
+     not finite(s.discards_left) or s.discards_left<0 or s.discards_left%1~=0 or
+-    #(s.hand or {})<1 or #s.hand>9 or s.jokers_shuffling or s.ordering_safe==false then
++    #(s.hand or {})<1 or #s.hand>12 or s.jokers_shuffling or s.ordering_safe==false then
+     return no('The belief comparison requires a settled visible hand and known remaining resources.') end
+   if not scorer or not scorer.score or not finite(s.chips) or not finite((s.blind or {}).chips) then return no('Exact scoring and target resources are required.') end
+   local target=s.blind.chips-s.chips;if target<=0 then return no('The round is already cleared.') end
+   -- Glass breaks after the immediate score, not between its retriggers. The
+   -- pure scorer retains exposure without predicting a surviving population.
+-  local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true,m_glass=true}
++  local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true,m_glass=true,m_gold=true}
+   local random_floor=false
+   for _,c in ipairs(s.hand) do
+     if c.face_down or c.unknown or c.concealed or c.facing=='back' or not known_enhancements[c.enhancement or 'c_base'] or
+-      c.seal and c.seal~='Red' then
+-      return no('Concealed, unknown or held-reward playing-card effects remain outside this immediate comparison.') end
++      c.seal and not ({Red=true,Blue=true,Purple=true,Gold=true})[c.seal] then
++      return no('Concealed or unknown playing-card effects remain outside this immediate comparison.') end
+     if c.enhancement=='m_lucky' then random_floor=true end
+     if c.enhancement=='m_glass' then diag.glass_after_scoring=true end
++    if c.enhancement=='m_gold' or c.seal=='Blue' or c.seal=='Purple' then diag.unplanned_rewards=true end
+     local e=c.edition
+     if type(e)=='string' then e={[e]=true} end
+     if e~=nil then
+@@ -126,6 +127,7 @@
+       public_information_fallback=not clear,joint_resource_comparison=false,
+       lines={clear and 'This fixed play reaches the modeled target in every consistent public Joker order.' or
+         'This fixed play has the strongest conservative immediate score across the consistent public Joker orders.',
++        diag.unplanned_rewards and 'Immediate score only; held Gold and seal rewards are not planned against discards or future hands.' or
+         diag.glass_after_scoring and 'Glass may break after scoring; its survival and the next hand are not predicted.' or
+         'Observe visible Joker activations and refresh the belief after the action; future draws, discards and consumable uses are not forecast here.'}},diag.evaluations,diag
+   end
+--- before/Brainstorm\Advisor\auto_run.lua
++++ Brainstorm\Advisor\auto_run.lua
+@@ -27,6 +27,9 @@
+   local c={}
+   if options.teacher_batch~=nil and type(options.teacher_batch)~='boolean' then return nil,'Invalid teacher_batch option.' end
+   c.teacher_batch=options.teacher_batch==true
++  if options.retire_unsupported~=nil and type(options.retire_unsupported)~='boolean' then return nil,'Invalid retirement option.' end
++  c.retire_unsupported=options.retire_unsupported==true
++  c.retire_runs=c.teacher_batch or c.retire_unsupported
+   for _,entry in ipairs({{'search_seconds',30,30},{'stall_seconds',30,30},{'max_actions',500,500},
+       {'run_seconds',1800,1800},{'max_runs',25,100},{'session_seconds',21600,21600}}) do
+     local value=options[entry[1]];if value==nil then value=c.teacher_batch and entry[1]=='max_runs' and 10 or entry[2] end
+@@ -132,7 +135,7 @@
+   local api={}
+   local request_abandon
+   local function start_allowances_used()
+-    return state.config and state.config.teacher_batch and state.start_attempts or state.runs_started
++    return state.config and state.config.retire_runs and state.start_attempts or state.runs_started
+   end
+   local function emit(event,details)
+     local record={schema=1,event=event,time=state.last_time,session=state.session_serial,
+@@ -238,17 +241,19 @@
+       -- observation of a dispatched action renew that allowance.
+       state.progress_fingerprint=obs.fingerprint
+     end
+-    if state.config.teacher_batch and ready(obs) and not obs.input_busy then
++    if state.config.retire_runs and ready(obs) and not obs.input_busy then
+       local token=obs.semantic_fingerprint
+       if type(token)~='string' or token=='' or #token>8192 then
+-        request_abandon('error','semantic_progress_unavailable',obs.decision_reason);return
++        if state.config.teacher_batch then request_abandon('error','semantic_progress_unavailable',obs.decision_reason)
++        else stop('semantic_progress_unavailable',obs.decision_reason) end;return
+       end
+       if not state.semantic_seen[token] then
+         -- More than one settled public state can occur per advisory action;
+         -- keep room for those phases and manual play without accepting loops
+         -- as progress. The storage bound remains independent of frame count.
+         if state.semantic_count>=2048 then
+-          request_abandon('error','semantic_progress_capacity');return
++          if state.config.teacher_batch then request_abandon('error','semantic_progress_capacity')
++          else stop('semantic_progress_capacity') end;return
+         end
+         state.semantic_seen[token]=true;state.semantic_count=state.semantic_count+1
+         state.semantic_at=t;state.semantic_fingerprint=token
+@@ -258,10 +263,10 @@
+   local function stalled(t,reason)
+     -- Search/start/terminal transitions have their own lifecycle receipts.
+     -- A finished game's old semantic timestamp cannot expire a new wait.
+-    local since=state.config.teacher_batch and state.run_id and not state.run_finalized and
++    local since=state.config.retire_runs and state.run_id and not state.run_finalized and
+       state.semantic_at or state.progress_at
+     if t-(since or t)>=state.config.stall_seconds then
+-      if state.config.teacher_batch and state.run_id and not state.run_finalized then
++      if state.config.retire_runs and state.run_id and not state.run_finalized then
+         request_abandon('abandoned_stall',reason or 'stalled')
+       else stop(reason or 'stalled') end
+       return true
+@@ -269,7 +274,7 @@
+     return false
+   end
+   request_abandon=function(outcome,reason,detail)
+-    if not state.config.teacher_batch or not state.active or state.run_finalized or not state.run_id then return false end
++    if not state.config.retire_runs or not state.active or state.run_finalized or not state.run_id then return false end
+     if not state.abandon_pending then
+       state.abandon_pending={outcome=outcome,reason=reason,detail=detail,time=state.last_time}
+     end
+@@ -382,18 +387,18 @@
+     state.state='starting';state.waiting_for=nil
+     if not checked_log('run_start_requested',{found=state.found,run_number=next_run}) then return end
+     -- The product may launch before a later callback fails (for example while
+-    -- binding terminal observation). Reserve the teacher allowance first;
++    -- binding terminal observation). Reserve the retiring session's allowance first;
+     -- uncertainty cannot refund it or be resumed into a second launch.
+-    if state.config.teacher_batch then state.start_attempts=state.start_attempts+1 end
++    if state.config.retire_runs then state.start_attempts=state.start_attempts+1 end
+     local ok,accepted,detail,started_id=pcall(cb.start_run,clone(state.found),clone(state.binding))
+     if not ok or accepted~=true then
+-      if state.config.teacher_batch then state.uncertain_starts=state.uncertain_starts+1 end
++      if state.config.retire_runs then state.uncertain_starts=state.uncertain_starts+1 end
+       stop('run_start_uncertain',ok and detail or tostring(accepted));return
+     end
+     state.expected_run_id=id(started_id) and started_id or nil
+     state.runs_started=next_run
+     state.found=nil
+-    if state.config.teacher_batch then
++    if state.config.retire_runs then
+       if not state.expected_run_id then
+         stop('run_start_identity_unavailable','The accepted run start has no bound identity; its start allowance remains consumed.');return
+       end
+@@ -433,7 +438,7 @@
+   function api.start(options)
+     if state.active or state.search_pending then return false,'The previous session or search worker is still active.' end
+     local c,why=config(options);if not c then return false,why end
+-    if c.teacher_batch and not cb.abandon_run then return false,'Teacher batches require the verified product abandonment callback.' end
++    if c.retire_runs and not cb.abandon_run then return false,'Retiring sessions require the verified product abandonment callback.' end
+     local t=clock();if not t then return false,state.reason end
+     local obs=observe();if not obs then return false,state.reason end
+     local b;b,why=binding(obs);if not b then return false,why end
+@@ -443,7 +448,7 @@
+     state.active=true;state.complete=false;state.reason=nil;state.detail=nil;state.log_error=nil
+     state.state='waiting';state.waiting_for='search_ready';state.search_number=0
+     state.runs_started=0;state.start_attempts=0;state.uncertain_starts=0
+-    state.actions=0;state.outcomes=outcomes(c.teacher_batch);state.run_id=nil
++    state.actions=0;state.outcomes=outcomes(c.retire_runs);state.run_id=nil
+     state.gold_progress=gold_progress();state.gold_seen={};state.last_gold_award=nil
+     state.run_actions=0;state.pending_action=nil;state.found=nil;state.terminal_event=nil
+     state.run_started_at=nil;state.expected_run_id=nil;state.run_finalized=false
+@@ -555,6 +560,7 @@
+       run_limit_reached=state.config~=nil and start_allowances_used()>=state.config.max_runs,
+       actions=state.actions,run_actions=state.run_actions,
+       teacher_batch=state.config and state.config.teacher_batch or false,
++      retire_unsupported=state.config and state.config.retire_unsupported or false,
+       abandonment_pending=state.abandon_pending~=nil,last_abandonment=state.last_abandonment,
+       outcomes=state.outcomes,gold_progress=state.gold_progress,last_gold_award=state.last_gold_award,
+       profile_id=state.binding and state.binding.profile_id,run_id=state.run_id,
+@@ -602,7 +608,7 @@
+         if not checked_log('run_started',{run_number=state.runs_started}) then return api.status() end
+       else
+         stalled(t,'run_start_stalled')
+-        if state.config.teacher_batch and state.active then maybe_abandon(obs,t) end
++        if state.config.retire_runs and state.active then maybe_abandon(obs,t) end
+         return api.status()
+       end
+     end
+@@ -620,11 +626,29 @@
+     if terminal(obs,t) then return api.status() end
+     if not goal then stop('goal_unavailable',goal_reason);return api.status() end
+     if t-state.run_started_at>=state.config.run_seconds then stop('run_time_limit');return api.status() end
++    -- Collection retirement cannot turn an unobserved execution into a new run.
++    -- Settle its existing receipt before considering a fresh unsupported result.
++    if state.config.retire_unsupported and not state.config.teacher_batch and state.pending_action then
++      local changed=type(obs.fingerprint)=='string' and obs.fingerprint~='' and obs.fingerprint~=state.pending_action.fingerprint
++      if changed and ready(obs) and obs.advice_fingerprint==obs.fingerprint then
++        if not checked_log('action_observed',{before=state.pending_action.fingerprint,after=obs.fingerprint,
++            action_token=state.pending_action.action_token}) then return api.status() end
++        state.pending_action=nil;state.state='playing';state.waiting_for=nil;state.progress_at=t
++      else
++        state.state='waiting';state.waiting_for='action_observation'
++        if t-state.pending_action.time>=state.config.stall_seconds then stop('action_observation_stalled') end
++        return api.status()
++      end
++    end
+     progress(obs,t)
+-    if state.config.teacher_batch then
++    if not state.active then return api.status() end
++    if state.config.retire_runs then
+       if ready(obs) and (obs.decision_state=='unsupported' or obs.decision_state=='no_decision') then
+         request_abandon('unsupported',obs.decision_state,obs.decision_reason)
+-      elseif ready(obs) and obs.decision_state=='error' then request_abandon('error','decision_error',obs.decision_reason) end
++      elseif ready(obs) and obs.decision_state=='error' then
++        if state.config.teacher_batch then request_abandon('error','decision_error',obs.decision_reason)
++        else stop('decision_error',obs.decision_reason);return api.status() end
++      end
+       if t-(state.semantic_at or t)>=state.config.stall_seconds then
+         request_abandon('abandoned_stall','semantic_progress_stalled')
+       end
+--- before/Brainstorm\Advisor\concealed_belief.lua
++++ Brainstorm\Advisor\concealed_belief.lua
+@@ -199,15 +199,15 @@
+   options=options or {};local d={supported=false,evaluations=0,complete=false,scope='immediate_fixed_play',comparisons={}}
+   local hands=s.hands_left or (s.current_round or {}).hands_left or 0
+   if hands<1 then return unsupported('No playable hands remain.',d) end
+-  if #(s.hand or {})<1 or #s.hand>10 or #(s.deck or {})>120 then
+-    return unsupported('The concealed immediate-play comparison requires at most ten held cards and a bounded deck.',d)
++  if #(s.hand or {})<1 or #s.hand>12 or #(s.deck or {})>120 then
++    return unsupported('The concealed immediate-play comparison requires at most twelve held cards and a bounded deck.',d)
+   end
+   for _,j in ipairs(s.jokers or {}) do if j.face_down or j.facing=='back' then return unsupported('A concealed Joker row is not supported.',d) end end
+   local o,why=M.observe(s);if not o then return unsupported(why,d) end
+   -- Ten held cards have 637 one-to-five-slot actions: twelve common worlds
+-  -- cost 7,644 scores. Smaller hands retain sixteen; explicit sample requests
+-  -- still face the complete-family budget check below, never partial scoring.
+-  local count=math.max(4,math.min(32,math.floor(options.samples or (#s.hand==10 and 12 or 16))))
++  -- cost 7,644 scores. Eleven use seven and twelve use five; smaller hands retain
++  -- sixteen. Explicit samples still face the complete-family budget check below.
++  local count=math.max(4,math.min(32,math.floor(options.samples or (#s.hand==12 and 5 or #s.hand==11 and 7 or #s.hand==10 and 12 or 16))))
+   local candidates={};combinations(#s.hand,math.min(5,s.hand_limit or 5),function(indices)
+     local selected={};for _,i in ipairs(indices) do selected[i]=true end
+     for i,c in ipairs(o.state.hand) do if (c.ability or {}).forced_selection and not selected[i] then return end end
+--- before/Brainstorm\Core\auto_run_product.lua
++++ Brainstorm\Core\auto_run_product.lua
+@@ -86,6 +86,7 @@
+   local purchase_pending
+   local semantic_cache_key,semantic_cache_value
+   local abandon_serial=0
++  local retire_unsupported=false
+   local serial,advice_serial=0,0;local run_ids=setmetatable({},{__mode='k'})
+   local generations={consent_generation=0,settings_generation=0,checkpoint_generation=0,manual_generation=0}
+   local function run_id(g)
+@@ -261,7 +262,7 @@
+     local n=native();local transition=n and n.can_begin and n.can_begin()==true or false
+     local goal=A.gold_stickers.capture(g,{enabled=true})
+     local semantic
+-    if teacher_profile and snapshot and A.player_journal and A.player_journal.semantic_fingerprint then
++    if (teacher_profile or retire_unsupported) and snapshot and A.player_journal and A.player_journal.semantic_fingerprint then
+       if fingerprint~=semantic_cache_key then
+         semantic_cache_value=A.player_journal.semantic_fingerprint(snapshot);semantic_cache_key=fingerprint
+       end
+@@ -354,7 +355,7 @@
+     end,
+     abandon_run=function(reason,context)
+       local g=get();local id=run_id(g)
+-      if not teacher_profile or retired_run==id or not context or context.run_id~=id or not logging() or
++      if not (teacher_profile or retire_unsupported) or retired_run==id or not context or context.run_id~=id or not logging() or
+         A.worker or A.execution_key or search_busy() or busy(g,false) or terminal:poll(id) then
+         return false,'The current run cannot be retired while an action or transition is unresolved.'
+       end
+@@ -363,7 +364,7 @@
+       abandon_serial=abandon_serial+1
+       local receipt={verified=true,run_id=id,event_id='abandon:'..abandon_serial,
+         reason=reason,method='settled_run_retired_before_owned_search',terminal=false}
+-      if not log({event='teacher_run_retired',receipt=receipt,run_number=context.run_number,
++      if not log({event=teacher_profile and 'teacher_run_retired' or 'collection_run_retired',receipt=receipt,run_number=context.run_number,
+         outcome=context.outcome,run_seconds=context.run_seconds,run_actions=context.run_actions}) then
+         return false,'The abandonment record could not be written.'
+       end
+@@ -429,9 +430,9 @@
+         self.status_text=self.status_text..' Sticker progress unknown for '..tostring(progress.unknown_wins)..' win(s).'
+       end
+     end
+-    if state.teacher_batch and state.outcomes then
++    if (state.teacher_batch or state.retire_unsupported) and state.outcomes then
+       local o=state.outcomes
+-      self.status_text=self.status_text..' Teacher: '..tostring(o.abandoned_stall or 0)..' stalls, '..
++      self.status_text=self.status_text..(state.teacher_batch and ' Teacher: ' or ' Collection marathon: ')..tostring(o.abandoned_stall or 0)..' stalls, '..
+         tostring(o.unsupported or 0)..' unsupported, '..tostring(o.error or 0)..' errors.'
+     end
+     return state
+@@ -505,6 +506,10 @@
+     local copied,configured=pcall(copy,options or {})
+     if not copied then return false,tostring(configured)end
+     if configured.teacher_batch~=nil and type(configured.teacher_batch)~='boolean' then return false,'Invalid teacher mode.' end
++    if configured.retire_unsupported~=nil and type(configured.retire_unsupported)~='boolean' then return false,'Invalid retirement option.' end
++    if configured.retire_unsupported and (not A.player_journal or type(A.player_journal.semantic_fingerprint)~='function') then
++      return false,'Marathon progress recording is unavailable.'
++    end
+     if configured.teacher_batch==true then
+       if A.execution_key then return false,'Wait for the current action to settle before clearing observations.' end
+       if type(A.player_log.prepare_collection)~='function' or not A.player_journal or
+@@ -550,6 +555,7 @@
+       if A.player_log.end_collection then A.player_log:end_collection('A normal auto-run session was requested.')end
+       teacher_profile=nil
+     end
++    retire_unsupported=configured.retire_unsupported==true
+     A.teacher_profile=teacher_profile
+     B.config.advisor.enabled=true;B.config.advisor.challenge_only=false
+     B.config.advisor.gold_stickers=true;B.config.advisor.player_logging=true
+--- before/Brainstorm\UI\collection_run.lua
++++ Brainstorm\UI\collection_run.lua
+@@ -110,8 +110,10 @@
+ G.FUNCS.brainstorm_collection_auto_start=function()
+   quiet.owner='auto';quiet.failure=nil
+   if not B.AutoRun then quiet.failure='Auto-run is unavailable.';request_failure('auto',quiet.failure);refresh();return end
+-  local ok,reason=B.AutoRun:start(options())
+-  quiet.text=ok and 'Auto-run started. Use Stop to pause; ordinary input keeps the session.' or tostring(reason or 'Auto-run could not start.')
++  local request={};for k,v in pairs(options())do request[k]=v end
++  request.retire_unsupported=true
++  local ok,reason=B.AutoRun:start(request)
++  quiet.text=ok and 'Collection marathon started. Unsupported settled runs are logged and retired; Stop pauses.' or tostring(reason or 'Auto-run could not start.')
+   if not ok then quiet.failure=quiet.text;request_failure('auto',quiet.failure);refresh()end
+ end
+ G.FUNCS.brainstorm_collection_resume=function()
+@@ -172,10 +174,10 @@
+     row('Missing counts are distinct conditional offers, not purchases or wins.',nil,.24),
+     row(B.AutoRun and 'With Missing: Auto, auto-run may use a missing Legendary + Perkeo.' or
+       'Auto requires one reachable missing Joker; Off adds no missing-target condition.',nil,.22),
+-    row('10-run batch: win-first strategy; losses count. Resume keeps your run.',G.C.ORANGE,.22)}
++    row('Collection marathon: losses and retired runs count. Win-first is a separate mode.',G.C.ORANGE,.22)}
+   local controls={button('Search and start new run','brainstorm_collection_search_start',3.3)}
+   if B.AutoRun then
+-    controls[#controls+1]=button('Start auto-run + logging','brainstorm_collection_auto_start',3.3)
++    controls[#controls+1]=button('Start collection marathon','brainstorm_collection_auto_start',3.3)
+     nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={
+       button('Session limit: '..q.max_runs..' runs','brainstorm_collection_runs',3.4),
+       button(q.burnt_fallback and 'Burnt: flexible' or 'Burnt: required','brainstorm_collection_burnt',3.4)}}
+@@ -183,7 +185,7 @@
+   nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.03},nodes=controls}
+   if B.AutoRun then
+     nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={
+-      button('Clear logs + play 10 runs','brainstorm_teacher_start',4.5),
++      button('Clear logs + 10 win-first runs','brainstorm_teacher_start',4.5),
+       button('Clear logs','brainstorm_collection_clear_logs',2.2)}}
+   else
+     nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={

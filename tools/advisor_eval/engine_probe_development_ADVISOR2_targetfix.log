@@ -1,0 +1,282 @@
+{"type": "engine_probe_sources", "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\Balatro.exe", "lua_modules": 47, "source_sha256": {"game.lua": "bbc67bd3fbadd1ea3f3f0aba07ef8596118d89ff1e9758718f9e17c07a96e912", "globals.lua": "e39b5bf91b907c593d72735dc8119aff891bd67ee6e4560254e8ee0a3824d546", "card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453", "cardarea.lua": "e995e91d5ca97a5f9bfcab7438f3b2c6f3d79782be8e89161ab6b39f0030fc87", "blind.lua": "0a7e5fde144da36d4ca1a96950b4bf51e3c95be55fb02764a555de53a3bd8afb", "back.lua": "c4d0b83f2f7a614a3b0c52c127f50290fd5f7bcad427fceb534c541ff8a4c0e1", "tag.lua": "42b589519d7f6e4dd14fc4628198386daae1bbc011ba4125f86eec4e1ec29fe3", "challenges.lua": "7f79aa7a5527f30a8b7068f44e220967ab2907ddcbd0729840be5ddf957c45e9", "engine/event.lua": "98d4e954397b9ddc81c6ec8eadae257960d1cc0ba10e9993f4b241c5dd15159e", "functions/state_events.lua": "6c86aefb42d0323d737f87aaa84f53e42b755e72cd0bfd163b7d9cca5c0a99a9", "functions/common_events.lua": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc", "functions/button_callbacks.lua": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101", "functions/misc_functions.lua": "c36ed54d8ab441be994a9afc5d38b8ac530f3b93995dfed424ec11f02e633198"}}
+{"type": "engine_probe_provenance", "challenge": "c_omelette_1", "seed": "ADVISOR2", "validation": "experimental", "rules_digest": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47", "runtime_digest": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2", "adapter_digest": "fd56ef8c4f34ccbc61d0bf16cdd63133b9546ea3bb25a2c7e52a1336dfec235c", "policy_digest": "301a0db0bd94f684d8f5e8d4f68729caf0690b667684af5884f1969073b5f3eb", "policy_files": {"Brainstorm/Advisor/consumables.lua": "177528c140835737f7c1c09b646d757dd034986a7c9085549fe0082c8860d806", "Brainstorm/Advisor/decision.lua": "f0a6f07b52e354def3c65247124f506ca7df70164d4e8061115ca369b3ea697c", "Brainstorm/Advisor/ordering.lua": "ac50be17ea1c1427ac2100a96a405bb673c06e5ef4eae669eae6a0260cab6405", "Brainstorm/Advisor/runtime.lua": "abae72777a5e5c4dc1a9eb9ea421799423b6dd9a36d2e6cbacff446a36be4117", "Brainstorm/Advisor/scoring.lua": "f1e772abad0362b2598a8cfb846a3817cf457d6283bcbbde7f7e020308f58f54", "Brainstorm/Advisor/search.lua": "bb7c224610ae234273f9695dd8708a6681c3dcdd8fd1c63ecc8a620964ed140e", "Brainstorm/Advisor/snapshot.lua": "edb82202804ec47e4da2f6998680ac45823a90036f92acfdeb300c349916d486", "Brainstorm/Advisor/strategy.lua": "0e079f61de65c62157da0e94c904a8ee8a35098681fa19cdce33449c821539cc", "Brainstorm/Advisor/synergies.lua": "46f9d30d92f89ec81bee15b6b94c575501c86f3b0d6a91291f0fe971fbf3cc37", "Brainstorm/UI/advisor.lua": "acce4bda321bfbaa7ba51858e245800d4dc96acec1c543703aba851f8f9c7b9c", "Brainstorm/Core/Brainstorm.lua": "f87a18d58c87aaecd2e6f374bb5d1e04b778ad15ab41efaffd3e6256d5cdde42"}}
+PROBE original item prototypes loaded	150	20
+PROBE original shop pool sampled	Joker3sho1	j_vagabond	20
+PROBE original boss sampled	bl_hook
+PROBE original voucher sampled	v_telescope
+PROBE original tag sampled	tag_voucher
+PROBE native LuaJIT/game RNG deterministic	0.85708188579859
+PROBE no physical save access; in-memory storage calls	2
+PROBE full-run adapter qualification	false
+PROBE authentic challenge initialization	c_omelette_1	52	5
+PROBE authentic start_run completed	true
+PROBE challenge created before boundary	c_omelette_1	52	true
+EPISODE action	1	blind	select_blind		nil	4
+{"action":{"blind":"Small","kind":"select_blind"},"ante":1,"dollars":4,"evaluations":0,"phase":"blind","round":0,"step":1,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":1,"type":"engine_episode_resolved"}
+EPISODE action	2	hand	discard	3,4,5	237	4
+{"action":{"area":"hand","indices":[3,4,5],"kind":"discard"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":110090,"phase":"hand","round":1,"step":2,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	2
+{"chips_delta":0,"discards_left":2,"dollars_delta":0,"hands_left":4,"state":1,"step":2,"type":"engine_episode_resolved"}
+EPISODE action	3	hand	play	4,5,6,7,8	232	4
+{"action":{"area":"hand","indices":[4,5,6,7,8],"kind":"play"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":110090,"expected_score":232,"phase":"hand","round":1,"step":3,"type":"engine_episode_action"}
+EPISODE action resolved	1	232	0	3	2
+{"chips_delta":232,"discards_left":2,"dollars_delta":0,"hands_left":3,"state":1,"step":3,"type":"engine_episode_resolved"}
+EPISODE action	4	hand	play	1,2,4,5,7	332	4
+{"action":{"area":"hand","indices":[1,2,4,5,7],"kind":"play"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":26378,"expected_score":332,"phase":"hand","round":1,"step":4,"type":"engine_episode_action"}
+EPISODE action resolved	8	332	0	2	2
+{"chips_delta":332,"discards_left":2,"dollars_delta":0,"hands_left":2,"state":8,"step":4,"type":"engine_episode_resolved"}
+EPISODE action	5	round	cash_out		nil	4
+{"action":{"kind":"cash_out"},"ante":1,"dollars":4,"evaluations":0,"phase":"round","round":1,"step":5,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-564	0	4	3
+{"chips_delta":-564,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":5,"type":"engine_episode_resolved"}
+EPISODE action	6	shop	sell	j_egg	nil	4
+{"action":{"area":"jokers","followup":{"area":"shop_jokers","index":1,"kind":"buy"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":4,"evaluations":0,"phase":"shop","round":1,"step":6,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":5,"hands_left":4,"state":5,"step":6,"type":"engine_episode_resolved"}
+EPISODE action	7	shop	buy	j_devious	nil	9
+{"action":{"area":"shop_jokers","index":1,"kind":"buy"},"ante":1,"card_key":"j_devious","dollars":9,"evaluations":0,"phase":"shop","round":1,"step":7,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-4	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-4,"hands_left":4,"state":5,"step":7,"type":"engine_episode_resolved"}
+EPISODE action	8	shop	sell	j_egg	nil	5
+{"action":{"area":"jokers","followup":{"area":"shop_booster","index":1,"kind":"open"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":5,"evaluations":0,"phase":"shop","round":1,"step":8,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":5,"hands_left":4,"state":5,"step":8,"type":"engine_episode_resolved"}
+EPISODE action	9	shop	open	p_buffoon_normal_1	nil	10
+{"action":{"area":"shop_booster","index":1,"kind":"open"},"ante":1,"card_key":"p_buffoon_normal_1","dollars":10,"evaluations":0,"phase":"shop","round":1,"step":9,"type":"engine_episode_action"}
+EPISODE action resolved	18	0	-4	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-4,"hands_left":4,"state":18,"step":9,"type":"engine_episode_resolved"}
+EPISODE action	10	pack	choose	j_jolly	nil	6
+{"action":{"area":"pack_cards","index":1,"kind":"choose"},"ante":1,"card_key":"j_jolly","dollars":6,"evaluations":0,"phase":"pack","round":1,"step":10,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":10,"type":"engine_episode_resolved"}
+EPISODE action	11	shop	open	p_spectral_jumbo_1	nil	6
+{"action":{"area":"shop_booster","index":1,"kind":"open"},"ante":1,"card_key":"p_spectral_jumbo_1","dollars":6,"evaluations":0,"phase":"shop","round":1,"step":11,"type":"engine_episode_action"}
+EPISODE action resolved	15	0	-6	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-6,"hands_left":4,"state":15,"step":11,"type":"engine_episode_resolved"}
+EPISODE action	12	pack	choose	c_medium	nil	0
+{"action":{"area":"pack_cards","index":2,"kind":"choose","targets":[8]},"ante":1,"card_key":"c_medium","dollars":0,"evaluations":0,"phase":"pack","round":1,"step":12,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":12,"type":"engine_episode_resolved"}
+EPISODE action	13	shop	leave_shop		nil	0
+{"action":{"kind":"leave_shop"},"ante":1,"dollars":0,"evaluations":0,"phase":"shop","round":1,"step":13,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":13,"type":"engine_episode_resolved"}
+EPISODE action	14	blind	select_blind		nil	0
+{"action":{"blind":"Big","kind":"select_blind"},"ante":1,"dollars":0,"evaluations":0,"phase":"blind","round":1,"step":14,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":14,"type":"engine_episode_resolved"}
+EPISODE action	15	hand	play	2,3,4	660	0
+{"action":{"area":"hand","indices":[2,3,4],"kind":"play"},"ante":1,"blind":"bl_big","dollars":0,"evaluations":26378,"expected_score":660,"phase":"hand","round":2,"step":15,"type":"engine_episode_action"}
+EPISODE action resolved	8	660	0	3	3
+{"chips_delta":660,"discards_left":3,"dollars_delta":0,"hands_left":3,"state":8,"step":15,"type":"engine_episode_resolved"}
+EPISODE action	16	round	cash_out		nil	0
+{"action":{"kind":"cash_out"},"ante":1,"dollars":0,"evaluations":0,"phase":"round","round":2,"step":16,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-660	0	4	3
+{"chips_delta":-660,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":16,"type":"engine_episode_resolved"}
+EPISODE action	17	shop	sell	j_egg	nil	0
+{"action":{"area":"jokers","followup":{"area":"shop_jokers","index":1,"kind":"buy"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":0,"evaluations":0,"phase":"shop","round":2,"step":17,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	8	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":8,"hands_left":4,"state":5,"step":17,"type":"engine_episode_resolved"}
+EPISODE action	18	shop	buy	c_death	nil	8
+{"action":{"area":"shop_jokers","index":1,"kind":"buy"},"ante":1,"card_key":"c_death","dollars":8,"evaluations":0,"phase":"shop","round":2,"step":18,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-3	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-3,"hands_left":4,"state":5,"step":18,"type":"engine_episode_resolved"}
+EPISODE action	19	shop	buy	j_clever	nil	5
+{"action":{"area":"shop_jokers","index":1,"kind":"buy"},"ante":1,"card_key":"j_clever","dollars":5,"evaluations":0,"phase":"shop","round":2,"step":19,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-4	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-4,"hands_left":4,"state":5,"step":19,"type":"engine_episode_resolved"}
+EPISODE action	20	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":1,"dollars":1,"evaluations":0,"phase":"shop","round":2,"step":20,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":20,"type":"engine_episode_resolved"}
+EPISODE action	21	blind	select_blind		nil	1
+{"action":{"blind":"Boss","kind":"select_blind"},"ante":1,"dollars":1,"evaluations":0,"phase":"blind","round":2,"step":21,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":21,"type":"engine_episode_resolved"}
+EPISODE action	22	hand	play	1,2,3,4	1420	1
+{"action":{"area":"hand","indices":[1,2,3,4],"kind":"play"},"ante":1,"blind":"bl_hook","dollars":1,"evaluations":26378,"expected_score":1420,"phase":"hand","round":3,"step":22,"type":"engine_episode_action"}
+EPISODE action resolved	8	1420	0	3	3
+{"chips_delta":1420,"discards_left":3,"dollars_delta":0,"hands_left":3,"state":8,"step":22,"type":"engine_episode_resolved"}
+EPISODE action	23	round	cash_out		nil	1
+{"action":{"kind":"cash_out"},"ante":2,"dollars":1,"evaluations":0,"phase":"round","round":3,"step":23,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-1420	0	4	3
+{"chips_delta":-1420,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":23,"type":"engine_episode_resolved"}
+EPISODE action	24	shop	sell	j_egg	nil	1
+{"action":{"area":"jokers","followup":{"area":"shop_jokers","index":1,"kind":"buy"},"index":1,"kind":"sell"},"ante":2,"card_key":"j_egg","dollars":1,"evaluations":0,"phase":"shop","round":3,"step":24,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	11	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":11,"hands_left":4,"state":5,"step":24,"type":"engine_episode_resolved"}
+EPISODE action	25	shop	buy	j_banner	nil	12
+{"action":{"area":"shop_jokers","index":1,"kind":"buy"},"ante":2,"card_key":"j_banner","dollars":12,"evaluations":0,"phase":"shop","round":3,"step":25,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-5,"hands_left":4,"state":5,"step":25,"type":"engine_episode_resolved"}
+EPISODE action	26	shop	open	p_arcana_jumbo_2	nil	7
+{"action":{"area":"shop_booster","index":1,"kind":"open"},"ante":2,"card_key":"p_arcana_jumbo_2","dollars":7,"evaluations":0,"phase":"shop","round":3,"step":26,"type":"engine_episode_action"}
+EPISODE action resolved	9	0	-6	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-6,"hands_left":4,"state":9,"step":26,"type":"engine_episode_resolved"}
+EPISODE action	27	pack	choose	c_chariot	nil	1
+{"action":{"area":"pack_cards","index":4,"kind":"choose","targets":[2]},"ante":2,"card_key":"c_chariot","dollars":1,"evaluations":0,"phase":"pack","round":3,"step":27,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":27,"type":"engine_episode_resolved"}
+EPISODE action	28	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":2,"dollars":1,"evaluations":0,"phase":"shop","round":3,"step":28,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":28,"type":"engine_episode_resolved"}
+EPISODE action	29	blind	select_blind		nil	1
+{"action":{"blind":"Small","kind":"select_blind"},"ante":2,"dollars":1,"evaluations":0,"phase":"blind","round":3,"step":29,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":29,"type":"engine_episode_resolved"}
+EPISODE action	30	hand	play	6,7	1120	1
+{"action":{"area":"hand","indices":[6,7],"kind":"play"},"ante":2,"blind":"bl_small","dollars":1,"evaluations":26378,"expected_score":1120,"phase":"hand","round":4,"step":30,"type":"engine_episode_action"}
+EPISODE action resolved	8	1120	0	3	3
+{"chips_delta":1120,"discards_left":3,"dollars_delta":0,"hands_left":3,"state":8,"step":30,"type":"engine_episode_resolved"}
+EPISODE action	31	round	cash_out		nil	1
+{"action":{"kind":"cash_out"},"ante":2,"dollars":1,"evaluations":0,"phase":"round","round":4,"step":31,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-1120	0	4	3
+{"chips_delta":-1120,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":31,"type":"engine_episode_resolved"}
+EPISODE action	32	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":2,"dollars":1,"evaluations":0,"phase":"shop","round":4,"step":32,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":32,"type":"engine_episode_resolved"}
+EPISODE action	33	blind	select_blind		nil	1
+{"action":{"blind":"Big","kind":"select_blind"},"ante":2,"dollars":1,"evaluations":0,"phase":"blind","round":4,"step":33,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":33,"type":"engine_episode_resolved"}
+EPISODE action	34	hand	play	2,3	1200	1
+{"action":{"area":"hand","indices":[2,3],"kind":"play"},"ante":2,"blind":"bl_big","dollars":1,"evaluations":26378,"expected_score":1200,"phase":"hand","round":5,"step":34,"type":"engine_episode_action"}
+EPISODE action resolved	8	1200	0	3	3
+{"chips_delta":1200,"discards_left":3,"dollars_delta":0,"hands_left":3,"state":8,"step":34,"type":"engine_episode_resolved"}
+EPISODE action	35	round	cash_out		nil	1
+{"action":{"kind":"cash_out"},"ante":2,"dollars":1,"evaluations":0,"phase":"round","round":5,"step":35,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-1200	0	4	3
+{"chips_delta":-1200,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":35,"type":"engine_episode_resolved"}
+EPISODE action	36	shop	sell	j_egg	nil	1
+{"action":{"area":"jokers","followup":{"area":"shop_booster","index":2,"kind":"open"},"index":1,"kind":"sell"},"ante":2,"card_key":"j_egg","dollars":1,"evaluations":0,"phase":"shop","round":5,"step":36,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	17	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":17,"hands_left":4,"state":5,"step":36,"type":"engine_episode_resolved"}
+EPISODE action	37	shop	open	p_buffoon_normal_1	nil	18
+{"action":{"area":"shop_booster","index":2,"kind":"open"},"ante":2,"card_key":"p_buffoon_normal_1","dollars":18,"evaluations":0,"phase":"shop","round":5,"step":37,"type":"engine_episode_action"}
+EPISODE action resolved	18	0	-4	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-4,"hands_left":4,"state":18,"step":37,"type":"engine_episode_resolved"}
+EPISODE action	38	pack	choose	j_ice_cream	nil	14
+{"action":{"area":"pack_cards","index":2,"kind":"choose"},"ante":2,"card_key":"j_ice_cream","dollars":14,"evaluations":0,"phase":"pack","round":5,"step":38,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":38,"type":"engine_episode_resolved"}
+EPISODE action	39	shop	buy	c_moon	nil	14
+{"action":{"area":"shop_jokers","index":1,"kind":"buy"},"ante":2,"card_key":"c_moon","dollars":14,"evaluations":0,"phase":"shop","round":5,"step":39,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-3	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-3,"hands_left":4,"state":5,"step":39,"type":"engine_episode_resolved"}
+EPISODE action	40	shop	leave_shop		nil	11
+{"action":{"kind":"leave_shop"},"ante":2,"dollars":11,"evaluations":0,"phase":"shop","round":5,"step":40,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":40,"type":"engine_episode_resolved"}
+EPISODE action	41	blind	select_blind		nil	11
+{"action":{"blind":"Boss","kind":"select_blind"},"ante":2,"dollars":11,"evaluations":0,"phase":"blind","round":5,"step":41,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":41,"type":"engine_episode_resolved"}
+EPISODE action	42	hand	play	3,4	2398	11
+{"action":{"area":"hand","indices":[3,4],"kind":"play"},"ante":2,"blind":"bl_arm","dollars":11,"evaluations":26378,"expected_score":2398,"phase":"hand","round":6,"step":42,"type":"engine_episode_action"}
+EPISODE action resolved	8	2398	0	3	3
+{"chips_delta":2398,"discards_left":3,"dollars_delta":0,"hands_left":3,"state":8,"step":42,"type":"engine_episode_resolved"}
+EPISODE action	43	round	cash_out		nil	11
+{"action":{"kind":"cash_out"},"ante":3,"dollars":11,"evaluations":0,"phase":"round","round":6,"step":43,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-2398	0	4	3
+{"chips_delta":-2398,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":43,"type":"engine_episode_resolved"}
+EPISODE action	44	shop	buy	v_telescope	nil	11
+{"action":{"area":"shop_vouchers","index":1,"kind":"buy"},"ante":3,"card_key":"v_telescope","dollars":11,"evaluations":0,"phase":"shop","round":6,"step":44,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-10	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-10,"hands_left":4,"state":5,"step":44,"type":"engine_episode_resolved"}
+EPISODE action	45	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":3,"dollars":1,"evaluations":0,"phase":"shop","round":6,"step":45,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":45,"type":"engine_episode_resolved"}
+EPISODE action	46	blind	select_blind		nil	1
+{"action":{"blind":"Small","kind":"select_blind"},"ante":3,"dollars":1,"evaluations":0,"phase":"blind","round":6,"step":46,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":46,"type":"engine_episode_resolved"}
+EPISODE action	47	hand	play	2,3	2365	1
+{"action":{"area":"hand","indices":[2,3],"kind":"play"},"ante":3,"blind":"bl_small","dollars":1,"evaluations":26378,"expected_score":2365,"phase":"hand","round":7,"step":47,"type":"engine_episode_action"}
+EPISODE action resolved	8	2365	0	3	3
+{"chips_delta":2365,"discards_left":3,"dollars_delta":0,"hands_left":3,"state":8,"step":47,"type":"engine_episode_resolved"}
+EPISODE action	48	round	cash_out		nil	1
+{"action":{"kind":"cash_out"},"ante":3,"dollars":1,"evaluations":0,"phase":"round","round":7,"step":48,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-2365	0	4	3
+{"chips_delta":-2365,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":48,"type":"engine_episode_resolved"}
+EPISODE action	49	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":3,"dollars":1,"evaluations":0,"phase":"shop","round":7,"step":49,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":49,"type":"engine_episode_resolved"}
+EPISODE action	50	blind	select_blind		nil	1
+{"action":{"blind":"Big","kind":"select_blind"},"ante":3,"dollars":1,"evaluations":0,"phase":"blind","round":7,"step":50,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":50,"type":"engine_episode_resolved"}
+EPISODE action	51	hand	discard	1,2,4,8	2230.7083333333	1
+{"action":{"area":"hand","indices":[1,2,4,8],"kind":"discard"},"ante":3,"blind":"bl_big","dollars":1,"evaluations":134942,"phase":"hand","round":8,"step":51,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	2
+{"chips_delta":0,"discards_left":2,"dollars_delta":0,"hands_left":4,"state":1,"step":51,"type":"engine_episode_resolved"}
+EPISODE action	52	hand	discard	3,4,5,8	2440.625	1
+{"action":{"area":"hand","indices":[3,4,5,8],"kind":"discard"},"ante":3,"blind":"bl_big","dollars":1,"evaluations":134942,"phase":"hand","round":8,"step":52,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	1
+{"chips_delta":0,"discards_left":1,"dollars_delta":0,"hands_left":4,"state":1,"step":52,"type":"engine_episode_resolved"}
+EPISODE action	53	hand	play	3,4,6,7,8	3300	1
+{"action":{"area":"hand","indices":[3,4,6,7,8],"kind":"play"},"ante":3,"blind":"bl_big","dollars":1,"evaluations":26378,"expected_score":3300,"phase":"hand","round":8,"step":53,"type":"engine_episode_action"}
+EPISODE action resolved	8	3300	0	3	1
+{"chips_delta":3300,"discards_left":1,"dollars_delta":0,"hands_left":3,"state":8,"step":53,"type":"engine_episode_resolved"}
+EPISODE action	54	round	cash_out		nil	1
+{"action":{"kind":"cash_out"},"ante":3,"dollars":1,"evaluations":0,"phase":"round","round":8,"step":54,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-3300	0	4	3
+{"chips_delta":-3300,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":54,"type":"engine_episode_resolved"}
+EPISODE action	55	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":3,"dollars":1,"evaluations":0,"phase":"shop","round":8,"step":55,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":55,"type":"engine_episode_resolved"}
+EPISODE action	56	blind	select_blind		nil	1
+{"action":{"blind":"Boss","kind":"select_blind"},"ante":3,"dollars":1,"evaluations":0,"phase":"blind","round":8,"step":56,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":56,"type":"engine_episode_resolved"}
+EPISODE action	57	hand	discard	1,3,6,7,8	2816.375	1
+{"action":{"area":"hand","indices":[1,3,6,7,8],"kind":"discard"},"ante":3,"blind":"bl_wall","dollars":1,"evaluations":134942,"phase":"hand","round":9,"step":57,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	2
+{"chips_delta":0,"discards_left":2,"dollars_delta":0,"hands_left":4,"state":1,"step":57,"type":"engine_episode_resolved"}
+EPISODE action	58	hand	use	c_death	2830	1
+{"action":{"area":"consumeables","index":1,"kind":"use","targets":[3,4]},"ante":3,"blind":"bl_wall","card_key":"c_death","dollars":1,"evaluations":145410,"phase":"hand","round":9,"step":58,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	2
+{"chips_delta":0,"discards_left":2,"dollars_delta":0,"hands_left":4,"state":1,"step":58,"type":"engine_episode_resolved"}
+EPISODE action	59	hand	play	1,2,3,4,5	3744	1
+{"action":{"area":"hand","indices":[1,2,3,4,5],"kind":"play"},"ante":3,"blind":"bl_wall","dollars":1,"evaluations":130146,"expected_score":3744,"phase":"hand","round":9,"step":59,"type":"engine_episode_action"}
+EPISODE action resolved	1	3744	0	3	2
+{"chips_delta":3744,"discards_left":2,"dollars_delta":0,"hands_left":3,"state":1,"step":59,"type":"engine_episode_resolved"}
+EPISODE action	60	hand	use	c_moon	2580	1
+{"action":{"area":"consumeables","index":1,"kind":"use","targets":[4,6,7]},"ante":3,"blind":"bl_wall","card_key":"c_moon","dollars":1,"evaluations":140614,"phase":"hand","round":9,"step":60,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	3	2
+{"chips_delta":0,"discards_left":2,"dollars_delta":0,"hands_left":3,"state":1,"step":60,"type":"engine_episode_resolved"}
+EPISODE action	61	hand	play	1,3,4,6,7	3408	1
+{"action":{"area":"hand","indices":[1,3,4,6,7],"kind":"play"},"ante":3,"blind":"bl_wall","dollars":1,"evaluations":110090,"expected_score":3408,"phase":"hand","round":9,"step":61,"type":"engine_episode_action"}
+EPISODE action resolved	1	3408	0	2	2
+{"chips_delta":3408,"discards_left":2,"dollars_delta":0,"hands_left":2,"state":1,"step":61,"type":"engine_episode_resolved"}
+EPISODE action	62	hand	play	3,4	1590	1
+{"action":{"area":"hand","indices":[3,4],"kind":"play"},"ante":3,"blind":"bl_wall","dollars":1,"evaluations":26378,"expected_score":1590,"phase":"hand","round":9,"step":62,"type":"engine_episode_action"}
+EPISODE action resolved	8	1590	0	1	2
+{"chips_delta":1590,"discards_left":2,"dollars_delta":0,"hands_left":1,"state":8,"step":62,"type":"engine_episode_resolved"}
+EPISODE action	63	round	cash_out		nil	1
+{"action":{"kind":"cash_out"},"ante":4,"dollars":1,"evaluations":0,"phase":"round","round":9,"step":63,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-8742	0	4	3
+{"chips_delta":-8742,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":63,"type":"engine_episode_resolved"}
+EPISODE action	64	shop	leave_shop		nil	1
+{"action":{"kind":"leave_shop"},"ante":4,"dollars":1,"evaluations":0,"phase":"shop","round":9,"step":64,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":64,"type":"engine_episode_resolved"}
+EPISODE action	65	blind	select_blind		nil	1
+{"action":{"blind":"Small","kind":"select_blind"},"ante":4,"dollars":1,"evaluations":0,"phase":"blind","round":9,"step":65,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":65,"type":"engine_episode_resolved"}

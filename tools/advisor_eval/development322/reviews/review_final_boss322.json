@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "status": "accepted_no_blocking_finding",
+  "reviewer": "checkpoint_logging299",
+  "created_at_utc": "2026-09-15T05:47:29.087081+00:00",
+  "scope": "Read-only code/diff review plus four manufactured Lua fixtures. No captured input, source execution, search, game/player-file access, staging, installation or runtime edits.",
+  "reviewed_files": [
+    {
+      "path": "Brainstorm/Advisor/gold_planet_policy.lua",
+      "sha256": "efdd0d3918162095552dfd8003c4f5b4736bc3de0870e0a6fe92ec08a88cda5f"
+    },
+    {
+      "path": "Brainstorm/Advisor/shop_scoring.lua",
+      "sha256": "9c23ca62e5baea5e28519bf4ac3ef2e2bbe5dbd5de5e43361331fadc6b511652"
+    },
+    {
+      "path": "Brainstorm/Advisor/gold_goal.lua",
+      "sha256": "b4d1e9865ad25fd1b6d594c8ae9b99ebf552c86477bbbe22279e19f1c1120894"
+    },
+    {
+      "path": "Brainstorm/Advisor/perkeo_inventory.lua",
+      "sha256": "7bd16d518dcc9b979104b8524fdf8303dc1435675fed66c8b2a79c61d02ad549"
+    },
+    {
+      "path": "Brainstorm/Advisor/bell_opening.lua",
+      "sha256": "df246d7f8ffa60278c77ab3ac42b22d0e6eb12bdb62c82715465abd78e41209d"
+    },
+    {
+      "path": "Brainstorm/Advisor/decision.lua",
+      "sha256": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac"
+    },
+    {
+      "path": "tests/advisor_gold_planet_policy.lua",
+      "sha256": "3bd0095f631ed6a29bc4d007bb3efe44cc0f53904b9f9de16936e49c66225f99"
+    },
+    {
+      "path": "tests/advisor_shop_scoring.lua",
+      "sha256": "9b3f1ac07d65634996f7cd0a50510fc990aefaa7dd269f28d12c6caad8bb4cd1"
+    }
+  ],
+  "baseline_files": [
+    {
+      "path": "tools/advisor_eval/runs/pair321_installed/policy/Brainstorm/Advisor/gold_planet_policy.lua",
+      "sha256": "865de69d2c33a415c6607f14c40169eee3838ae53ff5608cb88eb753c546a40f"
+    },
+    {
+      "path": "tools/advisor_eval/runs/pair321_installed/policy/Brainstorm/Advisor/shop_scoring.lua",
+      "sha256": "2e2cc549e0db79660e0324f432fa2718a142b0ad806688db492c8d3f90ebc74b"
+    }
+  ],
+  "bell_manifest": {
+    "path": "tools/advisor_eval/development322/bell_routing/manifest.json",
+    "sha256": "52fd491c3088335ed9d20f4658a5f92bc8730080ebd36ef3c27d513bb49b294d"
+  },
+  "bell_package_hashes_verified": [
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/blind_routing.base.lua",
+      "sha256": "078e69137bd55954515d1e81f7b6bc3f47af3cf0808e7cd1cf58c360ac49531b"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/blind_routing.lua",
+      "sha256": "c03029893369e3d8fe3d1a4c532f333b8aa34df9f555e4ab17cbe851db47e7e2"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/focused_output.txt",
+      "sha256": "ea69db55cad6014163562af183dc9950a9e71bd1270313e317a3f8482c88b249"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/focused_report.json",
+      "sha256": "6e46bde9e07ef1a9f53739515a58053b2a63e049595111611592e4bc4bcf35e1"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/INTEGRATION.md",
+      "sha256": "233e7d38cdccda47bf5574d804c635276f60a5828d4b27b96bb6fd9e20c45a66"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/package.py",
+      "sha256": "7cba9da09a66fb8099e3c2bb2f02f6e32a4e1301e40291dabc41dfb3aba0420d"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/run_candidate.lua",
+      "sha256": "51409fa164301609229e224c0e66c141d308cdba78135d26e5fcbf89c1873af9"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/run_existing.lua",
+      "sha256": "98117442d9bbe1b77822ab958d2aa96a2cd7505c3ee15272bdd63103729153ac"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/stage.py",
+      "sha256": "73401c71fc1b76e1a8b1311b16f9ed8579b18cbb7614eebe319c34a0e6cc90b3"
+    },
+    {
+      "path": "tools/advisor_eval/development322/bell_routing/test_advisor_bell_routing.lua",
+      "sha256": "205a22e247a06cf10d4e6749c027b9d675c6a42d2ac652f91a0a965466b26406"
+    }
+  ],
+  "bell_dependency_checks": [
+    {
+      "path": "Brainstorm/Advisor/bell_opening.lua",
+      "sha256": "df246d7f8ffa60278c77ab3ac42b22d0e6eb12bdb62c82715465abd78e41209d",
+      "reviewed_current_sha256": "df246d7f8ffa60278c77ab3ac42b22d0e6eb12bdb62c82715465abd78e41209d",
+      "matches_package": true
+    },
+    {
+      "path": "Brainstorm/Advisor/scoring.lua",
+      "sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+      "reviewed_current_sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+      "matches_package": true
+    },
+    {
+      "path": "Brainstorm/Advisor/strategy.lua",
+      "sha256": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960",
+      "reviewed_current_sha256": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960",
+      "matches_package": true
+    },
+    {
+      "path": "Brainstorm/Advisor/shop_scoring.lua",
+      "sha256": "2e2cc549e0db79660e0324f432fa2718a142b0ad806688db492c8d3f90ebc74b",
+      "reviewed_current_sha256": "9c23ca62e5baea5e28519bf4ac3ef2e2bbe5dbd5de5e43361331fadc6b511652",
+      "matches_package": false
+    },
+    {
+      "path": "Brainstorm/Advisor/finish_rewards.lua",
+      "sha256": "5f459a9e273a9f6cc970804ffe0e28c0e95a05d056ed9ce413d2611ec5d098ae",
+      "reviewed_current_sha256": "5f459a9e273a9f6cc970804ffe0e28c0e95a05d056ed9ce413d2611ec5d098ae",
+      "matches_package": true
+    },
+    {
+      "path": "Brainstorm/Advisor/snapshot.lua",
+      "sha256": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8",
+      "reviewed_current_sha256": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8",
+      "matches_package": true
+    },
+    {
+      "path": "Brainstorm/Advisor/decision.lua",
+      "sha256": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac",
+      "reviewed_current_sha256": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac",
+      "matches_package": true
+    },
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "f491b3869bf6d23a906411fb2876e3cc056d9997a0fffce6e6a0defdb4aa2c54",
+      "reviewed_current_sha256": "f491b3869bf6d23a906411fb2876e3cc056d9997a0fffce6e6a0defdb4aa2c54",
+      "matches_package": true
+    },
+    {
+      "path": "tests/advisor_blind_routing.lua",
+      "sha256": "5a77e4f5d8b2e8c69d0ac32cb3d37363b520272217034ec1f4af6f382af37eca",
+      "reviewed_current_sha256": "5a77e4f5d8b2e8c69d0ac32cb3d37363b520272217034ec1f4af6f382af37eca",
+      "matches_package": true
+    },
+    {
+      "path": "tests/advisor_bell_opening.lua",
+      "sha256": "f052eb062b4553b4c2c8e73dda4f992f6cf1db2b0b11fad4bf1e4afe2a63cfe6",
+      "reviewed_current_sha256": "f052eb062b4553b4c2c8e73dda4f992f6cf1db2b0b11fad4bf1e4afe2a63cfe6",
+      "matches_package": true
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7",
+      "reviewed_current_sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7",
+      "matches_package": true
+    }
+  ],
+  "findings": [],
+  "integration_note": "The Bell package declares frozen321 shop_scoring, while this review and the independent fixture run use the new root shop_scoring hash recorded above. Bind that reviewed dependency in final release evidence; the package itself remains unchanged.",
+  "reasoning": [
+    "The Planet fast path is reached only after the existing final supported boss, complete eligible Gold metadata, visible stable retained Joker and whole homogeneous ordinary/Negative Planet inventory guards.",
+    "The probe evaluates every legal-size subset in each of four deterministic common composition worlds with the current physical row. Bell requires every possible forced physical identity, and both endpoints retain the same whole inventory. No free reorder, consumed Planet, temporal last-hand/discard credit or startup generation is used.",
+    "The default false/nil option preserves existing prepare/layout/equivalence/temporal/finishing behavior. Per-context profile caches prevent cross-mode reuse; family_key explicitly distinguishes the option. Within the new mode, full physical row keys remain distinct and the row-equivalence shortcut is disabled.",
+    "Complete pair cost is checked before scoring. A failed or insufficient probe spends its actual calls from the same maximum50000 allowance, and the complete family fallback receives only the remainder. Partial coverage cannot select an action.",
+    "Bell routing completes the collector rather than exiting after the first strong play. The unchanged5000 route cap includes intermediate after_play score calls; incomplete, uncertain, missing-dependency and weak-forced-card families decline. Small-to-Big-to-Bell retains both supported single-Glass intermediate outcomes.",
+    "Bell routing reconciles physical distinct held missing Gold keys with complete metadata before forgoing the final shop. The current row is fixed, and existing rental, cash, inventory-copying and growth opportunity heuristics remain charged."
+  ],
+  "validation": {
+    "command": "python tests/run_lua_tests.py tests/advisor_gold_planet_policy.lua tests/advisor_shop_scoring.lua tools/advisor_eval/development322/bell_routing/run_candidate.lua tools/advisor_eval/development322/bell_routing/run_existing.lua",
+    "exit_code": 0,
+    "fixtures_passed": 4,
+    "checks": {
+      "gold_planet_policy": 181,
+      "shop_scoring": 60,
+      "bell_routing": 236,
+      "existing_blind_routing": 55
+    },
+    "total_checks": 532,
+    "manufactured_local_comparison": {
+      "current_row_hold_score_calls": 12,
+      "current_row_hold_preparation_actions": 0,
+      "complete_use_family_score_calls": 72,
+      "complete_use_family_consumable_actions": 1
+    },
+    "includes": "Bell exhaustive actual-forced-flag oracle32branches, late uncertain subset rejection, exact/insufficient caps, weak off-rank trap, physical copy-row separation, startup rejection, no continuation call with loaded finishing dependency, unchanged source fingerprints."
+  },
+  "limits": [
+    "Four fixed composition worlds do not enumerate future draws and do not establish a win probability, guaranteed clear, calibrated speed benefit or superiority over a human.",
+    "The2x sufficiency choice intentionally favors fewer setup actions over maximal modeled opening score; it is a declared local heuristic, not a complete proof that holding dominates every future policy.",
+    "The route opportunity-cost model is inherited and uncalibrated. It does not predict future acquisitions, generated copy identities or actual Gold-sticker awards.",
+    "Only ordinary manufactured validation ran; no new source/captured/complete-attempt authority was used. Full coordinated candidate/installed regression and final hash verification remain the parent responsibility."
+  ]
+}

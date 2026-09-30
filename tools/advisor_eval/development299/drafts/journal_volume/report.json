@@ -1,0 +1,1643 @@
+{
+  "schema": 1,
+  "kind": "preserved_C01_public_serialization_only",
+  "qualification": false,
+  "original_source_executed": false,
+  "policy_decisions_executed": 0,
+  "actual_player_journal": false,
+  "trace_sha256": "982d52f155c6ceac74023c0a4d2960fd6c2db62bd1757cc699007f8a8bef63a1",
+  "journal_sha256": "92027e848d8cb63a8b8925d078f66c38133548ce7117a32a462e606c349e882b",
+  "lua_runtime_sha256": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+  "serializer_sha256": "ee775019506d4fafcebc7422907e9aa34f503f8255617ac413b4d114fb8539ce",
+  "source_policy_digest": "db3ea1cd6d6f6f0053da326aba6bce2074c23197d0ff8720dab712c0688d2ca3",
+  "missing_gold_context": "C01 disabled; no synthetic Gold context added to these preserved snapshots",
+  "snapshots": {
+    "count": 225,
+    "total": 18993338,
+    "minimum": 68096,
+    "median": 85449,
+    "p95": 88162,
+    "maximum": 89165
+  },
+  "independent_compressed_snapshots": {
+    "count": 225,
+    "total": 1294986,
+    "minimum": 4489,
+    "median": 5804,
+    "p95": 6309,
+    "maximum": 6456
+  },
+  "compression": "Python zlib level6 lossless byte roundtrip; size experiment only, not product performance",
+  "terminal_public_snapshot_bytes": 72802,
+  "action_entry_pair_only": {
+    "public_snapshot_records": 450,
+    "public_snapshot_bytes": 37986676,
+    "first_snapshot_record_exceeding_32MiB": 399,
+    "independent_zlib6_payload_bytes": 2589972,
+    "whole_stream_zlib6_bytes": 2209599,
+    "unique_snapshot_count": 225,
+    "unique_snapshot_zlib6_payload_bytes": 1294986
+  },
+  "two_settled_records_model": {
+    "public_snapshot_records": 899,
+    "public_snapshot_bytes": 75883880,
+    "first_snapshot_record_exceeding_32MiB": 402,
+    "independent_zlib6_payload_bytes": 5175869,
+    "whole_stream_zlib6_bytes": 4409423,
+    "unique_snapshot_count": 226,
+    "unique_snapshot_zlib6_payload_bytes": 1300621
+  },
+  "event_count_model": {
+    "action_attempt": 225,
+    "action_requested": 225,
+    "action_callback_result": 225,
+    "state_after_actions": 225,
+    "action_observed_before_next_action": 224,
+    "action_related_total": 1124,
+    "excluded": "startup/search/terminal/overlay/manual events; actual timing may merge settled observations"
+  },
+  "limitations": [
+    "Snapshot bytes omit envelope, advice, action details and timestamp overhead.",
+    "C01 source snapshots are not an actual player journal or timing trace of its callbacks.",
+    "Settled model reuses the next preserved decision snapshot as a declared proxy.",
+    "Compression and dedup size arithmetic does not prove live throughput or future session storage.",
+    "No source or experiment lease was consumed or renewed."
+  ],
+  "per_step": [
+    {
+      "step": 1,
+      "phase": "blind",
+      "public_json_bytes": 81137,
+      "independent_zlib6_bytes": 4855,
+      "public_json_sha256": "f689e613c7c8d2f5f4058bbdaadeb4ba75b56eb7fd6069d718f0b9f1101a877e"
+    },
+    {
+      "step": 2,
+      "phase": "pack",
+      "public_json_bytes": 83242,
+      "independent_zlib6_bytes": 4968,
+      "public_json_sha256": "097e8245ebe056df284b29f9207dcc0986cfdcb859d85b81e4b39b374dd8e678"
+    },
+    {
+      "step": 3,
+      "phase": "pack",
+      "public_json_bytes": 83385,
+      "independent_zlib6_bytes": 5074,
+      "public_json_sha256": "3e0ee4e41894589fb52938b14ab7ccccd50947da2ce69197c8d9917b590a799d"
+    },
+    {
+      "step": 4,
+      "phase": "blind",
+      "public_json_bytes": 82371,
+      "independent_zlib6_bytes": 5075,
+      "public_json_sha256": "392e7a427a7f8a57a58aa43a5f10450b504097e07fa92c57ad31b0e7f9dd0f71"
+    },
+    {
+      "step": 5,
+      "phase": "hand",
+      "public_json_bytes": 81876,
+      "independent_zlib6_bytes": 4854,
+      "public_json_sha256": "64edf0c2e46028b4a43d36891df20da90b550777f832fc72c5b12d358037ead5"
+    },
+    {
+      "step": 6,
+      "phase": "hand",
+      "public_json_bytes": 81170,
+      "independent_zlib6_bytes": 4856,
+      "public_json_sha256": "69ba11ff0095809bac4fc9073a57d17a6a445ebca80b0945382c718cf6b98108"
+    },
+    {
+      "step": 7,
+      "phase": "hand",
+      "public_json_bytes": 79067,
+      "independent_zlib6_bytes": 4819,
+      "public_json_sha256": "6ade863792bafd8215970b86d54e2314572289b325eb35bbf0fe431ced095c4f"
+    },
+    {
+      "step": 8,
+      "phase": "hand",
+      "public_json_bytes": 75599,
+      "independent_zlib6_bytes": 4717,
+      "public_json_sha256": "e1f5af13a2ff37894850592f3bed5091fbfcf64c95df89beab9867232ee5c719"
+    },
+    {
+      "step": 9,
+      "phase": "hand",
+      "public_json_bytes": 72072,
+      "independent_zlib6_bytes": 4612,
+      "public_json_sha256": "3277593b783a5013ddca2245e666ed4e06813be0ad3164a415a8ce7bbf983526"
+    },
+    {
+      "step": 10,
+      "phase": "hand",
+      "public_json_bytes": 68547,
+      "independent_zlib6_bytes": 4489,
+      "public_json_sha256": "ba066987de24d5b28e8eabd1671ba2a13771e51a5c28857e25a4da26101cc764"
+    },
+    {
+      "step": 11,
+      "phase": "round",
+      "public_json_bytes": 82415,
+      "independent_zlib6_bytes": 5057,
+      "public_json_sha256": "ca447728db4a0d3970a3712358bb3ea7896d2de44beeb2cefcbd7e7b1ab6d428"
+    },
+    {
+      "step": 12,
+      "phase": "shop",
+      "public_json_bytes": 85368,
+      "independent_zlib6_bytes": 5528,
+      "public_json_sha256": "96447a44f1f17ff408d272b2a6adf47402b24a0dbbb4163508fc377d3e0e50ce"
+    },
+    {
+      "step": 13,
+      "phase": "pack",
+      "public_json_bytes": 83732,
+      "independent_zlib6_bytes": 5286,
+      "public_json_sha256": "af313d2d32f77db4a93f909cd71e9abbf71125009480b3d7097e0ae20a1c182c"
+    },
+    {
+      "step": 14,
+      "phase": "shop",
+      "public_json_bytes": 85421,
+      "independent_zlib6_bytes": 5550,
+      "public_json_sha256": "e9fada2bc0a60183c7ce8c5b9fe9b4332f3f53a03ac7acbdcde3a971859dd65d"
+    },
+    {
+      "step": 15,
+      "phase": "shop",
+      "public_json_bytes": 85421,
+      "independent_zlib6_bytes": 5557,
+      "public_json_sha256": "b4b3b224a28cb28ec1896b2aaffcca4eff68f3ebaf48e701a5aada7fecbd7317"
+    },
+    {
+      "step": 16,
+      "phase": "blind",
+      "public_json_bytes": 84322,
+      "independent_zlib6_bytes": 5423,
+      "public_json_sha256": "c17393f92f12e1d95ef5c67327a40065ba0d3b32be7d8f2a938876336344180e"
+    },
+    {
+      "step": 17,
+      "phase": "hand",
+      "public_json_bytes": 83715,
+      "independent_zlib6_bytes": 5174,
+      "public_json_sha256": "70236392bf87f832386ead9c030703aea15ec2ddf44b77a43185472d0ec6f260"
+    },
+    {
+      "step": 18,
+      "phase": "hand",
+      "public_json_bytes": 80125,
+      "independent_zlib6_bytes": 5027,
+      "public_json_sha256": "258747fc315015e6487030a04443083130d9ac06166ceae03d4b9a502922c458"
+    },
+    {
+      "step": 19,
+      "phase": "hand",
+      "public_json_bytes": 77287,
+      "independent_zlib6_bytes": 4944,
+      "public_json_sha256": "030fadad3995fb90c3dc69d8e12d54c849cbbb835e5ee854fd9b42cd5a654ece"
+    },
+    {
+      "step": 20,
+      "phase": "hand",
+      "public_json_bytes": 74433,
+      "independent_zlib6_bytes": 4876,
+      "public_json_sha256": "a68d9b63017f639a1d5a0cf59ba71f3a1665a8d83c83a10aab9e672327b493c0"
+    },
+    {
+      "step": 21,
+      "phase": "round",
+      "public_json_bytes": 83076,
+      "independent_zlib6_bytes": 5122,
+      "public_json_sha256": "a094b908cdb70b8764a11afc446b1c45b17d88f3115e76c52b432a15183016a9"
+    },
+    {
+      "step": 22,
+      "phase": "shop",
+      "public_json_bytes": 85919,
+      "independent_zlib6_bytes": 5547,
+      "public_json_sha256": "7d2d3485aaefad547eeac4d503bbfc6ed42e6244efde86561a74cd60acbcce28"
+    },
+    {
+      "step": 23,
+      "phase": "shop",
+      "public_json_bytes": 85919,
+      "independent_zlib6_bytes": 5538,
+      "public_json_sha256": "7dc72faee5e3ba48c8ed06c3c74dbeb55d7f10fb475eaf1ee042aaf3795df518"
+    },
+    {
+      "step": 24,
+      "phase": "pack",
+      "public_json_bytes": 85558,
+      "independent_zlib6_bytes": 5419,
+      "public_json_sha256": "59f3ab3ff1c12d4cb49e2b1afca74fb35aecd27a77b68618e65549e4ec3b01b5"
+    },
+    {
+      "step": 25,
+      "phase": "pack",
+      "public_json_bytes": 85558,
+      "independent_zlib6_bytes": 5423,
+      "public_json_sha256": "d4cd641f91432b8d92db0206d00acc63a45b34d9aac0f9d37da5d123ea7b9b70"
+    },
+    {
+      "step": 26,
+      "phase": "shop",
+      "public_json_bytes": 85449,
+      "independent_zlib6_bytes": 5516,
+      "public_json_sha256": "78de4d200164a9c925747f55ba7f3871f91a5b1c22110e1646d6f970bdf2d166"
+    },
+    {
+      "step": 27,
+      "phase": "blind",
+      "public_json_bytes": 84500,
+      "independent_zlib6_bytes": 5472,
+      "public_json_sha256": "8a9a3525eb26f3575d92ef16fc91ddea4a3c4cd6ad4062fc8469f6b73c967030"
+    },
+    {
+      "step": 28,
+      "phase": "hand",
+      "public_json_bytes": 83636,
+      "independent_zlib6_bytes": 5087,
+      "public_json_sha256": "a685527b5dc1535901a7d0a5cf3b35fe9e715f68ea9537468f9091686244d6f5"
+    },
+    {
+      "step": 29,
+      "phase": "hand",
+      "public_json_bytes": 80859,
+      "independent_zlib6_bytes": 4995,
+      "public_json_sha256": "b861dc18bc5f646d936dfd58b470219e9ad131f31bfde16959402559375484ae"
+    },
+    {
+      "step": 30,
+      "phase": "hand",
+      "public_json_bytes": 80859,
+      "independent_zlib6_bytes": 4999,
+      "public_json_sha256": "ff5abbfd41c3a87274d50383158daec78039f479d7270c08c5deb0934eab7382"
+    },
+    {
+      "step": 31,
+      "phase": "hand",
+      "public_json_bytes": 78028,
+      "independent_zlib6_bytes": 4920,
+      "public_json_sha256": "71fa9f56bfdabb88044364fffb8a9f2d2b39c1f2d6a62f982a29ba3794794c32"
+    },
+    {
+      "step": 32,
+      "phase": "hand",
+      "public_json_bytes": 74511,
+      "independent_zlib6_bytes": 4825,
+      "public_json_sha256": "03175c6f03b26078e0a3959ffc20b45d05a95a653fb2d27103c62cbec021237d"
+    },
+    {
+      "step": 33,
+      "phase": "round",
+      "public_json_bytes": 83740,
+      "independent_zlib6_bytes": 5193,
+      "public_json_sha256": "28fba8530825bab7a6935870bcef5d53bccb85fe1c758b631f5d7b4bb7af6d5c"
+    },
+    {
+      "step": 34,
+      "phase": "shop",
+      "public_json_bytes": 86651,
+      "independent_zlib6_bytes": 5661,
+      "public_json_sha256": "7d769c3b78b202ff625800a13a767f57ae9e4448ed2b35e1c7432731513c29b2"
+    },
+    {
+      "step": 35,
+      "phase": "blind",
+      "public_json_bytes": 84547,
+      "independent_zlib6_bytes": 5477,
+      "public_json_sha256": "8621439f3d53816384e3abddbc277de07f666da2408487de6a7dfece151e8ba7"
+    },
+    {
+      "step": 36,
+      "phase": "hand",
+      "public_json_bytes": 83776,
+      "independent_zlib6_bytes": 5099,
+      "public_json_sha256": "0a2365392641534b0317efe3d07a29523dae4d6871574bcb699ed3f6473737c3"
+    },
+    {
+      "step": 37,
+      "phase": "hand",
+      "public_json_bytes": 81724,
+      "independent_zlib6_bytes": 5099,
+      "public_json_sha256": "db35a7951a0e7143e68dfecb5a01dd7ff4fe5b85d5b24feb2244f9b7a97b0497"
+    },
+    {
+      "step": 38,
+      "phase": "hand",
+      "public_json_bytes": 79595,
+      "independent_zlib6_bytes": 5028,
+      "public_json_sha256": "003022603972587a17fe4f9a6403d9831f4249a8bc78c6ceac9778516581cb01"
+    },
+    {
+      "step": 39,
+      "phase": "hand",
+      "public_json_bytes": 77469,
+      "independent_zlib6_bytes": 4955,
+      "public_json_sha256": "93a961a873e45064ae38ac9c69606664ecaf2b36f224b132cf302ffb43f71dce"
+    },
+    {
+      "step": 40,
+      "phase": "round",
+      "public_json_bytes": 83973,
+      "independent_zlib6_bytes": 5218,
+      "public_json_sha256": "8fc6fb70ac6cfe83e0d3a3b9ce3eac8d2b07ae505f6a9e67722700351413e557"
+    },
+    {
+      "step": 41,
+      "phase": "shop",
+      "public_json_bytes": 86864,
+      "independent_zlib6_bytes": 5679,
+      "public_json_sha256": "b3699f9002f13ec89410958bfa3bb2c97696b3ae210613aae4a8ddb1ea47a841"
+    },
+    {
+      "step": 42,
+      "phase": "pack",
+      "public_json_bytes": 85758,
+      "independent_zlib6_bytes": 5453,
+      "public_json_sha256": "027d5a4e80993013c310d3a9d80bab85230f0faa01533ac8b39731edd4cca8d3"
+    },
+    {
+      "step": 43,
+      "phase": "shop",
+      "public_json_bytes": 86374,
+      "independent_zlib6_bytes": 5644,
+      "public_json_sha256": "db7efe2e62a3e1c21236fc651f0e590f970fe0d2b16df8230faa71091ca00762"
+    },
+    {
+      "step": 44,
+      "phase": "blind",
+      "public_json_bytes": 84820,
+      "independent_zlib6_bytes": 5497,
+      "public_json_sha256": "c76e6892ffea74b63b342da996b90a6a5947f6fce0570a639c227b5824de9cdf"
+    },
+    {
+      "step": 45,
+      "phase": "hand",
+      "public_json_bytes": 84146,
+      "independent_zlib6_bytes": 5193,
+      "public_json_sha256": "42b93ed54bddcd56be4bf4fb3a80939a093e2b8765fbd690b76ffd9b477b2751"
+    },
+    {
+      "step": 46,
+      "phase": "hand",
+      "public_json_bytes": 80651,
+      "independent_zlib6_bytes": 5133,
+      "public_json_sha256": "e6e719abad456aa3b3c28586aeeb90cefff02772a11b1ec8256158410caeaa77"
+    },
+    {
+      "step": 47,
+      "phase": "hand",
+      "public_json_bytes": 77128,
+      "independent_zlib6_bytes": 4980,
+      "public_json_sha256": "d8b61b15656a14769ed26ddb8856a9e2c3a2cec74992e79f721c02ad8c665a06"
+    },
+    {
+      "step": 48,
+      "phase": "hand",
+      "public_json_bytes": 73598,
+      "independent_zlib6_bytes": 4902,
+      "public_json_sha256": "a411bd11079211683edc4fc7982d40addb68fa003d6921cddc4ce24483424926"
+    },
+    {
+      "step": 49,
+      "phase": "round",
+      "public_json_bytes": 83741,
+      "independent_zlib6_bytes": 5235,
+      "public_json_sha256": "eb5203a082ab4d9e5a42572ce9f0da9053e8adae3636b43bfee7a29f3efdbf04"
+    },
+    {
+      "step": 50,
+      "phase": "shop",
+      "public_json_bytes": 86588,
+      "independent_zlib6_bytes": 5723,
+      "public_json_sha256": "f58344623aaf35693450b902d41a368138bb092be12a18d8f127fff5e1c62211"
+    },
+    {
+      "step": 51,
+      "phase": "shop",
+      "public_json_bytes": 86587,
+      "independent_zlib6_bytes": 5745,
+      "public_json_sha256": "30db66b3bc650ea16bedc5729bb23b4add10bc843f84bd47c7c9d2b6c768eb63"
+    },
+    {
+      "step": 52,
+      "phase": "shop",
+      "public_json_bytes": 86587,
+      "independent_zlib6_bytes": 5741,
+      "public_json_sha256": "cd71b9812c47a4997647eddb4632680b329bf2e40321a019149bda18edb58d3e"
+    },
+    {
+      "step": 53,
+      "phase": "blind",
+      "public_json_bytes": 86311,
+      "independent_zlib6_bytes": 5678,
+      "public_json_sha256": "03d5e81b993c1b30dbbc743a47e70fc14a78535db7bd84370ba69503dcc0c3fa"
+    },
+    {
+      "step": 54,
+      "phase": "hand",
+      "public_json_bytes": 85500,
+      "independent_zlib6_bytes": 5333,
+      "public_json_sha256": "0d4b0851facf0ad677f4325da6ca5731348b08d43b1d8b45777ae50e148288a9"
+    },
+    {
+      "step": 55,
+      "phase": "hand",
+      "public_json_bytes": 82688,
+      "independent_zlib6_bytes": 5248,
+      "public_json_sha256": "833a223137d67e4fd233d44ea209c2a6dcade6d99d76dd6ca5a0d4c1ff2670fb"
+    },
+    {
+      "step": 56,
+      "phase": "hand",
+      "public_json_bytes": 82263,
+      "independent_zlib6_bytes": 5323,
+      "public_json_sha256": "698ab139dca6a26890cedb518ba339cf35f8fa0b6934a8cc4f3a8aa749eb84d6"
+    },
+    {
+      "step": 57,
+      "phase": "hand",
+      "public_json_bytes": 81744,
+      "independent_zlib6_bytes": 5275,
+      "public_json_sha256": "328da961f2c0ebbc12111ca0c068ea03125a66ba63c7158afc111ad9e4cc52b6"
+    },
+    {
+      "step": 58,
+      "phase": "round",
+      "public_json_bytes": 84752,
+      "independent_zlib6_bytes": 5524,
+      "public_json_sha256": "3966a48c6fd75a8bb878035753c860542394595d7b8f687156595e6920ac1a15"
+    },
+    {
+      "step": 59,
+      "phase": "shop",
+      "public_json_bytes": 87562,
+      "independent_zlib6_bytes": 5934,
+      "public_json_sha256": "04abb87bf1cc60475468e490b395344c80ad8bd8f112209b247c5fc3c0eaafe4"
+    },
+    {
+      "step": 60,
+      "phase": "pack",
+      "public_json_bytes": 86660,
+      "independent_zlib6_bytes": 5717,
+      "public_json_sha256": "8699ea1c66be51682ad297cd66e7f465a38d1b4e00f8f1306309c32425cd88ef"
+    },
+    {
+      "step": 61,
+      "phase": "shop",
+      "public_json_bytes": 87163,
+      "independent_zlib6_bytes": 5981,
+      "public_json_sha256": "79e36c83fd69326aefebcee8aa168951def0d5fb29f84c7db8847346a9c82648"
+    },
+    {
+      "step": 62,
+      "phase": "blind",
+      "public_json_bytes": 86853,
+      "independent_zlib6_bytes": 5904,
+      "public_json_sha256": "7356eb45836949704aa0ae8b8a6ceee32fc21d3e03967fc7abf3362c83351575"
+    },
+    {
+      "step": 63,
+      "phase": "hand",
+      "public_json_bytes": 86139,
+      "independent_zlib6_bytes": 5587,
+      "public_json_sha256": "7464d2c3d379ee629476ea07de6b85318b5ad1c8653a3d59779908b888242bae"
+    },
+    {
+      "step": 64,
+      "phase": "hand",
+      "public_json_bytes": 85620,
+      "independent_zlib6_bytes": 5582,
+      "public_json_sha256": "4382b96a7749deef133c5e9a352fa5d5725b102d38efcedffc7ae1b21ed08401"
+    },
+    {
+      "step": 65,
+      "phase": "hand",
+      "public_json_bytes": 85100,
+      "independent_zlib6_bytes": 5575,
+      "public_json_sha256": "ea101293c69c9d8f5fba213cae7ec2992bd294a3c75825510e8b1c96d79ab600"
+    },
+    {
+      "step": 66,
+      "phase": "round",
+      "public_json_bytes": 85206,
+      "independent_zlib6_bytes": 5646,
+      "public_json_sha256": "88e69419585d2114bdabd732cfffd6e5eb4fc12e71338a4310d474bd019a1e8c"
+    },
+    {
+      "step": 67,
+      "phase": "shop",
+      "public_json_bytes": 88040,
+      "independent_zlib6_bytes": 6038,
+      "public_json_sha256": "45ac728143c6e592ca236c22d7b6889bba3f7ded09905d7bf5d4464bf9420c76"
+    },
+    {
+      "step": 68,
+      "phase": "pack",
+      "public_json_bytes": 87119,
+      "independent_zlib6_bytes": 5911,
+      "public_json_sha256": "ede950d6adf784cc182c84b6ac5d1b4e35512bfde5cf5b52f6d263e57861b5cf"
+    },
+    {
+      "step": 69,
+      "phase": "shop",
+      "public_json_bytes": 86114,
+      "independent_zlib6_bytes": 5969,
+      "public_json_sha256": "3ea287497033df44a7bf289fa1a50b593ab4e79bba988b0634e0baf73ddbc5db"
+    },
+    {
+      "step": 70,
+      "phase": "blind",
+      "public_json_bytes": 85784,
+      "independent_zlib6_bytes": 5877,
+      "public_json_sha256": "8ad7ee755379b8ceed775db9ef3ffc7131263a93daf884be8362f388579ff837"
+    },
+    {
+      "step": 71,
+      "phase": "hand",
+      "public_json_bytes": 85154,
+      "independent_zlib6_bytes": 5621,
+      "public_json_sha256": "5cf3038cb1b6972ae202cc6e402bc8c90c4e19efcf9bbf83eeff25e5086ce1f8"
+    },
+    {
+      "step": 72,
+      "phase": "hand",
+      "public_json_bytes": 85154,
+      "independent_zlib6_bytes": 5626,
+      "public_json_sha256": "3d7304a2404f44690cc31d5dbd953cc209a6cb6570a9d9cb8f2eb440de85594e"
+    },
+    {
+      "step": 73,
+      "phase": "hand",
+      "public_json_bytes": 84631,
+      "independent_zlib6_bytes": 5665,
+      "public_json_sha256": "77ee42ec6381310eaf1c81124a8017a8bd9e2427195a3d3fd2a4123a0aba9a03"
+    },
+    {
+      "step": 74,
+      "phase": "hand",
+      "public_json_bytes": 84112,
+      "independent_zlib6_bytes": 5645,
+      "public_json_sha256": "e296f5f9ff8a9ca2cb763ca6501b3a6a4cdacc5be3073894c79c94e9770e5007"
+    },
+    {
+      "step": 75,
+      "phase": "round",
+      "public_json_bytes": 83687,
+      "independent_zlib6_bytes": 5593,
+      "public_json_sha256": "a3e2f4ca9fd1d83f8195d70dbb9a13b3eda973c46cbc6c0a855fb35d39ef1349"
+    },
+    {
+      "step": 76,
+      "phase": "shop",
+      "public_json_bytes": 86530,
+      "independent_zlib6_bytes": 6003,
+      "public_json_sha256": "a5d822c2fde49f181f0b3a617cd792bafa3631c5c26c3772e0634fe20dded68d"
+    },
+    {
+      "step": 77,
+      "phase": "pack",
+      "public_json_bytes": 85595,
+      "independent_zlib6_bytes": 5823,
+      "public_json_sha256": "d065b9d7fbf059f849cc819a2a35287d4401c202f4e1c1f343674a9f363505a0"
+    },
+    {
+      "step": 78,
+      "phase": "shop",
+      "public_json_bytes": 86084,
+      "independent_zlib6_bytes": 5992,
+      "public_json_sha256": "c32ad566cadde686d2b40dd619d8fe4548004a55c421b4c45d5cc88f86416e3d"
+    },
+    {
+      "step": 79,
+      "phase": "shop",
+      "public_json_bytes": 85589,
+      "independent_zlib6_bytes": 5940,
+      "public_json_sha256": "5d345c6446454e52bffbbada1711fec867d1a04779e5eda65d576ac4b9b4c9fd"
+    },
+    {
+      "step": 80,
+      "phase": "shop",
+      "public_json_bytes": 85589,
+      "independent_zlib6_bytes": 5937,
+      "public_json_sha256": "c7b9cdfc4487527dfaca4fa3a243321311274d67cf918c0e5df3bb379404c922"
+    },
+    {
+      "step": 81,
+      "phase": "blind",
+      "public_json_bytes": 85751,
+      "independent_zlib6_bytes": 5906,
+      "public_json_sha256": "2fc86aea5e8f01378cb7c5b9b944627ac0f115b99866979d6acaaa980a974968"
+    },
+    {
+      "step": 82,
+      "phase": "hand",
+      "public_json_bytes": 84946,
+      "independent_zlib6_bytes": 5551,
+      "public_json_sha256": "c2664bf35823b9cca29f868b5bfd2a5c6a3184d5fbeb6ff0b224c14a91472422"
+    },
+    {
+      "step": 83,
+      "phase": "hand",
+      "public_json_bytes": 84430,
+      "independent_zlib6_bytes": 5558,
+      "public_json_sha256": "d921233623249c1fe0b2e3728136d7162601db6b92ce95fd0e24caf75bcad00b"
+    },
+    {
+      "step": 84,
+      "phase": "hand",
+      "public_json_bytes": 82288,
+      "independent_zlib6_bytes": 5454,
+      "public_json_sha256": "2a7c61f24c8b2a6c777fb527848f71b75d76d300e0ed172a12979c2b4480e761"
+    },
+    {
+      "step": 85,
+      "phase": "hand",
+      "public_json_bytes": 82288,
+      "independent_zlib6_bytes": 5457,
+      "public_json_sha256": "78c9d0371408e48e0411eb7aa098a18450b2303acfa3ca22dc69414084a86b39"
+    },
+    {
+      "step": 86,
+      "phase": "hand",
+      "public_json_bytes": 81772,
+      "independent_zlib6_bytes": 5464,
+      "public_json_sha256": "09103befb779c495ec02c93c81d4d2f8dac09d47a5844edd031cce373d86eeb3"
+    },
+    {
+      "step": 87,
+      "phase": "round",
+      "public_json_bytes": 84116,
+      "independent_zlib6_bytes": 5712,
+      "public_json_sha256": "e8ebfa7440fb1d825fc788e148963c2c712e969d74f551cf5426e8cae3b736bd"
+    },
+    {
+      "step": 88,
+      "phase": "shop",
+      "public_json_bytes": 86456,
+      "independent_zlib6_bytes": 6043,
+      "public_json_sha256": "880d83ac850f2fca18b9ef624a7cabd2a7c46d3169eaf1a7509688e56d85bdd8"
+    },
+    {
+      "step": 89,
+      "phase": "shop",
+      "public_json_bytes": 86456,
+      "independent_zlib6_bytes": 6040,
+      "public_json_sha256": "8ab59ae77738141be3db5e8918ce151960bc66154ea487d7690adde5b20652ba"
+    },
+    {
+      "step": 90,
+      "phase": "blind",
+      "public_json_bytes": 86114,
+      "independent_zlib6_bytes": 5994,
+      "public_json_sha256": "7a08caea28b14e9038d9238a4fec1b07d55b3b77260b67cd6aa8a077e5bac2c6"
+    },
+    {
+      "step": 91,
+      "phase": "hand",
+      "public_json_bytes": 85377,
+      "independent_zlib6_bytes": 5674,
+      "public_json_sha256": "79bf285b05afd8e783b6aedb700b7dbca9722f04b07eee561f4a17a150888d58"
+    },
+    {
+      "step": 92,
+      "phase": "hand",
+      "public_json_bytes": 82443,
+      "independent_zlib6_bytes": 5560,
+      "public_json_sha256": "e37ebb2dc67c06f0b8de4c9967180e4385ceaf0e4d7c7eeb322473197e74319d"
+    },
+    {
+      "step": 93,
+      "phase": "hand",
+      "public_json_bytes": 82443,
+      "independent_zlib6_bytes": 5563,
+      "public_json_sha256": "ac3a6c936f4ab6b9d40d05f2d5add1bf8030d2c63eb20f465ec72629f9c92727"
+    },
+    {
+      "step": 94,
+      "phase": "hand",
+      "public_json_bytes": 81927,
+      "independent_zlib6_bytes": 5570,
+      "public_json_sha256": "a545e8a64218834a32dc71c8518d9773819b961811216100e81f7498f5f6e285"
+    },
+    {
+      "step": 95,
+      "phase": "hand",
+      "public_json_bytes": 81412,
+      "independent_zlib6_bytes": 5559,
+      "public_json_sha256": "8065c2eef85cb88f0d3b69f0cd01ad1d6223e6c1328146fcf8fb2b745929f943"
+    },
+    {
+      "step": 96,
+      "phase": "round",
+      "public_json_bytes": 84559,
+      "independent_zlib6_bytes": 5731,
+      "public_json_sha256": "1f17f64087186195a8a33e8111f778c8fad41dc8b294b73eeba721c9cae28f27"
+    },
+    {
+      "step": 97,
+      "phase": "shop",
+      "public_json_bytes": 86916,
+      "independent_zlib6_bytes": 6131,
+      "public_json_sha256": "c41a501a94dc31eb4eff2e217c265aa793cd9252da262333674f6a7e6f558525"
+    },
+    {
+      "step": 98,
+      "phase": "shop",
+      "public_json_bytes": 86916,
+      "independent_zlib6_bytes": 6129,
+      "public_json_sha256": "d5e277004776ec1a36b2f7415244ea986f4ef99d7042e27fb45966a30d634750"
+    },
+    {
+      "step": 99,
+      "phase": "blind",
+      "public_json_bytes": 86560,
+      "independent_zlib6_bytes": 5999,
+      "public_json_sha256": "0dddb7c8702ac04398122a0ec235f4104632e9dde5620ad9404d46e9864989cd"
+    },
+    {
+      "step": 100,
+      "phase": "hand",
+      "public_json_bytes": 85927,
+      "independent_zlib6_bytes": 5750,
+      "public_json_sha256": "a245cd1904f98df2b224c09ac134179d5d48821824c7c6fe9c9b4d44415d31a2"
+    },
+    {
+      "step": 101,
+      "phase": "hand",
+      "public_json_bytes": 85927,
+      "independent_zlib6_bytes": 5753,
+      "public_json_sha256": "f703756e09a725a6005a1d30b9876ac9e568d9889f0651500da640cabdee29c2"
+    },
+    {
+      "step": 102,
+      "phase": "hand",
+      "public_json_bytes": 85411,
+      "independent_zlib6_bytes": 5765,
+      "public_json_sha256": "3b21933ea9226123fe5dab2289840d3f05b158a537c53e104a1133ed166eca8f"
+    },
+    {
+      "step": 103,
+      "phase": "hand",
+      "public_json_bytes": 84895,
+      "independent_zlib6_bytes": 5750,
+      "public_json_sha256": "0e1d25145e0e0834b47fb0133fe07e5d2bfe5c407fe33e31d3ca23c059ff8fb3"
+    },
+    {
+      "step": 104,
+      "phase": "round",
+      "public_json_bytes": 84381,
+      "independent_zlib6_bytes": 5762,
+      "public_json_sha256": "09b2d3ea159d9aaa4549100adfe08ccdf50ec328eeb91634b00065c1e8a51882"
+    },
+    {
+      "step": 105,
+      "phase": "shop",
+      "public_json_bytes": 87325,
+      "independent_zlib6_bytes": 6165,
+      "public_json_sha256": "decc3a9727d51c426e28bc333877be14cdd16da3937eab0a2308035dfd0de4ec"
+    },
+    {
+      "step": 106,
+      "phase": "shop",
+      "public_json_bytes": 87325,
+      "independent_zlib6_bytes": 6162,
+      "public_json_sha256": "b257706fee7ea0eefa3b6fec3f55bad59d2947aa1f1d865a78ce60c19ef7a6ee"
+    },
+    {
+      "step": 107,
+      "phase": "blind",
+      "public_json_bytes": 86412,
+      "independent_zlib6_bytes": 6057,
+      "public_json_sha256": "68d07d02bbc3fa999cc06858f54191388a34d036533560c0f162104383edcc83"
+    },
+    {
+      "step": 108,
+      "phase": "hand",
+      "public_json_bytes": 85558,
+      "independent_zlib6_bytes": 5667,
+      "public_json_sha256": "1e7adcb58c34fecc8192218188c2d06c18c2fe1c39915111ea0e544f36fea702"
+    },
+    {
+      "step": 109,
+      "phase": "hand",
+      "public_json_bytes": 84133,
+      "independent_zlib6_bytes": 5666,
+      "public_json_sha256": "0161a1dda9777f9f26cfd51004eaea85c9caa91c5028f23a4fb712d1741fdaaa"
+    },
+    {
+      "step": 110,
+      "phase": "hand",
+      "public_json_bytes": 84133,
+      "independent_zlib6_bytes": 5670,
+      "public_json_sha256": "72da32cab524ada47291055615912a4a5ceb4f7da1cff4a39c92631cd560904c"
+    },
+    {
+      "step": 111,
+      "phase": "hand",
+      "public_json_bytes": 83617,
+      "independent_zlib6_bytes": 5687,
+      "public_json_sha256": "b0a1b53578adeafa84fdb673110cc7d8a20791b2bd9f6c812b4f75c83f3437d7"
+    },
+    {
+      "step": 112,
+      "phase": "round",
+      "public_json_bytes": 85190,
+      "independent_zlib6_bytes": 5803,
+      "public_json_sha256": "1c154e016683326e346ed6090c2718533bcd972bb2ba47c45bf4576526ad1323"
+    },
+    {
+      "step": 113,
+      "phase": "shop",
+      "public_json_bytes": 88089,
+      "independent_zlib6_bytes": 6224,
+      "public_json_sha256": "0183b078a4960bcf9c686f265666c675a64eec6979b79dc7e55cd12553042169"
+    },
+    {
+      "step": 114,
+      "phase": "pack",
+      "public_json_bytes": 86990,
+      "independent_zlib6_bytes": 6033,
+      "public_json_sha256": "39282f02e81b6e68632bd9f4840e50df205d0464c5d63187a404c3ab3d7f9b7b"
+    },
+    {
+      "step": 115,
+      "phase": "shop",
+      "public_json_bytes": 87594,
+      "independent_zlib6_bytes": 6188,
+      "public_json_sha256": "e8d99650c849eaf807d75982cb50574ade88d0d62c32b932119498d4ab8ef57c"
+    },
+    {
+      "step": 116,
+      "phase": "pack",
+      "public_json_bytes": 87091,
+      "independent_zlib6_bytes": 5999,
+      "public_json_sha256": "515262a5ed1aa58bbf69dffef8854f1c7163ad362aeeca399202e729b4b354de"
+    },
+    {
+      "step": 117,
+      "phase": "shop",
+      "public_json_bytes": 87242,
+      "independent_zlib6_bytes": 6183,
+      "public_json_sha256": "0f453872f16f1ff016dba8383a5d95818a54ef1e0accaf7353f076bd9063c45b"
+    },
+    {
+      "step": 118,
+      "phase": "shop",
+      "public_json_bytes": 87242,
+      "independent_zlib6_bytes": 6180,
+      "public_json_sha256": "6b6f700a2207c9b0676854ebb79050ea7d4a94339710db4cb5cf8bce5d2bebf0"
+    },
+    {
+      "step": 119,
+      "phase": "blind",
+      "public_json_bytes": 87408,
+      "independent_zlib6_bytes": 6156,
+      "public_json_sha256": "f29f4f9ce855fc1eee29152a2558a629fe7f5236a97d2213d46d8850f8b334a9"
+    },
+    {
+      "step": 120,
+      "phase": "hand",
+      "public_json_bytes": 86672,
+      "independent_zlib6_bytes": 5874,
+      "public_json_sha256": "90ae1557ad22d5e48709a4ceca1764b1eac697d50b59cfae3d7d1b7e4086b66d"
+    },
+    {
+      "step": 121,
+      "phase": "hand",
+      "public_json_bytes": 83862,
+      "independent_zlib6_bytes": 5803,
+      "public_json_sha256": "effa2b7f898086361476447ffab9ba98b1d261d5397f13c0908b42a1f825ce58"
+    },
+    {
+      "step": 122,
+      "phase": "hand",
+      "public_json_bytes": 83862,
+      "independent_zlib6_bytes": 5804,
+      "public_json_sha256": "da60d666fb26f8147da6c1fac7a9cd5e9d474f7cf85bebb10273bebc34ce1bbd"
+    },
+    {
+      "step": 123,
+      "phase": "hand",
+      "public_json_bytes": 83343,
+      "independent_zlib6_bytes": 5806,
+      "public_json_sha256": "cecba4a2f340311a1d378f29937dba9a3ec48185b122e92d80d66b1bab54f338"
+    },
+    {
+      "step": 124,
+      "phase": "hand",
+      "public_json_bytes": 82779,
+      "independent_zlib6_bytes": 5796,
+      "public_json_sha256": "2b7905a6dd29963e4a6222c123733cf45c648bec503561f8afbcb8b190eed894"
+    },
+    {
+      "step": 125,
+      "phase": "round",
+      "public_json_bytes": 85791,
+      "independent_zlib6_bytes": 5886,
+      "public_json_sha256": "b95252d4a81060738d4a6dcc706e6be6f12e29d2915ae97cb493dc703b8ed8c6"
+    },
+    {
+      "step": 126,
+      "phase": "shop",
+      "public_json_bytes": 88617,
+      "independent_zlib6_bytes": 6321,
+      "public_json_sha256": "024a70a3dde8a4fddcbb8fde9b56e2765ecbe75f878019b13a352fae62c6c5f7"
+    },
+    {
+      "step": 127,
+      "phase": "pack",
+      "public_json_bytes": 88662,
+      "independent_zlib6_bytes": 6217,
+      "public_json_sha256": "1c645becec291cfa63f53c7eaf0ca45b8fd5fddbe72aa7621c1a2a19da173aa3"
+    },
+    {
+      "step": 128,
+      "phase": "shop",
+      "public_json_bytes": 88065,
+      "independent_zlib6_bytes": 6283,
+      "public_json_sha256": "208b17fcc98d6890e927764a8825758488b7aad26bf326c489c35c46919c26c1"
+    },
+    {
+      "step": 129,
+      "phase": "shop",
+      "public_json_bytes": 88065,
+      "independent_zlib6_bytes": 6279,
+      "public_json_sha256": "33991d7aa75721371cea35f67f6711807481cbcc1497d41409a89e9275a3850f"
+    },
+    {
+      "step": 130,
+      "phase": "blind",
+      "public_json_bytes": 87806,
+      "independent_zlib6_bytes": 6161,
+      "public_json_sha256": "d3b4f1fd89934be5803a3a21dd23b10fbef7012afed78ed05f54babe5e70c8a9"
+    },
+    {
+      "step": 131,
+      "phase": "hand",
+      "public_json_bytes": 87128,
+      "independent_zlib6_bytes": 5921,
+      "public_json_sha256": "0e337cf1bbf8f93a0c02c2e1145d975e108c97bc2fc3bc1336bfeb36d776734a"
+    },
+    {
+      "step": 132,
+      "phase": "hand",
+      "public_json_bytes": 84910,
+      "independent_zlib6_bytes": 5845,
+      "public_json_sha256": "d52bd68c2f4c29abecdcef757aa49f53abde027ba14b357fffd644ef1c0f057c"
+    },
+    {
+      "step": 133,
+      "phase": "hand",
+      "public_json_bytes": 84910,
+      "independent_zlib6_bytes": 5849,
+      "public_json_sha256": "17678f3ded97b733f26ee258446204b8c39c94323246df89c0f5259f8c1a1254"
+    },
+    {
+      "step": 134,
+      "phase": "hand",
+      "public_json_bytes": 84394,
+      "independent_zlib6_bytes": 5852,
+      "public_json_sha256": "618d9333d59452458e65aae9f29961c15baba161a8d3843d4bd5a4ef806dca35"
+    },
+    {
+      "step": 135,
+      "phase": "round",
+      "public_json_bytes": 86154,
+      "independent_zlib6_bytes": 5885,
+      "public_json_sha256": "eba4359e6cfad976894933d46ca8673c47cc060721d49aa091a9b007baa08152"
+    },
+    {
+      "step": 136,
+      "phase": "shop",
+      "public_json_bytes": 88959,
+      "independent_zlib6_bytes": 6272,
+      "public_json_sha256": "f0f529fb3838c2f239dda766276706774c469c70e2c9daedca1a6b5045e2b8e5"
+    },
+    {
+      "step": 137,
+      "phase": "pack",
+      "public_json_bytes": 87954,
+      "independent_zlib6_bytes": 6152,
+      "public_json_sha256": "369a906d518547b63d73079ba6e6a33b17b3eb5f1452eaba6744078cfce1500e"
+    },
+    {
+      "step": 138,
+      "phase": "shop",
+      "public_json_bytes": 88466,
+      "independent_zlib6_bytes": 6242,
+      "public_json_sha256": "12c39145fe2794c3f06ddfdf666dc0b53fdefd12697b0316863afb0959bfc0ef"
+    },
+    {
+      "step": 139,
+      "phase": "shop",
+      "public_json_bytes": 88466,
+      "independent_zlib6_bytes": 6239,
+      "public_json_sha256": "d22bef7f228621e54024ce35f8c9061e80b37a2c0c60ef789327e83f99518358"
+    },
+    {
+      "step": 140,
+      "phase": "shop",
+      "public_json_bytes": 87947,
+      "independent_zlib6_bytes": 6215,
+      "public_json_sha256": "b8e9c254fcf0b03413c7aaeaabb4e301b43cc8b56e1b9cdfb6dda4fed22fc281"
+    },
+    {
+      "step": 141,
+      "phase": "shop",
+      "public_json_bytes": 87947,
+      "independent_zlib6_bytes": 6221,
+      "public_json_sha256": "ee0c0616f0673fc8bc86d361b1ffca419726f70c07110815c757cdcb9e49a4b5"
+    },
+    {
+      "step": 142,
+      "phase": "blind",
+      "public_json_bytes": 87000,
+      "independent_zlib6_bytes": 6190,
+      "public_json_sha256": "0b8c0056ac947b66f15a14a6936f4cc8e36ac658f5612ed739451a31cb2bea00"
+    },
+    {
+      "step": 143,
+      "phase": "hand",
+      "public_json_bytes": 86179,
+      "independent_zlib6_bytes": 5836,
+      "public_json_sha256": "a5da2f73660b0456e398c1b72a054827ac00bb17a50ef5f45c178d3af333de1a"
+    },
+    {
+      "step": 144,
+      "phase": "hand",
+      "public_json_bytes": 82624,
+      "independent_zlib6_bytes": 5804,
+      "public_json_sha256": "b7b4bd184d94bfb0b517bd1802086a94b909be7068490cb6aef03619c98a603e"
+    },
+    {
+      "step": 145,
+      "phase": "hand",
+      "public_json_bytes": 82108,
+      "independent_zlib6_bytes": 5795,
+      "public_json_sha256": "6905c7691ea2ef8e32f22a31dde476fb90502f230e76c2de16b9d43127b5354e"
+    },
+    {
+      "step": 146,
+      "phase": "hand",
+      "public_json_bytes": 81544,
+      "independent_zlib6_bytes": 5791,
+      "public_json_sha256": "0de6b7296ac803ac281cb7ce8200f07a00b7a3bcdc1f552e9fdd4ecbc7ad7bea"
+    },
+    {
+      "step": 147,
+      "phase": "round",
+      "public_json_bytes": 85293,
+      "independent_zlib6_bytes": 5900,
+      "public_json_sha256": "30a744224b8d1d25b81b055040d3688f614295266f9bb1d62140e23c0c159fe3"
+    },
+    {
+      "step": 148,
+      "phase": "shop",
+      "public_json_bytes": 88157,
+      "independent_zlib6_bytes": 6321,
+      "public_json_sha256": "b2fcc199652d46238807b68b1f075cdc096f98ff28aa5978b7fa755322cead6f"
+    },
+    {
+      "step": 149,
+      "phase": "pack",
+      "public_json_bytes": 87158,
+      "independent_zlib6_bytes": 6167,
+      "public_json_sha256": "4fc9fb0de9cd5eeaf0c47d7b43d47fe724242878363c7fdaf1a6b2a38b79e193"
+    },
+    {
+      "step": 150,
+      "phase": "shop",
+      "public_json_bytes": 87683,
+      "independent_zlib6_bytes": 6286,
+      "public_json_sha256": "e80b90eb382ec47d6312f5005ecc65af0e1ba519b40b36c3b378ae28ff37b31e"
+    },
+    {
+      "step": 151,
+      "phase": "pack",
+      "public_json_bytes": 88203,
+      "independent_zlib6_bytes": 6236,
+      "public_json_sha256": "1cd7a99b1d0f36d46c6b4e3978ce82525987dd22d49564bc731baf15dc9bdad6"
+    },
+    {
+      "step": 152,
+      "phase": "shop",
+      "public_json_bytes": 87130,
+      "independent_zlib6_bytes": 6199,
+      "public_json_sha256": "2aa9a794d228756595546aa62a375d394eb933d3b71ea5f14be7cb66daaeeefd"
+    },
+    {
+      "step": 153,
+      "phase": "blind",
+      "public_json_bytes": 86098,
+      "independent_zlib6_bytes": 6162,
+      "public_json_sha256": "09c53b6a89d249858c19cc245a8878f537c58046a1f72f8d4d1f66e7e0d64e8c"
+    },
+    {
+      "step": 154,
+      "phase": "hand",
+      "public_json_bytes": 85382,
+      "independent_zlib6_bytes": 5907,
+      "public_json_sha256": "556c0610f6300916910e471d697694f87ad00aed09e33a446adc9b18449dc6ba"
+    },
+    {
+      "step": 155,
+      "phase": "hand",
+      "public_json_bytes": 83243,
+      "independent_zlib6_bytes": 5806,
+      "public_json_sha256": "25f588616791cd4a37b56279ee3f0b48f0e949d1b902f98baac9eb46a7522b55"
+    },
+    {
+      "step": 156,
+      "phase": "hand",
+      "public_json_bytes": 79514,
+      "independent_zlib6_bytes": 5664,
+      "public_json_sha256": "d0583e2bb2966b7298eb3f8aa4e26975740255574c7a099539f250f0ec088df4"
+    },
+    {
+      "step": 157,
+      "phase": "hand",
+      "public_json_bytes": 77421,
+      "independent_zlib6_bytes": 5632,
+      "public_json_sha256": "926851528ee3974e26df44e0955a023f82eee345ba4692f09f80099a1e64f36b"
+    },
+    {
+      "step": 158,
+      "phase": "hand",
+      "public_json_bytes": 75279,
+      "independent_zlib6_bytes": 5557,
+      "public_json_sha256": "0930d0b5420bac86ea53c08de187148fcf7566e8dbb92cc34d7094a5a5250a3e"
+    },
+    {
+      "step": 159,
+      "phase": "hand",
+      "public_json_bytes": 74764,
+      "independent_zlib6_bytes": 5433,
+      "public_json_sha256": "f4040928ec424417222b25103cac2b472345d28625495916441399fddf1b9ecc"
+    },
+    {
+      "step": 160,
+      "phase": "round",
+      "public_json_bytes": 85073,
+      "independent_zlib6_bytes": 5824,
+      "public_json_sha256": "97a7258088c0505281c65ec116859e2ed18056d728eba544cf1a43f8e8931a45"
+    },
+    {
+      "step": 161,
+      "phase": "shop",
+      "public_json_bytes": 87937,
+      "independent_zlib6_bytes": 6287,
+      "public_json_sha256": "60d5ddffe44ef81f9886154cb426f1c5689cdf0f9e4ae62c028988355c94c635"
+    },
+    {
+      "step": 162,
+      "phase": "pack",
+      "public_json_bytes": 88006,
+      "independent_zlib6_bytes": 6132,
+      "public_json_sha256": "8ab4c5d53452fd3aa0bbf7845cef87eefcc4dcdd88e7b189013b21ec323792e4"
+    },
+    {
+      "step": 163,
+      "phase": "shop",
+      "public_json_bytes": 87446,
+      "independent_zlib6_bytes": 6235,
+      "public_json_sha256": "9ec26fba727027f095965dd1920a5bfdb49863203d5ae482a1663020adf503ce"
+    },
+    {
+      "step": 164,
+      "phase": "blind",
+      "public_json_bytes": 85894,
+      "independent_zlib6_bytes": 6071,
+      "public_json_sha256": "a89db35212abda207297f0416caa44c89191d98eb5076b0b5f7c2a0040c7855f"
+    },
+    {
+      "step": 165,
+      "phase": "hand",
+      "public_json_bytes": 85259,
+      "independent_zlib6_bytes": 5835,
+      "public_json_sha256": "6e77ad2a47c2b73c34274055d4869fbd0dd3594feedfdf148388dbffc9ef24d4"
+    },
+    {
+      "step": 166,
+      "phase": "hand",
+      "public_json_bytes": 84497,
+      "independent_zlib6_bytes": 5825,
+      "public_json_sha256": "96b7aef23c14f75614d89447bb0ea51d6cbf92bf9b1dc53a1203df34e2272bad"
+    },
+    {
+      "step": 167,
+      "phase": "hand",
+      "public_json_bytes": 83828,
+      "independent_zlib6_bytes": 5796,
+      "public_json_sha256": "ed010b50ef274000962756a7d564be8e4c3ca2e602fa900e9d2b2771603d7fae"
+    },
+    {
+      "step": 168,
+      "phase": "round",
+      "public_json_bytes": 84726,
+      "independent_zlib6_bytes": 5800,
+      "public_json_sha256": "2d74ba87675c8b7597ab6dec37e81b2717daa59897f80bd532371b05d783d8fe"
+    },
+    {
+      "step": 169,
+      "phase": "shop",
+      "public_json_bytes": 87620,
+      "independent_zlib6_bytes": 6292,
+      "public_json_sha256": "7f2b54ebee0eca6496f46227a2fb520d6ca579eb8a060727c42c7e1e2770dc4a"
+    },
+    {
+      "step": 170,
+      "phase": "shop",
+      "public_json_bytes": 87123,
+      "independent_zlib6_bytes": 6241,
+      "public_json_sha256": "29f32572e574ad24ca85f8cceaf7a5f9e789a61e1cbd90165979115013243367"
+    },
+    {
+      "step": 171,
+      "phase": "pack",
+      "public_json_bytes": 87708,
+      "independent_zlib6_bytes": 6121,
+      "public_json_sha256": "fd7711ed3a1c01c199b80ff0efba204a510b68b07f01959f8e5be9fbadb3ea48"
+    },
+    {
+      "step": 172,
+      "phase": "shop",
+      "public_json_bytes": 86547,
+      "independent_zlib6_bytes": 6165,
+      "public_json_sha256": "bec7ec7739df6554284ba26cb2829e715a158d6220b13b4a86a0c9fe65d95a79"
+    },
+    {
+      "step": 173,
+      "phase": "blind",
+      "public_json_bytes": 85457,
+      "independent_zlib6_bytes": 6034,
+      "public_json_sha256": "4569d25ecb1edca7fe9bc13b1aa36d27691373cc1b8d260e2d81815bcd58c417"
+    },
+    {
+      "step": 174,
+      "phase": "hand",
+      "public_json_bytes": 84638,
+      "independent_zlib6_bytes": 5736,
+      "public_json_sha256": "f481ee926dbf782b882911b2b68916f500034fb77de12dd7e40d43553b004efe"
+    },
+    {
+      "step": 175,
+      "phase": "hand",
+      "public_json_bytes": 81821,
+      "independent_zlib6_bytes": 5615,
+      "public_json_sha256": "7f9755fc4a74876adf41b3b8168ba26ba1672c1bfd9fa7a16eb916523c748f50"
+    },
+    {
+      "step": 176,
+      "phase": "hand",
+      "public_json_bytes": 78928,
+      "independent_zlib6_bytes": 5525,
+      "public_json_sha256": "d088b7bcd39a13105245c163621beaa3bea4a374437ec42e50a79657d767c9c6"
+    },
+    {
+      "step": 177,
+      "phase": "hand",
+      "public_json_bytes": 75319,
+      "independent_zlib6_bytes": 5446,
+      "public_json_sha256": "47cdecf586aebce51b53be21d61a8d96e85374abb2f66ad5df36e4301d15b688"
+    },
+    {
+      "step": 178,
+      "phase": "hand",
+      "public_json_bytes": 73150,
+      "independent_zlib6_bytes": 5324,
+      "public_json_sha256": "d9b66ca6fc60803bdc19177cd1550a4c9bf348e5d6de2bddaf3a7a4ccf938dcc"
+    },
+    {
+      "step": 179,
+      "phase": "hand",
+      "public_json_bytes": 70231,
+      "independent_zlib6_bytes": 5242,
+      "public_json_sha256": "054251a2fe8947283931bcf7c13f77c136ba642241110270621a0293b418905f"
+    },
+    {
+      "step": 180,
+      "phase": "hand",
+      "public_json_bytes": 68096,
+      "independent_zlib6_bytes": 5163,
+      "public_json_sha256": "b8246b57103aa824e340f5c23a848061e27be528490f801a3c8775fe824895c6"
+    },
+    {
+      "step": 181,
+      "phase": "round",
+      "public_json_bytes": 84990,
+      "independent_zlib6_bytes": 5808,
+      "public_json_sha256": "352b560606656f2dcea216a6ed6ef65ab0ebce05ab4ae624994d65cd333a29fb"
+    },
+    {
+      "step": 182,
+      "phase": "shop",
+      "public_json_bytes": 87346,
+      "independent_zlib6_bytes": 6201,
+      "public_json_sha256": "4839fb02ea66489555a12e90b3fc771d76d95c9817a78ee91eade80ca19a7909"
+    },
+    {
+      "step": 183,
+      "phase": "pack",
+      "public_json_bytes": 87967,
+      "independent_zlib6_bytes": 6117,
+      "public_json_sha256": "3fbdd8e336b78f95614d62c140f881b9c64ca000b42e5dd215fc15602d0b5521"
+    },
+    {
+      "step": 184,
+      "phase": "shop",
+      "public_json_bytes": 87953,
+      "independent_zlib6_bytes": 6308,
+      "public_json_sha256": "f9435c69cca6acbbea1d6392741c6abe01b08d359fe6432daba7118087b1fd6a"
+    },
+    {
+      "step": 185,
+      "phase": "shop",
+      "public_json_bytes": 87410,
+      "independent_zlib6_bytes": 6262,
+      "public_json_sha256": "04a29c831ee02311b91b60ae5f68d5dbba2ff1511584a7a137c8f9e6f379fe93"
+    },
+    {
+      "step": 186,
+      "phase": "blind",
+      "public_json_bytes": 86352,
+      "independent_zlib6_bytes": 6161,
+      "public_json_sha256": "bef9fcae967c17cd360427cf050db6f5ea7bb94fbae343431e7ba921b896ea89"
+    },
+    {
+      "step": 187,
+      "phase": "hand",
+      "public_json_bytes": 85629,
+      "independent_zlib6_bytes": 5862,
+      "public_json_sha256": "9ba1b27bf40c7fc88867cc451f2148b461c8615662962318f19828627c313e28"
+    },
+    {
+      "step": 188,
+      "phase": "hand",
+      "public_json_bytes": 84956,
+      "independent_zlib6_bytes": 5850,
+      "public_json_sha256": "74fb66de14d7a3a96ec283fcfada0c3c2bf50e3ddfe13d123fa6ade77f4f7493"
+    },
+    {
+      "step": 189,
+      "phase": "hand",
+      "public_json_bytes": 82809,
+      "independent_zlib6_bytes": 5795,
+      "public_json_sha256": "e7e710a35f7c94b63a1e954772f3852f8f2d3a0fd2e689d82e3557a608111594"
+    },
+    {
+      "step": 190,
+      "phase": "round",
+      "public_json_bytes": 85729,
+      "independent_zlib6_bytes": 5938,
+      "public_json_sha256": "2e195bce09b4631b19796fda4e5e7d05bdd4f8e487b6a7fe0b576052294759fa"
+    },
+    {
+      "step": 191,
+      "phase": "shop",
+      "public_json_bytes": 88089,
+      "independent_zlib6_bytes": 6355,
+      "public_json_sha256": "f0e0f4ee22d1578213b22d5df290f1a9603da3e7636d7871edf70e78c323f2de"
+    },
+    {
+      "step": 192,
+      "phase": "blind",
+      "public_json_bytes": 86503,
+      "independent_zlib6_bytes": 6179,
+      "public_json_sha256": "415a13ada1eac4819ca7293fc52a58849fb0640ddbf730921f093e0fe73314df"
+    },
+    {
+      "step": 193,
+      "phase": "hand",
+      "public_json_bytes": 85877,
+      "independent_zlib6_bytes": 5958,
+      "public_json_sha256": "923159afb3b8ec14883e0d2009dee7fad8169863a4462a633e35ae0e64d03759"
+    },
+    {
+      "step": 194,
+      "phase": "hand",
+      "public_json_bytes": 82293,
+      "independent_zlib6_bytes": 5799,
+      "public_json_sha256": "dbd32fa75e071f6806a5d36c54dbbd3f4fccec42d8296357503c506d4b5640ff"
+    },
+    {
+      "step": 195,
+      "phase": "hand",
+      "public_json_bytes": 79363,
+      "independent_zlib6_bytes": 5701,
+      "public_json_sha256": "99ab722589f60ecd816659ecd894fb57f67b064c956d8d0c40a144a3557345a1"
+    },
+    {
+      "step": 196,
+      "phase": "hand",
+      "public_json_bytes": 78604,
+      "independent_zlib6_bytes": 5677,
+      "public_json_sha256": "0acb42abf2389a921d456aabcd68c2e830a7db74745b03583d84b13e8920b2ea"
+    },
+    {
+      "step": 197,
+      "phase": "round",
+      "public_json_bytes": 85336,
+      "independent_zlib6_bytes": 5913,
+      "public_json_sha256": "702affbf4c2d76e209a0e3295231bff7de29b70b5d732e1af921a1adf6a3199f"
+    },
+    {
+      "step": 198,
+      "phase": "shop",
+      "public_json_bytes": 88162,
+      "independent_zlib6_bytes": 6376,
+      "public_json_sha256": "e05e60bab2a795eb663b0496dcb2469ea06b25898242cb310027e629283dc8ff"
+    },
+    {
+      "step": 199,
+      "phase": "pack",
+      "public_json_bytes": 87251,
+      "independent_zlib6_bytes": 6193,
+      "public_json_sha256": "e1dda46466a16c9819fe8058126d0a3edfe9267a70431f158d1585f9827a53fd"
+    },
+    {
+      "step": 200,
+      "phase": "shop",
+      "public_json_bytes": 87747,
+      "independent_zlib6_bytes": 6375,
+      "public_json_sha256": "46d54d897876d6678faf4c97a66e90ecddd1009bab3d26ad4be7533fea441223"
+    },
+    {
+      "step": 201,
+      "phase": "pack",
+      "public_json_bytes": 88320,
+      "independent_zlib6_bytes": 6300,
+      "public_json_sha256": "62676ff4b73bb4468b3e5cbc09a121fe93966b9f0421194e9078020a54e6b3e5"
+    },
+    {
+      "step": 202,
+      "phase": "shop",
+      "public_json_bytes": 87198,
+      "independent_zlib6_bytes": 6294,
+      "public_json_sha256": "f2c8ef17c8f74aa000dcfc17953e5e2c72c05b6910fd0a712294a1652d7d093b"
+    },
+    {
+      "step": 203,
+      "phase": "shop",
+      "public_json_bytes": 87198,
+      "independent_zlib6_bytes": 6271,
+      "public_json_sha256": "b25165af148d40e6e4d0fccef86f35e4bf38ff96511de27749a09877b43ba2a2"
+    },
+    {
+      "step": 204,
+      "phase": "blind",
+      "public_json_bytes": 86807,
+      "independent_zlib6_bytes": 6309,
+      "public_json_sha256": "90f433fa74b071589552f8b41000e69b6f7d6adc46193f0a19239848f4bcda73"
+    },
+    {
+      "step": 205,
+      "phase": "hand",
+      "public_json_bytes": 85981,
+      "independent_zlib6_bytes": 5945,
+      "public_json_sha256": "e376256593f44de0c435099066cab33bb83a5a2da7c1835796acbc818e1f334e"
+    },
+    {
+      "step": 206,
+      "phase": "hand",
+      "public_json_bytes": 85249,
+      "independent_zlib6_bytes": 5862,
+      "public_json_sha256": "f58f1fee469849f7cc816dde3cefcf78edb478c0f37f9c30b545c54d27403ef9"
+    },
+    {
+      "step": 207,
+      "phase": "round",
+      "public_json_bytes": 85450,
+      "independent_zlib6_bytes": 5981,
+      "public_json_sha256": "3df94456ffd081feea5a53a46c135bccfba4e4930bb626125e34ff11a016d2cf"
+    },
+    {
+      "step": 208,
+      "phase": "shop",
+      "public_json_bytes": 88322,
+      "independent_zlib6_bytes": 6419,
+      "public_json_sha256": "55ed3b78750867e326992ae5812cbd0b3b3411ad96449e28e2fda230e0fc19dc"
+    },
+    {
+      "step": 209,
+      "phase": "pack",
+      "public_json_bytes": 87249,
+      "independent_zlib6_bytes": 6232,
+      "public_json_sha256": "ca9401f716470365e91a618dbad56cc978fce136e714358bae93ed4b5e273250"
+    },
+    {
+      "step": 210,
+      "phase": "shop",
+      "public_json_bytes": 87785,
+      "independent_zlib6_bytes": 6364,
+      "public_json_sha256": "e0c2d0c6cd623e8c7a471e48901e08f155e0dc8c9cd2f07c189c4babeacf7bf1"
+    },
+    {
+      "step": 211,
+      "phase": "blind",
+      "public_json_bytes": 86239,
+      "independent_zlib6_bytes": 6245,
+      "public_json_sha256": "f95727ab1726618dae9415fa7672b4e755441378baf7a92de7873f9b58e74c25"
+    },
+    {
+      "step": 212,
+      "phase": "hand",
+      "public_json_bytes": 85490,
+      "independent_zlib6_bytes": 5991,
+      "public_json_sha256": "aa22ff6207aa8de5d7c76b9aecd0b08ce37fff036ff68abe108f23df481384a3"
+    },
+    {
+      "step": 213,
+      "phase": "hand",
+      "public_json_bytes": 82490,
+      "independent_zlib6_bytes": 5861,
+      "public_json_sha256": "323a73246cce0059c7f646ffeed9a4dc0770a5a105489c73d4785688a45bf1c6"
+    },
+    {
+      "step": 214,
+      "phase": "hand",
+      "public_json_bytes": 78897,
+      "independent_zlib6_bytes": 5735,
+      "public_json_sha256": "1bf0772319af313d9705a4ced5c581416677aabb6c4ddc29533f872699a61825"
+    },
+    {
+      "step": 215,
+      "phase": "round",
+      "public_json_bytes": 85735,
+      "independent_zlib6_bytes": 6009,
+      "public_json_sha256": "0ca2f8e0c3eac43bba83353200f1f7dcd68527fd1d9544ce237b53c7184deef0"
+    },
+    {
+      "step": 216,
+      "phase": "shop",
+      "public_json_bytes": 88593,
+      "independent_zlib6_bytes": 6447,
+      "public_json_sha256": "52041373435cf2a29350616a5943f8a4ca0d7757dcedd3f5168939eb8013b911"
+    },
+    {
+      "step": 217,
+      "phase": "pack",
+      "public_json_bytes": 87620,
+      "independent_zlib6_bytes": 6282,
+      "public_json_sha256": "082de6ec3bbea842cb6b1929c25f3ea3a0942cec631926c7ad3b81ad5f4115c3"
+    },
+    {
+      "step": 218,
+      "phase": "shop",
+      "public_json_bytes": 88639,
+      "independent_zlib6_bytes": 6456,
+      "public_json_sha256": "cc36c7cfd23f6791be8aa58343079fd49925446c4553571cf47d7605d6abac86"
+    },
+    {
+      "step": 219,
+      "phase": "pack",
+      "public_json_bytes": 89165,
+      "independent_zlib6_bytes": 6384,
+      "public_json_sha256": "d543d511516fa27accb03eb1f276f12aff7e7c9716e7e06ae8ad9aef3126feed"
+    },
+    {
+      "step": 220,
+      "phase": "shop",
+      "public_json_bytes": 88091,
+      "independent_zlib6_bytes": 6374,
+      "public_json_sha256": "66e88c80aae51eb81fd8dea1eb0d95b4761676e01f57946f16cbe08798fb3be5"
+    },
+    {
+      "step": 221,
+      "phase": "blind",
+      "public_json_bytes": 87096,
+      "independent_zlib6_bytes": 6308,
+      "public_json_sha256": "9fc2e17a145d9f62c9d081b73cce428b4c7cf72e1bed3b50b0ee76bee15fe5ae"
+    },
+    {
+      "step": 222,
+      "phase": "hand",
+      "public_json_bytes": 86527,
+      "independent_zlib6_bytes": 6093,
+      "public_json_sha256": "81b0db71b220354454bac2ce9d23a8a39b51306f34ce597a4769105246d97130"
+    },
+    {
+      "step": 223,
+      "phase": "hand",
+      "public_json_bytes": 83722,
+      "independent_zlib6_bytes": 6028,
+      "public_json_sha256": "ee41103303920f13e4321babc5a53e514c551536d5eb7ed3dc350a65cc36b125"
+    },
+    {
+      "step": 224,
+      "phase": "hand",
+      "public_json_bytes": 80835,
+      "independent_zlib6_bytes": 5890,
+      "public_json_sha256": "81af53fbb85803d0dfdd351eaa354b1feb572b9ed9fecb71e51a9342ae7f7019"
+    },
+    {
+      "step": 225,
+      "phase": "hand",
+      "public_json_bytes": 78734,
+      "independent_zlib6_bytes": 5839,
+      "public_json_sha256": "1bbe27bb70c72f4cbdda98ab959b42e330fd5bd0dcf020a025bdf3402d25d6c8"
+    }
+  ]
+}

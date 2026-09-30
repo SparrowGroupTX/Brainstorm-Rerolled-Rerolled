@@ -1,0 +1,785 @@
+{
+  "exit_code": 0,
+  "seconds": 3.5,
+  "log_sha256": "bdd054054b2f2070934d1d81a55e0d02860fc8c700379641cbb5cac27e5045a8",
+  "status": "complete",
+  "result": {
+    "cards_discarded": 8,
+    "case": "18317",
+    "chips": 168075,
+    "discards": 3,
+    "final_resources_supported": true,
+    "five_card_discards": 0,
+    "full_run": false,
+    "initial": {
+      "consumables": {},
+      "deck_remaining": 44,
+      "discards_left": 3,
+      "dollars": -9,
+      "hand_size": 8,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 1
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 60,
+          "level": 1,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 7
+        },
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 2
+        },
+        "Pair": {
+          "chips": 10,
+          "level": 1,
+          "mult": 2,
+          "played": 1
+        },
+        "Straight": {
+          "chips": 30,
+          "level": 1,
+          "mult": 4,
+          "played": 10
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 1
+        },
+        "Three of a Kind": {
+          "chips": 30,
+          "level": 1,
+          "mult": 3,
+          "played": 5
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 5
+        }
+      },
+      "hands_left": 4,
+      "held": [
+        {
+          "debuff": false,
+          "id": "playing:38",
+          "rank": 12,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:26",
+          "rank": 10,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:33",
+          "rank": 8,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:20",
+          "rank": 8,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:30",
+          "rank": 5,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:17",
+          "rank": 5,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:29",
+          "rank": 4,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:15",
+          "rank": 3,
+          "suit": "Diamonds"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:1684",
+          "key": "j_perkeo"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Hand played mult",
+            "extra": 1,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Supernova",
+            "order": 43,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:1691",
+          "key": "j_supernova"
+        },
+        {
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:1686",
+          "key": "j_blueprint"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 9,
+            "yorick_discards": 11
+          },
+          "debuff": false,
+          "id": "card:1685",
+          "key": "j_yorick"
+        }
+      ],
+      "population": 52
+    },
+    "input_unchanged": true,
+    "plays": 4,
+    "reason": "Actual supported play reaches target",
+    "remaining_discards": 0,
+    "resources": {
+      "consumables": {},
+      "deck_remaining": 21,
+      "discards_left": 0,
+      "dollars": -9,
+      "hand_size": 8,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 1
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 60,
+          "level": 1,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 7
+        },
+        "High Card": {
+          "chips": 5,
+          "level": 1,
+          "mult": 1,
+          "played": 2
+        },
+        "Pair": {
+          "chips": 10,
+          "level": 1,
+          "mult": 2,
+          "played": 1
+        },
+        "Straight": {
+          "chips": 30,
+          "level": 1,
+          "mult": 4,
+          "played": 10
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 1
+        },
+        "Three of a Kind": {
+          "chips": 30,
+          "level": 1,
+          "mult": 3,
+          "played": 6
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 8
+        }
+      },
+      "hands_left": 0,
+      "held": [
+        {
+          "debuff": false,
+          "id": "playing:36",
+          "rank": 11,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:39",
+          "rank": 10,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:32",
+          "rank": 7,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:31",
+          "rank": 6,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:23",
+          "rank": 11,
+          "suit": "Diamonds"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:1684",
+          "key": "j_perkeo"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Hand played mult",
+            "extra": 1,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Supernova",
+            "order": 43,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:1691",
+          "key": "j_supernova"
+        },
+        {
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:1686",
+          "key": "j_blueprint"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 9,
+            "yorick_discards": 3
+          },
+          "debuff": false,
+          "id": "card:1685",
+          "key": "j_yorick"
+        }
+      ],
+      "population": 52
+    },
+    "resources_prefix_supported": true,
+    "role": "default",
+    "round_rewards_modeled": false,
+    "score_evaluations": 277470,
+    "status": "supported_clear",
+    "steps": [
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            7,
+            8
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 3,
+        "card_ids": [
+          "playing:38",
+          "playing:26",
+          "playing:29",
+          "playing:15"
+        ],
+        "intervention": "default"
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            3
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 2,
+        "card_ids": [
+          "playing:30"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              3
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 0,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 2,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 118459,
+          "play": {
+            "hand": "Two Pair",
+            "score": 36288,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            5,
+            6,
+            8
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 1,
+        "card_ids": [
+          "playing:3",
+          "playing:1",
+          "playing:17"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              5,
+              6,
+              8
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 0,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 1,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 116960,
+          "play": {
+            "hand": "Two Pair",
+            "score": 36288,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            4,
+            5,
+            8
+          ],
+          "kind": "play"
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:49",
+          "playing:52",
+          "playing:10",
+          "playing:13",
+          "playing:16"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              2,
+              4,
+              5,
+              8
+            ],
+            "kind": "play"
+          },
+          "evaluations": 16150,
+          "play": {
+            "hand": "Two Pair",
+            "score": 38880,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            4,
+            5,
+            8
+          ],
+          "kind": "play"
+        },
+        "before_chips": 38880,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:48",
+          "playing:41",
+          "playing:33",
+          "playing:9",
+          "playing:20"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              2,
+              4,
+              5,
+              8
+            ],
+            "kind": "play"
+          },
+          "evaluations": 14488,
+          "play": {
+            "hand": "Two Pair",
+            "score": 42282,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            2,
+            5,
+            7,
+            8
+          ],
+          "kind": "play"
+        },
+        "before_chips": 81162,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:50",
+          "playing:46",
+          "playing:11",
+          "playing:7",
+          "playing:25"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              2,
+              5,
+              7,
+              8
+            ],
+            "kind": "play"
+          },
+          "evaluations": 11399,
+          "play": {
+            "hand": "Two Pair",
+            "score": 45360,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            3,
+            6,
+            8
+          ],
+          "kind": "play"
+        },
+        "before_chips": 126522,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:34",
+          "playing:8",
+          "playing:21"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              3,
+              6,
+              8
+            ],
+            "kind": "play"
+          },
+          "evaluations": 14,
+          "play": {
+            "hand": "Three of a Kind",
+            "score": 41553,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 0,
+              "qualified": 0
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 0,
+              "max_evaluations": 12
+            },
+            "schema": 1
+          }
+        }
+      }
+    ],
+    "target": 165000,
+    "world": 1
+  },
+  "job": "18317_w1_default",
+  "case": "18317",
+  "mode": "continuation",
+  "role": "default",
+  "world": 1
+}

@@ -1,0 +1,651 @@
+{
+  "schema": 1,
+  "job": "M13",
+  "status": "complete",
+  "members": {
+    "game.lua": {
+      "status": "read",
+      "archive_member": "game.lua",
+      "bytes": 68,
+      "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c"
+    },
+    "globals.lua": {
+      "status": "read",
+      "archive_member": "globals.lua",
+      "bytes": 68,
+      "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c"
+    },
+    "engine/controller.lua": {
+      "status": "read",
+      "archive_member": "engine/controller.lua",
+      "bytes": 158,
+      "sha256": "a115c59cc9ffda8416b92212c820e7f882b26e73bdf5701970b7e6731da0f160"
+    },
+    "main.lua": {
+      "status": "read",
+      "archive_member": "main.lua",
+      "bytes": 68,
+      "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c"
+    },
+    "functions/button_callbacks.lua": {
+      "status": "read",
+      "archive_member": "functions/button_callbacks.lua",
+      "bytes": 68,
+      "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c"
+    },
+    "functions/misc_functions.lua": {
+      "status": "read",
+      "archive_member": "functions/misc_functions.lua",
+      "bytes": 68,
+      "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c"
+    },
+    "functions/common_events.lua": {
+      "status": "read",
+      "archive_member": "functions/common_events.lua",
+      "bytes": 68,
+      "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c"
+    }
+  },
+  "methods": [
+    {
+      "status": "found",
+      "start_line": 1,
+      "end_line": 4,
+      "full_method_bytes": 67,
+      "full_method_sha256": "581b03db3fe79f6211093dc2198ecf09de0970f250d12eb509b35c880619c15c",
+      "excerpt_sha256": "581b03db3fe79f6211093dc2198ecf09de0970f250d12eb509b35c880619c15c",
+      "shown_lines": 4,
+      "line_limit": 240,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "controller_init",
+      "source_member": "engine/controller.lua",
+      "declaration_pattern": "function\\s+Controller:init\\s*\\(",
+      "excerpt_file": "controller_init.lua"
+    },
+    {
+      "status": "found",
+      "start_line": 5,
+      "end_line": 8,
+      "full_method_bytes": 87,
+      "full_method_sha256": "93efb752585a15be0c55e50bf792d77f03bc2f612945dc261cf7d38ea0241118",
+      "excerpt_sha256": "93efb752585a15be0c55e50bf792d77f03bc2f612945dc261cf7d38ea0241118",
+      "shown_lines": 4,
+      "line_limit": 320,
+      "truncated": false,
+      "encoding": "original bytes; offsets located through Latin1 identity mapping",
+      "name": "controller_update",
+      "source_member": "engine/controller.lua",
+      "declaration_pattern": "function\\s+Controller:update\\s*\\(",
+      "excerpt_file": "controller_update.lua"
+    },
+    {
+      "status": "not_found",
+      "matches": 0,
+      "name": "game_update",
+      "source_member": "game.lua",
+      "declaration_pattern": "function\\s+Game:update\\s*\\("
+    },
+    {
+      "status": "not_found",
+      "matches": 0,
+      "name": "exit_overlay",
+      "source_member": "functions/button_callbacks.lua",
+      "declaration_pattern": "G\\.FUNCS\\.exit_overlay_menu\\s*=\\s*function\\b"
+    },
+    {
+      "status": "not_found",
+      "matches": 0,
+      "name": "overlay_menu",
+      "source_member": "functions/button_callbacks.lua",
+      "declaration_pattern": "G\\.FUNCS\\.overlay_menu\\s*=\\s*function\\b"
+    }
+  ],
+  "neighborhoods": [
+    {
+      "source_member": "game.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 2,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "game__saving_loading_1.lua"
+        },
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "game__saving_loading_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "game.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "game.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "game.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "game.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "game.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 4,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "game__state_complete_1.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "globals.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 2,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "globals__saving_loading_1.lua"
+        },
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "globals__saving_loading_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "globals.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "globals.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "globals.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "globals.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "globals.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 4,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "globals__state_complete_1.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "engine/controller.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "engine/controller.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 6,
+          "start_line": 1,
+          "end_line": 8,
+          "sha256": "a115c59cc9ffda8416b92212c820e7f882b26e73bdf5701970b7e6731da0f160",
+          "excerpt_file": "engine_controller__frame_locks_1.lua"
+        },
+        {
+          "match_line": 7,
+          "start_line": 1,
+          "end_line": 8,
+          "sha256": "a115c59cc9ffda8416b92212c820e7f882b26e73bdf5701970b7e6731da0f160",
+          "excerpt_file": "engine_controller__frame_locks_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "engine/controller.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 8,
+          "sha256": "a115c59cc9ffda8416b92212c820e7f882b26e73bdf5701970b7e6731da0f160",
+          "excerpt_file": "engine_controller__controller_locked_1.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "engine/controller.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "engine/controller.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "engine/controller.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "main.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 2,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "main__saving_loading_1.lua"
+        },
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "main__saving_loading_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "main.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "main.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "main.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "main.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "main.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 4,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "main__state_complete_1.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "functions/button_callbacks.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 2,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_button_callbacks__saving_loading_1.lua"
+        },
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_button_callbacks__saving_loading_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "functions/button_callbacks.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/button_callbacks.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/button_callbacks.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/button_callbacks.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/button_callbacks.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 4,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_button_callbacks__state_complete_1.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "functions/misc_functions.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 2,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_misc_functions__saving_loading_1.lua"
+        },
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_misc_functions__saving_loading_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "functions/misc_functions.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/misc_functions.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/misc_functions.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/misc_functions.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/misc_functions.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 4,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_misc_functions__state_complete_1.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "functions/common_events.lua",
+      "name": "saving_loading",
+      "pattern": "\\b(?:SAVING|LOADING)\\b",
+      "matches": 2,
+      "shown_matches": 2,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 2,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_common_events__saving_loading_1.lua"
+        },
+        {
+          "match_line": 3,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_common_events__saving_loading_2.lua"
+        }
+      ]
+    },
+    {
+      "source_member": "functions/common_events.lua",
+      "name": "frame_locks",
+      "pattern": "locks\\s*(?:\\.\\s*(?:frame_set|frame)|\\[\\s*[\\x27\\x22](?:frame_set|frame))",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/common_events.lua",
+      "name": "controller_locked",
+      "pattern": "(?:self|CONTROLLER)\\s*\\.\\s*locked\\b",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/common_events.lua",
+      "name": "controller_update_call",
+      "pattern": "CONTROLLER\\s*:\\s*update\\s*\\(",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/common_events.lua",
+      "name": "menu_state",
+      "pattern": "STAGES\\s*\\.\\s*MAIN_MENU|STATES\\s*\\.\\s*MENU",
+      "matches": 0,
+      "shown_matches": 0,
+      "truncated": false,
+      "excerpts": []
+    },
+    {
+      "source_member": "functions/common_events.lua",
+      "name": "state_complete",
+      "pattern": "STATE_COMPLETE\\s*=",
+      "matches": 1,
+      "shown_matches": 1,
+      "truncated": false,
+      "excerpts": [
+        {
+          "match_line": 4,
+          "start_line": 1,
+          "end_line": 4,
+          "sha256": "e3f830d8780a961f2664cc1c4509c073f99f2c0c0812616b4f7639add3dc082c",
+          "excerpt_file": "functions_common_events__state_complete_1.lua"
+        }
+      ]
+    }
+  ],
+  "scope": "Original executable ZIP read only. No Lua execution, native search, process control or player-file access.",
+  "qualification": false,
+  "combined_output_cap_bytes": 280000,
+  "neighborhood_lines_before": 6,
+  "neighborhood_lines_after": 8,
+  "combined_output_bytes": 1852
+}

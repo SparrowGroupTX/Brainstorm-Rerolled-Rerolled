@@ -1,0 +1,47 @@
+{
+  "job": "D-old-13868-candidate",
+  "mode": "decision",
+  "case": "old-13868",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 2.0,
+  "log_sha256": "037c177e53f9f16935b44fcc78bc755e2ccca7db76744fad0af8e4d86b182b4d",
+  "status": "complete",
+  "result": {
+    "case": "old-13868",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          4,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 120716,
+      "play": {
+        "hand": "High Card",
+        "legal": true,
+        "score": 2730,
+        "uncertain": false
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

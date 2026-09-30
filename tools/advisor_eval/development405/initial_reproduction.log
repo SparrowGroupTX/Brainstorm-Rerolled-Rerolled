@@ -1,0 +1,115 @@
+EException ignored in: <generator object SuppliedFragmentIntegrity.both at 0x000001A83875BAB0>
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 57, in test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit
+    self.assertEqual(report['status'],'incomplete')
+RuntimeError: generator ignored GeneratorExit
+FF.EException ignored in: <generator object SuppliedFragmentIntegrity.both at 0x000001A8388246A0>
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 86, in test_cross_file_reused_or_regressed_segment_rejected
+    self.assertEqual(report['status'],'incomplete')
+RuntimeError: generator ignored GeneratorExit
+FEException ignored in: <generator object TestCase.subTest at 0x000001A838787A40>
+Traceback (most recent call last):
+  File "C:\Users\trevo\AppData\Local\Programs\Python\Python312\Lib\unittest\case.py", line 540, in subTest
+    if not self._outcome.success:
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'success'
+EException ignored in: <generator object TestCase.subTest at 0x000001A838828C40>
+Traceback (most recent call last):
+  File "C:\Users\trevo\AppData\Local\Programs\Python\Python312\Lib\unittest\case.py", line 540, in subTest
+    if not self._outcome.success:
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'success'
+...
+======================================================================
+ERROR: test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit) (analyzer='tools.advisor_eval.analyze_player_timing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 48, in both
+    yield analyze(paths)
+GeneratorExit
+
+======================================================================
+ERROR: test_cross_file_reused_or_regressed_segment_rejected (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_cross_file_reused_or_regressed_segment_rejected) (analyzer='tools.advisor_eval.analyze_player_timing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 48, in both
+    yield analyze(paths)
+GeneratorExit
+
+======================================================================
+ERROR: test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit) (analyzer='tools.advisor_eval.inspect_player_log')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 441, in __str__
+    return self._str
+           ^^^^^^^^^
+AttributeError: 'WindowsPath' object has no attribute '_str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\trevo\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 555, in drive
+    return self._drv
+           ^^^^^^^^^
+AttributeError: 'WindowsPath' object has no attribute '_drv'
+
+During handling of the above exception, another exception occurred:
+
+GeneratorExit
+
+======================================================================
+ERROR: test_cross_file_reused_or_regressed_segment_rejected (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_cross_file_reused_or_regressed_segment_rejected) (analyzer='tools.advisor_eval.inspect_player_log')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 441, in __str__
+    return self._str
+           ^^^^^^^^^
+AttributeError: 'WindowsPath' object has no attribute '_str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\trevo\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 555, in drive
+    return self._drv
+           ^^^^^^^^^
+AttributeError: 'WindowsPath' object has no attribute '_drv'
+
+During handling of the above exception, another exception occurred:
+
+GeneratorExit
+
+======================================================================
+FAIL: test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 57, in test_adjacent_sequence_with_wrong_predecessor_rejected_before_credit
+    self.assertEqual(report['status'],'incomplete')
+AssertionError: 'parsed_supplied_records' != 'incomplete'
+- parsed_supplied_records
++ incomplete
+
+
+======================================================================
+FAIL: test_cli_reports_incomplete_and_preserves_existing_report (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_cli_reports_incomplete_and_preserves_existing_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 109, in test_cli_reports_incomplete_and_preserves_existing_report
+    self.assertEqual(inspection.main(args),1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_cross_file_reused_or_regressed_segment_rejected (test_advisor_log_integrity405.SuppliedFragmentIntegrity.test_cross_file_reused_or_regressed_segment_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tests\test_advisor_log_integrity405.py", line 86, in test_cross_file_reused_or_regressed_segment_rejected
+    self.assertEqual(report['status'],'incomplete')
+AssertionError: 'parsed_supplied_records' != 'incomplete'
+- parsed_supplied_records
++ incomplete
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.069s
+
+FAILED (failures=3, errors=4)

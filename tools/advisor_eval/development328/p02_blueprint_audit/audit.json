@@ -1,0 +1,779 @@
+{
+  "schema": 1,
+  "kind": "existing_public_comparison_audit",
+  "job": "P02",
+  "source_sequence": 3282,
+  "source_run": 4,
+  "audit_script_sha256": "d7e33952af6870b49034bf93243381e709ba4f5b05e0c356687e36e9c832e46a",
+  "evidence": {
+    "registration.json": "c341623c63ea82fe27914bb51ba02e7e1290b0d18c8399f437fdcd05816f0736",
+    "spent.json": "9a0a8690f7cec30212ef2a3506e944b93697593ce5941e74fb1d7fef31802a61",
+    "record.json": "9e8276cecec4d014bedfde98a68c98308ac1fc13238c2cd227c7eacb06ea60dc",
+    "snapshot.json": "163ab38a3c64aa8a97fad389e746efc2d811365064fc726b79ce99dd672d1422",
+    "input_provenance.json": "553df9116337aaff265798df9c1f709022306575305791fecc81fbb7b240f5c4",
+    "comparison.json": "7b1b3b0a41b14e8c60d6cb479120fb447e8d254303fc28481cbab4e99bc7c0e6",
+    "baseline_result.json": "13e065669e578bf2b779641de1fb452828e88f8aad62702710a6c5d14b124f24",
+    "candidate_result.json": "703de77ea559a9e05d85484067d0a1a5e2dc39b4fdb032aad4a51c664bc58b5e",
+    "baseline_summary.json": "bff0ed2765a93b4a81b01bf5c2887015915dba281dab6d0e55ac05d506f1bfa9",
+    "candidate_summary.json": "dc8fb9b29020ce309236145555fd0fca7b3723a4791eea8e95693b41d541629c",
+    "baseline_record.json": "4060829a3555d0fdb6cff55c46a846ca63463813215c00ef76059d2b6ed63cbb",
+    "candidate_record.json": "6b81a1399c2ba2da8104ad7b099891e9ae7b357fef6c4494207b6f4425d3933d",
+    "candidate/Brainstorm/Advisor/strategy.lua": "88ab98dd4a0e16214fb96d46ba580069bf80b410ca458a988afa41d2ff48b2fb",
+    "candidate/Brainstorm/Advisor/shop_scoring.lua": "9c23ca62e5baea5e28519bf4ac3ef2e2bbe5dbd5de5e43361331fadc6b511652"
+  },
+  "new_policy_decisions": 0,
+  "source_executions": 0,
+  "registered_or_consumed_new_jobs": 0,
+  "verdict": "Confirmed affordable replacement recommendation and completion within unchanged cap; no terminal or replacement-world outcome proof.",
+  "roles": {
+    "baseline": {
+      "score_calls": 49956,
+      "decision_cap": 50000,
+      "decision_wall_seconds": 2.3658100999892,
+      "input_unchanged": true,
+      "source_execution": false,
+      "action_dispatch": false,
+      "selected_action_rescore": false,
+      "qualification": false,
+      "action": {
+        "kind": "leave_shop"
+      },
+      "shop_diagnostics": {
+        "evaluations": 49956,
+        "metrics": {
+          "coefficient_opportunities": {
+            "shop_scoring_gain_weight": 14
+          },
+          "completed_finishing_profiles": 16,
+          "completed_profiles": 16,
+          "finishing_evaluations": 3740,
+          "finishing_requests": 16,
+          "paired_comparisons": 15,
+          "profile_cache_hits": 16,
+          "profile_requests": 32
+        },
+        "truncated": true,
+        "unavailable_reason": "The shared scoring budget cannot complete this paired comparison."
+      }
+    },
+    "candidate": {
+      "score_calls": 40320,
+      "decision_cap": 50000,
+      "decision_wall_seconds": 1.7995971000055,
+      "input_unchanged": true,
+      "source_execution": false,
+      "action_dispatch": false,
+      "selected_action_rescore": false,
+      "qualification": false,
+      "action": {
+        "area": "jokers",
+        "followup": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "index": 3,
+        "kind": "sell"
+      },
+      "shop_diagnostics": {
+        "evaluations": 40320,
+        "metrics": {
+          "coefficient_opportunities": {
+            "shop_scoring_gain_weight": 8
+          },
+          "completed_finishing_profiles": 10,
+          "completed_profiles": 10,
+          "finishing_evaluations": 1952,
+          "finishing_requests": 10,
+          "paired_comparisons": 8,
+          "profile_cache_hits": 9,
+          "profile_requests": 19
+        },
+        "sequences": {
+          "comparisons": 0,
+          "complete": false,
+          "plans": {},
+          "reason": "This visible action graph exceeds the small-shop admission bounds.",
+          "rejected": {},
+          "scope": "Complete supported graph: at most two visible Joker/Planet buys, one original Joker sale, one Planet use and one original ordinary Fool copying the played main Planet with an already free slot. Unsupported transitions are listed separately.",
+          "states": 0
+        },
+        "truncated": false
+      }
+    }
+  },
+  "paid_plan": {
+    "sold": {
+      "key": "j_sly",
+      "name": "Sly Joker",
+      "id": "card:793",
+      "sell_cost": 1
+    },
+    "purchase": {
+      "key": "j_blueprint",
+      "name": "Blueprint",
+      "id": "card:866",
+      "cost": 10
+    },
+    "incoming_eternal": true,
+    "cash_before": 52,
+    "cash_after_sale": 53,
+    "cash_after_purchase": 43,
+    "joker_limit": 5,
+    "slot_freed": 1,
+    "retained_joker_keys": [
+      "j_yorick",
+      "j_perkeo",
+      "j_greedy_joker",
+      "j_trio"
+    ],
+    "inventory_unchanged_by_sale_and_purchase": {
+      "negative_venus": 6,
+      "ordinary_hermit": 1
+    },
+    "action_sequence_scope": "Sale is the selected first action; purchase is a declared follow-up requiring fresh advice. Neither action was dispatched."
+  },
+  "reported_selected_replacement": {
+    "opening_mean_before": 2778,
+    "opening_mean_after": 7176,
+    "samples": 4,
+    "target": 25000,
+    "copy_order_shortlist": "2/5 layouts in advice",
+    "utility_gain": 244.15014887581,
+    "paired_endpoint_object_exported": false,
+    "independent_after_world_audit_possible": false,
+    "scope": "These endpoint means and complete-paired wording are emitted advice; the underlying replacement evidence object is not returned."
+  },
+  "retained_readiness_is_original_owned_row": {
+    "cash": 52,
+    "joker_keys": [
+      "j_yorick",
+      "j_perkeo",
+      "j_sly",
+      "j_greedy_joker",
+      "j_trio"
+    ],
+    "opening": {
+      "opening_mean": 2778,
+      "opening_scores": [
+        2136,
+        3848,
+        1992,
+        3136
+      ],
+      "target": 25000,
+      "samples": 4,
+      "finishing_clearing_samples": 1
+    },
+    "finishing_scope": {
+      "complete": true,
+      "supported": true,
+      "known_mechanics": true,
+      "policy_scope": "Four common composition worlds; fixed play-only or one targeted observed discard policy; up to four hands, eight cards, and 32 future-play candidates.",
+      "reason": "Completed both observed policies in all four paired worlds, carrying conditional sampled scores, growth, population and resource costs; omitted policies and unseen draws remain uncertain.",
+      "samples": 4,
+      "candidate_limit": 32,
+      "max_discards_used": 1,
+      "generation_composition_samples": false,
+      "finishing_guarantee": false
+    },
+    "policies": [
+      {
+        "name": "play_only",
+        "clearing_samples": 1,
+        "mean_score": 15966,
+        "mean_progress": 0.54088,
+        "mean_hands_used": 3.5,
+        "mean_discards_used": 0,
+        "mean_action_count": 3.5,
+        "worlds": [
+          {
+            "composition_world_id": 1,
+            "clear": true,
+            "score": 34776,
+            "progress": 1,
+            "hands_used": 2,
+            "discards_used": 0,
+            "action_count": 2,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 5
+            },
+            "actions": [
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  6,
+                  8
+                ],
+                "hand": "Pair",
+                "score": 2136,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  4,
+                  8
+                ],
+                "hand": "Three of a Kind",
+                "score": 32640,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          },
+          {
+            "composition_world_id": 2,
+            "clear": false,
+            "score": 9872,
+            "progress": 0.39488,
+            "hands_used": 4,
+            "discards_used": 0,
+            "action_count": 4,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 5
+            },
+            "actions": [
+              {
+                "kind": "play",
+                "indices": [
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "hand": "Straight",
+                "score": 3848,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  6
+                ],
+                "hand": "Pair",
+                "score": 1944,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  6,
+                  8
+                ],
+                "hand": "Pair",
+                "score": 2184,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  5,
+                  8
+                ],
+                "hand": "Pair",
+                "score": 1896,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          },
+          {
+            "composition_world_id": 3,
+            "clear": false,
+            "score": 11696,
+            "progress": 0.46784,
+            "hands_used": 4,
+            "discards_used": 0,
+            "action_count": 4,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 5
+            },
+            "actions": [
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  6
+                ],
+                "hand": "Pair",
+                "score": 1992,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  3,
+                  5,
+                  6,
+                  7
+                ],
+                "hand": "Flush",
+                "score": 6992,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  3,
+                  4
+                ],
+                "hand": "Pair",
+                "score": 2232,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  6
+                ],
+                "hand": "High Card",
+                "score": 480,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          },
+          {
+            "composition_world_id": 4,
+            "clear": false,
+            "score": 7520,
+            "progress": 0.3008,
+            "hands_used": 4,
+            "discards_used": 0,
+            "action_count": 4,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 5
+            },
+            "actions": [
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  4,
+                  5,
+                  8
+                ],
+                "hand": "Two Pair",
+                "score": 3136,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  3
+                ],
+                "hand": "High Card",
+                "score": 256,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  4,
+                  8
+                ],
+                "hand": "Pair",
+                "score": 2184,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  7
+                ],
+                "hand": "Pair",
+                "score": 1944,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "one_targeted_discard",
+        "clearing_samples": 1,
+        "mean_score": 23045,
+        "mean_progress": 0.61356,
+        "mean_hands_used": 3.5,
+        "mean_discards_used": 1,
+        "mean_action_count": 4.5,
+        "worlds": [
+          {
+            "composition_world_id": 1,
+            "clear": true,
+            "score": 55824,
+            "progress": 1,
+            "hands_used": 2,
+            "discards_used": 1,
+            "action_count": 3,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 3
+            },
+            "actions": [
+              {
+                "kind": "discard",
+                "indices": [
+                  3,
+                  5
+                ],
+                "dollars_before": 52,
+                "dollars_after": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  4,
+                  6,
+                  8
+                ],
+                "hand": "Three of a Kind",
+                "score": 23184,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  3,
+                  5,
+                  8
+                ],
+                "hand": "Three of a Kind",
+                "score": 32640,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          },
+          {
+            "composition_world_id": 2,
+            "clear": false,
+            "score": 12984,
+            "progress": 0.51936,
+            "hands_used": 4,
+            "discards_used": 1,
+            "action_count": 5,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 4
+            },
+            "actions": [
+              {
+                "kind": "discard",
+                "indices": [
+                  1
+                ],
+                "dollars_before": 52,
+                "dollars_after": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  4,
+                  5,
+                  6
+                ],
+                "hand": "Straight",
+                "score": 2960,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  5,
+                  7,
+                  8
+                ],
+                "hand": "Flush",
+                "score": 6992,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  3,
+                  6
+                ],
+                "hand": "Pair",
+                "score": 1896,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  2,
+                  4,
+                  5,
+                  7,
+                  8
+                ],
+                "hand": "Flush",
+                "score": 1136,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          },
+          {
+            "composition_world_id": 3,
+            "clear": false,
+            "score": 12400,
+            "progress": 0.496,
+            "hands_used": 4,
+            "discards_used": 1,
+            "action_count": 5,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 2
+            },
+            "actions": [
+              {
+                "kind": "discard",
+                "indices": [
+                  1,
+                  4,
+                  7
+                ],
+                "dollars_before": 52,
+                "dollars_after": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  2,
+                  3,
+                  5,
+                  7,
+                  8
+                ],
+                "hand": "Flush",
+                "score": 6348,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  5,
+                  6
+                ],
+                "hand": "Pair",
+                "score": 2232,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "hand": "Straight",
+                "score": 1540,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  6,
+                  8
+                ],
+                "hand": "Pair",
+                "score": 2280,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          },
+          {
+            "composition_world_id": 4,
+            "clear": false,
+            "score": 10972,
+            "progress": 0.43888,
+            "hands_used": 4,
+            "discards_used": 1,
+            "action_count": 5,
+            "population_loss": 0,
+            "endpoint_cash": 52,
+            "endpoint_population": 52,
+            "endpoint_inventory_count": 7,
+            "yorick_endpoint": {
+              "x_mult": 4,
+              "yorick_discards": 2
+            },
+            "actions": [
+              {
+                "kind": "discard",
+                "indices": [
+                  1,
+                  2,
+                  6
+                ],
+                "dollars_before": 52,
+                "dollars_after": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  2,
+                  3,
+                  4,
+                  6,
+                  7
+                ],
+                "hand": "Flush",
+                "score": 5700,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  7
+                ],
+                "hand": "Pair",
+                "score": 1944,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  3,
+                  4,
+                  7,
+                  8
+                ],
+                "hand": "Flush",
+                "score": 2208,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              },
+              {
+                "kind": "play",
+                "indices": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "hand": "Straight",
+                "score": 1120,
+                "dollars_before": 52,
+                "dollars_after": 52,
+                "remaining_population": 52
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "The supplied public snapshot has no shop_forecast; no future offer or acquisition was reconstructed.",
+    "Candidate strategy.readiness retains the original row. Its one clearing composition world out of four is not the Blueprint endpoint result or a win probability.",
+    "The actual selected replacement paired evidence is absent even from full_result; its per-world scores, clears and resource endpoints cannot be independently audited from this job.",
+    "Finish policies are play-only or one targeted discard, at most four hands/eight cards/32 candidates. Multiple discards and arbitrary joint consumable policies are not covered.",
+    "Retained Venus/Hermit and Perkeo inventory value is strategic utility, not an executed copy, Planet use or future survival result. No new Blue generation or complete Joker cashout income is established.",
+    "The reported order shortlist is bounded; no globally optimal rearrangement is demonstrated. The incoming Blueprint is Eternal.",
+    "This is a selected dependent development state, not an unseen holdout or a complete attempt. No rescued run, terminal win, win odds or player-population effect is established."
+  ]
+}

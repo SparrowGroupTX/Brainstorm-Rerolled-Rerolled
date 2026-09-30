@@ -1,0 +1,515 @@
+--- before/Brainstorm/Advisor/acorn_belief.lua
++++ Brainstorm/Advisor/acorn_belief.lua
+@@ -114,7 +114,7 @@
+   eternal=true,perishable=true,perish_tally=true,set=true,t_chips=true,t_mult=true,
+   type=true,x_mult=true}
+ local checked_opaque_keys={j_green_joker=true,j_misprint=true,j_blackboard=true,
+-  j_smiley=true,j_supernova=true}
++  j_smiley=true,j_supernova=true,j_campfire=true,j_hit_the_road=true}
+ local function stable_opaque_ability(j)
+   local a=j.ability or {}
+   for field,value in pairs(a) do
+@@ -126,8 +126,16 @@
+     -- before-play increment precedes the completed-action inventory update.
+     local defaults={bonus=0,d_size=0,h_dollars=0,h_mult=0,h_size=0,h_x_mult=0,
+       p_dollars=0,perma_bonus=0,t_chips=0,t_mult=0,x_mult=1}
+-    for k,v in pairs(defaults) do if a[k]~=nil and a[k]~=v then return false end end
++    local growing_x=j.key=='j_campfire' or j.key=='j_hit_the_road'
++    for k,v in pairs(defaults) do if not (growing_x and k=='x_mult') and a[k]~=nil and a[k]~=v then return false end end
+     if j.key~='j_green_joker' and a.mult~=nil and a.mult~=0 then return false end
++    if growing_x then
++      local road=j.key=='j_hit_the_road';local step=road and 0.5 or 0.25
++      return a.name==(road and 'Hit the Road' or 'Campfire') and
++        a.effect==(road and 'Jack Discard Effect' or nil) and a.extra==step and
++        finite(a.x_mult) and a.x_mult>=1 and (a.x_mult-1)%step==0 and
++        (a.hands_played_at_create==nil or integer(a.hands_played_at_create) and a.hands_played_at_create>=0)
++    end
+     if j.key=='j_blackboard' then return a.name=='Blackboard' and a.effect==nil and a.extra==3 end
+     -- Neither ability changes during a play/discard. Smiley counts scoring
+     -- faces; Supernova reads the hand's played count from each fresh public
+@@ -312,6 +320,27 @@
+   local out=copy(b);out.state_valid=false;out.value_gap=reason or 'Public actions may have changed the captured abilities.';out.revision=out.revision+1
+   return out
+ end
++-- Only public playing-card snapshots enter this count. A Stone Jack has no
++-- rank; a debuffed Jack cannot grow Road. Never inspect concealed payloads.
++function M.needs_discarded_jacks(b)
++  for _,j in ipairs(b and b.inventory or {}) do if j.key=='j_hit_the_road' and not j.debuff then return true end end
++  return false
++end
++function M.discarded_jacks(cards,indices)
++  local selected=indices or {};if not indices then for i=1,#(cards or {}) do selected[i]=i end end
++  local total,seen=0,{}
++  for _,i in ipairs(selected) do
++    local c=cards and cards[i]
++    if not c or seen[i] or c.face_down or c.facing=='back' or c.identity_redacted or c.unknown then return nil end
++    seen[i]=true
++    if c.debuff~=nil and type(c.debuff)~='boolean' then return nil end
++    if not c.debuff and c.enhancement~='m_stone' then
++      if not integer(c.rank) or c.rank<2 or c.rank>14 then return nil end
++      if c.rank==11 then total=total+1 end
++    end
++  end
++  return total
++end
+ function M.advance_public(b,event)
+   if not M.validate(b) or type(event)~='table' or event.epoch~=b.epoch or event.observed_complete~=true then return nil,'An observed completed public action in the current epoch is required.' end
+   if not b.state_valid then return M.invalidate_values(b,b.value_gap) end
+@@ -341,6 +370,12 @@
+       -- One physical before-play/discard trigger, not one per card or copy.
+       j.ability.mult=math.max(0,j.ability.mult+(event.kind=='play' and 1 or -1))
+     end
++    if j.key=='j_hit_the_road' and not j.debuff and event.kind=='discard' then
++      if not integer(event.discarded_jacks) or event.discarded_jacks<0 or event.discarded_jacks>event.discarded_count then
++        return M.invalidate_values(b,'The visible discarded Jack count is unavailable.')
++      end
++      j.ability.x_mult=j.ability.x_mult+0.5*event.discarded_jacks
++    end
+     -- Fortune Teller changes only with Tarot usage; Swashbuckler reads retained
+     -- sale values; Scary Face is a fixed scoring effect. Ordinary play/discard
+     -- changes none of these in this qualified row. Uses/sales/round changes are
+--- before/Brainstorm/Advisor/acorn_discard.lua
++++ Brainstorm/Advisor/acorn_discard.lua
+@@ -134,7 +134,8 @@
+   table.sort(root.deck,function(a,c)return encode(a)<encode(c) end)
+   local prepared={}
+   for _,indices in ipairs(candidates) do
+-    local advanced=belief.advance_public(b,{epoch=b.epoch,kind='discard',observed_complete=true,discarded_count=#indices})
++    local advanced=belief.advance_public(b,{epoch=b.epoch,kind='discard',observed_complete=true,discarded_count=#indices,
++      discarded_jacks=belief.discarded_jacks(s.hand,indices)})
+     if not advanced or advanced.state_valid~=true then return no('A completed discard would invalidate the public Joker ability belief.') end
+     local rows={};local witness
+     for wi,world in ipairs(b.worlds) do
+@@ -292,7 +293,8 @@
+   if (choice.growth or {}).held_floor then
+     return no('The complete Joker-order and conditional held-floor family is not qualified.')
+   end
+-  local advanced=belief.advance_public(b,{epoch=b.epoch,kind='discard',observed_complete=true,discarded_count=#choice.action.indices})
++  local advanced=belief.advance_public(b,{epoch=b.epoch,kind='discard',observed_complete=true,discarded_count=#choice.action.indices,
++    discarded_jacks=belief.discarded_jacks(s.hand,choice.action.indices)})
+   if not advanced or advanced.state_valid~=true then return no('Public growth cannot advance after this discard.') end
+   local removed={};for _,i in ipairs(choice.action.indices) do removed[i]=true end
+   local remap={};local count=0;for i=1,#s.hand do if not removed[i] then count=count+1;remap[i]=count end end
+--- before/Brainstorm/Advisor/acorn_public.lua
++++ Brainstorm/Advisor/acorn_public.lua
+@@ -148,6 +148,15 @@
+       pending_action={kind=kind,epoch=self.epoch,context=round_context(g),hands_played=current.hands_played,
+         hands_left=current.hands_left,discards_left=current.discards_left,discards_used=current.discards_used,
+         discarded_count=kind=='discard' and #selected or nil}
++      if kind=='discard' and deps.card and deps.belief and deps.belief.needs_discarded_jacks and
++          deps.belief.needs_discarded_jacks(self.belief) then
++        local cards,public={},true
++        for i,card in ipairs(selected) do
++          if not visible(card) then public=false;break end
++          cards[i]=deps.card(card)
++        end
++        if public then pending_action.discarded_jacks=deps.belief.discarded_jacks(cards) end
++      end
+       play=kind=='play' and pending_action or nil
+     else
+       play=nil
+@@ -272,7 +281,8 @@
+         pending.observed_complete=true
+         local b=deps.belief and deps.belief.advance_public and deps.belief.advance_public(self.belief,pending)
+         if b then self.belief=b else fail('Completed public action has no qualified ability transition.')end
+-        emit({kind='joker_public_action_complete',epoch=self.epoch,action=pending.kind,discarded_count=pending.discarded_count})
++        emit({kind='joker_public_action_complete',epoch=self.epoch,action=pending.kind,discarded_count=pending.discarded_count,
++          discarded_jacks=pending.discarded_jacks})
+         pending_action=nil;play=nil
+       end
+     end
+--- before/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -310,7 +310,7 @@
+         focused_options.max_orders=4
+         local focused=modules.shop_scoring.new(snapshot,modules.scoring,yield_fn,focused_options)
+         local choice,receipt=modules.strategy.copy_acquisition(snapshot,focused)
+-        if choice and choice.copy_endpoint_certificate then
++        if choice and (choice.copy_endpoint_certificate or choice.copy_reserve_funding) then
+           -- Do not sell away the uncertain incumbent unless the resulting
+           -- physical vacancy can complete its exact funded purchase on fresh
+           -- advice. Qualify within this SAME context/allowance before any sale.
+--- before/Brainstorm/Advisor/growth.lua
++++ Brainstorm/Advisor/growth.lua
+@@ -25,14 +25,18 @@
+   j_sly='Sly Joker',j_clever='Clever Joker',j_crafty='Crafty Joker',
+   j_jolly='Jolly Joker',j_zany='Zany Joker',j_mad='Mad Joker',j_crazy='Crazy Joker',j_smeared='Smeared Joker',
+   j_abstract='Abstract Joker',j_bull='Bull',j_blue_joker='Blue Joker',j_certificate='Certificate',
+-  j_stuntman='Stuntman',j_faceless='Faceless Joker',j_odd_todd='Odd Todd',j_scholar='Scholar'}
++  j_stuntman='Stuntman',j_faceless='Faceless Joker',j_odd_todd='Odd Todd',j_scholar='Scholar',
++  j_joker='Joker',j_acrobat='Acrobat',j_ride_the_bus='Ride the Bus',j_green_joker='Green Joker',
++  j_hack='Hack',j_square='Square Joker',j_golden='Golden Joker',j_campfire='Campfire',j_hit_the_road='Hit the Road'}
+ local joker_effects={j_yorick='',j_perkeo='',j_brainstorm='Copycat',j_blueprint='Copycat',
+   j_supernova='Hand played mult',j_droll='Type Mult',j_burnt='',j_smiley='',
+   j_duo='X1.5 Mult',j_wily='',j_swashbuckler='Set Mult',j_flower_pot='',
+   j_even_steven='Even Card Buff',j_greedy_joker='Suit Mult',j_hanging_chad='',j_fortune_teller='',
+   j_stencil='Hand Size Mult',j_lusty_joker='Suit Mult',j_wrathful_joker='Suit Mult',j_gluttenous_joker='Suit Mult',
+   j_jolly='Type Mult',j_zany='Type Mult',j_mad='Type Mult',j_crazy='Type Mult',j_smeared='',
+-  j_abstract='Joker Mult',j_certificate='',j_stuntman='',j_odd_todd='Odd Card Buff',j_scholar='Ace Buff'}
++  j_abstract='Joker Mult',j_certificate='',j_stuntman='',j_odd_todd='Odd Card Buff',j_scholar='Ace Buff',
++  j_joker='Mult',j_acrobat='Shop size',j_ride_the_bus='',j_hack='Low Card double',
++  j_golden='Bonus dollars',j_hit_the_road='Jack Discard Effect'}
+ -- These vanilla families add integer card-stage Mult or fixed main-stage
+ -- chips/Mult. They depend on the retained category/suits, never their order.
+ local type_chips={j_sly={'Pair',50},j_wily={'Three of a Kind',100},j_clever={'Two Pair',80},
+@@ -41,7 +45,8 @@
+   j_crazy={'Straight',12},j_droll={'Flush',10}}
+ local additive_cards={c_base={'Default Base','Default',0,'Base'},m_mult={'Mult','Enhanced',4,'Mult Card'},
+   m_bonus={'Bonus','Enhanced',0,'Bonus Card'},m_steel={'Steel Card','Enhanced',0,'Steel Card'},
+-  m_gold={'Gold Card','Enhanced',0,'Gold Card'}}
++  m_gold={'Gold Card','Enhanced',0,'Gold Card'},m_wild={'Wild Card','Enhanced',0,'Wild Card'},
++  m_stone={'Stone Card','Enhanced',0,'Stone Card'}}
+ local held_cards={c_base={'Default Base','Default','Base'},m_mult={'Mult','Enhanced','Mult Card'},
+   m_bonus={'Bonus','Enhanced','Bonus Card'},m_steel={'Steel Card','Enhanced','Steel Card'},
+   m_gold={'Gold Card','Enhanced','Gold Card'},m_wild={'Wild Card','Enhanced','Wild Card'},
+@@ -68,9 +73,11 @@
+ local extra_shapes={j_greedy_joker={s_mult=3,suit='Diamonds'},j_ice_cream={chip_mod=5,chips='integer'},
+   j_card_sharp={Xmult=3},j_lusty_joker={s_mult=3,suit='Hearts'},
+   j_wrathful_joker={s_mult=3,suit='Spades'},j_gluttenous_joker={s_mult=3,suit='Clubs'},
+-  j_stuntman={h_size=2,chip_mod=250},j_faceless={dollars=5,faces=3},j_scholar={mult=4,chips=20}}
++  j_stuntman={h_size=2,chip_mod=250},j_faceless={dollars=5,faces=3},j_scholar={mult=4,chips=20},
++  j_green_joker={hand_add=1,discard_sub=1},j_square={chips='integer',chip_mod=4}}
+ local extra_scalars={j_flower_pot=3,j_even_steven=4,j_hanging_chad=2,j_fortune_teller=1,j_hiker=5,
+-  j_abstract=3,j_bull=2,j_blue_joker=2,j_odd_todd=31}
++  j_abstract=3,j_bull=2,j_blue_joker=2,j_odd_todd=31,j_acrobat=3,j_ride_the_bus=1,j_hack=1,
++  j_golden=4,j_campfire=0.25,j_hit_the_road=0.5}
+ local function qualified_extra(key,value)
+   if extra_scalars[key] then return value==extra_scalars[key] end
+   local shape=extra_shapes[key]
+@@ -252,13 +259,16 @@
+   if not plain(j) then return false end
+   if j.key=='j_hanging_chad' and not j.debuff and not allow_chad then return false end
+   local a=j.ability
+-  local edition_ok=j.key=='j_selzer' and seltzer_edition(j.edition) or neutral_edition(j.edition)
++  -- Canonical nonnegative Joker editions execute in the fixed Joker row, not
++  -- the scoring-card order. They do not invalidate exact card-stage addition.
++  local edition_ok=neutral_edition(j.edition) or canonical_scoring_edition(j.edition)
+   if not plain(j) or not ordinary_ability(a,j.key) or not edition_ok or not additive_jokers[j.key] or
+     a.name~=additive_jokers[j.key] or a.set~='Joker' or
+     a.effect~=nil and a.effect~=joker_effects[j.key] then return false end
+   if not j.debuff then
+-    local fixed_mult=j.key=='j_swashbuckler' or j.key=='j_popcorn'
+-    if (fixed_mult and not small_integer(a.mult) or not fixed_mult and not zero(a.mult)) or
++    local fixed_mult=j.key=='j_swashbuckler' or j.key=='j_popcorn' or j.key=='j_ride_the_bus' or j.key=='j_green_joker'
++    if (j.key=='j_joker' and a.mult~=4 or j.key~='j_joker' and
++        (fixed_mult and not small_integer(num(a.mult)) or not fixed_mult and not zero(a.mult))) or
+       not zero(a.bonus) or (type_chips[j.key] and a.t_chips~=type_chips[j.key][2] or not type_chips[j.key] and not zero(a.t_chips)) or
+       not zero(a.h_mult) or not zero(a.h_x_mult) or not zero(a.p_dollars) or not zero(a.h_dollars) or
+       not zero(a.h_size) or not zero(a.d_size) then return false end
+@@ -267,6 +277,8 @@
+     elseif not zero(a.t_mult) then return false end
+     if j.key=='j_yorick' then
+       if not small_integer(a.x_mult) or a.x_mult<1 then return false end
++    elseif j.key=='j_campfire' or j.key=='j_hit_the_road' then
++      if not finite(a.x_mult) or a.x_mult<1 or not small_integer(a.x_mult*(j.key=='j_campfire' and 4 or 2)) then return false end
+     elseif j.key=='j_stencil' then
+       -- The scorer recomputes its main-stage factor from the unchanged row
+       -- and slot limit. Hiker's +5 changes only that physical scoring card;
+@@ -348,6 +360,31 @@
+     local bonus=key=='m_bonus' and 30 or key=='m_stone' and 50 or 0
+     local mult=key=='m_mult' and 4 or key=='m_lucky' and 20 or 0
+     if a.bonus~=bonus or a.mult~=mult or a.x_mult~=(key=='m_glass' and 2 or 1) or
++        a.p_dollars~=nil and a.p_dollars~=(key=='m_lucky' and 20 or 0) or
++        not zero(a.t_mult) or not zero(a.t_chips) then return false end
++  end
++  return true
++end
++-- Canonical Glass doubles commute with each other and identity operations.
++-- Lucky contributes zero Mult/cash in the supported lower-bound mode. With no
++-- card-stage +Mult, first-card retrigger, or fractional card multiplier, every
++-- permutation has the same card-stage Mult; integer chips commute separately.
++-- The fixed Joker row and monotone held pass then receive identical inputs.
++-- This admits four/five-card floors without enumerating a partial order family.
++local function product_order_safe(s,clear,exhaust)
++  if not exhaust or s.teacher_profile~='perkeo_yorick_win_v1' or
++      not exact_additive_inputs(s,clear) or not ordinary_held_inputs(s,true) or
++      not plain(s.jokers) or #s.jokers>8 then return false end
++  local card_mult={j_smiley=true,j_scholar=true,j_even_steven=true,j_greedy_joker=true,
++    j_lusty_joker=true,j_wrathful_joker=true,j_gluttenous_joker=true,j_hanging_chad=true}
++  for _,j in ipairs(s.jokers) do
++    if not ordinary_additive_joker(j,false) or not j.debuff and card_mult[j.key] then return false end
++  end
++  for _,i in ipairs(clear.indices) do
++    local c=s.hand[i];local a=c.ability;local key=c.enhancement or 'c_base'
++    if key=='m_mult' or c.edition and not c.edition.foil or
++        a.bonus~=(key=='m_bonus' and 30 or key=='m_stone' and 50 or 0) or
++        a.mult~=(key=='m_lucky' and 20 or 0) or a.x_mult~=(key=='m_glass' and 2 or 1) or
+         a.p_dollars~=nil and a.p_dollars~=(key=='m_lucky' and 20 or 0) or
+         not zero(a.t_mult) or not zero(a.t_chips) then return false end
+   end
+@@ -397,10 +434,11 @@
+   end
+   -- Reuse the complete arithmetic/order qualifications, including the singleton
+   -- form of the small family. Merely recognizing these two Jokers is not a proof.
+-  if not additive_order_safe(proof,clear,true) and not small_order_scope(proof,clear,true,true) then return nil end
++  if not additive_order_safe(proof,clear,true) and not small_order_scope(proof,clear,true,true) and
++      not product_order_safe(proof,clear,true) then return nil end
+   return proof,receipt
+ end
+-local function drawn_hazard(s,clear,complete_small_order)
++local function drawn_hazard(s,clear,complete_small_order,product_order)
+   local b=s.blind or {}
+   -- Mark/Wheel/Fish only conceal newly drawn cards after a discard. A visible
+   -- retained anchor survives; fresh concealed advice must rediscover it.
+@@ -439,7 +477,7 @@
+   local additive_safe
+   for _,i in ipairs(clear.indices) do
+     local c=s.hand[i]
+-    if #clear.indices>1 and not complete_small_order then
++    if #clear.indices>1 and not complete_small_order and not product_order then
+       if c.enhancement=='m_glass' or c.enhancement=='m_lucky' or (c.edition or {}).polychrome or
+         num((c.edition or {}).x_mult)>1 or num((c.ability or {}).x_mult)>1 then
+         return 'Automatic hand sorting can change scoring-card order.'
+@@ -494,7 +532,7 @@
+   end
+   local function admissible(clear)
+     local proof=exhaust and conditional_held_floor(s,clear) or s
+-    return proof and not drawn_hazard(proof,clear,small_order_scope(proof,clear,exhaust))
++    return proof and not drawn_hazard(proof,clear,small_order_scope(proof,clear,exhaust),product_order_safe(proof,clear,exhaust))
+   end
+   local selected_safe=valid(selected) and admissible(selected)
+   if selected_safe and not exhaust then return selected,diagnostics end
+@@ -588,6 +626,12 @@
+ end
+ local function pair_scope(s,clear)
+   local r=s.current_round or {};local left=num(s.discards_left,r.discards_left)
++  -- This independent two-discard utility proof assumes a monotone second
++  -- retained score. Green loses Mult per discard and Blue loses chips per draw;
++  -- the one-step scorer proves them exactly, but that is not a second proof.
++  for _,j in ipairs(s.jokers or {}) do
++    if not j.debuff and (j.key=='j_green_joker' or j.key=='j_blue_joker') then return nil end
++  end
+   if clear.legal~=true or clear.uncertain~=false or s.phase~='hand' or not small_integer(s.hands_left) or s.hands_left<1 or
+     not small_integer(left) or left<2 or not small_integer(s.discards_used) or
+     not small_integer(s.hand_size) or #s.hand~=s.hand_size or
+@@ -840,8 +884,10 @@
+   end
+   -- Keep the existing one-score additive/first-card certificates when they
+   -- already apply; factorial work must not crowd out other discard candidates.
+-  local complete_small_order=small_order_scope(floor_state,known_clear,exhaust) and drawn_hazard(floor_state,known_clear)~=nil
+-  local hazard=drawn_hazard(floor_state,known_clear,complete_small_order);if hazard then return stop(hazard) end
++  local product_order=product_order_safe(floor_state,known_clear,exhaust) and
++    drawn_hazard(floor_state,known_clear,nil,false)~=nil
++  local complete_small_order=small_order_scope(floor_state,known_clear,exhaust) and drawn_hazard(floor_state,known_clear,nil,product_order)~=nil
++  local hazard=drawn_hazard(floor_state,known_clear,complete_small_order,product_order);if hazard then return stop(hazard) end
+   local original_glass=0
+   for _,exposure in ipairs(known_clear.glass_exposure or {}) do original_glass=original_glass+num(exposure.probability) end
+   if not known_clear.glass_exposure then original_glass=num(known_clear.glass_loss) end
+@@ -926,7 +972,11 @@
+         if not finish or member.score<finish.score then finish=member end
+       end
+       receipt.complete=true;receipt.minimum=finish.score;metadata.order_floor=receipt
+-    else finish=score(proof,indices) end
++    else
++      finish=score(proof,indices)
++      if product_order and finish then metadata.order_floor={scope='canonical_card_product_floor',complete=true,
++        members=1,minimum=finish.score,maximum_glass=finish.glass_loss} end
++    end
+     if not reliable(finish) or num(finish.score)<math.max(1,num((state.blind or {}).chips)-num(state.chips))*margin then return end
+     -- Draws are not required for this score; permitted held effects can only
+     -- add to it. Check the actual final hand after every real action/draw.
+--- before/Brainstorm/Advisor/ordering.lua
++++ Brainstorm/Advisor/ordering.lua
+@@ -244,7 +244,8 @@
+   lines[#lines+1]=tostring(diagnostics.completed_orders)..' completed order comparisons; '..
+     (diagnostics.truncated and 'bounded coverage, not an exhaustive optimum.' or 'all movable Joker permutations and legal hand subsets compared.')
+   local suggestion={kind='reorder_jokers',title='Reorder Jokers before playing',lines=lines,warnings=list(best.warnings),
+-    action={kind='reorder_jokers',order=list(best_order)},play=best,projected_play=best,baseline_play=baseline}
++    action={kind='reorder_jokers',order=list(best_order)},play=best,projected_play=best,baseline_play=baseline,
++    supersedes_consumable=item~=nil and best.legal~=false and best.uncertain~=true and best.score>=needed or nil}
+   diagnostics.reason='A completed order comparison improves this decision.'
+   return suggestion,diagnostics.evaluations,diagnostics
+ end
+--- before/Brainstorm/Advisor/phase_copy.lua
++++ Brainstorm/Advisor/phase_copy.lua
+@@ -185,9 +185,14 @@
+ local function reliable(play) return play and play.legal~=false and play.uncertain~=true and type(play.score)=='number' end
+ local function burnt(s,modules,base,cap,d)
+   if base.growth and base.growth.growth and base.growth.growth.kind=='burnt_setup' then return nil,0 end
++  -- A selected independent scoring order can supersede an earlier item
++  -- proposal. Keep necessary uses protected, but do not let an unselected
++  -- proposal veto the fresh Burnt discard and cause an order oscillation.
++  local superseded=base.ordering and base.ordering.supersedes_consumable==true and
++    base.action==base.ordering.action and base.action.kind=='reorder_jokers'
+   if not base.action or (base.action.kind~='play' and base.action.kind~='discard' and
+       not (base.action.kind=='reorder_jokers' and base.ordering)) or
+-      base.consumable or base.mixed_rescue or base.boss_rescue or base.hand_ordering then return nil,0 end
++      base.consumable and not superseded or base.mixed_rescue or base.boss_rescue or base.hand_ordering then return nil,0 end
+   local round=s.current_round or {}
+   if num(s.discards_used,round.discards_used)~=0 or num(s.discards_left,round.discards_left)<=0 then return nil,0 end
+   if not modules.growth or not modules.scoring or not modules.scoring.after_discard or not modules.scoring.score or
+@@ -361,7 +366,7 @@
+   updated.phase_copy_incumbent={kind=result.kind,action=copy(result.action),evaluations=result.evaluations}
+   if s.phase=='shop' then updated.strategy=proposal
+   else
+-    for _,field in ipairs({'ordering','growth','two_hand_finish','multi_discard','discard','resource_comparison'}) do updated[field]=nil end
++    for _,field in ipairs({'ordering','growth','two_hand_finish','multi_discard','discard','resource_comparison','consumable'}) do updated[field]=nil end
+     if proposal.action.kind=='reorder_jokers' then updated.ordering=proposal
+     else updated.growth=proposal;updated.kind=proposal.action.kind end
+   end
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -466,7 +466,7 @@
+       local entry=rawget(entries,i)
+       if plain(entry)then
+         local row={};fields(entry,row,{'sale_index','sale_id','offer_index','offer_id','family_id','key','compared','purchase_rating','admitted','copy_priority',
+-           'ratio','score_kind','samples','common_worlds','reason','merit','cash_after','cost',
++           'ratio','score_kind','samples','common_worlds','reason','merit','cash_after','cost','required_reserve','reserve_shortfall',
+            'opening_mean_after','opening_clears_after',
+           'perishable_exception','perishable_exception_reason','copy_exception','copy_exception_reason',
+           'finishing_complete','finishing_supported','finishing_all_clear','endpoint_certificate'})
+@@ -542,6 +542,20 @@
+      'qualified_five_count','selected_cards','search_selected','selected',
+      'full_batch_preference','development_deferred_for_discard',
+      'final_action_kind','final_action_matches_search'})
++  local risk=rawget(result,'risky_yorick_clear');local sizes=plain(risk) and rawget(risk,'by_size')
++  if out.risk and plain(sizes) then
++    out.risk.by_size={}
++    for size=1,5 do local source=rawget(sizes,size)
++      if plain(source) then
++        local row={cards=size}
++        for _,key in ipairs({'compared','qualified','incomplete','transition','samples','survival','margin','progress','utility'}) do
++          local v=rawget(source,key)
++          if type(v)=='number' and v>=0 and v<=100000 and v%1==0 then row[key]=v end
++        end
++        out.risk.by_size[size]=row
++      end
++    end
++  end
+   copy_fields('anchor',rawget(result,'growth_anchor_diagnostics'),
+     {'considered','qualified','changed','selected_cards','selected_score','portfolio_attempts','portfolio_evaluations'})
+   local growth=rawget(result,'growth_diagnostics')
+--- before/Brainstorm/Advisor/search.lua
++++ Brainstorm/Advisor/search.lua
+@@ -1597,6 +1597,8 @@
+     -- 105% worst sampled margin still merits a free physical Yorick discard.
+     local taper=(s.ante or 1)<=5 and 0.004+0.002*math.max(0,(s.ante or 1)-1) or 0.0005
+     local qualified_count,qualified_five_count,compared_five_count=0,0,0
++    local by_size={}
++    for size=1,5 do by_size[size]={cards=size,compared=0,qualified=0,incomplete=0,transition=0,samples=0,survival=0,margin=0,progress=0,utility=0} end
+     for _,candidate in ipairs(candidates) do
+       if #candidate.indices==5 then compared_five_count=compared_five_count+1 end
+       local margin=(s.ante or 1)<=5 or type(candidate.minimum_score)=='number' and
+@@ -1612,6 +1614,16 @@
+       local qualified=retry_complete and candidate.prepared~=nil and candidate.count>=24 and
+         candidate.probability>=required and margin and candidate.yorick_progress_bonus>0 and
+         (utility_admitted or full_batch)
++      local receipt=by_size[#candidate.indices]
++      if receipt then
++        receipt.compared=receipt.compared+1
++        if qualified then receipt.qualified=receipt.qualified+1 end
++        local rejected={incomplete=not retry_complete,transition=candidate.prepared==nil,samples=candidate.count<24,
++          survival=type(candidate.probability)~='number' or candidate.probability<required,margin=not margin,
++          progress=type(candidate.yorick_progress_bonus)~='number' or candidate.yorick_progress_bonus<=0,
++          utility=not utility_admitted and not full_batch}
++        for reason,failed in pairs(rejected) do if failed then receipt[reason]=receipt[reason]+1 end end
++      end
+       candidate.full_batch_preference=qualified and full_batch and not utility_admitted
+       if qualified then
+         qualified_count=qualified_count+1
+@@ -1637,7 +1649,7 @@
+       full_batch_preference=risky_choice and risky_choice.full_batch_preference or false,
+       compared_five_count=compared_five_count,qualified_count=qualified_count,
+       qualified_five_count=qualified_five_count,selected_cards=risky_choice and #risky_choice.indices or nil,
+-      scope='matched one-draw next-play forecast; uncalibrated'}
++      by_size=by_size,scope='matched one-draw next-play forecast; uncalibrated'}
+     if risky_choice then result.kind='discard';result.discard=risky_choice end
+   elseif best_discard and (not play or last_hand or
+       best_discard.value > play_value + weight('discard_action_penalty',0.06) / math.max(1, s.discards_left)) then
+--- before/Brainstorm/Advisor/shop_scoring.lua
++++ Brainstorm/Advisor/shop_scoring.lua
+@@ -316,9 +316,12 @@
+   local a=j.ability or {}
+   if name(j)~='Hit the Road' or a.name~='Hit the Road' or a.set~='Joker' or
+       a.effect~='Jack Discard Effect' or a.extra~=0.5 or type(a.x_mult)~='number' or
+-      a.x_mult~=a.x_mult or a.x_mult<1 or a.x_mult==math.huge then return false end
++      a.x_mult~=a.x_mult or a.x_mult<1 or a.x_mult==math.huge or (a.x_mult-1)%0.5~=0 or
++      a.type~=nil and a.type~='' or a.hands_played_at_create~=nil and
++      (type(a.hands_played_at_create)~='number' or a.hands_played_at_create<0 or a.hands_played_at_create%1~=0) then return false end
+   local meta={name=true,set=true,effect=true,extra=true,x_mult=true,eternal=true,rental=true,
+-    perishable=true,perish_tally=true,perma_debuff=true,extra_value=true,order=true,blueprint_compat=true}
++    perishable=true,perish_tally=true,perma_debuff=true,extra_value=true,order=true,blueprint_compat=true,
++    type=true,hands_played_at_create=true}
+   for k,v in pairs(a) do if not meta[k] and v~=0 and v~=false then return false end end
+   return not (j.unknown or j.identity_unknown or j.identity_redacted or j.face_down or j.facing=='back')
+ end
+--- before/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -1931,10 +1931,13 @@
+                     focused.compared=evidence~=nil;focused.admitted=admitted;focused.copy_priority=candidate.copy_priority
+                     focused.ratio=evidence and evidence.ratio;focused.samples=evidence and evidence.samples
+                     focused.cash_after=after and after.dollars;focused.opening_mean_after=evidence and evidence.after_mean
++                    focused.required_reserve=after and copy_cash_reserve(after)
++                    focused.reserve_shortfall=after and math.max(0,copy_cash_reserve(after)-num(after.dollars))
+                     focused.finishing_complete=evidence and evidence.complete_finishing==true or false
+                     focused.reason=candidate.copy_priority and 'supported_copy_priority' or not known and 'unknown_effect' or
+                         not evidence and 'unsupported_comparison' or not admitted and (admission_reason and admission_reason.kind or 'objective_admission_rejected') or
+-                        dominated and 'survival_dominated' or 'no_supported_copy_priority'
++                        dominated and 'survival_dominated' or after and num(after.dollars)<copy_cash_reserve(after) and
++                        'copy_cash_reserve_shortfall' or 'no_supported_copy_priority'
+                     if not evidence or evidence.incomplete then snapshot._shop_scoring.copy_direct_diagnostics.complete=false end
+                 end
+                 if replacement_before and kind(card)=='joker' then
+@@ -2304,6 +2307,17 @@
+ end
+ Strategy.copy_replacement_exception=copy_replacement_exception
+ 
++-- A known copy can be sticker-affordable but not sustainably affordable: an
++-- expendable rental's sale may both fund the buy and remove its next charge.
++-- This admits a comparison only; the exact endpoint still needs its original
++-- reserve, complete common-world proof and protected-core/sale guards.
++local function copy_reserve_funding_needed(snapshot,card)
++    if not snapshot._copy_acquisition or snapshot.phase~='shop' or
++        (card.key~='j_blueprint' and card.key~='j_brainstorm') or
++        not capacity(snapshot,card,false) or not active_durable(card) then return false end
++    local after=after_joker_purchase(snapshot,card)
++    return after and num(after.dollars)<copy_cash_reserve(after) or false
++end
+ local function replacement_sale_plan(snapshot,direct,choose)
+     if jokerless(snapshot) or modifiers(snapshot).all_eternal then return end
+     local full_row=#(snapshot.jokers or {})>=num(snapshot.joker_limit,5)
+@@ -2315,7 +2329,8 @@
+         local funded_offer=false
+         for _,card in ipairs(snapshot.shop_jokers or {}) do
+             if kind(card)=='joker' and capacity(snapshot,card,false) and
+-                num(card.cost)>num(snapshot.dollars)-num(snapshot.bankrupt_at) then
++                (num(card.cost)>num(snapshot.dollars)-num(snapshot.bankrupt_at) or
++                 copy_reserve_funding_needed(snapshot,card)) then
+                 funded_offer=true;break
+             end
+         end
+@@ -2364,13 +2379,15 @@
+                         compared=false,reason=modifiers(snapshot).no_shop_jokers and 'shop_jokers_forbidden' or not state and 'unsupported_sale' or
+                         not capacity(state,card,false) and 'no_slot_after_sale' or
+                         capacity(snapshot,card,false) and num(card.cost)<=num(snapshot.dollars)-num(snapshot.bankrupt_at) and
++                            not copy_reserve_funding_needed(snapshot,card) and
+                             'sale_not_needed' or 'unaffordable_after_sale'} end
+                 end end
+             end
+             for _,candidate in ipairs(choices or {}) do
+             local cost=snapshot.phase=='shop' and num(candidate.card.cost) or 0
+             local sale_needed=not capacity(snapshot,candidate.card,snapshot.phase=='pack') or
+-                snapshot.phase=='shop' and cost>num(snapshot.dollars)-num(snapshot.bankrupt_at)
++                snapshot.phase=='shop' and cost>num(snapshot.dollars)-num(snapshot.bankrupt_at) or
++                copy_reserve_funding_needed(snapshot,candidate.card)
+             local entry
+             if receipt then
+                 local e=candidate.scoring_evidence
+@@ -2443,7 +2460,8 @@
+                     local endpoint={score=merit,index=index,sold=sold,purchase=candidate,gain=gain,
+                         remaining_cash=after.dollars,scoring_evidence=evidence,after_state=after,
+                         perishable_exception=exception,copy_exception=copy_exception,copy_priority=copy_priority,
+-                        copy_endpoint_certificate=endpoint_certificate}
++                        copy_endpoint_certificate=endpoint_certificate,
++                        copy_reserve_funding=copy_reserve_funding_needed(snapshot,candidate.card) or nil}
+                     eligible[#eligible+1]=endpoint
+                     if not best or copy_priority and not best.copy_priority or
+                         (not not copy_priority)==(not not best.copy_priority) and merit>best.score then best=endpoint end
+@@ -2565,6 +2583,7 @@
+             followup={kind=verb,area=purchase.area or 'pack_cards',index=purchase.index}},
+         scoring_evidence=sale.scoring_evidence,
+         copy_endpoint_certificate=sale.copy_endpoint_certificate,
++        copy_reserve_funding=sale.copy_reserve_funding,
+         copy_acquisition_review=sale.copy_priority and {schema=1,complete=true,
+           reason=sale.copy_endpoint_certificate and 'supported_copy_endpoint' or 'supported_copy_priority',
+           selected_sale=sale.index,selected_offer=purchase.index,cash_after=sale.remaining_cash} or nil,

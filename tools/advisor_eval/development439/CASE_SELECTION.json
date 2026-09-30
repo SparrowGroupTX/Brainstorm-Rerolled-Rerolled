@@ -1,0 +1,841 @@
+{
+  "rule": "First ready visible untouched full hand per round; >=3 discards; complete public playing-card composition. Balance quotas by run in ascending round-robin order, capped by eligibility; within each run choose floor(k*(N-1)/(quota-1)) chronological positions (midpoint for quota1). No new policy/outcome selection.",
+  "source": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development439\\captures\\001\\events.sqlite3",
+  "source_sha256": "e3e37fa50b3e3157104d340cbe9bda182ece3b7a635db04885d0ca1f9e23e906",
+  "capture_session": "session-20260928T053212Z-1",
+  "capture_cutoff_sequence": 13678,
+  "eligible_rounds": 85,
+  "eligible_by_run": {
+    "1": 2,
+    "2": 23,
+    "3": 23,
+    "4": 22,
+    "5": 15
+  },
+  "quotas": {
+    "1": 2,
+    "2": 5,
+    "3": 5,
+    "4": 4,
+    "5": 4
+  },
+  "cases": [
+    {
+      "case": "run01_round01",
+      "sequence": 69,
+      "run": 1,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run01_round02",
+      "sequence": 211,
+      "run": 1,
+      "round": 2,
+      "ante": 1,
+      "blind": "bl_club",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run02_round01",
+      "sequence": 367,
+      "run": 2,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run02_round06",
+      "sequence": 1039,
+      "run": 2,
+      "round": 6,
+      "ante": 3,
+      "blind": "bl_small",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run02_round12",
+      "sequence": 1939,
+      "run": 2,
+      "round": 12,
+      "ante": 5,
+      "blind": "bl_small",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run02_round17",
+      "sequence": 2976,
+      "run": 2,
+      "round": 17,
+      "ante": 6,
+      "blind": "bl_needle",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run02_round23",
+      "sequence": 4091,
+      "run": 2,
+      "round": 23,
+      "ante": 8,
+      "blind": "bl_final_leaf",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run03_round01",
+      "sequence": 4222,
+      "run": 3,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run03_round06",
+      "sequence": 4810,
+      "run": 3,
+      "round": 6,
+      "ante": 3,
+      "blind": "bl_small",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run03_round12",
+      "sequence": 5776,
+      "run": 3,
+      "round": 12,
+      "ante": 5,
+      "blind": "bl_small",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run03_round17",
+      "sequence": 6662,
+      "run": 3,
+      "round": 17,
+      "ante": 6,
+      "blind": "bl_psychic",
+      "available_discards": 4,
+      "target_cards": 16,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run03_round23",
+      "sequence": 7749,
+      "run": 3,
+      "round": 23,
+      "ante": 8,
+      "blind": "bl_final_bell",
+      "available_discards": 4,
+      "target_cards": 16,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run04_round01",
+      "sequence": 7844,
+      "run": 4,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run04_round08",
+      "sequence": 8861,
+      "run": 4,
+      "round": 8,
+      "ante": 3,
+      "blind": "bl_pillar",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run04_round16",
+      "sequence": 10245,
+      "run": 4,
+      "round": 16,
+      "ante": 6,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run04_round23",
+      "sequence": 11122,
+      "run": 4,
+      "round": 23,
+      "ante": 8,
+      "blind": "bl_final_leaf",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run05_round01",
+      "sequence": 11247,
+      "run": 5,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run05_round05",
+      "sequence": 11705,
+      "run": 5,
+      "round": 5,
+      "ante": 2,
+      "blind": "bl_club",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run05_round10",
+      "sequence": 12405,
+      "run": 5,
+      "round": 10,
+      "ante": 4,
+      "blind": "bl_big",
+      "available_discards": 3,
+      "target_cards": 12,
+      "public_joker_belief": false
+    },
+    {
+      "case": "run05_round16",
+      "sequence": 13464,
+      "run": 5,
+      "round": 16,
+      "ante": 6,
+      "blind": "bl_big",
+      "available_discards": 4,
+      "target_cards": 16,
+      "public_joker_belief": false
+    }
+  ],
+  "eligible_index": [
+    {
+      "run": 1,
+      "sequence": 69,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big"
+    },
+    {
+      "run": 1,
+      "sequence": 211,
+      "round": 2,
+      "ante": 1,
+      "blind": "bl_club"
+    },
+    {
+      "run": 2,
+      "sequence": 367,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 485,
+      "round": 2,
+      "ante": 1,
+      "blind": "bl_head"
+    },
+    {
+      "run": 2,
+      "sequence": 606,
+      "round": 3,
+      "ante": 2,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 766,
+      "round": 4,
+      "ante": 2,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 896,
+      "round": 5,
+      "ante": 2,
+      "blind": "bl_window"
+    },
+    {
+      "run": 2,
+      "sequence": 1039,
+      "round": 6,
+      "ante": 3,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 1206,
+      "round": 7,
+      "ante": 3,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 1369,
+      "round": 8,
+      "ante": 3,
+      "blind": "bl_flint"
+    },
+    {
+      "run": 2,
+      "sequence": 1522,
+      "round": 9,
+      "ante": 4,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 1651,
+      "round": 10,
+      "ante": 4,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 1796,
+      "round": 11,
+      "ante": 4,
+      "blind": "bl_wheel"
+    },
+    {
+      "run": 2,
+      "sequence": 1939,
+      "round": 12,
+      "ante": 5,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 2187,
+      "round": 13,
+      "ante": 5,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 2353,
+      "round": 14,
+      "ante": 5,
+      "blind": "bl_plant"
+    },
+    {
+      "run": 2,
+      "sequence": 2540,
+      "round": 15,
+      "ante": 6,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 2714,
+      "round": 16,
+      "ante": 6,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 2976,
+      "round": 17,
+      "ante": 6,
+      "blind": "bl_needle"
+    },
+    {
+      "run": 2,
+      "sequence": 3239,
+      "round": 18,
+      "ante": 7,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 3387,
+      "round": 19,
+      "ante": 7,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 3532,
+      "round": 20,
+      "ante": 7,
+      "blind": "bl_ox"
+    },
+    {
+      "run": 2,
+      "sequence": 3789,
+      "round": 21,
+      "ante": 8,
+      "blind": "bl_small"
+    },
+    {
+      "run": 2,
+      "sequence": 3971,
+      "round": 22,
+      "ante": 8,
+      "blind": "bl_big"
+    },
+    {
+      "run": 2,
+      "sequence": 4091,
+      "round": 23,
+      "ante": 8,
+      "blind": "bl_final_leaf"
+    },
+    {
+      "run": 3,
+      "sequence": 4222,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 4360,
+      "round": 2,
+      "ante": 1,
+      "blind": "bl_hook"
+    },
+    {
+      "run": 3,
+      "sequence": 4438,
+      "round": 3,
+      "ante": 2,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 4552,
+      "round": 4,
+      "ante": 2,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 4692,
+      "round": 5,
+      "ante": 2,
+      "blind": "bl_mouth"
+    },
+    {
+      "run": 3,
+      "sequence": 4810,
+      "round": 6,
+      "ante": 3,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 4973,
+      "round": 7,
+      "ante": 3,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 5122,
+      "round": 8,
+      "ante": 3,
+      "blind": "bl_flint"
+    },
+    {
+      "run": 3,
+      "sequence": 5325,
+      "round": 9,
+      "ante": 4,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 5471,
+      "round": 10,
+      "ante": 4,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 5621,
+      "round": 11,
+      "ante": 4,
+      "blind": "bl_needle"
+    },
+    {
+      "run": 3,
+      "sequence": 5776,
+      "round": 12,
+      "ante": 5,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 5962,
+      "round": 13,
+      "ante": 5,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 6164,
+      "round": 14,
+      "ante": 5,
+      "blind": "bl_arm"
+    },
+    {
+      "run": 3,
+      "sequence": 6349,
+      "round": 15,
+      "ante": 6,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 6498,
+      "round": 16,
+      "ante": 6,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 6662,
+      "round": 17,
+      "ante": 6,
+      "blind": "bl_psychic"
+    },
+    {
+      "run": 3,
+      "sequence": 6903,
+      "round": 18,
+      "ante": 7,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 7064,
+      "round": 19,
+      "ante": 7,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 7210,
+      "round": 20,
+      "ante": 7,
+      "blind": "bl_manacle"
+    },
+    {
+      "run": 3,
+      "sequence": 7423,
+      "round": 21,
+      "ante": 8,
+      "blind": "bl_small"
+    },
+    {
+      "run": 3,
+      "sequence": 7533,
+      "round": 22,
+      "ante": 8,
+      "blind": "bl_big"
+    },
+    {
+      "run": 3,
+      "sequence": 7749,
+      "round": 23,
+      "ante": 8,
+      "blind": "bl_final_bell"
+    },
+    {
+      "run": 4,
+      "sequence": 7844,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 7963,
+      "round": 2,
+      "ante": 1,
+      "blind": "bl_club"
+    },
+    {
+      "run": 4,
+      "sequence": 8059,
+      "round": 3,
+      "ante": 2,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 8154,
+      "round": 4,
+      "ante": 2,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 8303,
+      "round": 5,
+      "ante": 2,
+      "blind": "bl_fish"
+    },
+    {
+      "run": 4,
+      "sequence": 8429,
+      "round": 6,
+      "ante": 3,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 8728,
+      "round": 7,
+      "ante": 3,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 8861,
+      "round": 8,
+      "ante": 3,
+      "blind": "bl_pillar"
+    },
+    {
+      "run": 4,
+      "sequence": 9091,
+      "round": 9,
+      "ante": 4,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 9262,
+      "round": 10,
+      "ante": 4,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 9619,
+      "round": 12,
+      "ante": 5,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 9748,
+      "round": 13,
+      "ante": 5,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 9874,
+      "round": 14,
+      "ante": 5,
+      "blind": "bl_plant"
+    },
+    {
+      "run": 4,
+      "sequence": 10028,
+      "round": 15,
+      "ante": 6,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 10245,
+      "round": 16,
+      "ante": 6,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 10374,
+      "round": 17,
+      "ante": 6,
+      "blind": "bl_hook"
+    },
+    {
+      "run": 4,
+      "sequence": 10502,
+      "round": 18,
+      "ante": 7,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 10679,
+      "round": 19,
+      "ante": 7,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 10810,
+      "round": 20,
+      "ante": 7,
+      "blind": "bl_ox"
+    },
+    {
+      "run": 4,
+      "sequence": 10925,
+      "round": 21,
+      "ante": 8,
+      "blind": "bl_small"
+    },
+    {
+      "run": 4,
+      "sequence": 11010,
+      "round": 22,
+      "ante": 8,
+      "blind": "bl_big"
+    },
+    {
+      "run": 4,
+      "sequence": 11122,
+      "round": 23,
+      "ante": 8,
+      "blind": "bl_final_leaf"
+    },
+    {
+      "run": 5,
+      "sequence": 11247,
+      "round": 1,
+      "ante": 1,
+      "blind": "bl_big"
+    },
+    {
+      "run": 5,
+      "sequence": 11366,
+      "round": 2,
+      "ante": 1,
+      "blind": "bl_hook"
+    },
+    {
+      "run": 5,
+      "sequence": 11464,
+      "round": 3,
+      "ante": 2,
+      "blind": "bl_small"
+    },
+    {
+      "run": 5,
+      "sequence": 11572,
+      "round": 4,
+      "ante": 2,
+      "blind": "bl_big"
+    },
+    {
+      "run": 5,
+      "sequence": 11705,
+      "round": 5,
+      "ante": 2,
+      "blind": "bl_club"
+    },
+    {
+      "run": 5,
+      "sequence": 11826,
+      "round": 6,
+      "ante": 3,
+      "blind": "bl_small"
+    },
+    {
+      "run": 5,
+      "sequence": 11941,
+      "round": 7,
+      "ante": 3,
+      "blind": "bl_big"
+    },
+    {
+      "run": 5,
+      "sequence": 12145,
+      "round": 8,
+      "ante": 3,
+      "blind": "bl_fish"
+    },
+    {
+      "run": 5,
+      "sequence": 12261,
+      "round": 9,
+      "ante": 4,
+      "blind": "bl_small"
+    },
+    {
+      "run": 5,
+      "sequence": 12405,
+      "round": 10,
+      "ante": 4,
+      "blind": "bl_big"
+    },
+    {
+      "run": 5,
+      "sequence": 12757,
+      "round": 12,
+      "ante": 5,
+      "blind": "bl_small"
+    },
+    {
+      "run": 5,
+      "sequence": 12926,
+      "round": 13,
+      "ante": 5,
+      "blind": "bl_big"
+    },
+    {
+      "run": 5,
+      "sequence": 13115,
+      "round": 14,
+      "ante": 5,
+      "blind": "bl_plant"
+    },
+    {
+      "run": 5,
+      "sequence": 13301,
+      "round": 15,
+      "ante": 6,
+      "blind": "bl_small"
+    },
+    {
+      "run": 5,
+      "sequence": 13464,
+      "round": 16,
+      "ante": 6,
+      "blind": "bl_big"
+    }
+  ]
+}

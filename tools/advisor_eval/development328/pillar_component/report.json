@@ -1,0 +1,224 @@
+{
+  "schema": 1,
+  "trace": "tools\\advisor_eval\\development328\\public_trace\\run3.json",
+  "trace_sha256": "8abd7909d80a2410afafd6b49f34c55aa73e319fe5728ed75de78c186694eaca",
+  "rows": [
+    {
+      "sequence": 2662,
+      "event_sha256": "1729498863a9d1576314014d4df5fac5aa3f6f492618f0eabfb4ec12ec3f113c",
+      "snapshot": "snapshots/8b0900e28efa0b78505e1d0554bd3adb0f5497b1fac91c2232c0c07ad313b4e2.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2
+        ],
+        "kind": "discard"
+      },
+      "chips": 0,
+      "yorick_remaining": 23,
+      "yorick_x_mult": 1,
+      "purple": [],
+      "continuation_warnings": [
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched."
+      ]
+    },
+    {
+      "sequence": 2668,
+      "event_sha256": "4baa7bb3d82e20b08004018efd85d223bef588006cb6bccdc1f5cc6891254d9e",
+      "snapshot": "snapshots/5838040006138d72cb5c18f35c3b64eedaa1fff37f8b88488721ec495eef26ca.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "kind": "discard"
+      },
+      "chips": 0,
+      "yorick_remaining": 21,
+      "yorick_x_mult": 1,
+      "purple": [],
+      "continuation_warnings": [
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched."
+      ]
+    },
+    {
+      "sequence": 2673,
+      "event_sha256": "f921d99bbd45e64b9ae046c6a488d1471ef5907e2e1318f3c0f1a4966f08e3d6",
+      "snapshot": "snapshots/08601942add1fcab3595e135721b4030bc7342047b0c63f8eb54214200d42624.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "hand",
+        "indices": [
+          8
+        ],
+        "kind": "discard"
+      },
+      "chips": 0,
+      "yorick_remaining": 17,
+      "yorick_x_mult": 1,
+      "purple": [],
+      "continuation_warnings": [
+        "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched."
+      ]
+    },
+    {
+      "sequence": 2700,
+      "event_sha256": "ef66b7d3c19ff27133a195c1c2196c33ef8c8b611127aec9d53a6a9ee9fd7941",
+      "snapshot": "snapshots/d9364a7046b9d6dbab2d79e0555b92c7940eaafbc5c8928b413cd923d5e53fda.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "pack_cards",
+        "index": 1,
+        "kind": "choose"
+      },
+      "chips": 0,
+      "yorick_remaining": 16,
+      "yorick_x_mult": 1,
+      "purple": [],
+      "continuation_warnings": [
+        "Creates resources that improve the deck over later rounds. Cover immediate scoring first; a possible future combo does not justify using the last scoring opportunity. Speculative: ~3.6% to find Hologram across 12 affordable shop slots (current rerolls + next 3 shops; 3 optional rerolls costing $16). Budget after this purchase: $6; projected net cash change $25, with $0 rental drain and $11 reserved for partner plus other upgrades. Egg/Gift resale growth $0 is not spendable unless sold. Approximate independent shop draws using current eligible rarity pools; offers/exclusions change after purchases. Assumes surviving the horizon and recent unused-hand income; excludes packs, editions, uncertain triggered income and future deck changes. This is not a run-win probability. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value; Certificate uses four declared front/seal composition worlds, not all208 outcomes; all admitted policies retain Purple cards on discard, unknown Tarot branches omitted: 108 -> 164 chips across 4 paired deck samples, allowing sensible Joker order; one fixed pre-blind setup matching executable preparation across all samples, including retained-row effects; upcoming The Pillar; target 600. Samples are not a blind-win probability."
+      ]
+    },
+    {
+      "sequence": 2722,
+      "event_sha256": "785d7dc8c6374c9f8b914171076dc098019c1d03a6b8f060484043a6e0d03006",
+      "snapshot": "snapshots/644828448d02a09b07b418b3a9c3807f51e62c5a56f4de36eac60e4e79ff862e.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          7,
+          8,
+          9
+        ],
+        "kind": "discard"
+      },
+      "chips": 0,
+      "yorick_remaining": 16,
+      "yorick_x_mult": 1,
+      "purple": [
+        {
+          "index": 4,
+          "id": "playing:209",
+          "rank": 7,
+          "suit": "Spades",
+          "selected": false
+        }
+      ],
+      "continuation_warnings": [
+        "Note: Purple Seal generation needs an explicit full Tarot outcome.",
+        "Note: Remaining-blind comparison unavailable: Purple Seal discard generation is not modeled in continuation."
+      ]
+    },
+    {
+      "sequence": 2727,
+      "event_sha256": "36caac3198a2b794d5551dc959d82fc775b577d0c7b9bec5f4f876d44d3e39ab",
+      "snapshot": "snapshots/587b1456afe9f62bf57a0e24878b64653d37f7b877e7fe55daa33fbb4edcaae5.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "chips": 0,
+      "yorick_remaining": 12,
+      "yorick_x_mult": 1,
+      "purple": [
+        {
+          "index": 4,
+          "id": "playing:209",
+          "rank": 7,
+          "suit": "Spades",
+          "selected": false
+        }
+      ],
+      "continuation_warnings": [
+        "Note: Purple Seal generation needs an explicit full Tarot outcome.",
+        "Note: Remaining-blind comparison unavailable: Purple Seal discard generation is not modeled in continuation."
+      ]
+    },
+    {
+      "sequence": 2732,
+      "event_sha256": "7bc699d66a41fc39e6ef6a9e195f08dba1b77bac859dedf89514955b205484e6",
+      "snapshot": "snapshots/3ebd906da9651923a0e03aa3d0d7e75103c4bc94d59c2188c4826c3d535412bc.json",
+      "kind": "action_attempt",
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "chips": 0,
+      "yorick_remaining": 9,
+      "yorick_x_mult": 1,
+      "purple": [
+        {
+          "index": 4,
+          "id": "playing:209",
+          "rank": 7,
+          "suit": "Spades",
+          "selected": false
+        }
+      ],
+      "continuation_warnings": [
+        "Note: Purple Seal generation needs an explicit full Tarot outcome.",
+        "Note: Remaining-blind comparison unavailable: Purple Seal discard generation is not modeled in continuation."
+      ]
+    },
+    {
+      "sequence": 2758,
+      "event_sha256": "d63054c58548703978220ad4e262d4c5fb25ffa3aecd3020164bd25b393ba153",
+      "snapshot": "snapshots/34343d0a3c2afa5eb3d825aea7314be2bb3fb6b45cc72a16f6b4b590a03334a2.json",
+      "kind": "run_finished",
+      "action": {},
+      "chips": 592,
+      "yorick_remaining": 6,
+      "yorick_x_mult": 1,
+      "purple": [],
+      "continuation_warnings": []
+    }
+  ],
+  "finding": "An active retained Purple card globally disabled exact remaining-blind comparisons, although only selected discarded Purple cards can require Tarot generation and the continuation has no later discards.",
+  "repair": "Keep global Purple blocker only without exact after_discard; exact candidate preparation excludes unsupported selected generation before any common-world family is admitted.",
+  "manufactured_result": {
+    "prior_action": "discard",
+    "candidate_action": "play",
+    "target": 800,
+    "complete_worlds": 8,
+    "play_clears": 8,
+    "discard_clears": 0,
+    "evaluations": 1233,
+    "hard_cap": 140000,
+    "counterfactual_claim": "Manufactured composition, not observed Pillar replay or rescued run."
+  },
+  "validation": {
+    "detached_fixture_checks": 38,
+    "production_fixture_checks": 36,
+    "related_checks": {
+      "discard_search": 13,
+      "resource_decisions": 199,
+      "resource_guard": 45,
+      "discard_state": 70
+    }
+  },
+  "limits": [
+    "No captured-policy evaluation or source/game execution.",
+    "No complete-attempt result or win-rate improvement.",
+    "Future discard decisions remain omitted; all prior resource overrides, hard caps and complete-family requirements remain.",
+    "Certificate versus Card Sharp pack choice and multi-discard Yorick thresholds are not repaired by this slice."
+  ]
+}

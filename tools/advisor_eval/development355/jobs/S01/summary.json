@@ -1,0 +1,25 @@
+{
+  "mode": "heuristic",
+  "simulator_qualified": false,
+  "real_game_win_claim": false,
+  "transitions": 10000,
+  "episodes_started": 265,
+  "outcomes": {
+    "loss": 175,
+    "unsupported": 83,
+    "censored": 7
+  },
+  "censored_transitions": 83,
+  "updates": 0,
+  "elapsed_seconds": 17.375,
+  "stage_seconds": {
+    "policy_and_transfer": 2.957999999867752,
+    "simulator_wait_and_record": 12.9910000001546
+  },
+  "transition_rate": 575.5395683453237,
+  "observed_completion_lower_bound": 0.0,
+  "wilson_95_all_started": null,
+  "interval_limit": "Wilson interval emitted only when every started attempt has an actual terminal win/loss. With censoring only an observed completion lower bound is emitted. Development training trajectories change policy and are not a fixed-policy evaluation. This is not a player win rate.",
+  "mean_blinds_cleared": 3.841509433962264,
+  "device": {}
+}

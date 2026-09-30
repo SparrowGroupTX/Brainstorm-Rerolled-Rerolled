@@ -1,0 +1,192 @@
+--- before/Advisor\consumables.lua
++++ Brainstorm\Advisor\consumables.lua
+@@ -623,6 +623,37 @@
+     return play and play.legal~=false and play.score>=remaining and (not play.uncertain or
+       play.reliable_bound==true and play.bound_kind=='supported_random_floor')
+   end
++  local function floor_diagnostics()
++    if diagnostics.floor_checks==nil then
++      diagnostics.floor_checks=0;diagnostics.floor_candidates=0;diagnostics.floor_verified=0
++      diagnostics.floor_limit_per_state=4;diagnostics.floor_coverage='complete_shortlist'
++    end
++  end
++  local function certify_floor(state,play,work_limit)
++    if not play or not play.uncertain or type(play.score)~='number' or play.score~=play.score or
++        play.score<remaining or play.score==math.huge or options.score_bounds==false or
++        type(scorer.lower_bound)~='function' then return end
++    floor_diagnostics()
++    diagnostics.floor_candidates=diagnostics.floor_candidates+1
++    if evaluations>=work_limit then diagnostics.floor_coverage='partial';return end
++    evaluations=evaluations+1;diagnostics.floor_checks=diagnostics.floor_checks+1
++    if yield_fn and evaluations%32==0 then yield_fn(evaluations) end
++    local bound=scorer.lower_bound(state,play.indices)
++    if not bound or bound.legal==false or bound.uncertain==true or bound.reliable_bound~=true or
++        bound.bound_kind~='supported_random_floor' or type(bound.score)~='number' or
++        bound.score~=bound.score or bound.score<remaining or bound.score==math.huge or bound.hand~=play.hand then return end
++    for _,message in ipairs(bound.warnings or {}) do if message:find('Unmodeled',1,true) then return end end
++    local result={};for k,v in pairs(bound) do result[k]=v end
++    result.indices=list(play.indices);result.expected_score=play.score
++    result.conservative=true;result.deterministic_exact=false
++    result.arm_cost=play.arm_cost
++    diagnostics.floor_verified=diagnostics.floor_verified+1
++    return result
++  end
++  if baseline and baseline.indices then
++    local bound=certify_floor(snapshot,baseline,maximum)
++    if bound then baseline=bound;baseline_score=bound.score;diagnostics.baseline_floor_score=bound.score end
++  end
+   local clearing=supported_clear(baseline)
+   local discard=search_result.kind=='discard' and search_result.discard or nil
+   local blind=snapshot.blind or {}
+@@ -638,9 +669,11 @@
+     if a.score~=b.score then return a.score>b.score end
+     return #a.indices<#b.indices
+   end
+-  local function score_state(state)
++  local function score_state(state,work_limit)
++    work_limit=math.min(maximum,work_limit or maximum)
+     local play,arm_costs=nil,{}
+-    if #(state.hand or {})>20 or evaluations+count_plays(#(state.hand or {}),limit)>maximum then
++    local uncertain,total_uncertain={},0
++    if #(state.hand or {})>20 or evaluations+count_plays(#(state.hand or {}),limit)>work_limit then
+       diagnostics.truncated=true
+       return nil,false
+     end
+@@ -655,8 +688,37 @@
+           score.arm_cost=arm_costs[score.hand]
+         elseif arm then score.arm_cost=number(((state.hands or {})[score.hand] or {}).level,1)>1 and 1 or 0 end
+         if better_play(score,play) then play=score end
++        if score.uncertain and type(score.score)=='number' and score.score==score.score and
++            score.score>=remaining and score.score<math.huge then
++          total_uncertain=total_uncertain+1
++          uncertain[#uncertain+1]=score
++          table.sort(uncertain,function(a,b)
++            if a.score~=b.score then return a.score>b.score end
++            if #a.indices~=#b.indices then return #a.indices<#b.indices end
++            for i=1,#a.indices do if a.indices[i]~=b.indices[i] then return a.indices[i]<b.indices[i] end end
++            return false
++          end)
++          if #uncertain>4 then table.remove(uncertain) end
++        end
+       end
+     end)
++    -- Complete every mean-score subset first. Only then spend remaining
++    -- allowance on the same deterministic top-four floor shortlist. No partial
++    -- mean family or guessed success probability is published.
++    if total_uncertain>0 and not supported_clear(play) then
++      floor_diagnostics()
++      diagnostics.floor_total_uncertain=(diagnostics.floor_total_uncertain or 0)+total_uncertain
++      if options.score_bounds==false or type(scorer.lower_bound)~='function' then
++        diagnostics.floor_coverage='unavailable'
++      else
++        if diagnostics.floor_coverage=='not_needed' then diagnostics.floor_coverage='complete_shortlist' end
++        if total_uncertain>#uncertain then diagnostics.floor_coverage='partial' end
++        for _,candidate in ipairs(uncertain) do
++          local bound=certify_floor(state,candidate,work_limit)
++          if bound and better_play(bound,play) then play=bound end
++        end
++      end
++    end
+     local modeled=true
+     for _,message in ipairs(play and play.warnings or {}) do
+       if message:find('Unmodeled',1,true) then modeled=false;warn(message) end
+@@ -664,13 +726,13 @@
+     return play,modeled
+   end
+   local preservation
+-  local function evaluate_single(candidate)
++  local function evaluate_single(candidate,work_limit)
+     local d=candidate.definition
+     if not clearing or d.kind=='planet' or d.kind=='all_hands' then
+       local state,reason=M.apply(snapshot,candidate.index,candidate.targets)
+       if not state then warn(reason)
+       else
+-        local play,modeled=score_state(state)
++        local play,modeled=score_state(state,work_limit)
+         diagnostics.evaluated_candidates=diagnostics.evaluated_candidates+1
+         candidate.play=play
+         if modeled then
+@@ -747,7 +809,7 @@
+   local single_limit=maximum-reserve*cost
+   local next_candidate=1
+   while next_candidate<=#candidates and evaluations+cost<=single_limit do
+-    evaluate_single(candidates[next_candidate]);next_candidate=next_candidate+1
++    evaluate_single(candidates[next_candidate],single_limit);next_candidate=next_candidate+1
+   end
+ 
+   if sequence_allowed and not one_card_clear and reserve>0 then
+@@ -815,6 +877,9 @@
+   if diagnostics.sequence_truncated then
+     warn('Two-consumable sequences were shortlisted within the shared budget; only complete play comparisons are reported.')
+   end
++  if diagnostics.floor_coverage=='partial' then
++    warn('Score-floor checks were bounded; unverified random estimates are not treated as guaranteed clears.')
++  end
+   if diagnostics.truncated then warn('Consumable targets were shortlisted by the evaluation budget; every reported play was fully scored.') end
+   if sequence_best and not one_card_clear then
+     local first,second=sequence_best.first,sequence_best.second
+@@ -827,7 +892,9 @@
+     return {title='Use '..first.definition.name..' to set up '..second.definition.name,
+       lines={'This first use alone does not clear the blind.',
+         'After it resolves, recalculate; the projected next step is '..second.definition.name..' ('..followup..').',
+-        'Together they enable '..sequence_best.play.hand..' at '..tostring(sequence_best.play.score)..' chips, reaching the remaining blind target.'},
++        'Together they enable '..sequence_best.play.hand..
++          (sequence_best.play.bound_kind=='supported_random_floor' and ' with a supported minimum of ' or ' at ')..
++          tostring(sequence_best.play.score)..' chips, reaching the remaining blind target.'},
+       warnings=warnings,action={kind='use',area='consumeables',index=first.index,targets=list(first.targets)},
+       play=first.play,sequence={play=sequence_best.play,second_name=second.definition.name,
+         second_index=sequence_best.second_index,targets=list(second.targets)}},evaluations,diagnostics
+@@ -844,9 +911,13 @@
+     if best.definition.kind=='death' then lines[#lines+1]='Copy hand card '..best.targets[2]..' (right) onto card '..best.targets[1]..' (left).'
+     else lines[#lines+1]='Target hand card'..(#best.targets>1 and 's ' or ' ')..table.concat(best.targets,', ')..'.' end
+   end
+-  lines[#lines+1]='Then '..best.play.hand..' is estimated at '..tostring(best.play.score)..' chips.'
++  lines[#lines+1]='Then '..best.play.hand..
++    (best.play.bound_kind=='supported_random_floor' and ' has a supported minimum of ' or ' is estimated at ')..
++    tostring(best.play.score)..' chips.'
+   if best.retention_exception then lines[#lines+1]='Spend the last copying source because this use provides the needed modeled clear.' end
+-  if supported_clear(best.play) and not clearing then lines[#lines+1]='This reaches the remaining blind target within the supported score.'
++  if best.play.bound_kind=='supported_random_floor' then
++    lines[#lines+1]='The supported minimum score clears; random upside is not required.'
++  elseif supported_clear(best.play) and not clearing then lines[#lines+1]='This reaches the remaining blind target within the supported score.'
+   elseif best.play.uncertain then lines[#lines+1]='This is an uncertain score estimate, not a guaranteed clear.'
+   elseif clearing then lines[#lines+1]='The permanent hand upgrade preserves the current clearing play.' end
+   return {title='Use '..best.definition.name..' before playing',lines=lines,warnings=warnings,
+--- before/Advisor\search.lua
++++ Brainstorm\Advisor\search.lua
+@@ -784,14 +784,14 @@
+     if ac and bc and (a.glass_loss or 0)~=(b.glass_loss or 0) then
+       return (a.glass_loss or 0)<(b.glass_loss or 0)
+     end
+-    if a.score >= target and b.score >= target and a.arm_cost ~= b.arm_cost then
++    if ac and bc and a.arm_cost ~= b.arm_cost then
+       return (a.arm_cost or 0) < (b.arm_cost or 0)
+     end
+     if ac and bc and (a.finish_reward or 0)~=(b.finish_reward or 0) then
+       return (a.finish_reward or 0)>(b.finish_reward or 0)
+     end
+     -- Preserve useful held cards once the modeled hand already clears the blind.
+-    if a.score >= target and b.score >= target and #a.indices ~= #b.indices then
++    if ac and bc and #a.indices ~= #b.indices then
+       return #a.indices < #b.indices
+     end
+     if a.score == b.score then
+--- before/Core\Brainstorm.lua
++++ Brainstorm\Core\Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.167.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.168.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before/steamodded_compat.lua
++++ Brainstorm\steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.167.0-alpha
++--- VERSION: 2.168.0-alpha

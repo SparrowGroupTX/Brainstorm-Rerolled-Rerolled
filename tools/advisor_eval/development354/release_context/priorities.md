@@ -1,0 +1,7 @@
+# Priorities after354
+
+Installed353 aligns retained-growth and reversible Burnt-copy admission with the unchanged105% final floor.354 removes the unconditional Burnt exclusion from the existing two-discard Yorick threshold proof only after explicit matching positive discard counts establish that Burnt is inert. Observe actual public actions after normal restart; neither release has a terminal result or captured-policy replay.
+
+Remaining under-discarding limits are explicit: reserving a five-card physical finish leaves only three spare cards, distant mature Yorick progress can lose to action cost, and growth is not a general joint hands/discards/consumables planner. The observed x3 cases with counters13/10 and two three-card discards cannot reach a threshold;354 does not address those. Later remaining-blind shortlists may omit a threshold-crossing size, but the logged four-versus-five-card choice has not been scored. Use manufactured complete comparisons before changing coverage and seek fresh authorization before captured/source/terminal experiments.
+
+350 expired-rental retirement,351 Gold Stake rerolls and352 concealed-card public-copy ordering remain installed and exact-regressed; live uptake and terminal improvement remain unverified. Search cursor persistence, broader missing-sticker acquisition/retention, Jokerless/Knife's Edge, calibration and separately authorized unseen terminal validation remain. All historical experiment quotas are CLOSED.

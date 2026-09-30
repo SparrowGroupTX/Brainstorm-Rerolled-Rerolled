@@ -1,0 +1,97 @@
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -259,11 +259,9 @@
+     if not emitted then return false,error end
+     return true,self.observation_reference and self.observation_reference.id
+   end
+-  function J:prepare_collection(options)
++  local function prepare_archive(self,options)
+     options=options or {}
+     if self.preparing then return nil,'Observation preparation is already running.'end
+-    local id=options.collection_id
+-    if type(id)~='string'or #id<1 or #id>128 or not id:match('^[%w%._%-]+$')then return nil,'A bounded collection identity is required.'end
+     local target=deps.archive
+     if not target or type(target.prepare_collection)~='function'then return nil,'Collection archive preparation is unavailable.'end
+     self.preparing=true
+@@ -277,6 +275,24 @@
+     self.error=nil;self.pending_state=nil;self.pending_actions={};self.action_observations={}
+     self.observation_reference=nil;self.last_semantic=nil;self.last_advice=nil;self.advice_reference=nil;last_monotonic=nil
+     self.last_collection_poll=nil;self.last_semantic_at=nil;self.idle_warning_index=1
++    return true,receipt
++  end
++  function J:clear_logs()
++    if self.pending_state or next(self.pending_actions or {}) or next(self.action_observations or {}) then
++      return nil,'Wait for the current action and its observation to settle before clearing logs.'
++    end
++    local okay,receipt,partial=prepare_archive(self,{clear_existing=true})
++    if not okay then return nil,receipt,partial end
++    self.collection_mode=false;self.collection_id=nil;self.collection_receipt=nil
++    self.status='Logs cleared. No run started.'
++    return true,receipt
++  end
++  function J:prepare_collection(options)
++    options=options or {}
++    local id=options.collection_id
++    if type(id)~='string'or #id<1 or #id>128 or not id:match('^[%w%._%-]+$')then return nil,'A bounded collection identity is required.'end
++    local okay,receipt,partial=prepare_archive(self,options)
++    if not okay then return nil,receipt,partial end
+     self.collection_mode=true;self.collection_id=id;self.collection_receipt=receipt
+     self.status='Teacher collection prepared; waiting for a public observation.'
+     return true,receipt
+--- before/Brainstorm/UI/collection_run.lua
++++ Brainstorm/UI/collection_run.lua
+@@ -16,6 +16,7 @@
+ end
+ local function status_text()
+   if quiet.failure then return quiet.failure end
++  if quiet.owner=='logs' then return quiet.text end
+   if B.Advisor and B.Advisor.search_diagnostics then
+     local status=B.Advisor.search_diagnostics(true)
+     if status then return status.text end
+@@ -128,6 +129,24 @@
+   local ok,reason=B.AutoRun:start({teacher_batch=true})
+   quiet.text=ok and 'Collecting up to 10 real teacher runs. Old observation logs cleared.' or tostring(reason)
+   if not ok then quiet.failure=quiet.text;request_failure('auto',quiet.failure);refresh()end
++end
++G.FUNCS.brainstorm_collection_clear_logs=function()
++  quiet.owner='logs';quiet.failure=nil
++  local advisor=B.Advisor or {}
++  if B.AutoRun and B.AutoRun.engaged and B.AutoRun:engaged() then
++    quiet.failure='Finish the active or resumable session, or restart, before clearing its logs.'
++  elseif B.CollectionSearchRuntime and B.CollectionSearchRuntime.busy and B.CollectionSearchRuntime.busy() then
++    quiet.failure='Wait for the search worker to finish before clearing logs.'
++  elseif advisor.execution_key then
++    quiet.failure='Wait for the current action to settle before clearing logs.'
++  elseif not advisor.player_log or type(advisor.player_log.clear_logs)~='function' then
++    quiet.failure='Observation log clearing is unavailable.'
++  else
++    local ok,receipt=advisor.player_log:clear_logs()
++    if ok then quiet.text='Logs cleared. No run started.'
++    else quiet.failure='Logs could not be cleared: '..tostring(receipt) end
++  end
++  refresh()
+ end
+ G.FUNCS.brainstorm_collection_stop=function()
+   quiet.failure=nil
+@@ -153,7 +172,7 @@
+     row('Missing counts are distinct conditional offers, not purchases or wins.',nil,.24),
+     row(B.AutoRun and 'With Missing: Auto, auto-run may use a missing Legendary + Perkeo.' or
+       'Auto requires one reachable missing Joker; Off adds no missing-target condition.',nil,.22),
+-    row('Start searches a new run. Resume keeps the current run.',G.C.ORANGE,.24)}
++    row('10-run batch: win-first strategy; losses count. Resume keeps your run.',G.C.ORANGE,.22)}
+   local controls={button('Search and start new run','brainstorm_collection_search_start',3.3)}
+   if B.AutoRun then
+     controls[#controls+1]=button('Start auto-run + logging','brainstorm_collection_auto_start',3.3)
+@@ -164,7 +183,11 @@
+   nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.03},nodes=controls}
+   if B.AutoRun then
+     nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={
+-      button('Clear logs + collect 10 win-first runs','brainstorm_teacher_start',6.7)}}
++      button('Clear logs + play 10 runs','brainstorm_teacher_start',4.5),
++      button('Clear logs','brainstorm_collection_clear_logs',2.2)}}
++  else
++    nodes[#nodes+1]={n=G.UIT.R,config={align='cm',padding=.02},nodes={
++      button('Clear logs','brainstorm_collection_clear_logs',3.4)}}
+   end
+   local session_controls={}
+   if B.AutoRun then session_controls[#session_controls+1]=button('Resume','brainstorm_collection_resume',2.2) end

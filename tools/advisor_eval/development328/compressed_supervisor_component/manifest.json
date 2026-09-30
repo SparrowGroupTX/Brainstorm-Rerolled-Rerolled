@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "detached_prospective_compressed_stdout_supervisor",
+  "status": "ready_for_root_review",
+  "root_supervisor_changed": false,
+  "existing_frozen_registrations_changed": false,
+  "baseline_root_supervisor_sha256": "665046eb8fe0a92cf6488d71c6601d2f7274ec0bbe93e2fe06190adb8c0f4f4b",
+  "files": {
+    "baseline_validation_cycle.py": "665046eb8fe0a92cf6488d71c6601d2f7274ec0bbe93e2fe06190adb8c0f4f4b",
+    "finalize_component.py": "aa1b13433fe897dbba2df2bd57993c990f594ab505aaf49adf91d247a95b6c83",
+    "prepare_supervisor.py": "1023e43601b8ebcacdc1f4891250141fe39bc86999005ebf9ebf15f29321103b",
+    "README.md": "0cdc0c80390fe9a7dbcb9c118fcf4f59cf7428e544e28c46a6598414baac29fe",
+    "stdout_transport.py": "f2467559d1bdf24c6ec61f6ed11b019bd2b7e457c2dfa17a38a38bb98d59d3ce",
+    "TEST_AUTHORING_01.json": "e3adb459cc91ce2fb8e96380c923f26f697ac9542248ce1a12f25ffa10c34d0d",
+    "test_transport.py": "2da02153569e45622c95346ba77855e36bc37ff0d47af0be2ae28e7db4868a2c",
+    "validation_cycle.patch": "a2919b096a39dfe4635483ce2360571465dc150bb2f1c86fae3616d091e6fbe8",
+    "validation_cycle.py": "afe3b705265a057d0ba844f348b6631d135ecca6da03afd312c993b585acfa7e"
+  },
+  "stdout_contract": {
+    "format": "gzip",
+    "compression_level": 1,
+    "member_decoded_bytes": 65536,
+    "compressed_byte_cap": 268435456,
+    "decoded_byte_cap": 2147483648,
+    "raw_digest": "sha256",
+    "lossless_completed_stream": true,
+    "censored_scope": "valid_persisted_stdout_prefix"
+  },
+  "validation": {
+    "dummy_tests_passed": 15,
+    "final_exit_code": 0,
+    "final_worker_wall_seconds": 1.0227769,
+    "intermediate_12_test_pass_wall_seconds": 0.8104501,
+    "initial_test_failure_preserved": "TEST_AUTHORING_01.json",
+    "scope": "Only disposable temp dummy processes/byte streams and an injected fictional ledger; no real authority/slot access."
+  },
+  "new_experiment_jobs": 0,
+  "source_executions": 0,
+  "captured_policy_decisions": 0,
+  "complete_attempts": 0,
+  "search_jobs": 0,
+  "limits": "Original one-use authority and time caps remain. Applies only to prospectively registered gzip C jobs; existing evidence is unchanged. No gameplay, outcome or speedup claim."
+}

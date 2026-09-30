@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "kind": "prospective_complete_adapter310_v1",
+  "status": "prepared_not_registered_not_run",
+  "future_job": "C05",
+  "seed": "S7PXV521",
+  "selection": "S05/C03 dependent synthetic development; not unseen",
+  "target_policy": "exact verified installed312 after front310, pack311 and Perkeo312; not frozen in this draft",
+  "gold_objective": "synthetic_fresh_all_missing_v1",
+  "retry_context": "disabled_clean",
+  "proposed_caps": {
+    "seconds": 180,
+    "actions": 500,
+    "uses": 1
+  },
+  "authority": "Parent must separately preregister; this manifest consumes no lease",
+  "adapter_files": [
+    {
+      "file": "benchmark.py",
+      "sha256": "b089d4fe7d3e79201b8ef279aeda9731c5b0aca63e26a885ad9040fa7515faca"
+    },
+    {
+      "file": "development_report.py",
+      "sha256": "77b11ee72f4c26b474f208fa38232e34ca13b5f6c09730d5fbc13438643f3218"
+    },
+    {
+      "file": "engine_contract.lua",
+      "sha256": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da"
+    },
+    {
+      "file": "engine_probe.lua",
+      "sha256": "ce2e507a767f5aeb928ef42f27f4b0dea8e8b88daf32dfc32ae088deeae2f0cd"
+    },
+    {
+      "file": "engine_probe.py",
+      "sha256": "0d845a1fbb970dee58f02bd2bd16596ca02620ecff70a506d14557353991011e"
+    },
+    {
+      "file": "engine_run.lua",
+      "sha256": "816d30ce002295b8d772963208ac600f01f7f0a94b0d03336704ad40d9d7d286"
+    },
+    {
+      "file": "gold_objective_context.lua",
+      "sha256": "19258ddc347893f638f5f35c672e20337b5cec0c8a3f171c6296ee1dda1d0301"
+    },
+    {
+      "file": "gold_objective_spec.py",
+      "sha256": "1f34401ff20f227c93c98451535c6369d208b250549d21f6c2c646b06241b660"
+    },
+    {
+      "file": "normal_terminal.lua",
+      "sha256": "a1dedbce48d4ea506312f153d1490aac64dd098a8d936ea57f17988ce0bc523a"
+    },
+    {
+      "file": "opening_support.py",
+      "sha256": "0137f401a4d44d99610053aa406d3be8beec99b2b26d6818cf27c306ed21729f"
+    },
+    {
+      "file": "normal_recipe.py",
+      "sha256": "712574e7cc8f8e55829d35acd9ec7fb8151d415e2a40bc48d5022f8c6391eb8d"
+    },
+    {
+      "file": "normal_opening_recipe.json",
+      "sha256": "0ee88998d964ab04f038f7235fbee70c0bf4f74b65f418b62f239dd6d477608c"
+    },
+    {
+      "file": "normal_seed_selection.json",
+      "sha256": "c831a5dcf2d58d6ea07857564ab949ca8a95d87ad79dd4fcb23241c69c8eab09"
+    },
+    {
+      "file": "policy_wiring.lua",
+      "sha256": "1523b09f060b2111b2c83ef42a7889c60986a25fe5cf60fb072327d7d291ab70"
+    },
+    {
+      "file": "run_attempt5.py",
+      "sha256": "6238de1304aa4a16df26be3d578929c04478ceee7192d4ac907abb89a236ff96"
+    }
+  ],
+  "tests": [
+    {
+      "file": "test_wiring.lua",
+      "sha256": "7d15689e904143e6923325c2c9089b8a7c4edc3fceab60cce02e7814e869ba1a"
+    },
+    {
+      "file": "test_adapter_spec.py",
+      "sha256": "0137fc28afdc2624b558288c1f6c1d856a70bdebf14f2085bee111a43133342b"
+    }
+  ],
+  "validation": {
+    "lua_fixtures": 1,
+    "inert_lua_assertions": 2435,
+    "python_tests": 6,
+    "source_or_policy_execution": false,
+    "verified_connections": 34,
+    "product_graph": "actual staged312 graph; parent reran both relevant fixtures"
+  },
+  "prior_inputs": "base_manifest.json",
+  "notes": "INTEGRATION.md",
+  "directory_label": "310 preparation label retained; exact policy digest controls future registration",
+  "added_connection": "snapshot.perkeo_inventory = modules.perkeo_inventory",
+  "new_required_modules": [
+    "perkeo_inventory",
+    "gold_planet_policy"
+  ],
+  "prior_graph_manifest": "integration_manifest_before_perkeo312_edge.json",
+  "perkeo_draft_wiring_sha256": "b22a99d23b5247cfa2f0c39c9dd15605abc66f70578e8cce3649a52de136eb67"
+}

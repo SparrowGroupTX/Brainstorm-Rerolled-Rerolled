@@ -1,0 +1,92 @@
+{
+  "scope": "Passive public journal joins only; no captured policy/scorer evaluation.",
+  "session": "session-20260927T173551Z-1",
+  "loaded_version": "2.207.0-alpha",
+  "observation": 9545,
+  "advice": 9547,
+  "requested": 9550,
+  "callback": 9551,
+  "settled_observation": 9555,
+  "settled_receipt": 9557,
+  "visible_offers": [
+    {
+      "id": "card:1307",
+      "key": "c_soul"
+    },
+    {
+      "id": "card:1308",
+      "key": "c_devil"
+    },
+    {
+      "id": "card:1309",
+      "key": "c_sun"
+    }
+  ],
+  "row": [
+    {
+      "id": "card:1156",
+      "key": "j_perkeo",
+      "debuff": false,
+      "edition": null,
+      "perishable": null,
+      "perish_tally": null
+    },
+    {
+      "id": "card:1157",
+      "key": "j_yorick",
+      "debuff": false,
+      "edition": null,
+      "perishable": null,
+      "perish_tally": null
+    },
+    {
+      "id": "card:1165",
+      "key": "j_stencil",
+      "debuff": false,
+      "edition": null,
+      "perishable": null,
+      "perish_tally": null
+    },
+    {
+      "id": "card:1184",
+      "key": "j_raised_fist",
+      "debuff": false,
+      "edition": null,
+      "perishable": null,
+      "perish_tally": null
+    },
+    {
+      "id": "card:1218",
+      "key": "j_mail",
+      "debuff": true,
+      "edition": {
+        "chips": 50,
+        "foil": true,
+        "type": "foil"
+      },
+      "perishable": true,
+      "perish_tally": 0
+    }
+  ],
+  "action": {
+    "area": "pack_cards",
+    "index": 2,
+    "kind": "choose",
+    "targets": [
+      2
+    ]
+  },
+  "callback_details": {
+    "action_sequence": 9550,
+    "callback_returned": true,
+    "completion": "Callback result only; queued effects may still be pending.",
+    "outcome_kind": "returned",
+    "reason": ""
+  },
+  "settled_phase": "shop",
+  "settled_action_sequences": [
+    9550
+  ],
+  "cause": "Soul value zero at full Joker capacity; no expired-sale candidate. Pack chose Devil and returned to shop. Unknown generated legendary identity not inferred.",
+  "manufactured_acceptance": "Independently manufactured row/metadata, not this captured state, tests sale-only then fresh Soul choice and guard rejections."
+}

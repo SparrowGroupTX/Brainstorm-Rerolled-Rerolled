@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "scope": "Staged raw constructor absent-pin normalization and manufactured fixtures only.",
+  "before_sha256": "0d831d99900f4a19bae3bc3643d65779b29a0896f840ea0241a141d9a1508522",
+  "after_sha256": "9a4453db6ddbea30482235a9b150932daf849879ab5f58037ec4163138ee44e9",
+  "runtime_worktree_untouched": true,
+  "finding": "Card:init does not set pinned. copy_card transfers the absent field unchanged. Snapshot normalizes absent to false, but the source certificate checked raw false only.",
+  "change": "Raw nil and false both qualify as unpinned. True and all other malformed values still reject. Normalized snapshot false requirement is unchanged.",
+  "source_provenance": {
+    "tools/advisor_eval/runs/chicot_order_source1/source/card.lua": {
+      "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+      "lines": "5-72"
+    },
+    "tools/advisor_eval/runs/chicot_order_source1/source/functions/common_events.lua": {
+      "sha256": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+      "lines": "2156-2181"
+    },
+    "Brainstorm/Advisor/snapshot.lua": {
+      "sha256": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+      "lines": "33-53"
+    }
+  },
+  "files": {
+    "tools\\advisor_eval\\development345\\pin_component\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "9a4453db6ddbea30482235a9b150932daf849879ab5f58037ec4163138ee44e9",
+    "tools\\advisor_eval\\development345\\pin_component\\before\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "0d831d99900f4a19bae3bc3643d65779b29a0896f840ea0241a141d9a1508522",
+    "tools\\advisor_eval\\development345\\pin_component\\tests\\advisor_gold_acquisition_runtime.lua": "fac1ce88935da9259b2cfec811a534818eb470719103442a0c202778a280de29",
+    "tools\\advisor_eval\\development345\\pin_component\\tests\\advisor_gold_tarot_hold_pin.lua": "fa6406c94d851ad6cf6b45fd4a050a4de58c09160222ef5e0478b915bc1bc1bb",
+    "tools\\advisor_eval\\development345\\pin_component\\validation.json": "973d133bd42b614f1fa97d8d9b43c3fda5a5edb61ec94d2152444d0d4b05d8a8",
+    "tools\\advisor_eval\\development345\\pin_component\\validate.py": "248994b369a7841f7215873039a1a6fcfd9795b53955e6da24f5b76c92cab960"
+  },
+  "validation": "Two original344 failures reproduced;52 raw capture/guard checks and67 production Runtime/Decision checks pass after fix, including complete sale then fresh purchase. Every fixture capped at60 seconds.",
+  "limits": "No original-source execution, captured-state replay, save/profile read, search, complete attempt, game control or runtime installation. No claim the logged run is rescued."
+}

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "created_at_utc": "2026-09-15T19:11:33.771361+00:00",
+  "status": "prepared_only",
+  "slots": [
+    {
+      "job": "C01",
+      "seed": "S7PXV521",
+      "role": "baseline",
+      "version": "2.127.0-alpha",
+      "files": 127,
+      "policy_files": 94,
+      "map_sha256": "457608b94c0ae73d6a5e8a748048cfbdb3258891e62ad0060754ea5b6365b893"
+    },
+    {
+      "job": "C02",
+      "seed": "S7PXV521",
+      "role": "candidate",
+      "version": "2.129.0-alpha",
+      "files": 127,
+      "policy_files": 94,
+      "map_sha256": "46aaea5564064913bd5e0b09b3248add59905ab527b3bb4473275351e11eae50"
+    },
+    {
+      "job": "C03",
+      "seed": "RH45AD21",
+      "role": "baseline",
+      "version": "2.127.0-alpha",
+      "files": 127,
+      "policy_files": 94,
+      "map_sha256": "ca6e72306d4569b7bfcaa14d5b6fea450d00c0eb3be45a837c26b5a6fd0056aa"
+    },
+    {
+      "job": "C04",
+      "seed": "RH45AD21",
+      "role": "candidate",
+      "version": "2.129.0-alpha",
+      "files": 127,
+      "policy_files": 94,
+      "map_sha256": "6bc570a3dc79b40a148eaa538454718e1ba4aa5e55c7f71323a6b4d84f2768df"
+    },
+    {
+      "job": "C05",
+      "seed": "YAEARC31",
+      "role": "baseline",
+      "version": "2.127.0-alpha",
+      "files": 127,
+      "policy_files": 94,
+      "map_sha256": "f66c13cf3af4c6733e2fe48ecf0988662ccc354ce9ae552c7241cb7de9962676"
+    },
+    {
+      "job": "C06",
+      "seed": "YAEARC31",
+      "role": "candidate",
+      "version": "2.129.0-alpha",
+      "files": 127,
+      "policy_files": 94,
+      "map_sha256": "3b50f53b3153df6a23f1e078b32bd3990e224a0aea3c4609ba15fad19ded504e"
+    }
+  ],
+  "complete_attempt_jobs_if_all_registered": 6,
+  "complete_attempt_reserved_seconds_if_all_registered": 1080,
+  "actual_registered_jobs": 0,
+  "actual_reserved_seconds": 0,
+  "source_initializations": 0,
+  "policy_decisions": 0,
+  "authority_sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2",
+  "external_sha256": {
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe": "fd5c46d73d29ba21b04c844bbaf9096066136526911230645a2a040d23fb612b",
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\Balatro.exe": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+    "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2"
+  },
+  "historical_C08_external_hashes_match": true,
+  "registration_instructions": "Verify all expected_files and external_sha256 still match, then root may call validation_cycle.register(job,files,command,metadata,external=external). Prepared maps are not authority or reservations.",
+  "seal_validation": {
+    "all_registered_input_hashes_match": true,
+    "all_external_hashes_match": true,
+    "source_initializations": 0,
+    "policy_decisions": 0,
+    "jobs_registered": 0,
+    "hypothesis_wording": "retained-Purple continuation admission; complete shop replacement comparison reuse; whole-inventory retention"
+  }
+}

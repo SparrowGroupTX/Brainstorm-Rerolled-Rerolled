@@ -1,0 +1,28 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tools\advisor_eval\development456\prepared_source_probe.lua
+FRAME|minimal_stale_resources|index=1|phase=shop|cash=7|hands=4|discards=3|purchases=0|previous_dollars=4|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|minimal_stale_resources|index=2|phase=shop|cash=8|hands=4|discards=3|purchases=0|previous_dollars=4|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|minimal_stale_resources|index=3|phase=shop|cash=8|hands=4|discards=3|purchases=0|previous_dollars=8|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+CASE|minimal_stale_resources|pre_cash=7|queued=3|settled_cash=8|hands=4|discards=3|purchases=0|previous_dollars=8|carry_marker=<none>|shop_free_present=0|shop_d6ed_present=0|phase=shop|previous_identity=1|shuffle_key=cashout1|repeat_queued=0|hands_played=3|discards_used=1|reset_hands=4|reset_discards=3|bonus_hands=0|bonus_discards=0
+FRAME|already_correct_resources|index=1|phase=shop|cash=8|hands=4|discards=3|purchases=0|previous_dollars=5|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|already_correct_resources|index=2|phase=shop|cash=10|hands=4|discards=3|purchases=0|previous_dollars=5|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|already_correct_resources|index=3|phase=shop|cash=10|hands=4|discards=3|purchases=0|previous_dollars=10|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+CASE|already_correct_resources|pre_cash=8|queued=3|settled_cash=10|hands=4|discards=3|purchases=0|previous_dollars=10|carry_marker=<none>|shop_free_present=0|shop_d6ed_present=0|phase=shop|previous_identity=1|shuffle_key=cashout1|repeat_queued=0|hands_played=2|discards_used=0|reset_hands=4|reset_discards=3|bonus_hands=0|bonus_discards=0
+FRAME|shop_entry_bonus_composition|index=1|phase=shop|cash=2|hands=6|discards=4|purchases=0|previous_dollars=1|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|shop_entry_bonus_composition|index=2|phase=shop|cash=6|hands=6|discards=4|purchases=0|previous_dollars=1|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|shop_entry_bonus_composition|index=3|phase=shop|cash=6|hands=6|discards=4|purchases=0|previous_dollars=6|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+CASE|shop_entry_bonus_composition|pre_cash=2|queued=3|settled_cash=6|hands=6|discards=4|purchases=0|previous_dollars=6|carry_marker=<none>|shop_free_present=0|shop_d6ed_present=0|phase=shop|previous_identity=1|shuffle_key=cashout1|repeat_queued=0|hands_played=4|discards_used=2|reset_hands=4|reset_discards=3|bonus_hands=2|bonus_discards=1
+FRAME|shop_entry_lower_bounds|index=1|phase=shop|cash=0|hands=1|discards=0|purchases=0|previous_dollars=9|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|shop_entry_lower_bounds|index=2|phase=shop|cash=0|hands=1|discards=0|purchases=0|previous_dollars=9|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|shop_entry_lower_bounds|index=3|phase=shop|cash=0|hands=1|discards=0|purchases=0|previous_dollars=0|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+CASE|shop_entry_lower_bounds|pre_cash=0|queued=3|settled_cash=0|hands=1|discards=0|purchases=0|previous_dollars=0|carry_marker=<none>|shop_free_present=0|shop_d6ed_present=0|phase=shop|previous_identity=1|shuffle_key=cashout1|repeat_queued=0|hands_played=1|discards_used=0|reset_hands=0|reset_discards=0|bonus_hands=-2|bonus_discards=-1
+FRAME|heldout_zero_payment_with_carry|index=1|phase=shop|cash=12|hands=5|discards=2|purchases=0|previous_dollars=5|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|heldout_zero_payment_with_carry|index=2|phase=shop|cash=12|hands=5|discards=2|purchases=0|previous_dollars=5|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|heldout_zero_payment_with_carry|index=3|phase=shop|cash=12|hands=5|discards=2|purchases=0|previous_dollars=12|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+CASE|heldout_zero_payment_with_carry|pre_cash=12|queued=3|settled_cash=12|hands=5|discards=2|purchases=0|previous_dollars=12|carry_marker=retain|shop_free_present=0|shop_d6ed_present=0|phase=shop|previous_identity=1|shuffle_key=cashout1|repeat_queued=0|hands_played=2|discards_uPASS tools\advisor_eval\development456\prepared_source_probe.lua
+1/1 fixtures passed
+sed=1|reset_hands=5|reset_discards=2|bonus_hands=0|bonus_discards=0
+FRAME|negative_payment_control|index=1|phase=shop|cash=2|hands=4|discards=3|purchases=0|previous_dollars=2|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|negative_payment_control|index=2|phase=shop|cash=-1|hands=4|discards=3|purchases=0|previous_dollars=2|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+FRAME|negative_payment_control|index=3|phase=shop|cash=-1|hands=4|discards=3|purchases=0|previous_dollars=-1|shop_free_present=0|shop_d6ed_present=0|eval_removed=1
+CASE|negative_payment_control|pre_cash=2|queued=3|settled_cash=-1|hands=4|discards=3|purchases=0|previous_dollars=-1|carry_marker=<none>|shop_free_present=0|shop_d6ed_present=0|phase=shop|previous_identity=1|shuffle_key=cashout1|repeat_queued=0|hands_played=3|discards_used=2|reset_hands=4|reset_discards=3|bonus_hands=0|bonus_discards=0

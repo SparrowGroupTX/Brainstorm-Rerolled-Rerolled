@@ -1,0 +1,721 @@
+{
+  "schema": 1,
+  "kind": "prospective_evaluation_proposal",
+  "status": "PROPOSAL_NOT_AUTHORIZED",
+  "prepared_at_utc": "2026-09-13T20:52:09.246733+00:00",
+  "qualification": false,
+  "authority": {
+    "fresh_explicit_user_approval_required": true,
+    "authorization": null,
+    "authorization_digest": null,
+    "creates_allowance": false,
+    "old_quotas": "closed_without_carry_forward",
+    "registration_permitted_now": false,
+    "execution_permitted_now": false
+  },
+  "budget": {
+    "proposed_top_level_jobs": 14,
+    "proposed_aggregate_wall_cap_seconds": 1080,
+    "proposed_outer_execution_deadline_seconds_from_first_job": 1080,
+    "serial_only": true,
+    "registered_jobs": 0,
+    "reserved_jobs": 0,
+    "reserved_seconds": 0,
+    "consumed_jobs": 0,
+    "consumed_seconds": 0,
+    "automatic_replacements": 0,
+    "additional_warmup_jobs": 0,
+    "lease_transfer_allowed": false,
+    "capacity_admission": "entire_next_job_cap_must_fit_before_outer_deadline",
+    "unused_capacity": "closed_at_stop",
+    "dollar_cost_estimate": null,
+    "preparation_and_review_time_in_worker_sum": false
+  },
+  "safety": {
+    "launch_balatro_exe": false,
+    "foreground_or_control_game": false,
+    "save_access": "none",
+    "product_execute": "user_clicked_only",
+    "source_zip_and_isolated_lua_dll": "only_after_explicit_authorization_and_fresh_registration",
+    "source_exe_dll_read_or_hash_for_this_proposal": false,
+    "scheduled_continuation": false,
+    "neural_or_gpu_training": false
+  },
+  "policies": {
+    "282": {
+      "version": "2.82.0-alpha",
+      "record": {
+        "path": "tools/advisor_eval/runs/lucky282_installed/record.json",
+        "sha256": "cede220de35070accf6483084fb06e0c128ee78559da27cda944527309abd189"
+      },
+      "policy_root": "tools/advisor_eval/runs/lucky282_installed/policy",
+      "recorded_policy_digest": "a11c28115e70692f5fdcbfc70ca54537a6d4a68f23fd26148fdfbf160da7fab5",
+      "nonbinary_files_freshly_verified": {
+        "Brainstorm/Advisor/blind_finishing.lua": "1b94243e5a9aed8ffa49ac2adaf604920ed89fb6d6d3baef579930b4f9422940",
+        "Brainstorm/Advisor/blind_prep.lua": "89a6c0c6a000b4da638a0808cbbfe4895f5839b5949b4c8085a27fb14ff3130b",
+        "Brainstorm/Advisor/blind_routing.lua": "078e69137bd55954515d1e81f7b6bc3f47af3cf0808e7cd1cf58c360ac49531b",
+        "Brainstorm/Advisor/blind_start.lua": "e7edb7cc1a6ab7e442d95d6193b5a513dfdaa8e2e18dc9e87116d76dcf33d8b5",
+        "Brainstorm/Advisor/boss_rescue.lua": "dc30847b06aca8bef35a1835d1d158d126a4e96fcbf6057114a2c542d3eb3f08",
+        "Brainstorm/Advisor/catalog_joker.lua": "1856ecf61a7185218d783c565d4534b214fdaf6fc335b23e333e10f766e56967",
+        "Brainstorm/Advisor/challenge_route.lua": "cd3aa2b929be76b3eef63520e390c338090d1964d81a2567f5f3887140bbaa19",
+        "Brainstorm/Advisor/concealed_belief.lua": "fbcc0a4b72334025ce0dcf52de6f100df0535fc66b2028e254950082e4f57b0d",
+        "Brainstorm/Advisor/conditional_value.lua": "cb62d1f3c282b81ed48d719973c3275964944773cdf09c5932177212057430ca",
+        "Brainstorm/Advisor/consumables.lua": "98602e1b4c2409f9065c185575ef96ef92cdc0d0a5913b86c7d1d76cf95ba926",
+        "Brainstorm/Advisor/decision.lua": "99a4465a8ce0401960d1524bf01d010b79b75ae05e9e4febe9c493ddea870170",
+        "Brainstorm/Advisor/deck_development.lua": "066aef1ccce698abb62f2e16121e6b9f712642f9af571d770533ef5e0049f9cb",
+        "Brainstorm/Advisor/draws.lua": "a1b7c7239659b505ae02e6976d5e3eb95488fe6ebd57adffa8b6703c8b491169",
+        "Brainstorm/Advisor/economy.lua": "c3f1aa66bab70e1735357c86ae87fa391a287bc448650f8f149cdac61216e5f6",
+        "Brainstorm/Advisor/execution.lua": "dadb0283616217d9547eba505bc72b24855dde85fa79fbf3fb6b220f003543a1",
+        "Brainstorm/Advisor/finish_rewards.lua": "5f459a9e273a9f6cc970804ffe0e28c0e95a05d056ed9ce413d2611ec5d098ae",
+        "Brainstorm/Advisor/growth.lua": "80e382cfc7deff0a26e80da0647fb72570c1c9f37ea87e97477c3e151e51efdc",
+        "Brainstorm/Advisor/hand_ordering.lua": "5b773fe6c01f12eeca252bc0b52a0334b821770967dc8a1d99009945febcaded",
+        "Brainstorm/Advisor/liquidity.lua": "e97dcfd7ce958bff2415d5ccf507b7c1f0e6152e1caea92afcfcbb6776233c8d",
+        "Brainstorm/Advisor/mixed_rescue.lua": "01f07bacaf87c43ee5c4b8db59747b8bdfa41178a2d6596538a1280b52c2c547",
+        "Brainstorm/Advisor/multi_discard.lua": "5a7c679a778d1285247f113f60f7556f5320c6c87111957b8889192db80a518d",
+        "Brainstorm/Advisor/ordering.lua": "3bca540d6a01573b146f247b90eddbaeb59a1caf450fd67a75841214f99ef354",
+        "Brainstorm/Advisor/pack_scoring.lua": "a25282597b6a330872afdaeea729c7f5c4a4f8d751fdbceb324f97c06ea53949",
+        "Brainstorm/Advisor/paid_reroll.lua": "547d35a4c3d8e6fbbdd8891b016429f39c9c754fa32a975353f606fd528728f3",
+        "Brainstorm/Advisor/paired_deck.lua": "c16a1df59b6b665aeef61533299f053135401bf96343285e641fa180207ae913",
+        "Brainstorm/Advisor/policy_weights.lua": "926e831b8c48cd03dceed8c36973c04d56e77c929358e14b9a7e312fc200a740",
+        "Brainstorm/Advisor/retry_journal.lua": "ebce3cc495008c8552005fde785dbf1ac9257e7eb9c723e963de60856fd94b64",
+        "Brainstorm/Advisor/retry_memory.lua": "6c186e4bdb7558ff77857a231c0488baa44d93739476136ad85630dbd26c84c0",
+        "Brainstorm/Advisor/retry_policy.lua": "9a5a9a9160e5f8197b46f3c81b819892a092bb39f8dada460e413a317bf2f206",
+        "Brainstorm/Advisor/runtime.lua": "5f82a97d730d9ecd3974834aa23dd0bfd14e0915903e0c7143e5427287ec56ee",
+        "Brainstorm/Advisor/sampled_outcomes.lua": "72a4bcd9ba65c03ff9b571449aaa0f4c4a8d41c6df40bfe9846d813c3297508a",
+        "Brainstorm/Advisor/score_cache.lua": "bd3221ca67824117b47e596ff4ff196cc98d873ee4bbbe46d7b822ffa8c40b32",
+        "Brainstorm/Advisor/scoring.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+        "Brainstorm/Advisor/search.lua": "e01cb82ce876ce3e2bddfca443fc2448dcfc52c911babbe0bf6ec62d5e68dee5",
+        "Brainstorm/Advisor/shop_scoring.lua": "578ac7ac9df6c5f304d9381c3839c9ef900ce97aa7d30059cb6a231fc886b881",
+        "Brainstorm/Advisor/shop_sequences.lua": "8e4a02967b8bc4abaf487ff33cefb7b9c00e487f424a7ae66754ee3ffb959383",
+        "Brainstorm/Advisor/snapshot.lua": "0e92e52c23f2e166051908296a0bdc22a8852adbfef3e9131b4cb4073d8365bf",
+        "Brainstorm/Advisor/spectral_development.lua": "e9363673c0df80d1a5c92059fbc68a71200e66b91c8fbffb0bfb8734fc3a3ee5",
+        "Brainstorm/Advisor/strategy.lua": "94aa8c4ae9012d62e8e8cd597b0c5ec8124c7cbd2b919d01ad825e42cf245fb1",
+        "Brainstorm/Advisor/synergies.lua": "46f9d30d92f89ec81bee15b6b94c575501c86f3b0d6a91291f0fe971fbf3cc37",
+        "Brainstorm/Advisor/two_hand_finish.lua": "90300b7833cdf045bcc23af30770ad408a1cae946b1e5b83f12c55646b2ca179",
+        "Brainstorm/Advisor/work_cost.lua": "48b816134b920af414ebe32f3c1766990535b593b38a709c1e45bd504bf8e887",
+        "Brainstorm/charm_perkeo_mega_naneinf_plasma_gold_v1.ids": "bee9ee99625b059b82169882b311557b6491e2649518f9b6b9e313b9236e0841",
+        "Brainstorm/charm_perkeo_mega_naneinf_plasma_gold_v1.manifest.json": "cb655b4ec8e7307cc3999f6267b305d4a48e76bac15a0670c177e293f8b9caa9",
+        "Brainstorm/charm_perkeo_mega_spectral_anchor_v1.ids": "d9a9f4fc710a106d0d8bf5f1dfff7c9c682da3d6c3663955dedd9aaa28d902cd",
+        "Brainstorm/charm_perkeo_mega_spectral_anchor_v1.manifest.json": "34f2e0bc97c1a7e222360cc61931e3777eff5049ffe16621cd0871e499146650",
+        "Brainstorm/Core/Brainstorm.lua": "753fc3b9c3a427bf7ede7db7e9a7a360e7c0362fa734c994817cd55bb6ec2e8c",
+        "Brainstorm/Core/challenge_opening.lua": "972d8c8ad5a46ceb9c2323c18bbb060cbb0cd2e9810bc6593e3fae5967e87843",
+        "Brainstorm/Core/jokerless_opening.lua": "a6f857d4a1a929a1332d9c530ddfb0e8ab0c241b85b024c6b9f1098205353934",
+        "Brainstorm/Core/jokerless_search_runtime.lua": "f254ea18a5b8bbf9167fc7a17584103c51b09f95ad4fb54e752897600141de6c",
+        "Brainstorm/lovely.toml": "b5e0f038f4bb63e8c9d1cf5ffec97479f8ecb4481e30374f63d7d227070ca2cf",
+        "Brainstorm/nativefs.lua": "f48150a1bc0657ae92abc1b80fe7d9181a5ec33009f9843dd1c8372c16eafc39",
+        "Brainstorm/perkeo_invisible_anchor_v1.ids": "bd9725e8ac6ec74cff092068996125d06959237863af1f7a62f70d33f4ac1d57",
+        "Brainstorm/perkeo_invisible_anchor_v1.manifest.json": "f849f2849ec5148b734b15961a79b02a6ff480dfc2829c0bf29f4e590b92c38e",
+        "Brainstorm/perkeo_invisible_ante2_invisible_anchor_v1.ids": "f43da8550fb30f50afa8dad0cfd00e1d7b18a827beaa9a0ae425e59bffb090d8",
+        "Brainstorm/perkeo_invisible_ante2_invisible_anchor_v1.manifest.json": "629e97f053f7e1fa3feaac696e609a5ec8dccaa3ea8fcf9b2a0493cae6b6879b",
+        "Brainstorm/steamodded_compat.lua": "d1ba7a979b15cba470e8f568527e9a2fbbdf7ddb7908b293453050cf2aa72e43",
+        "Brainstorm/UI/advisor.lua": "6504c6fd21c0c223b9b3df2ce2d85c58b84415205d423f6def2c6f9a62815b37",
+        "Brainstorm/UI/challenge_opening.lua": "fb7fc759761975a1321e3fc7dbafb64ea49859c8f842c3b31102412ac5386f56",
+        "Brainstorm/UI/ui.lua": "e46689410741506564fce8dabfcd8a408593fc2994da1c8452cc35e8b0f725ba"
+      },
+      "binary_hashes_copied_from_manifest_without_reading": {
+        "Brainstorm/Immolate-advisor-a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885.dll": "a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885",
+        "Brainstorm/Immolate-v2.16.dll": "34598478571391d272c1e1a837832061bd767a09ab552bb61ef3458e24e9d751",
+        "Brainstorm/Immolate.dll": "c25645875d6508ef2b5a69353feb831f7a8a075cf945c78dc209326891f32734",
+        "Brainstorm/libgcc_s_seh-1.dll": "0e41bb41c8d5d5a1c16150cf860225e835ff8fdbb351073835bf45eaa8fe831d",
+        "Brainstorm/libstdc++-6.dll": "d1aebaa36202db736b96a7e4f491eb457256ff6e3cac8e225dae05790bacd147",
+        "Brainstorm/libwinpthread-1.dll": "a9230c9b3590af438066c18afa2185ac6c74b544f58606a0d20d80039b102179"
+      },
+      "fresh_full_policy_verification": false
+    },
+    "285": {
+      "version": "2.85.0-alpha",
+      "record": {
+        "path": "tools/advisor_eval/runs/blind_value285_installed/record.json",
+        "sha256": "b6b162280110c5be73902ceb711febcd04302a47fc4cf4193846a161033ce6c3"
+      },
+      "policy_root": "tools/advisor_eval/runs/blind_value285_installed/policy",
+      "recorded_policy_digest": "94ab92fc5fc074c8f6dd05c513083c77d23bb9992fff0dd2732083e2772e1095",
+      "nonbinary_files_freshly_verified": {
+        "Brainstorm/Advisor/blind_finishing.lua": "64a9389931351aec199bef9db5de4c84637ed631e5e456de35069d99d981f749",
+        "Brainstorm/Advisor/blind_prep.lua": "89a6c0c6a000b4da638a0808cbbfe4895f5839b5949b4c8085a27fb14ff3130b",
+        "Brainstorm/Advisor/blind_routing.lua": "078e69137bd55954515d1e81f7b6bc3f47af3cf0808e7cd1cf58c360ac49531b",
+        "Brainstorm/Advisor/blind_start.lua": "e7edb7cc1a6ab7e442d95d6193b5a513dfdaa8e2e18dc9e87116d76dcf33d8b5",
+        "Brainstorm/Advisor/boss_rescue.lua": "dc30847b06aca8bef35a1835d1d158d126a4e96fcbf6057114a2c542d3eb3f08",
+        "Brainstorm/Advisor/catalog_joker.lua": "1856ecf61a7185218d783c565d4534b214fdaf6fc335b23e333e10f766e56967",
+        "Brainstorm/Advisor/challenge_route.lua": "cd3aa2b929be76b3eef63520e390c338090d1964d81a2567f5f3887140bbaa19",
+        "Brainstorm/Advisor/concealed_belief.lua": "fbcc0a4b72334025ce0dcf52de6f100df0535fc66b2028e254950082e4f57b0d",
+        "Brainstorm/Advisor/conditional_value.lua": "cb62d1f3c282b81ed48d719973c3275964944773cdf09c5932177212057430ca",
+        "Brainstorm/Advisor/consumables.lua": "98602e1b4c2409f9065c185575ef96ef92cdc0d0a5913b86c7d1d76cf95ba926",
+        "Brainstorm/Advisor/decision.lua": "0fe183ccb53d2f91dd8c271263a6f61f4cb6ba30c2d77ec3c437ddb40a9214b9",
+        "Brainstorm/Advisor/deck_development.lua": "066aef1ccce698abb62f2e16121e6b9f712642f9af571d770533ef5e0049f9cb",
+        "Brainstorm/Advisor/draws.lua": "a1b7c7239659b505ae02e6976d5e3eb95488fe6ebd57adffa8b6703c8b491169",
+        "Brainstorm/Advisor/economy.lua": "c3f1aa66bab70e1735357c86ae87fa391a287bc448650f8f149cdac61216e5f6",
+        "Brainstorm/Advisor/execution.lua": "dadb0283616217d9547eba505bc72b24855dde85fa79fbf3fb6b220f003543a1",
+        "Brainstorm/Advisor/finish_rewards.lua": "5f459a9e273a9f6cc970804ffe0e28c0e95a05d056ed9ce413d2611ec5d098ae",
+        "Brainstorm/Advisor/growth.lua": "80e382cfc7deff0a26e80da0647fb72570c1c9f37ea87e97477c3e151e51efdc",
+        "Brainstorm/Advisor/hand_ordering.lua": "5b773fe6c01f12eeca252bc0b52a0334b821770967dc8a1d99009945febcaded",
+        "Brainstorm/Advisor/liquidity.lua": "e97dcfd7ce958bff2415d5ccf507b7c1f0e6152e1caea92afcfcbb6776233c8d",
+        "Brainstorm/Advisor/mixed_rescue.lua": "01f07bacaf87c43ee5c4b8db59747b8bdfa41178a2d6596538a1280b52c2c547",
+        "Brainstorm/Advisor/multi_discard.lua": "5a7c679a778d1285247f113f60f7556f5320c6c87111957b8889192db80a518d",
+        "Brainstorm/Advisor/ordering.lua": "3bca540d6a01573b146f247b90eddbaeb59a1caf450fd67a75841214f99ef354",
+        "Brainstorm/Advisor/pack_scoring.lua": "a25282597b6a330872afdaeea729c7f5c4a4f8d751fdbceb324f97c06ea53949",
+        "Brainstorm/Advisor/paid_reroll.lua": "547d35a4c3d8e6fbbdd8891b016429f39c9c754fa32a975353f606fd528728f3",
+        "Brainstorm/Advisor/paired_deck.lua": "c16a1df59b6b665aeef61533299f053135401bf96343285e641fa180207ae913",
+        "Brainstorm/Advisor/policy_weights.lua": "926e831b8c48cd03dceed8c36973c04d56e77c929358e14b9a7e312fc200a740",
+        "Brainstorm/Advisor/resource_finish.lua": "dec876e79d7b4579564edc0a9a0ca5b2e6853b015fc334b55dfff6b9edee12aa",
+        "Brainstorm/Advisor/retry_journal.lua": "ebce3cc495008c8552005fde785dbf1ac9257e7eb9c723e963de60856fd94b64",
+        "Brainstorm/Advisor/retry_memory.lua": "6c186e4bdb7558ff77857a231c0488baa44d93739476136ad85630dbd26c84c0",
+        "Brainstorm/Advisor/retry_policy.lua": "9a5a9a9160e5f8197b46f3c81b819892a092bb39f8dada460e413a317bf2f206",
+        "Brainstorm/Advisor/runtime.lua": "9852b2a940591ef7e5cdac37e0d508145c0ff44ca5d423997e8bf6a7679069e9",
+        "Brainstorm/Advisor/sampled_outcomes.lua": "72a4bcd9ba65c03ff9b571449aaa0f4c4a8d41c6df40bfe9846d813c3297508a",
+        "Brainstorm/Advisor/score_cache.lua": "bd3221ca67824117b47e596ff4ff196cc98d873ee4bbbe46d7b822ffa8c40b32",
+        "Brainstorm/Advisor/scoring.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+        "Brainstorm/Advisor/search.lua": "e01cb82ce876ce3e2bddfca443fc2448dcfc52c911babbe0bf6ec62d5e68dee5",
+        "Brainstorm/Advisor/shop_scoring.lua": "e2f5f9ed4ee492d291098df14590ab04ccdf3c80a158d00b382eb9e4b46f1c87",
+        "Brainstorm/Advisor/shop_sequences.lua": "8e4a02967b8bc4abaf487ff33cefb7b9c00e487f424a7ae66754ee3ffb959383",
+        "Brainstorm/Advisor/snapshot.lua": "0e92e52c23f2e166051908296a0bdc22a8852adbfef3e9131b4cb4073d8365bf",
+        "Brainstorm/Advisor/spectral_development.lua": "e9363673c0df80d1a5c92059fbc68a71200e66b91c8fbffb0bfb8734fc3a3ee5",
+        "Brainstorm/Advisor/strategy.lua": "94aa8c4ae9012d62e8e8cd597b0c5ec8124c7cbd2b919d01ad825e42cf245fb1",
+        "Brainstorm/Advisor/synergies.lua": "46f9d30d92f89ec81bee15b6b94c575501c86f3b0d6a91291f0fe971fbf3cc37",
+        "Brainstorm/Advisor/two_hand_finish.lua": "90300b7833cdf045bcc23af30770ad408a1cae946b1e5b83f12c55646b2ca179",
+        "Brainstorm/Advisor/work_cost.lua": "48b816134b920af414ebe32f3c1766990535b593b38a709c1e45bd504bf8e887",
+        "Brainstorm/charm_perkeo_mega_naneinf_plasma_gold_v1.ids": "bee9ee99625b059b82169882b311557b6491e2649518f9b6b9e313b9236e0841",
+        "Brainstorm/charm_perkeo_mega_naneinf_plasma_gold_v1.manifest.json": "cb655b4ec8e7307cc3999f6267b305d4a48e76bac15a0670c177e293f8b9caa9",
+        "Brainstorm/charm_perkeo_mega_spectral_anchor_v1.ids": "d9a9f4fc710a106d0d8bf5f1dfff7c9c682da3d6c3663955dedd9aaa28d902cd",
+        "Brainstorm/charm_perkeo_mega_spectral_anchor_v1.manifest.json": "34f2e0bc97c1a7e222360cc61931e3777eff5049ffe16621cd0871e499146650",
+        "Brainstorm/Core/Brainstorm.lua": "6f2e6ffc23dc6cdc590f54b43e97595465ec7a81349094a20b935c40661c8024",
+        "Brainstorm/Core/challenge_opening.lua": "972d8c8ad5a46ceb9c2323c18bbb060cbb0cd2e9810bc6593e3fae5967e87843",
+        "Brainstorm/Core/jokerless_opening.lua": "a6f857d4a1a929a1332d9c530ddfb0e8ab0c241b85b024c6b9f1098205353934",
+        "Brainstorm/Core/jokerless_search_runtime.lua": "f254ea18a5b8bbf9167fc7a17584103c51b09f95ad4fb54e752897600141de6c",
+        "Brainstorm/lovely.toml": "b5e0f038f4bb63e8c9d1cf5ffec97479f8ecb4481e30374f63d7d227070ca2cf",
+        "Brainstorm/nativefs.lua": "f48150a1bc0657ae92abc1b80fe7d9181a5ec33009f9843dd1c8372c16eafc39",
+        "Brainstorm/perkeo_invisible_anchor_v1.ids": "bd9725e8ac6ec74cff092068996125d06959237863af1f7a62f70d33f4ac1d57",
+        "Brainstorm/perkeo_invisible_anchor_v1.manifest.json": "f849f2849ec5148b734b15961a79b02a6ff480dfc2829c0bf29f4e590b92c38e",
+        "Brainstorm/perkeo_invisible_ante2_invisible_anchor_v1.ids": "f43da8550fb30f50afa8dad0cfd00e1d7b18a827beaa9a0ae425e59bffb090d8",
+        "Brainstorm/perkeo_invisible_ante2_invisible_anchor_v1.manifest.json": "629e97f053f7e1fa3feaac696e609a5ec8dccaa3ea8fcf9b2a0493cae6b6879b",
+        "Brainstorm/steamodded_compat.lua": "fb09b50b1e44be23831473aea19767482616f3cf54bd77f7652738c0b0866fef",
+        "Brainstorm/UI/advisor.lua": "6504c6fd21c0c223b9b3df2ce2d85c58b84415205d423f6def2c6f9a62815b37",
+        "Brainstorm/UI/challenge_opening.lua": "fb7fc759761975a1321e3fc7dbafb64ea49859c8f842c3b31102412ac5386f56",
+        "Brainstorm/UI/ui.lua": "e46689410741506564fce8dabfcd8a408593fc2994da1c8452cc35e8b0f725ba"
+      },
+      "binary_hashes_copied_from_manifest_without_reading": {
+        "Brainstorm/Immolate-advisor-a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885.dll": "a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885",
+        "Brainstorm/Immolate-v2.16.dll": "34598478571391d272c1e1a837832061bd767a09ab552bb61ef3458e24e9d751",
+        "Brainstorm/Immolate.dll": "c25645875d6508ef2b5a69353feb831f7a8a075cf945c78dc209326891f32734",
+        "Brainstorm/libgcc_s_seh-1.dll": "0e41bb41c8d5d5a1c16150cf860225e835ff8fdbb351073835bf45eaa8fe831d",
+        "Brainstorm/libstdc++-6.dll": "d1aebaa36202db736b96a7e4f491eb457256ff6e3cac8e225dae05790bacd147",
+        "Brainstorm/libwinpthread-1.dll": "a9230c9b3590af438066c18afa2185ac6c74b544f58606a0d20d80039b102179"
+      },
+      "fresh_full_policy_verification": false
+    },
+    "286": {
+      "version": "2.86.0-alpha",
+      "status": "exact_installed_freeze_validated_full_adapter_compatibility_with282_not_established",
+      "record": {
+        "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\search286_installed\\record.json",
+        "sha256": "57d9e231baef884fdf14f3a77cab7ca141f176187f7cf80dd0e0038ca1de0719"
+      },
+      "policy_root": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\runs\\search286_installed\\policy",
+      "policy_digest": "85cb3c96b767067cf545f9a77ab01ee9a24e797424b557bea23637ab3237cbc3"
+    }
+  },
+  "profile": {
+    "spec": {
+      "schema": 1,
+      "name": "all_unlocked_discovered_v1",
+      "scope": [
+        "P_CENTERS",
+        "P_TAGS",
+        "P_SEALS",
+        "P_BLINDS"
+      ],
+      "transform": "set_unlock_and_discovery_true",
+      "progress": "fresh_in_memory_no_completed_challenges",
+      "user_profile": false,
+      "qualification_compatible": false
+    },
+    "recorded_spec_digest": "d02d4571ecd30c555d9b25bea7feebabfe9fad589416520432accae3da258a13",
+    "applied_source_inventory_digest": "pending_after_authorization_before_worker_registration",
+    "user_population_qualified": false
+  },
+  "retry_context": {
+    "spec": {
+      "schema": 1,
+      "mode": "disabled_clean_attempt_v1",
+      "journal_access": "none",
+      "checkpoint_restore": "unsupported",
+      "initial_memory": "empty",
+      "max_checkpoint_reloads": 0,
+      "retry_advice_evaluated": false
+    },
+    "recorded_spec_digest": "d85816a5d496c98b84e48b85081f1922c0a1f8f4f11762f9c5f8224d6800afac"
+  },
+  "historical_source_runtime_metadata_only": {
+    "copied_from": {
+      "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/10_dependent279_to6o/registration.json",
+      "sha256": "8d1c175e18b44dd6adf431efe39f8be5b292a79c1e541e72506b6c17a06c2b00"
+    },
+    "rules_digest": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+    "runtime_digest": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+    "freshly_verified": false,
+    "current_rules_digest": null,
+    "current_runtime_digest": null,
+    "fresh_verification": "after_approval_before_any_registered_source_worker"
+  },
+  "repository_adapter_observation": {
+    "status": "proposal_read_only_hashes_not_final_registration",
+    "files": {
+      "engine_probe.py": "bf91ac24c72f69dc15825c7588d4af3b2750d10b62b77d579dd08880d60ee015",
+      "engine_probe.lua": "02ea17a561f7da453598d1de5b1db76cff14cd47fcedf0aee845bb61b7316c45",
+      "engine_run.lua": "ac7003fe7428dae8c08ed9d550201a81898e8b0a6e13bcf6769af180bc275b23",
+      "engine_contract.lua": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da",
+      "opening_support.py": "0137f401a4d44d99610053aa406d3be8beec99b2b26d6818cf27c306ed21729f",
+      "benchmark.py": "b089d4fe7d3e79201b8ef279aeda9731c5b0aca63e26a885ad9040fa7515faca",
+      "snapshot_component_profile.py": "700db46aa478f2a9f9aee17d6d43c4353c71efbc75bd2ef65b1ee8a513f67bf9",
+      "snapshot_component_profile.lua": "3a00c8dbcf80d9dec221266938d7b9db3a25fce87a0a2be988873de3a9c91e3a",
+      "paired_policy_audit.py": "4a83b17536460cb2347ea15321009bc24ab919cdeb70be8d9de81d3f1ad98a72",
+      "outcome_validation.py": "e4fca4294107d6f1a0048f72623a61744485a3e573829bee6167cc3742756c03",
+      "development_report.py": "77b11ee72f4c26b474f208fa38232e34ca13b5f6c09730d5fbc13438643f3218",
+      "jokerless_seed_search.py": "7a5d1761c86dce98825071cd2a22af9c1b0cf63b5b07f360d787e2e5209682c3",
+      "jokerless_opening_batch_search.lua": "f7fd6223ec5f0153d3666abe12c5f5854b9a4c3f0c47275ed5d5c2e21dd95cd3",
+      "cohort_progress.py": "0a40bc26df560001cde952f8aa0662be86583801fb329806dc37297a35ae4174"
+    },
+    "new_wrappers": "pending_reviewed_implementation_and_routine_fixtures",
+    "freeze_all_launch_commands_after_approval_before_execution": true
+  },
+  "score_caps": {
+    "ordinary": 140000,
+    "shop": 50000,
+    "consumable": 25000,
+    "fast_clear": 70,
+    "changed_by_proposal": false
+  },
+  "A_detached_snapshots": {
+    "jobs": [
+      {
+        "job_id": "A1",
+        "source_folder": "05_dependent274_to6o",
+        "step": 226,
+        "snapshot": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/05_dependent274_to6o/step226_snapshot.json",
+          "sha256": "cf9103da7c2d0d4d041e46937266b970072c0fdd7fb1e1a835920c0a6a0dfdd9"
+        },
+        "historical_registration": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/05_dependent274_to6o/registration.json",
+          "sha256": "7f7466e16ea2bcd156a6b170c1a2605bc305d7502d795f4559ca561418c8a3ea"
+        },
+        "policy_order": [
+          "282",
+          "286"
+        ],
+        "question": "Bell resource comparison",
+        "public_context": {
+          "ante": 8,
+          "round": 23,
+          "phase": "hand",
+          "hands_left": 5,
+          "discards_left": 1,
+          "dollars": 56,
+          "hand_size": 10
+        },
+        "blind_key": "bl_final_bell",
+        "blind_target": 100000,
+        "outer_wall_cap_seconds": 60,
+        "policy_evaluations": 2,
+        "each_policy_wall_cap_seconds": 15,
+        "source_execution": false,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "A2",
+        "source_folder": "10_dependent279_to6o",
+        "step": 75,
+        "snapshot": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/10_dependent279_to6o/step75_snapshot.json",
+          "sha256": "d337ed685c9163ef0ab00f977169a2abad2077ec04bdfd62bbe4dd3a61ead63b"
+        },
+        "historical_registration": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/10_dependent279_to6o/registration.json",
+          "sha256": "8d1c175e18b44dd6adf431efe39f8be5b292a79c1e541e72506b6c17a06c2b00"
+        },
+        "policy_order": [
+          "286",
+          "282"
+        ],
+        "question": "Eye Lucky/resource comparison",
+        "public_context": {
+          "ante": 3,
+          "round": 8,
+          "phase": "hand",
+          "hands_left": 4,
+          "discards_left": 3,
+          "dollars": 1,
+          "hand_size": 9
+        },
+        "blind_key": "bl_eye",
+        "blind_target": 4000,
+        "outer_wall_cap_seconds": 60,
+        "policy_evaluations": 2,
+        "each_policy_wall_cap_seconds": 15,
+        "source_execution": false,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "A3",
+        "source_folder": "11_dependent280_p83r",
+        "step": 50,
+        "snapshot": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/11_dependent280_p83r/step50_snapshot.json",
+          "sha256": "1480c257eac783a2b998d6a7b2bc91c1cedb06682741e64e0ec34abb21e88cac"
+        },
+        "historical_registration": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/11_dependent280_p83r/registration.json",
+          "sha256": "7d7b323b74ae8aa2b432bffd74de9ee7a1e7ee65197d8043f3cd9c1c71811288"
+        },
+        "policy_order": [
+          "282",
+          "286"
+        ],
+        "question": "Flint survival comparison",
+        "public_context": {
+          "ante": 2,
+          "round": 5,
+          "phase": "hand",
+          "hands_left": 3,
+          "discards_left": 3,
+          "dollars": 2,
+          "hand_size": 8
+        },
+        "blind_key": "bl_flint",
+        "blind_target": 1600,
+        "outer_wall_cap_seconds": 60,
+        "policy_evaluations": 2,
+        "each_policy_wall_cap_seconds": 15,
+        "source_execution": false,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "A4",
+        "source_folder": "12_dependent280_ff7p",
+        "step": 42,
+        "snapshot": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/12_dependent280_ff7p/step42_snapshot.json",
+          "sha256": "2aaea13452ebd61d3ac9effc2b96aafc5f1f11544f5c0324e306128759ece213"
+        },
+        "historical_registration": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/12_dependent280_ff7p/registration.json",
+          "sha256": "49c5618bd166c7eb73573037f477d7bc724742c9d87db6bd223201a3ed5498c0"
+        },
+        "policy_order": [
+          "286",
+          "282"
+        ],
+        "question": "zero-discard early-survival negative control",
+        "public_context": {
+          "ante": 2,
+          "round": 4,
+          "phase": "hand",
+          "hands_left": 4,
+          "discards_left": 0,
+          "dollars": 9,
+          "hand_size": 8
+        },
+        "blind_key": "bl_big",
+        "blind_target": 1200,
+        "outer_wall_cap_seconds": 60,
+        "policy_evaluations": 2,
+        "each_policy_wall_cap_seconds": 15,
+        "source_execution": false,
+        "registered": false,
+        "consumed": false
+      }
+    ],
+    "job_count": 4,
+    "total_wall_cap_seconds": 240,
+    "total_policy_evaluations": 8,
+    "hypothesis": "Completed deterministic common-world comparisons may explain or change actual advice at preserved failure states; supported boundaries and negative controls must remain explicit.",
+    "inputs_mutable": false,
+    "default_product_options_only": true,
+    "future_trace_splicing": false,
+    "old_tool_directly_compatible": false,
+    "required_wrapper": "strict preserved-snapshot provenance adapter; exactly two isolated evaluations per capped job; never enter source dispatcher",
+    "outcomes": [
+      "selected_action",
+      "legality",
+      "score_and_transition_calls",
+      "wall_seconds",
+      "complete_common_worlds",
+      "unsupported_and_random_gaps",
+      "cash",
+      "hands_discards",
+      "actions",
+      "blue_rewards",
+      "population"
+    ]
+  },
+  "B_source_mechanics": {
+    "jobs": [
+      {
+        "job_id": "B1",
+        "hypothesis": "Ordinary Lucky score and cash match source for every declared conditional trigger assignment.",
+        "wall_cap_seconds": 30,
+        "fixed_cases": 4,
+        "case_definition": "one ordinary Lucky scoring card; no Jokers; no repetition; four Boolean Mult/cash trigger pairs",
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "B2",
+        "hypothesis": "Red-sealed Lucky base and repeated evaluations preserve source score, cash and ordering without double counting.",
+        "wall_cap_seconds": 30,
+        "fixed_cases": 16,
+        "case_definition": "ordinary Red-sealed Lucky; two evaluations; all sixteen pairs of four Boolean Mult/cash outcomes",
+        "registered": false,
+        "consumed": false
+      }
+    ],
+    "job_count": 2,
+    "total_wall_cap_seconds": 60,
+    "conditional_mechanics_not_frequency_measurement": true,
+    "card_hand_blind_script_freeze": "pending_reviewed_component_implementation_before_registration",
+    "dependent_C_gate": "both_components_complete_with_source_parity"
+  },
+  "C_complete_development_attempts": {
+    "jobs": [
+      {
+        "job_id": "C1",
+        "seed": "TO6O4111",
+        "policy": "282",
+        "wall_cap_seconds": 180,
+        "max_actions": 500,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "C2",
+        "seed": "TO6O4111",
+        "policy": "286",
+        "wall_cap_seconds": 180,
+        "max_actions": 500,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "C3",
+        "seed": "P83R7111",
+        "policy": "286",
+        "wall_cap_seconds": 180,
+        "max_actions": 500,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "C4",
+        "seed": "P83R7111",
+        "policy": "282",
+        "wall_cap_seconds": 180,
+        "max_actions": 500,
+        "registered": false,
+        "consumed": false
+      }
+    ],
+    "job_count": 4,
+    "total_wall_cap_seconds": 720,
+    "challenge": "c_jokerless_1",
+    "starts": [
+      {
+        "seed": "TO6O4111",
+        "classification": "previously_selected_inspected_dependent_development",
+        "opening_recipe": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/10_dependent279_to6o/opening_recipe.json",
+          "sha256": "982dad26064d42c1fca55c51b3c7004a076273849d2ff61c07eaf89a4982eede"
+        },
+        "selection_evidence": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/10_dependent279_to6o/selection_evidence.json",
+          "sha256": "3b10baf94fb0e374d19aa517c4de7598993a63ca921d182f48e30daab1bd9b6e"
+        },
+        "recorded_start_distribution": {
+          "kind": "jokerless_coupon_blue_v1",
+          "seed_selection": "declared_development_selection",
+          "selection_evidence_digest": "3b10baf94fb0e374d19aa517c4de7598993a63ca921d182f48e30daab1bd9b6e",
+          "recipe_digest": "982dad26064d42c1fca55c51b3c7004a076273849d2ff61c07eaf89a4982eede"
+        },
+        "source_prefix_replay": false,
+        "new_in_memory_start": true
+      },
+      {
+        "seed": "P83R7111",
+        "classification": "previously_selected_inspected_dependent_development",
+        "opening_recipe": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/11_dependent280_p83r/opening_recipe.json",
+          "sha256": "b146cadb2a236111c3dbe6ae6342be87efd9375281008a8127e11089a6bb8ea3"
+        },
+        "selection_evidence": {
+          "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/source_attempts/11_dependent280_p83r/selection_evidence.json",
+          "sha256": "15d1db9cfac2a6451e4935724e204cbdc796926b884ef47f09a9da3237ee8943"
+        },
+        "recorded_start_distribution": {
+          "kind": "jokerless_coupon_blue_v1",
+          "seed_selection": "declared_development_selection",
+          "selection_evidence_digest": "15d1db9cfac2a6451e4935724e204cbdc796926b884ef47f09a9da3237ee8943",
+          "recipe_digest": "b146cadb2a236111c3dbe6ae6342be87efd9375281008a8127e11089a6bb8ea3"
+        },
+        "source_prefix_replay": false,
+        "new_in_memory_start": true
+      }
+    ],
+    "hypothesis": "Observe combined-policy terminal and resource differences on these exact known selected starts; do not infer individual treatment effects or population rates.",
+    "fresh_adapter_common_to_both_policies": true,
+    "primary_endpoint": "audited_terminal_result_per_job",
+    "secondary_endpoints": [
+      "ante_and_boss_entered",
+      "ante_and_boss_cleared",
+      "skips_separate",
+      "actual_actions",
+      "compute_wall_seconds",
+      "decision_divergences",
+      "cash_inventory_population"
+    ],
+    "unresolved_statuses_preserved": [
+      "timeout",
+      "error",
+      "unsupported",
+      "censored",
+      "not_started"
+    ],
+    "incidental_game_won_is_sufficient": false,
+    "full_adapter_qualification_claim": false,
+    "confidence_intervals": null,
+    "population_inference": false,
+    "holdout": false,
+    "interaction_estimate": false,
+    "user_time_measured": false
+  },
+  "D_search_comparison": {
+    "jobs": [
+      {
+        "job_id": "D1",
+        "policy": "285",
+        "target_planet": "c_mars",
+        "start_inclusive": 11123177,
+        "end_exclusive": 11223177,
+        "requested_indices": 100000,
+        "wall_cap_seconds": 15,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "D2",
+        "policy": "286",
+        "target_planet": "c_mars",
+        "start_inclusive": 11123177,
+        "end_exclusive": 11223177,
+        "requested_indices": 100000,
+        "wall_cap_seconds": 15,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "D3",
+        "policy": "286",
+        "target_planet": "c_jupiter",
+        "start_inclusive": 11223177,
+        "end_exclusive": 11323177,
+        "requested_indices": 100000,
+        "wall_cap_seconds": 15,
+        "registered": false,
+        "consumed": false
+      },
+      {
+        "job_id": "D4",
+        "policy": "285",
+        "target_planet": "c_jupiter",
+        "start_inclusive": 11223177,
+        "end_exclusive": 11323177,
+        "requested_indices": 100000,
+        "wall_cap_seconds": 15,
+        "registered": false,
+        "consumed": false
+      }
+    ],
+    "job_count": 4,
+    "total_wall_cap_seconds": 60,
+    "unique_new_indices": 200000,
+    "policy_index_evaluations": 400000,
+    "hypothesis": "286 returns the same supported opening outputs as285 on identical fixed inputs with reduced measured work or elapsed scan time.",
+    "criteria": {
+      "small_tag": "tag_coupon",
+      "require_telescope": true,
+      "min_blue": 2,
+      "min_blue_steel": 1,
+      "same_fixed_synthetic_catalog": true,
+      "retain_supported_availability_and_rng_order_guards": true
+    },
+    "catalog_provenance": {
+      "repository_transport": {
+        "path": "tools/advisor_eval/jokerless_opening_batch_search.lua",
+        "sha256": "f7fd6223ec5f0153d3666abe12c5f5854b9a4c3f0c47275ed5d5c2e21dd95cd3"
+      },
+      "canonical_catalog_bytes_digest": "pending_exact_extraction_from_preserved_catalog_and_frozen_wrapper_before_registration",
+      "fresh_source_extraction_for_proposal": false
+    },
+    "coverage_check": {
+      "search05_partial_receipt": {
+        "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/seed_search05_blue_steel_contiguous/partial_result.json",
+        "sha256": "d6db0685f6d5592fd034013a69b8380c5d3b653e984b3c8559dceed582325bb4"
+      },
+      "censored_tail_start": 7023177,
+      "censored_tail_end_exclusive": 7123177,
+      "search06_receipt": {
+        "path": "tools/advisor_eval/runs/jokerless271_push_20260912_214242/seed_search06_mars_jupiter/result.json",
+        "sha256": "0028c708b553fc2ff8a6be7078ff1a04813b049f2c4f014ec5b187e694decf3a"
+      },
+      "search06_start": 7123177,
+      "search06_completed": 4000000,
+      "search06_next_index": 11123177,
+      "initial_4000000_4100000_suggestion_rejected_as_overlap": true,
+      "recheck_before_registration": true
+    },
+    "required_wrapper": "new authority; fixed full range; resume exact cursor after production match cap inside same worker; preserve all completed outputs; no extra indices or worker retries",
+    "partial_comparison": "common fully processed prefix only; retain both incomplete denominators and unknown tail",
+    "throughput_uncertainty": "one serial timing per policy/target; descriptive only; no error bars",
+    "search_results_enter_complete_attempts": false,
+    "affordability_survival_or_win_inference": false
+  },
+  "stage_order": [
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "B1",
+    "B2",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "D1",
+    "D2",
+    "D3",
+    "D4"
+  ],
+  "stopping_rules": [
+    "do not start without explicit fresh approval",
+    "freeze policy adapter profile source runtime and launch command before every immutable one-use registration",
+    "no job may exceed its own cap or the remaining outer deadline",
+    "stop dependent jobs on provenance mismatch, unresolved source mechanics parity, illegal actions or terminal inconsistency",
+    "preserve incomplete and failed evidence; never repair and rerun under a spent job",
+    "close every remaining quota at the stop; no automatic continuation"
+  ],
+  "interpretation": {
+    "verified_jokerless_win_before_proposal": false,
+    "current_win_odds": "unknown",
+    "projected_win_odds": "unknown",
+    "selected_synthetic_development_only": true,
+    "cohort_tool_population_analysis_appropriate": false,
+    "twenty_challenge_targets_demonstrated": false
+  },
+  "narrative": {
+    "path": "tools/advisor_eval/PROSPECTIVE_EVAL_286.md",
+    "sha256": "958d56d6e9ac58d37c2330a6b943ed29acc7b282ef5c430885dcc4c482940f0e"
+  },
+  "A_B_C_readiness": "unapproved_harnesses_not_ready",
+  "D_scheduling_superseded_by": "PROSPECTIVE_SEARCH_286.json"
+}

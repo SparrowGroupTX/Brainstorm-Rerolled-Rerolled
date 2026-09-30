@@ -1,0 +1,1540 @@
+{
+  "cases": [
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 501,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 501,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": false,
+        "case_id": "golden_final_life_minimal",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 501,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          }
+        ],
+        "first_difference": {
+          "actual": 4,
+          "expected": 0,
+          "field": "events[2].dollars"
+        },
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "f2cba89a2fc5a775dea713e09d4a368b2beb4b4f4afa15816d6b2646422b7244",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "golden_final_life_minimal"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 501,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 0,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 0,
+            "phase": "cashout_eval",
+            "total": 0
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 0,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 501,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 502,
+            "rental_requested": true
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 1,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 5
+          },
+          {
+            "cash_after": 12,
+            "cash_before": 7,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 12,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 502,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": false,
+        "case_id": "golden_final_life_rental",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 502,
+            "rental_requested": true
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          }
+        ],
+        "first_difference": {
+          "actual": 4,
+          "expected": 0,
+          "field": "events[2].dollars"
+        },
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "04bf1e67fee3a5599e93722274208ab61b242ffddf2292ae2bd050281d600834",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "golden_final_life_rental"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 502,
+            "rental_requested": true
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          },
+          {
+            "dollars": 0,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 1,
+            "joker_dollars": 0,
+            "phase": "cashout_eval",
+            "total": 1
+          },
+          {
+            "cash_after": 8,
+            "cash_before": 7,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 502,
+              "rental": true,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 1
+            },
+            "before": {
+              "debuff": false,
+              "tally": 2
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 503,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 503,
+              "rental": false,
+              "tally": 1
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "golden_tally_two",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 1
+            },
+            "before": {
+              "debuff": false,
+              "tally": 2
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 503,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "b488fa82e272d9e2f62dfe996c7612fefcffb01ebb0232492425e01a10ff5fed",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "golden_tally_two"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 1
+            },
+            "before": {
+              "debuff": false,
+              "tally": 2
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 503,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 503,
+              "rental": false,
+              "tally": 1
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": true,
+              "tally": 0
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 504,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 0,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 0,
+            "phase": "cashout_eval",
+            "total": 0
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 0,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 504,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "golden_already_expired",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": true,
+              "tally": 0
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 504,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 0,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 0,
+            "phase": "cashout_eval",
+            "total": 0
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "6b6d1867a4c6fb694f6ea359d334171685c61bd55776859edeb3982fde9c25bd",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "golden_already_expired"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": true,
+              "tally": 0
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 504,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 0,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 0,
+            "phase": "cashout_eval",
+            "total": 0
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 0,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 504,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 505,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 505,
+              "rental": false,
+              "tally": 5
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "golden_nonperishable",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 505,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "07f6c7670353dcca63493b642c3967d184dddbcbec806bdc7bbd0318ee5a301b",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "golden_nonperishable"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 505,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 0
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 0,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 4
+          },
+          {
+            "cash_after": 4,
+            "cash_before": 0,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 4,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 505,
+              "rental": false,
+              "tally": 5
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 601,
+            "rental_requested": false
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 602,
+            "rental_requested": true
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 603,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          },
+          {
+            "dollars": 8,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 1,
+            "joker_dollars": 8,
+            "phase": "cashout_eval",
+            "total": 9
+          },
+          {
+            "cash_after": 16,
+            "cash_before": 7,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 16,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 601,
+              "rental": false,
+              "tally": 0
+            },
+            {
+              "center_key": "j_joker",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 602,
+              "rental": true,
+              "tally": 5
+            },
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 603,
+              "rental": false,
+              "tally": 5
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": false,
+        "case_id": "heldout_golden_row",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 601,
+            "rental_requested": false
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 602,
+            "rental_requested": true
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 603,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          }
+        ],
+        "first_difference": {
+          "actual": 8,
+          "expected": 4,
+          "field": "events[4].dollars"
+        },
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "ea8fd0e7c177fc870fbc83414d77095f7b28674b20dce2b9a41980ebdec1e2d7",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "heldout_golden_row"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 601,
+            "rental_requested": false
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 602,
+            "rental_requested": true
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 603,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 1,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 5
+          },
+          {
+            "cash_after": 12,
+            "cash_before": 7,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 12,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 601,
+              "rental": false,
+              "tally": 0
+            },
+            {
+              "center_key": "j_joker",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 602,
+              "rental": true,
+              "tally": 5
+            },
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 603,
+              "rental": false,
+              "tally": 5
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 603,
+            "rental_requested": false
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 602,
+            "rental_requested": true
+          },
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 601,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          },
+          {
+            "dollars": 8,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 1,
+            "joker_dollars": 8,
+            "phase": "cashout_eval",
+            "total": 9
+          },
+          {
+            "cash_after": 16,
+            "cash_before": 7,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 16,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 603,
+              "rental": false,
+              "tally": 5
+            },
+            {
+              "center_key": "j_joker",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 602,
+              "rental": true,
+              "tally": 5
+            },
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 601,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      },
+      "comparison": {
+        "agreement": false,
+        "case_id": "heldout_golden_row_reversed",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 603,
+            "rental_requested": false
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 602,
+            "rental_requested": true
+          },
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 601,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          }
+        ],
+        "first_difference": {
+          "actual": 8,
+          "expected": 4,
+          "field": "events[4].dollars"
+        },
+        "manifest": {
+          "candidate_patch": "pinned_unpatched_game_eor",
+          "fixture_sha256": "d02bceb3ac09aa45b424ede8de35a2c51b17721fec9e7cf82eeeba75dc048adc",
+          "reference": "source-derived handwritten model; original callbacks not executed",
+          "sources_sha256": {
+            "candidate_overlay_453": "282ead96fefe59b15c70d23ecc244d7a9af82468916df3b93b6a77f4a3c06d7e",
+            "candidate_overlay_454": "f2a4df6c42169bd9b9489b8efb3e813f9890180706a04c27bc9d88fead749dae",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "e2d2dc8317e82adf15363ece7dd6beb42e1a8c861b29f5722c85cdd8e741e02b",
+            "overlay_integration": "3d01d58efa59b82fe203bc1c9f3c362a2794db2b940caae5845b588dfc90f9c5",
+            "pinned_card": "690a7b50f294f9429e6b76a7ee9e37b96da9c24db6328b3903a02d605bda9486",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_jokers": "9b4c7ec916ea3e0a72a9e836be085dae6ac09606d187ff8abbc4d6e902e98fc7",
+            "pinned_round_lifecycle": "8297786eb523127fe95304f1de8829aa7d93fb56e2819b93aab8cb04862e85dd",
+            "receipt_writer": "a393b456b210599a223d4180368cc3c3b0b39090e03d3eb09889a19356aaabbd",
+            "reference_model": "f5cfd8d7e7999951333efdc7baea115584ffaf585dae242dca5b3a4c0d385cfb",
+            "retained_original_card": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+            "retained_original_ease_dollars": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+            "retained_state_events_excerpt": "53ac5265cad884a4e397a3932f7b31f009b24a64f85bec807689dc5c8d175856",
+            "test_harness": "c76a4c217e134df8f6e94a17616b2999f927d16e3b164ee2307e690f343c2cea"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_454 -v",
+          "fixture_id": "heldout_golden_row_reversed"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 603,
+            "rental_requested": false
+          },
+          {
+            "after": {
+              "debuff": false,
+              "tally": 5
+            },
+            "before": {
+              "debuff": false,
+              "tally": 5
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 602,
+            "rental_requested": true
+          },
+          {
+            "after": {
+              "debuff": true,
+              "tally": 0
+            },
+            "before": {
+              "debuff": false,
+              "tally": 1
+            },
+            "event": "joker_maintenance_settled",
+            "phase": "round_end",
+            "physical_id": 601,
+            "rental_requested": false
+          },
+          {
+            "cash_after": 7,
+            "cash_before": 10,
+            "event": "rental_queue_settled",
+            "phase": "round_end",
+            "requests": 1
+          },
+          {
+            "dollars": 4,
+            "event": "joker_bonus_total",
+            "phase": "cashout_eval"
+          },
+          {
+            "event": "earnings",
+            "interest": 1,
+            "joker_dollars": 4,
+            "phase": "cashout_eval",
+            "total": 5
+          },
+          {
+            "cash_after": 12,
+            "cash_before": 7,
+            "event": "payment",
+            "phase": "cashout_paid"
+          }
+        ],
+        "state": {
+          "cash": 12,
+          "jokers": [
+            {
+              "center_key": "j_golden",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 603,
+              "rental": false,
+              "tally": 5
+            },
+            {
+              "center_key": "j_joker",
+              "debuff": false,
+              "edition": null,
+              "perishable": false,
+              "physical_id": 602,
+              "rental": true,
+              "tally": 5
+            },
+            {
+              "center_key": "j_golden",
+              "debuff": true,
+              "edition": null,
+              "perishable": true,
+              "physical_id": 601,
+              "rental": false,
+              "tally": 0
+            }
+          ],
+          "phase": "cashout_paid"
+        }
+      }
+    }
+  ],
+  "status": "preserved_pinned_mismatches"
+}

@@ -1,0 +1,34 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tools\advisor_eval\development299\drafts\perkeo_planets\validate_install_advisor_perkeo_inventory.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\validate_install_advisor_perkeo_inventory.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\validate_install_advisor_gold_planet_policy.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\validate_install_advisor_gold_planet_policy.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_gold_goal.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_gold_goal.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_gold_perkeo.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_gold_perkeo.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_decision_integration.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_decision_integration.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_decision_budget.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_decision_budget.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_snapshot.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_snapshot.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_phase_copy.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_phase_copy.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_shop_decisions.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_shop_decisions.lua
+Running tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_shop_order.lua
+PASS tools\advisor_eval\development299\drafts\perkeo_planets\regression_advisor_shop_order.lua
+10/10 fixtures passed
+advisor_perkeo_inventory: 110 checks passed
+advisor_gold_planet_policy: 125 checks passed; 3172 actual score calls across independent synthetic cases
+gold goal real fixture: 120 scores, complete=true
+gold goal: 81 checks passed; synthetic objective coverage, no recorded stickers or win odds
+gold Perkeo empty-exit: 76 checks passed; synthetic exact comparison only
+advisor_decision_integration: 37 checks passed
+advisor_decision_budget: 17 checks passed
+advisor_snapshot: 110 checks passed
+advisor_phase_copy: 184 checks passed
+advisor_shop_decisions: 27 checks passed
+synthetic fixed-order means 8276 = 8276
+advisor_shop_order: 103 checks passed

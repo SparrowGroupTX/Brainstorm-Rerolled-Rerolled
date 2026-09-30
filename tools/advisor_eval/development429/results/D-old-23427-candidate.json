@@ -1,0 +1,87 @@
+{
+  "job": "D-old-23427-candidate",
+  "mode": "decision",
+  "case": "old-23427",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 0.8280000000086147,
+  "log_sha256": "e42c5e431234eb240f87121ba373b9fd47ef4357cbcd025750970889ea809181",
+  "status": "complete",
+  "result": {
+    "case": "old-23427",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          2,
+          3,
+          4
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "clear_supported": true,
+        "evaluations": 3,
+        "final_action_kind": "play",
+        "final_play_score": 345600,
+        "needed_score": 200000,
+        "reason": "Automatic hand sorting can change scoring-trigger order.",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 547,
+      "play": {
+        "hand": "Three of a Kind",
+        "legal": true,
+        "score": 345600,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 119,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-trigger order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "full_batch_preference": false,
+          "late_margin": true,
+          "minimum_score": 985600,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.0005
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

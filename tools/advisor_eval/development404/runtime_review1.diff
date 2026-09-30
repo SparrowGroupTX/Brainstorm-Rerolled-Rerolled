@@ -1,0 +1,664 @@
+--- before/Brainstorm/Advisor/acorn_ordering.lua
++++ Brainstorm/Advisor/acorn_ordering.lua
+@@ -4,6 +4,28 @@
+ local M={}
+ local function finite(x) return type(x)=='number' and x==x and math.abs(x)<math.huge end
+ local function list(x) local r={};for i,v in ipairs(x or {}) do r[i]=v end;return r end
++-- Snapshot editions retain vanilla numeric metadata. Admit equivalent public
++-- representations, never arbitrary numeric/custom effects or mixed editions.
++local function public_edition(value)
++  if value==nil then return true,nil end
++  local e=type(value)=='string' and {[value]=true} or value
++  if type(e)~='table' then return false end
++  local kinds={foil=true,holo=true,polychrome=true,negative=true}
++  local selected=e.type
++  if selected~=nil and not kinds[selected] then return false end
++  for key in pairs(kinds) do
++    if e[key]~=nil and type(e[key])~='boolean' then return false end
++    if e[key] then if selected and selected~=key then return false end;selected=key end
++  end
++  if selected and e[selected]==false then return false end
++  local numeric={chips={foil=50},mult={holo=10},x_mult={polychrome=1.5}}
++  for key,v in pairs(e) do
++    if numeric[key] then
++      if not finite(v) or not selected or numeric[key][selected]~=v then return false end
++    elseif key~='type' and not kinds[key] then return false end
++  end
++  return true,selected and {[selected]=true,type=selected} or {}
++end
+ function M.suggest(s,b,scorer,belief,options)
+   options=options or {};local diag={evaluations=0,complete=false,worlds=b and b.worlds and #b.worlds or 0,
+     projected_state_allocations=0,
+@@ -21,27 +43,24 @@
+   -- Glass breaks after the immediate score, not between its retriggers. The
+   -- pure scorer retains exposure without predicting a surviving population.
+   local known_enhancements={c_base=true,m_bonus=true,m_mult=true,m_steel=true,m_stone=true,m_wild=true,m_lucky=true,m_glass=true,m_gold=true}
+-  local random_floor=false
+-  for _,c in ipairs(s.hand) do
++  local random_floor=false;local editions={}
++  for i,c in ipairs(s.hand) do
+     if c.face_down or c.unknown or c.concealed or c.facing=='back' or not known_enhancements[c.enhancement or 'c_base'] or
+       c.seal and not ({Red=true,Blue=true,Purple=true,Gold=true})[c.seal] then
+       return no('Concealed or unknown playing-card effects remain outside this immediate comparison.') end
+     if c.enhancement=='m_lucky' then random_floor=true end
+     if c.enhancement=='m_glass' then diag.glass_after_scoring=true end
+     if c.enhancement=='m_gold' or c.seal=='Blue' or c.seal=='Purple' then diag.unplanned_rewards=true end
+-    local e=c.edition
+-    if type(e)=='string' then e={[e]=true} end
+-    if e~=nil then
+-      if type(e)~='table' then return no('Unknown playing-card edition.') end
+-      for key,value in pairs(e) do if key~='foil' and key~='holo' and key~='polychrome' and key~='negative' and key~='type' and value then return no('Unknown playing-card edition effect.') end end
+-      if e.type~=nil and not ({foil=true,holo=true,polychrome=true,negative=true})[e.type] then return no('Unknown playing-card edition type.') end
+-    end
++    local admitted,e=public_edition(c.edition)
++    if not admitted then return no('Unknown playing-card edition effect.') end
++    editions[i]=e
+   end
+   if random_floor and type(scorer.lower_bound)~='function' then
+     return no('Lucky cards require a supported conservative score floor in every public Joker world.') end
+   diag.supported_random_floor=random_floor
+   -- Ignore the raw live Joker array even if a caller supplied concealed payloads.
+   local root={};for k,v in pairs(s) do if k~='jokers' and k~='public_joker_belief' then root[k]=belief.copy(v) end end
++  for i,c in ipairs(root.hand) do c.edition=editions[i] end
+   local selected,subsets={},{};local maximum=math.min(5,s.hand_limit or 5)
+   local function walk(start)
+     if #selected>0 then
+--- before/Brainstorm/Advisor/collection_search.lua
++++ Brainstorm/Advisor/collection_search.lua
+@@ -19,10 +19,15 @@
+   if not choices then return nil,detail end
+   if detail.unknown_count~=0 then return nil,'Gold progress has unknown records; refresh the active profile.' end
+   local minimum=option(options,'minimum_distinct',0)
++  local objective=option(options,'objective','collection')
++  if objective~='collection' and objective~='win_first' then return nil,'Unknown search objective.' end
+   -- Standalone/manual callers retain strict numeric semantics, including zero.
+   -- The explicit auto-run facade/UI choose automatic mode separately.
+   local mode=option(options,'quota_mode','strict')
+   if mode~='auto' and mode~='strict' then return nil,'Choose Automatic or a strict numeric missing-target count.' end
++  if objective=='win_first' and (mode~='strict' or minimum~=0) then
++    return nil,'Win-first search requires an explicit strict zero collection quota.'
++  end
+   local first,last=option(options,'first_ante',1),option(options,'last_ante',8)
+   local budget=option(options,'budget_ms',30000)
+   if not integer(minimum,0,150) or not integer(first,1,8) or not integer(last,first,8)
+@@ -50,7 +55,7 @@
+     table.sort(eligible)
+     if eligible[1]then primary=eligible[1];adapted=true;collect()end
+   end
+-  if #choices==0 then return nil,'Every vanilla Joker already has a Gold sticker.' end
++  if #choices==0 and objective~='win_first' then return nil,'Every vanilla Joker already has a Gold sticker.' end
+   if mode=='auto' and #missing==0 then
+     local why=excluded_reasons[1]and excluded_reasons[1].reason or 'The selected Ante window has no modeled source.'
+     local rest=#excluded_reasons>1 and (' '..tostring(#excluded_reasons-1)..' other missing targets are also outside this route.')or ''
+@@ -66,7 +71,7 @@
+   local deck=option(options,'deck_name','Red Deck')
+   if deck~='Red Deck' and deck~='Zodiac Deck' then return nil,'This opening preset supports Red or Zodiac Deck.' end
+   return {
+-    schema=1,profile_id=detail.profile_id,native_api_version=9,
++    schema=1,profile_id=detail.profile_id,native_api_version=9,objective=objective,
+     voucher='',pack='',tag='Charm Tag',souls=2,observatory=false,
+     observatory_deadline=0,perkeo=false,copymoney=false,retcon=false,
+     bean=false,burglar=false,custom_filter='No Filter',target_rank='Kings',
+--- before/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -235,7 +235,10 @@
+         local choice,receipt=modules.strategy.copy_acquisition(snapshot,focused)
+         prehand_work=prehand_work+focused.evaluations
+         copy_diagnostics={schema=1,evaluations=focused.evaluations,truncated=focused.truncated,
+-          complete=not focused.truncated and (not receipt or receipt.complete),replacements=receipt,
++          attempted=receipt~=nil or focused.copy_direct_diagnostics~=nil,
++          complete=not focused.truncated and (not receipt or receipt.complete) and
++            focused.copy_direct_diagnostics~=nil and focused.copy_direct_diagnostics.complete,
++          replacements=receipt,direct=focused.copy_direct_diagnostics,
+           reason=choice and 'supported_copy_priority' or focused.unavailable_reason or 'no_supported_copy_priority'}
+         if choice then return {kind='strategy',strategy=choice,action=choice.action,evaluations=prehand_work,
+           copy_acquisition_diagnostics=copy_diagnostics,shop_diagnostics={evaluations=focused.evaluations,
+@@ -644,6 +647,36 @@
+         lines={'Retry comparison is unavailable in this adapter.'}}
+     end
+   end
++  if result then
++    -- Record the final selected physical Death direction after all overrides.
++    local a=result.action or {};local selected=(snapshot[a.area] or {})[a.index or 0]
++    local targets=a.targets
++    if selected and selected.key=='c_death' and targets and #targets==2 then
++      local left,right=math.min(targets[1],targets[2]),math.max(targets[1],targets[2])
++      local source,recipient=(snapshot.hand or {})[right],(snapshot.hand or {})[left]
++      if source and recipient then result.death_review={schema=1,stage=snapshot.phase=='pack' and 'pack' or 'held',
++        status='selected',source_id=source.id,recipient_id=recipient.id,source_index=right,recipient_index=left,
++        source_rank=source.rank,source_suit=source.suit,source_enhancement=source.enhancement,source_seal=source.seal,
++        source_edition=type(source.edition)=='string' and source.edition or type(source.edition)=='table' and
++          (source.edition.type or source.edition.polychrome and 'polychrome' or source.edition.foil and 'foil' or source.edition.holo and 'holo' or source.edition.negative and 'negative') or nil} end
++    end
++    if snapshot.phase=='hand' and snapshot.teacher_profile=='perkeo_yorick_win_v1' then
++      result.death_fishing_review={schema=1,status='not_applicable',attempted=false,complete=false,reason='no_held_death'}
++    end
++    local held=false
++    for _,c in ipairs(snapshot.consumeables or {}) do if c.key=='c_death' and not c.debuff then held=true end end
++    if held and snapshot.phase=='hand' then
++      local reason='ordinary_joint_search'
++      if not modules.growth then reason='growth_module_unavailable'
++      elseif not result.play or result.play.uncertain or not result.play.score or
++          result.play.score<math.max(1,(snapshot.blind or {}).chips-(snapshot.chips or 0))*1.05 then reason='no_reliable_retained_clear' end
++      result.death_fishing_review=result.growth_diagnostics and result.growth_diagnostics.death_fishing or
++        {schema=1,status='not_requested',attempted=false,complete=false,reason=reason}
++    end
++    -- Presentation follows final arbitration, retaining the original search
++    -- kind only as diagnostic evidence of an overridden proposal.
++    if a.kind=='play' or a.kind=='discard' then result.search_kind=result.kind;result.kind=a.kind end
++  end
+   if result and statistics then result.score_cache=statistics() end
+   return result
+ end
+--- before/Brainstorm/Advisor/draws.lua
++++ Brainstorm/Advisor/draws.lua
+@@ -23,7 +23,7 @@
+     return nil,'Challenge replacement visibility is not sampled.'
+   end
+   local c=copy(source);c.ability=copy(source.ability)
+-  c.face_down=hidden and (source.face_down~=false) or false
++  c.face_down=hidden
+   if hidden then c.ability.wheel_flipped=true end
+   return c
+ end
+--- before/Brainstorm/Advisor/growth.lua
++++ Brainstorm/Advisor/growth.lua
+@@ -517,7 +517,11 @@
+   local evaluations=0
+   local cap=math.min(12,math.max(0,math.floor(num(options.max_evaluations,12))))
+   local diagnostics={bounded_growth=true,max_evaluations=cap,candidates=0,reasons={}}
+-  local function stop(reason) diagnostics.reasons[#diagnostics.reasons+1]=reason;return nil,evaluations,diagnostics end
++  local function stop(reason)
++    diagnostics.reasons[#diagnostics.reasons+1]=reason
++    if diagnostics.death_fishing then diagnostics.death_fishing.reason=reason;diagnostics.death_fishing.status='not_admitted' end
++    return nil,evaluations,diagnostics
++  end
+   if not plain(s) or not bounded_plain(s) then return stop('The complete input for investment sorting and transitions exceeds its plain finite bounds.') end
+   for _,key in ipairs({'hand','deck','jokers','playing_cards','consumeables','hands','modifiers','current_round','blind'}) do
+     if s[key]~=nil and not plain(s[key]) then return stop('The investment state has malformed '..key..'.') end
+@@ -526,6 +530,11 @@
+     not dense(s.consumeables or {},64) or not dense(s.jokers or {},128) then
+     return stop('The complete investment arrays exceed their bounds or are not dense.')
+   end
++  for i,c in ipairs(s.consumeables or {}) do if c.key=='c_death' and not c.debuff then
++    diagnostics.death_fishing={schema=1,consumable_index=i,status='not_admitted',reason='public_population_unavailable',
++      attempted=false,complete=false,distribution_comparisons=0,positive_comparisons=0,
++      scope='public_distribution_bounded_discard_shortlist'};break
++  end end
+   local scorer,strategy=modules.scoring,modules.strategy
+   if not scorer or not strategy or not strategy.build_profile or not known_clear or not known_clear.indices then return stop('No verified finishing plan.') end
+   local remaining=math.max(1,num((s.blind or {}).chips)-num(s.chips))
+@@ -601,6 +610,7 @@
+         local projected=modules.consumables.apply(s,index,{1,2})
+         if projected then
+           local loss,_,last=strategy.preservation_cost(s,projected,index)
++          if diagnostics.death_fishing then diagnostics.death_fishing.reason=last and 'inventory_hold' or 'invalid_preservation_cost' end
+           if not last and finite(loss) then
+             local function gain(recipient,source)
+               local after={hand={}};after.hand[recipient]=source
+@@ -611,6 +621,8 @@
+               now=math.max(now,gain(i,c))
+             end end end
+             death_option={index=index,gain=gain,now=now}
++            diagnostics.death_fishing.status='considered';diagnostics.death_fishing.attempted=true
++            diagnostics.death_fishing.reason='no_better_source';diagnostics.death_fishing.use_now_utility=now
+             break
+           end
+         end
+@@ -784,6 +796,12 @@
+         local cost=cash_cost(s,state,false,indices)
+         local removed={};for _,i in ipairs(indices) do removed[i]=true end
+         local source_value,source_receipt=death_draw_value(state,removed)
++        if source_receipt and diagnostics.death_fishing then
++          local d=diagnostics.death_fishing
++          d.distribution_comparisons=d.distribution_comparisons+1
++          d.best_expected_improvement=math.max(d.best_expected_improvement or 0,source_value)
++          if source_value>0 then d.positive_comparisons=d.positive_comparisons+1;d.reason='cost_or_retained_clear' end
++        end
+         utility=utility+source_value
+         local merit=utility*weight('growth_utility_scale',1)-cost
+         local threshold=pair_value(s,state,#indices,pair,profile,utility,cost,copy_credit)
+@@ -890,6 +908,14 @@
+     end
+   end
+   diagnostics.evaluations=evaluations
++  local fishing=diagnostics.death_fishing
++  if fishing and fishing.attempted then
++    fishing.evaluations=evaluations;fishing.complete=evaluations<cap
++    fishing.selected=best and best.action.kind=='discard' and best.growth and best.growth.death_source~=nil or false
++    fishing.status=fishing.selected and 'selected' or evaluations>=cap and 'bounded_work_exhausted' or 'declined'
++    fishing.reason=fishing.selected and 'stronger_public_source_expectation' or evaluations>=cap and 'incomplete_work' or fishing.reason
++    if num(s.discards_left,round.discards_left)<=0 then fishing.reason='no_discards' end
++  end
+   return best,evaluations,diagnostics
+ end
+ return M
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -457,7 +457,7 @@
+     end
+   end
+   local out={schema=1,candidates={}}
+-   fields(source,out,{'complete','scope','reason','evaluations','evaluations_before','selected_sale','selected_offer',
++   fields(source,out,{'complete','scope','stage','reason','evaluations','evaluations_before','selected_sale','selected_offer',
+      'engine_retention_from_sale','engine_retention_to_sale','engine_retention_reason',
+     'final_action_kind','final_action_area','final_action_index'})
+   local entries=rawget(source,'candidates')
+@@ -465,7 +465,7 @@
+     for i=1,math.min(18,#entries)do
+       local entry=rawget(entries,i)
+       if plain(entry)then
+-        local row={};fields(entry,row,{'sale_index','offer_index','family_id','key','compared','purchase_rating','admitted',
++        local row={};fields(entry,row,{'sale_index','sale_id','offer_index','offer_id','family_id','key','compared','purchase_rating','admitted','copy_priority',
+            'ratio','score_kind','samples','common_worlds','reason','merit','cash_after','cost',
+            'opening_mean_after','opening_clears_after',
+           'perishable_exception','perishable_exception_reason','copy_exception','copy_exception_reason',
+@@ -565,10 +565,37 @@
+     if next(row) then out[key]=row end
+   end
+   scalars('acquisition',result.copy_acquisition_diagnostics)
++  if type(result.copy_acquisition_diagnostics)=='table' and not getmetatable(result.copy_acquisition_diagnostics) then
++    out.focused_replacements=M.compact_replacement_review({shop_diagnostics={replacements=result.copy_acquisition_diagnostics.replacements}})
++    out.focused_direct=M.compact_replacement_review({shop_diagnostics={replacements=result.copy_acquisition_diagnostics.direct}})
++  end
+   scalars('choice',result.strategy and result.strategy.copy_acquisition_review)
+-  scalars('death',result.consumable and result.consumable.development)
+-  scalars('fishing',result.growth and result.growth.growth and result.growth.growth.death_source)
+-  if out.acquisition or out.choice or out.death or out.fishing then
++  scalars('development',result.consumable and result.consumable.development)
++  scalars('death',result.death_review or result.consumable and result.consumable.development)
++  scalars('fishing',result.death_fishing_review or result.growth and result.growth.growth and result.growth.growth.death_source)
++  local pack=result.strategy and result.strategy.pack_diagnostics
++  if type(pack)=='table' and not getmetatable(pack) then
++    scalars('pack',pack);out.pack=out.pack or {};out.pack.candidates={}
++    local function entries(list)
++      local rows={}
++      if type(list)~='table' or getmetatable(list) then return rows end
++      for i=1,math.min(30,#list) do local entry=rawget(list,i)
++        if type(entry)=='table' and not getmetatable(entry) then
++          local e=type(entry.evidence)=='table' and not getmetatable(entry.evidence) and entry.evidence or {}
++          scalars('pack_candidate',{index=entry.index,offer_id=entry.offer_id,key=entry.key,
++            sold_index=entry.sold_index,sold_id=entry.sold_id,kind=entry.kind,status=entry.status,
++            legal=entry.legal,score=entry.score,admitted=entry.collection_admitted,
++            reason=entry.unavailable_reason or entry.reason,after_mean=e.after_mean,after_target=e.after_target,
++            uncertain=e.uncertain,complete_finishing=e.complete_finishing})
++          rows[#rows+1]=out.pack_candidate or {};out.pack_candidate=nil
++        end
++      end
++      return rows,#list>30
++    end
++    out.pack.candidates,out.pack.truncated=entries(pack.comparisons)
++    if pack.attempted_comparisons then out.pack.attempted,out.pack.attempted_truncated=entries(pack.attempted_comparisons) end
++  end
++  if out.acquisition or out.choice or out.death or out.fishing or out.pack then
+     local a=result.action or {};out.final_kind=a.kind;out.final_area=a.area;out.final_index=a.index
+     return out
+   end
+--- before/Brainstorm/Advisor/runtime.lua
++++ Brainstorm/Advisor/runtime.lua
+@@ -176,6 +176,11 @@
+   for name, locked in pairs(locks) do
+     if locked and name ~= 'frame' and name ~= 'frame_set' then return false end
+   end
++  for _,area in ipairs({G.hand or {},G.pack_cards or {}}) do
++    for _,card in ipairs(area.cards or {}) do
++      if not A.snapshot.presentation_settled(card) then return false end
++    end
++  end
+   return G.STATE_COMPLETE and not (G.GAME.blind and G.GAME.blind.block_play)
+ end
+ 
+--- before/Brainstorm/Advisor/score_cache.lua
++++ Brainstorm/Advisor/score_cache.lua
+@@ -106,6 +106,9 @@
+     stats.score_calls=stats.score_calls+1
+     return base.upper_bound(s,selected,prepared)
+   end end
++  if base.hook_lower_bound then wrapped.hook_lower_bound=function(s,selected,allowance)
++    return base.hook_lower_bound(s,selected,allowance,wrapped.lower_bound)
++  end end
+   return wrapped,function() return copy(stats) end,prepared
+ end
+ return M
+--- before/Brainstorm/Advisor/scoring.lua
++++ Brainstorm/Advisor/scoring.lua
+@@ -1081,6 +1081,46 @@
+     return state,remapped,effects
+ end
+ 
++-- Exact finite Hook outcome family, with supported random floors afterwards.
++-- Work is explicit so callers cannot count an exhaustive floor as one score.
++-- Unknown generation/effects or an insufficient allowance certify nothing.
++function M.hook_lower_bound(snapshot,selected,allowance,floor_score)
++    local b=snapshot.blind or {}
++    if b.disabled or b.hook_resolved or b.key~='bl_hook' and b.name~='The Hook' then return nil,0 end
++    local chosen,held={},{}
++    for _,i in ipairs(selected) do
++        if chosen[i] or not (snapshot.hand or {})[i] then return nil,0 end
++        chosen[i]=true
++    end
++    for i,c in ipairs(snapshot.hand or {}) do
++        if c.face_down or c.unknown or c.identity_redacted then return nil,0 end
++        if not chosen[i] then held[#held+1]=i end
++    end
++    local outcomes={}
++    if #held<2 then outcomes[1]=held
++    else for i=1,#held-1 do for j=i+1,#held do outcomes[#outcomes+1]={held[i],held[j]} end end end
++    if type(allowance)~='number' or allowance~=allowance or allowance%1~=0 or #outcomes>allowance then return nil,0 end
++    local worst,work=nil,0
++    for _,indices in ipairs(outcomes) do
++        local state,remapped,effects=M.prepare_play(snapshot,selected,{hook_indices=indices})
++        if not state then return nil,work end
++        local bound=(floor_score or M.lower_bound)(state,remapped);work=work+1
++        if not bound or not bound.reliable_bound then return nil,work end
++        for i,index in ipairs(bound.scoring_indices or {}) do
++            bound.scoring_indices[i]=effects.original_indices[index]
++        end
++        for _,exposure in ipairs(bound.glass_exposure or {}) do
++            exposure.index=effects.original_indices[exposure.index]
++        end
++        if not worst or bound.score<worst.score then worst=bound end
++    end
++    if worst then
++        worst.bound_kind='complete_hook_random_floor'
++        worst.hook_outcomes=#outcomes;worst.hook_floor=true
++    end
++    return worst,work
++end
++
+ local function expired(j)
+     local a=j.ability or {};return a.perishable and num(a.perish_tally)<=0
+ end
+--- before/Brainstorm/Advisor/search.lua
++++ Brainstorm/Advisor/search.lua
+@@ -729,8 +729,15 @@
+     -- scoring calls on promising current plays; unsupported uncertainty stays.
+     if state==s and result and result.legal~=false and result.uncertain and result.score>=remaining
+       and scorer.lower_bound and options.score_bounds~=false and bound_checks<4 and evaluations<max_evaluations then
+-      evaluations=evaluations+1;bound_checks=bound_checks+1
+-      local bound=scorer.lower_bound(state,indices)
++      bound_checks=bound_checks+1
++      local bound,work
++      local b=state.blind or {}
++      if scorer.hook_lower_bound and not b.disabled and not b.hook_resolved and
++        (b.key=='bl_hook' or b.name=='The Hook') then
++        bound,work=scorer.hook_lower_bound(state,indices,max_evaluations-evaluations)
++      else bound=scorer.lower_bound(state,indices);work=1 end
++      evaluations=evaluations+(work or 0)
++      if progress and (work or 0)>0 then progress(evaluations) end
+       if bound and bound.reliable_bound and reliable_clear(bound,remaining) then
+         bound.expected_score=result.score;result=bound
+       end
+@@ -741,7 +748,7 @@
+       if not costs then costs = {}; arm_costs[state] = costs end
+       if costs[result.hand] == nil then costs[result.hand] = arm_cost(state, result.hand) end
+       result.arm_cost = costs[result.hand]
+-      if state==s and options.finish_rewards and reliable_clear(result,remaining) then
++      if state==s and options.finish_rewards and not result.hook_floor and reliable_clear(result,remaining) then
+         if not finish_prepared then finish_prepared=options.finish_rewards.prepare(s,options.strategy) end
+         result.finish_reward,result.finish_rewards=options.finish_rewards.value(s,result,finish_prepared)
+       end
+--- before/Brainstorm/Advisor/snapshot.lua
++++ Brainstorm/Advisor/snapshot.lua
+@@ -29,6 +29,19 @@
+   return encode(value)
+ end
+ 
++local function settled_flip(card)
++  if not card.flipping then return card.pinch==nil or type(card.pinch)=='table' and not card.pinch.x end
++  local target=card.flipping=='f2b' and 'back' or card.flipping=='b2f' and 'front'
++  return target and card.facing==target and card.sprite_facing==target and
++    type(card.pinch)=='table' and card.pinch.x==false or false
++end
++function M.presentation_settled(card)
++  return settled_flip(card) and not (card.facing and card.sprite_facing and card.facing~=card.sprite_facing)
++end
++function M.public_front(card)
++  return M.presentation_settled(card) and card.facing~='back' and card.sprite_facing~='back' and
++    card.face_down~=true and card.identity_redacted~=true
++end
+ function M.card(card)
+   local center = card.config and card.config.center or {}
+   local base = card.base or {}
+@@ -42,7 +55,7 @@
+     rank = base.id, nominal = base.nominal, suit = base.suit,
+     enhancement = center.set == 'Enhanced' and center.key or nil,
+     edition = M.copy(card.edition), seal = card.seal, debuff = not not card.debuff,
+-    face_down = card.facing == 'back', ability = ability, base = M.copy(base),
++    face_down = not M.public_front(card), ability = ability, base = M.copy(base),
+     cost = card.cost, base_cost = card.base_cost, sell_cost = card.sell_cost, rarity = center.rarity,
+     blueprint_compat = center.blueprint_compat, vampired = card.vampired,
+     pinned = not not card.pinned,
+@@ -52,17 +65,10 @@
+   }
+ end
+ 
+-local function settled_flip(card)
+-  if not card.flipping then return card.pinch==nil or type(card.pinch)=='table' and not card.pinch.x end
+-  local target=card.flipping=='f2b' and 'back' or card.flipping=='b2f' and 'front'
+-  return target and card.facing==target and card.sprite_facing==target and
+-    type(card.pinch)=='table' and card.pinch.x==false or false
+-end
+ local function hidden_joker(card)
+   -- A flip direction persists after Card:update finishes revealing the front.
+   -- Match the observer's public presentation predicate before reading identity.
+-  return card.facing=='back' or card.sprite_facing=='back' or not settled_flip(card) or
+-    card.face_down==true or card.identity_redacted==true
++  return not M.public_front(card)
+ end
+ local function cards(area, discarded, joker_row)
+   local result = {}
+--- before/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -68,6 +68,28 @@
+ -- this separate from legality and owned-row utility: a heuristic rating alone
+ -- cannot waive it, including when tactical scoring falls back to ratings.
+ function Strategy.joker_admission(before,card,after,evidence)
++    if before.teacher_profile=='perkeo_yorick_win_v1' and ability(card).perishable and
++        after and num(ability(card).perish_tally,5)>0 then
++        -- A nominal unskipped bridge is a strategic horizon, not a forecast of
++        -- future draws. Do not sell a durable core for power that ends during
++        -- that bridge unless a complete current survival rescue requires it.
++        local bridge=math.max(1,3*(num(before.win_ante,8)-num(before.ante,1))+1)
++        if num(ability(card).perish_tally,5)<bridge and not sampled_rescue(evidence) then
++            for _,owned in ipairs(before.jokers or {}) do
++                if ({j_yorick=true,j_perkeo=true,j_blueprint=true,j_brainstorm=true})[owned.key] and
++                    not owned.debuff and not ability(owned).perishable then
++                    local retained=false
++                    for _,kept in ipairs(after.jokers or {}) do
++                        if kept~=card and (kept==owned or owned.id and kept.id==owned.id or
++                            not owned.id and kept.key==owned.key and not ability(kept).perishable) then retained=true end
++                    end
++                    if not retained then return false,{schema=1,kind='temporary_core_bridge_guard',
++                        bridge_rounds=bridge,remaining_rounds=num(ability(card).perish_tally,5),
++                        core_key=owned.key,reason='Temporary power expires within the remaining unskipped horizon; retain the durable core unless a complete paired current-blind rescue justifies its sale.'} end
++                end
++            end
++        end
++    end
+     if before.teacher_profile=='perkeo_yorick_win_v1' and card.key=='j_madness' and
+         not modifiers(before).all_eternal then
+         for _,owned in ipairs(before.jokers or {}) do
+@@ -1448,6 +1470,16 @@
+     for _, area in ipairs({'shop_jokers', 'shop_vouchers', 'shop_booster'}) do
+         for index, card in ipairs(snapshot[area] or {}) do
+             local cost = num(card.cost)
++            local focused
++            if snapshot._copy_acquisition and not replacement_before and
++                (card.key=='j_blueprint' or card.key=='j_brainstorm') then
++                local ctx=snapshot._shop_scoring
++                ctx.copy_direct_diagnostics=ctx.copy_direct_diagnostics or {schema=1,stage='focused_direct',complete=true,candidates={}}
++                focused={offer_index=index,offer_id=card.id,key=card.key,compared=false,cost=cost,
++                    reason=not capacity(snapshot,card,false) and 'no_slot' or
++                        cost>num(snapshot.dollars)-num(snapshot.bankrupt_at) and 'unaffordable' or 'not_compared'}
++                ctx.copy_direct_diagnostics.candidates[#ctx.copy_direct_diagnostics.candidates+1]=focused
++            end
+             if (not snapshot._copy_acquisition or card.key=='j_blueprint' or card.key=='j_brainstorm') and
+                 (cost <= 0 or cost <= num(snapshot.dollars) - num(snapshot.bankrupt_at)) and capacity(snapshot, card, false)
+                 and not (modifiers(snapshot).no_shop_jokers and kind(card) == 'joker') then
+@@ -1487,6 +1519,16 @@
+                 end
+                 local admitted=kind(card)~='joker' or Strategy.joker_admission(replacement_before or snapshot,card,after,evidence)
+                 candidate.copy_priority=not replacement_before and supported_copy_priority(snapshot,nil,card,after,evidence)
++                if focused then
++                    focused.compared=evidence~=nil;focused.admitted=admitted;focused.copy_priority=candidate.copy_priority
++                    focused.ratio=evidence and evidence.ratio;focused.samples=evidence and evidence.samples
++                    focused.cash_after=after and after.dollars;focused.opening_mean_after=evidence and evidence.after_mean
++                    focused.finishing_complete=evidence and evidence.complete_finishing==true or false
++                    focused.reason=candidate.copy_priority and 'supported_copy_priority' or not known and 'unknown_effect' or
++                        not evidence and 'unsupported_comparison' or not admitted and 'objective_admission_rejected' or
++                        dominated and 'survival_dominated' or 'no_supported_copy_priority'
++                    if not evidence or evidence.incomplete then snapshot._shop_scoring.copy_direct_diagnostics.complete=false end
++                end
+                 if replacement_before and kind(card)=='joker' then
+                     candidate.replacement_admitted=admitted
+                     replacement_candidates[#replacement_candidates+1]=candidate
+@@ -1894,7 +1936,7 @@
+                 for offer,card in ipairs(snapshot.shop_jokers or {}) do if kind(card)=='joker' then
+                     local found
+                     for _,c in ipairs(choices or {}) do if c.index==offer then found=c end end
+-                    if not found then receipt.candidates[#receipt.candidates+1]={sale_index=index,offer_index=offer,key=card.key,
++                    if not found then receipt.candidates[#receipt.candidates+1]={sale_index=index,sale_id=sold.id,offer_index=offer,offer_id=card.id,key=card.key,
+                         compared=false,reason=modifiers(snapshot).no_shop_jokers and 'shop_jokers_forbidden' or not state and 'unsupported_sale' or
+                         not capacity(state,card,false) and 'no_slot_after_sale' or
+                         capacity(snapshot,card,false) and num(card.cost)<=num(snapshot.dollars)-num(snapshot.bankrupt_at) and
+@@ -1908,7 +1950,7 @@
+             local entry
+             if receipt then
+                 local e=candidate.scoring_evidence
+-                entry={sale_index=index,offer_index=candidate.index,key=candidate.card.key,compared=e~=nil,
++                entry={sale_index=index,sale_id=sold.id,offer_index=candidate.index,offer_id=candidate.card.id,key=candidate.card.key,compared=e~=nil,
+                     family_id='replacement:'..index..':'..candidate.index,
+                     purchase_rating=candidate.score,admitted=candidate.replacement_admitted==true,
+                     ratio=e and e.ratio,score_kind=e and (e.uncertain and 'uncertain_mean' or 'sampled_opening_comparison'),
+@@ -1982,7 +2024,7 @@
+             end
+         elseif receipt then
+             for offer,card in ipairs(snapshot.shop_jokers or {}) do if kind(card)=='joker' then
+-                receipt.candidates[#receipt.candidates+1]={sale_index=index,offer_index=offer,key=card.key,
++                receipt.candidates[#receipt.candidates+1]={sale_index=index,sale_id=sold.id,offer_index=offer,offer_id=card.id,key=card.key,
+                     compared=false,reason=ability(sold).eternal and 'protected_sale' or 'unsupported_sale'}
+             end end
+         end
+@@ -2109,6 +2151,10 @@
+     if not visible then return end
+     local state=copy_table(snapshot);state._copy_acquisition=true;state._shop_scoring=context
+     local best=best_shop_purchase(state,deck_stats(state),components(state),true)
++    if context.copy_direct_diagnostics then
++        context.copy_direct_diagnostics.evaluations=context.evaluations
++        context.copy_direct_diagnostics.complete=context.copy_direct_diagnostics.complete and not context.truncated
++    end
+     local replacement=replacement_sale_plan(state,best,best_shop_purchase)
+     local receipt=context.replacement_diagnostics
+     if context.truncated or receipt and not receipt.complete then return nil,receipt end
+@@ -2885,6 +2931,17 @@
+     return nil,diagnostics
+ end
+ 
++local function pack_endpoint_merit(before,after,evidence)
++    local value=replacement_build_value(after,deck_stats(after),true)-replacement_build_value(before,deck_stats(before),true)
++    -- Absolute endpoint support avoids a different baseline ratio after sale.
++    -- Uncertain means remain heuristic utility and never certify survival.
++    local mean,target=evidence and evidence.after_mean,evidence and evidence.after_target
++    if type(mean)=='number' and mean==mean and mean>=0 and mean<math.huge and
++        type(target)=='number' and target>0 and target<math.huge then
++        value=value+36*math.log(1+mean/target)/math.log(2)
++    end
++    return value
++end
+ local function best_pack_choice(snapshot, stats, engine, diagnostics)
+     local best,candidates=nil,{}
+     for index, card in ipairs(snapshot.pack_cards or {}) do
+@@ -2897,15 +2954,24 @@
+             local score, reason, known, forecast = card_value(snapshot, card, stats, engine)
+             -- Targeting Tarot/Spectral cards requires a hand in the pack.
+             local category = kind(card)
++            -- Rank complete retained rows in both capacity states. Using only
++            -- incoming-card value here reversed explicit sell-to-copy plans.
++            if category=='joker' and snapshot.teacher_profile=='perkeo_yorick_win_v1' then
++                local after=after_joker_purchase(snapshot,card)
++                score=replacement_build_value(after,deck_stats(after),true)-replacement_build_value(snapshot,stats,true)
++            end
+             local target = ability(card).consumeable
+             local targets, target_reason, hand_order, evidence, joker_after
+             if category=='joker' and snapshot._shop_scoring then
+                 local adjustment
+                 joker_after=after_joker_purchase(snapshot,card)
+                 adjustment,evidence=shop_score_evidence(snapshot,joker_after,card,true)
+-                if evidence then score=score+adjustment;reason=reason..' '..evidence.reason end
++                if evidence then
++                    score=snapshot.teacher_profile=='perkeo_yorick_win_v1' and pack_endpoint_merit(snapshot,joker_after,evidence) or score+adjustment
++                    reason=reason..' '..evidence.reason
++                end
+                 if diagnostics then
+-                    diagnostics.comparisons[#diagnostics.comparisons+1]={index=index,kind='choose',
++                    diagnostics.comparisons[#diagnostics.comparisons+1]={index=index,offer_id=card.id,key=card.key,kind='choose',
+                         score=score,evidence=evidence,status=evidence and 'complete' or 'unavailable',
+                         unavailable_reason=not evidence and snapshot._shop_scoring.unavailable_reason or nil}
+                     if not evidence then
+@@ -2958,6 +3024,15 @@
+                 end
+             end
+             local admitted=category~='joker' or Strategy.joker_admission(snapshot,card,joker_after,evidence)
++            if diagnostics then
++                for _,comparison in ipairs(diagnostics.comparisons) do
++                    if comparison.index==index and comparison.kind=='choose' then
++                        comparison.collection_admitted=admitted
++                        comparison.reason=not admitted and 'objective_admission_rejected' or
++                            not evidence and 'unsupported_comparison' or 'endpoint_compared'
++                    end
++                end
++            end
+             if entry then
+                 entry.score=score;entry.reason=reason;entry.known=known;entry.scoring_evidence=evidence
+                 entry.collection_admitted=admitted
+@@ -2968,6 +3043,10 @@
+             local candidate={score=score, reason=reason, card=card, index=index, known=known,forecast=forecast,
+                 targets=targets,target_reason=target_reason,hand_order=hand_order,scoring_evidence=evidence,
+                 copy_priority=category=='joker' and supported_copy_priority(snapshot,nil,card,joker_after,evidence)}
++            -- Teacher pack ranking uses one endpoint objective across a sale.
++            -- Survival/collection admission remains separate; a baseline-
++            -- relative ratio cannot change the endpoint's ranking class.
++            if snapshot.teacher_profile=='perkeo_yorick_win_v1' then candidate.copy_priority=nil end
+             if candidate.copy_priority then score=math.max(26,score);candidate.score=score end
+             if admitted then
+                 candidates[#candidates+1]=candidate
+@@ -3020,7 +3099,7 @@
+             local state=legal and after_joker_sale(snapshot,sold_index)
+             for index,card in ipairs(snapshot.pack_cards or {}) do
+                 if kind(card)=='joker' and not capacity(snapshot,card,true) then
+-                    local entry={kind='sell_then_choose',index=index,sold_index=sold_index,
++                    local entry={kind='sell_then_choose',index=index,offer_id=card.id,key=card.key,sold_id=sold.id,sold_index=sold_index,
+                         legal=not not (state and capacity(state,card,true))}
+                     diagnostics.comparisons[#diagnostics.comparisons+1]=entry
+                     if entry.legal then
+@@ -3035,7 +3114,8 @@
+                             diagnostics.incomplete_reason=diagnostics.incomplete_reason or entry.unavailable_reason
+                         end
+                         local gain=replacement_build_value(after,deck_stats(after),true)-before
+-                        local merit=gain-6+num(adjustment)
++                        local merit=snapshot.teacher_profile=='perkeo_yorick_win_v1' and
++                            pack_endpoint_merit(snapshot,after,evidence)-6 or gain-6+num(adjustment)
+                         local egg=omelette(snapshot) and sold.key=='j_egg'
+                         if egg then
+                             local penalty=10
+@@ -3051,7 +3131,7 @@
+                         entry.score=merit;entry.utility_gain=gain;entry.cash_after_selection=after.dollars
+                         entry.known=candidate_known;entry.preserves_score=preserves_score
+                         entry.collection_admitted=Strategy.joker_admission(snapshot,card,after,evidence)
+-                        local priority=supported_copy_priority(snapshot,sold,card,after,evidence)
++                        local priority=snapshot.teacher_profile~='perkeo_yorick_win_v1' and supported_copy_priority(snapshot,sold,card,after,evidence)
+                         entry.copy_priority=priority or nil
+                         if entry.collection_admitted and candidate_known and (priority or score>=26 and merit>=26) and preserves_score and
+                             (priority and not (best and best.copy_priority) or not best or best.score<26 or merit>best.score) and
+--- before/Brainstorm/Core/auto_run_product.lua
++++ Brainstorm/Core/auto_run_product.lua
+@@ -453,7 +453,7 @@
+         type(A.player_journal.semantic_fingerprint)~='function' then return false,'Teacher recording is unavailable.' end
+       configured={teacher_batch=true,max_runs=10,stall_seconds=30,search_seconds=30,
+         max_actions=500,run_seconds=1800,session_seconds=21600,
+-        search_request={deck_name='Red Deck',interchangeable_copies=true,quota_mode='strict',
++        search_request={objective='win_first',deck_name='Red Deck',interchangeable_copies=true,quota_mode='strict',
+           minimum_distinct=0,first_ante=1,last_ante=8,budget_ms=30000,burnt_fallback=true,legendary_fallback=false}}
+     elseif A.player_log.error then return false,'Observation recording is unavailable.' end
+     if configured.search_request~=nil and (type(configured.search_request)~='table' or getmetatable(configured.search_request))then

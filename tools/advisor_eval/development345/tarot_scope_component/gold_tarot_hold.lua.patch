@@ -1,0 +1,83 @@
+--- pin_normalized_before
++++ tarot_scope_after
+@@ -6,6 +6,15 @@
+   c_magician={name='The Magician',effect='Enhance',order=2,config={mod_conv='m_lucky',mod_num=2,max_highlighted=2}},
+   c_hermit={name='The Hermit',effect='Dollar Doubler',order=10,config={extra=20}},
+ }
++-- These cards remain entirely unused in this family. Their live plain-data
++-- constructor config is preserved, not interpreted as a supported use model.
++-- Card:add_to_deck reads h_size/d_size and named Joker effects; no admitted
++-- Tarot name has a named add-to-deck effect. Negative supplies only one slot.
++local held_only_names={c_fool='The Fool',c_high_priestess='The High Priestess',c_empress='The Empress',
++  c_emperor='The Emperor',c_heirophant='The Hierophant',c_lovers='The Lovers',c_chariot='The Chariot',
++  c_justice='Justice',c_wheel_of_fortune='The Wheel of Fortune',c_strength='Strength',
++  c_hanged_man='The Hanged Man',c_death='Death',c_temperance='Temperance',c_devil='The Devil',
++  c_tower='The Tower',c_star='The Star',c_moon='The Moon',c_sun='The Sun',c_judgement='Judgement',c_world='The World'}
+ local row_names={j_perkeo='Perkeo',j_yorick='Yorick',j_brainstorm='Brainstorm',j_blueprint='Blueprint',
+   j_swashbuckler='Swashbuckler',j_devious='Devious Joker',j_crazy='Crazy Joker',j_acrobat='Acrobat',
+   j_shoot_the_moon='Shoot the Moon',j_scary_face='Scary Face',j_fortune_teller='Fortune Teller',
+@@ -55,11 +64,28 @@
+   h_size=true,d_size=true,bonus=true,perma_bonus=true}
+ local ability_fields={name=true,effect=true,set=true,order=true,type=true,x_mult=true,extra=true,
+   extra_value=true,hands_played_at_create=true,consumeable=true}
++local function definition(key,center)
++  if definitions[key] then return definitions[key] end
++  local name=held_only_names[key]
++  if not name or not plain(center) or center.name~=name or type(center.effect)~='string' or
++      #center.effect>80 or not integer(center.order) or center.order<1 or center.order>22 or
++      not plain(center.config) or not data(center.config) then return nil end
++  -- Match the generic Card:set_ability constructor's score and size defaults.
++  -- Other config data governs use only and is retained without using it.
++  for k in pairs(zero) do if center.config[k]~=nil and center.config[k]~=0 then return nil end end
++  if center.config.Xmult~=nil and center.config.Xmult~=1 or
++      center.config.type~=nil and center.config.type~='' then return nil end
++  return {name=name,effect=center.effect,order=center.order,config=center.config,hold_only=true}
++end
+ local function ability_ok(a,d)
+   if not plain(a) or not data(a) or a.name~=d.name or a.effect~=d.effect or a.set~='Tarot' or
+       a.order~=d.order or a.type~='' or a.x_mult~=1 or not finite(a.extra_value) or a.extra_value<0 or
+-      not integer(a.hands_played_at_create) or not equal(a.consumeable,d.config) or a.extra~=d.config.extra then return false end
+-  for k in pairs(a) do if not zero[k] and not ability_fields[k] then return false end end
++      not integer(a.hands_played_at_create) or not equal(a.consumeable,d.config) or not equal(a.extra,d.config.extra) then return false end
++  for k in pairs(a) do
++    if k=='money' and d.name=='Temperance' then
++      if not finite(a.money) or a.money<0 or not finite(a.extra) or a.money>a.extra then return false end
++    elseif not zero[k] and not ability_fields[k] then return false end
++  end
+   for k in pairs(zero) do if a[k]~=0 then return false end end
+   return true
+ end
+@@ -77,8 +103,8 @@
+   -- This guard precedes all identity/ability/constructor reads.
+   if not visible_raw(card) then return no('A settled publicly visible Tarot is required.') end
+   local center=card.config and card.config.center
+-  local d=type(center)=='table' and definitions[center.key]
+-  if not d then return no('This Tarot constructor is outside the qualified Magician/Hermit family.') end
++  local d=type(center)=='table' and definition(center.key,center)
++  if not d then return no('This Tarot constructor is outside the qualified fixed-hold family.') end
+   if not plain(center) or not data(center) or not plain(registry) or registry[center.key]~=center or
+       center.name~=d.name or center.effect~=d.effect or center.order~=d.order or center.set~='Tarot' or
+       center.consumeable~=true or center.cost~=3 or not data(center.config) or not equal(center.config,d.config) then
+@@ -92,10 +118,12 @@
+   return {schema=1,supported=true,scope='qualified_tarot_hold_source_v1',center_key=center.key,center_name=d.name,
+     center_set='Tarot',center_effect=d.effect,center_order=d.order,center_cost=3,center_consumeable=true,
+     center_config=copy(center.config),ability=copy(card.ability),base=copy(card.base),params=copy(card.params),
+-    front_empty=true,scope_note='Observed public vanilla constructor inputs; not arbitrary mod callback qualification.'}
++    front_empty=true,constructor_policy=d.hold_only and 'plain_data_unused_tarot' or 'exact_known_tarot',
++    scope_note='Observed public vanilla constructor inputs; not arbitrary mod callback or Tarot-use qualification.'}
+ end
+ local function source_ok(c)
+-  local d=definitions[c.key];local p=c.tarot_hold_source
++  local p=c.tarot_hold_source
++  local d=definition(c.key,plain(p) and {name=p.center_name,effect=p.center_effect,order=p.center_order,config=p.center_config} or nil)
+   if not d or not plain(p) or p.schema~=1 or p.supported~=true or p.scope~='qualified_tarot_hold_source_v1' or
+       c.name~=d.name or not ability_ok(c.ability,d) or not data(c) or negative(c.edition)==nil or
+       c.debuff~=false or c.pinned~=false or c.face_down~=false or c.seal~=nil or
+@@ -166,6 +194,7 @@
+     cash_before=s.dollars,cash_after=s.dollars,first_hand_consumable_actions=0,generation_used_for_score=false,
+     source_classes=class_keys,growing_pool_closed_under_negative_copy=true,
+     generated_identity='unresolved',generated_prices='unresolved',generated_resale_credit=0,generated_future_utility_credit=0,
++    held_use_values='uncredited; Temperance money display may refresh after Joker changes without affecting held score',
+     copied_class_score_contribution=0,observatory_multiplier_from_generated_cards=1,
+     proof='Every admitted source is an unchanged nonplaying Tarot with zero add-to-deck hand/discard effects. Perkeo forces Negative, adds one card and one slot, and spends no cash. No new card has a scoring edition or Planet identity. Holding every original and new card leaves first-hand score dependencies unchanged, including the whole original inventory and Tarot usage counts.',
+     boundary='Fixed current exit row and hold-all first hand only. Copied identities/prices, later uses, future copying value, later blinds and terminal survival are unresolved. This is not an exact generated inventory.'}

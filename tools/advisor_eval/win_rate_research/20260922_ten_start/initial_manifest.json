@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-22T19:36:45.177051+00:00",
+  "design": "retrospective_diagnostic_existing_completed_batch",
+  "prospective_claim": false,
+  "reason": "User reports batch already complete before manifest creation. Hypotheses recorded before analyst outcome extraction, not before outcomes existed.",
+  "input_prefix": "session-20260922T181247Z-1",
+  "hypotheses": [
+    {
+      "id": "WR-001",
+      "status": "proposed",
+      "title": "Early discard investment is underused",
+      "prediction": "Cleared early rounds retain discards while Yorick remains immature, followed by weak later scoring.",
+      "contrast": "Retained discards coincide with supported-safety, horizon or resource constraints; losses occur despite mature Yorick.",
+      "necessary_fields": [
+        "Round entry/exit",
+        "discards/actions",
+        "Yorick counters",
+        "score floor",
+        "target",
+        "growth rejection diagnostics"
+      ],
+      "weakening_observation": "Early growth trajectories are strong or no safely useful discard is supported.",
+      "affected_versions_profiles": "Unclassified until fresh provenance extraction",
+      "run_count": null,
+      "eligible_opportunities": null,
+      "confidence": "hypothesis only; latest outcomes not extracted",
+      "anchors": []
+    },
+    {
+      "id": "WR-002",
+      "status": "proposed",
+      "title": "Perkeo copying pool becomes low-value or redundant",
+      "prediction": "Late inventories concentrate Empress/redundant cards while rank/hand-level development stagnates; arrivals are held without a use/hold/sale comparison.",
+      "contrast": "Surplus copies remain useful or other constraints prevent better development; losses precede inventory congestion.",
+      "necessary_fields": [
+        "Consumable inventory/edition by shop exit",
+        "use/sale actions",
+        "Perkeo copies",
+        "planets/hand levels",
+        "Observatory",
+        "visible offers/cash"
+      ],
+      "weakening_observation": "Late copies are used productively, useful alternatives absent or unrelated earlier shortfall dominates.",
+      "affected_versions_profiles": "Unclassified until fresh provenance extraction",
+      "run_count": null,
+      "eligible_opportunities": null,
+      "confidence": "hypothesis only; latest outcomes not extracted",
+      "anchors": []
+    },
+    {
+      "id": "WR-003",
+      "status": "proposed",
+      "title": "Operating profile or opening differs from win-first intent",
+      "prediction": "Actual teacher_profile missing, collection objective affecting choices, or actual route/targets differ from intended Yorick+Perkeo opening.",
+      "contrast": "Teacher flag propagates into snapshots and decision paths; no optional sticker trade observed.",
+      "necessary_fields": [
+        "Explicit start/options",
+        "collection receipt",
+        "teacher_profile",
+        "goal projection",
+        "search recipe/result",
+        "opening acquisitions"
+      ],
+      "weakening_observation": "Correct propagation and identical objectives on all inspected affected decisions.",
+      "affected_versions_profiles": "Unclassified until fresh provenance extraction",
+      "run_count": null,
+      "eligible_opportunities": null,
+      "confidence": "hypothesis only; latest outcomes not extracted",
+      "anchors": []
+    },
+    {
+      "id": "WR-004",
+      "status": "proposed",
+      "title": "Scoring or execution mismatch causes apparent strategy failures",
+      "prediction": "Fresh action recommendation differs from settled action/order or realized chip increment materially contradicts an applicable supported floor.",
+      "contrast": "Realized scores agree after accounting for settlement/randomness; recommendations simply insufficient.",
+      "necessary_fields": [
+        "Observation/action/advice links",
+        "indices",
+        "copy row",
+        "score kind/floor/mean",
+        "settled score delta",
+        "errors"
+      ],
+      "weakening_observation": "Fully settled comparable actions meet supported floors and correct targets/order.",
+      "affected_versions_profiles": "Unclassified until fresh provenance extraction",
+      "run_count": null,
+      "eligible_opportunities": null,
+      "confidence": "hypothesis only; latest outcomes not extracted",
+      "anchors": []
+    },
+    {
+      "id": "WR-005",
+      "status": "proposed",
+      "title": "Planning admission, budget or arbitration misses useful actions",
+      "prediction": "Near-target decisions exhaust scores or reject a resource family before comparison; appropriate held resources coexist with failure.",
+      "contrast": "Full compared candidates rejected on utility/safety rather than absent coverage; cap not reached.",
+      "necessary_fields": [
+        "Evaluation counts",
+        "reserve/candidate/growth/consumable diagnostics",
+        "reason strings",
+        "visible state/actions"
+      ],
+      "weakening_observation": "Complete relevant comparisons occur and alternative opportunities absent.",
+      "affected_versions_profiles": "Unclassified until fresh provenance extraction",
+      "run_count": null,
+      "eligible_opportunities": null,
+      "confidence": "hypothesis only; latest outcomes not extracted",
+      "anchors": []
+    }
+  ],
+  "strata": [
+    "loaded_version",
+    "teacher_profile",
+    "search_recipe",
+    "manual_intervention",
+    "duplicate_seed"
+  ],
+  "bounds": {
+    "starts": 10,
+    "actions_per_run": 500,
+    "seconds_per_run": 1800,
+    "search_seconds": 30,
+    "session_seconds": 21600,
+    "inactivity_seconds": 30,
+    "observation_bytes": 1073741824
+  },
+  "research_budget": {
+    "searches_max": 8,
+    "substantive_reads_max": 12,
+    "searches_used": 0,
+    "substantive_reads_used": 0
+  },
+  "tool_experiments": 0,
+  "runtime_modifications_authorized": false,
+  "future_cohort": "NOT AUTHORIZED; prospective collection would require separate user start and no-purge preflight",
+  "ranking_before_extraction": [
+    "WR-001",
+    "WR-002",
+    "WR-003",
+    "WR-004",
+    "WR-005"
+  ],
+  "ranking_note": "User observations motivate investigation, not causal ranking."
+}

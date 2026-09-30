@@ -1,0 +1,4026 @@
+{
+  "scope": "Descriptive copied public records; no policy/scorer execution",
+  "decisions": [
+    {
+      "sequence": 25106,
+      "run": 10,
+      "observation_id": "teacher356-1790620237-1:25100",
+      "advice_sequence": 25103,
+      "source": "auto_run",
+      "input": {
+        "action": {
+          "area": "shop_booster",
+          "index": 1,
+          "kind": "open"
+        }
+      },
+      "action": {
+        "area": "shop_booster",
+        "index": 1,
+        "kind": "open"
+      },
+      "observation_sequence": 25100,
+      "advice": {
+        "action": {
+          "area": "shop_booster",
+          "index": 1,
+          "kind": "open"
+        },
+        "copy_death_review": {
+          "acquisition": {
+            "attempted": false,
+            "complete": false,
+            "evaluations": 0,
+            "reason": "no_supported_copy_priority",
+            "schema": 1,
+            "truncated": false
+          },
+          "final_area": "shop_booster",
+          "final_index": 1,
+          "final_kind": "open",
+          "schema": 1
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 5276,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Find a scoring Joker; the contents are unknown until opened.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "reroll_review": {
+          "copy_source": {
+            "credited_slots": 1,
+            "schema": 1,
+            "scoring_claim": false,
+            "status": "out_of_scope"
+          },
+          "credited_slots": 1,
+          "schema": 1,
+          "scoring_claim": false,
+          "selected_action": "open",
+          "status": "out_of_scope"
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "open",
+          "active_seconds": 0.27076080000188085,
+          "decision_id": 4342,
+          "elapsed_seconds": 0.49178429999983564,
+          "evaluations": 5276,
+          "finished_seconds": 2813.0399697,
+          "max_resume_seconds": 0.05068230000006224,
+          "phase": "shop",
+          "resume_calls": 83,
+          "started_seconds": 2812.5481854,
+          "status": "completed"
+        },
+        "title": "Open Buffoon Pack ($4)"
+      },
+      "selected_card": {
+        "id": "card:2744",
+        "key": "p_buffoon_normal_1",
+        "debuff": false,
+        "face_down": false,
+        "cost": 4,
+        "sell_cost": 2,
+        "ability": {
+          "bonus": 0,
+          "booster_pos": 1,
+          "d_size": 0,
+          "extra": 2,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 2,
+          "mult": 0,
+          "name": "Buffoon Pack",
+          "order": 25,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Booster",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 1
+        }
+      },
+      "before": {
+        "phase": "shop",
+        "ante": 1,
+        "round": 1,
+        "dollars": 10,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 2,
+        "discards_used": 3,
+        "hand_size": 8,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Big",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Skipped"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:2739",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:2740",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 16
+            }
+          }
+        ],
+        "consumeables": [],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 13,
+            "Diamonds": 13,
+            "Hearts": 13,
+            "Spades": 13
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      },
+      "callback": {
+        "sequence": 25107,
+        "details": {
+          "action_sequence": 25106,
+          "callback_returned": true,
+          "completion": "Callback result only; queued effects may still be pending.",
+          "outcome_kind": "returned",
+          "reason": ""
+        }
+      },
+      "settlement": {
+        "sequence": 25113,
+        "observation_id": "teacher356-1790620237-1:25111",
+        "details": {
+          "action_sequences": [
+            25106
+          ],
+          "latest_action_sequence": 25106,
+          "observation": "First settled observation after callbacks; not proof every queued event completed."
+        }
+      },
+      "after": {
+        "phase": "pack",
+        "ante": 1,
+        "round": 1,
+        "dollars": 6,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 2,
+        "discards_used": 3,
+        "hand_size": 8,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Big",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Skipped"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:2739",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:2740",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 16
+            }
+          }
+        ],
+        "consumeables": [],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 13,
+            "Diamonds": 13,
+            "Hearts": 13,
+            "Spades": 13
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      }
+    },
+    {
+      "sequence": 25116,
+      "run": 10,
+      "observation_id": "teacher356-1790620237-1:25111",
+      "advice_sequence": 25112,
+      "source": "auto_run",
+      "input": {
+        "action": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        }
+      },
+      "action": {
+        "area": "pack_cards",
+        "index": 1,
+        "kind": "choose"
+      },
+      "observation_sequence": 25111,
+      "advice": {
+        "action": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        },
+        "copy_death_review": {
+          "final_area": "pack_cards",
+          "final_index": 1,
+          "final_kind": "choose",
+          "pack": {
+            "candidates": [
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": true,
+                "after_mean": 122,
+                "after_target": 600,
+                "complete_finishing": true,
+                "index": 1,
+                "key": "j_mystic_summit",
+                "kind": "choose",
+                "objective_admitted": true,
+                "offer_id": "card:2746",
+                "ratio": 1,
+                "reason": "endpoint_compared",
+                "score": 43.61330811008644,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": true,
+                "after_mean": 143,
+                "after_target": 600,
+                "complete_finishing": true,
+                "index": 2,
+                "key": "j_splash",
+                "kind": "choose",
+                "objective_admitted": true,
+                "offer_id": "card:2747",
+                "ratio": 1.1721311475409837,
+                "reason": "endpoint_compared",
+                "score": 11.102389561537752,
+                "status": "complete",
+                "uncertain": false
+              }
+            ],
+            "complete": true,
+            "truncated": false
+          },
+          "schema": 1
+        },
+        "gold_review": {
+          "schema": 1,
+          "shop_evaluations": 4963,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Adds base Mult, which makes later XMult effects stronger. Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee. Perishable: only 5 rounds remain. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 122 -> 122 chips across 4 paired deck samples, allowing sensible Joker order; upcoming The Pillar; target 600. Samples are not a blind-win probability.",
+          "After each choice, refresh advice for the remaining options.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "choose",
+          "active_seconds": 0.2772807999976976,
+          "decision_id": 4344,
+          "elapsed_seconds": 0.5242241999999351,
+          "evaluations": 4963,
+          "finished_seconds": 2813.7944318,
+          "max_resume_seconds": 0.030017600000064704,
+          "phase": "pack",
+          "resume_calls": 78,
+          "started_seconds": 2813.2702076,
+          "status": "completed"
+        },
+        "title": "Choose Mystic Summit"
+      },
+      "selected_card": {
+        "id": "card:2746",
+        "key": "j_mystic_summit",
+        "debuff": false,
+        "face_down": false,
+        "cost": 5,
+        "sell_cost": 2,
+        "blueprint_compat": true,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "No Discard Mult",
+          "extra": {
+            "d_remaining": 0,
+            "mult": 15
+          },
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 2,
+          "mult": 0,
+          "name": "Mystic Summit",
+          "order": 23,
+          "p_dollars": 0,
+          "perish_tally": 5,
+          "perishable": true,
+          "perma_bonus": 0,
+          "set": "Joker",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 1
+        }
+      },
+      "before": {
+        "phase": "pack",
+        "ante": 1,
+        "round": 1,
+        "dollars": 6,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 2,
+        "discards_used": 3,
+        "hand_size": 8,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Big",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Skipped"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:2739",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:2740",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 16
+            }
+          }
+        ],
+        "consumeables": [],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 13,
+            "Diamonds": 13,
+            "Hearts": 13,
+            "Spades": 13
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      },
+      "callback": {
+        "sequence": 25117,
+        "details": {
+          "action_sequence": 25116,
+          "callback_returned": true,
+          "completion": "Callback result only; queued effects may still be pending.",
+          "outcome_kind": "returned",
+          "reason": ""
+        }
+      },
+      "settlement": {
+        "sequence": 25123,
+        "observation_id": "teacher356-1790620237-1:25121",
+        "details": {
+          "action_sequences": [
+            25116
+          ],
+          "latest_action_sequence": 25116,
+          "observation": "First settled observation after callbacks; not proof every queued event completed."
+        }
+      },
+      "after": {
+        "phase": "shop",
+        "ante": 1,
+        "round": 1,
+        "dollars": 6,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 2,
+        "discards_used": 3,
+        "hand_size": 8,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Big",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Skipped"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:2739",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:2740",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 16
+            }
+          },
+          {
+            "id": "card:2746",
+            "key": "j_mystic_summit",
+            "debuff": false,
+            "face_down": false,
+            "cost": 5,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "No Discard Mult",
+              "extra": {
+                "d_remaining": 0,
+                "mult": 15
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Mystic Summit",
+              "order": 23,
+              "p_dollars": 0,
+              "perish_tally": 5,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          }
+        ],
+        "consumeables": [],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 13,
+            "Diamonds": 13,
+            "Hearts": 13,
+            "Spades": 13
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      }
+    },
+    {
+      "sequence": 25129,
+      "run": 10,
+      "observation_id": "teacher356-1790620237-1:25121",
+      "advice_sequence": 25126,
+      "source": "auto_run",
+      "input": {
+        "action": {
+          "kind": "leave_shop"
+        }
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "observation_sequence": 25121,
+      "advice": {
+        "action": {
+          "kind": "leave_shop"
+        },
+        "copy_death_review": {
+          "acquisition": {
+            "attempted": true,
+            "complete": true,
+            "evaluations": 5860,
+            "reason": "no_supported_copy_priority",
+            "schema": 1,
+            "truncated": false
+          },
+          "final_kind": "leave_shop",
+          "focused_direct": {
+            "candidates": [
+              {
+                "compared": false,
+                "cost": 10,
+                "key": "j_blueprint",
+                "offer_id": "card:2741",
+                "offer_index": 1,
+                "reason": "unaffordable"
+              }
+            ],
+            "complete": true,
+            "evaluations": 0,
+            "schema": 1,
+            "stage": "focused_direct"
+          },
+          "focused_replacements": {
+            "candidates": [
+              {
+                "compared": false,
+                "key": "j_hanging_chad",
+                "offer_id": "card:2742",
+                "offer_index": 2,
+                "reason": "sale_not_needed",
+                "sale_id": "card:2739",
+                "sale_index": 1
+              },
+              {
+                "admitted": false,
+                "common_worlds": true,
+                "compared": true,
+                "family_id": "replacement:1:1",
+                "key": "j_blueprint",
+                "offer_id": "card:2741",
+                "offer_index": 1,
+                "purchase_rating": 24,
+                "ratio": 1,
+                "reason": "temporary_core_bridge_guard",
+                "sale_id": "card:2739",
+                "sale_index": 1,
+                "samples": 4,
+                "score_kind": "sampled_opening_comparison"
+              },
+              {
+                "compared": false,
+                "key": "j_blueprint",
+                "offer_id": "card:2741",
+                "offer_index": 1,
+                "reason": "unsupported_sale",
+                "sale_id": "card:2740",
+                "sale_index": 2
+              },
+              {
+                "compared": false,
+                "key": "j_hanging_chad",
+                "offer_id": "card:2742",
+                "offer_index": 2,
+                "reason": "unsupported_sale",
+                "sale_id": "card:2740",
+                "sale_index": 2
+              },
+              {
+                "compared": false,
+                "key": "j_blueprint",
+                "offer_id": "card:2741",
+                "offer_index": 1,
+                "reason": "unaffordable_after_sale",
+                "sale_id": "card:2746",
+                "sale_index": 3
+              },
+              {
+                "compared": false,
+                "key": "j_hanging_chad",
+                "offer_id": "card:2742",
+                "offer_index": 2,
+                "reason": "sale_not_needed",
+                "sale_id": "card:2746",
+                "sale_index": 3
+              }
+            ],
+            "complete": true,
+            "evaluations": 5860,
+            "evaluations_before": 0,
+            "reason": "hold_or_ordinary_purchase_preferred",
+            "schema": 1,
+            "scope": "Visible one-sale one-buy endpoints; held inventory unchanged."
+          },
+          "schema": 1
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 31906,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "late_spend_review": {
+          "cash": 6,
+          "cost": 5,
+          "floor": 0,
+          "mode": "late_cash_spending_preference",
+          "reserve": 0,
+          "schema": 1,
+          "scoring_claim": false,
+          "status": "no_affordable_spend_above_buffer",
+          "target": 50
+        },
+        "lines": [
+          "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "phase_copy_review": {
+          "aggregate_limit": 50000,
+          "complete": false,
+          "final_action_kind": "leave_shop",
+          "reason": "No active copying Joker.",
+          "schema": 1,
+          "scope": "shop_perkeo",
+          "score_calls": 0,
+          "selected": false
+        },
+        "replacement_review": {
+          "candidates": [
+            {
+              "admitted": false,
+              "common_worlds": true,
+              "compared": true,
+              "family_id": "replacement:1:1",
+              "key": "j_blueprint",
+              "offer_id": "card:2741",
+              "offer_index": 1,
+              "purchase_rating": 24,
+              "ratio": 1,
+              "reason": "temporary_core_bridge_guard",
+              "sale_id": "card:2739",
+              "sale_index": 1,
+              "samples": 4,
+              "score_kind": "sampled_opening_comparison"
+            },
+            {
+              "admitted": false,
+              "common_worlds": true,
+              "compared": true,
+              "family_id": "replacement:1:2",
+              "key": "j_hanging_chad",
+              "offer_id": "card:2742",
+              "offer_index": 2,
+              "purchase_rating": 22.572776629214534,
+              "ratio": 1.3360655737704918,
+              "reason": "last_durable_engine_guard",
+              "sale_id": "card:2739",
+              "sale_index": 1,
+              "samples": 4,
+              "score_kind": "sampled_opening_comparison"
+            },
+            {
+              "admitted": false,
+              "common_worlds": true,
+              "compared": true,
+              "family_id": "replacement:2:1",
+              "key": "j_blueprint",
+              "offer_id": "card:2741",
+              "offer_index": 1,
+              "purchase_rating": 24,
+              "ratio": 1,
+              "reason": "temporary_core_bridge_guard",
+              "sale_id": "card:2740",
+              "sale_index": 2,
+              "samples": 4,
+              "score_kind": "sampled_opening_comparison"
+            },
+            {
+              "admitted": false,
+              "common_worlds": true,
+              "compared": true,
+              "family_id": "replacement:2:2",
+              "key": "j_hanging_chad",
+              "offer_id": "card:2742",
+              "offer_index": 2,
+              "purchase_rating": 22.572776629214534,
+              "ratio": 1.3360655737704918,
+              "reason": "last_durable_engine_guard",
+              "sale_id": "card:2740",
+              "sale_index": 2,
+              "samples": 4,
+              "score_kind": "sampled_opening_comparison"
+            },
+            {
+              "compared": false,
+              "key": "j_blueprint",
+              "offer_id": "card:2741",
+              "offer_index": 1,
+              "reason": "unaffordable_after_sale",
+              "sale_id": "card:2746",
+              "sale_index": 3
+            },
+            {
+              "admitted": false,
+              "common_worlds": true,
+              "compared": true,
+              "family_id": "replacement:3:2",
+              "key": "j_hanging_chad",
+              "offer_id": "card:2742",
+              "offer_index": 2,
+              "purchase_rating": 33.22650403471492,
+              "ratio": 1.3360655737704918,
+              "reason": "teacher_early_economy_guard",
+              "sale_id": "card:2746",
+              "sale_index": 3,
+              "samples": 4,
+              "score_kind": "sampled_opening_comparison"
+            }
+          ],
+          "complete": true,
+          "evaluations": 12828,
+          "evaluations_before": 4090,
+          "final_action_kind": "leave_shop",
+          "reason": "hold_or_ordinary_purchase_preferred",
+          "schema": 1,
+          "scope": "Visible one-sale one-buy endpoints; held inventory unchanged."
+        },
+        "reroll_review": {
+          "copy_source": {
+            "credited_slots": 1,
+            "schema": 1,
+            "scoring_claim": false,
+            "status": "out_of_scope"
+          },
+          "development": {
+            "mode": "durable_engine_development",
+            "schema": 1,
+            "status": "baseline_not_sampled_safe"
+          },
+          "mode": "durable_engine_development",
+          "schema": 1,
+          "selected_action": "leave_shop",
+          "status": "baseline_not_sampled_safe",
+          "surplus": {
+            "cash": 6,
+            "cash_after": 1,
+            "cost": 5,
+            "cost_cap": 12,
+            "credited_slots": 1,
+            "interest_floor": 25,
+            "late_surplus": false,
+            "mode": "surplus_catalog_opportunity",
+            "purchase_floor": 25,
+            "required_after": 37,
+            "schema": 2,
+            "scoring_claim": false,
+            "status": "cash_floor",
+            "survival_reserve": 0
+          }
+        },
+        "shop_sequence_review": {
+          "continuation": {},
+          "evidence": {
+            "adjustment": 0,
+            "after_mean": 122,
+            "before_mean": 122,
+            "ratio": 1
+          },
+          "final_action": {
+            "kind": "leave_shop"
+          },
+          "plan": {
+            "cash_after": 6,
+            "complete": true,
+            "utility": 0
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "title": "Leave the shop and save your money"
+      },
+      "selected_card": {},
+      "before": {
+        "phase": "shop",
+        "ante": 1,
+        "round": 1,
+        "dollars": 6,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 2,
+        "discards_used": 3,
+        "hand_size": 8,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Big",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Skipped"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:2739",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:2740",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 16
+            }
+          },
+          {
+            "id": "card:2746",
+            "key": "j_mystic_summit",
+            "debuff": false,
+            "face_down": false,
+            "cost": 5,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "No Discard Mult",
+              "extra": {
+                "d_remaining": 0,
+                "mult": 15
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Mystic Summit",
+              "order": 23,
+              "p_dollars": 0,
+              "perish_tally": 5,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          }
+        ],
+        "consumeables": [],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 13,
+            "Diamonds": 13,
+            "Hearts": 13,
+            "Spades": 13
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      },
+      "callback": {
+        "sequence": 25130,
+        "details": {
+          "action_sequence": 25129,
+          "callback_returned": true,
+          "completion": "Callback result only; queued effects may still be pending.",
+          "outcome_kind": "returned",
+          "reason": ""
+        }
+      },
+      "settlement": {
+        "sequence": 25135,
+        "observation_id": "teacher356-1790620237-1:25133",
+        "details": {
+          "action_sequences": [
+            25129
+          ],
+          "latest_action_sequence": 25129,
+          "observation": "First settled observation after callbacks; not proof every queued event completed."
+        }
+      },
+      "after": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 1,
+        "dollars": 6,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 2,
+        "discards_used": 3,
+        "hand_size": 8,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Boss",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Select"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Skipped"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:2739",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:2740",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 16
+            }
+          },
+          {
+            "id": "card:2746",
+            "key": "j_mystic_summit",
+            "debuff": false,
+            "face_down": false,
+            "cost": 5,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "No Discard Mult",
+              "extra": {
+                "d_remaining": 0,
+                "mult": 15
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Mystic Summit",
+              "order": 23,
+              "p_dollars": 0,
+              "perish_tally": 5,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          }
+        ],
+        "consumeables": [],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 13,
+            "Diamonds": 13,
+            "Hearts": 13,
+            "Spades": 13
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      }
+    }
+  ],
+  "offer": [
+    {
+      "run": 10,
+      "card": {
+        "id": "card:2741",
+        "key": "j_blueprint",
+        "debuff": false,
+        "face_down": false,
+        "cost": 10,
+        "sell_cost": 5,
+        "blueprint_compat": true,
+        "ability": {
+          "blueprint_compat": "incompatible",
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Copycat",
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 2,
+          "mult": 0,
+          "name": "Blueprint",
+          "order": 123,
+          "p_dollars": 0,
+          "perish_tally": 5,
+          "perishable": true,
+          "perma_bonus": 0,
+          "set": "Joker",
+          "t_chips": 0,
+          "t_mult": 0,
+          "type": "",
+          "x_mult": 1
+        }
+      },
+      "area": "shop_jokers",
+      "first_sequence": 25100,
+      "observation_ids": [
+        "teacher356-1790620237-1:25100",
+        "teacher356-1790620237-1:25121"
+      ],
+      "opened_actions": [],
+      "purchase_actions": [],
+      "last_sequence": 25121,
+      "first_owned_sequence": null,
+      "observations": [
+        {
+          "sequence": 25100,
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "dollars": 10,
+          "chips": 0,
+          "hands_left": 4,
+          "discards_left": 3,
+          "hands_played": 2,
+          "discards_used": 3,
+          "hand_size": 8,
+          "joker_limit": 5,
+          "consumable_limit": 2,
+          "rental_rate": 3,
+          "bankrupt_at": 0,
+          "reroll_cost": 5,
+          "interest_amount": 1,
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "blind_on_deck": "Big",
+          "blind": {
+            "chips": 0,
+            "debuff": {},
+            "disabled": false,
+            "mult": 0,
+            "name": "",
+            "prepped": true
+          },
+          "route_blinds": {
+            "Big": {
+              "ante": 1,
+              "boss": false,
+              "chips": 450,
+              "debuff": {},
+              "dollars": 4,
+              "key": "bl_big",
+              "label": "Big",
+              "mult": 1.5,
+              "name": "Big Blind",
+              "state": "Defeated"
+            },
+            "Boss": {
+              "ante": 1,
+              "boss": true,
+              "chips": 600,
+              "debuff": {},
+              "dollars": 5,
+              "key": "bl_pillar",
+              "label": "Boss",
+              "mult": 2,
+              "name": "The Pillar",
+              "state": "Upcoming"
+            },
+            "Small": {
+              "ante": 1,
+              "boss": false,
+              "chips": 300,
+              "debuff": {},
+              "dollars": 0,
+              "key": "bl_small",
+              "label": "Small",
+              "mult": 1,
+              "name": "Small Blind",
+              "state": "Skipped"
+            }
+          },
+          "jokers": [
+            {
+              "id": "card:2739",
+              "key": "j_perkeo",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Perkeo",
+                "order": 150,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:2740",
+              "key": "j_yorick",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra": {
+                  "discards": 23,
+                  "xmult": 1
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Yorick",
+                "order": 148,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1,
+                "yorick_discards": 16
+              }
+            }
+          ],
+          "consumeables": [],
+          "hand_levels": {
+            "Five of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush Five": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush House": {
+              "level": 1,
+              "played": 0
+            },
+            "Four of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Full House": {
+              "level": 1,
+              "played": 1
+            },
+            "High Card": {
+              "level": 1,
+              "played": 0
+            },
+            "Pair": {
+              "level": 1,
+              "played": 0
+            },
+            "Straight": {
+              "level": 1,
+              "played": 1
+            },
+            "Straight Flush": {
+              "level": 1,
+              "played": 0
+            },
+            "Three of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Two Pair": {
+              "level": 1,
+              "played": 0
+            }
+          },
+          "deck_population": 52,
+          "composition": {
+            "rank": {
+              "2": 4,
+              "3": 4,
+              "4": 4,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "14": 4,
+              "11": 4,
+              "13": 4,
+              "12": 4,
+              "10": 4
+            },
+            "suit": {
+              "Clubs": 13,
+              "Diamonds": 13,
+              "Hearts": 13,
+              "Spades": 13
+            },
+            "enhancement": {
+              "None": 52
+            },
+            "seal": {
+              "None": 52
+            }
+          },
+          "editions": {
+            "null": 52
+          }
+        },
+        {
+          "sequence": 25121,
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "dollars": 6,
+          "chips": 0,
+          "hands_left": 4,
+          "discards_left": 3,
+          "hands_played": 2,
+          "discards_used": 3,
+          "hand_size": 8,
+          "joker_limit": 5,
+          "consumable_limit": 2,
+          "rental_rate": 3,
+          "bankrupt_at": 0,
+          "reroll_cost": 5,
+          "interest_amount": 1,
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "blind_on_deck": "Big",
+          "blind": {
+            "chips": 0,
+            "debuff": {},
+            "disabled": false,
+            "mult": 0,
+            "name": "",
+            "prepped": true
+          },
+          "route_blinds": {
+            "Big": {
+              "ante": 1,
+              "boss": false,
+              "chips": 450,
+              "debuff": {},
+              "dollars": 4,
+              "key": "bl_big",
+              "label": "Big",
+              "mult": 1.5,
+              "name": "Big Blind",
+              "state": "Defeated"
+            },
+            "Boss": {
+              "ante": 1,
+              "boss": true,
+              "chips": 600,
+              "debuff": {},
+              "dollars": 5,
+              "key": "bl_pillar",
+              "label": "Boss",
+              "mult": 2,
+              "name": "The Pillar",
+              "state": "Upcoming"
+            },
+            "Small": {
+              "ante": 1,
+              "boss": false,
+              "chips": 300,
+              "debuff": {},
+              "dollars": 0,
+              "key": "bl_small",
+              "label": "Small",
+              "mult": 1,
+              "name": "Small Blind",
+              "state": "Skipped"
+            }
+          },
+          "jokers": [
+            {
+              "id": "card:2739",
+              "key": "j_perkeo",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Perkeo",
+                "order": 150,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:2740",
+              "key": "j_yorick",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra": {
+                  "discards": 23,
+                  "xmult": 1
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Yorick",
+                "order": 148,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1,
+                "yorick_discards": 16
+              }
+            },
+            {
+              "id": "card:2746",
+              "key": "j_mystic_summit",
+              "debuff": false,
+              "face_down": false,
+              "cost": 5,
+              "sell_cost": 2,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "No Discard Mult",
+                "extra": {
+                  "d_remaining": 0,
+                  "mult": 15
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 2,
+                "mult": 0,
+                "name": "Mystic Summit",
+                "order": 23,
+                "p_dollars": 0,
+                "perish_tally": 5,
+                "perishable": true,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            }
+          ],
+          "consumeables": [],
+          "hand_levels": {
+            "Five of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush Five": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush House": {
+              "level": 1,
+              "played": 0
+            },
+            "Four of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Full House": {
+              "level": 1,
+              "played": 1
+            },
+            "High Card": {
+              "level": 1,
+              "played": 0
+            },
+            "Pair": {
+              "level": 1,
+              "played": 0
+            },
+            "Straight": {
+              "level": 1,
+              "played": 1
+            },
+            "Straight Flush": {
+              "level": 1,
+              "played": 0
+            },
+            "Three of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Two Pair": {
+              "level": 1,
+              "played": 0
+            }
+          },
+          "deck_population": 52,
+          "composition": {
+            "rank": {
+              "2": 4,
+              "3": 4,
+              "4": 4,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "14": 4,
+              "11": 4,
+              "13": 4,
+              "12": 4,
+              "10": 4
+            },
+            "suit": {
+              "Clubs": 13,
+              "Diamonds": 13,
+              "Hearts": 13,
+              "Spades": 13
+            },
+            "enhancement": {
+              "None": 52
+            },
+            "seal": {
+              "None": 52
+            }
+          },
+          "editions": {
+            "null": 52
+          }
+        }
+      ],
+      "decisions": [
+        {
+          "sequence": 25106,
+          "run": 10,
+          "observation_id": "teacher356-1790620237-1:25100",
+          "advice_sequence": 25103,
+          "source": "auto_run",
+          "input": {
+            "action": {
+              "area": "shop_booster",
+              "index": 1,
+              "kind": "open"
+            }
+          },
+          "action": {
+            "area": "shop_booster",
+            "index": 1,
+            "kind": "open"
+          },
+          "observation_sequence": 25100,
+          "advice": {
+            "action": {
+              "area": "shop_booster",
+              "index": 1,
+              "kind": "open"
+            },
+            "copy_death_review": {
+              "acquisition": {
+                "attempted": false,
+                "complete": false,
+                "evaluations": 0,
+                "reason": "no_supported_copy_priority",
+                "schema": 1,
+                "truncated": false
+              },
+              "final_area": "shop_booster",
+              "final_index": 1,
+              "final_kind": "open",
+              "schema": 1
+            },
+            "gold_review": {
+              "retention_comparisons": 0,
+              "retention_complete": false,
+              "retention_evaluations": 0,
+              "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+              "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+              "schema": 1,
+              "shop_evaluations": 5276,
+              "shop_truncated": false,
+              "status": "current"
+            },
+            "lines": [
+              "Find a scoring Joker; the contents are unknown until opened.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+              "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+              "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+            ],
+            "reroll_review": {
+              "copy_source": {
+                "credited_slots": 1,
+                "schema": 1,
+                "scoring_claim": false,
+                "status": "out_of_scope"
+              },
+              "credited_slots": 1,
+              "schema": 1,
+              "scoring_claim": false,
+              "selected_action": "open",
+              "status": "out_of_scope"
+            },
+            "status": "current",
+            "timing": {
+              "action_kind": "open",
+              "active_seconds": 0.27076080000188085,
+              "decision_id": 4342,
+              "elapsed_seconds": 0.49178429999983564,
+              "evaluations": 5276,
+              "finished_seconds": 2813.0399697,
+              "max_resume_seconds": 0.05068230000006224,
+              "phase": "shop",
+              "resume_calls": 83,
+              "started_seconds": 2812.5481854,
+              "status": "completed"
+            },
+            "title": "Open Buffoon Pack ($4)"
+          },
+          "selected_card": {
+            "id": "card:2744",
+            "key": "p_buffoon_normal_1",
+            "debuff": false,
+            "face_down": false,
+            "cost": 4,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "booster_pos": 1,
+              "d_size": 0,
+              "extra": 2,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Buffoon Pack",
+              "order": 25,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Booster",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          "before": {
+            "phase": "shop",
+            "ante": 1,
+            "round": 1,
+            "dollars": 10,
+            "chips": 0,
+            "hands_left": 4,
+            "discards_left": 3,
+            "hands_played": 2,
+            "discards_used": 3,
+            "hand_size": 8,
+            "joker_limit": 5,
+            "consumable_limit": 2,
+            "rental_rate": 3,
+            "bankrupt_at": 0,
+            "reroll_cost": 5,
+            "interest_amount": 1,
+            "round_bonus": {
+              "discards": 0,
+              "next_hands": 0
+            },
+            "blind_on_deck": "Big",
+            "blind": {
+              "chips": 0,
+              "debuff": {},
+              "disabled": false,
+              "mult": 0,
+              "name": "",
+              "prepped": true
+            },
+            "route_blinds": {
+              "Big": {
+                "ante": 1,
+                "boss": false,
+                "chips": 450,
+                "debuff": {},
+                "dollars": 4,
+                "key": "bl_big",
+                "label": "Big",
+                "mult": 1.5,
+                "name": "Big Blind",
+                "state": "Defeated"
+              },
+              "Boss": {
+                "ante": 1,
+                "boss": true,
+                "chips": 600,
+                "debuff": {},
+                "dollars": 5,
+                "key": "bl_pillar",
+                "label": "Boss",
+                "mult": 2,
+                "name": "The Pillar",
+                "state": "Upcoming"
+              },
+              "Small": {
+                "ante": 1,
+                "boss": false,
+                "chips": 300,
+                "debuff": {},
+                "dollars": 0,
+                "key": "bl_small",
+                "label": "Small",
+                "mult": 1,
+                "name": "Small Blind",
+                "state": "Skipped"
+              }
+            },
+            "jokers": [
+              {
+                "id": "card:2739",
+                "key": "j_perkeo",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Perkeo",
+                  "order": 150,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1
+                }
+              },
+              {
+                "id": "card:2740",
+                "key": "j_yorick",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra": {
+                    "discards": 23,
+                    "xmult": 1
+                  },
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Yorick",
+                  "order": 148,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1,
+                  "yorick_discards": 16
+                }
+              }
+            ],
+            "consumeables": [],
+            "hand_levels": {
+              "Five of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush Five": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush House": {
+                "level": 1,
+                "played": 0
+              },
+              "Four of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Full House": {
+                "level": 1,
+                "played": 1
+              },
+              "High Card": {
+                "level": 1,
+                "played": 0
+              },
+              "Pair": {
+                "level": 1,
+                "played": 0
+              },
+              "Straight": {
+                "level": 1,
+                "played": 1
+              },
+              "Straight Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Three of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Two Pair": {
+                "level": 1,
+                "played": 0
+              }
+            },
+            "deck_population": 52,
+            "composition": {
+              "rank": {
+                "2": 4,
+                "3": 4,
+                "4": 4,
+                "5": 4,
+                "6": 4,
+                "7": 4,
+                "8": 4,
+                "9": 4,
+                "14": 4,
+                "11": 4,
+                "13": 4,
+                "12": 4,
+                "10": 4
+              },
+              "suit": {
+                "Clubs": 13,
+                "Diamonds": 13,
+                "Hearts": 13,
+                "Spades": 13
+              },
+              "enhancement": {
+                "None": 52
+              },
+              "seal": {
+                "None": 52
+              }
+            },
+            "editions": {
+              "null": 52
+            }
+          },
+          "callback": {
+            "sequence": 25107,
+            "details": {
+              "action_sequence": 25106,
+              "callback_returned": true,
+              "completion": "Callback result only; queued effects may still be pending.",
+              "outcome_kind": "returned",
+              "reason": ""
+            }
+          },
+          "settlement": {
+            "sequence": 25113,
+            "observation_id": "teacher356-1790620237-1:25111",
+            "details": {
+              "action_sequences": [
+                25106
+              ],
+              "latest_action_sequence": 25106,
+              "observation": "First settled observation after callbacks; not proof every queued event completed."
+            }
+          },
+          "after": {
+            "phase": "pack",
+            "ante": 1,
+            "round": 1,
+            "dollars": 6,
+            "chips": 0,
+            "hands_left": 4,
+            "discards_left": 3,
+            "hands_played": 2,
+            "discards_used": 3,
+            "hand_size": 8,
+            "joker_limit": 5,
+            "consumable_limit": 2,
+            "rental_rate": 3,
+            "bankrupt_at": 0,
+            "reroll_cost": 5,
+            "interest_amount": 1,
+            "round_bonus": {
+              "discards": 0,
+              "next_hands": 0
+            },
+            "blind_on_deck": "Big",
+            "blind": {
+              "chips": 0,
+              "debuff": {},
+              "disabled": false,
+              "mult": 0,
+              "name": "",
+              "prepped": true
+            },
+            "route_blinds": {
+              "Big": {
+                "ante": 1,
+                "boss": false,
+                "chips": 450,
+                "debuff": {},
+                "dollars": 4,
+                "key": "bl_big",
+                "label": "Big",
+                "mult": 1.5,
+                "name": "Big Blind",
+                "state": "Defeated"
+              },
+              "Boss": {
+                "ante": 1,
+                "boss": true,
+                "chips": 600,
+                "debuff": {},
+                "dollars": 5,
+                "key": "bl_pillar",
+                "label": "Boss",
+                "mult": 2,
+                "name": "The Pillar",
+                "state": "Upcoming"
+              },
+              "Small": {
+                "ante": 1,
+                "boss": false,
+                "chips": 300,
+                "debuff": {},
+                "dollars": 0,
+                "key": "bl_small",
+                "label": "Small",
+                "mult": 1,
+                "name": "Small Blind",
+                "state": "Skipped"
+              }
+            },
+            "jokers": [
+              {
+                "id": "card:2739",
+                "key": "j_perkeo",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Perkeo",
+                  "order": 150,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1
+                }
+              },
+              {
+                "id": "card:2740",
+                "key": "j_yorick",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra": {
+                    "discards": 23,
+                    "xmult": 1
+                  },
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Yorick",
+                  "order": 148,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1,
+                  "yorick_discards": 16
+                }
+              }
+            ],
+            "consumeables": [],
+            "hand_levels": {
+              "Five of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush Five": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush House": {
+                "level": 1,
+                "played": 0
+              },
+              "Four of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Full House": {
+                "level": 1,
+                "played": 1
+              },
+              "High Card": {
+                "level": 1,
+                "played": 0
+              },
+              "Pair": {
+                "level": 1,
+                "played": 0
+              },
+              "Straight": {
+                "level": 1,
+                "played": 1
+              },
+              "Straight Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Three of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Two Pair": {
+                "level": 1,
+                "played": 0
+              }
+            },
+            "deck_population": 52,
+            "composition": {
+              "rank": {
+                "2": 4,
+                "3": 4,
+                "4": 4,
+                "5": 4,
+                "6": 4,
+                "7": 4,
+                "8": 4,
+                "9": 4,
+                "14": 4,
+                "11": 4,
+                "13": 4,
+                "12": 4,
+                "10": 4
+              },
+              "suit": {
+                "Clubs": 13,
+                "Diamonds": 13,
+                "Hearts": 13,
+                "Spades": 13
+              },
+              "enhancement": {
+                "None": 52
+              },
+              "seal": {
+                "None": 52
+              }
+            },
+            "editions": {
+              "null": 52
+            }
+          }
+        },
+        {
+          "sequence": 25129,
+          "run": 10,
+          "observation_id": "teacher356-1790620237-1:25121",
+          "advice_sequence": 25126,
+          "source": "auto_run",
+          "input": {
+            "action": {
+              "kind": "leave_shop"
+            }
+          },
+          "action": {
+            "kind": "leave_shop"
+          },
+          "observation_sequence": 25121,
+          "advice": {
+            "action": {
+              "kind": "leave_shop"
+            },
+            "copy_death_review": {
+              "acquisition": {
+                "attempted": true,
+                "complete": true,
+                "evaluations": 5860,
+                "reason": "no_supported_copy_priority",
+                "schema": 1,
+                "truncated": false
+              },
+              "final_kind": "leave_shop",
+              "focused_direct": {
+                "candidates": [
+                  {
+                    "compared": false,
+                    "cost": 10,
+                    "key": "j_blueprint",
+                    "offer_id": "card:2741",
+                    "offer_index": 1,
+                    "reason": "unaffordable"
+                  }
+                ],
+                "complete": true,
+                "evaluations": 0,
+                "schema": 1,
+                "stage": "focused_direct"
+              },
+              "focused_replacements": {
+                "candidates": [
+                  {
+                    "compared": false,
+                    "key": "j_hanging_chad",
+                    "offer_id": "card:2742",
+                    "offer_index": 2,
+                    "reason": "sale_not_needed",
+                    "sale_id": "card:2739",
+                    "sale_index": 1
+                  },
+                  {
+                    "admitted": false,
+                    "common_worlds": true,
+                    "compared": true,
+                    "family_id": "replacement:1:1",
+                    "key": "j_blueprint",
+                    "offer_id": "card:2741",
+                    "offer_index": 1,
+                    "purchase_rating": 24,
+                    "ratio": 1,
+                    "reason": "temporary_core_bridge_guard",
+                    "sale_id": "card:2739",
+                    "sale_index": 1,
+                    "samples": 4,
+                    "score_kind": "sampled_opening_comparison"
+                  },
+                  {
+                    "compared": false,
+                    "key": "j_blueprint",
+                    "offer_id": "card:2741",
+                    "offer_index": 1,
+                    "reason": "unsupported_sale",
+                    "sale_id": "card:2740",
+                    "sale_index": 2
+                  },
+                  {
+                    "compared": false,
+                    "key": "j_hanging_chad",
+                    "offer_id": "card:2742",
+                    "offer_index": 2,
+                    "reason": "unsupported_sale",
+                    "sale_id": "card:2740",
+                    "sale_index": 2
+                  },
+                  {
+                    "compared": false,
+                    "key": "j_blueprint",
+                    "offer_id": "card:2741",
+                    "offer_index": 1,
+                    "reason": "unaffordable_after_sale",
+                    "sale_id": "card:2746",
+                    "sale_index": 3
+                  },
+                  {
+                    "compared": false,
+                    "key": "j_hanging_chad",
+                    "offer_id": "card:2742",
+                    "offer_index": 2,
+                    "reason": "sale_not_needed",
+                    "sale_id": "card:2746",
+                    "sale_index": 3
+                  }
+                ],
+                "complete": true,
+                "evaluations": 5860,
+                "evaluations_before": 0,
+                "reason": "hold_or_ordinary_purchase_preferred",
+                "schema": 1,
+                "scope": "Visible one-sale one-buy endpoints; held inventory unchanged."
+              },
+              "schema": 1
+            },
+            "gold_review": {
+              "retention_comparisons": 0,
+              "retention_complete": false,
+              "retention_evaluations": 0,
+              "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+              "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+              "schema": 1,
+              "shop_evaluations": 31906,
+              "shop_truncated": false,
+              "status": "current"
+            },
+            "late_spend_review": {
+              "cash": 6,
+              "cost": 5,
+              "floor": 0,
+              "mode": "late_cash_spending_preference",
+              "reserve": 0,
+              "schema": 1,
+              "scoring_claim": false,
+              "status": "no_affordable_spend_above_buffer",
+              "target": 50
+            },
+            "lines": [
+              "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+              "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+              "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+            ],
+            "phase_copy_review": {
+              "aggregate_limit": 50000,
+              "complete": false,
+              "final_action_kind": "leave_shop",
+              "reason": "No active copying Joker.",
+              "schema": 1,
+              "scope": "shop_perkeo",
+              "score_calls": 0,
+              "selected": false
+            },
+            "replacement_review": {
+              "candidates": [
+                {
+                  "admitted": false,
+                  "common_worlds": true,
+                  "compared": true,
+                  "family_id": "replacement:1:1",
+                  "key": "j_blueprint",
+                  "offer_id": "card:2741",
+                  "offer_index": 1,
+                  "purchase_rating": 24,
+                  "ratio": 1,
+                  "reason": "temporary_core_bridge_guard",
+                  "sale_id": "card:2739",
+                  "sale_index": 1,
+                  "samples": 4,
+                  "score_kind": "sampled_opening_comparison"
+                },
+                {
+                  "admitted": false,
+                  "common_worlds": true,
+                  "compared": true,
+                  "family_id": "replacement:1:2",
+                  "key": "j_hanging_chad",
+                  "offer_id": "card:2742",
+                  "offer_index": 2,
+                  "purchase_rating": 22.572776629214534,
+                  "ratio": 1.3360655737704918,
+                  "reason": "last_durable_engine_guard",
+                  "sale_id": "card:2739",
+                  "sale_index": 1,
+                  "samples": 4,
+                  "score_kind": "sampled_opening_comparison"
+                },
+                {
+                  "admitted": false,
+                  "common_worlds": true,
+                  "compared": true,
+                  "family_id": "replacement:2:1",
+                  "key": "j_blueprint",
+                  "offer_id": "card:2741",
+                  "offer_index": 1,
+                  "purchase_rating": 24,
+                  "ratio": 1,
+                  "reason": "temporary_core_bridge_guard",
+                  "sale_id": "card:2740",
+                  "sale_index": 2,
+                  "samples": 4,
+                  "score_kind": "sampled_opening_comparison"
+                },
+                {
+                  "admitted": false,
+                  "common_worlds": true,
+                  "compared": true,
+                  "family_id": "replacement:2:2",
+                  "key": "j_hanging_chad",
+                  "offer_id": "card:2742",
+                  "offer_index": 2,
+                  "purchase_rating": 22.572776629214534,
+                  "ratio": 1.3360655737704918,
+                  "reason": "last_durable_engine_guard",
+                  "sale_id": "card:2740",
+                  "sale_index": 2,
+                  "samples": 4,
+                  "score_kind": "sampled_opening_comparison"
+                },
+                {
+                  "compared": false,
+                  "key": "j_blueprint",
+                  "offer_id": "card:2741",
+                  "offer_index": 1,
+                  "reason": "unaffordable_after_sale",
+                  "sale_id": "card:2746",
+                  "sale_index": 3
+                },
+                {
+                  "admitted": false,
+                  "common_worlds": true,
+                  "compared": true,
+                  "family_id": "replacement:3:2",
+                  "key": "j_hanging_chad",
+                  "offer_id": "card:2742",
+                  "offer_index": 2,
+                  "purchase_rating": 33.22650403471492,
+                  "ratio": 1.3360655737704918,
+                  "reason": "teacher_early_economy_guard",
+                  "sale_id": "card:2746",
+                  "sale_index": 3,
+                  "samples": 4,
+                  "score_kind": "sampled_opening_comparison"
+                }
+              ],
+              "complete": true,
+              "evaluations": 12828,
+              "evaluations_before": 4090,
+              "final_action_kind": "leave_shop",
+              "reason": "hold_or_ordinary_purchase_preferred",
+              "schema": 1,
+              "scope": "Visible one-sale one-buy endpoints; held inventory unchanged."
+            },
+            "reroll_review": {
+              "copy_source": {
+                "credited_slots": 1,
+                "schema": 1,
+                "scoring_claim": false,
+                "status": "out_of_scope"
+              },
+              "development": {
+                "mode": "durable_engine_development",
+                "schema": 1,
+                "status": "baseline_not_sampled_safe"
+              },
+              "mode": "durable_engine_development",
+              "schema": 1,
+              "selected_action": "leave_shop",
+              "status": "baseline_not_sampled_safe",
+              "surplus": {
+                "cash": 6,
+                "cash_after": 1,
+                "cost": 5,
+                "cost_cap": 12,
+                "credited_slots": 1,
+                "interest_floor": 25,
+                "late_surplus": false,
+                "mode": "surplus_catalog_opportunity",
+                "purchase_floor": 25,
+                "required_after": 37,
+                "schema": 2,
+                "scoring_claim": false,
+                "status": "cash_floor",
+                "survival_reserve": 0
+              }
+            },
+            "shop_sequence_review": {
+              "continuation": {},
+              "evidence": {
+                "adjustment": 0,
+                "after_mean": 122,
+                "before_mean": 122,
+                "ratio": 1
+              },
+              "final_action": {
+                "kind": "leave_shop"
+              },
+              "plan": {
+                "cash_after": 6,
+                "complete": true,
+                "utility": 0
+              },
+              "schema": 1,
+              "steps": {}
+            },
+            "status": "current",
+            "title": "Leave the shop and save your money"
+          },
+          "selected_card": {},
+          "before": {
+            "phase": "shop",
+            "ante": 1,
+            "round": 1,
+            "dollars": 6,
+            "chips": 0,
+            "hands_left": 4,
+            "discards_left": 3,
+            "hands_played": 2,
+            "discards_used": 3,
+            "hand_size": 8,
+            "joker_limit": 5,
+            "consumable_limit": 2,
+            "rental_rate": 3,
+            "bankrupt_at": 0,
+            "reroll_cost": 5,
+            "interest_amount": 1,
+            "round_bonus": {
+              "discards": 0,
+              "next_hands": 0
+            },
+            "blind_on_deck": "Big",
+            "blind": {
+              "chips": 0,
+              "debuff": {},
+              "disabled": false,
+              "mult": 0,
+              "name": "",
+              "prepped": true
+            },
+            "route_blinds": {
+              "Big": {
+                "ante": 1,
+                "boss": false,
+                "chips": 450,
+                "debuff": {},
+                "dollars": 4,
+                "key": "bl_big",
+                "label": "Big",
+                "mult": 1.5,
+                "name": "Big Blind",
+                "state": "Defeated"
+              },
+              "Boss": {
+                "ante": 1,
+                "boss": true,
+                "chips": 600,
+                "debuff": {},
+                "dollars": 5,
+                "key": "bl_pillar",
+                "label": "Boss",
+                "mult": 2,
+                "name": "The Pillar",
+                "state": "Upcoming"
+              },
+              "Small": {
+                "ante": 1,
+                "boss": false,
+                "chips": 300,
+                "debuff": {},
+                "dollars": 0,
+                "key": "bl_small",
+                "label": "Small",
+                "mult": 1,
+                "name": "Small Blind",
+                "state": "Skipped"
+              }
+            },
+            "jokers": [
+              {
+                "id": "card:2739",
+                "key": "j_perkeo",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Perkeo",
+                  "order": 150,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1
+                }
+              },
+              {
+                "id": "card:2740",
+                "key": "j_yorick",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra": {
+                    "discards": 23,
+                    "xmult": 1
+                  },
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Yorick",
+                  "order": 148,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1,
+                  "yorick_discards": 16
+                }
+              },
+              {
+                "id": "card:2746",
+                "key": "j_mystic_summit",
+                "debuff": false,
+                "face_down": false,
+                "cost": 5,
+                "sell_cost": 2,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "No Discard Mult",
+                  "extra": {
+                    "d_remaining": 0,
+                    "mult": 15
+                  },
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 2,
+                  "mult": 0,
+                  "name": "Mystic Summit",
+                  "order": 23,
+                  "p_dollars": 0,
+                  "perish_tally": 5,
+                  "perishable": true,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1
+                }
+              }
+            ],
+            "consumeables": [],
+            "hand_levels": {
+              "Five of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush Five": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush House": {
+                "level": 1,
+                "played": 0
+              },
+              "Four of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Full House": {
+                "level": 1,
+                "played": 1
+              },
+              "High Card": {
+                "level": 1,
+                "played": 0
+              },
+              "Pair": {
+                "level": 1,
+                "played": 0
+              },
+              "Straight": {
+                "level": 1,
+                "played": 1
+              },
+              "Straight Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Three of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Two Pair": {
+                "level": 1,
+                "played": 0
+              }
+            },
+            "deck_population": 52,
+            "composition": {
+              "rank": {
+                "2": 4,
+                "3": 4,
+                "4": 4,
+                "5": 4,
+                "6": 4,
+                "7": 4,
+                "8": 4,
+                "9": 4,
+                "14": 4,
+                "11": 4,
+                "13": 4,
+                "12": 4,
+                "10": 4
+              },
+              "suit": {
+                "Clubs": 13,
+                "Diamonds": 13,
+                "Hearts": 13,
+                "Spades": 13
+              },
+              "enhancement": {
+                "None": 52
+              },
+              "seal": {
+                "None": 52
+              }
+            },
+            "editions": {
+              "null": 52
+            }
+          },
+          "callback": {
+            "sequence": 25130,
+            "details": {
+              "action_sequence": 25129,
+              "callback_returned": true,
+              "completion": "Callback result only; queued effects may still be pending.",
+              "outcome_kind": "returned",
+              "reason": ""
+            }
+          },
+          "settlement": {
+            "sequence": 25135,
+            "observation_id": "teacher356-1790620237-1:25133",
+            "details": {
+              "action_sequences": [
+                25129
+              ],
+              "latest_action_sequence": 25129,
+              "observation": "First settled observation after callbacks; not proof every queued event completed."
+            }
+          },
+          "after": {
+            "phase": "blind",
+            "ante": 1,
+            "round": 1,
+            "dollars": 6,
+            "chips": 0,
+            "hands_left": 4,
+            "discards_left": 3,
+            "hands_played": 2,
+            "discards_used": 3,
+            "hand_size": 8,
+            "joker_limit": 5,
+            "consumable_limit": 2,
+            "rental_rate": 3,
+            "bankrupt_at": 0,
+            "reroll_cost": 5,
+            "interest_amount": 1,
+            "round_bonus": {
+              "discards": 0,
+              "next_hands": 0
+            },
+            "blind_on_deck": "Boss",
+            "blind": {
+              "chips": 0,
+              "debuff": {},
+              "disabled": false,
+              "mult": 0,
+              "name": "",
+              "prepped": true
+            },
+            "route_blinds": {
+              "Big": {
+                "ante": 1,
+                "boss": false,
+                "chips": 450,
+                "debuff": {},
+                "dollars": 4,
+                "key": "bl_big",
+                "label": "Big",
+                "mult": 1.5,
+                "name": "Big Blind",
+                "state": "Defeated"
+              },
+              "Boss": {
+                "ante": 1,
+                "boss": true,
+                "chips": 600,
+                "debuff": {},
+                "dollars": 5,
+                "key": "bl_pillar",
+                "label": "Boss",
+                "mult": 2,
+                "name": "The Pillar",
+                "state": "Select"
+              },
+              "Small": {
+                "ante": 1,
+                "boss": false,
+                "chips": 300,
+                "debuff": {},
+                "dollars": 0,
+                "key": "bl_small",
+                "label": "Small",
+                "mult": 1,
+                "name": "Small Blind",
+                "state": "Skipped"
+              }
+            },
+            "jokers": [
+              {
+                "id": "card:2739",
+                "key": "j_perkeo",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Perkeo",
+                  "order": 150,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1
+                }
+              },
+              {
+                "id": "card:2740",
+                "key": "j_yorick",
+                "debuff": false,
+                "face_down": false,
+                "cost": 20,
+                "sell_cost": 10,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "",
+                  "extra": {
+                    "discards": 23,
+                    "xmult": 1
+                  },
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 0,
+                  "mult": 0,
+                  "name": "Yorick",
+                  "order": 148,
+                  "p_dollars": 0,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1,
+                  "yorick_discards": 16
+                }
+              },
+              {
+                "id": "card:2746",
+                "key": "j_mystic_summit",
+                "debuff": false,
+                "face_down": false,
+                "cost": 5,
+                "sell_cost": 2,
+                "blueprint_compat": true,
+                "ability": {
+                  "bonus": 0,
+                  "d_size": 0,
+                  "effect": "No Discard Mult",
+                  "extra": {
+                    "d_remaining": 0,
+                    "mult": 15
+                  },
+                  "extra_value": 0,
+                  "h_dollars": 0,
+                  "h_mult": 0,
+                  "h_size": 0,
+                  "h_x_mult": 0,
+                  "hands_played_at_create": 2,
+                  "mult": 0,
+                  "name": "Mystic Summit",
+                  "order": 23,
+                  "p_dollars": 0,
+                  "perish_tally": 5,
+                  "perishable": true,
+                  "perma_bonus": 0,
+                  "set": "Joker",
+                  "t_chips": 0,
+                  "t_mult": 0,
+                  "type": "",
+                  "x_mult": 1
+                }
+              }
+            ],
+            "consumeables": [],
+            "hand_levels": {
+              "Five of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush Five": {
+                "level": 1,
+                "played": 0
+              },
+              "Flush House": {
+                "level": 1,
+                "played": 0
+              },
+              "Four of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Full House": {
+                "level": 1,
+                "played": 1
+              },
+              "High Card": {
+                "level": 1,
+                "played": 0
+              },
+              "Pair": {
+                "level": 1,
+                "played": 0
+              },
+              "Straight": {
+                "level": 1,
+                "played": 1
+              },
+              "Straight Flush": {
+                "level": 1,
+                "played": 0
+              },
+              "Three of a Kind": {
+                "level": 1,
+                "played": 0
+              },
+              "Two Pair": {
+                "level": 1,
+                "played": 0
+              }
+            },
+            "deck_population": 52,
+            "composition": {
+              "rank": {
+                "2": 4,
+                "3": 4,
+                "4": 4,
+                "5": 4,
+                "6": 4,
+                "7": 4,
+                "8": 4,
+                "9": 4,
+                "14": 4,
+                "11": 4,
+                "13": 4,
+                "12": 4,
+                "10": 4
+              },
+              "suit": {
+                "Clubs": 13,
+                "Diamonds": 13,
+                "Hearts": 13,
+                "Spades": 13
+              },
+              "enhancement": {
+                "None": 52
+              },
+              "seal": {
+                "None": 52
+              }
+            },
+            "editions": {
+              "null": 52
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "source_gate": "strategy.lua useful_copy_target: Yorick x_mult>1 or Perkeo with consumables or supported compatible scoring target",
+  "conclusion": "Focused acquisition/protection did not engage; survival-qualified future-value alternative remains open"
+}

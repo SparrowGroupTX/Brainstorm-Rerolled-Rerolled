@@ -1,0 +1,1560 @@
+{
+  "T02": {
+    "learned": {
+      "opening_sales_count_distribution": {
+        "0": 986,
+        "1": 1115,
+        "2": 4884,
+        "3": 1
+      },
+      "opening_sold_target_ids": {
+        "223": 5207,
+        "170": 5678,
+        "203": 1
+      },
+      "first_blind_discard_actions": {
+        "3": 1018,
+        "0": 3948,
+        "2": 695,
+        "1": 1325
+      },
+      "first_blind_discarded_cards": {
+        "14": 31,
+        "15": 62,
+        "0": 3948,
+        "9": 165,
+        "5": 245,
+        "10": 148,
+        "4": 686,
+        "13": 72,
+        "8": 260,
+        "12": 202,
+        "11": 92,
+        "7": 178,
+        "1": 245,
+        "6": 149,
+        "2": 220,
+        "3": 283
+      },
+      "first_blind_loss_discard_actions": {
+        "3": 620,
+        "2": 278,
+        "0": 1746,
+        "1": 519
+      },
+      "voucher_costs": {
+        "10.0": 4311,
+        "7.0": 69,
+        "5.0": 1
+      },
+      "voucher_ids": {
+        "284": 264,
+        "276": 289,
+        "274": 280,
+        "295": 276,
+        "279": 276,
+        "275": 295,
+        "270": 267,
+        "298": 268,
+        "269": 248,
+        "272": 271,
+        "296": 282,
+        "280": 3,
+        "286": 187,
+        "271": 272,
+        "289": 278,
+        "299": 264,
+        "293": 293,
+        "278": 5,
+        "283": 4,
+        "288": 15,
+        "282": 2,
+        "281": 10,
+        "294": 5,
+        "290": 4,
+        "297": 5,
+        "292": 1,
+        "273": 4,
+        "268": 4,
+        "291": 4,
+        "277": 2,
+        "287": 2,
+        "285": 1
+      },
+      "examples": [],
+      "windows": [
+        {
+          "first": 0,
+          "episodes": 1000,
+          "both_initial_sold": 517,
+          "no_discard_episode": 280
+        },
+        {
+          "first": 1000,
+          "episodes": 1000,
+          "both_initial_sold": 635,
+          "no_discard_episode": 852
+        },
+        {
+          "first": 2000,
+          "episodes": 1000,
+          "both_initial_sold": 667,
+          "no_discard_episode": 489
+        },
+        {
+          "first": 3000,
+          "episodes": 1000,
+          "both_initial_sold": 449,
+          "no_discard_episode": 415
+        },
+        {
+          "first": 4000,
+          "episodes": 1000,
+          "both_initial_sold": 746,
+          "no_discard_episode": 179
+        },
+        {
+          "first": 5000,
+          "episodes": 1000,
+          "both_initial_sold": 929,
+          "no_discard_episode": 295
+        },
+        {
+          "first": 6000,
+          "episodes": 986,
+          "both_initial_sold": 941,
+          "no_discard_episode": 302
+        }
+      ]
+    }
+  },
+  "V02": {
+    "heuristic": {
+      "opening_sales_count_distribution": {
+        "0": 32
+      },
+      "opening_sold_target_ids": {},
+      "first_blind_discard_actions": {
+        "0": 10,
+        "3": 7,
+        "2": 7,
+        "1": 8
+      },
+      "first_blind_discarded_cards": {
+        "0": 10,
+        "13": 1,
+        "10": 4,
+        "5": 7,
+        "4": 1,
+        "15": 2,
+        "12": 3,
+        "8": 2,
+        "14": 1,
+        "9": 1
+      },
+      "first_blind_loss_discard_actions": {
+        "3": 2
+      },
+      "voucher_costs": {},
+      "voucher_ids": {},
+      "examples": [],
+      "windows": [
+        {
+          "first": 0,
+          "episodes": 32,
+          "both_initial_sold": 0,
+          "no_discard_episode": 0
+        }
+      ]
+    },
+    "learned": {
+      "opening_sales_count_distribution": {
+        "2": 32
+      },
+      "opening_sold_target_ids": {
+        "223": 32,
+        "170": 32
+      },
+      "first_blind_discard_actions": {
+        "0": 23,
+        "3": 2,
+        "1": 6,
+        "2": 1
+      },
+      "first_blind_discarded_cards": {
+        "0": 23,
+        "3": 3,
+        "2": 2,
+        "4": 2,
+        "1": 2
+      },
+      "first_blind_loss_discard_actions": {
+        "0": 6,
+        "3": 2,
+        "1": 1,
+        "2": 1
+      },
+      "voucher_costs": {
+        "10.0": 36,
+        "7.0": 1
+      },
+      "voucher_ids": {
+        "271": 5,
+        "289": 5,
+        "286": 2,
+        "272": 3,
+        "279": 2,
+        "284": 2,
+        "274": 2,
+        "298": 3,
+        "275": 2,
+        "270": 1,
+        "276": 1,
+        "295": 3,
+        "296": 2,
+        "269": 1,
+        "293": 3
+      },
+      "examples": [
+        {
+          "episode": 3,
+          "seed": "DBCFA5E4",
+          "outcome": "loss",
+          "clears": 0,
+          "actions": [
+            {
+              "step": 1,
+              "candidate_kind": 9,
+              "target_catalog_id": 223,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 2,
+              "candidate_kind": 9,
+              "target_catalog_id": 170,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 3,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 4,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.015625,
+                0.0234375,
+                0.0390625,
+                0.046875,
+                0.0
+              ],
+              "base_score_feature": 4.762174129486084,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 5,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0390625,
+                0.046875,
+                0.0546875,
+                0.0625
+              ],
+              "base_score_feature": 5.398162841796875,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 6,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.046875,
+                0.0546875,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 3.8066625595092773,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 7,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.03125,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 4.110873699188232,
+              "blinds_cleared": 0,
+              "outcome": "loss"
+            }
+          ]
+        },
+        {
+          "episode": 1,
+          "seed": "DA6F943C",
+          "outcome": "loss",
+          "clears": 0,
+          "actions": [
+            {
+              "step": 1,
+              "candidate_kind": 9,
+              "target_catalog_id": 223,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 2,
+              "candidate_kind": 9,
+              "target_catalog_id": 170,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 3,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 4,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0390625,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.70805025100708,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 5,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.03125,
+                0.0390625,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 4.110873699188232,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 6,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.015625,
+                0.0234375,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 4.110873699188232,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 7,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.03125,
+                0.0390625,
+                0.0546875,
+                0.0625
+              ],
+              "base_score_feature": 5.5947113037109375,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 8,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.046875,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.397895336151123,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 9,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.046875,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.4849066734313965,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 10,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0390625,
+                0.046875,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 3.891820192337036,
+              "blinds_cleared": 0,
+              "outcome": "loss"
+            }
+          ]
+        },
+        {
+          "episode": 11,
+          "seed": "D6D34C83",
+          "outcome": "censored",
+          "clears": 3,
+          "actions": [
+            {
+              "step": 1,
+              "candidate_kind": 9,
+              "target_catalog_id": 223,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 2,
+              "candidate_kind": 9,
+              "target_catalog_id": 170,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 3,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 4,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.015625,
+                0.0234375,
+                0.03125,
+                0.0390625,
+                0.0
+              ],
+              "base_score_feature": 4.762174129486084,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 5,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.046875,
+                0.0546875,
+                0.0625,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 3.4965076446533203,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 6,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.015625,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 4.174387454986572,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 7,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0234375,
+                0.03125,
+                0.0390625,
+                0.046875
+              ],
+              "base_score_feature": 5.80814266204834,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 8,
+              "candidate_kind": 4,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 9,
+              "candidate_kind": 12,
+              "target_catalog_id": 272,
+              "target_cost_log": 2.397895336151123,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 10,
+              "candidate_kind": 8,
+              "target_catalog_id": 149,
+              "target_cost_log": 1.7917594909667969,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 11,
+              "candidate_kind": 6,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 12,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 13,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.03125,
+                0.0390625,
+                0.046875,
+                0.0546875
+              ],
+              "base_score_feature": 5.609471797943115,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 14,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.03125,
+                0.0390625,
+                0.046875,
+                0.0
+              ],
+              "base_score_feature": 4.795790672302246,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 15,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0234375,
+                0.03125,
+                0.0390625,
+                0.046875
+              ],
+              "base_score_feature": 5.79605770111084,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 16,
+              "candidate_kind": 4,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 17,
+              "candidate_kind": 12,
+              "target_catalog_id": 293,
+              "target_cost_log": 2.397895336151123,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 18,
+              "candidate_kind": 8,
+              "target_catalog_id": 129,
+              "target_cost_log": 1.945910096168518,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 19,
+              "candidate_kind": 8,
+              "target_catalog_id": 121,
+              "target_cost_log": 1.6094379425048828,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 20,
+              "candidate_kind": 6,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 21,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 22,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.03125,
+                0.0390625,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 3.97029185295105,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 23,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.03125,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 4.043051242828369,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 24,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0390625,
+                0.046875,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 3.8066625595092773,
+              "blinds_cleared": 3,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 25,
+              "candidate_kind": 4,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 3,
+              "outcome": "ongoing"
+            }
+          ]
+        },
+        {
+          "episode": 59,
+          "seed": "D00202AA",
+          "outcome": "censored",
+          "clears": 2,
+          "actions": [
+            {
+              "step": 1,
+              "candidate_kind": 9,
+              "target_catalog_id": 223,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 2,
+              "candidate_kind": 9,
+              "target_catalog_id": 170,
+              "target_cost_log": 3.044522523880005,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 3,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 4,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.03125,
+                0.046875,
+                0.0546875,
+                0.0625
+              ],
+              "base_score_feature": 5.48479700088501,
+              "blinds_cleared": 0,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 5,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.03125,
+                0.046875,
+                0.0546875,
+                0.0625
+              ],
+              "base_score_feature": 5.746203422546387,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 6,
+              "candidate_kind": 4,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 7,
+              "candidate_kind": 12,
+              "target_catalog_id": 274,
+              "target_cost_log": 2.397895336151123,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 8,
+              "candidate_kind": 8,
+              "target_catalog_id": 187,
+              "target_cost_log": 1.945910096168518,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 9,
+              "candidate_kind": 6,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 10,
+              "candidate_kind": 2,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 11,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.015625,
+                0.03125,
+                0.0390625,
+                0.046875
+              ],
+              "base_score_feature": 5.758901596069336,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 12,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0234375,
+                0.046875,
+                0.0546875,
+                0.0625,
+                0.0
+              ],
+              "base_score_feature": 2.6390573978424072,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 13,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0390625,
+                0.046875,
+                0.0546875,
+                0.0625
+              ],
+              "base_score_feature": 5.549076080322266,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 14,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.015625,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.7725887298583984,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 15,
+              "candidate_kind": 1,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.8332133293151855,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 16,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.8332133293151855,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 17,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 2.7725887298583984,
+              "blinds_cleared": 1,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 18,
+              "candidate_kind": 0,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0078125,
+                0.015625,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 4.110873699188232,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 19,
+              "candidate_kind": 4,
+              "target_catalog_id": 0,
+              "target_cost_log": 0.0,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 20,
+              "candidate_kind": 8,
+              "target_catalog_id": 107,
+              "target_cost_log": 1.6094379425048828,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 21,
+              "candidate_kind": 8,
+              "target_catalog_id": 153,
+              "target_cost_log": 1.6094379425048828,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 22,
+              "candidate_kind": 12,
+              "target_catalog_id": 272,
+              "target_cost_log": 2.397895336151123,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 23,
+              "candidate_kind": 15,
+              "target_catalog_id": 107,
+              "target_cost_log": 1.6094379425048828,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 24,
+              "candidate_kind": 15,
+              "target_catalog_id": 153,
+              "target_cost_log": 1.6094379425048828,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            },
+            {
+              "step": 25,
+              "candidate_kind": 15,
+              "target_catalog_id": 153,
+              "target_cost_log": 1.6094379425048828,
+              "target_slots": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "base_score_feature": 0.0,
+              "blinds_cleared": 2,
+              "outcome": "ongoing"
+            }
+          ]
+        }
+      ],
+      "windows": [
+        {
+          "first": 0,
+          "episodes": 32,
+          "both_initial_sold": 32,
+          "no_discard_episode": 11
+        }
+      ]
+    }
+  },
+  "paired": [
+    {
+      "seed": "DBCFA5E4",
+      "heuristic": 6,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DDABFE85",
+      "heuristic": 1,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DA6F943C",
+      "heuristic": 1,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DDDC59BC",
+      "heuristic": 1,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D2F208C9",
+      "heuristic": 0,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DF7135BC",
+      "heuristic": 1,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DD92B725",
+      "heuristic": 2,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D6D34C83",
+      "heuristic": 4,
+      "learned": 3,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "censored"
+    },
+    {
+      "seed": "D8234A67",
+      "heuristic": 5,
+      "learned": 0,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DF3FC599",
+      "heuristic": 4,
+      "learned": 2,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D4D680EC",
+      "heuristic": 0,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D298CEE5",
+      "heuristic": 5,
+      "learned": 5,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D631589F",
+      "heuristic": 2,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D73D2599",
+      "heuristic": 4,
+      "learned": 1,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D947EE5B",
+      "heuristic": 1,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D207B132",
+      "heuristic": 4,
+      "learned": 0,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DD35C18C",
+      "heuristic": 4,
+      "learned": 3,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D3F8876A",
+      "heuristic": 1,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DA4F53EB",
+      "heuristic": 2,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D265ABD7",
+      "heuristic": 5,
+      "learned": 2,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DC9A1EA2",
+      "heuristic": 4,
+      "learned": 2,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D3448646",
+      "heuristic": 4,
+      "learned": 4,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "unsupported"
+    },
+    {
+      "seed": "D8022E1E",
+      "heuristic": 4,
+      "learned": 3,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DD90F979",
+      "heuristic": 1,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D3EE131D",
+      "heuristic": 5,
+      "learned": 5,
+      "heuristic_outcome": "unsupported",
+      "learned_outcome": "unsupported"
+    },
+    {
+      "seed": "DFC3EEBB",
+      "heuristic": 5,
+      "learned": 5,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DC755A5F",
+      "heuristic": 3,
+      "learned": 2,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DB2DE9E7",
+      "heuristic": 7,
+      "learned": 0,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D1A641BC",
+      "heuristic": 3,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DFBF19E9",
+      "heuristic": 1,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "DA092CA4",
+      "heuristic": 7,
+      "learned": 1,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "loss"
+    },
+    {
+      "seed": "D00202AA",
+      "heuristic": 4,
+      "learned": 2,
+      "heuristic_outcome": "loss",
+      "learned_outcome": "censored"
+    }
+  ]
+}

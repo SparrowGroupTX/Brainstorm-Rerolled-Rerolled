@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "kind": "detached_frame_timing324_integration",
+  "status": "ready_for_independent_review",
+  "root_runtime_changed": false,
+  "root_tests_changed": false,
+  "new_experiments": 0,
+  "collector_field": "Brainstorm.Advisor.performance",
+  "integration": [
+    {
+      "source": "Brainstorm.lua",
+      "target": "Brainstorm/Core/Brainstorm.lua",
+      "sha256": "1a730312e58699ee3993572c4c90edbc8730ffa47ab77da6e4a17a1415eb0a81",
+      "base_sha256": "fd25783b392305ab1cf5a9f375f1e8a78f0211ffa48e4bb483f7ddc9f027f191"
+    },
+    {
+      "source": "advisor.lua",
+      "target": "Brainstorm/UI/advisor.lua",
+      "sha256": "4034c88ce8cd2fc7e4ae4da175aac63d02c9243e64f3872e75e96531d1c4c454",
+      "base_sha256": "4577863f0afbdf187169ee8695d236b0a5f65589f254cce4be3508aa0977c840"
+    },
+    {
+      "source": "test_advisor_frame_timing.lua",
+      "target": "tests/advisor_frame_timing.lua",
+      "sha256": "386d4c0c00d13091cc3b3d71cee5e271dc5eb3d9b8d2289c82f8105d4e5681e7",
+      "base_sha256": null
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "tests/advisor_collection_core.lua",
+      "sha256": "59ac56af71e296dd9c22cd4ffdcf75235b9381634abf4f314051ed4d93075b7c"
+    },
+    {
+      "path": "tests/advisor_ui.lua",
+      "sha256": "57af86dd29c7de562fa158d3206556e71c123a50e0bfa0cab16696c97736b893"
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+    }
+  ],
+  "validation": {
+    "path": "focused_report.json",
+    "sha256": "4ad9788ddbdc2065acb9a133f095c2b629f6a15a94d9d06c3c957b09f35bdc21"
+  },
+  "package_files": [
+    {
+      "path": "advisor.base.lua",
+      "sha256": "4577863f0afbdf187169ee8695d236b0a5f65589f254cce4be3508aa0977c840"
+    },
+    {
+      "path": "advisor.lua",
+      "sha256": "4034c88ce8cd2fc7e4ae4da175aac63d02c9243e64f3872e75e96531d1c4c454"
+    },
+    {
+      "path": "Brainstorm.base.lua",
+      "sha256": "fd25783b392305ab1cf5a9f375f1e8a78f0211ffa48e4bb483f7ddc9f027f191"
+    },
+    {
+      "path": "Brainstorm.lua",
+      "sha256": "1a730312e58699ee3993572c4c90edbc8730ffa47ab77da6e4a17a1415eb0a81"
+    },
+    {
+      "path": "build_candidate.py",
+      "sha256": "914d7c55e1cdfd07104395ccab17f3459b253b3b1d16addcd1e633132d647210"
+    },
+    {
+      "path": "focused_output.txt",
+      "sha256": "f79965ac132548e71fcd1e62d6d68a750a9bee1a50c79783f2902e24cf95c7a9"
+    },
+    {
+      "path": "focused_report.json",
+      "sha256": "4ad9788ddbdc2065acb9a133f095c2b629f6a15a94d9d06c3c957b09f35bdc21"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "5c5f1b21e94a10d6710aebbe7f9908e8a2edfd4234c17fbf2635e445a1da0111"
+    },
+    {
+      "path": "package.py",
+      "sha256": "3e5d8aada79ece3f109600603e8bb904fed9611539f4e0667e98e83aa6c4f5dd"
+    },
+    {
+      "path": "run_candidate.lua",
+      "sha256": "74e2c1050e22d077ce3e42833096687362decebc49bc2ee042c1d8a2d98b5fe9"
+    },
+    {
+      "path": "run_existing.lua",
+      "sha256": "1268ba36a2751934faec8ecfc273597d10fad30445f2047008e493384a44b10f"
+    },
+    {
+      "path": "stage.py",
+      "sha256": "564ca12f7c7c2f022c9bd9dfefa2e76706f4ef26ef1c9d53bddfcc83f81a1b4f"
+    },
+    {
+      "path": "test_advisor_frame_timing.lua",
+      "sha256": "386d4c0c00d13091cc3b3d71cee5e271dc5eb3d9b8d2289c82f8105d4e5681e7"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+diff --git "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before2\\Brainstorm\\Core\\auto_run_product.lua" "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Core\\auto_run_product.lua"
+index bec47e3..bb1a319 100644
+--- "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before2\\Brainstorm\\Core\\auto_run_product.lua"
++++ "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Core\\auto_run_product.lua"
+@@ -344,7 +344,10 @@ function M.attach(B,deps)
+     if not log({event='explicit_resume_requested',session=state.session_serial,run_id=run_id(g),
+       scope='Same in-memory session; no limits, counts, run or logging session reset.'}) then return false,'Recording rejected Resume.' end
+     if A.settings_changed then owned(A.settings_changed)end
+-    if g.OVERLAY_MENU then
++    -- Resume may follow the final receipt or a terminal callback while stopped.
++    -- Retain its exact owned result until fresh controller checks decide whether
++    -- this session can continue; explicit Resume never renews its run allowance.
++    if g.OVERLAY_MENU and not terminal:owned_overlay(run_id(g)) then
+       local close=deps.exit_overlay or g.FUNCS and g.FUNCS.exit_overlay_menu
+       if type(close)~='function' then return false,'The menu cannot close safely.' end
+       local okay,why=pcall(owned,close);if not okay then return false,tostring(why) end
+@@ -416,7 +419,7 @@ function M.attach(B,deps)
+       resuming.last_time=t
+       if not logging() or (g.SETTINGS or {}).profile~=resuming.profile or g.GAME~=resuming.game or
+         (g.PROFILES or {})[resuming.profile]~=profile_binding then return halt('Resume context changed.') end
+-      local blocked,why=busy(g,false);resuming.reason=why
++      local blocked,why=busy(g,terminal:owned_overlay(run_id(g))~=nil);resuming.reason=why
+       if blocked then
+         if t-resuming.at>=30 then resuming=nil;resume_error='The controls have not settled yet.' end
+         return self:status()

@@ -1,0 +1,89 @@
+{
+  "job": "D-old-8089-baseline",
+  "mode": "decision",
+  "case": "old-8089",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 2.2339999999967404,
+  "log_sha256": "298dd3f3437783a3636b3266aaea9854b842386ab648b5859db61e8dcdd87d45",
+  "status": "complete",
+  "result": {
+    "case": "old-8089",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "clear_supported": true,
+        "evaluations": 5,
+        "final_action_kind": "play",
+        "final_play_score": 50120,
+        "needed_score": 50000,
+        "reason": "Automatic hand sorting can change scoring-card order.",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 82536,
+      "play": {
+        "hand": "Full House",
+        "legal": true,
+        "score": 50120,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 1023,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Automatic hand sorting can change scoring-card order."
+          ]
+        },
+        "risk": {
+          "bonus": 0,
+          "candidate_count": 4,
+          "compared": true,
+          "compared_five_count": 1,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "full_batch_preference": false,
+          "late_margin": true,
+          "minimum_score": 0,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 14,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.012
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

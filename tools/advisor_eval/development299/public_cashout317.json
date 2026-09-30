@@ -1,0 +1,225 @@
+{
+  "sources": [
+    {
+      "name": "session-20260914T201348Z-1-000001.brj",
+      "bytes": 26016,
+      "sha256": "7ac75b7209ac33263e146020c7974dbf058743da327fe396c80b5909a0945f6a"
+    },
+    {
+      "name": "session-20260914T201348Z-1-000002.brj",
+      "bytes": 526725,
+      "sha256": "0d252667a7d9934a25473aac84b4fd157e3261b269fdd17622934e642ba80093"
+    },
+    {
+      "name": "session-20260914T201348Z-1-000003.brj",
+      "bytes": 434871,
+      "sha256": "8d132bcbcd18fc7de62f5366c19d162f182aa9b09680b3f434406e05eeb518e4"
+    }
+  ],
+  "count": 138,
+  "kinds": {
+    "auto_run": 58,
+    "collection_search_started": 2,
+    "collection_search_finished": 2,
+    "collection_run_start": 2,
+    "action_requested": 26,
+    "action_callback_result": 26,
+    "state_after_actions": 22
+  },
+  "recent": [
+    {
+      "at": "2026-09-14T20:16:19Z",
+      "kind": "auto_run",
+      "sequence": 127,
+      "details": {
+        "event": "action_attempt",
+        "state": "waiting",
+        "action": {
+          "area": "hand",
+          "indices": [
+            2,
+            3,
+            5,
+            6,
+            8
+          ],
+          "kind": "play"
+        },
+        "search_id": "auto:2:2:1"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "hand",
+      "state": 1,
+      "ante": 1,
+      "chips": 292,
+      "target": 450
+    },
+    {
+      "at": "2026-09-14T20:16:19Z",
+      "kind": "action_requested",
+      "sequence": 128,
+      "details": {
+        "action": "advisor_execute"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "hand",
+      "state": 1,
+      "ante": 1,
+      "chips": 292,
+      "target": 450
+    },
+    {
+      "at": "2026-09-14T20:16:19Z",
+      "kind": "action_callback_result",
+      "sequence": 129,
+      "details": {
+        "reason": "",
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending."
+      },
+      "loaded_version": null,
+      "phase": null,
+      "state": null,
+      "ante": null,
+      "chips": null,
+      "target": null
+    },
+    {
+      "at": "2026-09-14T20:16:26Z",
+      "kind": "state_after_actions",
+      "sequence": 130,
+      "details": {},
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "round",
+      "state": 8,
+      "ante": 1,
+      "chips": 580,
+      "target": 0
+    },
+    {
+      "at": "2026-09-14T20:16:26Z",
+      "kind": "auto_run",
+      "sequence": 131,
+      "details": {
+        "event": "action_observed",
+        "state": "waiting",
+        "search_id": "auto:2:2:1"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "round",
+      "state": 8,
+      "ante": 1,
+      "chips": 580,
+      "target": 0
+    },
+    {
+      "at": "2026-09-14T20:16:26Z",
+      "kind": "auto_run",
+      "sequence": 132,
+      "details": {
+        "event": "action_attempt",
+        "state": "waiting",
+        "action": {
+          "kind": "cash_out"
+        },
+        "search_id": "auto:2:2:1"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "round",
+      "state": 8,
+      "ante": 1,
+      "chips": 580,
+      "target": 0
+    },
+    {
+      "at": "2026-09-14T20:16:26Z",
+      "kind": "action_requested",
+      "sequence": 133,
+      "details": {
+        "action": "advisor_execute"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "round",
+      "state": 8,
+      "ante": 1,
+      "chips": 580,
+      "target": 0
+    },
+    {
+      "at": "2026-09-14T20:16:26Z",
+      "kind": "action_callback_result",
+      "sequence": 134,
+      "details": {
+        "reason": "The game button for this action is not ready.",
+        "callback_returned": false,
+        "completion": "Callback result only; queued effects may still be pending."
+      },
+      "loaded_version": null,
+      "phase": null,
+      "state": null,
+      "ante": null,
+      "chips": null,
+      "target": null
+    },
+    {
+      "at": "2026-09-14T20:16:26Z",
+      "kind": "auto_run",
+      "sequence": 135,
+      "details": {
+        "event": "session_stopped",
+        "reason": "execute_failed",
+        "detail": "false",
+        "state": "stopped",
+        "search_id": "auto:2:2:1"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "round",
+      "state": 8,
+      "ante": 1,
+      "chips": 580,
+      "target": 0
+    },
+    {
+      "at": "2026-09-14T20:16:31Z",
+      "kind": "action_requested",
+      "sequence": 136,
+      "details": {
+        "action": "cash_out"
+      },
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "round",
+      "state": 8,
+      "ante": 1,
+      "chips": 580,
+      "target": 0
+    },
+    {
+      "at": "2026-09-14T20:16:31Z",
+      "kind": "action_callback_result",
+      "sequence": 137,
+      "details": {
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending."
+      },
+      "loaded_version": null,
+      "phase": null,
+      "state": null,
+      "ante": null,
+      "chips": null,
+      "target": null
+    },
+    {
+      "at": "2026-09-14T20:16:32Z",
+      "kind": "state_after_actions",
+      "sequence": 138,
+      "details": {},
+      "loaded_version": "Brainstorm v2.116.0-alpha",
+      "phase": "shop",
+      "state": 5,
+      "ante": 1,
+      "chips": 0,
+      "target": 0
+    }
+  ],
+  "scope": "Read-only public startup/action diagnostic; no policy or save evaluation"
+}

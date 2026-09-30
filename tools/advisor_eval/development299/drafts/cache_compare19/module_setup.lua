@@ -1,0 +1,83 @@
+-- Integration deliberately keeps the advisor out of saves and run RNG state.
+local A = {display = {title = 'Run Advisor', status = 'Waiting for a decision'}, elapsed = 0, page = 1}
+local function module(name)
+  assert(package.preload['probe_policy_'..name], 'Missing frozen module '..name)
+  return require('probe_policy_'..name)
+end
+
+A.snapshot, A.scoring, A.search, A.strategy = module('snapshot'), module('scoring'), module('search'), module('strategy')
+A.gold_stickers = module('gold_stickers')
+A.gold_perkeo = module('gold_perkeo')
+A.bell_opening = module('bell_opening')
+A.certificate=module('certificate')
+A.snapshot.certificate=A.certificate
+A.gold_goal = module('gold_goal')
+A.gold_search = module('gold_search')
+A.normal_opening=module('normal_opening')
+A.normal_opening.gold_stickers=A.gold_stickers
+A.normal_opening.gold_search=A.gold_search
+A.snapshot.normal_opening=A.normal_opening
+A.consumables = module('consumables')
+A.strategy.consumables = A.consumables
+A.strategy.conditional_value = module('conditional_value')
+A.deck_development = module('deck_development')
+A.spectral_development = module('spectral_development')
+A.deck_development.spectral = A.spectral_development
+A.consumables.deck_development = A.deck_development
+A.strategy.deck_development = A.deck_development
+A.economy = module('economy')
+A.shop_scoring = module('shop_scoring')
+A.shop_scoring.bell_opening=A.bell_opening
+A.shop_scoring.certificate=A.certificate
+A.shop_scoring.paired_deck = module('paired_deck')
+A.shop_scoring.blind_start = module('blind_start')
+A.shop_sequences = module('shop_sequences')
+A.pack_scoring = module('pack_scoring')
+A.strategy.pack_scoring = A.pack_scoring
+-- Detached hand comparison omits: A.execution = module('execution')
+A.ordering = module('ordering')
+A.phase_copy = module('phase_copy')
+A.hand_ordering = module('hand_ordering')
+A.boss_rescue = module('boss_rescue')
+A.mixed_rescue = module('mixed_rescue')
+A.multi_discard = module('multi_discard')
+A.two_hand_finish = module('two_hand_finish')
+A.resource_finish = module('resource_finish')
+A.concealed_belief = module('concealed_belief')
+A.growth = module('growth')
+A.finish_rewards = module('finish_rewards')
+A.score_cache = module('score_cache')
+A.draws = module('draws')
+A.sampled_outcomes = module('sampled_outcomes')
+A.policy_weights = module('policy_weights')
+A.work_cost = module('work_cost')
+A.shop_scoring.work_cost=A.work_cost
+A.shop_scoring.policy_weights=A.policy_weights
+A.search.policy_weights=A.policy_weights
+A.growth.policy_weights=A.policy_weights
+A.blind_prep = module('blind_prep')
+A.blind_prep.blind_start=A.shop_scoring.blind_start
+A.shop_scoring.blind_prep = A.blind_prep
+A.shop_scoring.strategy = A.strategy
+A.blind_routing = module('blind_routing')
+-- Detached hand comparison omits: A.opening = Brainstorm.ChallengeOpening
+-- Detached hand comparison omits: A.jokerless_opening = Brainstorm.JokerlessOpening
+A.challenge_route = module('challenge_route')
+A.decision = module('decision')
+-- Detached hand comparison omits: A.retry_memory, A.retry_policy, A.retry_journal = module('retry_memory'), module('retry_policy'), module('retry_journal')
+-- Detached hand comparison omits: A.retry_generation, A.state_epoch = 0, 0
+A.strategy.synergies = module('synergies')
+A.strategy.paid_reroll = module('paid_reroll')
+A.strategy.paid_reroll.catalog = module('catalog_joker')
+A.strategy.paid_reroll.policy_weights=A.policy_weights
+A.liquidity=module('liquidity')
+A.liquidity.snapshot=A.snapshot
+A.shop_scoring.liquidity=A.liquidity
+A.strategy.liquidity=A.liquidity
+A.strategy.paid_reroll.liquidity=A.liquidity
+A.strategy.conditional_value.liquidity=A.liquidity
+A.blind_finishing=module('blind_finishing')
+for _,key in ipairs({'search','draws','sampled_outcomes','multi_discard','finish_rewards','strategy'}) do
+  A.blind_finishing[key]=A[key]
+end
+A.shop_scoring.blind_finishing=A.blind_finishing

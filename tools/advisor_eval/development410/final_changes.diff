@@ -1,0 +1,613 @@
+--- before/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -59,6 +59,10 @@
+   end
+   return false
+ end
++local function exhaust_discards(snapshot)
++  local left=snapshot.discards_left or (snapshot.current_round or {}).discards_left
++  return snapshot.teacher_profile=='perkeo_yorick_win_v1' and type(left)=='number' and left>0 and left<math.huge
++end
+ local function early_yorick_comparison_available(snapshot,modules)
+   if snapshot.teacher_profile~='perkeo_yorick_win_v1' or
+     type(snapshot.ante)~='number' or snapshot.ante>8 or
+@@ -484,7 +488,8 @@
+     result.clear_shortcut=clear_shortcut
+   end
+   if clear_shortcut then
+-    local ceiling=result.fast_clear and 70 or 140000
++    local ceiling=math.min(result.fast_clear and 70 or 140000,
++      math.max(0,math.floor(search_options.max_evaluations or 140000)))
+     local function available(limit)
+       return math.min(limit,math.max(0,ceiling-(result.evaluations or 0)))
+     end
+@@ -497,11 +502,14 @@
+       if growth_checked or not modules.growth then return end
+       growth_checked=true
+       local growth_clear=result.play
++      local preference={exhaust_discards=exhaust_discards(snapshot),max_evaluations=available(12)}
+       if modules.growth.select_clear then
+-        growth_clear,result.growth_anchor_diagnostics=modules.growth.select_clear(snapshot,result.play,result.alternatives)
+-      end
+-      local suggestion,count,diagnostics=modules.growth.suggest(snapshot,modules,growth_clear,{max_evaluations=available(12)})
++        growth_clear,result.growth_anchor_diagnostics=modules.growth.select_clear(snapshot,result.play,result.alternatives,preference)
++      end
++      local suggestion,count,diagnostics=modules.growth.suggest(snapshot,modules,growth_clear,preference)
+       growth=suggestion;result.growth_diagnostics=diagnostics
++      result.discard_preference_work=preference.exhaust_discards and (count or 0) or nil
++      result.discard_preference_anchor=preference.exhaust_discards and growth_clear or nil
+       result.evaluations=(result.evaluations or 0)+(count or 0)
+     end
+     -- A useful, independently verified discard spends a resource that expires
+@@ -509,7 +517,7 @@
+     -- Do not let a repeatable Empress use prevent this comparison altogether.
+     -- Every survival/resource guard remains in growth.suggest; this gate only
+     -- changes the order of optional comparisons and never forces a discard.
+-    if discard_growth_available(snapshot) or held_death then consider_growth() end
++    if exhaust_discards(snapshot) or discard_growth_available(snapshot) or held_death then consider_growth() end
+     local discard_growth=growth and growth.action and growth.action.kind=='discard'
+     if discard_growth then clear_shortcut.development_deferred_for_discard=true end
+     if not discard_growth and modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
+@@ -629,11 +637,102 @@
+   D.mouth_cycle(snapshot,modules.scoring,result,math.min(140000,options and options.search and options.search.max_evaluations or 140000))
+   return result
+ end
++-- Final actions, rather than projected specialist/search plays, govern this
++-- preference. Coverage gaps remain visible exceptions, never invented proofs.
++local function discard_preference(s,modules,result,options)
++  if not result or s.phase~='hand' or not exhaust_discards(s) or not result.action then return result end
++  local action=result.action
++  if action.kind~='play' and action.kind~='discard' then return result end
++  local receipt={schema=1,remaining_discards=s.discards_left or (s.current_round or {}).discards_left,
++    final_action_kind=action.kind,status='not_finishing',selected=false,evaluations=0}
++  result.discard_before_clear=receipt
++  local function exception(reason,category)
++    receipt.status='exception';receipt.reason=reason;receipt.category=category or 'public_model_gap'
++    return result
++  end
++  if action.kind=='discard' then
++    receipt.status='discard_selected';receipt.selected=true
++    receipt.reason=result.growth and 'supported_retained_clear' or 'existing_discard_plan'
++    receipt.evaluations=result.discard_preference_work or 0
++    return result
++  end
++  local retry=options and options.retry
++  if retry and (retry.active or retry.unavailable or retry.matched and retry.pending) then
++    return exception('Checkpoint retry protections retain the recorded action.','retry_constraint')
++  end
++  if result.public_joker_belief or result.concealed_belief then
++    return exception('A complete retained-clear discard proof over the public identity worlds is unavailable.')
++  end
++  local function same(a,b)
++    if type(a)~='table' or type(b)~='table' or #a~=#b then return false end
++    for i,v in ipairs(a) do if v~=b[i] then return false end end
++    return true
++  end
++  local cap=math.min(result.fast_clear and 70 or 140000,
++    options and options.search and options.search.max_evaluations or 140000)
++  local spent=result.discard_preference_work or 0
++  receipt.evaluations=spent
++  local remaining=math.max(0,math.min(12-spent,cap-(result.evaluations or 0)))
++  local play=result.play
++  if not play or not same(action.indices,play.indices) or play.uncertain then
++    if remaining<1 then return exception('The discard comparison allowance is exhausted.','work_limit') end
++    if not modules.scoring or not modules.scoring.score then return exception('Final-action score support is unavailable.') end
++    local score=modules.scoring.lower_bound or modules.scoring.score
++    play=score(s,action.indices)
++    result.evaluations=(result.evaluations or 0)+1;spent=spent+1;remaining=remaining-1
++    receipt.evaluations=spent;result.discard_preference_work=spent
++    if not play then return exception('Final-action score support is unavailable.') end
++    play.indices=action.indices
++  end
++  local target=(s.blind or {}).chips
++  if type(target)~='number' or target~=target or target==math.huge then return exception('The remaining blind target is unavailable.') end
++  local needed=math.max(1,target-(s.chips or 0))
++  receipt.final_play_score=play.score;receipt.needed_score=needed
++  if play.legal==false or type(play.score)~='number' or play.uncertain then
++    return exception('The selected play lacks a supported clearing score.')
++  end
++  if play.score<needed then
++    if play.bound_kind or play.conservative then return exception('The supported floor is below target; a random clear remains possible.') end
++    receipt.reason='selected_play_does_not_clear';return result
++  end
++  receipt.clear_supported=true
++  local diagnostics=result.growth_diagnostics
++  if diagnostics and diagnostics.exhaust_discards and same(action.indices,(result.discard_preference_anchor or {}).indices) then
++    receipt.evaluations=spent
++    return exception((diagnostics.reasons or {})[1] or 'The existing retained-clear discard comparison did not qualify.',
++      (diagnostics.max_evaluations or 0)<=0 and 'work_limit' or nil)
++  end
++  if remaining<1 then return exception('The discard comparison allowance is exhausted.','work_limit') end
++  if not modules.growth or not modules.growth.suggest then return exception('The retained-clear discard module is unavailable.') end
++  local preference={exhaust_discards=true,max_evaluations=remaining}
++  local anchor=play
++  if modules.growth.select_clear then
++    anchor,result.growth_anchor_diagnostics=modules.growth.select_clear(s,play,result.alternatives,preference)
++  end
++  local suggestion,count,why=modules.growth.suggest(s,modules,anchor,preference)
++  result.evaluations=(result.evaluations or 0)+(count or 0)
++  receipt.evaluations=spent+(count or 0);result.discard_preference_work=receipt.evaluations
++  result.growth_diagnostics=why
++  if not suggestion or not suggestion.action or suggestion.action.kind~='discard' then
++    return exception(why and (why.reasons or {})[1] or 'No supported retained-clear discard was found.')
++  end
++  -- Keep the displaced evidence but presentation and Execute must use the
++  -- selected discard rather than a stale resource/specialist play.
++  result.discard_preference_prior_kind=result.kind
++  for _,field in ipairs({'mixed_rescue','boss_rescue','hand_ordering','ordering','consumable',
++      'multi_discard','two_hand_finish','growth'}) do result[field]=nil end
++  result.growth=suggestion;result.action=suggestion.action;result.kind='discard'
++  result.discard_preference_displaced_strategy=result.strategy;result.strategy=nil
++  receipt.status='discard_selected';receipt.selected=true;receipt.reason='supported_retained_clear'
++  receipt.final_action_kind='discard'
++  return result
++end
+ function D.run(snapshot,modules,yield_fn,options)
+   -- This precedes scoring-cache preparation, concealed playing-card inference,
+   -- ordinary search, all specialists, phase copying and retry policy callbacks.
+   -- None may inspect the raw concealed Joker row as an implicit fallback.
+-  if hidden_joker(snapshot) then return public_joker_decision(snapshot,modules,yield_fn,options) end
++  if hidden_joker(snapshot) then return discard_preference(snapshot,modules,
++    public_joker_decision(snapshot,modules,yield_fn,options),options) end
+   local statistics
+   if modules.score_cache and not (options and options.prepared_scoring==false) then
+     local scoped={};for k,v in pairs(modules) do scoped[k]=v end
+@@ -676,6 +775,7 @@
+         lines={'Retry comparison is unavailable in this adapter.'}}
+     end
+   end
++  result=discard_preference(snapshot,modules,result,options)
+   if result then
+     -- Record the final selected physical Death direction after all overrides.
+     local a=result.action or {};local selected=(snapshot[a.area] or {})[a.index or 0]
+--- before/Brainstorm/Advisor/growth.lua
++++ Brainstorm/Advisor/growth.lua
+@@ -241,7 +241,7 @@
+ -- 105%, so that selected clear is not always the best *already scored* anchor
+ -- for a discard. This read-only selection never treats an alternative's UI
+ -- estimate as evidence, spends no scores, or changes the incumbent play.
+-function M.select_clear(s,selected,alternatives)
++function M.select_clear(s,selected,alternatives,options)
+   local diagnostics={considered=0,qualified=0,changed=false}
+   if not s or s.teacher_profile~='perkeo_yorick_win_v1' or
+     type(s.hand)~='table' or type(selected)~='table' then return selected,diagnostics end
+@@ -249,8 +249,9 @@
+   for _,j in ipairs(s.jokers or {}) do
+     if not j.debuff and name(j)=='Yorick' then active=true;break end
+   end
+-  if not active then return selected,diagnostics end
+-  local target=math.max(1,num((s.blind or {}).chips)-num(s.chips))*1.05
++  local exhaust=options and options.exhaust_discards==true
++  if not active and not exhaust then return selected,diagnostics end
++  local target=math.max(1,num((s.blind or {}).chips)-num(s.chips))*(exhaust and 1 or 1.05)
+   local function valid(clear)
+     if type(clear)~='table' or clear.legal~=true or clear.uncertain~=false or
+       not finite(clear.score) or clear.score<target or
+@@ -514,9 +515,10 @@
+ 
+ function M.suggest(s,modules,known_clear,options)
+   options=options or {}
++  local exhaust=options.exhaust_discards==true and s.teacher_profile=='perkeo_yorick_win_v1'
+   local evaluations=0
+   local cap=math.min(12,math.max(0,math.floor(num(options.max_evaluations,12))))
+-  local diagnostics={bounded_growth=true,max_evaluations=cap,candidates=0,reasons={}}
++  local diagnostics={bounded_growth=true,max_evaluations=cap,candidates=0,reasons={},exhaust_discards=exhaust}
+   local function stop(reason)
+     diagnostics.reasons[#diagnostics.reasons+1]=reason
+     if diagnostics.death_fishing then diagnostics.death_fishing.reason=reason;diagnostics.death_fishing.status='not_admitted' end
+@@ -540,13 +542,54 @@
+   local remaining=math.max(1,num((s.blind or {}).chips)-num(s.chips))
+   -- Admission and the exact retained-finish proof use the same safety floor.
+   -- A larger entry margin would suppress a complete safe discard comparison.
+-  if not reliable(known_clear) or num(known_clear.score)<remaining*1.05 then return stop('The known clear has insufficient safety margin for investment.') end
++  local margin=exhaust and 1 or 1.05
++  if not reliable(known_clear) or num(known_clear.score)<remaining*margin then return stop('The known clear has insufficient supported score for this discard comparison.') end
+   local profile=strategy.build_profile(s)
+-  if profile.final or num(profile.horizon)<=0 then return stop('No remaining development horizon.') end
++  if not exhaust and (profile.final or num(profile.horizon)<=0) then return stop('No remaining development horizon.') end
+   local round=s.current_round or {}
+   local unused_setup=num(s.hands_played,round.hands_played)+num(s.discards_used,round.discards_used)==0
+   if #s.hand>12 or #s.hand<2 or #(s.deck or {})>200 or cap<=0 then return stop('The bounded investment check is unavailable.') end
+   if num((s.modifiers or {}).flipped_cards)>0 then return stop('Future target visibility is uncertain.') end
++  local function score(state,indices)
++    if evaluations>=cap then return nil end
++    evaluations=evaluations+1
++    if exhaust and scorer.lower_bound then return scorer.lower_bound(state,indices) end
++    return scorer.score(state,indices)
++  end
++  -- Fast-clear conservation can retain a five-card proposal even when one
++  -- physical card already clears. Spend at most six of this same allowance
++  -- finding a smaller supported anchor, reserving work for the discard proof.
++  if exhaust and #known_clear.indices>1 then
++    local original=known_clear
++    local prepared,reward
++    if modules.finish_rewards and modules.finish_rewards.prepare and modules.finish_rewards.value then
++      prepared=modules.finish_rewards.prepare(s,strategy)
++      reward=modules.finish_rewards.value(s,original,prepared)
++    end
++    local population=modules.search and modules.search.population_profile and modules.search.population_cost
++    local population_profile=population and modules.search.population_profile(s)
++    local old_population=population and population(s,original,population_profile) or original.population_cost
++    for slot=1,math.min(#original.indices,6,math.max(0,cap-1)) do
++      -- A subset cannot newly consume a Gold/Blue card held by the original.
++      local i=original.indices[slot]
++      local candidate=score(s,{i})
++      if candidate then candidate.indices={i} end
++      local new_population=candidate and population and population(s,candidate,population_profile)
++      local new_reward=candidate and prepared and modules.finish_rewards.value(s,candidate,prepared)
++      local resources=(old_population==nil or new_population~=nil and finite(old_population) and
++          finite(new_population) and new_population<=old_population) and
++        (reward==nil and num(original.finish_reward)==0 or reward~=nil and new_reward~=nil and
++          finite(reward) and finite(new_reward) and new_reward>=reward)
++      if reliable(candidate) and num(candidate.score)>=remaining and
++          resources and num(candidate.glass_loss)<=num(original.glass_loss) and
++          (not modules.search or not modules.search.arm_cost or
++            modules.search.arm_cost(s,candidate.hand)<=modules.search.arm_cost(s,original.hand)) then
++        if not drawn_hazard(s,candidate) then
++          known_clear=candidate;diagnostics.smaller_anchor=true;diagnostics.anchor_cards=1;break
++        end
++      end
++    end
++  end
+   local hazard=drawn_hazard(s,known_clear);if hazard then return stop(hazard) end
+   local original_glass=0
+   for _,exposure in ipairs(known_clear.glass_exposure or {}) do original_glass=original_glass+num(exposure.probability) end
+@@ -554,10 +597,6 @@
+   local reserve={};for _,i in ipairs(known_clear.indices) do reserve[i]=true end
+   local spare={};for i=1,#s.hand do if not reserve[i] then spare[#spare+1]=i end end
+   if #spare==0 then return stop('Every held card belongs to the finishing plan.') end
+-  local function score(state,indices)
+-    if evaluations>=cap then return nil end
+-    evaluations=evaluations+1;return scorer.score(state,indices)
+-  end
+   local best
+   local function accept(action,state,indices,merit,title,lines,metadata)
+     -- Blue Joker depends on count alone. Charge every replacement draw before
+@@ -574,14 +613,14 @@
+       metadata.blue_joker_draw_cost={draws=draws,remaining_deck=#proof.deck}
+     end
+     local finish=score(proof,indices)
+-    if not reliable(finish) or num(finish.score)<math.max(1,num((state.blind or {}).chips)-num(state.chips))*1.05 then return end
++    if not reliable(finish) or num(finish.score)<math.max(1,num((state.blind or {}).chips)-num(state.chips))*margin then return end
+     -- Draws are not required for this score; permitted held effects can only
+     -- add to it. Check the actual final hand after every real action/draw.
+     if num(finish.glass_loss)>original_glass+0.000001 then return end
+     if modules.search and modules.search.arm_cost and modules.search.arm_cost(state,finish.hand)>
+       modules.search.arm_cost(s,known_clear.hand) then return end
+     finish.indices=list(indices)
+-    if not best or merit>best.merit then
++    if not best or merit>best.merit or exhaust and merit==best.merit and #action.indices>#best.action.indices then
+       best={action=action,title=title,lines=lines,warnings={},play=finish,merit=merit,growth=metadata}
+       best.growth.retained_original_indices=list(known_clear.indices)
+     end
+@@ -661,7 +700,7 @@
+     if name(j)=='Yorick' then yoricks[#yoricks+1]=j
+     elseif name(j)=='Burnt Joker' and num(s.discards_used,round.discards_used)==0 then burnt=true end
+   end end
+-  if scorer.after_discard and num(s.discards_left,round.discards_left)>0 and (#yoricks>0 or burnt or death_option) then
++  if scorer.after_discard and num(s.discards_left,round.discards_left)>0 and (exhaust or #yoricks>0 or burnt or death_option) then
+     -- Progress belongs only to physical Yoricks, while the current scoring row
+     -- may apply the same multiplier more than once. A bounded same-play rescore
+     -- measures that row's marginal effect, including intervening additive Mult.
+@@ -685,7 +724,7 @@
+         j.facing=='back' or j.getting_sliced or a.perma_debuff or
+         a.perishable and (not small_integer(a.perish_tally) or a.perish_tally<=1) then row_ok=false end
+     end
+-    if row_ok and evaluations+1<cap then
++    if not exhaust and row_ok and evaluations+1<cap then
+       local counts={}
+       local function resolve(i,seen)
+         local j=s.jokers[i]
+@@ -780,6 +819,9 @@
+     local candidates,growth_values={},{}
+     for _,indices in ipairs(raw) do
+       local state,effects=scorer.after_discard(s,indices)
++      if not state and exhaust and #diagnostics.reasons<2 and type(effects)=='string' then
++        diagnostics.reasons[#diagnostics.reasons+1]=effects
++      end
+       if state then
+         local utility=0
+         for _,j in ipairs(yoricks) do
+@@ -806,12 +848,17 @@
+         local merit=utility*weight('growth_utility_scale',1)-cost
+         local threshold=pair_value(s,state,#indices,pair,profile,utility,cost,copy_credit)
+         if threshold and threshold.merit>merit then merit=threshold.merit else threshold=nil end
+-        if merit>0 then candidates[#candidates+1]={state=state,effects=effects,indices=indices,merit=merit,threshold=threshold,
++        local cash_safe=not exhaust or num(state.dollars)>=num(s.dollars)
++        if exhaust and not cash_safe then diagnostics.reasons[#diagnostics.reasons+1]='Discarding spends current cash.' end
++        if cash_safe and (exhaust or merit>0) then candidates[#candidates+1]={state=state,effects=effects,indices=indices,merit=merit,threshold=threshold,
+           death_source=source_value>0 and source_receipt or nil} end
+       end
+     end
+     table.sort(candidates,function(a,b)
+-      if a.merit==b.merit then return table.concat(a.indices,',')<table.concat(b.indices,',') end
++      if a.merit==b.merit then
++        if exhaust and #a.indices~=#b.indices then return #a.indices>#b.indices end
++        return table.concat(a.indices,',')<table.concat(b.indices,',')
++      end
+       return a.merit>b.merit
+     end)
+     -- Reserve the six existing scoring slots across category/count choices;
+@@ -833,7 +880,7 @@
+       local c=shortlist[i];local removed={};for _,index in ipairs(c.indices) do removed[index]=true end
+       local indices=remap(known_clear.indices,removed,#s.hand)
+       diagnostics.candidates=diagnostics.candidates+1
+-      local purpose=c.death_source and 'find a stronger Death source' or c.effects.burnt_hand and ('level '..c.effects.burnt_hand) or 'grow Yorick'
++      local purpose=c.death_source and 'find a stronger Death source' or c.effects.burnt_hand and ('level '..c.effects.burnt_hand) or #yoricks>0 and 'grow Yorick' or 'use remaining discards'
+       accept({kind='discard',area='hand',indices=list(c.indices)},c.state,indices,c.merit,
+         c.threshold and ('Discard '..#c.indices..' toward a guaranteed Yorick threshold') or 'Discard '..#c.indices..' to '..purpose,
+         {c.threshold and ('The same physical clear survives two discards of '..#c.indices..' then '..c.threshold.second_count..
+@@ -842,12 +889,12 @@
+           c.threshold and 'Only this discard is recommended. Refresh after the actual draw before spending the next discard.' or
+           #yoricks>0 and 'Refresh after each draw. Use more full Yorick discards while the clear and resource tradeoff remain safe.' or
+             'Burnt upgrades the actual first-discard hand; its value depends on the deck, levels and scoring support.'},
+-        {kind='discard',effects=c.effects,utility=c.merit,remaining_discards=c.state.discards_left,
++        {kind='discard',effects=c.effects,utility=c.merit,remaining_discards=c.state.discards_left,exhaust_discards=exhaust,
+           repeatable_yorick=#yoricks>0,first_burnt_discard=burnt,two_discard_threshold=c.threshold,death_source=c.death_source})
+     end
+   end
+ 
+-  if unused_setup and scorer.after_play and strategy.development_gain and strategy.preservation_cost and
++  if not exhaust and unused_setup and scorer.after_play and strategy.development_gain and strategy.preservation_cost and
+     (s.teacher_profile~='perkeo_yorick_win_v1' or death_option) and
+     num(s.hands_left,round.hands_left)>=2 and #(s.deck or {})>0 and not (s.modifiers or {}).debuff_played_cards then
+     local death_index
+@@ -908,6 +955,14 @@
+     end
+   end
+   diagnostics.evaluations=evaluations
++  if exhaust and not best and #diagnostics.reasons==0 then
++    diagnostics.reasons[1]=evaluations>=cap and 'The bounded discard proof allowance is exhausted.' or
++      'No shortlisted legal discard preserved the supported clearing score and held resources.'
++  end
++  if exhaust and best then
++    best.lines={'Spend a remaining discard while the retained cards still have a supported clearing score.',
++      'Refresh after the actual draw. Continue using discards while that proof remains valid.'}
++  end
+   local fishing=diagnostics.death_fishing
+   if fishing and fishing.attempted then
+     fishing.evaluations=evaluations;fishing.complete=evaluations<cap
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -551,6 +551,18 @@
+     if #reasons>0 then out.growth.reasons=reasons end
+   end
+   if out.risk or out.anchor or out.growth then return out end
++end
++function M.compact_discard_before_clear(result)
++  if type(result)~='table' or getmetatable(result) then return nil end
++  local source=rawget(result,'discard_before_clear')
++  if type(source)~='table' or getmetatable(source) then return nil end
++  local out={schema=1}
++  for _,key in ipairs({'remaining_discards','final_action_kind','status','selected','evaluations',
++      'reason','category','final_play_score','needed_score','clear_supported'}) do
++    local v=rawget(source,key);local t=type(v)
++    if t=='boolean' or t=='number' and v==v and math.abs(v)<=1e300 or t=='string' and #v<=256 then out[key]=v end
++  end
++  return out
+ end
+ function M.compact_copy_death_review(result)
+   if type(result)~='table' or getmetatable(result) then return nil end
+@@ -692,6 +704,7 @@
+         yorick_review=current and M.compact_yorick_review(A.result) or nil,
+         copy_death_review=current and M.compact_copy_death_review(A.result) or nil,
+         shop_sequence_review=current and M.compact_shop_sequence_review(A.result) or nil,
++        discard_before_clear=current and M.compact_discard_before_clear(A.result) or nil,
+       reroll_review=current and M.compact_reroll_review(A.result) or nil,
+         title=A.display and A.display.title,lines=A.lines,action=A.result and A.result.action}}
+   end
+--- before/Brainstorm/Advisor/runtime.lua
++++ Brainstorm/Advisor/runtime.lua
+@@ -587,6 +587,10 @@
+       if result then result.challenge_route=route end
+     end
+   end
++  local discard_review=result and result.discard_before_clear
++  if discard_review and discard_review.status=='exception' and result.action and result.action.kind=='play' then
++    lines[#lines+1]='Remaining discards: '..tostring(discard_review.remaining_discards)..'. '..tostring(discard_review.reason)
++  end
+   local seen = {}
+   for _, warning in ipairs(warnings) do
+     if not seen[warning] then lines[#lines + 1] = 'Note: ' .. warning; seen[warning] = true end
+--- before/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.196.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.197.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.196.0-alpha
++--- VERSION: 2.197.0-alpha
+--- before/tests/advisor_runtime.lua
++++ tests/advisor_runtime.lua
+@@ -1477,3 +1477,30 @@
+  equal(A.snapshot.capture(G).shop_sequence_commitment.status,'public_context_changed','Unplanned cash change invalidates the exact public match')
+ end
+ print('advisor_capture_continuation408: '..checks..' checks passed')
++
++--410: real capture/decision/presentation/Execute agree on the selected discard.
++do
++ local A=setup();A.teacher_profile='perkeo_yorick_win_v1'
++ Brainstorm.config.advisor.gold_stickers=true
++ A.strategy=dofile('Brainstorm/Advisor/strategy.lua');A.scoring=dofile('Brainstorm/Advisor/scoring.lua')
++ G.GAME.challenge=nil;G.GAME.blind.chips=100;G.GAME.win_ante=8
++ G.GAME.round_resets={ante=8,hands=4,discards=3};G.GAME.current_round.discards_left=3
++ for i,c in ipairs(G.hand.cards) do c.playing_card=i;c.config.center={key='c_base',set='Default'} end
++ G.playing_cards=G.hand.cards
++ G.jokers.cards={{sort_id=99,facing='front',base={},debuff=false,
++  config={center_key='j_joker',center={key='j_joker',name='Joker',set='Joker',blueprint_compat=true}},
++  ability={name='Joker',set='Joker',mult=100},sell_cost=2}}
++ local callbacks=0;local executed
++ A.execution.button_ready=function()return true end
++ A.execution.execute=function(_,action)callbacks=callbacks+1;executed=action;return true end
++ complete(A)
++ check(A.result.action.kind=='discard' and A.result.discard_before_clear.selected,'actual captured teacher state selects discard')
++ equal(A.selection.kind,'discard','presented selection is discard')
++ check(A.display.title:find('Discard ',1,true)==1,'presented title is discard')
++ local expected_action=A.result.action
++ check(A.execute(),'Execute accepts the selected discard')
++ equal(executed.kind,'discard','callback receives discard, not stored clearing play')
++ for i,index in ipairs(executed.indices) do equal(index,expected_action.indices[i],'callback uses final physical indices') end
++ check(not A.execute() and callbacks==1,'asynchronous duplicate protection retained')
++end
++print('advisor_discard_runtime410: '..checks..' checks passed')
+--- before/tests/advisor_discard_before_clear410.lua
++++ tests/advisor_discard_before_clear410.lua
+@@ -0,0 +1,147 @@
++local D=dofile('Brainstorm/Advisor/decision.lua')
++local S=dofile('Brainstorm/Advisor/scoring.lua')
++local Search=dofile('Brainstorm/Advisor/search.lua')
++local Growth=dofile('Brainstorm/Advisor/growth.lua')
++local Strategy=dofile('Brainstorm/Advisor/strategy.lua')
++local Snapshot=dofile('Brainstorm/Advisor/snapshot.lua')
++local modules={scoring=S,search=Search,growth=Growth,strategy=Strategy}
++local checks=0
++local function check(v,label) checks=checks+1;assert(v,label) end
++local function card(id,rank) return {id=id,rank=rank,suit='Spades',enhancement='c_base',ability={}} end
++local function state()
++ local s={phase='hand',teacher_profile='perkeo_yorick_win_v1',ante=8,win_ante=8,
++  blind={key='bl_big',chips=1600,boss=true},chips=0,hands_left=3,hands_played=0,
++  discards_left=3,discards_used=0,current_round={},dollars=20,hand_limit=5,hand_size=5,
++  hand={card('a',14),card('b',2),card('c',3),card('d',4),card('e',6)},deck={},playing_cards={},
++  jokers={{id='j',key='j_joker',ability={name='Joker',mult=100}}},consumeables={},hands={},modifiers={},probabilities={normal=1}}
++ for i=1,15 do s.deck[i]=card('d'..i,2+i%8) end
++ for _,area in ipairs({s.hand,s.deck}) do for _,c in ipairs(area) do s.playing_cards[#s.playing_cards+1]=c end end
++ return s
++end
++local options={search={fast_clear=true}}
++local s=state();local before=Snapshot.fingerprint(s)
++local r=D.run(s,modules,nil,options)
++check(r.action and r.action.kind=='discard','teacher final-Boss clear spends a discard despite no growth engine and under5% margin')
++check(Snapshot.fingerprint(s)==before,'decision preserves input')
++check(r.evaluations<=70,'fast-clear allowance preserved')
++local tight=D.run(state(),modules,nil,{search={fast_clear=true,max_evaluations=1}})
++check(tight.evaluations<=1,'real fast search and exhaustion share a one-score caller cap')
++check(r.discard_before_clear.selected and r.discard_before_clear.remaining_discards==3,'final discard receipt')
++check(r.growth.growth.utility<=0,'negative optional-development merit no longer vetoes safe discard')
++check(r.growth.play.score>=1600,'retained clear is a real supported score')
++check(#r.action.indices==4,'maximal spare discard retains the Ace clear')
++check(Snapshot.fingerprint(r)==Snapshot.fingerprint(D.run(s,modules,nil,options)),'deterministic result')
++for n=3,1,-1 do
++ r=D.run(s,modules,nil,options)
++ check(r.action.kind=='discard' and s.discards_left==n,'use each remaining discard')
++ local retained=s.hand[1].id
++ s=assert(S.after_discard(s,r.action.indices))
++ while #s.hand<s.hand_size and #s.deck>0 do s.hand[#s.hand+1]=table.remove(s.deck,1) end
++ check(s.hand[1].id==retained,'physical clearing card survives each real manufactured draw')
++end
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='play' and s.discards_left==0,'finish after exhausting discards')
++
++s=state();s.blind.chips=S.score(s,{1}).score
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='discard','exact target is enough with a supported retained floor')
++s=state();s.deck={};s.playing_cards=Snapshot.copy(s.hand)
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='discard','empty deck alone does not prohibit legal retained-card discard')
++s=state();s.ante=2;s.blind.boss=false
++s.jokers[#s.jokers+1]={key='j_yorick',id='y',ability={name='Yorick',x_mult=20,yorick_discards=23,extra={discards=23,xmult=1}}}
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='discard','distant mature Yorick threshold is not a reason to leave discards')
++
++s=state();s.teacher_profile=nil
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='play' and r.discard_before_clear==nil,'ordinary profile unchanged')
++s=state();s.discards_left=0
++check(D.run(s,modules,nil,options).action.kind=='play','no-discard control')
++s=state();s.hand_limit=1
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='discard' and #r.action.indices==1,'actual highlight limit respected')
++
++s=state();s.hand[2].enhancement='m_steel';s.hand[2].ability.h_x_mult=1.5;s.hand[3].seal='Blue';s.blind.chips=1620
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='discard','held Steel clear can retain a safe alternative: '..tostring(r.discard_before_clear and r.discard_before_clear.reason))
++for _,i in ipairs(r.action.indices) do check(i~=1 and i~=2 and i~=3,'keep clearing Ace, required Steel and valuable Blue Seal') end
++for _,row in ipairs({
++ {key='j_green_joker',ability={name='Green Joker',mult=100,extra={hand_add=1,discard_sub=1}}},
++ {key='j_banner',ability={name='Banner',extra=30}},
++ {key='j_ramen',ability={name='Ramen',x_mult=2,extra=0.01}}
++}) do
++ s=state();s.jokers={row};s.blind.chips=S.score(s,{1}).score
++ r=D.run(s,modules,nil,options)
++ check(r.action.kind=='play' and r.discard_before_clear.status=='exception',row.key..' cannot destroy a barely supported clear')
++ check(r.discard_before_clear.reason~=nil,'exception is explained')
++end
++s=state();s.modifiers.discard_cost=1
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='play' and r.discard_before_clear.reason=='Discarding spends current cash.','paid-discard resource exception')
++s=state();s.blind.key='bl_final_bell';s.hand[1].ability.forced_selection=true
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='play' and r.discard_before_clear.status=='exception','forced clearing card is not illegally omitted from discard')
++s=state();for i=2,#s.hand do s.hand[i].seal='Purple' end
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='play' and r.discard_before_clear.reason:find('Purple Seal',1,true),'unsupported generation is a model gap, not a fabricated draw')
++s=state();s.hand={s.hand[1]};s.hand_size=1
++r=D.run(s,modules,nil,options)
++check(r.action.kind=='play' and r.discard_before_clear.status=='exception','sole physical clear is not discarded blindly')
++
++-- Inject only the final-arbitration proposal; transitions and scoring remain real.
++local function selected(snapshot,indices,reported,extras)
++ local play=S.score(snapshot,reported or indices);play.indices=reported or indices
++ local result={kind='play',play=play,action={kind='play',area='hand',indices=indices},evaluations=0}
++ for k,v in pairs(extras or {}) do result[k]=v end
++ return result
++end
++local function seam(s,indices,reported,extras,opts,more)
++ local m={scoring=S,growth=Growth,strategy=Strategy,search={run=function() return selected(s,indices,reported,extras) end},
++  phase_copy={apply=function(_,_,result) result.action={kind='play',area='hand',indices=indices};return result end}}
++ for k,v in pairs(more or {}) do m[k]=v end
++ return D.run(s,m,nil,opts or {})
++end
++s=state()
++r=seam(s,{2},{1})
++check(r.action.kind=='play' and r.action.indices[1]==2,'stale clearing proposal does not replace a nonclearing actual action')
++check(r.discard_before_clear.evaluations==1 and r.evaluations==1,'nonclearing rescore work appears in final receipt')
++r=seam(s,{1},{2})
++check(r.action.kind=='discard','actual clearing action is checked despite nonclearing stored proposal')
++check(r.evaluations<=12 and r.discard_before_clear.evaluations<=12,'rescore and growth share one12-call allowance')
++r=seam(s,{1},{1},{evaluations=70},{search={max_evaluations=70}})
++check(r.action.kind=='play' and r.discard_before_clear.category=='work_limit' and r.evaluations==70,'no allowance renewal at caller cap')
++r=seam(s,{1},{1},nil,{retry={unavailable=true}})
++check(r.action==nil,'unavailable retry remains blocked')
++r=seam(s,{1},{1},nil,{retry={active=true}}, {retry_policy={apply=function(_,result) return result end}})
++check(r.action.kind=='play' and r.discard_before_clear.category=='retry_constraint','recorded retry is not silently changed')
++r=seam(s,{1},{1},nil,{}, {phase_copy={apply=function(_,_,result) result.action={kind='play',indices={2},area='hand'};return result end}})
++check(r.action.kind=='play' and r.action.indices[1]==2,'guard follows final copy arbitration')
++
++local hidden=state();hidden.jokers={{face_down=true,identity_redacted=true}}
++hidden.public_joker_belief={worlds={{}},epoch=1,revision=1}
++local no_hidden_score=function() error('raw hidden Joker score reached') end
++r=D.run(hidden,{scoring={score=no_hidden_score},acorn_belief={validate=function() return true end},
++ acorn_ordering={suggest=function() return {kind='play',action={kind='play',area='hand',indices={1}},minimum_score=2000,mean_score=2000,immediate_clear_all_worlds=true},0,{} end}})
++check(r.action.kind=='play' and r.discard_before_clear.category=='public_model_gap','Acorn uses explicit public-model exception without raw hidden scoring')
++r=D.run(state(),{scoring={score=no_hidden_score},concealed_belief={run=function()
++ return {kind='play',action={kind='play',area='hand',indices={1}},concealed_belief={supported=true},evaluations=0}
++end}})
++check(r.discard_before_clear.category=='public_model_gap','concealed sampled clear is not called a guaranteed retained clear')
++
++local Journal=dofile('Brainstorm/Advisor/player_journal.lua')
++local compact=Journal.compact_discard_before_clear({discard_before_clear={status='exception',reason='fixture',
++ remaining_discards=3,worlds={{secret=true}},snapshot=state(),evaluations=0/0}})
++check(compact.status=='exception' and compact.worlds==nil and compact.snapshot==nil and compact.evaluations==nil,'public receipt strips nested states and nonfinite values')
++-- Smaller anchor probes must not newly spend a valuable held first card.
++for _,field in ipairs({'gold','blue'}) do
++ s=state();s.ante=2;s.blind.boss=false;s.blind.chips=600
++ if field=='gold' then s.hand[1].enhancement='m_gold';s.hand[1].ability.h_dollars=3 else s.hand[1].seal='Blue' end
++ local original=S.score(s,{2,3});original.indices={2,3}
++ local g,n,d=Growth.suggest(s,modules,original,{exhaust_discards=true,max_evaluations=12})
++ check(g and g.action.kind=='discard' and d.smaller_anchor,field..' case admits a smaller resource-safe anchor')
++ check(g.growth.retained_original_indices[1]~=1,field..' held first card cannot become new reserved play')
++ for _,i in ipairs(g.action.indices) do check(i~=1,field..' held resource survives discard') end
++ check(n<=12,'anchor and discard resource checks retain12-call limit')
++end
++print('advisor_discard_before_clear410: '..checks..' checks passed')

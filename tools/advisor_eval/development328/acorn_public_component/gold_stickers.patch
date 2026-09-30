@@ -1,0 +1,32 @@
+--- a/Brainstorm/Advisor/gold_stickers.lua
++++ b/Brainstorm/Advisor/gold_stickers.lua
+@@ -163,7 +163,28 @@
+     result.targets[#result.targets+1]=row;result.by_key[key]=row;result.counts[status]=result.counts[status]+1
+   end
+   local held=get(get(g,'jokers'),'cards');local held_keys={}
+-  if type(held)~='table' then result.held_status='unavailable'
++  local remembered=get(options,'public_held')
++  local has_hidden=false
++  if type(held)=='table'then for _,card in next,held do
++    if get(card,'facing')=='back' or get(card,'sprite_facing')=='back' or get(card,'flipping')=='b2f' or
++      get(card,'face_down')==true or get(card,'identity_redacted')==true then has_hidden=true end
++  end end
++  if has_hidden then
++    result.held_status='unavailable';result.held_scope='concealed_public_inventory_unavailable'
++    local public_keys=get(remembered,'keys')
++    if get(remembered,'schema')==1 and get(remembered,'status')=='complete' and
++      get(remembered,'scope')=='remembered_public_unordered_inventory' and plain(public_keys) then
++      local count=0;local valid=true
++      for index,key in next,public_keys do
++        if not integer(index,1,#held) or type(key)~='string' or not vanilla[key] then valid=false end
++        count=count+1
++      end
++      if valid and count==#held then
++        for _,key in ipairs(public_keys)do held_keys[key]=true end
++        result.held_status='complete';result.held_scope='remembered_public_unordered_inventory'
++      end
++    end
++  elseif type(held)~='table' then result.held_status='unavailable'
+   else
+     local size=0
+     for index in next,held do

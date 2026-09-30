@@ -1,0 +1,22 @@
+{
+  "scope": "Preserve final-ante shop opportunities when opted-in Gold objective has no confirmed carried missing Joker. Earlier-ante and opt-out routing unchanged. Bell dependency and win-ante requirements remain intact.",
+  "source_execution": false,
+  "live_game": false,
+  "captured_replay": false,
+  "files": {
+    "Brainstorm/Advisor/blind_routing.lua": {
+      "before_sha256": "c03029893369e3d8fe3d1a4c532f333b8aa34df9f555e4ab17cbe851db47e7e2",
+      "after_sha256": "8faf3232fa0cab84f14c2ea17ba6afed8c8bd5962e3de767687a7b783adcce97"
+    },
+    "tests/advisor_blind_routing.lua": {
+      "before_sha256": "5a77e4f5d8b2e8c69d0ac32cb3d37363b520272217034ec1f4af6f382af37eca",
+      "after_sha256": "2ae415b12e99bdcb80d0e57a7bbe5ea21e26641943fc2be267c3a9dc62542ed1"
+    }
+  },
+  "test_evidence": {
+    "before_validation.json": "Initial manufactured setup used boss key as display name, so failed on diagnostic for an unsupported boss; retained as harness error.",
+    "before_validation_2.json": "Corrected source-shaped boss name. Original runtime incorrectly returned Small Blind skip before Violet Vessel with no missing cargo and $170.",
+    "after_validation.json": "Corrected regression and existing Bell suite passed:107+236 checks; both files unchanged during validation,60-second suite cap."
+  },
+  "limitations": "Manufactured deterministic routing tests only; no live acquisition, complete run, sticker award or odds improvement demonstrated."
+}

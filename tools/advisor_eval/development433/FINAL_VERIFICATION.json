@@ -1,0 +1,73 @@
+{
+  "created_utc": "2026-09-28T00:06:12.377352+00:00",
+  "revision": 433,
+  "version": "2.213.0-alpha",
+  "status": "exact_candidate_validated_not_installed",
+  "candidate": "tools/advisor_eval/runs/repair433_candidate3",
+  "policy_digest": "f182f740ffd5213d33365e45bb4f9560b99507ebf97a3f1be4358d3483e23f71",
+  "validation_counts": {
+    "lua_fixtures": 306,
+    "python_tests": 458
+  },
+  "new_fixture_assertions": 404,
+  "runtime_file_count": 110,
+  "test_file_count": 356,
+  "changed_runtime_files": [
+    "Brainstorm/Advisor/blind_finishing.lua",
+    "Brainstorm/Advisor/decision.lua",
+    "Brainstorm/Advisor/growth.lua",
+    "Brainstorm/Advisor/joker_plan.lua",
+    "Brainstorm/Advisor/player_journal.lua",
+    "Brainstorm/Advisor/shop_scoring.lua",
+    "Brainstorm/Advisor/strategy.lua",
+    "Brainstorm/Core/Brainstorm.lua",
+    "Brainstorm/steamodded_compat.lua"
+  ],
+  "changed_test_files": [
+    "tests/advisor_copy_endpoint433.lua",
+    "tests/advisor_discard_portfolio433.lua",
+    "tests/advisor_economy433.lua",
+    "tests/advisor_perkeo_filler389.lua",
+    "tests/advisor_perkeo_sources423.lua",
+    "tests/advisor_road433.lua",
+    "tests/advisor_shop_alignment419.lua",
+    "tests/advisor_shop_copy.lua",
+    "tests/fixtures/shop433.lua"
+  ],
+  "installed_baseline": 431,
+  "installed_runtime_unchanged": true,
+  "prior_files_preserved": 9995,
+  "before_files_preserved": 467,
+  "settings_and_seven_dlls_preserved": true,
+  "latest_public_capture": "tools/advisor_eval/development433/captures/001",
+  "latest_public_events": 25337,
+  "latest_public_outcomes": {
+    "loss": 5,
+    "win": 5
+  },
+  "latest_public_loaded_label": "2.212.0-alpha",
+  "latest_public_sources_match": true,
+  "passive_processes": [],
+  "normal_exit_inferred": false,
+  "confirmation_required": false,
+  "review_cycle_exhausted": true,
+  "captured_policy_or_scorer_replay": false,
+  "simulation": false,
+  "game_control": false,
+  "save_profile_access": false,
+  "original_game_execution": false,
+  "automation_created": false,
+  "historical_experiments": "CLOSED",
+  "loaded_candidate_evidence": false,
+  "all_discard_cases_fixed_claim": false,
+  "win_rate_claim": false,
+  "branch": "codex/exact-search-speedups",
+  "artifact_hashes": {
+    "tools/advisor_eval/runs/repair433_candidate3/freeze.json": "86aacda0e23dc338c9ce10d27f1c3467c7adf0d7e2208795d6df28a04f50184b",
+    "tools/advisor_eval/runs/repair433_candidate3/validation/report.json": "b6ca5d955552e078ce56837cd592812c09bce059c06c2486e8154d022dd9a440",
+    "tools/advisor_eval/development433/REPORT.md": "b64dd3a9241ccc854ebeb7a4190feac36e6c68d5fbe99af269e15adc5f86a8fc",
+    "tools/advisor_eval/development433/REVIEW.md": "68ab6c90eb2ed841263cd5c8af7d5d8879499938bddac0b5d910fd10b6f10ab3",
+    "tools/advisor_eval/development433/captures/001/manifest.json": "4e6813e410ee818b89e603b76226b92fce50b0693fffc2da0f7e5d05240d8ae1",
+    "tools/advisor_eval/development433/captures/001/summary.json": "7ed18f4cc8a38d2f58430582a2b735e8f7584b42fec7c0d8557414c389d3b146"
+  }
+}

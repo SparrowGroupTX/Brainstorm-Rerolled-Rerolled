@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-16T05:18:08.037575+00:00",
+  "scope": "Manufactured constructor/copy/whole-inventory fixtures only. No source execution, player-policy replay, search, saves or game control.",
+  "runs": [
+    {
+      "exit_code": 1,
+      "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development346\\constructor_component\\run_01_before_tarot.lua\nFAIL tools\\advisor_eval\\development346\\constructor_component\\run_01_before_tarot.lua\n0/1 fixtures passed\n",
+      "stderr": "...omponent/tests/advisor_consumable_constructor_params.lua:8: create_card shape with public back qualifies Tarot/shop\n",
+      "phase": "before_tarot",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development346\\constructor_component\\run_01_before_tarot.lua"
+      ],
+      "max_seconds": 60,
+      "seconds": 0.10999999998603016,
+      "inputs": {
+        "tools\\advisor_eval\\development346\\constructor_component\\before\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "4e49ddf51f4099b7ed6262ceb14444fc046a0975baf0d9976a3ce722f216642b",
+        "tools\\advisor_eval\\development346\\constructor_component\\before\\Brainstorm\\Advisor\\perkeo_inventory.lua": "34840071e1956a8d6f743f962af30cc6945b76d024271b42ab2e518de2769710",
+        "Brainstorm\\Advisor\\snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+        "tools\\advisor_eval\\development346\\constructor_component\\tests\\advisor_consumable_constructor_params.lua": "9a8eb75cfda140263bff20916afc050526aebd39351603dd35773df8dc115600",
+        "tools\\advisor_eval\\development346\\constructor_component\\run_01_before_tarot.lua": "affb6d692033f6dd6afa511d8f0ffca395283e5a47503c2548f91c5670ebec14"
+      },
+      "inputs_unchanged": true
+    },
+    {
+      "exit_code": 1,
+      "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development346\\constructor_component\\run_01_before_planet.lua\nFAIL tools\\advisor_eval\\development346\\constructor_component\\run_01_before_planet.lua\n0/1 fixtures passed\n",
+      "stderr": "...omponent/tests/advisor_consumable_constructor_params.lua:8: create_card shape with public back qualifies Planet/shop\n",
+      "phase": "before_planet",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development346\\constructor_component\\run_01_before_planet.lua"
+      ],
+      "max_seconds": 60,
+      "seconds": 0.125,
+      "inputs": {
+        "tools\\advisor_eval\\development346\\constructor_component\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "3ac47330db86d93d8db4b9d67701a6fce2e3f90cdd2407a344c1b9555c894d4f",
+        "tools\\advisor_eval\\development346\\constructor_component\\before\\Brainstorm\\Advisor\\perkeo_inventory.lua": "34840071e1956a8d6f743f962af30cc6945b76d024271b42ab2e518de2769710",
+        "Brainstorm\\Advisor\\snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+        "tools\\advisor_eval\\development346\\constructor_component\\tests\\advisor_consumable_constructor_params.lua": "9a8eb75cfda140263bff20916afc050526aebd39351603dd35773df8dc115600",
+        "tools\\advisor_eval\\development346\\constructor_component\\run_01_before_planet.lua": "89c224c14ee10800246ae2f86d8760cd90d1e3c8e339ab7bf38a85132af9beef"
+      },
+      "inputs_unchanged": true
+    },
+    {
+      "exit_code": 0,
+      "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development346\\constructor_component\\run_01_after.lua\nPASS tools\\advisor_eval\\development346\\constructor_component\\run_01_after.lua\n1/1 fixtures passed\nPASS source-shaped consumable parameters 206 checks\n",
+      "stderr": "",
+      "phase": "after",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development346\\constructor_component\\run_01_after.lua"
+      ],
+      "max_seconds": 60,
+      "seconds": 0.10999999998603016,
+      "inputs": {
+        "tools\\advisor_eval\\development346\\constructor_component\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "3ac47330db86d93d8db4b9d67701a6fce2e3f90cdd2407a344c1b9555c894d4f",
+        "tools\\advisor_eval\\development346\\constructor_component\\Brainstorm\\Advisor\\perkeo_inventory.lua": "3431f9fc9078cac07cd64aa6449c45054c02d189690e201abb7f46abfcc05476",
+        "Brainstorm\\Advisor\\snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+        "tools\\advisor_eval\\development346\\constructor_component\\tests\\advisor_consumable_constructor_params.lua": "9a8eb75cfda140263bff20916afc050526aebd39351603dd35773df8dc115600",
+        "tools\\advisor_eval\\development346\\constructor_component\\run_01_after.lua": "3fb2cc34df0066d5c448140ffa84962a1fb03119ffce8b3934403f461d7df6e5"
+      },
+      "inputs_unchanged": true
+    }
+  ],
+  "passed": true
+}

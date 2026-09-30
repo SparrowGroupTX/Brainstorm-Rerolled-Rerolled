@@ -1,0 +1,68 @@
+{
+  "kind": "ordinary_synthetic_fixture_validation",
+  "source_execution": false,
+  "captured_replay": false,
+  "search": false,
+  "runtime_mutation": false,
+  "command": [
+    "python",
+    "-B",
+    "tests/run_lua_tests.py",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\validate_install_advisor_perkeo_inventory.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\validate_install_advisor_gold_planet_policy.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_gold_goal.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_gold_perkeo.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_decision_integration.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_decision_budget.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_snapshot.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_phase_copy.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_shop_decisions.lua",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\regression_advisor_shop_order.lua"
+  ],
+  "timeout_seconds": 60,
+  "exit_code": 0,
+  "elapsed_seconds": 1.4676836000289768,
+  "fixtures_passed": 10,
+  "new_checks": [
+    110,
+    125
+  ],
+  "new_integration_actual_score_calls": 3172,
+  "legacy_checks": [
+    81,
+    76,
+    37,
+    17,
+    110,
+    184,
+    27,
+    103
+  ],
+  "base_sha256": {
+    "Brainstorm\\Advisor\\gold_goal.lua": "ebd6172bf4e99d7aafa6ebc2ff319ad7d1bfa28cadcc5df76391c0ebb2571996",
+    "Brainstorm\\Advisor\\gold_perkeo.lua": "f82512c3fe02019b4f47ef68be985d43cc7f9349167e34f6fedf9ce68966da90",
+    "Brainstorm\\Advisor\\snapshot.lua": "c07abea10de857fd03f6cbe2b3ef7db473978115c6c2c3da848f28721646e6c0",
+    "Brainstorm\\Advisor\\decision.lua": "c22d4a53eedd790c5b70035d41f8050fee437ac566486d4e4948dbb95e2e0baa"
+  },
+  "files_sha256": {
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\perkeo_inventory.lua": "7bd16d518dcc9b979104b8524fdf8303dc1435675fed66c8b2a79c61d02ad549",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\gold_planet_policy.lua": "865de69d2c33a415c6607f14c40169eee3838ae53ff5608cb88eb753c546a40f",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\gold_goal.lua": "b4d1e9865ad25fd1b6d594c8ae9b99ebf552c86477bbbe22279e19f1c1120894",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\gold_perkeo.lua": "78a778dd118d69aaf5bc03a32ff95ea96cda69bb6c49feed4e0f0d710d6955c1",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\snapshot.lua": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\decision.lua": "a5768f9250d9151372e2a7e490fb4b77033633fd8e2c53d644cfb3ffa85a8cb8",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\advisor_perkeo_inventory.lua": "d20fbb053280eb32592199297c7e3d0c787178f91d123343eb0407ed125281b4",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\advisor_gold_planet_policy.lua": "7a247c5823d7bb26426e1ee499c80110f6b2a80b649b1329d635c4b3ebbe0027",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\install_advisor_perkeo_inventory.lua": "6b42a05a51ad04b2a9f36b83081b8def3898a64950d89f3f841209739c46e491",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\install_advisor_gold_planet_policy.lua": "5576fd6782ba4958ff6a04c71362ff0d04788b611244eb49637b8fa27a8578e5",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\integration.patch": "f2088c0b485b33aab2673eacf0027399b7733d6288d4c50acff8fa7cec7a27f5",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\runtime_wiring.patch": "b22a99d23b5247cfa2f0c39c9dd15605abc66f70578e8cce3649a52de136eb67",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\integration_base_sha256.json": "15ca93b73cd8e1fd5d826430976298a5bf4624e91201a556eb3c381955612c14",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\integration_status.json": "7ba18c3e7482b853a0f6480993bf9266c8b84fe6630f8d6ea290570ba6356347",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\COMPONENT_NOTE.md": "fcd1c07c29ec6875c79fb70f84f51d29206d1f900b29eaab4f7add6592b3cc4f"
+  },
+  "output_sha256": {
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\focused_stdout.txt": "070baebcdfe89933698dc0b2e65e6e807f64d26f41b125993f1858f046ab85aa",
+    "tools\\advisor_eval\\development299\\drafts\\perkeo_planets\\focused_stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

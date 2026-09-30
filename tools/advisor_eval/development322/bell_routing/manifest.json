@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "kind": "detached_bell_routing322_integration",
+  "status": "ready_for_independent_review",
+  "runtime_changed": false,
+  "source_experiments": false,
+  "integration": [
+    {
+      "source": "blind_routing.lua",
+      "target": "Brainstorm/Advisor/blind_routing.lua",
+      "base_sha256": "078e69137bd55954515d1e81f7b6bc3f47af3cf0808e7cd1cf58c360ac49531b",
+      "sha256": "c03029893369e3d8fe3d1a4c532f333b8aa34df9f555e4ab17cbe851db47e7e2"
+    },
+    {
+      "source": "test_advisor_bell_routing.lua",
+      "target": "tests/advisor_bell_routing.lua",
+      "base_sha256": null,
+      "sha256": "205a22e247a06cf10d4e6749c027b9d675c6a42d2ac652f91a0a965466b26406"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "Brainstorm/Advisor/bell_opening.lua",
+      "sha256": "df246d7f8ffa60278c77ab3ac42b22d0e6eb12bdb62c82715465abd78e41209d"
+    },
+    {
+      "path": "Brainstorm/Advisor/scoring.lua",
+      "sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf"
+    },
+    {
+      "path": "Brainstorm/Advisor/strategy.lua",
+      "sha256": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960"
+    },
+    {
+      "path": "Brainstorm/Advisor/shop_scoring.lua",
+      "sha256": "2e2cc549e0db79660e0324f432fa2718a142b0ad806688db492c8d3f90ebc74b"
+    },
+    {
+      "path": "Brainstorm/Advisor/finish_rewards.lua",
+      "sha256": "5f459a9e273a9f6cc970804ffe0e28c0e95a05d056ed9ce413d2611ec5d098ae"
+    },
+    {
+      "path": "Brainstorm/Advisor/snapshot.lua",
+      "sha256": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8"
+    },
+    {
+      "path": "Brainstorm/Advisor/decision.lua",
+      "sha256": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac"
+    },
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "f491b3869bf6d23a906411fb2876e3cc056d9997a0fffce6e6a0defdb4aa2c54"
+    },
+    {
+      "path": "tests/advisor_blind_routing.lua",
+      "sha256": "5a77e4f5d8b2e8c69d0ac32cb3d37363b520272217034ec1f4af6f382af37eca"
+    },
+    {
+      "path": "tests/advisor_bell_opening.lua",
+      "sha256": "f052eb062b4553b4c2c8e73dda4f992f6cf1db2b0b11fad4bf1e4afe2a63cfe6"
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+    }
+  ],
+  "validation": {
+    "report": "focused_report.json",
+    "sha256": "6e46bde9e07ef1a9f53739515a58053b2a63e049595111611592e4bc4bcf35e1"
+  },
+  "package_files": [
+    {
+      "path": "blind_routing.base.lua",
+      "sha256": "078e69137bd55954515d1e81f7b6bc3f47af3cf0808e7cd1cf58c360ac49531b"
+    },
+    {
+      "path": "blind_routing.lua",
+      "sha256": "c03029893369e3d8fe3d1a4c532f333b8aa34df9f555e4ab17cbe851db47e7e2"
+    },
+    {
+      "path": "focused_output.txt",
+      "sha256": "ea69db55cad6014163562af183dc9950a9e71bd1270313e317a3f8482c88b249"
+    },
+    {
+      "path": "focused_report.json",
+      "sha256": "6e46bde9e07ef1a9f53739515a58053b2a63e049595111611592e4bc4bcf35e1"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "233e7d38cdccda47bf5574d804c635276f60a5828d4b27b96bb6fd9e20c45a66"
+    },
+    {
+      "path": "package.py",
+      "sha256": "7cba9da09a66fb8099e3c2bb2f02f6e32a4e1301e40291dabc41dfb3aba0420d"
+    },
+    {
+      "path": "run_candidate.lua",
+      "sha256": "51409fa164301609229e224c0e66c141d308cdba78135d26e5fcbf89c1873af9"
+    },
+    {
+      "path": "run_existing.lua",
+      "sha256": "98117442d9bbe1b77822ab958d2aa96a2cd7505c3ee15272bdd63103729153ac"
+    },
+    {
+      "path": "stage.py",
+      "sha256": "73401c71fc1b76e1a8b1311b16f9ed8579b18cbb7614eebe319c34a0e6cc90b3"
+    },
+    {
+      "path": "test_advisor_bell_routing.lua",
+      "sha256": "205a22e247a06cf10d4e6749c027b9d675c6a42d2ac652f91a0a965466b26406"
+    }
+  ]
+}

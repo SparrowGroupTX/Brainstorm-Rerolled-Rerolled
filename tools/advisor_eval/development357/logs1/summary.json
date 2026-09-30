@@ -1,0 +1,749 @@
+{
+  "event_count": 9851,
+  "input_bytes": 23262068,
+  "decoded_bytes": 170529497,
+  "versions": {
+    "Brainstorm v2.156.0-alpha": 8887
+  },
+  "kinds": {
+    "teacher_observation": 1559,
+    "teacher_advice": 2652,
+    "auto_run": 2805,
+    "collection_search_started": 6,
+    "collection_search_finished": 6,
+    "collection_run_start": 6,
+    "action_requested": 932,
+    "action_callback_result": 932,
+    "state_after_actions": 921,
+    "joker_public_observation": 28,
+    "joker_public_action_complete": 4
+  },
+  "last_at": "2026-09-16T18:33:29Z",
+  "last_sequence": 9851,
+  "decode_errors": [],
+  "converter_error": null,
+  "converter": {
+    "schema": "brainstorm_teacher_demonstrations_v1",
+    "counts": {
+      "events": 9851,
+      "observations": 1559,
+      "recommendations": 2652,
+      "action_requests": 932,
+      "callback_results": 932,
+      "settled_observations": 921,
+      "wins": 1,
+      "losses": 4,
+      "abandoned_stall": 0,
+      "unsupported": 0,
+      "error": 0
+    },
+    "collections": 1,
+    "actions_without_callback": 0,
+    "accepted_callbacks_without_settled_observation": 0,
+    "legacy_checkpoint_compatible": false,
+    "expert_labels_assigned": 0,
+    "limitations": [
+      "No legal-candidate reconstruction or training is performed.",
+      "Callback acceptance and first settled state do not prove complete queued effects.",
+      "Outcomes are audited journal evidence, not independent game replay verification.",
+      "Unfinished collections remain incomplete; no missing outcome is imputed."
+    ]
+  },
+  "lifecycle": [
+    {
+      "sequence": 18,
+      "kind": "auto_run",
+      "at": "2026-09-16T17:55:31Z",
+      "monotonic_seconds": 25.2096402,
+      "observation_id": "teacher356-1789581331-1:14",
+      "advice_sequence": 17,
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000002.brj",
+        "ordinal": 5,
+        "raw_sha256": "6bee06724aba0309c5f0125707e76521fbe78d04ea4c4f2456f0e7c0b8ee0e06"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "starting",
+        "time": 25.1336093
+      },
+      "advice": null
+    },
+    {
+      "sequence": 21,
+      "kind": "auto_run",
+      "at": "2026-09-16T17:55:33Z",
+      "monotonic_seconds": 26.9160698,
+      "observation_id": "teacher356-1789581331-1:19",
+      "advice_sequence": 20,
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000002.brj",
+        "ordinal": 8,
+        "raw_sha256": "568b605a8a32bead2c67cd1c29c7066859e9b92c119d0bb8e00fa0a68936d488"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 26.8747278
+      },
+      "advice": null
+    },
+    {
+      "sequence": 1945,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:07:15Z",
+      "monotonic_seconds": 729.5555779,
+      "observation_id": "teacher356-1789581331-1:1942",
+      "advice_sequence": 1943,
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000002.brj",
+        "ordinal": 1932,
+        "raw_sha256": "0f6bdef7ce23f52abcbab091cf2579c64841a3311213d886e9ad20caa0546c9e"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:2",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:2",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 185,
+        "run_id": "game:2",
+        "run_number": 1,
+        "run_seconds": 704.4162789000001,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "terminal",
+        "time": 729.5498882
+      },
+      "advice": null
+    },
+    {
+      "sequence": 1957,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:07:16Z",
+      "monotonic_seconds": 729.7714355,
+      "observation_id": "teacher356-1789581331-1:1953",
+      "advice_sequence": 1956,
+      "seed": "YVYN2Z11",
+      "run_instance": "observed-game:3",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000004.brj",
+        "ordinal": 5,
+        "raw_sha256": "09fc58e867ae9ee1c3bf8613e8386e930fb9f7a19953b9b34dfc795d3d5892cf"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:3",
+        "run_number": 2,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "starting",
+        "time": 729.7045828
+      },
+      "advice": null
+    },
+    {
+      "sequence": 1960,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:07:17Z",
+      "monotonic_seconds": 731.4849884,
+      "observation_id": "teacher356-1789581331-1:1958",
+      "advice_sequence": 1959,
+      "seed": "YVYN2Z11",
+      "run_instance": "observed-game:3",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000004.brj",
+        "ordinal": 8,
+        "raw_sha256": "239e76c1c548d7a2b8e05a512571f607954115e805743c0ad615e1f122dccaf6"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:3",
+        "run_number": 2,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "playing",
+        "time": 731.4450438
+      },
+      "advice": null
+    },
+    {
+      "sequence": 4278,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:12:58Z",
+      "monotonic_seconds": 1072.5437195,
+      "observation_id": "teacher356-1789581331-1:4276",
+      "advice_sequence": 4277,
+      "seed": "YVYN2Z11",
+      "run_instance": "observed-game:3",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000005.brj",
+        "ordinal": 278,
+        "raw_sha256": "91543f72fe6f80570a904be0717243567e8bd4eece5aabc90e1b546fc804306c"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "callbacks": [
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 674187,
+                "deck": "b_red",
+                "deck_wins": 17,
+                "jokers": {
+                  "j_brainstorm": 30,
+                  "j_caino": 13,
+                  "j_cartomancer": 13,
+                  "j_devious": 12,
+                  "j_yorick": 26
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 674187,
+                "deck": "b_red",
+                "deck_wins": 17,
+                "jokers": {
+                  "j_brainstorm": 29,
+                  "j_caino": 12,
+                  "j_cartomancer": 12,
+                  "j_devious": 11,
+                  "j_yorick": 25
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_joker_win",
+              "verified": true
+            },
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 674187,
+                "deck": "b_red",
+                "deck_wins": 18,
+                "jokers": {
+                  "j_brainstorm": 30,
+                  "j_caino": 13,
+                  "j_cartomancer": 13,
+                  "j_devious": 12,
+                  "j_yorick": 26
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 674187,
+                "deck": "b_red",
+                "deck_wins": 17,
+                "jokers": {
+                  "j_brainstorm": 30,
+                  "j_caino": 13,
+                  "j_cartomancer": 13,
+                  "j_devious": 12,
+                  "j_yorick": 26
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_deck_win",
+              "verified": true
+            }
+          ],
+          "event_id": "win:game:3",
+          "final_context": {
+            "ante": 8,
+            "boss": true,
+            "chips": 674187,
+            "deck": "b_red",
+            "deck_wins": 17,
+            "jokers": {
+              "j_brainstorm": 29,
+              "j_caino": 12,
+              "j_cartomancer": 12,
+              "j_devious": 11,
+              "j_yorick": 25
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 19,
+            "target": 400000,
+            "win_ante": 8,
+            "won": false
+          },
+          "game_over": false,
+          "kind": "win",
+          "result_surface_seen": false,
+          "run_id": "game:3",
+          "source": "original_win_callback",
+          "source_saved": false,
+          "threshold_met": true,
+          "verified": true
+        },
+        "gold_award": {
+          "new_count": 0,
+          "new_keys": {},
+          "schema": 1,
+          "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+          "source": "original_set_joker_win",
+          "status": "confirmed"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "win",
+        "profile_id": 1,
+        "run_actions": 226,
+        "run_id": "game:3",
+        "run_number": 2,
+        "run_seconds": 342.78551760000005,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "terminal",
+        "time": 1072.4901004
+      },
+      "advice": null
+    },
+    {
+      "sequence": 4296,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:13:00Z",
+      "monotonic_seconds": 1073.9640262,
+      "observation_id": "teacher356-1789581331-1:4292",
+      "advice_sequence": 4295,
+      "seed": "S7PXV521",
+      "run_instance": "observed-game:4",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000007.brj",
+        "ordinal": 5,
+        "raw_sha256": "409b6659cfd923bd21012d97f5e96b3dc18a5c9fbf171dd1d09ad320588e1ed9"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:4",
+        "run_number": 3,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "starting",
+        "time": 1073.8204657
+      },
+      "advice": null
+    },
+    {
+      "sequence": 4299,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:13:00Z",
+      "monotonic_seconds": 1074.0955765,
+      "observation_id": "teacher356-1789581331-1:4297",
+      "advice_sequence": 4298,
+      "seed": "S7PXV521",
+      "run_instance": "observed-game:4",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000007.brj",
+        "ordinal": 8,
+        "raw_sha256": "4b7363ad48f85b878294855e2cc80dea0b04f094037e955b7764245fc51b20bd"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:4",
+        "run_number": 3,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "playing",
+        "time": 1074.0266097
+      },
+      "advice": null
+    },
+    {
+      "sequence": 4850,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:14:55Z",
+      "monotonic_seconds": 1188.6951316,
+      "observation_id": "teacher356-1789581331-1:4847",
+      "advice_sequence": 4848,
+      "seed": "S7PXV521",
+      "run_instance": "observed-game:4",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000007.brj",
+        "ordinal": 559,
+        "raw_sha256": "f10a4af37817702c0cd69e6ea777b3d98997a41681b286d481956e8cfbb2121f"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:4",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:4",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 52,
+        "run_id": "game:4",
+        "run_number": 3,
+        "run_seconds": 114.86601259999998,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "terminal",
+        "time": 1188.6864783
+      },
+      "advice": null
+    },
+    {
+      "sequence": 4864,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:14:55Z",
+      "monotonic_seconds": 1189.3844602,
+      "observation_id": "teacher356-1789581331-1:4860",
+      "advice_sequence": 4863,
+      "seed": "RH45AD21",
+      "run_instance": "observed-game:5",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 5,
+        "raw_sha256": "d100906980fcbda16905f9590d0250ab4e5d99ec15c4c41fdca9beae3e9ebe88"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:5",
+        "run_number": 4,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "starting",
+        "time": 1189.2922788
+      },
+      "advice": null
+    },
+    {
+      "sequence": 4867,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:14:55Z",
+      "monotonic_seconds": 1189.486,
+      "observation_id": "teacher356-1789581331-1:4865",
+      "advice_sequence": 4866,
+      "seed": "RH45AD21",
+      "run_instance": "observed-game:5",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 8,
+        "raw_sha256": "6e269f543d64a2f6df1abac977476f80f0d41cfcbb23645b6be5c77768871eea"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:5",
+        "run_number": 4,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "playing",
+        "time": 1189.4313768
+      },
+      "advice": null
+    },
+    {
+      "sequence": 6968,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:23:45Z",
+      "monotonic_seconds": 1719.519807,
+      "observation_id": "teacher356-1789581331-1:6965",
+      "advice_sequence": 6966,
+      "seed": "RH45AD21",
+      "run_instance": "observed-game:5",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000010.brj",
+        "ordinal": 61,
+        "raw_sha256": "6f79a4e65fd7ad84629fb7e64470886fef989148d61a9855667042b48df1e0b9"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:5",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:5",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 195,
+        "run_id": "game:5",
+        "run_number": 4,
+        "run_seconds": 530.2215956,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "terminal",
+        "time": 1719.5138744
+      },
+      "advice": null
+    },
+    {
+      "sequence": 6984,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:23:48Z",
+      "monotonic_seconds": 1722.1183079,
+      "observation_id": "teacher356-1789581331-1:6980",
+      "advice_sequence": 6983,
+      "seed": "YAEARC31",
+      "run_instance": "observed-game:6",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000012.brj",
+        "ordinal": 5,
+        "raw_sha256": "e9dcf76724ab81fb657c6bcd76bc16913cfd3c001175476e0d2e971333a24277"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:6",
+        "run_number": 5,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "starting",
+        "time": 1722.0374578
+      },
+      "advice": null
+    },
+    {
+      "sequence": 6987,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:23:48Z",
+      "monotonic_seconds": 1722.2136612,
+      "observation_id": "teacher356-1789581331-1:6985",
+      "advice_sequence": 6986,
+      "seed": "YAEARC31",
+      "run_instance": "observed-game:6",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000012.brj",
+        "ordinal": 8,
+        "raw_sha256": "c854b17e8d4d682abe05128fd71ff3dff196e1e070e3ae65c9b6f0d915ae8fce"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:6",
+        "run_number": 5,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "playing",
+        "time": 1722.1690406
+      },
+      "advice": null
+    },
+    {
+      "sequence": 9185,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:31:21Z",
+      "monotonic_seconds": 2174.9994586,
+      "observation_id": "teacher356-1789581331-1:9182",
+      "advice_sequence": 9183,
+      "seed": "YAEARC31",
+      "run_instance": "observed-game:6",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000013.brj",
+        "ordinal": 158,
+        "raw_sha256": "c31453b7c0306d2b3d2057f21c4fc159df326a4f29c2cb22e2e48437a56bb9ef"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:6",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:6",
+          "source": "GAME_OVER",
+          "source_won_field": true,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 203,
+        "run_id": "game:6",
+        "run_number": 5,
+        "run_seconds": 452.9552899999999,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "terminal",
+        "time": 2174.9927478
+      },
+      "advice": null
+    },
+    {
+      "sequence": 9204,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:31:23Z",
+      "monotonic_seconds": 2176.6067059,
+      "observation_id": "teacher356-1789581331-1:9200",
+      "advice_sequence": 9203,
+      "seed": "I8VUSV31",
+      "run_instance": "observed-game:7",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000015.brj",
+        "ordinal": 5,
+        "raw_sha256": "2021075ad521896fdc97fed5dd480cf5e2080dbad30a30598b5cd3f676b1fa8b"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:7",
+        "run_number": 6,
+        "schema": 1,
+        "search_id": "auto:1:1:6",
+        "session": 1,
+        "state": "starting",
+        "time": 2176.5174144
+      },
+      "advice": null
+    },
+    {
+      "sequence": 9207,
+      "kind": "auto_run",
+      "at": "2026-09-16T18:31:23Z",
+      "monotonic_seconds": 2176.7007003,
+      "observation_id": "teacher356-1789581331-1:9205",
+      "advice_sequence": 9206,
+      "seed": "I8VUSV31",
+      "run_instance": "observed-game:7",
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000015.brj",
+        "ordinal": 8,
+        "raw_sha256": "457727c4a9c5e5afa56772e2d3dcf5e95ca92a6233afef89b8076b07abf6cd5f"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:7",
+        "run_number": 6,
+        "schema": 1,
+        "search_id": "auto:1:1:6",
+        "session": 1,
+        "state": "playing",
+        "time": 2176.6590678
+      },
+      "advice": null
+    }
+  ]
+}

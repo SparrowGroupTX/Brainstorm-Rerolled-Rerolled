@@ -1,0 +1,32 @@
+{
+  "kind": "manufactured_fixture",
+  "source_execution": false,
+  "captured_replay": false,
+  "live_game_control": false,
+  "max_seconds": 60,
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tools\\advisor_eval\\development344\\acquisition_component\\tests\\advisor_gold_acquisition.lua"
+  ],
+  "inputs": {
+    "tools\\advisor_eval\\development344\\acquisition_component\\Brainstorm\\Advisor\\gold_acquisition.lua": "96630da01936ef730ce45f4af5016dbefd2270515974ff93b0adfce54a6348ea",
+    "tools\\advisor_eval\\development344\\acquisition_component\\tests\\advisor_gold_acquisition.lua": "46dc00cc2a8f57a5b721421e57d0ce16aa7d23e10ab05a13cce5f0a364d479ba",
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\fixture.lua": "25ae0b84c9c839fd588f562b43ac8a49be65634bb1d0d1ff99a626b14d46ccbb",
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\fixture_support.lua": "071ff8a17bfe0e5de6f126b3e9507560ccc7bc49c31d1c7cd522bbf8b941a299",
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\gold_tarot_hold.lua": "0d831d99900f4a19bae3bc3643d65779b29a0896f840ea0241a141d9a1508522",
+    "Brainstorm\\Advisor\\gold_goal.lua": "a997000c66802949dd102d6ed1723b0246445f4176f7effcb2aeab82484e9008",
+    "Brainstorm\\Advisor\\shop_scoring.lua": "9c23ca62e5baea5e28519bf4ac3ef2e2bbe5dbd5de5e43361331fadc6b511652",
+    "Brainstorm\\Advisor\\scoring.lua": "f625c294eb5ba9cf0b6da5eb8f871c58be0835aecf92396c09151becef1c80e9",
+    "Brainstorm\\Advisor\\strategy.lua": "6b1f0376622851692ec869091092bb6af30fba0f9053c25235d4e892108252f7",
+    "Brainstorm\\Advisor\\shop_sequences.lua": "31b4be054d9fd8a5acc19ed56f32dd22d92551bb548a9103839ddf9c886acdad",
+    "Brainstorm\\Advisor\\liquidity.lua": "e97dcfd7ce958bff2415d5ccf507b7c1f0e6152e1caea92afcfcbb6776233c8d",
+    "Brainstorm\\Advisor\\gold_perkeo.lua": "78a778dd118d69aaf5bc03a32ff95ea96cda69bb6c49feed4e0f0d710d6955c1",
+    "Brainstorm\\Advisor\\snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba"
+  },
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development344\\acquisition_component\\tests\\advisor_gold_acquisition.lua\nPASS tools\\advisor_eval\\development344\\acquisition_component\\tests\\advisor_gold_acquisition.lua\n1/1 fixtures passed\nadvisor_gold_acquisition: 149 manufactured checks passed; 1690 exact charged score-floor calls\n",
+  "stderr": "",
+  "seconds": 0.23499999998603016,
+  "inputs_unchanged": true
+}

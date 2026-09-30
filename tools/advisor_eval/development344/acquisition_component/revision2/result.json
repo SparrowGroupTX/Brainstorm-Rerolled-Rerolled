@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "release": 344,
+  "revision": 2,
+  "status": "staged_review_ready",
+  "files": [
+    {
+      "destination": "Brainstorm/Advisor/gold_acquisition.lua",
+      "staged_path": "tools\\advisor_eval\\development344\\acquisition_component\\revision2\\Brainstorm\\Advisor\\gold_acquisition.lua",
+      "sha256": "0f7d337df811c8daec03f4e9b56766016079710724ed183c44f186876c714082"
+    },
+    {
+      "destination": "tests/advisor_gold_acquisition.lua",
+      "staged_path": "tools\\advisor_eval\\development344\\acquisition_component\\revision2\\tests\\advisor_gold_acquisition.lua",
+      "sha256": "1748b8f0138fbd89b39046ae913b235482c3a3ea3abab322eeb10aae12b39b2e"
+    },
+    {
+      "destination": "tests/advisor_gold_acquisition_runtime.lua",
+      "staged_path": "tools\\advisor_eval\\development344\\acquisition_component\\revision2\\tests\\advisor_gold_acquisition_runtime.lua",
+      "sha256": "673ac0eefad2d6d8b4d32270a86ef5becfe1f57a26574dabadd59b752bcbeb59"
+    }
+  ],
+  "validation": [
+    {
+      "path": "tools\\advisor_eval\\development344\\acquisition_component\\revision2\\validation_01_before.json",
+      "sha256": "dd426dc1d9a2cf5c14f681a6f753bb7eefecee0b1c3f5f4e342361f35abdff05",
+      "exit_code": 0,
+      "expected_failure": true,
+      "seconds": 0.2029999999795109,
+      "inputs_unchanged": true
+    },
+    {
+      "path": "tools\\advisor_eval\\development344\\acquisition_component\\revision2\\validation_01_current.json",
+      "sha256": "4724e644fe439e6e06540137e7c2fab6d98c7bbb87ecaf94a130ed75991f8a60",
+      "exit_code": 0,
+      "expected_failure": false,
+      "seconds": 0.3279999999795109,
+      "inputs_unchanged": true
+    }
+  ],
+  "checks": {
+    "main": 147,
+    "production_wired_coroutine": 25,
+    "total": 172
+  },
+  "score_floor_calls": {
+    "main": 1690,
+    "production_wired_coroutine": 360
+  },
+  "cooperative_yields": 4,
+  "supersedes": "tools\\advisor_eval\\development344\\acquisition_component\\result.json",
+  "change_from_revision1": "Remove comparison-level pcall so the existing yielding Shop loop does not depend on yielding across protected C-call boundaries. Synchronous score-floor qualification retains pcall. Unexpected comparison errors propagate to existing worker error handling.",
+  "baseline_result": "The initial expectation of reproducing a Lua 5.1 pcall/yield failure was not confirmed: preserved revision1 also passed the full production-wired coroutine fixture against the installed lua51.dll, with25checks/360floorcalls/4yields. The before receipt preserves that successful result and its original expected-failure label.",
+  "accounting": "Explicit incomplete, unsupported, truncated or context-accounting mismatches still return all actual floor calls. An unexpected thrown comparison produces no returned suggestion and propagates to the normal worker error surface.",
+  "unchanged_scope": "Complete declared fixed-current-row/hold-all endpoint family, winning-Ante pre-Small/Big only, exact paid missing-Joker acquisition with preserved original inventory and1.25next-target sampled floor margin. No terminal benefit is established.",
+  "promotion": [
+    "Copy revision2 module to Brainstorm/Advisor/gold_acquisition.lua.",
+    "Main fixture: replace staged module load with production module; bind Support.Hold to production gold_tarot_hold if fixture_support remains the raw builder.",
+    "Runtime fixture: remove the ACQUISITION_TEST_MODULE override line or default it to the production module so runtime.lua wiring is authoritative."
+  ],
+  "production_paths_written_by_component": false,
+  "experiment_jobs": {
+    "source_components": 0,
+    "captured_policy_replays": 0,
+    "searches": 0,
+    "complete_attempts": 0
+  },
+  "live_game_control": false,
+  "save_profile_reads": false
+}

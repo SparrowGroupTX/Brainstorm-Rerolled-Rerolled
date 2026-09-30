@@ -1,0 +1,57 @@
+--- installed446/Brainstorm/Advisor/growth.lua
++++ candidate447/Brainstorm/Advisor/growth.lua
+@@ -27,7 +27,8 @@
+   j_abstract='Abstract Joker',j_bull='Bull',j_blue_joker='Blue Joker',j_certificate='Certificate',
+   j_stuntman='Stuntman',j_faceless='Faceless Joker',j_odd_todd='Odd Todd',j_scholar='Scholar',
+   j_joker='Joker',j_acrobat='Acrobat',j_ride_the_bus='Ride the Bus',j_green_joker='Green Joker',
+-  j_hack='Hack',j_square='Square Joker',j_golden='Golden Joker',j_campfire='Campfire',j_hit_the_road='Hit the Road'}
++  j_hack='Hack',j_square='Square Joker',j_golden='Golden Joker',j_campfire='Campfire',j_hit_the_road='Hit the Road',
++  j_astronomer='Astronomer'}
+ local joker_effects={j_yorick='',j_perkeo='',j_brainstorm='Copycat',j_blueprint='Copycat',
+   j_supernova='Hand played mult',j_droll='Type Mult',j_burnt='',j_smiley='',
+   j_duo='X1.5 Mult',j_wily='',j_swashbuckler='Set Mult',j_flower_pot='',
+@@ -36,7 +37,7 @@
+   j_jolly='Type Mult',j_zany='Type Mult',j_mad='Type Mult',j_crazy='Type Mult',j_smeared='',
+   j_abstract='Joker Mult',j_certificate='',j_stuntman='',j_odd_todd='Odd Card Buff',j_scholar='Ace Buff',
+   j_joker='Mult',j_acrobat='Shop size',j_ride_the_bus='',j_hack='Low Card double',
+-  j_golden='Bonus dollars',j_hit_the_road='Jack Discard Effect'}
++  j_golden='Bonus dollars',j_hit_the_road='Jack Discard Effect',j_astronomer=''}
+ -- These vanilla families add integer card-stage Mult or fixed main-stage
+ -- chips/Mult. They depend on the retained category/suits, never their order.
+ local type_chips={j_sly={'Pair',50},j_wily={'Three of a Kind',100},j_clever={'Two Pair',80},
+@@ -1663,10 +1664,14 @@
+     j_scholar='Scholar',j_scary_face='Scary Face',j_card_sharp='Card Sharp',j_baron='Baron'}
+   local moon=false
+   for _,j in ipairs(o.state.jokers or {}) do
+-    if j.face_down or j.identity_redacted or not
+-        (allowed[j.key]==(j.ability or {}).name or ordinary_additive_joker(j,true)) then
++    if j.face_down or j.facing=='back' or j.identity_redacted or j.identity_unknown or j.unknown or j.concealed or not
++        (allowed[j.key]==(j.ability or {}).name or ordinary_additive_joker(j,true) or
++          j.key=='j_photograph' and small_order_joker(j)) then
+       return no('A Joker lacks a monotone public held-card floor.')
+     end
++    -- Photograph reads the first selected scoring face, never a hidden held
++    -- slot. This admits only a visible probe; the actual discard still needs
++    -- the existing complete retained-card order and resource proof below.
+     local extra=(j.ability or {}).extra
+     if j.key=='j_baron' and extra~=nil and extra~=1.5 or
+         j.key=='j_shoot_the_moon' and extra~=nil and extra~=13 then
+--- installed446/Brainstorm/Core/Brainstorm.lua
++++ candidate447/Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.221.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.222.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- installed446/Brainstorm/steamodded_compat.lua
++++ candidate447/Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.221.0-alpha
++--- VERSION: 2.222.0-alpha

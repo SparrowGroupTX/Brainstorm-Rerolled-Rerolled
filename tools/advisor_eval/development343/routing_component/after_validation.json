@@ -1,0 +1,23 @@
+{
+  "kind": "manufactured_fixture_only",
+  "source_execution": false,
+  "live_game": false,
+  "captured_replay": false,
+  "timeout_seconds": 60,
+  "files": {
+    "Brainstorm/Advisor/blind_routing.lua": "8faf3232fa0cab84f14c2ea17ba6afed8c8bd5962e3de767687a7b783adcce97",
+    "tests/advisor_blind_routing.lua": "2ae415b12e99bdcb80d0e57a7bbe5ea21e26641943fc2be267c3a9dc62542ed1",
+    "tests/advisor_bell_routing.lua": "205a22e247a06cf10d4e6749c027b9d675c6a42d2ac652f91a0a965466b26406"
+  },
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tests/advisor_blind_routing.lua",
+    "tests/advisor_bell_routing.lua"
+  ],
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tests\\advisor_blind_routing.lua\nPASS tests\\advisor_blind_routing.lua\nRunning tests\\advisor_bell_routing.lua\nPASS tests\\advisor_bell_routing.lua\n2/2 fixtures passed\nBlind routing: 107 checks passed (bounded composition evidence and time heuristic; no win probability)\nBell routing: 236 manufactured checks passed; complete forced-card openings, no source run or win probability\n",
+  "stderr": "",
+  "duration_seconds": 0.4059999999590218,
+  "files_unchanged": true
+}

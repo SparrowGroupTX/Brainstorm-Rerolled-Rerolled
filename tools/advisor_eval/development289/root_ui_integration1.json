@@ -1,0 +1,24 @@
+{
+  "scope": "routine synthetic decision dispatch and UI presentation",
+  "command": [
+    "python",
+    "-B",
+    "tests/run_lua_tests.py",
+    "tests/advisor_decision_integration.lua",
+    "tests/advisor_runtime.lua"
+  ],
+  "exit_code": 0,
+  "fixtures": 2,
+  "checks": {
+    "decision": 26,
+    "runtime": 419
+  },
+  "actual_seconds": 0.6704207,
+  "source_execution": false,
+  "files": {
+    "Brainstorm/Advisor/decision.lua": "dfcd17a58d5ed0b62d3bb7d338a7839b49a51f7f72c32910c093b63c04677de9",
+    "Brainstorm/Advisor/runtime.lua": "25628b8c1aef6bcf5b736e2e2b9b70f5c1718989ac1da0de191e7e44da493779",
+    "tests/advisor_decision_integration.lua": "e79643a870686fdb131ab2224ba46aadc4456ca8b7c3a34e8fb5959038c18a4a",
+    "tests/advisor_runtime.lua": "b93c637199fd2c58edfb1d637873c6ee2775b7e024d4a3925efeddc7e210cde3"
+  }
+}

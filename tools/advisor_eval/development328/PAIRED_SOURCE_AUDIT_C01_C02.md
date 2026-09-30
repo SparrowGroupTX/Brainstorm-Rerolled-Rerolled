@@ -1,0 +1,13 @@
+# C01/C02 dependent source pair
+
+The candidate cleared the specific Ante1 Pillar that defeated the baseline, then stopped with an error at Ante2 House. Neither run won. The source profile was synthetic `all_unlocked_discovered_v1`, with all150 Jokers missing Gold; it does not represent the player's58-complete/92-missing objective.
+
+The first exact action difference is step17. Public snapshots, phases, prior actions and resolved resources align through steps1–16. At Pillar, with four hands/two discards/$2, baseline discards hand indices3,7,8; candidate discards3,7. The candidate retains the debuffed2 of Diamonds along with the Purple7 of Spades. This is an aligned public comparison, not hidden RNG/save equivalence or proof that the first different action alone caused the outcome.
+
+Baseline Pillar scores are296+144+124+28 =592/600, a terminal loss. Candidate scores are296+144+60+116 =616/600, followed by Ante2 Small1368/1000 and Big2156/1500. All eight candidate plays have deterministic score checks. At step47 the source worker reports `HEADLESS_BOUNDARY advisor returned no machine action: hand Concealed-card advice unavailable`; its recorded outcome remains error. Advancing farther and clearing Pillar establish no terminal win or numerical win-rate improvement.
+
+Actual observed ownership changes preserve Perkeo, Yorick, Certificate and Faceless; candidate later acquires Droll and an ordinary Judgement, and retains three generated Negative Judgement copies by the last observed state. These are acquisition/retention observations, not gold stickers or guaranteed future utility.
+
+Hash-bound supplementary report: `runs/loss328_validation_20260915/paired_C01_C02_audit_v2.json`, SHA-256 `111780a3cdeef5c4dd2673eb01e85c4d266d2dbd58c077b51c6e72fa37ed5761`. The initial report is preserved separately; it declined first-divergence proof because the known public shop_forecast field had not yet been admitted to the projection. Version2 includes that source-defined public field.
+
+`development328/paired_source_audit.py` reads only existing audit/registration/record files and optional raw/gzip traces. It never decodes serialized fingerprint/identity strings, masks concealed identities across overlapping card views, treats remaining deck composition as a multiset, and refuses first-divergence proof on unequal or unclassified public states. Without full trace projection, it declines proof rather than treating the narrow audit summary as a complete state. Six pure manufactured tests in `test_paired_source_audit.py` passed. No policy or source execution was performed by this audit.

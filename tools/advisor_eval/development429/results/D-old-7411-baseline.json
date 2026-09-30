@@ -1,0 +1,84 @@
+{
+  "job": "D-old-7411-baseline",
+  "mode": "decision",
+  "case": "old-7411",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 0.875,
+  "log_sha256": "ac2f14e7f6705189784a6327490bd5b3a003bc33f58f72b50f3754ba9b4a8ae8",
+  "status": "complete",
+  "result": {
+    "case": "old-7411",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 6,
+        "final_action_kind": "discard",
+        "reason": "supported_retained_clear",
+        "remaining_discards": 1,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 760,
+      "play": {
+        "hand": "High Card",
+        "legal": true,
+        "score": 11780,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 381,
+          "qualified": 46,
+          "selected_cards": 1,
+          "selected_score": 11780
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 6,
+          "max_evaluations": 12
+        },
+        "risk": {
+          "bonus": 0.00945,
+          "candidate_count": 9,
+          "compared": true,
+          "compared_five_count": 1,
+          "exact_transition": true,
+          "final_action_kind": "discard",
+          "final_action_matches_search": false,
+          "full_batch_preference": false,
+          "late_margin": true,
+          "minimum_score": 9728,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.01
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

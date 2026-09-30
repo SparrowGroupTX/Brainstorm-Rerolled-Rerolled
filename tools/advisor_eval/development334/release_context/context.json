@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-15T21:22:02.052900+00:00",
+  "release": 334,
+  "summary": "Remove redundant complete play comparisons for adjacent identical owned consumables. The general hand planner keeps the earliest physical representative for each contiguous group with equal full public metadata except its top-level ID. All targets, retained inventory counts/order, Negative capacity and Perkeo/Observatory preservation remain represented. Existing upgrade-then-targeted-use sequences use the reduced candidate set with their original index shifting. No scoring budget was increased.",
+  "outcome_summary": "Release 334 uses manufactured fixtures and routine regression only. Its ten-identical-Negative-Death fixture measures 24,852 baseline score calls covering only 12 distinct targets, versus 6,104 candidate calls covering all 28 target pairs, within the unchanged 25,000 cap. These are instrumented mock-scorer invocation counts, not live timing or a complete game. The new fixture passes 209 checks including real-scorer Planet/Tarot sequences, exact action indices, whole Perkeo copying probabilities, Negative capacity, input immutability, metadata distinctions and conservative fallbacks. Historical closed loss328 outcomes remain three losses, one error, one timeout, one unsupported and zero wins under policies 327/329/331; they are not 334 validation.",
+  "limits_summary": "Only contiguous fully equivalent visible supported cards are merged. Separated copies, edition/ability/price/copy-metadata differences, nested IDs and unknown or unbounded metadata retain separate comparisons. This is equivalence inside current modeled mechanics, not arbitrary external callbacks that inspect physical IDs. The existing planner still searches only bounded upgrade-then-targeted-consumable pairs, not general multi-Tarot sequences. Every actual use removes one card; all remaining copies remain available for later advice and Perkeo. The earlier 333 callback-growth repair is preserved, but its activation and restored live FPS remain unconfirmed. No live FPS, terminal rescue, numerical win odds, achievement completion or stronger-than-human performance follows from this fixture. Preserve all logs, current settings, native dependencies and dirty/untracked work.",
+  "budget_summary": "All experiment allowances remain CLOSED. Release 334 runs zero source components, captured-state policy replays, searches and complete attempts. It reads no source executable archive, player saves or profiles, and does not control the game. Only manufactured Lua fixtures and relevant full regressions run, with 60-second per-suite caps. Historical loss328 used four public pairs and six source attempts, 1,200 seconds reserved and 685.3740000000689 seconds actual; unused P05/P06 and 60 seconds remain closed. No worker, source attempt, search or scheduled continuation is pending. Activation waits for the user normal restart.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 4,
+    "captured_policy_evaluations": 8,
+    "search_workers": 0,
+    "complete_attempts": 6
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 3,
+    "error": 1,
+    "timeout": 1,
+    "unsupported": 1,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+      "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_SOURCE_EVIDENCE_332.json",
+      "sha256": "b185730878f01b1974f2ed0fcfb80cf8a09a309e8235e3b0f7b9098d68235924"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_BUDGET_332.json",
+      "sha256": "ebe6ec19dc594cb8b260883b761fe8d285edb523d5db584412b68cf1ec7b097d"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development328/shop_release_notes/limits.json",
+      "sha256": "abe07aa95ae18a8bf1704748f643e3b99b27a3c72c8e1fa7eb05917d02731d8c"
+    }
+  },
+  "historical_closed_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_closed_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_closed_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "diagnostic_evidence": {
+    "previous_checkpoint": {
+      "path": "tools/advisor_eval/development333/release_final/context.json",
+      "sha256": "98b1af4a5d381af20f70b17674cb299a92bb75b579be5922b08f1f5b57d0f017"
+    },
+    "before_module": {
+      "path": "tools/advisor_eval/development334/before/consumables.lua",
+      "sha256": "cffd8e739ac8f02c3ce14ba31bdc2d432322a79bacbe47f95fc01084ad9963d2"
+    },
+    "manufactured_fixture": {
+      "path": "tools/advisor_eval/development334/test_duplicates.lua",
+      "sha256": "f43ce861975a461eaff0465d7580f849783f2fcc4ebfca81f7d4495f6a042e33"
+    },
+    "fixture_receipt": {
+      "path": "tools/advisor_eval/development334/fixture_receipt3.json",
+      "sha256": "e5b92f5b3e16006870b565a9227281810f46e4e36bc4686a3faa5c232a5ed6bf"
+    },
+    "comparison_fixture": {
+      "path": "tools/advisor_eval/development334/compare_death.lua",
+      "sha256": "a56f4351a00059ca6b3296530b04320bb101451b75761f6dc723094a883c029d"
+    },
+    "comparison_receipt": {
+      "path": "tools/advisor_eval/development334/comparison_receipt1.json",
+      "sha256": "b7e04705a9fe97df1e8ba6d6c8bd4babe987c82459ee1a97eec537a14beb9728"
+    },
+    "integration": {
+      "path": "tools/advisor_eval/development334/integration.json",
+      "sha256": "59d5adc9211d720f7320dba83f0ad8ba792a338706681336dd70c0c3b1c452ae"
+    },
+    "candidate_validation": {
+      "path": "tools/advisor_eval/runs/duplicates334_candidate/validation/report.json",
+      "sha256": "fb904914714c6a5850e948cee7c134acb525c8735c1a33d851411c992d291111"
+    }
+  },
+  "preparation_status": "passed_candidate_exact_installed_validation_bound_separately",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "previous_checkpoint_context": {
+    "path": "tools/advisor_eval/development333/release_final/context.json",
+    "sha256": "98b1af4a5d381af20f70b17674cb299a92bb75b579be5922b08f1f5b57d0f017"
+  }
+}

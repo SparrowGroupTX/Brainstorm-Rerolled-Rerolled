@@ -1,0 +1,48 @@
+{
+  "job": "D-old-6107-baseline",
+  "mode": "decision",
+  "case": "old-6107",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 2.10999999998603,
+  "log_sha256": "cfe8f84103a9a870185238c106f1d8e18a4868d69c289c450b38bedc03c10846",
+  "status": "complete",
+  "result": {
+    "case": "old-6107",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          5,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 98178,
+      "play": {
+        "hand": "Full House",
+        "legal": true,
+        "score": 460,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

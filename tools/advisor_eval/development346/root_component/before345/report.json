@@ -1,0 +1,23 @@
+{
+  "scope": "Manufactured fixture validation only; no captured/source/search/complete jobs",
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tests/advisor_gold_acquisition_runtime.lua",
+    "tests/advisor_gold_cartomancer.lua",
+    "tests/advisor_gold_retention_runtime.lua"
+  ],
+  "status": "failed",
+  "exit_code": 1,
+  "seconds": 0.26599999994505197,
+  "cap_seconds": 60,
+  "input_hashes": {
+    "tests/advisor_gold_acquisition_runtime.lua": "fac1ce88935da9259b2cfec811a534818eb470719103442a0c202778a280de29",
+    "tests/advisor_gold_cartomancer.lua": "c1f933f045a8a3bb766324da53ef03aac3e5418e103d843ea3f940f036edfcf5",
+    "tests/advisor_gold_retention_runtime.lua": "62701bfc2f7c07c75d9a716331893d92715c357453d61b33d461cdf829877257",
+    "tests/fixtures/gold_tarot_hold_support.lua": "81577c109499f860fe69ac61629828e0176cb45b4719f9cc3103dd80a1d61846",
+    "Brainstorm/Advisor/gold_tarot_hold.lua": "4e49ddf51f4099b7ed6262ceb14444fc046a0975baf0d9976a3ce722f216642b",
+    "Brainstorm/Advisor/perkeo_inventory.lua": "34840071e1956a8d6f743f962af30cc6945b76d024271b42ab2e518de2769710"
+  },
+  "log_sha256": "28b17e86633ab71ecabf63989ff7dadeb4546a22a4cc776891e9e43e6929bd61"
+}

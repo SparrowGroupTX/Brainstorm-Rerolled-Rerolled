@@ -1,0 +1,531 @@
+{
+  "null": {
+    "seed": "RH45AD21",
+    "run_instance": null,
+    "state": {
+      "phase": "round",
+      "ante": 3,
+      "round": 6,
+      "deck_key": "b_red",
+      "stake": 8,
+      "chips": 5547,
+      "dollars": 13,
+      "hands_left": 2,
+      "discards_left": 1,
+      "hands_played": 2,
+      "discards_used": 2,
+      "blind": {
+        "chips": 0,
+        "debuff": {},
+        "disabled": false,
+        "mult": 0,
+        "name": "",
+        "prepped": true
+      },
+      "next_blind": null,
+      "route_blinds": {
+        "Big": {
+          "ante": 3,
+          "boss": false,
+          "chips": 4800,
+          "debuff": {},
+          "dollars": 4,
+          "key": "bl_big",
+          "label": "Big",
+          "mult": 1.5,
+          "name": "Big Blind",
+          "state": "Upcoming"
+        },
+        "Boss": {
+          "ante": 3,
+          "boss": true,
+          "chips": 6400,
+          "debuff": {
+            "suit": "Spades"
+          },
+          "dollars": 5,
+          "key": "bl_goad",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Goad",
+          "state": "Upcoming"
+        },
+        "Small": {
+          "ante": 3,
+          "boss": false,
+          "chips": 3200,
+          "debuff": {},
+          "dollars": 0,
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind",
+          "state": "Defeated"
+        }
+      },
+      "teacher_profile": null,
+      "joker_limit": 5,
+      "consumable_limit": 5,
+      "reroll_cost": 5,
+      "jokers": [
+        {
+          "id": "card:738",
+          "key": "j_yorick",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 3,
+            "yorick_discards": 15
+          },
+          "edition": null,
+          "cost": 20,
+          "sell_cost": 10,
+          "blueprint_compat": true,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:739",
+          "key": "j_perkeo",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null,
+          "cost": 20,
+          "sell_cost": 10,
+          "blueprint_compat": true,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:741",
+          "key": "j_sly",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Sly Joker",
+            "order": 11,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 50,
+            "t_mult": 0,
+            "type": "Pair",
+            "x_mult": 1
+          },
+          "edition": null,
+          "cost": 3,
+          "sell_cost": 1,
+          "blueprint_compat": true,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:746",
+          "key": "j_golden",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Bonus dollars",
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Golden Joker",
+            "order": 90,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null,
+          "cost": 1,
+          "sell_cost": 1,
+          "blueprint_compat": false,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:748",
+          "key": "j_greedy_joker",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Suit Mult",
+            "extra": {
+              "s_mult": 3,
+              "suit": "Diamonds"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Greedy Joker",
+            "order": 2,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null,
+          "cost": 5,
+          "sell_cost": 2,
+          "blueprint_compat": true,
+          "face_down": false,
+          "identity_redacted": null
+        }
+      ],
+      "consumeables": [
+        {
+          "id": "card:752",
+          "key": "c_venus",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "Three of a Kind"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Venus",
+            "order": 2,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null,
+          "cost": 3,
+          "sell_cost": 1,
+          "blueprint_compat": null,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:760",
+          "key": "c_venus",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "Three of a Kind"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Venus",
+            "order": 2,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "cost": 8,
+          "sell_cost": 4,
+          "blueprint_compat": null,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:769",
+          "key": "c_venus",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "Three of a Kind"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Venus",
+            "order": 2,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "cost": 8,
+          "sell_cost": 4,
+          "blueprint_compat": null,
+          "face_down": false,
+          "identity_redacted": null
+        },
+        {
+          "id": "card:775",
+          "key": "c_venus",
+          "rank": null,
+          "suit": null,
+          "enhancement": null,
+          "seal": null,
+          "debuff": false,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "Three of a Kind"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Venus",
+            "order": 2,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "cost": 8,
+          "sell_cost": 4,
+          "blueprint_compat": null,
+          "face_down": false,
+          "identity_redacted": null
+        }
+      ],
+      "shop_jokers": [],
+      "shop_booster": [],
+      "shop_vouchers": [],
+      "pack_cards": [],
+      "hand": [],
+      "hands": {
+        "Five of a Kind": {
+          "level": 1,
+          "chips": 120,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "level": 1,
+          "chips": 35,
+          "mult": 4,
+          "played": 3
+        },
+        "Flush Five": {
+          "level": 1,
+          "chips": 160,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "level": 1,
+          "chips": 140,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "level": 1,
+          "chips": 60,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "level": 1,
+          "chips": 40,
+          "mult": 4,
+          "played": 1
+        },
+        "High Card": {
+          "level": 1,
+          "chips": 5,
+          "mult": 1,
+          "played": 0
+        },
+        "Pair": {
+          "level": 1,
+          "chips": 10,
+          "mult": 2,
+          "played": 1
+        },
+        "Straight": {
+          "level": 1,
+          "chips": 30,
+          "mult": 4,
+          "played": 2
+        },
+        "Straight Flush": {
+          "level": 1,
+          "chips": 100,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "level": 1,
+          "chips": 30,
+          "mult": 3,
+          "played": 0
+        },
+        "Two Pair": {
+          "level": 1,
+          "chips": 20,
+          "mult": 2,
+          "played": 2
+        }
+      },
+      "population": {
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4,
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "14": 4,
+        "11": 4,
+        "13": 4,
+        "12": 4,
+        "10": 4
+      },
+      "collection_counts": {
+        "complete": 108,
+        "missing": 42,
+        "total": 150,
+        "unknown": 0
+      }
+    }
+  }
+}

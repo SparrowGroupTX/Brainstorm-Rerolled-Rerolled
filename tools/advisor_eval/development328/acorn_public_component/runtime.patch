@@ -1,0 +1,92 @@
+--- a/Brainstorm/Advisor/runtime.lua
++++ b/Brainstorm/Advisor/runtime.lua
+@@ -49,6 +49,10 @@
+ A.two_hand_finish = module('two_hand_finish')
+ A.resource_finish = module('resource_finish')
+ A.concealed_belief = module('concealed_belief')
++A.acorn_belief=module('acorn_belief')
++A.acorn_ordering=module('acorn_ordering')
++A.acorn_public=module('acorn_public')
++A.acorn_public_hooks=module('acorn_public_hooks')
+ A.growth = module('growth')
+ A.finish_rewards = module('finish_rewards')
+ A.score_cache = module('score_cache')
+@@ -105,7 +109,8 @@
+ local P=A.performance
+ 
+ function A.gold_status()
+-  return A.gold_stickers.capture(G,{enabled=Brainstorm.config.advisor.gold_stickers==true})
++  return A.gold_stickers.capture(G,{enabled=Brainstorm.config.advisor.gold_stickers==true,
++    public_held=A.public_joker_tracker and A.public_joker_tracker:public_held(G)})
+ end
+ -- Collection history is public objective context, never draw order or run RNG.
+ -- The runtime alone opts in; detached/source evaluation captures stay unchanged.
+@@ -116,7 +121,8 @@
+   local started=P:now()
+   local snapshot=capture_without_gold(g)
+   if snapshot and Brainstorm.config.advisor.gold_stickers==true then
+-    snapshot.completionist_goal=A.gold_stickers.capture(g,{enabled=true})
++    snapshot.completionist_goal=A.gold_stickers.capture(g,{enabled=true,
++      public_held=A.public_joker_tracker and A.public_joker_tracker:public_held(g)})
+   end
+   P:finish('snapshot.capture',started)
+   return snapshot
+@@ -318,6 +324,21 @@
+     elseif action then
+       lines[#lines+1]=strategy.title or 'Review the selected alternative.'
+       lines[#lines+1]='Action: '..action.kind..' in '..tostring(action.area)..', position '..tostring(action.index or '?')..'.'
++    end
++  elseif result and result.public_joker_belief then
++    local belief=result.public_joker_belief
++    status=belief.supported and 'Public Joker score floor' or 'Public Joker advice unavailable'
++    local action=result.action
++    if action and action.kind=='reorder_jokers' then
++      local slots={};for _,slot in ipairs(action.order or {})do slots[#slots+1]='#'..tostring(slot)end
++      lines[#lines+1]='Move the current Joker slots left to right: '..table.concat(slots,', ')
++      lines[#lines+1]='Execute rearranges the visible backs; wait for fresh advice before playing.'
++    elseif action and (action.kind=='play' or action.kind=='discard') then
++      lines[#lines+1]=A.card_names(s,action.indices)
++      selection={indices=action.indices,kind=action.kind}
++    end
++    if result.play and result.play.score then
++      lines[#lines+1]='Lowest supported score across '..tostring(belief.worlds or '?')..' possible rows: '..number(result.play.score)..' chips.'
+     end
+   elseif result and result.concealed_belief then
+     if result.action then
+@@ -617,6 +638,7 @@
+ end
+ 
+ function A.update(dt)
++  if A.public_joker_hooks then A.public_joker_hooks:update() end
+   if A.menu_open and (not G.OVERLAY_MENU or (A.menu_overlay and A.menu_overlay ~= G.OVERLAY_MENU)) then
+     A.menu_open, A.menu_overlay = false, nil
+   end
+@@ -721,7 +743,12 @@
+   -- repeat an asynchronously queued purchase/play. A new state releases it.
+   invalidate('Executing recommendation...')
+   if A.player_log then A.player_log.suppressed=A.player_log.suppressed+1 end
++  local public_reorder=action.kind=='reorder_jokers' and A.public_joker_tracker and
++    A.public_joker_tracker:prepare_reorder(G,action.order)
+   local ok,success,reason,may_have_started=pcall(A.execution.execute,G,action)
++  if A.public_joker_tracker and action.kind=='reorder_jokers' then
++    A.public_joker_tracker:finish_reorder(G,public_reorder,ok and success==true,may_have_started)
++  end
+   if A.player_log then
+     A.player_log.suppressed=A.player_log.suppressed-1
+     A.player_log:after(log_sequence,ok and success==true,tostring(reason or (not ok and success) or ''))
+@@ -749,4 +776,15 @@
+ A.player_log_archive=module('player_log_archive')
+ A.player_journal=module('player_journal')
+ A.player_journal.attach(A,Brainstorm)
++A.public_joker_tracker=A.acorn_public.new({belief=A.acorn_belief,card=A.snapshot.card,
++  localize=function(...)return localize(...)end,
++  emit=function(event)if A.player_log then A.player_log:timing(event.kind,event)end end})
++A.public_joker_hooks=A.acorn_public_hooks.attach(A.public_joker_tracker)
++A.execution.public_joker_reorder_check=function(g,proof)
++  return A.public_joker_tracker:authorize_reorder(g,proof)
++end
++local capture_without_public_jokers=A.snapshot.capture
++A.snapshot.capture=function(g)
++  return A.public_joker_tracker:capture(g,capture_without_public_jokers(g))
++end
+ return A

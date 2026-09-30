@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "component": "runtime scheduling and nondecision capture",
+  "created_utc": "2026-09-15T18:22:39.443973+00:00",
+  "files": [
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "7b733e458dfc873632eeadb6247b0d58414a7d45c9a73264f3a48cda63aaaa74",
+      "before_sha256": "7c845e4cf63ba015dc181614c1b3c6e8723cfbb1c5e9c5bea2d06e9c5d3eef3c",
+      "bytes": 39898
+    },
+    {
+      "path": "Brainstorm/Advisor/snapshot.lua",
+      "sha256": "66853fc50efdb71164d768b0af1ffcf09a3574adf53e08501e01c61422d6d9bb",
+      "before_sha256": "bfabf63f93db6d5ccb74f7976298ebfa3be7f9cca01494e90478617b070278c5",
+      "bytes": 15899
+    },
+    {
+      "path": "Brainstorm/Advisor/decision.lua",
+      "sha256": "46f6919bddb7457b5bc18ae6eadf34d4e921822abfe145588a73f1bebd975d8c",
+      "before_sha256": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac",
+      "bytes": 15980
+    },
+    {
+      "path": "tests/advisor_runtime.lua",
+      "sha256": "708f5363b2a5a483651d2a4c6e9ca023b5168fbb580ee888a88e955f43a42a32",
+      "before_sha256": "5ca9d062405aaef6358ec1af351b8ca6ec94c870c1e4e2ab4fafc69b9b217db0",
+      "bytes": 75563
+    },
+    {
+      "path": "tests/advisor_phase_yield.lua",
+      "sha256": "0def1ae12e474e2bfc137affe66069d3b9518534e3b5d2b7b18670cc8b51f940",
+      "before_sha256": null,
+      "bytes": 7100
+    }
+  ],
+  "validation": {
+    "kind": "manufactured fixtures only",
+    "fixtures": 10,
+    "checks": 1892,
+    "passed": true,
+    "receipt": "validation.txt"
+  },
+  "observations": {
+    "source": "../events_index.json",
+    "sequences": [
+      3318,
+      3319,
+      3320
+    ],
+    "decision_id": 1492,
+    "phase": "pack",
+    "evaluations": 48449,
+    "resume_calls": 1,
+    "active_seconds": 1.845295300000089
+  },
+  "claims": {
+    "postfix_live_speedup": null,
+    "complete_attempts": 0,
+    "captured_state_rescores": 0,
+    "source_components": 0,
+    "searches": 0,
+    "game_control": false
+  },
+  "limits": [
+    "Cooperative scheduling is not a hard four-millisecond latency bound.",
+    "Every-worker-slice fingerprinting and exact execution recaptures remain.",
+    "No new experiment authority or odds estimate."
+  ],
+  "supplemental_validation": {
+    "fixtures": 6,
+    "checks": 2495,
+    "passed": true,
+    "phase_yield_checks": 357,
+    "receipt": "../fingerprint_fix/validation.txt",
+    "scope": "Manufactured Celestial pack complete/capped yielding parity added; runtime unchanged."
+  }
+}

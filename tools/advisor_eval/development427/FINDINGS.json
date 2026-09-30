@@ -1,0 +1,65 @@
+{
+  "session": "session-20260927T181018Z-1",
+  "version": "2.208.0-alpha",
+  "complete_runs": 10,
+  "wins": 5,
+  "losses": 5,
+  "population_win_rate_established": false,
+  "discard_counts": {
+    "total": 395,
+    "five_card": 147,
+    "short": 248,
+    "clears_with_unused": 60,
+    "unused_count": 143,
+    "nonfinal_clears_with_unused": 57
+  },
+  "findings": [
+    {
+      "id": "discard_order_admission",
+      "confidence": "confirmed_coverage_gap",
+      "anchors": [
+        2710,
+        3150,
+        8402,
+        23711
+      ],
+      "repair": "development428 bounded subset"
+    },
+    {
+      "id": "full_row_blueprint_pass",
+      "confidence": "confirmed_pass_safety_unresolved",
+      "anchors": [
+        4289,
+        4293,
+        4358,
+        4362,
+        4364,
+        4372
+      ]
+    },
+    {
+      "id": "wraith_cash_wipe",
+      "confidence": "confirmed_unpriced_consequence",
+      "anchors": [
+        19334,
+        19335,
+        19338,
+        19343,
+        19345
+      ]
+    },
+    {
+      "id": "chad_odd_todd",
+      "confidence": "valuation_tension",
+      "anchors": [
+        18890,
+        18891,
+        18895,
+        18902
+      ]
+    }
+  ],
+  "no_captured_replay": true,
+  "link_failures": 0,
+  "review_closed": true
+}

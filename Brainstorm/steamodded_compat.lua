@@ -3,5 +3,5 @@
 --- MOD_ID: Brainstorm-Rerolled
 --- PREFIX: brainstorm
 --- MOD_AUTHOR: [ABGamma]
---- MOD_DESCRIPTION: Automatic seed searching with configurable cards, Jokers, packs, tags, and vouchers.
---- VERSION: 2.10.0-alpha
+--- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+--- VERSION: 2.226.0-alpha

@@ -1,0 +1,14 @@
+# Large research datasets must be stored as Git LFS objects. Exact paths keep
+# ordinary, compact CSV reports readable and diffable in regular Git.
+Immolate/build-structure-stats/pilot-100m/features.csv filter=lfs diff=lfs merge=lfs -text
+Immolate/build-structure-stats/scan-4b/features.csv filter=lfs diff=lfs merge=lfs -text
+
+# Lossless research archives are ordinary Git blobs, bounded to 48 MiB each.
+# Never apply line-ending conversion, textual diffs or merge them as text.
+tools/repository_artifacts/objects/** -text -diff -merge -delta
+
+# Historical manifests pin exact bytes, including original line endings.
+# Preserve those bytes on every clone instead of applying core.autocrlf.
+tools/advisor_eval/** -text
+tools/advisor_learning/** -text
+tests/** -text

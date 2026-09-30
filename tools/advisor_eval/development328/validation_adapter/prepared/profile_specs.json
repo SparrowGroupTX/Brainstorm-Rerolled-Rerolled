@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "unlock_profile_spec": {
+    "schema": 1,
+    "name": "all_unlocked_discovered_v1",
+    "scope": [
+      "P_CENTERS",
+      "P_TAGS",
+      "P_SEALS",
+      "P_BLINDS"
+    ],
+    "transform": "set_unlock_and_discovery_true",
+    "progress": "fresh_in_memory_no_completed_challenges",
+    "user_profile": false,
+    "qualification_compatible": false
+  },
+  "unlock_profile_spec_digest": "d02d4571ecd30c555d9b25bea7feebabfe9fad589416520432accae3da258a13",
+  "gold_objective_spec": {
+    "schema": 1,
+    "mode": "synthetic_fresh_all_missing_v1",
+    "enabled": true,
+    "profile": "all_unlocked_discovered_v1",
+    "initial_history": "natural_empty_loaded_joker_usage",
+    "initial_counts": {
+      "total": 150,
+      "complete": 0,
+      "missing": 150,
+      "unknown": 0
+    },
+    "missing_population": "all_150_vanilla_jokers",
+    "capture": "frozen_gold_stickers.capture_loaded_profile",
+    "policy_context": "completionist_goal",
+    "collection_policy": "frozen_gold_goal",
+    "metadata_failure": "explicit_unsupported_error_before_next_action",
+    "profile_writes": "none_by_objective_adapter; original source callbacks only",
+    "qualification": false,
+    "actual_player_profile": false
+  },
+  "gold_objective_spec_digest": "f30418a3c8a16197677f3b9dae9fa35de7582cc88dca3f6883c813ec782657b7",
+  "retry_context_spec": {
+    "schema": 1,
+    "mode": "disabled_clean_attempt_v1",
+    "journal_access": "none",
+    "checkpoint_restore": "unsupported",
+    "initial_memory": "empty",
+    "max_checkpoint_reloads": 0,
+    "retry_advice_evaluated": false
+  },
+  "retry_context_spec_digest": "d85816a5d496c98b84e48b85081f1922c0a1f8f4f11762f9c5f8224d6800afac",
+  "source_initializations": 0,
+  "policy_decisions": 0,
+  "actual_player_profile": false,
+  "observed_player_gold_complete": 58,
+  "experimental_gold_complete": 0
+}

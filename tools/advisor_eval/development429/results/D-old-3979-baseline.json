@@ -1,0 +1,73 @@
+{
+  "job": "D-old-3979-baseline",
+  "mode": "decision",
+  "case": "old-3979",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 1.0310000000172295,
+  "log_sha256": "fe9e9a07066a26a3d04728d7b9d75703acd809846811853f35b8730237202b4e",
+  "status": "complete",
+  "result": {
+    "case": "old-3979",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          4,
+          6,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 14537,
+      "play": {
+        "hand": "Three of a Kind",
+        "legal": true,
+        "score": 3240,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "risk": {
+          "bonus": 0.019200000000000002,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "development_deferred_for_discard": true,
+          "exact_transition": true,
+          "final_action_kind": "discard",
+          "final_action_matches_search": true,
+          "full_batch_preference": false,
+          "late_margin": true,
+          "minimum_score": 4860,
+          "qualified_count": 4,
+          "qualified_five_count": 0,
+          "required_fraction": 1,
+          "sampled_clears": 24,
+          "samples": 24,
+          "search_selected": true,
+          "selected": true,
+          "selected_cards": 4,
+          "taper": 0.008
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

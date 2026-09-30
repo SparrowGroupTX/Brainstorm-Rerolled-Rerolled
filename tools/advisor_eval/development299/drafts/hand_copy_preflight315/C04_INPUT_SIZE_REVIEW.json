@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "kind": "read_only_C04_input_shape_audit",
+  "observed_at_utc": "2026-09-14T19:36:38.311576+00:00",
+  "source_trace": "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\trace.log",
+  "source_sha256": "7230d5f01ef34575a7417c3f1d85c034a2114891c59278dcf82396baf002b139",
+  "script_sha256": "c2e5bd1352f9b2b30df23da7c527af99daab531d7aff047b7dd78a509e51db05",
+  "completed_observations": 198,
+  "maxima": {
+    "nodes": {
+      "value": 9001,
+      "step": 177,
+      "phase": "pack"
+    },
+    "depth": {
+      "value": 7,
+      "step": 2,
+      "phase": "pack"
+    },
+    "max_string_bytes": {
+      "value": 92,
+      "step": 1,
+      "phase": "blind"
+    },
+    "total_string_bytes": {
+      "value": 79163,
+      "step": 177,
+      "phase": "pack"
+    },
+    "tables": {
+      "value": 1292,
+      "step": 177,
+      "phase": "pack"
+    },
+    "playing_cards": {
+      "value": 52,
+      "step": 1,
+      "phase": "blind"
+    },
+    "deck": {
+      "value": 52,
+      "step": 1,
+      "phase": "blind"
+    },
+    "consumeables": {
+      "value": 5,
+      "step": 180,
+      "phase": "blind"
+    },
+    "hand": {
+      "value": 14,
+      "step": 184,
+      "phase": "hand"
+    }
+  },
+  "largest_hand_observations": [
+    {
+      "nodes": 7008,
+      "depth": 5,
+      "max_string_bytes": 92,
+      "total_string_bytes": 58244,
+      "tables": 901,
+      "playing_cards": 51,
+      "deck": 43,
+      "consumeables": 5,
+      "hand": 8,
+      "step": 181,
+      "phase": "hand"
+    },
+    {
+      "nodes": 6959,
+      "depth": 5,
+      "max_string_bytes": 92,
+      "total_string_bytes": 57843,
+      "tables": 897,
+      "playing_cards": 51,
+      "deck": 40,
+      "consumeables": 5,
+      "hand": 10,
+      "step": 182,
+      "phase": "hand"
+    },
+    {
+      "nodes": 6952,
+      "depth": 5,
+      "max_string_bytes": 92,
+      "total_string_bytes": 57456,
+      "tables": 894,
+      "playing_cards": 51,
+      "deck": 43,
+      "consumeables": 4,
+      "hand": 8,
+      "step": 198,
+      "phase": "hand"
+    }
+  ],
+  "interpretation": "Shape counts only, not policy replay, timing, feasibility or a terminal result.",
+  "limits": "C04 selected synthetic development; completed decisions before preserved timeout; new312 metadata can differ.",
+  "source_execution": false,
+  "scoring": false,
+  "captured_decision_evaluation": false
+}

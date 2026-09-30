@@ -1,0 +1,2343 @@
+{
+  "schema": 1,
+  "scope": "New read-only passive public log analysis only. All345 allowances remain closed. No advisor policy, source component, search, attempt, save/profile access, executable or game-control call.",
+  "audit": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development346\\log_analysis\\passive_audit.json",
+    "sha256": "0aefcae0d9ccc1388e66c41585b772c50ce0ecb927acb910359de9e62e83b1e3"
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T050034Z-1-000001.brj",
+      "bytes": 29570,
+      "input_sha256": "0d3baa757649ca2a6bf0d7952f0b102fc766215befb96e247b6a261581bc0b4f",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 10
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T050034Z-1-000002.brj",
+      "bytes": 2849163,
+      "input_sha256": "f5a7c28c5f590b0b764cff77a9c7686b6ab5c86582a5481a216cf7b68332d770",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 1001
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T050034Z-1-000003.brj",
+      "bytes": 21449,
+      "input_sha256": "b1f191a185d43609539df4b4cc514a9c7dd249e72726a23384bbcd8ec1e21091",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T050034Z-1-000004.brj",
+      "bytes": 3658512,
+      "input_sha256": "9e29b106ad0b547eca0b7700e6fded1e00ff35300259b78675abb5cc88afbc2b",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 1224
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T050034Z-1-000005.brj",
+      "bytes": 33487,
+      "input_sha256": "ff573b401c0d398100b1785df2cadf8a67442704d623686d159fe281246ad4ac",
+      "stat_unchanged_during_read": true,
+      "append_active": false,
+      "event_count": 7
+    },
+    {
+      "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T050034Z-1-000006.brj",
+      "bytes": 586636,
+      "input_sha256": "7f10dfa86df1d378c143d83c7ef886775d9aef859347cf0a3cd504965edc1b16",
+      "stat_unchanged_during_read": true,
+      "append_active": true,
+      "event_count": 201
+    }
+  ],
+  "hash_semantics": {
+    "input_sha256": "Exact observed bytes, not a permanent append-active file hash.",
+    "stored_frame_sha256": "BRJ2 frame header, stored payload and newline.",
+    "decoded_event_sha256": "Exact reconstructed original JSONL event bytes including newline."
+  },
+  "loaded_versions": {
+    "Brainstorm v2.145.0-alpha": 1846
+  },
+  "last_sequence": 2450,
+  "decode_errors": [],
+  "latest_verified_win": {
+    "sequence": 2242,
+    "seed": "YVYN2Z11",
+    "loaded_version": "Brainstorm v2.145.0-alpha",
+    "score": 686952,
+    "target": 400000,
+    "boss": "bl_final_leaf",
+    "cash": 98,
+    "gold_award": {
+      "new_count": 0,
+      "new_keys": {},
+      "schema": 1,
+      "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+      "source": "original_set_joker_win",
+      "status": "confirmed"
+    },
+    "counts": {
+      "complete": 59,
+      "missing": 91,
+      "total": 150,
+      "unknown": 0
+    },
+    "actions": 232,
+    "seconds": 302.6271422,
+    "jokers": [
+      {
+        "key": "j_caino",
+        "name": "Caino",
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_yorick",
+        "name": "Yorick",
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_cartomancer",
+        "name": "Cartomancer",
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_devious",
+        "name": "Devious Joker",
+        "gold_status": "complete"
+      },
+      {
+        "key": "j_brainstorm",
+        "name": "Brainstorm",
+        "gold_status": "complete"
+      }
+    ]
+  },
+  "run_summary": {
+    "shop_exit_count": 22,
+    "exits_with_visible_missing_offer": 12,
+    "action_counts": {
+      "skip_blind": 1,
+      "(non-advisor callback)": 1,
+      "choose": 33,
+      "select_blind": 23,
+      "discard": 16,
+      "play": 26,
+      "cash_out": 22,
+      "open": 30,
+      "leave_shop": 22,
+      "use": 26,
+      "buy": 4,
+      "reorder_jokers": 28,
+      "sell": 1
+    },
+    "scope": "Visible missing offers are not evidence of a safe legal retained purchase. Same seed was previously development data; not an independent holdout."
+  },
+  "late_shop_actions": [
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1055,
+        "sequence": 2073,
+        "decoded_event_sha256": "adeea9e1fe1a812ff23d5acaf3f00c363661bc164ecc8ea419d0d052648db208",
+        "stored_frame_sha256": "159cee308b9044a5b78a976d071db3b9dcbf605e87d87171eba6f95622618497"
+      },
+      "action": {
+        "area": "shop_booster",
+        "index": 2,
+        "kind": "open"
+      },
+      "cash": 85,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 200000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "inventory_count": 22,
+      "consumable_limit": 23,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 19
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_moon",
+          "negative": true,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:616",
+          "key": "j_loyalty_card",
+          "name": "Loyalty Card",
+          "cost": 5,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "burnt_hand": 0,
+            "d_size": 0,
+            "effect": "1 in 10 mult",
+            "extra": {
+              "Xmult": 4,
+              "every": 5,
+              "remaining": "5 remaining"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "loyalty_remaining": 5,
+            "mult": 0,
+            "name": "Loyalty Card",
+            "order": 25,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "missing"
+        },
+        {
+          "id": "card:617",
+          "key": "c_pluto",
+          "name": "Pluto",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "High Card"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "Pluto",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        }
+      ],
+      "gold_review": {
+        "acquisition_comparisons": 0,
+        "acquisition_complete": false,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": false,
+        "acquisition_reason": "Each owned Joker needs a unique visible supported identity and known progress.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Open Celestial Pack ($4)",
+      "timing": {
+        "action_kind": "open",
+        "active_seconds": 0.16377470000008998,
+        "decision_id": 939,
+        "elapsed_seconds": 0.16378120000001672,
+        "evaluations": 0,
+        "finished_seconds": 630.5480108,
+        "max_resume_seconds": 0.16377470000008998,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 630.3842296,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1066,
+        "sequence": 2084,
+        "decoded_event_sha256": "cf58e35be168427ef41501719009c296bf8b49233a5bd81cda13fe9214e40320",
+        "stored_frame_sha256": "7cfe8c32b4779f3d9f0b36c83ede67837604274e8299ce655d68e9f5615b1551"
+      },
+      "action": {
+        "area": "jokers",
+        "kind": "reorder_jokers",
+        "order": [
+          4,
+          2,
+          3,
+          1,
+          5,
+          6
+        ]
+      },
+      "cash": 81,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 200000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "inventory_count": 22,
+      "consumable_limit": 23,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 19
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_moon",
+          "negative": true,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:616",
+          "key": "j_loyalty_card",
+          "name": "Loyalty Card",
+          "cost": 5,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "burnt_hand": 0,
+            "d_size": 0,
+            "effect": "1 in 10 mult",
+            "extra": {
+              "Xmult": 4,
+              "every": 5,
+              "remaining": "5 remaining"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "loyalty_remaining": 5,
+            "mult": 0,
+            "name": "Loyalty Card",
+            "order": 25,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "missing"
+        },
+        {
+          "id": "card:617",
+          "key": "c_pluto",
+          "name": "Pluto",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "High Card"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "Pluto",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        }
+      ],
+      "gold_review": {
+        "acquisition_comparisons": 0,
+        "acquisition_complete": false,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": false,
+        "acquisition_reason": "Each owned Joker needs a unique visible supported identity and known progress.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Copy Perkeo before leaving the shop",
+      "timing": {
+        "action_kind": "reorder_jokers",
+        "active_seconds": 0.2096811000000116,
+        "decision_id": 944,
+        "elapsed_seconds": 0.20968709999999646,
+        "evaluations": 0,
+        "finished_seconds": 632.7455147,
+        "max_resume_seconds": 0.2096811000000116,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 632.5358276,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1071,
+        "sequence": 2089,
+        "decoded_event_sha256": "1f833841f05322dc4fc943b68e72dd008193dc81a46b085f0b390dbcd34d856f",
+        "stored_frame_sha256": "7f18d2054119c8c695c62ac6798797f90efbb7a95df8c68bde12581ad13de7db"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "cash": 81,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 200000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "inventory_count": 22,
+      "consumable_limit": 23,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 19
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_moon",
+          "negative": true,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:616",
+          "key": "j_loyalty_card",
+          "name": "Loyalty Card",
+          "cost": 5,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "burnt_hand": 0,
+            "d_size": 0,
+            "effect": "1 in 10 mult",
+            "extra": {
+              "Xmult": 4,
+              "every": 5,
+              "remaining": "5 remaining"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "loyalty_remaining": 5,
+            "mult": 0,
+            "name": "Loyalty Card",
+            "order": 25,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "missing"
+        },
+        {
+          "id": "card:617",
+          "key": "c_pluto",
+          "name": "Pluto",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "High Card"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "Pluto",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        }
+      ],
+      "gold_review": {
+        "acquisition_comparisons": 0,
+        "acquisition_complete": false,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": false,
+        "acquisition_reason": "Each owned Joker needs a unique visible supported identity and known progress.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Leave the shop and save your money",
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.20227120000004106,
+        "decision_id": 945,
+        "elapsed_seconds": 0.20227689999990162,
+        "evaluations": 0,
+        "finished_seconds": 633.0939179,
+        "max_resume_seconds": 0.20227120000004106,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 632.891641,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1103,
+        "sequence": 2121,
+        "decoded_event_sha256": "98747fc5d1543441fa7caae3841228280770959f36f0241410a7e1ce76273e18",
+        "stored_frame_sha256": "38a84386f02848d37d61b230c712937c6d7b28aac2bc9190d77a87355a2811ec"
+      },
+      "action": {
+        "area": "shop_booster",
+        "index": 2,
+        "kind": "open"
+      },
+      "cash": 90,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 300000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "inventory_count": 24,
+      "consumable_limit": 24,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 21
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:627",
+          "key": "c_hanged_man",
+          "name": "The Hanged Man",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        },
+        {
+          "id": "card:628",
+          "key": "j_onyx_agate",
+          "name": "Onyx Agate",
+          "cost": 7,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": 7,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "Onyx Agate",
+            "order": 119,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "gold_review": {
+        "acquisition_before_missing": 0,
+        "acquisition_comparisons": 0,
+        "acquisition_complete": true,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": true,
+        "acquisition_reason": "No admitted visible distinct missing Joker can be added.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Open Jumbo Celestial Pack ($6)",
+      "timing": {
+        "action_kind": "open",
+        "active_seconds": 0.06660199999998895,
+        "decision_id": 959,
+        "elapsed_seconds": 0.06662380000000212,
+        "evaluations": 0,
+        "finished_seconds": 646.4228231,
+        "max_resume_seconds": 0.06660199999998895,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 646.3561993,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1114,
+        "sequence": 2132,
+        "decoded_event_sha256": "71d88b638795469f1fd8a586b1483c0fb9b522cb3b08e5440b000d71c7a939df",
+        "stored_frame_sha256": "7bf0584eaafa897351f2a6c3882fcaeb7696277c21aec13022ad38c164eba08b"
+      },
+      "action": {
+        "area": "shop_booster",
+        "index": 1,
+        "kind": "open"
+      },
+      "cash": 84,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 300000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "inventory_count": 24,
+      "consumable_limit": 24,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 21
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:627",
+          "key": "c_hanged_man",
+          "name": "The Hanged Man",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        },
+        {
+          "id": "card:628",
+          "key": "j_onyx_agate",
+          "name": "Onyx Agate",
+          "cost": 7,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": 7,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "Onyx Agate",
+            "order": 119,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "gold_review": {
+        "acquisition_before_missing": 0,
+        "acquisition_comparisons": 0,
+        "acquisition_complete": true,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": true,
+        "acquisition_reason": "No admitted visible distinct missing Joker can be added.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Open Mega Celestial Pack ($8)",
+      "timing": {
+        "action_kind": "open",
+        "active_seconds": 0.06546890000004169,
+        "decision_id": 964,
+        "elapsed_seconds": 0.0654732000000422,
+        "evaluations": 0,
+        "finished_seconds": 648.4992052,
+        "max_resume_seconds": 0.06546890000004169,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 648.433732,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1129,
+        "sequence": 2147,
+        "decoded_event_sha256": "e00a54b7491db8f100f66752273f0e8bbce9e7b29420113abda7caa74ed31abf",
+        "stored_frame_sha256": "66a237b1bf7fc13634446460150dd102f4def3d1dfd421ca39cbffe464afa115"
+      },
+      "action": {
+        "area": "jokers",
+        "kind": "reorder_jokers",
+        "order": [
+          2,
+          1,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "cash": 76,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 300000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "inventory_count": 24,
+      "consumable_limit": 24,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 21
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:627",
+          "key": "c_hanged_man",
+          "name": "The Hanged Man",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        },
+        {
+          "id": "card:628",
+          "key": "j_onyx_agate",
+          "name": "Onyx Agate",
+          "cost": 7,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": 7,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "Onyx Agate",
+            "order": 119,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "gold_review": {
+        "acquisition_before_missing": 0,
+        "acquisition_comparisons": 0,
+        "acquisition_complete": true,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": true,
+        "acquisition_reason": "No admitted visible distinct missing Joker can be added.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Copy Perkeo before leaving the shop",
+      "timing": {
+        "action_kind": "reorder_jokers",
+        "active_seconds": 0.10730720000003657,
+        "decision_id": 970,
+        "elapsed_seconds": 0.10731150000003709,
+        "evaluations": 0,
+        "finished_seconds": 651.0874413,
+        "max_resume_seconds": 0.10730720000003657,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 650.9801298,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1134,
+        "sequence": 2152,
+        "decoded_event_sha256": "3b05d905e56ea524cf3e5246e3b1ec0c417e16e97658889d4a63e3a3e639c39f",
+        "stored_frame_sha256": "1e44d2254cd4fffbaee0017bf8f0465556e4ee57f54a9eb62821f089dacbf0a0"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "cash": 76,
+      "next_blind": {
+        "ante": 8,
+        "boss": false,
+        "chips": 300000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "inventory_count": 24,
+      "consumable_limit": 24,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 21
+        },
+        {
+          "key": "c_sun",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:627",
+          "key": "c_hanged_man",
+          "name": "The Hanged Man",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        },
+        {
+          "id": "card:628",
+          "key": "j_onyx_agate",
+          "name": "Onyx Agate",
+          "cost": 7,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": 7,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 24,
+            "mult": 0,
+            "name": "Onyx Agate",
+            "order": 119,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": "complete"
+        }
+      ],
+      "gold_review": {
+        "acquisition_before_missing": 0,
+        "acquisition_comparisons": 0,
+        "acquisition_complete": true,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": true,
+        "acquisition_reason": "No admitted visible distinct missing Joker can be added.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Leave the shop and save your money",
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.100764799999979,
+        "decision_id": 971,
+        "elapsed_seconds": 0.10079130000008263,
+        "evaluations": 0,
+        "finished_seconds": 651.3296297,
+        "max_resume_seconds": 0.100764799999979,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 651.2288384,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1167,
+        "sequence": 2185,
+        "decoded_event_sha256": "17ae1c13bca4a64188bb1a376876d1da23a3b9ee4044b4619864da94a48dca6d",
+        "stored_frame_sha256": "790c436d421597ef8ae1d54f3f41d84ef53bcd854289ae3d8a97acc8e1b0dc11"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "cash": 89,
+      "next_blind": {
+        "ante": 8,
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "key": "bl_final_leaf",
+        "label": "Boss",
+        "mult": 2,
+        "name": "Verdant Leaf"
+      },
+      "inventory_count": 25,
+      "consumable_limit": 26,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 23
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:644",
+          "key": "c_hanged_man",
+          "name": "The Hanged Man",
+          "cost": 3,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 25,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "gold_status": null
+        },
+        {
+          "id": "card:645",
+          "key": "j_crafty",
+          "name": "Crafty Joker",
+          "cost": 4,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 25,
+            "mult": 0,
+            "name": "Crafty Joker",
+            "order": 15,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 80,
+            "t_mult": 0,
+            "type": "Flush",
+            "x_mult": 1
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_review": {
+        "acquisition_comparisons": 0,
+        "acquisition_complete": false,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": false,
+        "acquisition_reason": "Each owned Joker needs a unique visible supported identity and known progress.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "A settled nonempty inventory of at most eight cards is required.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Buy The Hanged Man ($3)",
+      "timing": {
+        "action_kind": "buy",
+        "active_seconds": 0.11433360000000903,
+        "decision_id": 986,
+        "elapsed_seconds": 0.11433820000002015,
+        "evaluations": 0,
+        "finished_seconds": 663.7994118,
+        "max_resume_seconds": 0.11433360000000903,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 663.6850736,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1172,
+        "sequence": 2190,
+        "decoded_event_sha256": "ed6667e5afca006afc9100fd8141007827114da204c9c5d7b944737ecd13c769",
+        "stored_frame_sha256": "2e958d374800310331df88d0e515beda21b547a9162b653cd3570b0f7e2808e7"
+      },
+      "action": {
+        "area": "jokers",
+        "kind": "reorder_jokers",
+        "order": [
+          2,
+          1,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "cash": 89,
+      "next_blind": {
+        "ante": 8,
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "key": "bl_final_leaf",
+        "label": "Boss",
+        "mult": 2,
+        "name": "Verdant Leaf"
+      },
+      "inventory_count": 26,
+      "consumable_limit": 26,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 23
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_hanged_man",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:645",
+          "key": "j_crafty",
+          "name": "Crafty Joker",
+          "cost": 4,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 25,
+            "mult": 0,
+            "name": "Crafty Joker",
+            "order": 15,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 80,
+            "t_mult": 0,
+            "type": "Flush",
+            "x_mult": 1
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_review": {
+        "acquisition_before_missing": 0,
+        "acquisition_comparisons": 0,
+        "acquisition_complete": false,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": false,
+        "acquisition_reason": "The whole inventory needs distinct qualified Tarot source certificates.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "A settled nonempty inventory of at most eight cards is required.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Copy Perkeo before leaving the shop",
+      "timing": {
+        "action_kind": "reorder_jokers",
+        "active_seconds": 0.17249389999994946,
+        "decision_id": 987,
+        "elapsed_seconds": 0.17249859999992623,
+        "evaluations": 0,
+        "finished_seconds": 664.1167981,
+        "max_resume_seconds": 0.17249389999994946,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 663.9442995,
+        "status": "completed"
+      }
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1177,
+        "sequence": 2195,
+        "decoded_event_sha256": "3ad7a0eddc9a01551a76985fedda80d7b3d1f03543176614a90e3e2139ad5290",
+        "stored_frame_sha256": "e08dcf6a27f5bf2d425c12d80d03faa7348f526ae11b4bb1dcd032cd22a68476"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "cash": 89,
+      "next_blind": {
+        "ante": 8,
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "key": "bl_final_leaf",
+        "label": "Boss",
+        "mult": 2,
+        "name": "Verdant Leaf"
+      },
+      "inventory_count": 26,
+      "consumable_limit": 26,
+      "consumeable_buffer": 0,
+      "inventory_classes": [
+        {
+          "key": "c_temperance",
+          "negative": true,
+          "count": 23
+        },
+        {
+          "key": "c_sun",
+          "negative": true,
+          "count": 1
+        },
+        {
+          "key": "c_wheel_of_fortune",
+          "negative": false,
+          "count": 1
+        },
+        {
+          "key": "c_hanged_man",
+          "negative": false,
+          "count": 1
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:645",
+          "key": "j_crafty",
+          "name": "Crafty Joker",
+          "cost": 4,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 25,
+            "mult": 0,
+            "name": "Crafty Joker",
+            "order": 15,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 80,
+            "t_mult": 0,
+            "type": "Flush",
+            "x_mult": 1
+          },
+          "gold_status": "missing"
+        }
+      ],
+      "gold_review": {
+        "acquisition_before_missing": 0,
+        "acquisition_comparisons": 0,
+        "acquisition_complete": false,
+        "acquisition_endpoint_count": 0,
+        "acquisition_evaluations": 0,
+        "acquisition_max_evaluations": 50000,
+        "acquisition_projection_complete": false,
+        "acquisition_reason": "The whole inventory needs distinct qualified Tarot source certificates.",
+        "acquisition_scope": "Winning-Ante shop before Small, Big, Vessel or Leaf: fixed current row and held inventory, direct visible missing buy or one completed original sale then buy.",
+        "final_comparisons": 0,
+        "final_complete": false,
+        "final_endpoint_count": 0,
+        "final_evidence_complete": false,
+        "final_projection_complete": false,
+        "final_reason": "A settled nonempty inventory of at most eight cards is required.",
+        "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+        "retention_comparisons": 0,
+        "retention_complete": false,
+        "retention_evaluations": 0,
+        "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+        "retention_scope": "Winning-Ante fixed-current-row hold versus the complete visible sale-first incumbent; all consumables held.",
+        "schema": 1,
+        "shop_evaluations": 0,
+        "shop_truncated": false,
+        "shop_unavailable_reason": "Blind-start Joker changes are left to the existing strategy.",
+        "status": "current"
+      },
+      "advice_title": "Leave the shop and save your money",
+      "timing": {
+        "action_kind": "leave_shop",
+        "active_seconds": 0.1690472000000227,
+        "decision_id": 988,
+        "elapsed_seconds": 0.16905239999994137,
+        "evaluations": 0,
+        "finished_seconds": 664.418822,
+        "max_resume_seconds": 0.1690472000000227,
+        "phase": "shop",
+        "resume_calls": 1,
+        "started_seconds": 664.2497696,
+        "status": "completed"
+      }
+    }
+  ],
+  "late_public_row": [
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "",
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 0,
+        "mult": 0,
+        "name": "Perkeo",
+        "order": 150,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 20,
+      "blueprint_compat": true,
+      "cost": 25,
+      "debuff": false,
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      },
+      "face_down": false,
+      "id": "card:382",
+      "key": "j_perkeo",
+      "name": "Perkeo",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 4,
+      "sell_cost": 12,
+      "gold_status": "complete"
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "",
+        "extra": {
+          "discards": 23,
+          "xmult": 1
+        },
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 0,
+        "mult": 0,
+        "name": "Yorick",
+        "order": 148,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 3,
+        "yorick_discards": 16
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 20,
+      "blueprint_compat": true,
+      "cost": 20,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:381",
+      "key": "j_yorick",
+      "name": "Yorick",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 4,
+      "sell_cost": 10,
+      "gold_status": "complete"
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "Tarot Buff",
+        "eternal": true,
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 4,
+        "mult": 0,
+        "name": "Cartomancer",
+        "order": 142,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 6,
+      "blueprint_compat": true,
+      "cost": 9,
+      "debuff": false,
+      "edition": {
+        "holo": true,
+        "mult": 10,
+        "type": "holo"
+      },
+      "face_down": false,
+      "id": "card:388",
+      "key": "j_cartomancer",
+      "name": "Cartomancer",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 2,
+      "sell_cost": 4,
+      "gold_status": "complete"
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "caino_xmult": 6,
+        "d_size": 0,
+        "effect": "",
+        "extra": 1,
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 4,
+        "mult": 0,
+        "name": "Caino",
+        "order": 146,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 20,
+      "blueprint_compat": true,
+      "cost": 20,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:393",
+      "key": "j_caino",
+      "name": "Caino",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 4,
+      "sell_cost": 10,
+      "gold_status": "complete"
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "eternal": true,
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 5,
+        "mult": 0,
+        "name": "Devious Joker",
+        "order": 14,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 100,
+        "t_mult": 0,
+        "type": "Straight",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 4,
+      "blueprint_compat": true,
+      "cost": 4,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:400",
+      "key": "j_devious",
+      "name": "Devious Joker",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 1,
+      "sell_cost": 2,
+      "gold_status": "complete"
+    },
+    {
+      "ability": {
+        "blueprint_compat": "compatible",
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "Copycat",
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 10,
+        "mult": 0,
+        "name": "Brainstorm",
+        "order": 138,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 10,
+      "blueprint_compat": true,
+      "cost": 10,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:446",
+      "key": "j_brainstorm",
+      "name": "Brainstorm",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 3,
+      "sell_cost": 5,
+      "gold_status": "complete"
+    }
+  ],
+  "public_failure_fields": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development346\\log_analysis\\public_failure_fields.json",
+    "sha256": "2f426f657879c1a4e684b6f61b67544df848e84999905059ae4dff72f6053e39",
+    "bytes": 52503
+  },
+  "certificate_census": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development346\\log_analysis\\certificate_census.json",
+    "sha256": "944ed3e6f41f9fe97270930d06c86f4cbfd488a613606d6d19280abaeb6ffd2f",
+    "bytes": 7203
+  },
+  "direct_observations": [
+    "Loaded345 generated fresh failure certificates; these are not unchanged old344 certificates.",
+    "All26 held Tarots at final shop2195 have supported=false and the generic copied-Tarot ability/edition/front/parameters reason.",
+    "Full26/26 inventory passed the conditional Cartomancer row gate, then acquisition rejected its whole-inventory certificate before any score call.",
+    "Pre-Small22/23 inventory still rejected the owned row; pre-Big24/24 accepted its row but had no visible missing Joker.",
+    "No retention comparison ran at these shop exits because the ordinary action was not a sale-first Joker action."
+  ],
+  "source_derived_mismatch": {
+    "finding": "Vanilla create_card supplies params.bypass_back=G.GAME.selected_back.pos; copy_card retains params. Installed345 params_ok accepts only four Boolean fields and rejects bypass_back.",
+    "source_lines": {
+      "common_events.lua": "2126-2130 create_card;2175-2179 copy_card",
+      "gold_tarot_hold.lua": "168-171 params_allowed/params_ok;224 capture guard"
+    },
+    "attribution_limit": "The newly logged generic failure is consistent with this exact source mismatch, but failed certificate output does not include raw params. Do not present bypass_back as directly observed or refresh captured certificates."
+  },
+  "source_sha256": {
+    "tools/advisor_eval/runs/chicot_order_source1/source/functions/common_events.lua": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+    "tools/advisor_eval/runs/chicot_order_source1/source/card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "tools/advisor_eval/runs/gold345_installed/policy/Brainstorm/Advisor/gold_tarot_hold.lua": "4e49ddf51f4099b7ed6262ceb14444fc046a0975baf0d9976a3ce722f216642b",
+    "tools/advisor_eval/runs/gold345_installed/policy/Brainstorm/Advisor/snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba"
+  },
+  "terminals": [
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000002.brj",
+        "ordinal": 1001,
+        "sequence": 1011,
+        "decoded_event_sha256": "b69b39b132825d9b2726b2b67e32db47dc0bbb23bd4ed99358714ad8cae2ac2d",
+        "stored_frame_sha256": "e7a498254350ee92a4b3f047d0a456199761f5191b722349c7971ea0f9eb3383"
+      },
+      "loaded_version": "Brainstorm v2.145.0-alpha",
+      "seed": "M4BVSY11",
+      "state": {
+        "ante": 6,
+        "round": 17,
+        "phase": "other",
+        "state": 4,
+        "dollars": 109,
+        "chips": 112910,
+        "blind": {
+          "boss": true,
+          "chips": 120000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_serpent",
+          "mult": 2,
+          "name": "The Serpent"
+        },
+        "hands_left": 0,
+        "discards_left": 0,
+        "reroll_cost": 5,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 5,
+        "consumable_limit": 6,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:2",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:2",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 185,
+        "run_id": "game:2",
+        "run_number": 1,
+        "run_seconds": 359.646229,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "terminal",
+        "time": 381.2951211
+      },
+      "counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "row": [
+        {
+          "id": "card:176",
+          "key": "j_yorick",
+          "name": "Yorick",
+          "gold_status": "complete",
+          "edition": null
+        },
+        {
+          "id": "card:175",
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "gold_status": "complete",
+          "edition": null
+        },
+        {
+          "id": "card:178",
+          "key": "j_droll",
+          "name": "Droll Joker",
+          "gold_status": "complete",
+          "edition": null
+        },
+        {
+          "id": "card:185",
+          "key": "j_supernova",
+          "name": "Supernova",
+          "gold_status": "missing",
+          "edition": null
+        },
+        {
+          "id": "card:182",
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "gold_status": "complete",
+          "edition": null
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T050034Z-1-000004.brj",
+        "ordinal": 1224,
+        "sequence": 2242,
+        "decoded_event_sha256": "926f1ce9e62d05603d000ee031f96200823ae9667d3e4aa97ca98575a6fd728f",
+        "stored_frame_sha256": "99ba4e08d45eaf255c582b3cce85f13d24b5f664a9ab56b144f4dc327fc13a8a"
+      },
+      "loaded_version": "Brainstorm v2.145.0-alpha",
+      "seed": "YVYN2Z11",
+      "state": {
+        "ante": 9,
+        "round": 23,
+        "phase": "round",
+        "state": 8,
+        "dollars": 98,
+        "chips": 686952,
+        "blind": {
+          "boss": true,
+          "chips": 400000,
+          "debuff": {},
+          "disabled": true,
+          "key": "bl_final_leaf",
+          "mult": 2,
+          "name": "Verdant Leaf"
+        },
+        "hands_left": 4,
+        "discards_left": 0,
+        "reroll_cost": 5,
+        "next_blind": null,
+        "next_blind_chips": null,
+        "win_ante": 8,
+        "bankrupt_at": 0,
+        "joker_limit": 5,
+        "consumable_limit": 27,
+        "consumeable_buffer": 0,
+        "ordering_safe": null,
+        "jokers_shuffling": null
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "callbacks": [
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 686952,
+                "deck": "b_red",
+                "deck_wins": 14,
+                "jokers": {
+                  "j_brainstorm": 28,
+                  "j_caino": 11,
+                  "j_cartomancer": 11,
+                  "j_devious": 10,
+                  "j_yorick": 23
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 686952,
+                "deck": "b_red",
+                "deck_wins": 14,
+                "jokers": {
+                  "j_brainstorm": 27,
+                  "j_caino": 10,
+                  "j_cartomancer": 10,
+                  "j_devious": 9,
+                  "j_yorick": 22
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_joker_win",
+              "verified": true
+            },
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 686952,
+                "deck": "b_red",
+                "deck_wins": 15,
+                "jokers": {
+                  "j_brainstorm": 28,
+                  "j_caino": 11,
+                  "j_cartomancer": 11,
+                  "j_devious": 10,
+                  "j_yorick": 23
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 686952,
+                "deck": "b_red",
+                "deck_wins": 14,
+                "jokers": {
+                  "j_brainstorm": 28,
+                  "j_caino": 11,
+                  "j_cartomancer": 11,
+                  "j_devious": 10,
+                  "j_yorick": 23
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_deck_win",
+              "verified": true
+            }
+          ],
+          "event_id": "win:game:3",
+          "final_context": {
+            "ante": 8,
+            "boss": true,
+            "chips": 686952,
+            "deck": "b_red",
+            "deck_wins": 14,
+            "jokers": {
+              "j_brainstorm": 27,
+              "j_caino": 10,
+              "j_cartomancer": 10,
+              "j_devious": 9,
+              "j_yorick": 22
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 19,
+            "target": 400000,
+            "win_ante": 8,
+            "won": false
+          },
+          "game_over": false,
+          "kind": "win",
+          "result_surface_seen": false,
+          "run_id": "game:3",
+          "source": "original_win_callback",
+          "source_saved": false,
+          "threshold_met": true,
+          "verified": true
+        },
+        "gold_award": {
+          "new_count": 0,
+          "new_keys": {},
+          "schema": 1,
+          "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+          "source": "original_set_joker_win",
+          "status": "confirmed"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "win",
+        "profile_id": 1,
+        "run_actions": 232,
+        "run_id": "game:3",
+        "run_number": 2,
+        "run_seconds": 302.6271422,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "terminal",
+        "time": 684.1371968
+      },
+      "counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "row": [
+        {
+          "id": "card:393",
+          "key": "j_caino",
+          "name": "Caino",
+          "gold_status": "complete",
+          "edition": null
+        },
+        {
+          "id": "card:381",
+          "key": "j_yorick",
+          "name": "Yorick",
+          "gold_status": "complete",
+          "edition": null
+        },
+        {
+          "id": "card:388",
+          "key": "j_cartomancer",
+          "name": "Cartomancer",
+          "gold_status": "complete",
+          "edition": {
+            "holo": true,
+            "mult": 10,
+            "type": "holo"
+          }
+        },
+        {
+          "id": "card:400",
+          "key": "j_devious",
+          "name": "Devious Joker",
+          "gold_status": "complete",
+          "edition": null
+        },
+        {
+          "id": "card:446",
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "gold_status": "complete",
+          "edition": null
+        }
+      ]
+    }
+  ],
+  "censoring": "The subsequent run is unfinished at the frozen log prefix; no outcome is imputed.",
+  "limits": "No complete comparison, alternative purchase, retention improvement, terminal rescue or numerical win odds is established by this passive audit."
+}

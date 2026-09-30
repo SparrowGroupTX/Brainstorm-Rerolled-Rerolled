@@ -1,0 +1,12 @@
+The first documentation finalization stopped before any checkpoint/navigation
+writes, at release.exact -> absent, with:
+    AssertionError: Balatro is running; installation prohibited
+
+Installation had already completed17:20:30 local; the exact installed full gate
+finished17:21:36.254. Passive process inspection then showed new Balatro PID31268
+started17:23:03, after both operations. No second installation was attempted.
+The original finalizer is preserved as complete_attempt1.py. Finalization now
+requires any observed process to have started after the gate and verifies runtime,
+tests, configuration, DLLs, backups and the immutable copied journals read-only.
+It does not inspect the active journal directory. Install-time absence and source
+journal checks remain mandatory/default in release.py prepare/install.

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "detached_nine_card_concealed_admission",
+  "status": "ready_for_root_review",
+  "production_source_modified": false,
+  "production_tests_modified": false,
+  "source_baseline_version": "2.130.0-alpha",
+  "files": {
+    "baseline.lua": "fbcc0a4b72334025ce0dcf52de6f100df0535fc66b2028e254950082e4f57b0d",
+    "concealed_belief.lua": "4d8c3d57c6eb9379fc9e5a5e91c89c8da1ba5c15e893e970da94cb999f74188f",
+    "concealed_belief.patch": "f374c88232ad925709430ebee1c016dc3b7d84b30a4a33fe566f3f5897046a97",
+    "finalize.py": "034a24dfb2eaf3c8c3941a0581f49fabd30418ee5484529498da3ef354c75353",
+    "prepare.py": "bb1fc70c144f5bd836be13c0e895d2af6c516aed73a7919a9ee5f0b73b50b3e9",
+    "README.md": "4c2fe2cfd0955cd1d77f1f3cfb4f79e8682c73f5e7b748e212282d1a6c45fe04",
+    "regression_continuation.lua": "baca40ad5f9e4ee5f6bb180adb1d1026a29a5ea29d7b1dd7a83415ae81b69040",
+    "regression_immediate.lua": "e8206801a4e07b53429e2bbc2e71e10c889f1df29100cb7fd4614e1905cff23c",
+    "test.lua": "7a2e12a06fb51a0d6d97ec52fa15fed760b68c6a9c056188e1448b7476eed25b"
+  },
+  "scoring_dependencies": {
+    "scoring.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+    "snapshot.lua": "66853fc50efdb71164d768b0af1ffcf09a3574adf53e08501e01c61422d6d9bb",
+    "draws.lua": "a1b7c7239659b505ae02e6976d5e3eb95488fe6ebd57adffa8b6703c8b491169",
+    "sampled_outcomes.lua": "72a4bcd9ba65c03ff9b571449aaa0f4c4a8d41c6df40bfe9846d813c3297508a",
+    "decision.lua": "46f6919bddb7457b5bc18ae6eadf34d4e921822abfe145588a73f1bebd975d8c"
+  },
+  "validation": {
+    "new_fixture_checks": 7584,
+    "new_fixture_passes": 1,
+    "new_fixture_wall_seconds": 0.4413214,
+    "existing_immediate_checks": 292,
+    "existing_continuation_checks": 602,
+    "existing_fixture_passes": 2,
+    "existing_group_wall_seconds": 0.3808803,
+    "exit_codes": [
+      0,
+      0
+    ],
+    "failed_tests": 0,
+    "immediate_candidates": 381,
+    "immediate_worlds": 16,
+    "immediate_actual_score_calls": 6096,
+    "complete_future_total_score_calls": 6224,
+    "aggregate_score_cap": 8000,
+    "future_candidate_cap": 8,
+    "over_budget_32_world_score_calls": 0,
+    "input_unchanged": true,
+    "latent_assignment_invariant": true
+  },
+  "captured_policy_decisions": 0,
+  "original_source_executions": 0,
+  "complete_attempts": 0,
+  "search_jobs": 0,
+  "new_experiment_jobs": 0,
+  "limits": "Manufactured and existing fixture evidence only. Exact C02 state not evaluated; no rescued attempt, terminal win or win-rate claim. Root owns integration/full regression/installation."
+}

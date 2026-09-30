@@ -1,0 +1,14 @@
+{
+  "kind": "manufactured_lua_fixture",
+  "timeout_seconds": 60,
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development335\\scoring_component\\test_scoring_reuse.lua\nPASS tools\\advisor_eval\\development335\\scoring_component\\test_scoring_reuse.lua\n1/1 fixtures passed\nscoring reuse checks=2848 complete comparison cases=400\nall score_calls baseline=1855 candidate=1855\nall lowest_visits baseline=8810 candidate=1603\nall enh_calls baseline=80638 candidate=59831\nall enhancement baseline=70926 candidate=1\nall blind baseline=1837 candidate=1\nall classification_suits baseline=180 candidate=1\nall seeing_double_suits baseline=33 candidate=1\nall flower_pot_suits baseline=33 candidate=1\nplain score_calls baseline=1090 candidate=1090\nplain lowest_visits baseline=4760 candidate=0\nplain enh_calls baseline=47802 candidate=33522\nplain enhancement baseline=47802 candidate=0\nplain blind baseline=1090 candidate=0\n",
+  "stderr": "",
+  "wall_seconds": 0.3280000000959262,
+  "sha256": {
+    "scoring_before.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+    "scoring.lua": "547b4977cf310be54cf35df3f955cc747f54ee3fad6231b4ac414da8586fa686",
+    "test_scoring_reuse.lua": "e45ed8ba6fca7de4298ac02c7e1b4a0a38242eb4b022f66c7ba240d152a7e47c",
+    "run_fixture.py": "949833e825574d27995696186599465e4f5464beeda1f2bc737754d2b57b5116"
+  }
+}

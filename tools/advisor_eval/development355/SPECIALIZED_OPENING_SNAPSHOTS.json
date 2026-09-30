@@ -1,0 +1,3046 @@
+{
+  "scope": "Selected existing public snapshots; not an engine checkpoint or seed-parity proof. No simulation.",
+  "source_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T144933Z-1-000010.brj",
+  "source_sha256": "5d2b8764dd64b443bb1bf48cd8b6d61804726aaa290fc80af145c6e432a2b0ef",
+  "snapshots": [
+    {
+      "sequence": 2184,
+      "event_sha256": "74f0c860a3f7e7a6f1916b7f96ebbda697bb5023af68dcbcbd590c4906ae451c",
+      "at": "2026-09-16T15:01:46Z",
+      "kind": "collection_run_start",
+      "context": {
+        "version": "Brainstorm v2.154.0-alpha",
+        "seed": "YAEARC31",
+        "stake": 8,
+        "game_over": false,
+        "won_field": false
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "dollars": 4,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "joker_limit": 5,
+        "consumeable_limit": null,
+        "hand_limit": 5,
+        "blind_on_deck": null,
+        "blind_states": {
+          "Big": "Upcoming",
+          "Boss": "Upcoming",
+          "Small": "Select"
+        },
+        "skips": 0,
+        "pack_type": null,
+        "pack_choices": null,
+        "jokers": {},
+        "consumeables": {},
+        "shop_jokers": {},
+        "shop_booster": {},
+        "shop_vouchers": {},
+        "normal_opening": {
+          "bound_to_run": true,
+          "deck_key": "b_red",
+          "joker_buffer": 0,
+          "kind": "normal_two_soul_v1",
+          "legendary_targets": [
+            "j_yorick",
+            "j_perkeo"
+          ],
+          "multi_soul_pack_consumed": false,
+          "no_perishable_targets": true,
+          "pack_marked": false,
+          "required_souls": 2,
+          "schema": 1,
+          "stake": 8,
+          "targets": [
+            {
+              "edition": "any",
+              "key": "j_yorick",
+              "location": "soul_pack"
+            },
+            {
+              "edition": "any",
+              "key": "j_brainstorm",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_burnt",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_perkeo",
+              "location": "soul_pack"
+            }
+          ]
+        },
+        "hands": {
+          "Five of a Kind": {
+            "chips": 120,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "C_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ]
+            ],
+            "l_chips": 35,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 12,
+            "order": 3,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 120,
+            "s_mult": 12,
+            "visible": false
+          },
+          "Flush": {
+            "chips": 35,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_K",
+                true
+              ],
+              [
+                "H_T",
+                true
+              ],
+              [
+                "H_5",
+                true
+              ],
+              [
+                "H_4",
+                true
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 7,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 35,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Flush Five": {
+            "chips": 160,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ]
+            ],
+            "l_chips": 50,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 16,
+            "order": 1,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 160,
+            "s_mult": 16,
+            "visible": false
+          },
+          "Flush House": {
+            "chips": 140,
+            "example": [
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 14,
+            "order": 2,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 140,
+            "s_mult": 14,
+            "visible": false
+          },
+          "Four of a Kind": {
+            "chips": 60,
+            "example": [
+              [
+                "S_J",
+                true
+              ],
+              [
+                "H_J",
+                true
+              ],
+              [
+                "C_J",
+                true
+              ],
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_3",
+                false
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 7,
+            "order": 5,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 60,
+            "s_mult": 7,
+            "visible": true
+          },
+          "Full House": {
+            "chips": 40,
+            "example": [
+              [
+                "H_K",
+                true
+              ],
+              [
+                "C_K",
+                true
+              ],
+              [
+                "D_K",
+                true
+              ],
+              [
+                "S_2",
+                true
+              ],
+              [
+                "D_2",
+                true
+              ]
+            ],
+            "l_chips": 25,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 6,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 40,
+            "s_mult": 4,
+            "visible": true
+          },
+          "High Card": {
+            "chips": 5,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "D_Q",
+                false
+              ],
+              [
+                "D_9",
+                false
+              ],
+              [
+                "C_4",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 10,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 1,
+            "order": 12,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 5,
+            "s_mult": 1,
+            "visible": true
+          },
+          "Pair": {
+            "chips": 10,
+            "example": [
+              [
+                "S_K",
+                false
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "D_9",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 11,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 10,
+            "s_mult": 2,
+            "visible": true
+          },
+          "Straight": {
+            "chips": 30,
+            "example": [
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "C_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ],
+              [
+                "H_7",
+                true
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 4,
+            "order": 8,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Straight Flush": {
+            "chips": 100,
+            "example": [
+              [
+                "S_Q",
+                true
+              ],
+              [
+                "S_J",
+                true
+              ],
+              [
+                "S_T",
+                true
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 8,
+            "order": 4,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 100,
+            "s_mult": 8,
+            "visible": true
+          },
+          "Three of a Kind": {
+            "chips": 30,
+            "example": [
+              [
+                "S_T",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "D_T",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_5",
+                false
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 3,
+            "order": 9,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 3,
+            "visible": true
+          },
+          "Two Pair": {
+            "chips": 20,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ],
+              [
+                "C_Q",
+                false
+              ],
+              [
+                "H_4",
+                true
+              ],
+              [
+                "C_4",
+                true
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 10,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 20,
+            "s_mult": 2,
+            "visible": true
+          }
+        }
+      },
+      "goal_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "goal_eligibility": {
+        "eligible": true,
+        "reasons": {},
+        "status": "eligible"
+      }
+    },
+    {
+      "sequence": 2191,
+      "event_sha256": "523e4de8c5f41cd72cf2f88caa0702c2abd1d400fdfd1e438c700a327f3bbffe",
+      "at": "2026-09-16T15:01:48Z",
+      "kind": "state_after_actions",
+      "context": {
+        "version": "Brainstorm v2.154.0-alpha",
+        "seed": "YAEARC31",
+        "stake": 8,
+        "game_over": false,
+        "won_field": false
+      },
+      "state": {
+        "phase": "pack",
+        "ante": 1,
+        "round": 0,
+        "dollars": 4,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "joker_limit": 5,
+        "consumeable_limit": null,
+        "hand_limit": 5,
+        "blind_on_deck": "Big",
+        "blind_states": {
+          "Big": "Select",
+          "Boss": "Upcoming",
+          "Small": "Skipped"
+        },
+        "skips": 1,
+        "pack_type": "TAROT_PACK",
+        "pack_choices": 2,
+        "jokers": {},
+        "consumeables": {},
+        "shop_jokers": {},
+        "shop_booster": {},
+        "shop_vouchers": {},
+        "normal_opening": {
+          "bound_to_run": true,
+          "deck_key": "b_red",
+          "joker_buffer": 0,
+          "kind": "normal_two_soul_v1",
+          "legendary_targets": [
+            "j_yorick",
+            "j_perkeo"
+          ],
+          "multi_soul_pack_consumed": true,
+          "no_perishable_targets": true,
+          "pack_marked": true,
+          "required_souls": 2,
+          "schema": 1,
+          "stake": 8,
+          "targets": [
+            {
+              "edition": "any",
+              "key": "j_yorick",
+              "location": "soul_pack"
+            },
+            {
+              "edition": "any",
+              "key": "j_brainstorm",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_burnt",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_perkeo",
+              "location": "soul_pack"
+            }
+          ]
+        },
+        "hands": {
+          "Five of a Kind": {
+            "chips": 120,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "C_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ]
+            ],
+            "l_chips": 35,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 12,
+            "order": 3,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 120,
+            "s_mult": 12,
+            "visible": false
+          },
+          "Flush": {
+            "chips": 35,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_K",
+                true
+              ],
+              [
+                "H_T",
+                true
+              ],
+              [
+                "H_5",
+                true
+              ],
+              [
+                "H_4",
+                true
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 7,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 35,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Flush Five": {
+            "chips": 160,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ]
+            ],
+            "l_chips": 50,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 16,
+            "order": 1,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 160,
+            "s_mult": 16,
+            "visible": false
+          },
+          "Flush House": {
+            "chips": 140,
+            "example": [
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 14,
+            "order": 2,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 140,
+            "s_mult": 14,
+            "visible": false
+          },
+          "Four of a Kind": {
+            "chips": 60,
+            "example": [
+              [
+                "S_J",
+                true
+              ],
+              [
+                "H_J",
+                true
+              ],
+              [
+                "C_J",
+                true
+              ],
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_3",
+                false
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 7,
+            "order": 5,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 60,
+            "s_mult": 7,
+            "visible": true
+          },
+          "Full House": {
+            "chips": 40,
+            "example": [
+              [
+                "H_K",
+                true
+              ],
+              [
+                "C_K",
+                true
+              ],
+              [
+                "D_K",
+                true
+              ],
+              [
+                "S_2",
+                true
+              ],
+              [
+                "D_2",
+                true
+              ]
+            ],
+            "l_chips": 25,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 6,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 40,
+            "s_mult": 4,
+            "visible": true
+          },
+          "High Card": {
+            "chips": 5,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "D_Q",
+                false
+              ],
+              [
+                "D_9",
+                false
+              ],
+              [
+                "C_4",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 10,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 1,
+            "order": 12,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 5,
+            "s_mult": 1,
+            "visible": true
+          },
+          "Pair": {
+            "chips": 10,
+            "example": [
+              [
+                "S_K",
+                false
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "D_9",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 11,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 10,
+            "s_mult": 2,
+            "visible": true
+          },
+          "Straight": {
+            "chips": 30,
+            "example": [
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "C_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ],
+              [
+                "H_7",
+                true
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 4,
+            "order": 8,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Straight Flush": {
+            "chips": 100,
+            "example": [
+              [
+                "S_Q",
+                true
+              ],
+              [
+                "S_J",
+                true
+              ],
+              [
+                "S_T",
+                true
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 8,
+            "order": 4,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 100,
+            "s_mult": 8,
+            "visible": true
+          },
+          "Three of a Kind": {
+            "chips": 30,
+            "example": [
+              [
+                "S_T",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "D_T",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_5",
+                false
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 3,
+            "order": 9,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 3,
+            "visible": true
+          },
+          "Two Pair": {
+            "chips": 20,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ],
+              [
+                "C_Q",
+                false
+              ],
+              [
+                "H_4",
+                true
+              ],
+              [
+                "C_4",
+                true
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 10,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 20,
+            "s_mult": 2,
+            "visible": true
+          }
+        }
+      },
+      "goal_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "goal_eligibility": {
+        "eligible": true,
+        "reasons": {},
+        "status": "eligible"
+      }
+    },
+    {
+      "sequence": 2196,
+      "event_sha256": "a766b19853d59f209e460ef0baf44f26acbb38c65825200302d5ef4d063d175d",
+      "at": "2026-09-16T15:01:49Z",
+      "kind": "state_after_actions",
+      "context": {
+        "version": "Brainstorm v2.154.0-alpha",
+        "seed": "YAEARC31",
+        "stake": 8,
+        "game_over": false,
+        "won_field": false
+      },
+      "state": {
+        "phase": "pack",
+        "ante": 1,
+        "round": 0,
+        "dollars": 4,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "joker_limit": 5,
+        "consumeable_limit": null,
+        "hand_limit": 5,
+        "blind_on_deck": "Big",
+        "blind_states": {
+          "Big": "Select",
+          "Boss": "Upcoming",
+          "Small": "Skipped"
+        },
+        "skips": 1,
+        "pack_type": "TAROT_PACK",
+        "pack_choices": 1,
+        "jokers": [
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 20,
+            "blueprint_compat": true,
+            "cost": 20,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:862",
+            "key": "j_perkeo",
+            "name": "Perkeo",
+            "nominal": 0,
+            "pinned": false,
+            "rarity": 4,
+            "sell_cost": 10
+          }
+        ],
+        "consumeables": {},
+        "shop_jokers": {},
+        "shop_booster": {},
+        "shop_vouchers": {},
+        "normal_opening": {
+          "bound_to_run": true,
+          "deck_key": "b_red",
+          "joker_buffer": 0,
+          "kind": "normal_two_soul_v1",
+          "legendary_targets": [
+            "j_yorick",
+            "j_perkeo"
+          ],
+          "multi_soul_pack_consumed": true,
+          "no_perishable_targets": true,
+          "pack_marked": true,
+          "required_souls": 2,
+          "schema": 1,
+          "stake": 8,
+          "targets": [
+            {
+              "edition": "any",
+              "key": "j_yorick",
+              "location": "soul_pack"
+            },
+            {
+              "edition": "any",
+              "key": "j_brainstorm",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_burnt",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_perkeo",
+              "location": "soul_pack"
+            }
+          ]
+        },
+        "hands": {
+          "Five of a Kind": {
+            "chips": 120,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "C_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ]
+            ],
+            "l_chips": 35,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 12,
+            "order": 3,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 120,
+            "s_mult": 12,
+            "visible": false
+          },
+          "Flush": {
+            "chips": 35,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_K",
+                true
+              ],
+              [
+                "H_T",
+                true
+              ],
+              [
+                "H_5",
+                true
+              ],
+              [
+                "H_4",
+                true
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 7,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 35,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Flush Five": {
+            "chips": 160,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ]
+            ],
+            "l_chips": 50,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 16,
+            "order": 1,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 160,
+            "s_mult": 16,
+            "visible": false
+          },
+          "Flush House": {
+            "chips": 140,
+            "example": [
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 14,
+            "order": 2,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 140,
+            "s_mult": 14,
+            "visible": false
+          },
+          "Four of a Kind": {
+            "chips": 60,
+            "example": [
+              [
+                "S_J",
+                true
+              ],
+              [
+                "H_J",
+                true
+              ],
+              [
+                "C_J",
+                true
+              ],
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_3",
+                false
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 7,
+            "order": 5,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 60,
+            "s_mult": 7,
+            "visible": true
+          },
+          "Full House": {
+            "chips": 40,
+            "example": [
+              [
+                "H_K",
+                true
+              ],
+              [
+                "C_K",
+                true
+              ],
+              [
+                "D_K",
+                true
+              ],
+              [
+                "S_2",
+                true
+              ],
+              [
+                "D_2",
+                true
+              ]
+            ],
+            "l_chips": 25,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 6,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 40,
+            "s_mult": 4,
+            "visible": true
+          },
+          "High Card": {
+            "chips": 5,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "D_Q",
+                false
+              ],
+              [
+                "D_9",
+                false
+              ],
+              [
+                "C_4",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 10,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 1,
+            "order": 12,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 5,
+            "s_mult": 1,
+            "visible": true
+          },
+          "Pair": {
+            "chips": 10,
+            "example": [
+              [
+                "S_K",
+                false
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "D_9",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 11,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 10,
+            "s_mult": 2,
+            "visible": true
+          },
+          "Straight": {
+            "chips": 30,
+            "example": [
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "C_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ],
+              [
+                "H_7",
+                true
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 4,
+            "order": 8,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Straight Flush": {
+            "chips": 100,
+            "example": [
+              [
+                "S_Q",
+                true
+              ],
+              [
+                "S_J",
+                true
+              ],
+              [
+                "S_T",
+                true
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 8,
+            "order": 4,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 100,
+            "s_mult": 8,
+            "visible": true
+          },
+          "Three of a Kind": {
+            "chips": 30,
+            "example": [
+              [
+                "S_T",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "D_T",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_5",
+                false
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 3,
+            "order": 9,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 3,
+            "visible": true
+          },
+          "Two Pair": {
+            "chips": 20,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ],
+              [
+                "C_Q",
+                false
+              ],
+              [
+                "H_4",
+                true
+              ],
+              [
+                "C_4",
+                true
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 10,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 20,
+            "s_mult": 2,
+            "visible": true
+          }
+        }
+      },
+      "goal_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "goal_eligibility": {
+        "eligible": true,
+        "reasons": {},
+        "status": "eligible"
+      }
+    },
+    {
+      "sequence": 2201,
+      "event_sha256": "beb7d6c50e34d1175cc2577c71bb2178e88d3dc03a9b7cc3726dc988d696c89f",
+      "at": "2026-09-16T15:01:49Z",
+      "kind": "state_after_actions",
+      "context": {
+        "version": "Brainstorm v2.154.0-alpha",
+        "seed": "YAEARC31",
+        "stake": 8,
+        "game_over": false,
+        "won_field": false
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "dollars": 4,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "joker_limit": 5,
+        "consumeable_limit": null,
+        "hand_limit": 5,
+        "blind_on_deck": "Big",
+        "blind_states": {
+          "Big": "Select",
+          "Boss": "Upcoming",
+          "Small": "Skipped"
+        },
+        "skips": 1,
+        "pack_type": null,
+        "pack_choices": 1,
+        "jokers": [
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 20,
+            "blueprint_compat": true,
+            "cost": 20,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:862",
+            "key": "j_perkeo",
+            "name": "Perkeo",
+            "nominal": 0,
+            "pinned": false,
+            "rarity": 4,
+            "sell_cost": 10
+          },
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 23
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 20,
+            "blueprint_compat": true,
+            "cost": 20,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:863",
+            "key": "j_yorick",
+            "name": "Yorick",
+            "nominal": 0,
+            "pinned": false,
+            "rarity": 4,
+            "sell_cost": 10
+          }
+        ],
+        "consumeables": {},
+        "shop_jokers": {},
+        "shop_booster": {},
+        "shop_vouchers": {},
+        "normal_opening": {
+          "bound_to_run": true,
+          "deck_key": "b_red",
+          "joker_buffer": 0,
+          "kind": "normal_two_soul_v1",
+          "legendary_targets": [
+            "j_yorick",
+            "j_perkeo"
+          ],
+          "multi_soul_pack_consumed": true,
+          "no_perishable_targets": true,
+          "pack_marked": true,
+          "required_souls": 2,
+          "schema": 1,
+          "stake": 8,
+          "targets": [
+            {
+              "edition": "any",
+              "key": "j_yorick",
+              "location": "soul_pack"
+            },
+            {
+              "edition": "any",
+              "key": "j_brainstorm",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_burnt",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_perkeo",
+              "location": "soul_pack"
+            }
+          ]
+        },
+        "hands": {
+          "Five of a Kind": {
+            "chips": 120,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "C_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ]
+            ],
+            "l_chips": 35,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 12,
+            "order": 3,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 120,
+            "s_mult": 12,
+            "visible": false
+          },
+          "Flush": {
+            "chips": 35,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_K",
+                true
+              ],
+              [
+                "H_T",
+                true
+              ],
+              [
+                "H_5",
+                true
+              ],
+              [
+                "H_4",
+                true
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 7,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 35,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Flush Five": {
+            "chips": 160,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ]
+            ],
+            "l_chips": 50,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 16,
+            "order": 1,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 160,
+            "s_mult": 16,
+            "visible": false
+          },
+          "Flush House": {
+            "chips": 140,
+            "example": [
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 14,
+            "order": 2,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 140,
+            "s_mult": 14,
+            "visible": false
+          },
+          "Four of a Kind": {
+            "chips": 60,
+            "example": [
+              [
+                "S_J",
+                true
+              ],
+              [
+                "H_J",
+                true
+              ],
+              [
+                "C_J",
+                true
+              ],
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_3",
+                false
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 7,
+            "order": 5,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 60,
+            "s_mult": 7,
+            "visible": true
+          },
+          "Full House": {
+            "chips": 40,
+            "example": [
+              [
+                "H_K",
+                true
+              ],
+              [
+                "C_K",
+                true
+              ],
+              [
+                "D_K",
+                true
+              ],
+              [
+                "S_2",
+                true
+              ],
+              [
+                "D_2",
+                true
+              ]
+            ],
+            "l_chips": 25,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 6,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 40,
+            "s_mult": 4,
+            "visible": true
+          },
+          "High Card": {
+            "chips": 5,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "D_Q",
+                false
+              ],
+              [
+                "D_9",
+                false
+              ],
+              [
+                "C_4",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 10,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 1,
+            "order": 12,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 5,
+            "s_mult": 1,
+            "visible": true
+          },
+          "Pair": {
+            "chips": 10,
+            "example": [
+              [
+                "S_K",
+                false
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "D_9",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 11,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 10,
+            "s_mult": 2,
+            "visible": true
+          },
+          "Straight": {
+            "chips": 30,
+            "example": [
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "C_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ],
+              [
+                "H_7",
+                true
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 4,
+            "order": 8,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Straight Flush": {
+            "chips": 100,
+            "example": [
+              [
+                "S_Q",
+                true
+              ],
+              [
+                "S_J",
+                true
+              ],
+              [
+                "S_T",
+                true
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 8,
+            "order": 4,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 100,
+            "s_mult": 8,
+            "visible": true
+          },
+          "Three of a Kind": {
+            "chips": 30,
+            "example": [
+              [
+                "S_T",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "D_T",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_5",
+                false
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 3,
+            "order": 9,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 3,
+            "visible": true
+          },
+          "Two Pair": {
+            "chips": 20,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ],
+              [
+                "C_Q",
+                false
+              ],
+              [
+                "H_4",
+                true
+              ],
+              [
+                "C_4",
+                true
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 10,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 20,
+            "s_mult": 2,
+            "visible": true
+          }
+        }
+      },
+      "goal_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "goal_eligibility": {
+        "eligible": true,
+        "reasons": {},
+        "status": "eligible"
+      }
+    },
+    {
+      "sequence": 2238,
+      "event_sha256": "fb39af5e82984904040b6f0758ee07771704313dc95015e42ee4ea9acdb1ff7a",
+      "at": "2026-09-16T15:01:58Z",
+      "kind": "state_after_actions",
+      "context": {
+        "version": "Brainstorm v2.154.0-alpha",
+        "seed": "YAEARC31",
+        "stake": 8,
+        "game_over": false,
+        "won_field": false
+      },
+      "state": {
+        "phase": "shop",
+        "ante": 1,
+        "round": 1,
+        "dollars": 10,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "joker_limit": 5,
+        "consumeable_limit": null,
+        "hand_limit": 5,
+        "blind_on_deck": "Big",
+        "blind_states": {
+          "Big": "Defeated",
+          "Boss": "Upcoming",
+          "Small": "Skipped"
+        },
+        "skips": 1,
+        "pack_type": null,
+        "pack_choices": 1,
+        "jokers": [
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 20,
+            "blueprint_compat": true,
+            "cost": 20,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:862",
+            "key": "j_perkeo",
+            "name": "Perkeo",
+            "nominal": 0,
+            "pinned": false,
+            "rarity": 4,
+            "sell_cost": 10
+          },
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 14
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 20,
+            "blueprint_compat": true,
+            "cost": 20,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:863",
+            "key": "j_yorick",
+            "name": "Yorick",
+            "nominal": 0,
+            "pinned": false,
+            "rarity": 4,
+            "sell_cost": 10
+          }
+        ],
+        "consumeables": {},
+        "shop_jokers": [
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Socialized Mult",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Raised Fist",
+              "order": 29,
+              "p_dollars": 0,
+              "perish_tally": 5,
+              "perishable": true,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 5,
+            "blueprint_compat": true,
+            "cost": 1,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:864",
+            "key": "j_raised_fist",
+            "name": "Raised Fist",
+            "nominal": 0,
+            "pinned": false,
+            "rarity": 1,
+            "sell_cost": 1
+          },
+          {
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 1,
+                "mod_conv": "m_glass",
+                "mod_num": 1
+              },
+              "d_size": 0,
+              "effect": "Enhance",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Justice",
+              "order": 9,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 3,
+            "cost": 3,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:865",
+            "key": "c_justice",
+            "name": "Justice",
+            "nominal": 0,
+            "pinned": false,
+            "sell_cost": 1,
+            "tarot_hold_source": {
+              "ability": {
+                "bonus": 0,
+                "consumeable": {
+                  "max_highlighted": 1,
+                  "mod_conv": "m_glass",
+                  "mod_num": 1
+                },
+                "d_size": 0,
+                "effect": "Enhance",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 2,
+                "mult": 0,
+                "name": "Justice",
+                "order": 9,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              },
+              "base": {
+                "face_nominal": 0,
+                "nominal": 0,
+                "suit_nominal": 0,
+                "times_played": 0
+              },
+              "center_config": {
+                "max_highlighted": 1,
+                "mod_conv": "m_glass",
+                "mod_num": 1
+              },
+              "center_consumeable": true,
+              "center_cost": 3,
+              "center_effect": "Enhance",
+              "center_key": "c_justice",
+              "center_name": "Justice",
+              "center_order": 9,
+              "center_set": "Tarot",
+              "constructor_policy": "plain_data_unused_tarot",
+              "front_empty": true,
+              "params": {
+                "bypass_back": {
+                  "x": 0,
+                  "y": 0
+                },
+                "bypass_discovery_center": true,
+                "bypass_discovery_ui": true,
+                "discover": false
+              },
+              "schema": 1,
+              "scope": "qualified_tarot_hold_source_v1",
+              "scope_note": "Observed public vanilla constructor inputs; not arbitrary mod callback or Tarot-use qualification.",
+              "supported": true
+            }
+          }
+        ],
+        "shop_booster": [
+          {
+            "ability": {
+              "bonus": 0,
+              "booster_pos": 1,
+              "d_size": 0,
+              "extra": 2,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Buffoon Pack",
+              "order": 25,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Booster",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 4,
+            "cost": 4,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:867",
+            "key": "p_buffoon_normal_1",
+            "name": "Buffoon Pack",
+            "nominal": 0,
+            "pinned": false,
+            "sell_cost": 2
+          },
+          {
+            "ability": {
+              "bonus": 0,
+              "booster_pos": 2,
+              "d_size": 0,
+              "extra": 3,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Standard Pack",
+              "order": 17,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Booster",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 4,
+            "cost": 4,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:868",
+            "key": "p_standard_normal_1",
+            "name": "Standard Pack",
+            "nominal": 0,
+            "pinned": false,
+            "sell_cost": 2
+          }
+        ],
+        "shop_vouchers": [
+          {
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 10,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Director's Cut",
+              "order": 29,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Voucher",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "base": {
+              "face_nominal": 0,
+              "nominal": 0,
+              "suit_nominal": 0,
+              "times_played": 0
+            },
+            "base_cost": 10,
+            "cost": 10,
+            "debuff": false,
+            "face_down": false,
+            "id": "card:866",
+            "key": "v_directors_cut",
+            "name": "Director's Cut",
+            "nominal": 0,
+            "pinned": false,
+            "sell_cost": 5
+          }
+        ],
+        "normal_opening": {
+          "bound_to_run": true,
+          "deck_key": "b_red",
+          "joker_buffer": 0,
+          "kind": "normal_two_soul_v1",
+          "legendary_targets": [
+            "j_yorick",
+            "j_perkeo"
+          ],
+          "multi_soul_pack_consumed": true,
+          "no_perishable_targets": true,
+          "pack_marked": true,
+          "required_souls": 2,
+          "schema": 1,
+          "stake": 8,
+          "targets": [
+            {
+              "edition": "any",
+              "key": "j_yorick",
+              "location": "soul_pack"
+            },
+            {
+              "edition": "any",
+              "key": "j_brainstorm",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_burnt",
+              "location": "by_ante_5"
+            },
+            {
+              "edition": "any",
+              "key": "j_perkeo",
+              "location": "soul_pack"
+            }
+          ]
+        },
+        "hands": {
+          "Five of a Kind": {
+            "chips": 120,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_A",
+                true
+              ],
+              [
+                "C_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ]
+            ],
+            "l_chips": 35,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 12,
+            "order": 3,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 120,
+            "s_mult": 12,
+            "visible": false
+          },
+          "Flush": {
+            "chips": 35,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "H_K",
+                true
+              ],
+              [
+                "H_T",
+                true
+              ],
+              [
+                "H_5",
+                true
+              ],
+              [
+                "H_4",
+                true
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 7,
+            "played": 1,
+            "played_this_round": 1,
+            "s_chips": 35,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Flush Five": {
+            "chips": 160,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ],
+              [
+                "S_A",
+                true
+              ]
+            ],
+            "l_chips": 50,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 16,
+            "order": 1,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 160,
+            "s_mult": 16,
+            "visible": false
+          },
+          "Flush House": {
+            "chips": 140,
+            "example": [
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_7",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ],
+              [
+                "D_4",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 14,
+            "order": 2,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 140,
+            "s_mult": 14,
+            "visible": false
+          },
+          "Four of a Kind": {
+            "chips": 60,
+            "example": [
+              [
+                "S_J",
+                true
+              ],
+              [
+                "H_J",
+                true
+              ],
+              [
+                "C_J",
+                true
+              ],
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_3",
+                false
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 7,
+            "order": 5,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 60,
+            "s_mult": 7,
+            "visible": true
+          },
+          "Full House": {
+            "chips": 40,
+            "example": [
+              [
+                "H_K",
+                true
+              ],
+              [
+                "C_K",
+                true
+              ],
+              [
+                "D_K",
+                true
+              ],
+              [
+                "S_2",
+                true
+              ],
+              [
+                "D_2",
+                true
+              ]
+            ],
+            "l_chips": 25,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 4,
+            "order": 6,
+            "played": 1,
+            "played_this_round": 1,
+            "s_chips": 40,
+            "s_mult": 4,
+            "visible": true
+          },
+          "High Card": {
+            "chips": 5,
+            "example": [
+              [
+                "S_A",
+                true
+              ],
+              [
+                "D_Q",
+                false
+              ],
+              [
+                "D_9",
+                false
+              ],
+              [
+                "C_4",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 10,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 1,
+            "order": 12,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 5,
+            "s_mult": 1,
+            "visible": true
+          },
+          "Pair": {
+            "chips": 10,
+            "example": [
+              [
+                "S_K",
+                false
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "D_9",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_3",
+                false
+              ]
+            ],
+            "l_chips": 15,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 11,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 10,
+            "s_mult": 2,
+            "visible": true
+          },
+          "Straight": {
+            "chips": 30,
+            "example": [
+              [
+                "D_J",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "C_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ],
+              [
+                "H_7",
+                true
+              ]
+            ],
+            "l_chips": 30,
+            "l_mult": 3,
+            "level": 1,
+            "mult": 4,
+            "order": 8,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 4,
+            "visible": true
+          },
+          "Straight Flush": {
+            "chips": 100,
+            "example": [
+              [
+                "S_Q",
+                true
+              ],
+              [
+                "S_J",
+                true
+              ],
+              [
+                "S_T",
+                true
+              ],
+              [
+                "S_9",
+                true
+              ],
+              [
+                "S_8",
+                true
+              ]
+            ],
+            "l_chips": 40,
+            "l_mult": 4,
+            "level": 1,
+            "mult": 8,
+            "order": 4,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 100,
+            "s_mult": 8,
+            "visible": true
+          },
+          "Three of a Kind": {
+            "chips": 30,
+            "example": [
+              [
+                "S_T",
+                true
+              ],
+              [
+                "C_T",
+                true
+              ],
+              [
+                "D_T",
+                true
+              ],
+              [
+                "H_6",
+                false
+              ],
+              [
+                "D_5",
+                false
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 2,
+            "level": 1,
+            "mult": 3,
+            "order": 9,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 30,
+            "s_mult": 3,
+            "visible": true
+          },
+          "Two Pair": {
+            "chips": 20,
+            "example": [
+              [
+                "H_A",
+                true
+              ],
+              [
+                "D_A",
+                true
+              ],
+              [
+                "C_Q",
+                false
+              ],
+              [
+                "H_4",
+                true
+              ],
+              [
+                "C_4",
+                true
+              ]
+            ],
+            "l_chips": 20,
+            "l_mult": 1,
+            "level": 1,
+            "mult": 2,
+            "order": 10,
+            "played": 0,
+            "played_this_round": 0,
+            "s_chips": 20,
+            "s_mult": 2,
+            "visible": true
+          }
+        }
+      },
+      "goal_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "goal_eligibility": {
+        "eligible": true,
+        "reasons": {},
+        "status": "eligible"
+      }
+    }
+  ]
+}

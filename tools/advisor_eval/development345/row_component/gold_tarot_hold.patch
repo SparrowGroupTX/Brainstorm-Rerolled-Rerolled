@@ -1,0 +1,138 @@
+--- Brainstorm/Advisor/gold_tarot_hold.lua.before
++++ Brainstorm/Advisor/gold_tarot_hold.lua
+@@ -6,10 +6,131 @@
+   c_magician={name='The Magician',effect='Enhance',order=2,config={mod_conv='m_lucky',mod_num=2,max_highlighted=2}},
+   c_hermit={name='The Hermit',effect='Dollar Doubler',order=10,config={extra=20}},
+ }
+-local row_names={j_perkeo='Perkeo',j_yorick='Yorick',j_brainstorm='Brainstorm',j_blueprint='Blueprint',
+-  j_swashbuckler='Swashbuckler',j_devious='Devious Joker',j_crazy='Crazy Joker',j_acrobat='Acrobat',
+-  j_shoot_the_moon='Shoot the Moon',j_scary_face='Scary Face',j_fortune_teller='Fortune Teller',
+-  j_golden='Golden Joker',j_joker='Joker',j_burnt='Burnt Joker'}
++-- Exact source names for the existing Gold stable-retention family, plus
++-- Perkeo and Cartomancer. Source: preserved roi247_catalog_source/source_probe.lua
++-- centers. Cartomancer's separate blind-start capacity guard remains required;
++-- membership here qualifies only its absence of an ending-shop effect.
++-- In original Card:calculate_joker, ending_shop only creates cards through
++-- Perkeo (including Blueprint/Brainstorm forwarding); these stable identities
++-- do not read unused Tarot identities/counts for the first-hand score. The
++-- ordinary Gold/Shop guards still qualify paid transitions, startup and score.
++-- Keep this boundary synchronized with gold_goal.stable_card: the standalone
++-- row fixture checks both directions against the preserved source catalog.
++local row_names={}
++for line in ([=[
++j_abstract=Abstract Joker
++j_acrobat=Acrobat
++j_arrowhead=Arrowhead
++j_astronomer=Astronomer
++j_banner=Banner
++j_baron=Baron
++j_baseball=Baseball Card
++j_blackboard=Blackboard
++j_blue_joker=Blue Joker
++j_blueprint=Blueprint
++j_bootstraps=Bootstraps
++j_brainstorm=Brainstorm
++j_bull=Bull
++j_burnt=Burnt Joker
++j_caino=Caino
++j_campfire=Campfire
++j_card_sharp=Card Sharp
++j_cartomancer=Cartomancer
++j_castle=Castle
++j_clever=Clever Joker
++j_cloud_9=Cloud 9
++j_constellation=Constellation
++j_crafty=Crafty Joker
++j_crazy=Crazy Joker
++j_credit_card=Credit Card
++j_delayed_grat=Delayed Gratification
++j_devious=Devious Joker
++j_drivers_license=Driver's License
++j_droll=Droll Joker
++j_drunkard=Drunkard
++j_duo=The Duo
++j_dusk=Dusk
++j_egg=Egg
++j_erosion=Erosion
++j_even_steven=Even Steven
++j_faceless=Faceless Joker
++j_family=The Family
++j_fibonacci=Fibonacci
++j_flash=Flash Card
++j_flower_pot=Flower Pot
++j_fortune_teller=Fortune Teller
++j_four_fingers=Four Fingers
++j_gift=Gift Card
++j_glass=Glass Joker
++j_gluttenous_joker=Gluttonous Joker
++j_golden=Golden Joker
++j_greedy_joker=Greedy Joker
++j_green_joker=Green Joker
++j_hack=Hack
++j_half=Half Joker
++j_hanging_chad=Hanging Chad
++j_hiker=Hiker
++j_hologram=Hologram
++j_joker=Joker
++j_jolly=Jolly Joker
++j_juggler=Juggler
++j_loyalty_card=Loyalty Card
++j_lucky_cat=Lucky Cat
++j_lusty_joker=Lusty Joker
++j_mad=Mad Joker
++j_merry_andy=Merry Andy
++j_mime=Mime
++j_mystic_summit=Mystic Summit
++j_obelisk=Obelisk
++j_odd_todd=Odd Todd
++j_onyx_agate=Onyx Agate
++j_oops=Oops! All 6s
++j_order=The Order
++j_pareidolia=Pareidolia
++j_perkeo=Perkeo
++j_photograph=Photograph
++j_raised_fist=Raised Fist
++j_red_card=Red Card
++j_ride_the_bus=Ride the Bus
++j_ring_master=Showman
++j_rocket=Rocket
++j_rough_gem=Rough Gem
++j_runner=Runner
++j_satellite=Satellite
++j_scary_face=Scary Face
++j_scholar=Scholar
++j_seeing_double=Seeing Double
++j_shoot_the_moon=Shoot the Moon
++j_shortcut=Shortcut
++j_sly=Sly Joker
++j_smeared=Smeared Joker
++j_smiley=Smiley Face
++j_sock_and_buskin=Sock and Buskin
++j_splash=Splash
++j_square=Square Joker
++j_steel_joker=Steel Joker
++j_stencil=Joker Stencil
++j_stone=Stone Joker
++j_stuntman=Stuntman
++j_supernova=Supernova
++j_swashbuckler=Swashbuckler
++j_throwback=Throwback
++j_ticket=Golden Ticket
++j_to_the_moon=To the Moon
++j_tribe=The Tribe
++j_triboulet=Triboulet
++j_trio=The Trio
++j_troubadour=Troubadour
++j_trousers=Spare Trousers
++j_walkie_talkie=Walkie Talkie
++j_wee=Wee Joker
++j_wily=Wily Joker
++j_wrathful_joker=Wrathful Joker
++j_yorick=Yorick
++j_zany=Zany Joker
++]=]):gmatch('[^\r\n]+') do
++  local key,label=line:match('^(j_[%w_]+)=(.+)$');row_names[key]=label
++end
+ local function finite(x) return type(x)=='number' and x==x and math.abs(x)<math.huge end
+ local function integer(x) return finite(x) and x>=0 and x%1==0 end
+ local function plain(t) return type(t)=='table' and getmetatable(t)==nil end

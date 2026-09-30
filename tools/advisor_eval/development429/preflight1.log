@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development429\run.py", line 109, in <module>
+    values=[evaluate(j,m) for j in jobs]
+            ^^^^^^^^^^^^^
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development429\run.py", line 25, in evaluate
+    chunks.append(b'sources[ '+helper.literal(name)+' ]='+helper.literal(Path(path).read_bytes()))
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+TypeError: can't concat str to bytes

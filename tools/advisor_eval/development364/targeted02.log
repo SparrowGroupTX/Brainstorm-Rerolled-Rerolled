@@ -1,0 +1,17 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tests\advisor_collection_marathon364.lua
+FAIL tests\advisor_collection_marathon364.lua
+Running tests\advisor_auto_run_product.lua
+PASS tests\advisor_auto_run_product.lua
+Running tests\advisor_teacher_batch356.lua
+PASS tests\advisor_teacher_batch356.lua
+Running tests\advisor_collection_status.lua
+PASS tests\advisor_collection_status.lua
+3/4 fixtures passed
+advisor_auto_run_product: 1168 checks passed
+advisor_teacher_batch356: 275 checks passed
+advisor_collection_status: 31 checks passed
+No-advice semantic stall retires safely: 0 ~= 1
+stack traceback:
+	...rolled-Rerolled\tests\advisor_collection_marathon364.lua:5: in function 'eq'
+	...rolled-Rerolled\tests\advisor_collection_marathon364.lua:98: in main chunk

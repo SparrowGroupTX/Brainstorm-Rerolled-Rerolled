@@ -1,0 +1,238 @@
+--- before416/Brainstorm/Advisor/growth.lua
++++ Brainstorm/Advisor/growth.lua
+@@ -16,7 +16,8 @@
+ -- not change their sum. This does not qualify other card/Joker effects or draws.
+ local additive_jokers={j_yorick='Yorick',j_perkeo='Perkeo',j_brainstorm='Brainstorm',
+   j_blueprint='Blueprint',j_supernova='Supernova',j_droll='Droll Joker',j_burnt='Burnt Joker',
+-  j_smiley='Smiley Face',j_duo='The Duo',j_wily='Wily Joker',j_swashbuckler='Swashbuckler'}
++  j_smiley='Smiley Face',j_duo='The Duo',j_wily='Wily Joker',j_swashbuckler='Swashbuckler',
++  j_cloud_9='Cloud 9',j_popcorn='Popcorn'}
+ local joker_effects={j_yorick='',j_perkeo='',j_brainstorm='Copycat',j_blueprint='Copycat',
+   j_supernova='Hand played mult',j_droll='Type Mult',j_burnt='',j_smiley='',
+   j_duo='X1.5 Mult',j_wily='',j_swashbuckler='Set Mult'}
+@@ -123,6 +124,12 @@
+       if value~=1 then return false end
+     elseif key=='extra' and joker_key=='j_smiley' then
+       if value~=5 then return false end
++    elseif key=='extra' and joker_key=='j_cloud_9' then
++      if value~=1 then return false end
++    elseif key=='nine_tally' and joker_key=='j_cloud_9' then
++      if not small_integer(value) then return false end
++    elseif key=='extra' and joker_key=='j_popcorn' then
++      if value~=4 then return false end
+     elseif key=='extra' and (joker_key=='j_burnt' or joker_key=='m_glass') then
+       if value~=4 then return false end
+     else
+@@ -181,7 +188,8 @@
+       a.name~=additive_jokers[j.key] or a.set~='Joker' or
+       a.effect~=nil and a.effect~=joker_effects[j.key] then return false end
+     if not j.debuff then
+-      if (j.key=='j_swashbuckler' and not small_integer(a.mult) or j.key~='j_swashbuckler' and not zero(a.mult)) or
++      local fixed_mult=j.key=='j_swashbuckler' or j.key=='j_popcorn'
++      if (fixed_mult and not small_integer(a.mult) or not fixed_mult and not zero(a.mult)) or
+         not zero(a.bonus) or (j.key=='j_wily' and a.t_chips~=100 or j.key~='j_wily' and not zero(a.t_chips)) or
+         not zero(a.h_mult) or not zero(a.h_x_mult) or not zero(a.p_dollars) or not zero(a.h_dollars) or
+         not zero(a.h_size) or not zero(a.d_size) then return false end
+@@ -194,6 +202,11 @@
+         if a.x_mult~=2 or a.type~='Pair' then return false end
+       elseif a.x_mult~=1 then return false end
+       if j.key=='j_wily' and a.type~='Three of a Kind' then return false end
++      -- Both effects are independent of scoring-card order and discards:
++      -- Cloud9 pays at round end; Popcorn contributes its current main-stage
++      -- Mult and decays only at round end. Qualify actual vanilla fields.
++      if j.key=='j_cloud_9' and (a.extra~=1 or not small_integer(a.nine_tally)) then return false end
++      if j.key=='j_popcorn' and (a.extra~=4 or a.mult>20 or a.mult%4~=0) then return false end
+     end
+   end
+   for _,i in ipairs(clear.indices) do
+@@ -299,7 +312,7 @@
+     end
+     return true
+   end
+-  if valid(selected) then return selected,diagnostics end
++  if valid(selected) and not drawn_hazard(s,selected) then return selected,diagnostics end
+   local function cost(clear,key)
+     local value=clear[key]
+     return value==nil and 0 or finite(value) and value or nil
+--- before416/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.200.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.201.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before416/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.200.0-alpha
++--- VERSION: 2.201.0-alpha
+--- before416/tests/advisor_retained_scope417.lua
++++ tests/advisor_retained_scope417.lua
+@@ -0,0 +1,91 @@
++-- Invented mechanics and source-shaped metadata; no captured hand or seed.
++local F=dofile('tests/fixtures/repair416.lua');local m=F.modules()
++if ADVISOR417_ROOT then m.growth=dofile(ADVISOR417_ROOT..'growth.lua') end
++local checks=0;local function check(v,msg)checks=checks+1;assert(v,msg)end
++local function cloud()
++ local j=F.joker('j_cloud_9','Cloud 9',{extra=1,nine_tally=3,order=73,hands_played_at_create=11,extra_value=0,perma_bonus=0,type='',eternal=true})
++ j.ability.effect=nil;j.blueprint_compat=false;return j
++end
++local function popcorn()
++ local j=F.joker('j_popcorn','Popcorn',{extra=4,mult=20,order=97,hands_played_at_create=9,extra_value=0,perma_bonus=0,type=''})
++ j.ability.effect=nil;return j
++end
++local function psychic()
++ local s=F.state();s.hand_size=8;s.blind={key='bl_psychic',name='The Psychic',chips=1000}
++ s.hand={};for i,r in ipairs({13,12,11,7,3,4,6,8}) do
++  s.hand[i]=F.card('invented'..i,r,({'Clubs','Spades','Diamonds','Hearts'})[(i-1)%4+1],i<=3 and 'm_mult' or 'c_base')
++  local a=s.hand[i].ability;a.type='';a.extra_value=0;a.perma_bonus=0;a.hands_played_at_create=5
++ end
++ s.jokers={cloud(),popcorn(),F.joker('j_yorick','Yorick',{x_mult=3,yorick_discards=21,extra={discards=23,xmult=1}}),F.joker('j_perkeo','Perkeo')}
++ F.population(s);return s
++end
++local function clear(s,indices)local c=m.scoring.score(s,indices);c.indices=indices;return c end
++local s=psychic();local before=m.snapshot.fingerprint(s);local indices={1,2,3,4,5};local c=clear(s,indices)
++check(c.legal and c.score>=1000,'invented five-card Psychic High Card clears')
++local kept,work=m.growth.suggest(s,m,c,{exhaust_discards=true,max_evaluations=12})
++check(kept and #kept.action.indices==3,'canonical Cloud9/Popcorn row retains five cards and discards all legal spares')
++check(work<=12 and m.snapshot.fingerprint(s)==before,'new qualification is detached and bounded')
++local after=assert(m.scoring.after_discard(s,kept.action.indices));local expected=m.scoring.score(after,indices).score
++local count=0
++local function permute(order,used)
++ if #order==5 then
++  check(m.scoring.score(after,order).score==expected,'all 120 retained physical card orders have the same actual score')
++  count=count+1;return
++ end
++ for i=1,5 do if not used[i] then used[i]=true;order[#order+1]=i;permute(order,used);order[#order]=nil;used[i]=nil end end
++end
++permute({},{});check(count==120,'complete independent order family')
++for n=3,1,-1 do
++ local result=m.decision.run(s,m)
++ check(result.action.kind=='discard' and result.discard_before_clear.selected,'production decision spends each remaining Psychic discard')
++ check(result.evaluations<=140000 and result.discard_before_clear.evaluations<=12,'final arbitration shares score allowance')
++ s=assert(m.scoring.after_discard(s,result.action.indices));s=assert(m.draws.fill(s,s.deck))
++ check(s.discards_left==n-1,'actual detached settlement consumes one discard')
++end
++local final=m.decision.run(s,m)
++check(final.action.kind=='play' and m.scoring.score(s,final.action.indices).score>=1000,'fresh actual hand clears after all discards')
++
++s=F.state();s.blind={key='bl_flint',name='The Flint',chips=350}
++s.hand={};for i,r in ipairs({13,13,10,8,6,4,2}) do s.hand[i]=F.card('flint'..i,r,({'Clubs','Spades','Diamonds','Hearts'})[(i-1)%4+1],i==1 and 'm_mult' or 'c_base') end
++s.jokers={F.joker('j_yorick','Yorick',{x_mult=3,yorick_discards=21,extra={discards=23,xmult=1}}),cloud()};F.population(s)
++c=clear(s,{1,2});check(c.score>=350,'manufactured Flint pair clears')
++for i=1,#s.hand do check(m.scoring.score(s,{i}).score<350,'no one-card shortcut can mask the multi-card admission gap') end
++kept,work=m.growth.suggest(s,m,c,{exhaust_discards=true,max_evaluations=12})
++check(kept and #kept.action.indices==5 and work<=12,'Cloud9 permits the five-spare discard with a required additive pair')
++local r=m.decision.run(s,m);check(r.action.kind=='discard','production Flint path selects the qualified discard')
++for _,change in ipairs({function(x)x.jokers[2].ability.extra=2 end,function(x)x.jokers[2].ability.nine_tally=0/0 end,
++ function(x)x.jokers[2].ability.h_mult=1 end,function(x)x.jokers[2].edition={holo=true} end,
++ function(x)x.jokers[2].key='j_modded_cloud' end}) do
++ local bad=F.copy(s);change(bad)
++ check(not m.growth.suggest(bad,m,clear(bad,{1,2}),{exhaust_discards=true,max_evaluations=12}),'modified or unqualified row cannot borrow a vanilla additive proof')
++end
++for _,change in ipairs({function(x)x.jokers[2].ability.extra=2 end,function(x)x.jokers[2].ability.mult=19 end,
++ function(x)x.jokers[2].ability.h_x_mult=0.5 end}) do
++ local bad=psychic();change(bad)
++ check(not m.growth.suggest(bad,m,clear(bad,indices),{exhaust_discards=true,max_evaluations=12}),'modified Popcorn does not enter the canonical arithmetic scope')
++end
++
++-- Safe already-scored pair replaces a sorting-sensitive pair with the same
++-- resource costs. No extra scores are permitted inside anchor selection itself.
++s=F.state();s.hand={F.card('m1',12,'Clubs','m_mult'),F.card('m2',12,'Spades'),F.card('p1',11,'Hearts'),F.card('p2',11,'Diamonds'),F.card('spare',2,'Clubs')};s.hand_size=5
++s.jokers={F.joker('j_joker','Joker',{mult=4}),F.joker('j_yorick','Yorick',{x_mult=4,yorick_discards=22,extra={discards=23,xmult=1}})}
++s.blind.chips=600;F.population(s)
++local incumbent=clear(s,{1,2});local alternative=clear(s,{3,4})
++check(incumbent.score>=600 and alternative.score>=600 and m.scoring.score(s,{1}).score<600,'both pairs clear while all single-card shortcuts fail')
++local chosen,diag=m.growth.select_clear(s,incumbent,{incumbent,alternative},{exhaust_discards=true})
++check(chosen==alternative and diag.changed,'hazardous score-valid incumbent yields to an already-scored safe pair')
++local worse=F.copy(alternative);worse.population_cost=1
++check(m.growth.select_clear(s,incumbent,{worse},{exhaust_discards=true})==incumbent,'resource regression still blocks the alternative')
++local scoped={scoring=m.scoring,strategy=m.strategy,growth=m.growth,search={run=function()
++ return {kind='play',play=F.copy(incumbent),alternatives={F.copy(incumbent),F.copy(alternative)},evaluations=2}
++end}}
++r=m.decision.run(s,scoped)
++check(r.action.kind=='discard' and r.growth_anchor_diagnostics.changed,'final production arbitration executes the safer scored anchor route')
++for _,i in ipairs(r.action.indices) do check(i~=3 and i~=4,'safe physical pair stays held') end
++check(r.evaluations<=14 and r.discard_before_clear.evaluations<=12,'selection adds no hidden score work')
++
++-- Bell remains a legal-selection constraint, not an elective unhighlight.
++s=psychic();s.blind={key='bl_final_bell',name='Cerulean Bell',chips=100};s.hand[1].ability.forced_selection=true;F.population(s)
++check(not m.scoring.after_discard(s,{6,7,8}),'actual Bell transition refuses a discard that omits the forced card')
++r=m.decision.run(s,m);check(r.action.kind=='play' and r.discard_before_clear.status=='exception','no unsupported promise to keep a forced winning card')
++print('retained scope417: '..checks..' checks passed')
+--- before416/tests/advisor_runtime.lua
++++ tests/advisor_runtime.lua
+@@ -1604,3 +1604,66 @@
+  check(A.result.action.kind=='play' and A.snapshot.capture(G).discards_left==0,'fresh runtime finishes only after all three discards settled')
+ end
+ print('advisor_visible_discard_runtime416: '..checks..' checks passed')
++
++--417: observed-shape passive income and fixed main-stage Mult cannot block
++-- a safe five-card Psychic anchor. Real adapter callbacks settle between advice.
++do
++ local F=dofile('tests/fixtures/repair416.lua');local A=setup()
++ local function complete417()
++  -- This harness advances its clock by5ms on every timer read, allowing only
++  -- one coroutine yield per update. Give the full production ordering modules
++  -- enough synthetic frames; their actual score budget remains unchanged.
++  for _=1,5000 do A.update(0.1);if A.result and not A.worker then
++   check(A.result.evaluations<=140000,'full runtime comparison retains the ordinary score cap');return
++  end end
++  error('417 runtime did not finish: '..table.concat(A.lines or {},' | ')..' / worker='..tostring(A.worker))
++ end
++ A.teacher_profile='perkeo_yorick_win_v1';Brainstorm.config.advisor.gold_stickers=true
++ A.strategy=dofile('Brainstorm/Advisor/strategy.lua');A.scoring=dofile('Brainstorm/Advisor/scoring.lua')
++ G.GAME.challenge=nil;G.GAME.win_ante=8;G.GAME.dollars=35;G.GAME.probabilities={normal=1}
++ G.GAME.round_resets={ante=4,hands=4,discards=3};G.GAME.current_round.discards_left=3
++ G.GAME.blind={name='The Psychic',chips=1000,config={blind={key='bl_psychic'}}}
++ G.hand.cards={};G.deck.cards={};G.playing_cards={};G.jokers.cards={}
++ local function live(c,id,joker)
++  local v=F.copy(c);v.playing_card=not joker and id or nil;v.sort_id=id
++  v.facing='front';v.sprite_facing='front';v.base=v.base or {};v.base.suit=v.suit
++  v.config={center_key=v.key,center={key=v.key,name=v.ability.name,set=joker and 'Joker' or v.ability.set,blueprint_compat=v.blueprint_compat}}
++  return v
++ end
++ for i,r in ipairs({13,12,11,7,3,4,6,8}) do
++  local v=live(F.card('made'..i,r,({'Clubs','Spades','Diamonds','Hearts'})[(i-1)%4+1],i<=3 and 'm_mult' or 'c_base'),i)
++  G.hand.cards[i]=v;G.playing_cards[#G.playing_cards+1]=v
++ end
++ for i=1,15 do local v=live(F.card('draw'..i,2+i%6,'Clubs'),8+i);v.facing='back';v.sprite_facing='back';G.deck.cards[i]=v;G.playing_cards[#G.playing_cards+1]=v end
++ local row={F.joker('j_cloud_9','Cloud 9',{extra=1,nine_tally=3}),F.joker('j_popcorn','Popcorn',{extra=4,mult=20}),
++  F.joker('j_yorick','Yorick',{x_mult=3,yorick_discards=23,extra={discards=23,xmult=1}}),F.joker('j_perkeo','Perkeo')}
++ row[1].ability.effect=nil;row[1].blueprint_compat=false;row[2].ability.effect=nil
++ for i,c in ipairs(row) do G.jokers.cards[i]=live(c,30+i,true) end
++ local captured=A.snapshot.capture(G);captured.teacher_profile=A.teacher_profile
++ local anchor=A.scoring.score(captured,{1,2,3,4,5});anchor.indices={1,2,3,4,5}
++ local retained,proof_work=A.growth.suggest(captured,A,anchor,{exhaust_discards=true,max_evaluations=12})
++ check(retained and #retained.action.indices==3 and proof_work<=12,'actual capture qualifies the five-card retained floor')
++ local callbacks=0;local pending
++ G.FUNCS.can_discard=function(e)e.config.button='discard_cards_from_highlighted'end
++ G.FUNCS.discard_cards_from_highlighted=function()
++  callbacks=callbacks+1;pending={};for _,c in ipairs(G.hand.highlighted) do pending[c]=true end
++ end
++ for remaining=3,1,-1 do
++  complete417()
++  check(A.result.action.kind=='discard' and A.result.discard_before_clear.selected,'real captured Cloud9/Popcorn Psychic selects discard')
++  local advised=F.copy(A.result.action.indices);local reason=A.result.discard_before_clear.reason
++  check(A.selection.kind=='discard','presentation highlights discard rather than clearing play')
++  check(A.execute(),'real adapter accepts the selected physical discard')
++  check(not A.execute() and callbacks==4-remaining,'pending callback cannot execute twice')
++  local held={};local n=0;for _,c in ipairs(G.hand.cards) do if pending[c] then n=n+1 else held[#held+1]=c end end
++  check(n==#advised,'physical callback discards exactly the published cards')
++  if reason=='supported_retained_clear' then check(#held>=5,'retained proof keeps five legal Psychic cards') end
++  G.hand.cards=held;G.hand.highlighted={}
++  while #G.hand.cards<8 and #G.deck.cards>0 do local c=table.remove(G.deck.cards,1);c.facing='front';c.sprite_facing='front';G.hand.cards[#G.hand.cards+1]=c end
++  G.GAME.current_round.discards_left=remaining-1;G.GAME.current_round.discards_used=4-remaining
++  G.jokers.cards[3].ability.yorick_discards=G.jokers.cards[3].ability.yorick_discards-n
++ end
++ complete417();check(A.result.action.kind=='play' and #A.result.action.indices==5,'fresh final advice plays a legal five-card Psychic hand after exhausting discards')
++ check(A.scoring.score(A.snapshot.capture(G),A.result.action.indices).score>=1000,'fresh physical final hand actually clears the manufactured target')
++end
++print('advisor_retained_scope_runtime417: '..checks..' checks passed')

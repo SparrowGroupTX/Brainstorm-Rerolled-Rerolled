@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "scope": "Independent read-only source/shape audit and manufactured lifecycle fixtures. No runtime edits.",
+  "source_locations": {
+    "Card:init": [
+      5,
+      74
+    ],
+    "Card:set_base": [
+      97,
+      144
+    ],
+    "Card:set_ability": [
+      277,
+      337
+    ],
+    "Card:set_edition": [
+      387,
+      418
+    ],
+    "Card:add_to_deck": [
+      565,
+      641
+    ],
+    "Card:update": [
+      4154,
+      4175
+    ],
+    "create_card": [
+      2125,
+      2130
+    ],
+    "copy_card": [
+      2156,
+      2182
+    ],
+    "Card:load": [
+      4659,
+      4664
+    ]
+  },
+  "passive_shapes": {
+    "distinct_shapes": 24,
+    "distinct_tarot_identities": 12,
+    "finding": "All publicly logged ability/base/edition/pin/debuff fields agree with the existing constructor boundaries; no additional visible shape blocker found. Every available certificate declines at the broad ability/edition/front/params group.",
+    "limitation": "Raw params, card.front and full center objects are not logged when capture fails. Passive card shapes were summarized only; no validator, policy or scoring function was applied to them."
+  },
+  "source_review": [
+    "create_card always passes selected-back presentation coordinates; copy_card inherits the original params table. Existing345 rejects bypass_back.",
+    "Nonplaying empty-front base contains exactly four numeric zero fields; absent source pin is already normalized by Snapshot.",
+    "Card:set_ability stores consumeable=center.config by reference; Card:update mod_num assignments preserve live center/config agreement. Copied ability.consumeable is detached but has the same existing mod_num value.",
+    "Temperance money refresh is use-only and remains within its finite cap; copied zero score/size fields and held-unused scope remain necessary.",
+    "Perkeo replaces the edition with pure Negative; add_to_deck adds exactly one consumable slot. Unknown seals, copied hand/discard effects and non-Tarot classes remain outside qualification.",
+    "The staged constructor fix changes only qualified presentation params admission and rejection diagnostics; no additional unsafe qualification identified in the reviewed scope."
+  ],
+  "validation": "Installed345 helper fails fresh manufactured Empress with source-native bypass_back. Staged constructor helper passes112 lifecycle checks, including shared-center updates, fresh Temperance refresh, inherited copy params, exact full inventory/capacity, immutable receipts and stale/unsafe data rejection.",
+  "integration": "Copy staged tests/advisor_gold_tarot_lifecycle_shape.lua into repository tests; no runtime patch originates in this component.",
+  "files": {
+    "tools/advisor_eval/runs/chicot_order_source1/source/card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "tools/advisor_eval/runs/chicot_order_source1/source/functions/common_events.lua": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+    "Brainstorm/Advisor/gold_tarot_hold.lua": "4e49ddf51f4099b7ed6262ceb14444fc046a0975baf0d9976a3ce722f216642b",
+    "Brainstorm/Advisor/snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+    "tools/advisor_eval/development346/constructor_component/Brainstorm/Advisor/gold_tarot_hold.lua": "3ac47330db86d93d8db4b9d67701a6fce2e3f90cdd2407a344c1b9555c894d4f",
+    "tools/advisor_eval/development346/shape_audit/passive_shape_inventory.json": "f7780e79057eb17314e727f4568a9d2c8b53a1d46176ef33c8865a47ea8a8364",
+    "tools/advisor_eval/development346/shape_audit/tests/advisor_gold_tarot_lifecycle_shape.lua": "2f2f4785ac3de3209c0504783a3de585ff28790004ac2031a6478b5207f5dd65",
+    "tools/advisor_eval/development346/shape_audit/validation1.json": "12b4bafc7d2a626d1035b3605b227b7c6b92070531fc45e5f4d048a28d92f6b1",
+    "tools/advisor_eval/development346/shape_audit/validation2.json": "499c4dd344a1629efb563bc8d76e745fc691918535346cc01d9a1019bb5d63b3"
+  },
+  "authority": "Read-only preserved source and passive journal plus routine manufactured fixtures. Zero source workers, captured-policy jobs, searches, complete attempts, executable/save/profile reads or game control.",
+  "outcome_limit": "No new terminal result, predicted win rate or rescued recorded run is demonstrated."
+}

@@ -1,0 +1,43 @@
+{"seconds": 0.6720000000204891, "transitions": 104, "episodes": 1, "outcomes": {"loss": 1}}
+{"seconds": 0.7970000000204891, "transitions": 200, "episodes": 3, "outcomes": {"loss": 3}}
+{"seconds": 0.9220000000204891, "transitions": 304, "episodes": 5, "outcomes": {"loss": 4, "unsupported": 1}}
+{"seconds": 1.047000000020489, "transitions": 400, "episodes": 7, "outcomes": {"loss": 5, "unsupported": 2}}
+{"seconds": 1.172000000020489, "transitions": 504, "episodes": 12, "outcomes": {"loss": 8, "unsupported": 4}}
+{"seconds": 1.297000000020489, "transitions": 600, "episodes": 14, "outcomes": {"loss": 10, "unsupported": 4}}
+{"seconds": 1.422000000020489, "transitions": 704, "episodes": 17, "outcomes": {"loss": 13, "unsupported": 4}}
+{"seconds": 1.5630000000819564, "transitions": 800, "episodes": 18, "outcomes": {"loss": 13, "unsupported": 5}}
+{"seconds": 1.6880000000819564, "transitions": 904, "episodes": 22, "outcomes": {"loss": 15, "unsupported": 7}}
+{"seconds": 1.8130000000819564, "transitions": 1000, "episodes": 23, "outcomes": {"loss": 15, "unsupported": 8}}
+{"seconds": 1.9380000000819564, "transitions": 1105, "episodes": 26, "outcomes": {"loss": 16, "unsupported": 10}}
+{"seconds": 2.125, "transitions": 1200, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1410000000614673, "transitions": 1201, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1410000000614673, "transitions": 1202, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1570000000065193, "transitions": 1203, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1570000000065193, "transitions": 1204, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1570000000065193, "transitions": 1205, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1570000000065193, "transitions": 1206, "episodes": 31, "outcomes": {"loss": 20, "unsupported": 11}}
+{"seconds": 2.1570000000065193, "transitions": 1207, "episodes": 32, "outcomes": {"loss": 21, "unsupported": 11}}
+{
+  "mode": "heuristic",
+  "simulator_qualified": false,
+  "real_game_win_claim": false,
+  "transitions": 1207,
+  "episodes_started": 32,
+  "outcomes": {
+    "loss": 21,
+    "unsupported": 11
+  },
+  "censored_transitions": 11,
+  "updates": 0,
+  "elapsed_seconds": 2.1880000000819564,
+  "stage_seconds": {
+    "policy_and_transfer": 0.2969999999040738,
+    "simulator_wait_and_record": 1.2650000000139698
+  },
+  "transition_rate": 551.6453381877465,
+  "observed_completion_lower_bound": 0.0,
+  "wilson_95_all_started": null,
+  "interval_limit": "Wilson interval emitted only when every started attempt has an actual terminal win/loss. With censoring only an observed completion lower bound is emitted. Development training trajectories change policy and are not a fixed-policy evaluation. This is not a player win rate.",
+  "mean_blinds_cleared": 3.84375,
+  "device": {}
+}

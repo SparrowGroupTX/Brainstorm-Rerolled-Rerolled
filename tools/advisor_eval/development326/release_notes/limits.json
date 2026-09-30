@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "kind": "release326_closed_historical_limits",
+  "status": "CLOSED",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "historical_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_complete_attempt_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "original_cycle_expires_at_utc": "2026-09-14T22:40:00+00:00",
+  "closure_written_at_utc": "2026-09-15T01:30:51.437405+00:00",
+  "remaining_authority_seconds": 0,
+  "C09": "never_registered_reserved_or_run",
+  "closed_unused_slots": [
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24"
+  ],
+  "historical_budget": {
+    "authorized_slots": 60,
+    "authorized_cap_seconds": 5400,
+    "spent_jobs": 38,
+    "spent_reserved_seconds": 2340,
+    "actual_worker_seconds_decimal": "1012.71499999973457357",
+    "actual_worker_seconds": 1012.7149999997346,
+    "unused_slots": [
+      "S07",
+      "S08",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24"
+    ],
+    "unused_cap_seconds": 3060,
+    "by_kind": {
+      "S": {
+        "spent_jobs": 6,
+        "spent_reserved_seconds": 180,
+        "actual_worker_seconds_decimal": "4.93800000002374873",
+        "unused_slots": [
+          "S07",
+          "S08",
+          "S09",
+          "S10",
+          "S11",
+          "S12"
+        ]
+      },
+      "M": {
+        "spent_jobs": 24,
+        "spent_reserved_seconds": 720,
+        "actual_worker_seconds_decimal": "53.46599999966565484",
+        "unused_slots": []
+      },
+      "C": {
+        "spent_jobs": 8,
+        "spent_reserved_seconds": 1440,
+        "actual_worker_seconds_decimal": "954.31100000004517",
+        "unused_slots": [
+          "C09",
+          "C10",
+          "C11",
+          "C12",
+          "C13",
+          "C14",
+          "C15",
+          "C16",
+          "C17",
+          "C18",
+          "C19",
+          "C20",
+          "C21",
+          "C22",
+          "C23",
+          "C24"
+        ]
+      }
+    }
+  },
+  "prior_evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/authority.json",
+      "sha256": "072acbbdbbe8698913ab474a17b0d36023550b4d2c0a54ae67ca2d6d101526bb"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/status321closed/context.json",
+      "sha256": "aac44c8a5f654541183c4ae9225d7dd0c901fae8b1ee722c710b26af64956002"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/CLOSED.json",
+      "sha256": "3699b13e0dbe829c5bfd8486ab4f235118200f3ee3f20a7ac28614e12a7c0f91"
+    },
+    "release325_context": {
+      "path": "tools/advisor_eval/development325/release_final/context.json",
+      "sha256": "8d6ebf65b403b976ebf9027dee051c22de66f229626b2c917f521fadf09ba7a4"
+    },
+    "release325_final": {
+      "path": "tools/advisor_eval/runs/resume325_final/final_verification.json",
+      "sha256": "5105862806dc9640c6d3ac68c38bfd06350fbab4f8eef22e42f7cbcb5043e93a"
+    },
+    "release325_reset": {
+      "path": "tools/advisor_eval/SESSION_RESET_325.json",
+      "sha256": "3c9561b3500dbd7e7d7c58cb12e7d63613f54627291a9bb33a3c0d33f50438d5"
+    }
+  },
+  "release_scope": "Routine manufactured validation, read-only repository review, metadata-only inspection and explicitly authorized public-log cleanup. Zero source, captured, search or complete-attempt experiments; zero decoded log content, save/profile or executable reads.",
+  "limits": "Historical C01 policy300 alone owns one selected synthetic win in the closed gold299 cycle. Release 326 has no terminal result, player win rate, unseen validation, verified Jokerless win, actual Completionist++ completion or stronger-than-human result.",
+  "storage_scope": {
+    "total_allowance_bytes": 1073741824,
+    "total_allowance_unit": "1 GiB",
+    "legacy_v1_and_v2_counted_together": true,
+    "other_archive_and_journal_bounds": "unchanged",
+    "automatic_deletion": false,
+    "sticky_error_auto_reset_on_file_deletion": false
+  },
+  "public_log_cleanup": {
+    "authorization": "User selected 1 GiB, then explicitly requested deletion of all previous logs.",
+    "metadata": {
+      "path": "tools/advisor_eval/development326/storage_metadata.json",
+      "sha256": "d7b8e403f5a936442c6ed76e7881bca01d32715820cfa8ea6299a047c0c02180"
+    },
+    "cleanup": {
+      "path": "tools/advisor_eval/development326/log_cleanup.json",
+      "sha256": "f52ec8becda45e3268e8a680eb81eca08ebae0f45a52cc20cf5e595512d9d573"
+    },
+    "removed_files": 53,
+    "removed_bytes": 134216592,
+    "directories_empty_at_receipt": true,
+    "external_originals": "deleted_at_user_request",
+    "historical_repository_audits": "retained",
+    "save_checkpoint_profile_repository_evidence": "outside_cleanup_scope",
+    "decoded_contents_read": false
+  },
+  "timing_scope": "Only periodic performance flushes are deferred for positively known idle MAIN_MENU with no active/busy/resuming auto-run or native/legacy search. Fixed memory bounds and explicit action events remain. No live CPU measurement, freeze diagnosis, telemetry-overhead measurement or speedup is established. The retained window duration includes idle time when activity resumes.",
+  "product_resume_search_scope": "After an explicitly stopped native request has drained, user-clicked Resume authorizes a distinct new product search of at most 30 seconds within the same session/cursor/recipe. Old allocation remains spent. This is not a cumulative old deadline, renewed historical lease or authority for tool experiments.",
+  "continuation_scope": "Stop/Resume is in-memory only. Session/run/action counters and hard clock anchors remain. Verified manual checkpoint continuation logs interruption and retains caps; restored won flags are not fresh terminal evidence.",
+  "release_activation": "User reported a normal restart before release 326, without loaded version or hash attestation. Release 326 needs the next normal restart to load code and create a fresh writer; tools do not control the running game.",
+  "preparation_status": "documentation_inputs_only_full_validation_install_owned_by_generated_records",
+  "release_validation": {
+    "scope": "Final combined candidate and exact-installed results belong to generated release records; no predicted pass or installation."
+  },
+  "component": {
+    "path": "tools/advisor_eval/LOG_STORAGE_326.md",
+    "sha256": "7084bf22cdb1e0eae3f0c250d08910be60636849f88599652404df040d197d29"
+  },
+  "related_ui_evidence": {
+    "path": "tools/advisor_eval/development326/log_ui/manifest.json",
+    "sha256": "613a099e185dfbe034be92a6e0ea8de6dae68cb75102f45c7795d68747a925bc"
+  }
+}

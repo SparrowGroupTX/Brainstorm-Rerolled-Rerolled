@@ -1,0 +1,58 @@
+{
+  "schema": "round_end_plain_juggler_v1",
+  "cases": [
+    {
+      "id": "rental_juggler_last_tally",
+      "cash": 10,
+      "hand_size": 9,
+      "jokers": [
+        {"physical_id": 101, "center_key": "j_juggler", "rental": true, "perishable": true, "tally": 1, "debuff": false, "edition": null, "h_size": 1}
+      ]
+    },
+    {
+      "id": "rental_juggler_tally_two",
+      "cash": 10,
+      "hand_size": 9,
+      "jokers": [
+        {"physical_id": 102, "center_key": "j_juggler", "rental": true, "perishable": true, "tally": 2, "debuff": false, "edition": null, "h_size": 1}
+      ]
+    },
+    {
+      "id": "already_expired_rental_juggler",
+      "cash": 10,
+      "hand_size": 8,
+      "jokers": [
+        {"physical_id": 103, "center_key": "j_juggler", "rental": true, "perishable": true, "tally": 0, "debuff": true, "edition": null, "h_size": 1}
+      ]
+    },
+    {
+      "id": "nonrental_juggler_last_tally",
+      "cash": 10,
+      "hand_size": 9,
+      "jokers": [
+        {"physical_id": 104, "center_key": "j_juggler", "rental": false, "perishable": true, "tally": 1, "debuff": false, "edition": null, "h_size": 1}
+      ]
+    },
+    {
+      "id": "heldout_juggler_rental_order",
+      "cash": 14,
+      "hand_size": 10,
+      "jokers": [
+        {"physical_id": 201, "center_key": "j_juggler", "rental": false, "perishable": true, "tally": 1, "debuff": false, "edition": null, "h_size": 1},
+        {"physical_id": 202, "center_key": "j_joker", "rental": true, "perishable": false, "tally": 5, "debuff": false, "edition": null, "h_size": 0},
+        {"physical_id": 203, "center_key": "j_juggler", "rental": true, "perishable": true, "tally": 1, "debuff": false, "edition": null, "h_size": 1}
+      ]
+    }
+  ],
+  "held_cases": [
+    {
+      "id": "held_gold_mime_repetition",
+      "active_jokers": ["j_mime"],
+      "held_cards": [
+        {"physical_id": 401, "enhancement": "gold", "h_dollars": 3, "seal": null, "debuff": false}
+      ],
+      "source_derived_held_dollars": 6,
+      "qualification": "unsupported"
+    }
+  ]
+}

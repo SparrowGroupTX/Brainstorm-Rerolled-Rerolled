@@ -1,0 +1,233 @@
+{
+  "same_seed_overlap": [],
+  "cursor_sha256": "46fc560e650ee27705ee9e21efb887c2a349441a26a18fe3a7ba1bf13d224186",
+  "cursor_value": 2034120347245,
+  "last_seed_plus_one": 2034120347245,
+  "boss_rounds": [
+    {
+      "run": 1,
+      "blind": "The Mouth",
+      "entry": 480,
+      "exit": 492,
+      "cleared": true
+    },
+    {
+      "run": 2,
+      "blind": "The Mouth",
+      "entry": 1913,
+      "exit": 1957,
+      "cleared": true
+    }
+  ],
+  "stock_actions": [
+    {
+      "sequence": 2103,
+      "action": {
+        "area": "consumeables",
+        "index": 2,
+        "kind": "use"
+      },
+      "key": "c_venus"
+    },
+    {
+      "sequence": 6750,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 6877,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 7027,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 7112,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 7219,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 7367,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 7519,
+      "action": {
+        "area": "consumeables",
+        "index": 1,
+        "kind": "use"
+      },
+      "key": "c_hermit"
+    },
+    {
+      "sequence": 8822,
+      "action": {
+        "area": "consumeables",
+        "index": 16,
+        "kind": "use"
+      },
+      "key": "c_temperance"
+    },
+    {
+      "sequence": 9973,
+      "action": {
+        "area": "consumeables",
+        "index": 2,
+        "kind": "use"
+      },
+      "key": "c_temperance"
+    }
+  ],
+  "stock_keys": {
+    "c_venus": 1,
+    "c_hermit": 7,
+    "c_temperance": 2
+  },
+  "generator_shop_exits": 37,
+  "generator_shop_exits_with_positive_space": 32,
+  "generator_runs": [
+    3,
+    6,
+    9
+  ],
+  "growth_scope_block_presence": [
+    {
+      "run": 1,
+      "round": 2,
+      "sequence": 235,
+      "unused": 2,
+      "keys": [
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 1,
+      "round": 4,
+      "sequence": 426,
+      "unused": 3,
+      "keys": [
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 1,
+      "round": 5,
+      "sequence": 492,
+      "unused": 3,
+      "keys": [
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 1,
+      "round": 6,
+      "sequence": 565,
+      "unused": 3,
+      "keys": [
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 4,
+      "round": 2,
+      "sequence": 3462,
+      "unused": 3,
+      "keys": [
+        "j_raised_fist",
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 4,
+      "round": 3,
+      "sequence": 3525,
+      "unused": 3,
+      "keys": [
+        "j_raised_fist",
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 4,
+      "round": 4,
+      "sequence": 3585,
+      "unused": 3,
+      "keys": [
+        "j_raised_fist",
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 4,
+      "round": 6,
+      "sequence": 3743,
+      "unused": 2,
+      "keys": [
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 4,
+      "round": 7,
+      "sequence": 3838,
+      "unused": 2,
+      "keys": [
+        "j_blue_joker"
+      ]
+    },
+    {
+      "run": 4,
+      "round": 8,
+      "sequence": 3935,
+      "unused": 2,
+      "keys": [
+        "j_blue_joker"
+      ]
+    }
+  ],
+  "unused_under_draw_dependent_jokers": 26,
+  "hand_timings_available": 692,
+  "ordinary_cap_reached": 32,
+  "action_markers": {
+    "stock_management": 10
+  },
+  "limitations": [
+    "Slot arithmetic is not a complete legality/profitability certificate.",
+    "Gate presence does not prove growth reached that guard or a safe useful discard exists.",
+    "No Acorn exposure or Mouth-cycle execution is not a successful test of those fallbacks.",
+    "Different seeds do not provide matched causal before/after outcomes."
+  ]
+}

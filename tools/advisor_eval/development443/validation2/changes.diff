@@ -1,0 +1,769 @@
+--- before/tools/advisor_eval/flag_suspect_decisions.py
++++ tools/advisor_eval/flag_suspect_decisions.py
+@@ -6,6 +6,7 @@
+ from __future__ import annotations
+ 
+ import argparse
++import copy
+ from collections import Counter, OrderedDict
+ import hashlib
+ import json
+@@ -18,7 +19,7 @@
+ except ModuleNotFoundError:
+     from tools.advisor_eval.read_player_log import ArchiveError, parsed, records
+ 
+-RULE_VERSION = '408.1'
++RULE_VERSION = '443.1'
+ LIMITS = dict(files=64, file_bytes=134217728, input_bytes=268435456,
+               decoded_bytes=1073741824, events=100000, cached_links=128,
+               effect_events=128, scopes=128, cards_per_area=128, flags=1000,
+@@ -115,14 +116,14 @@
+ 
+ def card_view(card):
+     card = obj(card)
+-    if any(card.get(k) for k in ('unknown', 'identity_redacted', 'face_down')):
++    if any(card.get(k) for k in ('unknown', 'identity_redacted', 'identity_unknown', 'face_down')):
+         return {'id': card.get('id'), 'unknown': True}
+-    keys = ('id', 'key', 'rank', 'suit', 'seal', 'debuff', 'edition', 'blueprint_compat',
++    keys = ('id', 'key', 'rank', 'suit', 'seal', 'debuff', 'edition', 'enhancement', 'blueprint_compat',
+             'cost', 'sell_cost', 'pinned')
+     result = {k: card[k] for k in keys if k in card}
+     a = obj(card.get('ability'))
+     result['ability'] = {k: a[k] for k in ('eternal', 'rental', 'perishable', 'perish_tally',
+-        'invis_rounds', 'extra', 'x_mult', 'yorick_discards', 'name') if k in a}
++        'invis_rounds', 'extra', 'x_mult', 'yorick_discards', 'name', 'forced_selection') if k in a}
+     return result
+ 
+ 
+@@ -131,12 +132,22 @@
+     keys = ('phase', 'ante', 'round', 'dollars', 'bankrupt_at', 'joker_limit', 'rental_rate',
+             'pack_choices', 'hands_left', 'hands_played', 'discards_left', 'discards_used',
+             'chips', 'hand_limit', 'win_ante', 'blind', 'next_blind', 'teacher_profile', 'reroll_cost',
+-            'modifiers', 'round_resets', 'round_bonus', 'last_tarot_planet', 'used_vouchers')
++            'modifiers', 'round_resets', 'round_bonus', 'last_tarot_planet', 'used_vouchers', 'hand_sort')
+     result = {k: s[k] for k in keys if k in s}
+     for area in ('hand', 'jokers', 'consumeables', 'pack_cards', 'shop_jokers', 'shop_vouchers'):
+         rows = arr(s.get(area))
+         require(len(rows) <= LIMITS['cards_per_area'], 'Card-area cap exceeded')
+         result[area] = [card_view(c) for c in rows]
++    # Selection constraints are public even when a card's identity is hidden.
++    # A redacted card without explicit constraint metadata remains UNKNOWN.
++    result['hand_selection'] = []
++    for raw in arr(s.get('hand')):
++        c = obj(raw); a = obj(c.get('ability'))
++        hidden = any(c.get(k) for k in ('unknown', 'identity_redacted', 'identity_unknown', 'face_down'))
++        known = isinstance(c.get('ability'), dict) and (not hidden or 'forced_selection' in a)
++        forced = a.get('forced_selection', False)
++        result['hand_selection'].append({'id': c.get('id'),
++            'forced': forced if known and type(forced) is bool else None})
+     require(len(encoded(result)) <= 65536, 'Projected observation exceeds bound')
+     return result
+ 
+@@ -238,13 +249,14 @@
+ class Screener:
+     """Bounded causal joins. Later states confirm effects, never score alternatives."""
+ 
+-    def __init__(self, max_flags=200):
++    def __init__(self, max_flags=200, on_settled=None, on_flag=None):
+         require(type(max_flags) is int and 1 <= max_flags <= LIMITS['flags'], 'Invalid flag cap')
+         self.max_flags = max_flags
+         self.observations, self.advice = OrderedDict(), OrderedDict()
+         self.runs, self.pending, self.plans = {}, {}, {}
+         self.flags, self.counts, self.suppressions = [], Counter(), Counter()
+         self.rule_counts, self.closed_offers, self.groups = Counter(), set(), {}
++        self.on_settled, self.on_flag = on_settled, on_flag
+ 
+     def cache(self, table, key, value):
+         require(key not in table, 'Duplicate observation/advice identity')
+@@ -271,6 +283,8 @@
+                'decision_context': p['state'], 'recorded_advice': p['advice'],
+                'adjudication': {'status': 'unreviewed', 'reason': None, 'paired_fixture': None}}
+         self.flags.append(row)
++        if self.on_flag:
++            self.on_flag(copy.deepcopy(row))
+         self.flags.sort(key=lambda r: (-r['priority'], r['anchors']['request']['sequence'], r['id']))
+         if len(self.flags) > self.max_flags:
+             self.flags.pop()
+@@ -555,6 +569,18 @@
+                          s.get('dollars') == before['dollars'] - cost)
+         if not confirmed:
+             return
++        if not p.get('observer_delivered'):
++            p['observer_delivered'] = True
++            self.counts['unique_observer_eligible_settlements'] += 1
++            self.counts['eligible_settlement_' + str(k)] += 1
++            if self.on_settled:
++                # No observer can alter attribution or future comparisons.
++                self.on_settled(copy.deepcopy({
++                    'scope': p['scope'], 'run': self.runs[scope], 'version': p['version'],
++                    'state': p['state'], 'advice': p['advice'], 'action': p['action'],
++                    'after': s, 'anchors': {'observation': p['observation'],
++                    'advice': p['advice_anchor'], 'request': p['request'],
++                    'marker': p['marker'], 'effect': anchor}}))
+         remaining = []
+         for rule, evidence, priority in p['candidates']:
+             if rule in ('copy_offer_pass', 'invisible_offer_pass'):
+@@ -594,7 +620,7 @@
+                 'runs': [{'scope': list(k), **v} for k, v in self.runs.items()], 'flags': self.flags}
+ 
+ 
+-def analyze(copy_dir, manifest_path, max_flags=200):
++def analyze(copy_dir, manifest_path, max_flags=200, *, on_settled=None, on_flag=None):
+     folder, manifest_path = Path(copy_dir).resolve(), Path(manifest_path).resolve()
+     require(manifest_path.stat().st_size <= 65536, 'Manifest exceeds bound')
+     manifest_bytes = manifest_path.read_bytes()
+@@ -612,7 +638,7 @@
+         total += size
+         require(total <= LIMITS['input_bytes'], 'Input byte cap exceeded')
+         paths.append(path)
+-    screener = Screener(max_flags)
++    screener = Screener(max_flags, on_settled=on_settled, on_flag=on_flag)
+     tails, event_count, decoded, links = {}, 0, 0, 0
+     for path, entry in zip(paths, segments):
+         with path.open('rb') as stream:
+--- before/tools/advisor_eval/review_decisions.py
++++ tools/advisor_eval/review_decisions.py
+@@ -0,0 +1,389 @@
++"""Bounded offline evidence packets and structural alternatives from verified copies.
++
++No policy/scorer execution, simulated worlds, game discovery, or automatic fixes.
++Usage: python tools/advisor_eval/review_decisions.py --copy-dir COPY/logs
++       --manifest COPY/manifest.json --output NEW_DIRECTORY
++"""
++from collections import Counter
++from itertools import combinations
++from math import comb
++from pathlib import Path
++import argparse
++import json
++import sys
++
++try:
++    from . import flag_suspect_decisions as screen
++except ImportError:
++    import flag_suspect_decisions as screen
++
++SCHEMA = 'decision_review443.v1'
++LIMITS = dict(packets=128, sample=32, flags=256, contradictions=32,
++              hand=12, subsets_per_packet=2048, subsets_total=32768,
++              output_bytes=67108864, input_decisions=100000, finding_groups=128)
++ELIGIBILITY = ('discard', 'clearing play', 'Joker buy/choose', 'voucher buy',
++               'Joker sell', 'leave_shop', 'skip_pack', 'reroll')
++UNASSESSED = ('non-clearing play', 'consumable use/purchase/choice', 'open pack',
++              'ordering', 'other actions without a qualified settlement join')
++STAGES = ('observation', 'candidates', 'valuation', 'admission', 'budget',
++          'arbitration', 'settlement')
++
++
++def integer(x):
++    return type(x) is int and x >= 0
++
++
++def key(case):
++    a = case['anchors']['request']
++    return screen.sha(screen.encoded([case['scope'], a['sequence'], a['event_sha256']]))
++
++
++def flag_case(flag):
++    return dict(scope=flag['scope'], run=flag['run'], version=flag['version'],
++                state=flag['decision_context'], advice=flag['recorded_advice'],
++                action=flag['action'], anchors=flag['anchors'])
++
++
++def issues(case):
++    """Classify only explicit receipt evidence. No game-value inference."""
++    advice, action, state = case['advice'], case['action'], case['state']
++    risk = screen.obj(screen.obj(advice.get('yorick_review')).get('risk'))
++    finish = screen.obj(advice.get('discard_before_clear'))
++    found = []
++
++    def add(code, stage, confidence, severity, evidence, test):
++        found.append(dict(code=code, stage=stage, confidence=confidence,
++                          severity=severity, evidence=evidence, next_test=test,
++                          strategic_regret_established=False))
++
++    for name, receipt in (('risk', risk), ('discard_before_clear', finish)):
++        final = receipt.get('final_action_kind')
++        if isinstance(final, str) and final != action.get('kind'):
++            add('final_action_receipt_mismatch', 'arbitration', 'established_receipt_inconsistency',
++                'high', dict(receipt=name, reported=final, settled=action.get('kind')),
++                'Trace the final override and receipt stamping; reproduce the contradictory final action.')
++    if integer(finish.get('remaining_discards')) and integer(state.get('discards_left')) and finish['remaining_discards'] != state['discards_left']:
++        add('discard_resource_receipt_mismatch', 'observation', 'established_receipt_inconsistency',
++            'high', dict(recorded=finish['remaining_discards'], observed=state['discards_left']),
++            'Check receipt freshness against the linked observation and final stamping.')
++    if risk.get('schema') is not None:
++        # Current compact risk has no nested schema; unfamiliar extensions are not interpreted.
++        return found
++    rows = risk.get('by_size')
++    rows = rows if isinstance(rows, list) else []
++    for row in rows[:5]:
++        row = screen.obj(row)
++        if integer(row.get('qualified')) and integer(row.get('compared')) and row['qualified'] > row['compared']:
++            add('qualified_exceeds_compared', 'admission', 'established_receipt_inconsistency',
++                'medium', row, 'Manufacture this candidate-count path and check sample-family accounting.')
++    if integer(risk.get('qualified_five_count')) and risk['qualified_five_count'] > 0:
++        count = len(screen.arr(action.get('indices'))) if action.get('kind') == 'discard' else 0
++        if count < 5:
++            add('qualified_five_not_selected', 'arbitration', 'recorded_alternative_signal',
++                'high', dict(qualified_five_count=risk['qualified_five_count'], chosen_cards=count,
++                             final_action_matches_search=risk.get('final_action_matches_search')),
++                'Recover physical candidate IDs, complete common worlds and final override reason. Counts alone do not prove a better action.')
++    incomplete = sum(r.get('incomplete', 0) for r in rows if isinstance(r, dict) and integer(r.get('incomplete', 0)))
++    if incomplete:
++        add('incomplete_discard_comparison', 'budget', 'recorded_coverage_gap', 'medium',
++            dict(incomplete_candidates=incomplete),
++            'Isolate which candidates exhausted work; compare on invented bounded cases without changing production caps.')
++    if finish.get('status') == 'exception':
++        add('discard_exception', 'admission', 'recorded_exception', 'medium',
++            dict(reason=finish.get('reason'), category=finish.get('category')),
++            'Test the stated exception and its nearest safe alternative; the exception may be justified.')
++    return found
++
++
++class Reservoir:
++    """Deterministic bottom-k by evidence identity, independent of game outcome."""
++    def __init__(self, cap):
++        self.cap, self.rows, self.population = cap, {}, 0
++
++    def add(self, case):
++        self.population += 1
++        identity = key(case)
++        if identity in self.rows:
++            raise screen.ScreenError('Duplicate settled observer identity')
++        self.rows[identity] = case
++        if len(self.rows) > self.cap:
++            del self.rows[max(self.rows)]
++
++
++class Collector:
++    def __init__(self, sample_size=32, excluded=None):
++        self.excluded = excluded
++        self.flag_ids, self.rule_counts = set(), Counter()
++        self.settled, self.actions = 0, Counter()
++        self.sample = Reservoir(sample_size)
++        self.contradictions = Reservoir(LIMITS['contradictions'])
++        self.finding_counts = Counter()
++        self.groups, self.group_omitted = {}, 0
++
++    def flag(self, row):
++        self.flag_ids.add(key(flag_case(row)))
++        self.rule_counts[row['rule']] += 1
++
++    def observe(self, case):
++        self.settled += 1
++        screen.require(self.settled <= LIMITS['input_decisions'], 'Decision cap exceeded')
++        self.actions[case['action'].get('kind', 'unknown')] += 1
++        if self.excluded is not None:
++            if key(case) not in self.excluded:
++                self.sample.add(case)
++            return
++        findings = issues(case)
++        seen_groups = set()
++        for issue in findings:
++            self.finding_counts[issue['code']] += 1
++            reason = str(issue['evidence'].get('reason', ''))[:256]
++            grouping = (issue['code'], issue['stage'], issue['confidence'], reason)
++            if grouping not in self.groups:
++                if len(self.groups) >= LIMITS['finding_groups']:
++                    self.group_omitted += 1
++                    continue
++                self.groups[grouping] = dict(code=issue['code'], stage=issue['stage'],
++                    confidence=issue['confidence'], recorded_reason=reason,
++                    occurrences=0, decisions=0, examples=[], next_test=issue['next_test'],
++                    common_cause_established=False)
++            group = self.groups[grouping]; group['occurrences'] += 1
++            if grouping not in seen_groups:
++                group['decisions'] += 1; seen_groups.add(grouping)
++                if len(group['examples']) < 3:
++                    group['examples'].append(dict(packet_id=key(case), request=case['anchors']['request']))
++        if any(x['confidence'] == 'established_receipt_inconsistency' for x in findings):
++            self.contradictions.add(case)
++
++
++def discard_alternatives(case, budget):
++    """Exhaustive public selection constraints, explicitly NOT a score oracle."""
++    s, action = case['state'], case['action']
++    out = dict(scope='public_selection_constraints_only', policy_or_scorer_executed=False,
++               survival_verified=False, strategic_optimality_proven=False, complete=False,
++               candidates=[], next_test='Qualify legality, refill/order, retained scoring and full resource consequences before preferring any candidate.')
++    def stop(reason):
++        out['reason'] = reason
++        return out
++    if s.get('phase') != 'hand':
++        return stop('not_a_hand_decision')
++    if not integer(s.get('discards_left')):
++        return stop('discard_count_unknown')
++    if s['discards_left'] == 0:
++        return stop('no_discards_available')
++    hand, selection = screen.arr(s.get('hand')), screen.arr(s.get('hand_selection'))
++    n = len(hand)
++    if not 1 <= n <= LIMITS['hand']:
++        return stop('hand_size_outside_structural_solver_scope')
++    if not integer(s.get('hand_limit')) or s['hand_limit'] < 1:
++        return stop('selection_limit_unknown')
++    ids = [c.get('id') for c in hand]
++    if not all(screen.ident(i) for i in ids) or len(set(ids)) != n:
++        return stop('physical_identity_missing_or_duplicated')
++    if len(selection) != n or any(r.get('id') != ids[i] or type(r.get('forced')) is not bool for i, r in enumerate(selection)):
++        return stop('forced_selection_metadata_unknown')
++    forced = {i+1 for i, r in enumerate(selection) if r['forced']}
++    maximum = min(5, s['hand_limit'], n)
++    total = sum(comb(n-len(forced), k-len(forced)) for k in range(max(1, len(forced)), maximum+1))
++    out.update(expected_candidates=total, forced_indices=sorted(forced), selection_limit=maximum,
++               physical_ids=ids, full_game_legality_verified=False)
++    if total > LIMITS['subsets_per_packet'] or total > budget['remaining']:
++        return stop('enumeration_budget_insufficient_no_partial_optimum')
++    budget['remaining'] -= total
++    chosen = action.get('indices') if action.get('kind') == 'play' else None
++    anchor = set(chosen) if isinstance(chosen, list) and chosen and all(type(i) is int and 1 <= i <= n for i in chosen) and len(set(chosen)) == len(chosen) else None
++    resources = {}
++    death = any(c.get('key') == 'c_death' for c in s.get('consumeables', []))
++    for i, c in enumerate(hand, 1):
++        labels = []
++        if c.get('unknown'):
++            labels.append('concealed_effects_unknown')
++        if c.get('enhancement') not in (None, 'c_base'):
++            labels.append('enhancement:' + str(c['enhancement']))
++        if c.get('seal'):
++            labels.append('seal:' + str(c['seal']))
++        if c.get('edition'):
++            labels.append('edition_present')
++        if death:
++            labels.append('held_Death_source_value_unassessed')
++        if labels:
++            resources[str(i)] = labels
++    for size in range(maximum, 0, -1):
++        for ix in combinations(range(1, n+1), size):
++            if not forced.issubset(ix):
++                continue
++            out['candidates'].append(dict(indices=list(ix), cards=size,
++                retains_chosen_play=not anchor.intersection(ix) if anchor is not None else None,
++                annotated_indices=[i for i in ix if str(i) in resources]))
++    assert len(out['candidates']) == total
++    out['candidates'].sort(key=lambda r: (r['retains_chosen_play'] is not True, -r['cards'], r['indices']))
++    retained = [r for r in out['candidates'] if r['retains_chosen_play'] is True]
++    out.update(complete=True, reason='enumerated_all_structural_subsets',
++               resource_annotations=resources, retained_play_indices=sorted(anchor) if anchor is not None else None,
++               maximum_batch_preserving_chosen_play=max((r['cards'] for r in retained), default=0) if anchor is not None else None,
++               retained_play_forced_conflict=sorted(anchor & forced) if anchor is not None else [],
++               proposal_order='Retain the actual chosen-play cards first, then larger batch, then indices; this is a diagnostic order, not a value ranking.',
++               exact_result_scope='Maximum batch retaining the recorded chosen-play indices under explicit selection constraints only; no winning-hand or value certificate.')
++    return out
++
++
++def recorded_alternatives(case):
++    """Physical offer-bound receipt rows; merit is never a dominance certificate."""
++    p = screen.obj(screen.obj(case['advice'].get('copy_death_review')).get('pack'))
++    visible = {c.get('id'): c for c in case['state'].get('pack_cards', []) if screen.ident(c.get('id'))}
++    rows = screen.arr(p.get('candidates'))
++    matched = []
++    for row in rows[:30]:
++        r = screen.obj(row); card = visible.get(r.get('offer_id'))
++        if card and card.get('key') == r.get('key') and not card.get('unknown'):
++            matched.append(r)
++    return dict(rows=matched, rows_omitted=max(0, len(rows)-30), unmatched_rows=min(30, len(rows))-len(matched),
++                receipt_complete=p.get('complete') is True and not p.get('incomplete') and not p.get('truncated') and not p.get('attempted_truncated'),
++                shared_world_identity_present=False, resource_comparison_complete=False,
++                strategic_ranking_certified=False,
++                next_test='Compare visible offer endpoints, full retained Joker/consumable inventory, financing, survival and horizon on qualified common worlds. Scalar merit alone is insufficient.')
++
++
++def packet(case, flags, source, budget):
++    findings = issues(case)
++    alternatives = discard_alternatives(case, budget)
++    receipts = recorded_alternatives(case)
++    confidence = 'established_receipt_inconsistency' if any(x['confidence'] == 'established_receipt_inconsistency' for x in findings) else 'recorded_alternative_signal' if any(x['confidence'] == 'recorded_alternative_signal' for x in findings) else 'review_hypothesis' if flags or findings else 'unflagged_audit_sample'
++    risk = screen.obj(screen.obj(case['advice'].get('yorick_review')).get('risk'))
++    candidate_status = 'structural_only' if alternatives['complete'] else 'recorded_only' if receipts['rows'] or risk.get('candidate_count') else 'unknown'
++    stages = dict(observation='verified_public_links_projected_state', candidates=candidate_status,
++                  valuation='unknown_independent_value', admission='recorded_only' if risk else 'unknown',
++                  budget='recorded_incomplete' if any(x['stage'] == 'budget' for x in findings) else 'coverage_not_certified',
++                  arbitration='recorded_override' if risk.get('final_action_matches_search') is False else 'not_fully_recorded',
++                  settlement='verified_supported_effect')
++    # Earliest missing evidence for proving an alternative better, NOT a causal diagnosis.
++    first_gap = 'candidates' if candidate_status == 'unknown' else 'valuation'
++    return dict(id=key(case), schema=SCHEMA, source=source, confidence=confidence,
++                severity='high' if any(x['severity'] == 'high' for x in findings) or any(f['priority'] >= 80 for f in flags) else 'medium' if flags or findings else 'unassessed',
++                run=case['run'], scope=case['scope'], version=case['version'], anchors=case['anchors'],
++                chosen_action=case['action'], public_state=case['state'], settled_state=case.get('after'),
++                advice=case['advice'], flags=[dict(id=f['id'], rule=f['rule'], evidence=f['evidence'], competing_explanation=f['competing_explanation']) for f in flags],
++                findings=findings, stages=stages, first_unresolved_stage=first_gap,
++                first_unresolved_stage_is_root_cause=False, strategic_regret_established=False,
++                discard_alternatives=alternatives, recorded_pack_alternatives=receipts,
++                next_test=findings[0]['next_test'] if findings else alternatives['next_test'] if case['state'].get('phase') == 'hand' else receipts['next_test'],
++                execution_authorized=False)
++
++
++def analyze(copy_dir, manifest, max_packets=96, sample_size=16):
++    screen.require(type(max_packets) is int and 1 <= max_packets <= LIMITS['packets'], 'Invalid packet cap')
++    screen.require(type(sample_size) is int and 0 <= sample_size <= min(LIMITS['sample'], max_packets), 'Invalid sample cap')
++    first = Collector(sample_size)
++    raw = screen.analyze(copy_dir, manifest, LIMITS['flags'], on_settled=first.observe, on_flag=first.flag)
++    # A second verified pass permits exact bottom-k UNFLAGGED sampling even if a
++    # watched offer closes later, or its flag was dropped from the ranked report.
++    second = Collector(sample_size, excluded=first.flag_ids)
++    again = screen.analyze(copy_dir, manifest, 1, on_settled=second.observe)
++    screen.require(raw['manifest_sha256'] == again['manifest_sha256'] and raw['inputs'] == again['inputs'] and raw['events'] == again['events'] and first.settled == second.settled, 'Verified analysis passes disagree')
++    grouped_flags, flag_order = {}, []
++    for flag in raw['flags']:
++        identity = key(flag_case(flag))
++        if identity not in grouped_flags:
++            flag_order.append(identity); grouped_flags[identity] = []
++        grouped_flags[identity].append(flag)
++    cases, sources = {}, {}
++    # Reserve the requested blind-spot sample; keep contradictions ahead of old
++    # heuristic priority in the remaining bounded queue.
++    for identity, case in sorted(second.sample.rows.items()):
++        cases[identity] = case; sources[identity] = 'legacy_unflagged_bottom_k'
++    for identity, case in sorted(first.contradictions.rows.items()):
++        if identity in cases or len(cases) < max_packets:
++            cases[identity] = case; sources[identity] = 'receipt_inconsistency'
++    for identity in flag_order:
++        if identity not in cases and len(cases) < max_packets:
++            cases[identity] = flag_case(grouped_flags[identity][0]); sources[identity] = 'heuristic_flag'
++    rank = {'receipt_inconsistency': 0, 'heuristic_flag': 1, 'legacy_unflagged_bottom_k': 2}
++    order = sorted(cases, key=lambda k: (rank[sources[k]], -max((f['priority'] for f in grouped_flags.get(k, [])), default=0), k))
++    budget = {'remaining': LIMITS['subsets_total']}
++    packets = [packet(cases[k], grouped_flags.get(k, []), sources[k], budget) for k in order]
++    coverage = dict(eligible_settled_decisions=first.settled, eligible_by_action=dict(first.actions),
++                    eligible_classes=ELIGIBILITY, unsupported_settlement_classes=UNASSESSED,
++                    legacy_flagged_decisions=len(first.flag_ids), legacy_unflagged_population=second.sample.population,
++                    sample_retained=len(second.sample.rows), sample_rule='Bottom SHA256(scope, request sequence, request event hash) among ALL eligible decisions with NO legacy rule hit, including capped-away hits.',
++                    sample_representative_of_all_actions=False, raw_rule_hits=dict(first.rule_counts),
++                    all_eligible_finding_counts=dict(first.finding_counts),
++                    finding_group_occurrences_omitted=first.group_omitted,
++                    contradiction_decisions=first.contradictions.population,
++                    contradiction_reservoir_omitted=max(0, first.contradictions.population-LIMITS['contradictions']),
++                    packets_retained=len(packets), legacy_flagged_decisions_without_packet=len(first.flag_ids-set(cases)),
++                    legacy_flag_rows_omitted=raw['flags_omitted'], old_reader_counts=raw['counts'],
++                    old_reader_suppressions=raw['suppressed_or_unmodeled'],
++                    unconfirmed_actions_at_tail=raw['unconfirmed_actions_at_tail'],
++                    unconfirmed_rule_candidates_at_tail=raw['unconfirmed_rule_candidates_at_tail'],
++                    contradictions_without_packet=first.contradictions.population-sum(k in first.contradictions.rows for k in cases))
++    return dict(schema=SCHEMA, status='verified_offline_review', limits=LIMITS,
++                policy_executed=False, scorer_executed=False, simulated_worlds=0,
++                strategic_regret_established=False, win_rate_claimed=False,
++                events=raw['events'], manifest_sha256=raw['manifest_sha256'], inputs=raw['inputs'],
++                outside_predecessors_verified=raw['outside_predecessors_verified'],
++                tool_hashes={Path(p).name:screen.file_sha(Path(p)) for p in (__file__, screen.__file__)},
++                coverage=coverage, subset_candidates_enumerated=LIMITS['subsets_total']-budget['remaining'],
++                investigation_groups=sorted(first.groups.values(), key=lambda g: (-g['decisions'],g['code'],g['recorded_reason'])),
++                context_groups=raw['review_groups'], packets=packets)
++
++
++def markdown(report):
++    c = report['coverage']
++    lines = ['# Decision evidence and alternatives', '',
++        'Receipt inconsistencies are not proof of strategic regret. Structural alternatives are unscored and never dispatched.', '',
++        f"{c['eligible_settled_decisions']} eligible settlements; {c['legacy_flagged_decisions']} legacy-flagged decisions; {c['legacy_unflagged_population']} legacy-unflagged; {c['sample_retained']} sampled.",
++        f"{len(report['packets'])} packets; {c['legacy_flagged_decisions_without_packet']} flagged decisions omitted by caps. Eligible classes are restricted; non-clearing plays and consumable actions are not covered.", '',
++        'Recorded reason groups across all eligible settlements; shared reasons do not establish shared causes.', '',
++        '| Finding | Recorded reason | Decisions | Stage |', '|---|---|---:|---|']
++    def cell(x):
++        return str(x).replace('|', '\\|').replace('\n', ' ').replace('\r', ' ')
++    for g in report['investigation_groups']:
++        lines.append('| '+' | '.join(map(cell,(g['code'],g['recorded_reason'],g['decisions'],g['stage'])))+' |')
++    lines += ['', '| Packet | Run | Request | Confidence | First evidence gap | Next test |', '|---|---:|---:|---|---|---|']
++    for p in report['packets']:
++        lines.append('| '+' | '.join(map(cell, (p['id'][:12], p['run'].get('run_number'), p['anchors']['request']['sequence'], p['confidence'], p['first_unresolved_stage'], p['next_test'])))+' |')
++    lines += ['', 'See report.json for exact anchors, chosen action, public state, findings, all enumerated subsets, forced-card conflicts, resource annotations and recorded pack candidates.',
++              'adjudication.json is an editable review ledger. challenge_queue.json contains test specifications only; it authorizes no policy execution or experiment.']
++    return '\n'.join(lines)+'\n'
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('--copy-dir', type=Path, required=True)
++    parser.add_argument('--manifest', type=Path, required=True)
++    parser.add_argument('--output', type=Path, required=True)
++    parser.add_argument('--max-packets', type=int, default=96)
++    parser.add_argument('--sample-size', type=int, default=16)
++    args = parser.parse_args()
++    try:
++        args.output.mkdir(parents=True, exist_ok=False)
++    except OSError as error:
++        print(str(error), file=sys.stderr); return 1
++    try:
++        report = analyze(args.copy_dir, args.manifest, args.max_packets, args.sample_size)
++        ledger = [dict(id=p['id'], status='unreviewed', diagnosis=None, first_failing_stage=None,
++                       alternative=None, falsifier=p['next_test'], evidence_paths=[], independent_oracle=None,
++                       negative_controls=[], holdout_cases=[], loaded_followup=None) for p in report['packets']]
++        queue = [dict(packet_id=p['id'], anchors=p['anchors'], hypothesis=p['next_test'],
++                      required_scope='Complete mechanics/resources and public-information constraints; compare actual continuation policies when necessary.',
++                      execution_authorized=False, experiment_registered=False,
++                      candidate_indices=[r['indices'] for r in p['discard_alternatives']['candidates'][:16]],
++                      proposal_preview_only=True, full_candidates_in_report=True) for p in report['packets']]
++        outputs = {'report.json': json.dumps(report, indent=2, allow_nan=False)+'\n',
++                   'REPORT.md': markdown(report), 'adjudication.json':json.dumps(ledger, indent=2)+'\n',
++                   'challenge_queue.json':json.dumps(queue, indent=2)+'\n'}
++        screen.require(sum(len(x.encode('utf-8')) for x in outputs.values()) <= LIMITS['output_bytes'], 'Output byte cap exceeded')
++        for name, content in outputs.items():
++            with (args.output/name).open('x', encoding='utf-8') as f:
++                f.write(content)
++        with (args.output/'COMPLETE.json').open('x', encoding='utf-8') as f:
++            json.dump({'status':report['status'], 'files':{n:screen.file_sha(args.output/n) for n in outputs}}, f, indent=2)
++        print(json.dumps(dict(status=report['status'], coverage=report['coverage'], subsets=report['subset_candidates_enumerated'])))
++        return 0
++    except (OSError, screen.ArchiveError, screen.ScreenError, TypeError, ValueError, KeyError, RecursionError) as error:
++        with (args.output/'error.json').open('x', encoding='utf-8') as f:
++            json.dump({'status':'failed_no_trusted_report', 'error':str(error)}, f)
++        print(str(error), file=sys.stderr); return 1
++
++
++if __name__ == '__main__':
++    raise SystemExit(main())
+--- before/tests/test_advisor_decision_review443.py
++++ tests/test_advisor_decision_review443.py
+@@ -0,0 +1,251 @@
++"""Invented archives only: causal evidence, structural alternatives and boundedness."""
++import copy
++import json
++from pathlib import Path
++import tempfile
++import unittest
++from unittest.mock import patch
++
++from tools.advisor_eval import flag_suspect_decisions as screen
++from tools.advisor_eval import review_decisions as review
++from test_advisor_suspect_decisions406 import Journal, state, card, wire
++
++
++def case(**changes):
++    s = state(phase='hand', hand_limit=5)
++    s.update(changes)
++    return dict(state=screen.snapshot_view(s), action={'kind':'play','indices':[1,2,3]},
++                advice={}, scope=['s','c','r'], run={'run_number':1}, version='invented',
++                anchors={k:dict(sequence=i+1, event_sha256=str(i)*64) for i,k in enumerate(('observation','advice','request','marker','effect'))})
++
++
++class StructuralAlternatives(unittest.TestCase):
++    def solve(self, c, remaining=32768):
++        b = {'remaining':remaining}; before=copy.deepcopy(c)
++        r = review.discard_alternatives(c,b)
++        self.assertEqual(c,before)
++        return r,b
++
++    def test_exhaustive_eight_cards_retains_three_card_play(self):
++        r,b=self.solve(case())
++        self.assertEqual(len(r['candidates']),218)
++        self.assertEqual(b['remaining'],32768-218)
++        self.assertEqual(r['maximum_batch_preserving_chosen_play'],5)
++        best=[a for a in r['candidates'] if a['cards']==5 and a['retains_chosen_play']]
++        self.assertEqual([a['indices'] for a in best],[[4,5,6,7,8]])
++        self.assertEqual(r['candidates'][0]['indices'],[4,5,6,7,8])
++        self.assertFalse(r['survival_verified']);self.assertFalse(r['strategic_optimality_proven'])
++
++    def test_forced_card_required_and_retention_conflict(self):
++        s=state()['hand'];s[0]['ability']['forced_selection']=True
++        r,_=self.solve(case(hand=s))
++        self.assertTrue(all(1 in a['indices'] for a in r['candidates']))
++        self.assertEqual(r['expected_candidates'],99)
++        self.assertEqual(r['retained_play_forced_conflict'],[1])
++        self.assertEqual(r['maximum_batch_preserving_chosen_play'],0)
++
++    def test_hidden_forced_selection_preserved_without_identity(self):
++        hand=state()['hand'];hand[0].update(face_down=True,key='secret',rank=13)
++        hand[0]['ability']['forced_selection']=True
++        c=case(hand=hand)
++        self.assertNotIn('rank',c['state']['hand'][0]);self.assertNotIn('key',c['state']['hand'][0])
++        r,_=self.solve(c)
++        self.assertTrue(r['complete']);self.assertTrue(all(1 in a['indices'] for a in r['candidates']))
++        self.assertIn('concealed_effects_unknown',r['resource_annotations']['1'])
++
++    def test_hidden_missing_constraint_fails_closed(self):
++        hand=state()['hand'];hand[0]={'id':'hidden','identity_redacted':True}
++        r,b=self.solve(case(hand=hand))
++        self.assertFalse(r['complete']);self.assertEqual(r['reason'],'forced_selection_metadata_unknown')
++        self.assertEqual(b['remaining'],32768)
++
++    def test_unknown_identity_alias_never_exposes_card_properties(self):
++        hand=state()['hand'];hand[0].update(identity_unknown=True,rank=13,key='secret')
++        c=case(hand=hand)
++        self.assertNotIn('rank',c['state']['hand'][0]);self.assertNotIn('key',c['state']['hand'][0])
++        self.assertFalse(self.solve(c)[0]['complete'])
++
++    def test_duplicate_identity_or_missing_limit_refused(self):
++        for mutate in ('duplicate','limit'):
++            c=case()
++            if mutate=='duplicate':c['state']['hand'][1]['id']=c['state']['hand'][0]['id']
++            else:c['state'].pop('hand_limit')
++            self.assertFalse(self.solve(c)[0]['complete'])
++
++    def test_oversize_hand_never_partially_enumerated(self):
++        r,b=self.solve(case(hand=[card('c_base',str(i)) for i in range(13)]))
++        self.assertFalse(r['complete']);self.assertEqual(r['candidates'],[]);self.assertEqual(b['remaining'],32768)
++
++    def test_budget_preflight_does_not_claim_partial_optimum(self):
++        r,b=self.solve(case(),217)
++        self.assertEqual(r['reason'],'enumeration_budget_insufficient_no_partial_optimum')
++        self.assertEqual(r['candidates'],[]);self.assertNotIn('maximum_batch_preserving_chosen_play',r)
++        self.assertEqual(b['remaining'],217)
++
++    def test_resources_annotated_not_silently_pruned(self):
++        hand=state()['hand'];hand[7].update(enhancement='m_steel',seal='Blue')
++        r,_=self.solve(case(hand=hand))
++        self.assertEqual(len(r['candidates']),218)
++        self.assertIn('enhancement:m_steel',r['resource_annotations']['8'])
++
++    def test_discard_anchor_unknown_instead_of_invented(self):
++        c=case();c['action']={'kind':'discard','indices':[1]}
++        r,_=self.solve(c)
++        self.assertIsNone(r['maximum_batch_preserving_chosen_play'])
++        self.assertTrue(all(a['retains_chosen_play'] is None for a in r['candidates']))
++
++    def test_no_discard_or_nonhand_action_explained(self):
++        self.assertEqual(self.solve(case(discards_left=0))[0]['reason'],'no_discards_available')
++        self.assertEqual(self.solve(case(phase='shop'))[0]['reason'],'not_a_hand_decision')
++
++
++class EvidenceClassification(unittest.TestCase):
++    def test_receipt_inconsistency_is_not_strategic_proof(self):
++        c=case();c['advice']={'discard_before_clear':{'final_action_kind':'discard','remaining_discards':1}}
++        p=review.packet(c,[],'test',{'remaining':32768})
++        self.assertEqual(p['confidence'],'established_receipt_inconsistency')
++        self.assertFalse(p['strategic_regret_established']);self.assertFalse(p['execution_authorized'])
++
++    def test_qualified_alternative_counts_are_only_a_signal(self):
++        c=case();c['advice']={'yorick_review':{'schema':1,'risk':{'qualified_five_count':2,'final_action_kind':'play'}}}
++        findings=review.issues(c)
++        self.assertEqual(len(findings),1);self.assertEqual(findings[0]['confidence'],'recorded_alternative_signal')
++        self.assertIn('Counts alone',findings[0]['next_test'])
++
++    def test_overlapping_rejection_reasons_are_not_added_as_disjoint(self):
++        c=case();c['advice']={'yorick_review':{'risk':{'by_size':[{'compared':2,'qualified':1,'survival':2,'utility':2}]}}}
++        self.assertEqual(review.issues(c),[])
++
++    def test_impossible_qualified_count_and_incomplete_are_separate(self):
++        c=case();c['advice']={'yorick_review':{'risk':{'by_size':[{'compared':1,'qualified':2,'incomplete':1}]}}}
++        f=review.issues(c)
++        self.assertEqual({x['confidence'] for x in f},{'established_receipt_inconsistency','recorded_coverage_gap'})
++
++    def test_higher_pack_merit_not_certified_superiority(self):
++        c=case(phase='pack');c['advice']={'copy_death_review':{'pack':{'complete':True,'candidates':[
++            {'offer_id':'j_blueprint','key':'j_blueprint','score':100,'admitted':True},
++            {'offer_id':'absent','key':'j_joker','score':1000}]}}}
++        rows=review.recorded_alternatives(c)
++        self.assertEqual(len(rows['rows']),1);self.assertEqual(rows['unmatched_rows'],1)
++        self.assertFalse(rows['strategic_ranking_certified'])
++
++    def test_consistent_exception_is_not_a_bug(self):
++        c=case();c['advice']={'discard_before_clear':{'status':'exception','reason':'Cannot preserve survival','final_action_kind':'play'}}
++        self.assertEqual(review.issues(c)[0]['confidence'],'recorded_exception')
++
++    def test_reason_groups_cover_all_observed_decisions_with_explicit_cap(self):
++        collector=review.Collector()
++        with patch.dict(review.LIMITS,finding_groups=1):
++            for i,reason in enumerate(('sorting','sorting','unknown effect')):
++                c=case();c['anchors']['request']['sequence']=i+1
++                c['advice']={'discard_before_clear':{'status':'exception','reason':reason}}
++                collector.observe(c)
++        group=next(iter(collector.groups.values()))
++        self.assertEqual(group['decisions'],2);self.assertEqual(collector.group_omitted,1)
++        self.assertFalse(group['common_cause_established'])
++
++
++class SettledObservers(unittest.TestCase):
++    def journal(self, callback):
++        j=Journal();j.screen.on_settled=callback;return j
++
++    def test_detached_and_once_across_delayed_closure(self):
++        calls=[]
++        def observer(c):
++            calls.append(copy.deepcopy(c));c['state']['jokers'].clear();c['advice']['action'].clear()
++        j=self.journal(observer);s=state()
++        j.act({'kind':'skip_pack'},s);j.settle(s);j.observe(s)
++        j.observe(state(phase='shop',pack_cards=[]))
++        self.assertEqual(len(calls),1);self.assertEqual(len(j.flags('copy_offer_pass')),1)
++        self.assertEqual(len(j.flags()[0]['decision_context']['jokers']),2)
++
++    def test_stale_request_and_nonterminal_play_not_sampled(self):
++        for stale in (False,True):
++            calls=[];j=self.journal(calls.append)
++            j.act({'kind':'play','indices':[1]},state(phase='hand'),status='stale' if stale else 'current')
++            j.settle(state(phase='hand',chips=20,hands_left=3))
++            self.assertEqual(calls,[])
++
++    def test_all_flag_hits_observed_even_when_ranked_away(self):
++        j=Journal(cap=1);flags=[];j.screen.on_flag=flags.append
++        j.act({'kind':'skip_pack'},state(pack_cards=[card('j_blueprint'),card('j_invisible')]))
++        j.settle(state(phase='shop',pack_cards=[]))
++        self.assertEqual(len(flags),2);self.assertEqual(len(j.flags()),1)
++
++
++class VerifiedPipeline(unittest.TestCase):
++    def setUp(self):
++        self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.folder=Path(self.temp.name)
++
++    def files(self,j):
++        raw=wire(j.events)[0];p=self.folder/'0.brj';p.write_bytes(raw)
++        manifest=self.folder/'manifest.json';manifest.write_text(json.dumps({'segments':[{'name':p.name,'bytes':len(raw),'sha256':screen.sha(raw)}]}))
++        return manifest
++
++    def journal(self):
++        j=Journal()
++        for number in range(4):
++            s=state(phase='hand',hand_limit=5,round=number+1)
++            indices=[1,2,3,4,5] if number%2 else [1]
++            j.act({'kind':'discard','indices':indices},s)
++            after=copy.deepcopy(s);after['hand']=[c for i,c in enumerate(s['hand'],1) if i not in indices];after['discards_left']=2
++            j.settle(after)
++        return j
++
++    def test_end_to_end_deterministic_caps_and_input_preservation(self):
++        j=self.journal();manifest=self.files(j);before=(self.folder/'0.brj').read_bytes()
++        a=review.analyze(self.folder,manifest,max_packets=3,sample_size=1)
++        b=review.analyze(self.folder,manifest,max_packets=3,sample_size=1)
++        self.assertEqual(a,b);self.assertEqual((self.folder/'0.brj').read_bytes(),before)
++        self.assertEqual(a['coverage']['eligible_settled_decisions'],4)
++        self.assertEqual(a['coverage']['legacy_unflagged_population'],2)
++        self.assertEqual(a['coverage']['sample_retained'],1)
++        self.assertEqual(len(a['packets']),3);self.assertFalse(a['policy_executed'])
++        sample=[p for p in a['packets'] if p['source']=='legacy_unflagged_bottom_k']
++        self.assertEqual(len(sample),1);self.assertEqual(sample[0]['flags'],[])
++
++    def test_capped_away_flags_never_enter_unflagged_population(self):
++        manifest=self.files(self.journal())
++        with patch.dict(review.LIMITS,flags=1):
++            r=review.analyze(self.folder,manifest,3,2)
++        self.assertEqual(r['coverage']['legacy_flagged_decisions'],2)
++        self.assertEqual(r['coverage']['legacy_unflagged_population'],2)
++        self.assertEqual(r['coverage']['legacy_flag_rows_omitted'],1)
++        self.assertTrue(all(not p['flags'] for p in r['packets'] if p['source']=='legacy_unflagged_bottom_k'))
++
++    def test_late_manifest_failure_never_publishes_report(self):
++        manifest=self.files(self.journal());out=self.folder/'out'
++        original=screen.Screener.report
++        def mutate(s):
++            manifest.write_text(manifest.read_text()+' ')
++            return original(s)
++        # Mutation after first pass's final checks must be caught by the second
++        # pass binding, before any packet report is written.
++        with patch.object(screen.Screener,'report',mutate),patch.object(__import__('sys'),'argv',[
++            'review','--copy-dir',str(self.folder),'--manifest',str(manifest),'--output',str(out)]):
++            self.assertEqual(review.main(),1)
++        self.assertFalse((out/'report.json').exists());self.assertFalse((out/'COMPLETE.json').exists())
++        self.assertTrue((out/'error.json').exists())
++
++    def test_cli_writes_complete_hash_bound_outputs_and_refuses_overwrite(self):
++        manifest=self.files(self.journal());out=self.folder/'out'
++        args=['review','--copy-dir',str(self.folder),'--manifest',str(manifest),'--output',str(out)]
++        with patch.object(__import__('sys'),'argv',args):
++            self.assertEqual(review.main(),0)
++            self.assertEqual(review.main(),1)
++        done=json.loads((out/'COMPLETE.json').read_text())
++        self.assertTrue(all(screen.file_sha(out/n)==h for n,h in done['files'].items()))
++        queue=json.loads((out/'challenge_queue.json').read_text())
++        self.assertTrue(all(not x['execution_authorized'] and not x['experiment_registered'] for x in queue))
++
++    def test_global_subset_budget_reported_without_changing_cases(self):
++        manifest=self.files(self.journal())
++        with patch.dict(review.LIMITS,subsets_total=218):
++            r=review.analyze(self.folder,manifest,4,2)
++        self.assertEqual(r['subset_candidates_enumerated'],218)
++        self.assertEqual(sum(p['discard_alternatives']['complete'] for p in r['packets']),1)
++        self.assertEqual(len(r['packets']),4)
++
++
++if __name__=='__main__':
++    unittest.main()

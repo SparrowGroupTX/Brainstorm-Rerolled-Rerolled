@@ -1,0 +1,2268 @@
+{
+  "schema": 1,
+  "kind": "final_passive_teacher_shop_tarot_review",
+  "source_files": {
+    "tools/advisor_eval/development357/logs2/manifest.json": {
+      "bytes": 8554,
+      "sha256": "88622501a20542fb8e2ebbdb060bc7c305312a773ac90c0ea4dd62712abd8a41"
+    },
+    "tools/advisor_eval/development357/logs2/events.json": {
+      "bytes": 52138004,
+      "sha256": "a0eeb0effb2130ab41047970fc5881d4cc87766064631e9e1fb5b5d24acb043c"
+    },
+    "tools/advisor_eval/development357/logs2/observations.json": {
+      "bytes": 38586789,
+      "sha256": "840ffe19c8d09629def9a5854f9e2d0d2cd3f9476103eda47f4c292895322195"
+    },
+    "tools/advisor_eval/development357/shop_review/POSTMORTEM.md": {
+      "bytes": 9019,
+      "sha256": "d3e1da178ae42426737e9183aa4a052351bb7b12c0fd31597e8aa1c3750268b2"
+    },
+    "tools/advisor_eval/development357/shop_review/report.json": {
+      "bytes": 26327,
+      "sha256": "40e237a36cfaf3e6cadf517a9386e961a845d34823b6a576e6fa72c592916fe3"
+    },
+    "tools/advisor_eval/development357/shop_review/FINAL_POSTMORTEM.md": {
+      "bytes": 8559,
+      "sha256": "dc4594bb3b23a4948f54e614c6f661eaabfc93c34bb463a1b9831a49d21d9897"
+    },
+    "tools/advisor_eval/development357/shop_review/final_public_deck_samples.json": {
+      "bytes": 8581,
+      "sha256": "c33ec2136978fec168d4ac72c521e95e7c52acb6cf66b556cd7113afafb6f1e1"
+    }
+  },
+  "record_count": 11891,
+  "public_observations": 1872,
+  "scope": "Frozen public logs only; no game, saves, policy, scorer, replay, simulations or original source execution.",
+  "experiments_executed": 0,
+  "run_accounting": {
+    "planned": 10,
+    "started": 7,
+    "verified_wins": 2,
+    "verified_losses": 4,
+    "unfinished_user_stopped": 1,
+    "not_started": 3,
+    "new_gold_stickers": 0
+  },
+  "outcomes": [
+    {
+      "seed": "M4BVSY11",
+      "sequence": 1945,
+      "outcome": "loss",
+      "ante": 6,
+      "round": 17,
+      "blind": {
+        "boss": true,
+        "chips": 120000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_serpent",
+        "mult": 2,
+        "name": "The Serpent"
+      },
+      "chips": 112910,
+      "cash_at_result": 109,
+      "discards_left": 0,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      },
+      "evidence": {
+        "event_id": "loss:game:2",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:2",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000002.brj",
+        "ordinal": 1932,
+        "raw_sha256": "0f6bdef7ce23f52abcbab091cf2579c64841a3311213d886e9ad20caa0546c9e"
+      }
+    },
+    {
+      "seed": "YVYN2Z11",
+      "sequence": 4278,
+      "outcome": "win",
+      "ante": 9,
+      "round": 23,
+      "blind": {
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "disabled": true,
+        "key": "bl_final_leaf",
+        "mult": 2,
+        "name": "Verdant Leaf"
+      },
+      "chips": 674187,
+      "cash_at_result": 138,
+      "discards_left": 3,
+      "gold_award": {
+        "new_count": 0,
+        "new_keys": {},
+        "schema": 1,
+        "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+        "source": "original_set_joker_win",
+        "status": "confirmed"
+      },
+      "evidence": {
+        "callbacks": [
+          {
+            "after": {
+              "ante": 9,
+              "boss": true,
+              "chips": 674187,
+              "deck": "b_red",
+              "deck_wins": 17,
+              "jokers": {
+                "j_brainstorm": 30,
+                "j_caino": 13,
+                "j_cartomancer": 13,
+                "j_devious": 12,
+                "j_yorick": 26
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "before": {
+              "ante": 9,
+              "boss": true,
+              "chips": 674187,
+              "deck": "b_red",
+              "deck_wins": 17,
+              "jokers": {
+                "j_brainstorm": 29,
+                "j_caino": 12,
+                "j_cartomancer": 12,
+                "j_devious": 11,
+                "j_yorick": 25
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "name": "set_joker_win",
+            "verified": true
+          },
+          {
+            "after": {
+              "ante": 9,
+              "boss": true,
+              "chips": 674187,
+              "deck": "b_red",
+              "deck_wins": 18,
+              "jokers": {
+                "j_brainstorm": 30,
+                "j_caino": 13,
+                "j_cartomancer": 13,
+                "j_devious": 12,
+                "j_yorick": 26
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "before": {
+              "ante": 9,
+              "boss": true,
+              "chips": 674187,
+              "deck": "b_red",
+              "deck_wins": 17,
+              "jokers": {
+                "j_brainstorm": 30,
+                "j_caino": 13,
+                "j_cartomancer": 13,
+                "j_devious": 12,
+                "j_yorick": 26
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "name": "set_deck_win",
+            "verified": true
+          }
+        ],
+        "event_id": "win:game:3",
+        "final_context": {
+          "ante": 8,
+          "boss": true,
+          "chips": 674187,
+          "deck": "b_red",
+          "deck_wins": 17,
+          "jokers": {
+            "j_brainstorm": 29,
+            "j_caino": 12,
+            "j_cartomancer": 12,
+            "j_devious": 11,
+            "j_yorick": 25
+          },
+          "round": 23,
+          "seeded": false,
+          "stake": 8,
+          "state": 19,
+          "target": 400000,
+          "win_ante": 8,
+          "won": false
+        },
+        "game_over": false,
+        "kind": "win",
+        "result_surface_seen": false,
+        "run_id": "game:3",
+        "source": "original_win_callback",
+        "source_saved": false,
+        "threshold_met": true,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000005.brj",
+        "ordinal": 278,
+        "raw_sha256": "91543f72fe6f80570a904be0717243567e8bd4eece5aabc90e1b546fc804306c"
+      }
+    },
+    {
+      "seed": "S7PXV521",
+      "sequence": 4850,
+      "outcome": "loss",
+      "ante": 2,
+      "round": 5,
+      "blind": {
+        "boss": true,
+        "chips": 2000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_house",
+        "mult": 2,
+        "name": "The House"
+      },
+      "chips": 648,
+      "cash_at_result": 5,
+      "discards_left": 0,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      },
+      "evidence": {
+        "event_id": "loss:game:4",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:4",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000007.brj",
+        "ordinal": 559,
+        "raw_sha256": "f10a4af37817702c0cd69e6ea777b3d98997a41681b286d481956e8cfbb2121f"
+      }
+    },
+    {
+      "seed": "RH45AD21",
+      "sequence": 6968,
+      "outcome": "loss",
+      "ante": 7,
+      "round": 19,
+      "blind": {
+        "boss": false,
+        "chips": 165000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "chips": 130932,
+      "cash_at_result": 242,
+      "discards_left": 0,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      },
+      "evidence": {
+        "event_id": "loss:game:5",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:5",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000010.brj",
+        "ordinal": 61,
+        "raw_sha256": "6f79a4e65fd7ad84629fb7e64470886fef989148d61a9855667042b48df1e0b9"
+      }
+    },
+    {
+      "seed": "YAEARC31",
+      "sequence": 9185,
+      "outcome": "loss",
+      "ante": 8,
+      "round": 23,
+      "blind": {
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_final_acorn",
+        "mult": 2,
+        "name": "Amber Acorn"
+      },
+      "chips": 147894,
+      "cash_at_result": 5,
+      "discards_left": 3,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      },
+      "evidence": {
+        "event_id": "loss:game:6",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:6",
+        "source": "GAME_OVER",
+        "source_won_field": true,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000013.brj",
+        "ordinal": 158,
+        "raw_sha256": "c31453b7c0306d2b3d2057f21c4fc159df326a4f29c2cb22e2e48437a56bb9ef"
+      }
+    },
+    {
+      "seed": "I8VUSV31",
+      "sequence": 11852,
+      "outcome": "win",
+      "ante": 9,
+      "round": 23,
+      "blind": {
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_final_heart",
+        "mult": 2,
+        "name": "Crimson Heart",
+        "prepped": true
+      },
+      "chips": 1503126,
+      "cash_at_result": 207,
+      "discards_left": 0,
+      "gold_award": {
+        "new_count": 0,
+        "new_keys": {},
+        "schema": 1,
+        "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+        "source": "original_set_joker_win",
+        "status": "confirmed"
+      },
+      "evidence": {
+        "callbacks": [
+          {
+            "after": {
+              "ante": 9,
+              "boss": true,
+              "chips": 1503126,
+              "deck": "b_red",
+              "deck_wins": 18,
+              "jokers": {
+                "j_brainstorm": 31,
+                "j_devious": 13,
+                "j_perkeo": 43,
+                "j_swashbuckler": 6,
+                "j_yorick": 27
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "before": {
+              "ante": 9,
+              "boss": true,
+              "chips": 1503126,
+              "deck": "b_red",
+              "deck_wins": 18,
+              "jokers": {
+                "j_brainstorm": 30,
+                "j_devious": 12,
+                "j_perkeo": 42,
+                "j_swashbuckler": 5,
+                "j_yorick": 26
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "name": "set_joker_win",
+            "verified": true
+          },
+          {
+            "after": {
+              "ante": 9,
+              "boss": true,
+              "chips": 1503126,
+              "deck": "b_red",
+              "deck_wins": 19,
+              "jokers": {
+                "j_brainstorm": 31,
+                "j_devious": 13,
+                "j_perkeo": 43,
+                "j_swashbuckler": 6,
+                "j_yorick": 27
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "before": {
+              "ante": 9,
+              "boss": true,
+              "chips": 1503126,
+              "deck": "b_red",
+              "deck_wins": 18,
+              "jokers": {
+                "j_brainstorm": 31,
+                "j_devious": 13,
+                "j_perkeo": 43,
+                "j_swashbuckler": 6,
+                "j_yorick": 27
+              },
+              "round": 23,
+              "seeded": false,
+              "stake": 8,
+              "state": 8,
+              "target": 400000,
+              "win_ante": 8,
+              "won": true
+            },
+            "name": "set_deck_win",
+            "verified": true
+          }
+        ],
+        "event_id": "win:game:7",
+        "final_context": {
+          "ante": 8,
+          "boss": true,
+          "chips": 1503126,
+          "deck": "b_red",
+          "deck_wins": 18,
+          "jokers": {
+            "j_brainstorm": 30,
+            "j_devious": 12,
+            "j_perkeo": 42,
+            "j_swashbuckler": 5,
+            "j_yorick": 26
+          },
+          "round": 23,
+          "seeded": false,
+          "stake": 8,
+          "state": 19,
+          "target": 400000,
+          "win_ante": 8,
+          "won": false
+        },
+        "game_over": false,
+        "kind": "win",
+        "result_surface_seen": false,
+        "run_id": "game:7",
+        "source": "original_win_callback",
+        "source_saved": false,
+        "threshold_met": true,
+        "verified": true
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000016.brj",
+        "ordinal": 605,
+        "raw_sha256": "9f14512ff87a4eff171f1750b477daa8e44024af3d3115942e7583caf364418d"
+      }
+    }
+  ],
+  "consumable_patterns": [
+    {
+      "seed": "M4BVSY11",
+      "distinct_observed": {
+        "c_empress": 25
+      },
+      "negative_first_seen": {
+        "c_empress": 24
+      },
+      "maximum_held": {
+        "c_empress": 5
+      },
+      "inventory_use_requests": {
+        "c_empress": 21
+      },
+      "use_request_sequences": {
+        "c_empress": [
+          606,
+          616,
+          699,
+          709,
+          792,
+          802,
+          916,
+          926,
+          1038,
+          1048,
+          1119,
+          1129,
+          1210,
+          1325,
+          1336,
+          1366,
+          1482,
+          1576,
+          1618,
+          1754,
+          1915
+        ]
+      },
+      "inventory_sell_requests": {},
+      "last_held": {
+        "c_empress": 4
+      },
+      "first_observations": {
+        "c_empress": [
+          {
+            "sequence": 561,
+            "id": "card:173",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 580,
+            "id": "card:177",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 580,
+            "id": "card:178",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 673,
+            "id": "card:187",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 673,
+            "id": "card:188",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 764,
+            "id": "card:197",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 764,
+            "id": "card:198",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 880,
+            "id": "card:207",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 880,
+            "id": "card:208",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 991,
+            "id": "card:213",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 991,
+            "id": "card:214",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1093,
+            "id": "card:219",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1093,
+            "id": "card:220",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1174,
+            "id": "card:226",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1174,
+            "id": "card:227",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1298,
+            "id": "card:239",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1298,
+            "id": "card:240",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1432,
+            "id": "card:251",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1432,
+            "id": "card:252",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1549,
+            "id": "card:261",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1549,
+            "id": "card:262",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1706,
+            "id": "card:276",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1706,
+            "id": "card:277",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1820,
+            "id": "card:288",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 1820,
+            "id": "card:289",
+            "negative": true,
+            "phase": "blind"
+          }
+        ]
+      }
+    },
+    {
+      "seed": "YVYN2Z11",
+      "distinct_observed": {
+        "c_heirophant": 5,
+        "c_justice": 1,
+        "c_hanged_man": 4,
+        "c_tower": 3,
+        "c_empress": 9,
+        "c_temperance": 26,
+        "c_devil": 1,
+        "c_lovers": 1,
+        "c_moon": 1,
+        "c_wheel_of_fortune": 1
+      },
+      "negative_first_seen": {
+        "c_heirophant": 4,
+        "c_empress": 8,
+        "c_temperance": 25
+      },
+      "maximum_held": {
+        "c_heirophant": 2,
+        "c_justice": 1,
+        "c_hanged_man": 1,
+        "c_tower": 1,
+        "c_empress": 3,
+        "c_temperance": 25,
+        "c_devil": 1,
+        "c_lovers": 1,
+        "c_moon": 1,
+        "c_wheel_of_fortune": 1
+      },
+      "inventory_use_requests": {
+        "c_heirophant": 5,
+        "c_justice": 1,
+        "c_hanged_man": 3,
+        "c_tower": 3,
+        "c_empress": 8,
+        "c_devil": 1,
+        "c_lovers": 1,
+        "c_moon": 1,
+        "c_temperance": 1
+      },
+      "use_request_sequences": {
+        "c_heirophant": [
+          2215,
+          2346,
+          2457,
+          2560,
+          2570
+        ],
+        "c_justice": [
+          2225
+        ],
+        "c_hanged_man": [
+          2336,
+          3014,
+          4176
+        ],
+        "c_tower": [
+          2447,
+          2691,
+          2799
+        ],
+        "c_empress": [
+          2701,
+          2819,
+          2829,
+          2911,
+          2921,
+          3314,
+          3531,
+          3953
+        ],
+        "c_devil": [
+          3109
+        ],
+        "c_lovers": [
+          3180
+        ],
+        "c_moon": [
+          3933
+        ],
+        "c_temperance": [
+          4118
+        ]
+      },
+      "inventory_sell_requests": {},
+      "last_held": {
+        "c_temperance": 25,
+        "c_empress": 1,
+        "c_wheel_of_fortune": 1,
+        "c_hanged_man": 1
+      },
+      "first_observations": {
+        "c_heirophant": [
+          {
+            "sequence": 2145,
+            "id": "card:361",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 2199,
+            "id": "card:369",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2311,
+            "id": "card:379",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2431,
+            "id": "card:389",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2545,
+            "id": "card:399",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_justice": [
+          {
+            "sequence": 2209,
+            "id": "card:370",
+            "negative": false,
+            "phase": "hand"
+          }
+        ],
+        "c_hanged_man": [
+          {
+            "sequence": 2321,
+            "id": "card:380",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 3009,
+            "id": "card:445",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 4133,
+            "id": "card:590",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 4212,
+            "id": "card:607",
+            "negative": false,
+            "phase": "shop"
+          }
+        ],
+        "c_tower": [
+          {
+            "sequence": 2441,
+            "id": "card:390",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 2686,
+            "id": "card:412",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 2793,
+            "id": "card:420",
+            "negative": false,
+            "phase": "hand"
+          }
+        ],
+        "c_empress": [
+          {
+            "sequence": 2555,
+            "id": "card:400",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 2676,
+            "id": "card:411",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2783,
+            "id": "card:418",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2783,
+            "id": "card:419",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2896,
+            "id": "card:429",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2896,
+            "id": "card:430",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3237,
+            "id": "card:482",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3402,
+            "id": "card:507",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3915,
+            "id": "card:578",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_temperance": [
+          {
+            "sequence": 2906,
+            "id": "card:431",
+            "negative": false,
+            "phase": "hand"
+          },
+          {
+            "sequence": 2999,
+            "id": "card:443",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 2999,
+            "id": "card:444",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3093,
+            "id": "card:457",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3093,
+            "id": "card:458",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3165,
+            "id": "card:468",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3165,
+            "id": "card:469",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3237,
+            "id": "card:481",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3298,
+            "id": "card:494",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3298,
+            "id": "card:495",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3402,
+            "id": "card:508",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3504,
+            "id": "card:521",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3504,
+            "id": "card:522",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3618,
+            "id": "card:537",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3618,
+            "id": "card:538",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3732,
+            "id": "card:552",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3732,
+            "id": "card:553",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3834,
+            "id": "card:568",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3834,
+            "id": "card:569",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 3915,
+            "id": "card:577",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4019,
+            "id": "card:587",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4019,
+            "id": "card:588",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4151,
+            "id": "card:605",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4151,
+            "id": "card:606",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4230,
+            "id": "card:612",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4230,
+            "id": "card:613",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_devil": [
+          {
+            "sequence": 3103,
+            "id": "card:459",
+            "negative": false,
+            "phase": "hand"
+          }
+        ],
+        "c_lovers": [
+          {
+            "sequence": 3175,
+            "id": "card:470",
+            "negative": false,
+            "phase": "hand"
+          }
+        ],
+        "c_moon": [
+          {
+            "sequence": 3247,
+            "id": "card:483",
+            "negative": false,
+            "phase": "hand"
+          }
+        ],
+        "c_wheel_of_fortune": [
+          {
+            "sequence": 4029,
+            "id": "card:589",
+            "negative": false,
+            "phase": "hand"
+          }
+        ]
+      }
+    },
+    {
+      "seed": "S7PXV521",
+      "distinct_observed": {
+        "c_judgement": 4
+      },
+      "negative_first_seen": {
+        "c_judgement": 3
+      },
+      "maximum_held": {
+        "c_judgement": 4
+      },
+      "inventory_use_requests": {},
+      "use_request_sequences": {},
+      "inventory_sell_requests": {},
+      "last_held": {
+        "c_judgement": 4
+      },
+      "first_observations": {
+        "c_judgement": [
+          {
+            "sequence": 4557,
+            "id": "card:682",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 4605,
+            "id": "card:690",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4678,
+            "id": "card:697",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 4759,
+            "id": "card:704",
+            "negative": true,
+            "phase": "blind"
+          }
+        ]
+      }
+    },
+    {
+      "seed": "RH45AD21",
+      "distinct_observed": {
+        "c_venus": 11,
+        "c_hermit": 13,
+        "c_death": 3
+      },
+      "negative_first_seen": {
+        "c_venus": 10,
+        "c_hermit": 12,
+        "c_death": 2
+      },
+      "maximum_held": {
+        "c_venus": 8,
+        "c_hermit": 3,
+        "c_death": 3
+      },
+      "inventory_use_requests": {
+        "c_venus": 11,
+        "c_hermit": 10,
+        "c_death": 3
+      },
+      "use_request_sequences": {
+        "c_venus": [
+          5665,
+          5676,
+          5687,
+          5954,
+          5964,
+          5974,
+          5984,
+          5994,
+          6004,
+          6014,
+          6024
+        ],
+        "c_hermit": [
+          6164,
+          6175,
+          6389,
+          6400,
+          6551,
+          6562,
+          6670,
+          6681,
+          6808,
+          6819
+        ],
+        "c_death": [
+          6230,
+          6241,
+          6251
+        ]
+      },
+      "inventory_sell_requests": {},
+      "last_held": {
+        "c_hermit": 3
+      },
+      "first_observations": {
+        "c_venus": [
+          {
+            "sequence": 5215,
+            "id": "card:778",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 5226,
+            "id": "card:786",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5324,
+            "id": "card:795",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5367,
+            "id": "card:801",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5475,
+            "id": "card:807",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5582,
+            "id": "card:816",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5637,
+            "id": "card:822",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5767,
+            "id": "card:833",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5829,
+            "id": "card:839",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5917,
+            "id": "card:845",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 5917,
+            "id": "card:846",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_hermit": [
+          {
+            "sequence": 5464,
+            "id": "card:803",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 6116,
+            "id": "card:862",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6116,
+            "id": "card:863",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6331,
+            "id": "card:881",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6331,
+            "id": "card:882",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6471,
+            "id": "card:895",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6471,
+            "id": "card:896",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6610,
+            "id": "card:906",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6610,
+            "id": "card:907",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6706,
+            "id": "card:913",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6706,
+            "id": "card:914",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6867,
+            "id": "card:923",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6867,
+            "id": "card:924",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_death": [
+          {
+            "sequence": 6191,
+            "id": "card:864",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 6202,
+            "id": "card:869",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 6202,
+            "id": "card:870",
+            "negative": true,
+            "phase": "blind"
+          }
+        ]
+      }
+    },
+    {
+      "seed": "YAEARC31",
+      "distinct_observed": {
+        "c_justice": 9,
+        "c_mercury": 11,
+        "c_magician": 3,
+        "c_moon": 4
+      },
+      "negative_first_seen": {
+        "c_justice": 7,
+        "c_mercury": 10,
+        "c_moon": 3,
+        "c_magician": 2
+      },
+      "maximum_held": {
+        "c_justice": 3,
+        "c_mercury": 3,
+        "c_magician": 2,
+        "c_moon": 4
+      },
+      "inventory_use_requests": {
+        "c_justice": 9,
+        "c_mercury": 11,
+        "c_magician": 1
+      },
+      "use_request_sequences": {
+        "c_justice": [
+          7153,
+          7164,
+          7258,
+          7341,
+          7491,
+          7501,
+          7596,
+          7659,
+          7778
+        ],
+        "c_mercury": [
+          7897,
+          7908,
+          8048,
+          8131,
+          8233,
+          8327,
+          8424,
+          8542,
+          8626,
+          8721,
+          8826
+        ],
+        "c_magician": [
+          8878
+        ]
+      },
+      "inventory_sell_requests": {},
+      "last_held": {
+        "c_moon": 4,
+        "c_magician": 2
+      },
+      "first_observations": {
+        "c_justice": [
+          {
+            "sequence": 7103,
+            "id": "card:986",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 7135,
+            "id": "card:992",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7201,
+            "id": "card:994",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 7232,
+            "id": "card:1001",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7325,
+            "id": "card:1010",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7377,
+            "id": "card:1016",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7454,
+            "id": "card:1022",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7558,
+            "id": "card:1031",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7642,
+            "id": "card:1037",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_mercury": [
+          {
+            "sequence": 7753,
+            "id": "card:1039",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 7762,
+            "id": "card:1043",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7847,
+            "id": "card:1049",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 7998,
+            "id": "card:1055",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8105,
+            "id": "card:1061",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8206,
+            "id": "card:1067",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8299,
+            "id": "card:1073",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8386,
+            "id": "card:1082",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8471,
+            "id": "card:1088",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8578,
+            "id": "card:1094",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8661,
+            "id": "card:1100",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_magician": [
+          {
+            "sequence": 8757,
+            "id": "card:1101",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 8861,
+            "id": "card:1112",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 9098,
+            "id": "card:1135",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_moon": [
+          {
+            "sequence": 8767,
+            "id": "card:1102",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 8776,
+            "id": "card:1106",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 8949,
+            "id": "card:1123",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 9012,
+            "id": "card:1129",
+            "negative": true,
+            "phase": "blind"
+          }
+        ]
+      }
+    },
+    {
+      "seed": "I8VUSV31",
+      "distinct_observed": {
+        "c_magician": 31,
+        "c_hermit": 3,
+        "c_uranus": 1
+      },
+      "negative_first_seen": {
+        "c_magician": 30,
+        "c_hermit": 2
+      },
+      "maximum_held": {
+        "c_magician": 18,
+        "c_hermit": 2,
+        "c_uranus": 1
+      },
+      "inventory_use_requests": {
+        "c_magician": 17,
+        "c_uranus": 1,
+        "c_hermit": 1
+      },
+      "use_request_sequences": {
+        "c_magician": [
+          9844,
+          9931,
+          10789,
+          10810,
+          10821,
+          11053,
+          11064,
+          11085,
+          11095,
+          11306,
+          11317,
+          11339,
+          11361,
+          11383,
+          11638,
+          11660,
+          11681
+        ],
+        "c_uranus": [
+          11328
+        ],
+        "c_hermit": [
+          11437
+        ]
+      },
+      "inventory_sell_requests": {},
+      "last_held": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "first_observations": {
+        "c_magician": [
+          {
+            "sequence": 9560,
+            "id": "card:1219",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 9568,
+            "id": "card:1224",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 9665,
+            "id": "card:1230",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 9774,
+            "id": "card:1242",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 9816,
+            "id": "card:1248",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 9915,
+            "id": "card:1257",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10044,
+            "id": "card:1271",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10159,
+            "id": "card:1280",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10159,
+            "id": "card:1281",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10285,
+            "id": "card:1290",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10285,
+            "id": "card:1291",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10402,
+            "id": "card:1302",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10402,
+            "id": "card:1303",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10496,
+            "id": "card:1313",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10496,
+            "id": "card:1314",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10601,
+            "id": "card:1325",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10601,
+            "id": "card:1326",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10729,
+            "id": "card:1340",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10729,
+            "id": "card:1341",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10899,
+            "id": "card:1349",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10899,
+            "id": "card:1350",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10994,
+            "id": "card:1356",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 10994,
+            "id": "card:1357",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11140,
+            "id": "card:1362",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11140,
+            "id": "card:1363",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11279,
+            "id": "card:1374",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11508,
+            "id": "card:1387",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11508,
+            "id": "card:1388",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11579,
+            "id": "card:1394",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11579,
+            "id": "card:1395",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11749,
+            "id": "card:1405",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_hermit": [
+          {
+            "sequence": 10454,
+            "id": "card:1305",
+            "negative": false,
+            "phase": "shop"
+          },
+          {
+            "sequence": 11279,
+            "id": "card:1375",
+            "negative": true,
+            "phase": "blind"
+          },
+          {
+            "sequence": 11749,
+            "id": "card:1404",
+            "negative": true,
+            "phase": "blind"
+          }
+        ],
+        "c_uranus": [
+          {
+            "sequence": 10685,
+            "id": "card:1334",
+            "negative": false,
+            "phase": "shop"
+          }
+        ]
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "magician_plain_deck_clear_opportunities",
+      "status": "observed_opportunity_source_hypothesis",
+      "sequences": [
+        10082,
+        10215,
+        10427,
+        10601,
+        10994,
+        11749
+      ],
+      "scope": "No score evaluation; plain targets and existing reported clears observed. Score-floor development hypothesis requires validation.",
+      "evidence": [
+        {
+          "sequence": 10082,
+          "at": "2026-09-16T18:34:32Z",
+          "kind": "action_requested",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:10077",
+          "advice_sequence": 10078,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000015.brj",
+            "ordinal": 883,
+            "raw_sha256": "7f1f54c7b55c77e9390b8b1243f576fc7f15f55e1439d11163943ad65d439e81"
+          }
+        },
+        {
+          "sequence": 10215,
+          "at": "2026-09-16T18:34:46Z",
+          "kind": "action_requested",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:10210",
+          "advice_sequence": 10211,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000015.brj",
+            "ordinal": 1016,
+            "raw_sha256": "8a786517097720d87cdb41ad68b126b94a087f98c7b416618a0c86a2877c4a7c"
+          }
+        },
+        {
+          "sequence": 10427,
+          "at": "2026-09-16T18:35:23Z",
+          "kind": "action_requested",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:10420",
+          "advice_sequence": 10424,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000015.brj",
+            "ordinal": 1228,
+            "raw_sha256": "c39be07cf9661e6916cab734fe6062f3371091b956947b76a6f09853d7d1fb4f"
+          }
+        },
+        {
+          "sequence": 10601,
+          "at": "2026-09-16T18:35:53Z",
+          "kind": "teacher_observation",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:10601",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000015.brj",
+            "ordinal": 1402,
+            "raw_sha256": "26bc665d74ae310f691082181dd8b1c9b1c5675ffc1458fae16298f36da9e470"
+          }
+        },
+        {
+          "sequence": 10994,
+          "at": "2026-09-16T18:37:37Z",
+          "kind": "teacher_observation",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:10994",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000015.brj",
+            "ordinal": 1795,
+            "raw_sha256": "5c3f25cfb0c398ebd4f94f4468e4d5e86bc7f08001bb84df92bd5df46d01a019"
+          }
+        },
+        {
+          "sequence": 11749,
+          "at": "2026-09-16T18:40:14Z",
+          "kind": "teacher_observation",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:11749",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000016.brj",
+            "ordinal": 502,
+            "raw_sha256": "b6075c8f9a6602f3355e6308926a2f1aeed7724fe90731f7aecbe2ef4654b144"
+          }
+        }
+      ]
+    },
+    {
+      "id": "empress_non_saturated_scoring_targets",
+      "status": "observed_opportunity",
+      "sequences": [
+        1883,
+        1915,
+        1937,
+        1945
+      ],
+      "scope": "No counterfactual scoring or rescued outcome claimed.",
+      "evidence": [
+        {
+          "sequence": 1883,
+          "at": "2026-09-16T18:06:43Z",
+          "kind": "action_requested",
+          "seed": "M4BVSY11",
+          "observation_id": "teacher356-1789581331-1:1877",
+          "advice_sequence": 1880,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000002.brj",
+            "ordinal": 1870,
+            "raw_sha256": "f3db5a9e76af20ef0e97f508064dfbda6d686ae150a8bd16d99a6466ba4906b8"
+          }
+        },
+        {
+          "sequence": 1915,
+          "at": "2026-09-16T18:06:57Z",
+          "kind": "action_requested",
+          "seed": "M4BVSY11",
+          "observation_id": "teacher356-1789581331-1:1907",
+          "advice_sequence": 1912,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000002.brj",
+            "ordinal": 1902,
+            "raw_sha256": "c1aa5f1b258c557daa1b201f5c9c077215681be17baf0abefc5d3cc6ee6d7727"
+          }
+        },
+        {
+          "sequence": 1937,
+          "at": "2026-09-16T18:07:09Z",
+          "kind": "action_requested",
+          "seed": "M4BVSY11",
+          "observation_id": "teacher356-1789581331-1:1931",
+          "advice_sequence": 1934,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000002.brj",
+            "ordinal": 1924,
+            "raw_sha256": "80ee5c44c2b0aa6d7150cfe0b2a18af93aa6d167f407287de207b4065acc6c4c"
+          }
+        },
+        {
+          "sequence": 1945,
+          "at": "2026-09-16T18:07:15Z",
+          "kind": "auto_run",
+          "seed": "M4BVSY11",
+          "observation_id": "teacher356-1789581331-1:1942",
+          "advice_sequence": 1943,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000002.brj",
+            "ordinal": 1932,
+            "raw_sha256": "0f6bdef7ce23f52abcbab091cf2579c64841a3311213d886e9ad20caa0546c9e"
+          }
+        }
+      ]
+    },
+    {
+      "id": "last_template_depletion",
+      "status": "observed_comparison_gap",
+      "sequences": [
+        6024,
+        6241,
+        6251,
+        6327,
+        6863
+      ],
+      "scope": "Future template retention versus spending is unvalidated.",
+      "evidence": [
+        {
+          "sequence": 6024,
+          "at": "2026-09-16T18:19:43Z",
+          "kind": "action_requested",
+          "seed": "RH45AD21",
+          "observation_id": "teacher356-1789581331-1:6019",
+          "advice_sequence": 6020,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1165,
+            "raw_sha256": "752563ace2334717c8e506c639079199418b1e96ded7a2a0681ee3730919c899"
+          }
+        },
+        {
+          "sequence": 6241,
+          "at": "2026-09-16T18:20:33Z",
+          "kind": "action_requested",
+          "seed": "RH45AD21",
+          "observation_id": "teacher356-1789581331-1:6235",
+          "advice_sequence": 6238,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1382,
+            "raw_sha256": "85d178a8bc775ff52c39ff5cca1f182ccb0766ad810c45afd554eaa0b32c74e3"
+          }
+        },
+        {
+          "sequence": 6251,
+          "at": "2026-09-16T18:20:34Z",
+          "kind": "action_requested",
+          "seed": "RH45AD21",
+          "observation_id": "teacher356-1789581331-1:6246",
+          "advice_sequence": 6247,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1392,
+            "raw_sha256": "982fa2c14909769c4baf076f18e4e8b2c14c1aa5525ac5f8f0b113595038547e"
+          }
+        },
+        {
+          "sequence": 6327,
+          "at": "2026-09-16T18:20:55Z",
+          "kind": "action_requested",
+          "seed": "RH45AD21",
+          "observation_id": "teacher356-1789581331-1:6319",
+          "advice_sequence": 6324,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1468,
+            "raw_sha256": "8335dde30709fc1683408f8f269ccf7a994de70fe27d4f660a9519b55449832e"
+          }
+        },
+        {
+          "sequence": 6863,
+          "at": "2026-09-16T18:23:19Z",
+          "kind": "action_requested",
+          "seed": "RH45AD21",
+          "observation_id": "teacher356-1789581331-1:6855",
+          "advice_sequence": 6860,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 2004,
+            "raw_sha256": "5a939029a7b4f1be7eace66c9c511a016bff4162c102ea3722c70926da635356"
+          }
+        }
+      ]
+    },
+    {
+      "id": "verified_second_win",
+      "status": "verified_logged_win",
+      "sequences": [
+        11840,
+        11852
+      ],
+      "scope": "Crimson Heart bl_final_heart. Zero new Gold. No claim prior decisions optimal.",
+      "evidence": [
+        {
+          "sequence": 11840,
+          "at": "2026-09-16T18:40:43Z",
+          "kind": "action_requested",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:11833",
+          "advice_sequence": 11837,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000016.brj",
+            "ordinal": 593,
+            "raw_sha256": "d4d3394db683fa0996b8b8e221c592732753a2d8cafe735e80fdaedebdfc40f7"
+          }
+        },
+        {
+          "sequence": 11852,
+          "at": "2026-09-16T18:40:45Z",
+          "kind": "auto_run",
+          "seed": "I8VUSV31",
+          "observation_id": "teacher356-1789581331-1:11850",
+          "advice_sequence": 11851,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000016.brj",
+            "ordinal": 605,
+            "raw_sha256": "9f14512ff87a4eff171f1750b477daa8e44024af3d3115942e7583caf364418d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "seventh_user_stopped",
+      "status": "unfinished",
+      "sequences": [
+        11870,
+        11873,
+        11887,
+        11891
+      ],
+      "scope": "HUD Stop; no terminal outcome. Not a loss or unsupported attempt.",
+      "evidence": [
+        {
+          "sequence": 11870,
+          "at": "2026-09-16T18:40:47Z",
+          "kind": "auto_run",
+          "seed": "X8XU8Y31",
+          "observation_id": "teacher356-1789581331-1:11866",
+          "advice_sequence": 11869,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000018.brj",
+            "ordinal": 5,
+            "raw_sha256": "87d824d1ec11caca5dea161a4bc12b072bcf140110b0b2f989ce69ea82ff07d9"
+          }
+        },
+        {
+          "sequence": 11873,
+          "at": "2026-09-16T18:40:48Z",
+          "kind": "auto_run",
+          "seed": "X8XU8Y31",
+          "observation_id": "teacher356-1789581331-1:11871",
+          "advice_sequence": 11872,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000018.brj",
+            "ordinal": 8,
+            "raw_sha256": "82721638affebbc744b08a7af827e31a350d51032dd8b67c3f6bd966357e984f"
+          }
+        },
+        {
+          "sequence": 11887,
+          "at": "2026-09-16T18:40:49Z",
+          "kind": "auto_run",
+          "seed": "X8XU8Y31",
+          "observation_id": "teacher356-1789581331-1:11885",
+          "advice_sequence": 11886,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000018.brj",
+            "ordinal": 22,
+            "raw_sha256": "351d1c66e743a3cae95171b3483f475dc957e63533dcd3b113eb2515bbb5c749"
+          }
+        },
+        {
+          "sequence": 11891,
+          "at": "2026-09-16T18:40:50Z",
+          "kind": "teacher_advice",
+          "seed": "X8XU8Y31",
+          "observation_id": "teacher356-1789581331-1:11888",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000018.brj",
+            "ordinal": 26,
+            "raw_sha256": "734f23def20a42c14376473a6ab1312efe8a8698004e1cb56892d533a706f7d0"
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Selected searched-opening development runs, not representative win-rate measurement.",
+    "Recorded recommendations are fallible teacher labels.",
+    "Earlier duplicate-purchase contamination remains preserved.",
+    "No imputed terminal outcome or counterfactual win."
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "verified_utc": "2026-09-26T17:11:52.457034+00:00",
+  "scope": "Documentation and two manufactured module-boundary diagnostic fixtures; no runtime/harness/test-tree changes",
+  "policy_digest": "97711915fc9705a40f7d0c4f2ac04ed5a6de2210c1efdc34f1eadf9226b61980",
+  "runtime_dependency_files_checked_in_each_tree": 109,
+  "frozen_test_files_checked": 305,
+  "native_dlls_checked_in_each_tree": 7,
+  "mismatches": [],
+  "repository_and_installed_runtime_unchanged": true,
+  "frozen_tests_unchanged": true,
+  "native_dlls_unchanged": true,
+  "native_source_binding_sha256": "02ecd4fc5da0d673f78891a24a6ae2f53031319099ef09ed0d885969ed5bc4c7",
+  "diagnostics": {
+    "fixtures": 2,
+    "assertions": 22,
+    "runs_per_fixture": 1,
+    "status": "Existing gaps reproduced; no fix applied",
+    "full_gate": false,
+    "fixture_hashes": {
+      "tools/advisor_eval/development402/teacher_complete_collection_probe.lua": "551244c2d0182666f90c05dfd5aaee98646de8785b7eeb537bc1ca1f8a94dc24",
+      "tools/advisor_eval/development402/visibility_contract_probe.lua": "0b5cac48db81f999f2afad45a88aa92653aebedce1f0195ef573dc6c124728f6"
+    },
+    "module_hashes": {
+      "Brainstorm/Advisor/collection_search.lua": "4303cb4d3f1c0491c3ed7880510c54ced5e23552a90a9af6b330334d2c0c056a",
+      "Brainstorm/Advisor/gold_search.lua": "107280cd7f63f94b8070bf7934ebccd0da80617ba85f10c30d054cc7bcc5dbb3",
+      "Brainstorm/Advisor/gold_stickers.lua": "1c365a174c4533b8e19d3790e6e745c61249af63aed386f44ee7b7969cf559c4",
+      "Brainstorm/Advisor/snapshot.lua": "489ce8c602a5c9cb199cb68cf792c4185acb3e576859888ef3c385ab15d60893",
+      "Brainstorm/Advisor/draws.lua": "a1b7c7239659b505ae02e6976d5e3eb95488fe6ebd57adffa8b6703c8b491169"
+    },
+    "commands": [
+      "python tests/run_lua_tests.py tools/advisor_eval/development402/teacher_complete_collection_probe.lua",
+      "python tests/run_lua_tests.py tools/advisor_eval/development402/visibility_contract_probe.lua"
+    ],
+    "runner_sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7",
+    "python_executable": "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_executable_sha256": "fd5c46d73d29ba21b04c844bbaf9096066136526911230645a2a040d23fb612b",
+    "python_version": "3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]",
+    "lua_library": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll",
+    "lua_library_sha256": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+    "provenance_timing": "Recorded after the two probe runs; frozen module hashes are unchanged",
+    "logs": {
+      "query_probe.log": "d7de42d0e9f9d2e52e3a5835b801a43c391693c1725fe1823ae130e4bee2f59f",
+      "visibility_probe.log": "2ab49a7b564cd2552a4a4c315e831b0cd421144266724f21bda54a655ad216c3"
+    }
+  },
+  "documentation_hashes": {
+    "ADVISOR.md": "7e7e241fe7efc04b7754a2dede8867ca9d4bcfe2ea3b7f87702ffef11d4fed4b",
+    "ADVISOR_START_HERE.md": "31652a194a6789536f9a44f45ae000773ba5668d0870d8fefb4b27500bb3d240",
+    "ADVISOR_RESUME_PROMPT.md": "cfd02d27f4aafb3421299dff6bf3118909153c46ccc4381b4ba7f09dab42dca8",
+    "ADVISOR_HANDOFF.md": "0d822171f6380e323f00b68ed426445ea3bdfc2e8d5cdc06d9803057f91bb7e8",
+    "tools/advisor_eval/NEXT_PRIORITIES_400.md": "ed66a39652d4cdc21edf5d65de11504619456afdd8a3739f05819340c985b5ef",
+    "tools/advisor_eval/WIN_RATE_RESEARCH.md": "67ed2039101601cc823d04db52872bf188f5c1390d102b79a06b0010eac43fe2",
+    "tools/advisor_eval/development402/REPORT.md": "ef7c997ee224476393086c51bd4ff864bd252ff137150f29e060d384c072e028"
+  },
+  "local_markdown_links": [
+    {
+      "document": "ADVISOR.md",
+      "target": "tools/advisor_eval/development401/REPORT.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "tools/advisor_eval/development402/REPORT.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "tools/advisor_eval/SESSION_RESET_400.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "ADVISOR_START_HERE.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "ADVISOR_HANDOFF.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "tools/advisor_eval/README.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "tools/advisor_eval/ESTIMATES.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "tools/advisor_eval/SESSION_RESET_400.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR.md",
+      "target": "ADVISOR_RESUME_PROMPT.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/ADVISOR_START_HERE.md",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/snapshot.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/scoring.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/search.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/consumables.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/ordering.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/hand_ordering.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/boss_rescue.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/strategy.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/shop_scoring.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/synergies.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/economy.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/paid_reroll.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/decision.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/execution.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/Brainstorm/Advisor/runtime.lua",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/tools/install_advisor.ps1",
+      "exists": true
+    },
+    {
+      "document": "ADVISOR_HANDOFF.md",
+      "target": "C:/Users/trevo/Documents/GitHub/Brainstorm-Rerolled-Rerolled/tools/advisor_eval/BALATRON_REUSE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260923_2_169_ten_start/REPORT.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260923_2_166_ten_start/REPORT.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260923_2_166_ten_start/findings.json",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "MARATHON_REPAIRS_366.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260923_ten_start/REPORT.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260923_ten_start/review_summary.json",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "REPLACEMENT_FAMILY_365.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260922_ten_start/REPORT.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260922_ten_start/REPAIR_SPEC.md",
+      "exists": true
+    },
+    {
+      "document": "tools/advisor_eval/WIN_RATE_RESEARCH.md",
+      "target": "win_rate_research/20260922_ten_start/SOURCES.md",
+      "exists": true
+    }
+  ],
+  "current_session": "User reported run 5/10; completion, loaded label and outcomes not audited",
+  "game_control": false,
+  "installation": false,
+  "settings_changes": false,
+  "save_or_profile_access": false,
+  "native_execution_build_or_search": false,
+  "captured_state_replay": false,
+  "new_gameplay_experiment": false
+}

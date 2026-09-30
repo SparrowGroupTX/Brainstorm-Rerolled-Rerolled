@@ -1,0 +1,294 @@
+--- a/Brainstorm/Advisor/shop_scoring.lua
++++ b/Brainstorm/Advisor/shop_scoring.lua
+@@ -309,7 +309,7 @@
+   bl_window='The Window',bl_head='The Head',bl_plant='The Plant',bl_pillar='The Pillar',
+   bl_psychic='The Psychic',bl_arm='The Arm',bl_flint='The Flint',bl_ox='The Ox',bl_tooth='The Tooth',
+   bl_eye='The Eye',bl_mouth='The Mouth',bl_water='The Water',bl_needle='The Needle',bl_manacle='The Manacle',
+-  bl_wall='The Wall',bl_final_vessel='Violet Vessel',bl_final_leaf='Verdant Leaf',
++  bl_wall='The Wall',bl_final_vessel='Violet Vessel',bl_final_leaf='Verdant Leaf',bl_final_bell='Cerulean Bell',
+   bl_house='The House',bl_wheel='The Wheel',bl_mark='The Mark',bl_fish='The Fish',bl_serpent='The Serpent'}
+ local boss_suits={bl_club='Clubs',bl_goad='Spades',bl_window='Diamonds',bl_head='Hearts'}
+ local function next_blind(s)
+@@ -444,7 +444,9 @@
+     end
+     return nil,'Blind preparation exceeds the bounded setup steps.'
+   end
++  local bell=upcoming and upcoming.key=='bl_final_bell'
+   local function prepare(s,temporal)
++    if bell and not Shop.bell_opening then return unavailable('Complete Bell forced-card comparisons are unavailable.') end
+     if #root_deck==0 or not scorer or type(scorer.score)~='function' then return unavailable('No complete owned deck or scorer is available.') end
+     local cards=deck(s.playing_cards)
+     local changed_deck=encode(cards)~=root_key
+@@ -459,7 +461,7 @@
+       end
+     end
+     local size=math.floor(num(s.hand_size,8))
+-    if size<1 or size>10 then return unavailable('Hand sizes outside 1–10 are not sampled.') end
++    if size<1 or size>10 then return unavailable('Hand sizes outside 1â€“10 are not sampled.') end
+     local max_cards=math.min(5,math.floor(num(s.hand_limit,5)))
+     if max_cards<1 then return unavailable('There is no legal played-hand size.') end
+     local row,startup={},false
+@@ -472,6 +474,7 @@
+       row[i]=c
+     end
+     if #row>12 then return unavailable('Large Joker rows are outside this scoring budget.') end
++    if bell and startup then return unavailable('Bell first-hand branches do not include blind-start creation, destruction or disabling.') end
+     -- These values are refreshed by Card:update in the live game. A detached
+     -- add/remove must derive them from its final row/deck instead of retaining
+     -- the pre-purchase cache (notably Swashbuckler and Joker Stencil).
+@@ -662,11 +665,11 @@
+     end
+     local scores,opening_scores,opening_hands,opening_sizes,total,uncertain,worlds={},{},{},{},0,false,{}
+     local fixed={}
+-    if Shop.blind_finishing then for index,order in ipairs(plan.orders) do
++    if Shop.blind_finishing or bell then for index,order in ipairs(plan.orders) do
+       local row={};local changed=false
+       for i,j in ipairs(order) do row[i]=plan.state.jokers[j];changed=changed or i~=j end
+       fixed[index]={mean=0,scores={},opening_scores={},opening_hands={},opening_sizes={},worlds={},
+-        order=clone(order),identity=encode(row),changed=changed}
++        order=clone(order),identity=encode(row),changed=changed,bell_worlds=bell and {} or nil}
+     end end
+     local supported_random_choices=true
+     for draw,permutation in ipairs(plan.draws) do
+@@ -683,6 +686,11 @@
+         local row={}; for i,index in ipairs(order) do row[i]=state.jokers[index] end
+         local trial={}; for k,v in pairs(state) do trial[k]=v end; trial.jokers=row
+         local opening_play,order_best,order_hand,order_size
++        local forced
++        if bell then
++          local why;forced,why=Shop.bell_opening.new(trial)
++          if not forced then cache[plan.key]=false;return unavailable(why) end
++        end
+         for _,selected in ipairs(plan.selections) do
+           context.evaluations=context.evaluations+1
+           if yield_fn and context.evaluations%64==0 then yield_fn() end
+@@ -696,6 +704,9 @@
+               cache[plan.key]=false; return unavailable(warning)
+             end
+           end
++          if forced and not Shop.bell_opening.add(forced,selected,result) then
++            cache[plan.key]=false;return unavailable(forced.failed)
++          end
+           uncertain=uncertain or result.uncertain
+           if result.uncertain and not (Shop.blind_finishing and Shop.blind_finishing.choice_supported and
+             Shop.blind_finishing.choice_supported(trial,result)) then supported_random_choices=false end
+@@ -708,7 +719,14 @@
+             order_best,order_hand,order_size=result.score,result.hand,#selected
+           end
+         end
+-        if Shop.blind_finishing then
++        if forced then
++          local branches,worst=Shop.bell_opening.finish(forced)
++          if not branches then cache[plan.key]=false;return unavailable(worst) end
++          fixed[order_index].bell_worlds[draw]=branches
++          order_best,order_hand,order_size=branches.minimum,worst.hand,#worst.indices
++          opening_play={score=branches.minimum,hand=worst.hand,indices=clone(worst.indices),legal=true,uncertain=false}
++        end
++        if Shop.blind_finishing or bell then
+           local candidate=fixed[order_index]
+           if not order_best then cache[plan.key]=false;return unavailable('A fixed layout has no legal opening play.') end
+           candidate.scores[draw]=num(candidate.scores[draw])+scenario.weight*order_best
+@@ -730,7 +748,7 @@
+     end
+     local value={mean=total/4,scores=scores,opening_scores=opening_scores,opening_hands=opening_hands,opening_sizes=opening_sizes,uncertain=not not uncertain,worlds=worlds,
+       supported_random_choices=supported_random_choices}
+-    if Shop.blind_finishing then
++    if Shop.blind_finishing or bell then
+       -- One fixed arrangement is chosen once across ALL four common worlds,
+       -- before forecasting either continuation. This reuses already complete
+       -- opening comparisons; it never picks the winning order per future world.
+@@ -742,11 +760,17 @@
+       value.ordering={order=clone(best.order),identity=best.identity,action_count=best.changed and 1 or 0,
+         selection='one_fixed_layout_by_complete_common_opening_mean',layouts=#fixed,samples=4,
+         scope='Legal projected first-hand reorder, then one fixed observed continuation; future actions require fresh advice.'}
++      if bell then
++        value.ordering.selection='one_fixed_layout_by_complete_forced_card_floor_mean'
++        value.bell_opening=Shop.bell_opening.bundle(best.bell_worlds,value.ordering)
++        if not value.bell_opening then cache[plan.key]=false;return unavailable('Bell fixed-order evidence is incomplete.') end
++      end
+     end
+     context.metrics.completed_profiles=context.metrics.completed_profiles+1
+     cache[plan.key]=value; return value
+   end
+   local function temporal_for(before,after)
++    if bell then return nil end -- first-hand branches never invent later Card Sharp/discard conditions
+     if Shop.blind_finishing and upcoming and root_hands<=4 and
+       num(before.hand_size,8)<=8 and num(after.hand_size,8)<=8 and #root_deck<=128 then
+       -- Actual observed continuations replace invented repeat/last-hand or
+@@ -762,6 +786,7 @@
+     end
+   end
+   local function finishing(plan,value)
++    if bell then return {complete=false,supported=false,reason='Bell evidence covers every possible first forced card only; later forced selections remain unresolved.'} end
+     if not Shop.blind_finishing then return end
+     if finishing_cache[plan.key] then return finishing_cache[plan.key] end
+     context.metrics.finishing_requests=num(context.metrics.finishing_requests)+1
+@@ -810,18 +835,18 @@
+     local status=low>=target*1.25 and 'sampled_safe' or capacity<target and 'sampled_deficit' or 'unresolved'
+     local finish=not opening_only and finishing(plan,value) or finishing_cache[plan.key]
+     local complete=finish and finish.complete and finish.supported and not opening_only
+-    if Shop.blind_finishing then
++    if Shop.blind_finishing and not bell then
+       status=complete and (finish.all_worlds_clear and 'sampled_safe' or finish.selected.clearing_samples==0 and 'sampled_deficit' or 'unresolved') or 'unresolved'
+     end
+     local result={status=status,supported=true,target=target,hands=hands,discards=state.discards_left,
+       samples=4,opening_min=low,opening_max=high,opening_mean=total/4,clearing_samples=clears,
+       opening_hands=clone(value.opening_hands),opening_sizes=clone(value.opening_sizes),opening_scores=clone(value.opening_scores),capacity_proxy=capacity,
+-      ordering=clone(value.ordering),
++      ordering=clone(value.ordering),bell_opening=clone(value.bell_opening),
+       requires_discards=status=='sampled_deficit' and state.discards_left>0 or nil,
+       reason=status=='sampled_safe' and 'All four composition samples have a supported opening clear with at least 25% margin; this is not a win probability.' or
+         status=='sampled_deficit' and 'Even the strongest sampled opening repeated across the available hands falls short; a better draw or timely scoring upgrade is needed. This pressure proxy is not a global score bound.' or
+         'The bounded opening samples do not establish a finishing plan; future hands and discards remain unresolved.'}
+-    if Shop.blind_finishing then
++    if Shop.blind_finishing and not bell then
+       result.finishing=clone(finish)
+       result.finishing_basis=complete and 'complete_paired_observed_policies' or 'opening_only_fallback'
+       result.reason=complete and (status=='sampled_safe' and 'One fixed observed policy clears all four composition worlds with actual cumulative scoring and resources; this is not a guarantee or measured win probability.' or
+@@ -839,6 +864,11 @@
+           policy=finish.selected.name,finishing_guarantee=false}
+       end
+     end
++    if bell then
++      result.finishing=clone(finish or finishing(plan,value));result.finishing_basis='first_hand_forced_branches_only'
++      result.score_kind='forced_card_lower_bound'
++      result.reason='All possible first-hand forced cards are compared within each composition world and one fixed Joker layout. Reported scores are lower bounds over those choices; later draws and forced selections remain unresolved.'
++    end
+     return result
+   end
+   function context:readiness(snapshot)
+@@ -857,7 +887,9 @@
+     local temporal=temporal_for(before,after)
+     local left,right=prepare(before,temporal),prepare(after,temporal)
+     if not left or not right then return nil end
+-    if left.equivalent_key==right.equivalent_key then right=left end
++    -- Bell receipts include a physical first setup action; preserve endpoint
++    -- positions even when their movable Joker multisets match.
++    if not bell and left.equivalent_key==right.equivalent_key then right=left end
+     if cache[left.key]==false or cache[right.key]==false then return nil end
+     local needed=cache[left.key]==nil and left.cost or 0
+     if right.key~=left.key and cache[right.key]==nil then needed=needed+right.cost end
+@@ -888,8 +920,10 @@
+     end
+     local before_readiness,after_readiness=readiness(left,a,before,not complete_finishing),readiness(right,b,after,not complete_finishing)
+     local ordering_cost
+-    if complete_finishing then
+-      local prior,following=num(af.selected.mean_setup_actions),num(bf.selected.mean_setup_actions)
++    if complete_finishing or bell then
++      local prior,following
++      if bell then prior,following=a.ordering.action_count,b.ordering.action_count
++      else prior,following=num(af.selected.mean_setup_actions),num(bf.selected.mean_setup_actions) end
+       ordering_cost={before_actions=prior,after_actions=following,extra_actions=following-prior,
+         adjustment=-2*(following-prior),seconds_per_action=1.5,calibrated=false,
+         scope='One actual projected Joker reorder costs the existing two action-utility units; no free restoration.'}
+@@ -907,11 +941,17 @@
+     end
+     local low=math.huge
+     for i=1,4 do low=math.min(low,b.scores[i]-a.scores[i]) end
++    local forced_comparison
++    if bell then
++      local why;forced_comparison,why=Shop.bell_opening.compare(a.bell_opening,b.bell_opening,left_target)
++      if not forced_comparison or left_target~=right_target then return unavailable(why or 'Bell targets differ.') end
++      low=math.min(low,forced_comparison.minimum_delta)
++    end
+     local order_note=(left.has_copies or right.has_copies) and
+       string.format('copy-target order shortlist (%d/%d layouts)',#left.orders,#right.orders) or 'sensible Joker order'
+     if left.shortlisted or right.shortlisted then order_note=order_note..', not exhaustive' end
+     if left.startup or right.startup then order_note=order_note..'; one fixed pre-blind setup matching executable preparation across all samples, including retained-row effects' end
+-    local scope='Opening-hand scoring estimate'
++    local scope=bell and 'First-hand lower bound over all possible forced cards' or 'Opening-hand scoring estimate'
+     if temporal then
+       scope=string.format('Opening/conditional last-hand estimate (late weight %.0f%%',temporal.weight*100)
+       if temporal.repeat_hand then scope=scope..'; repeat '..temporal.repeat_hand..' assumed' end
+@@ -931,6 +971,7 @@
+     end
+     return {adjustment=adjustment,ratio=ratio,capacity_ratio=capacity_ratio,before_mean=a.mean,after_mean=b.mean,samples=4,
+       before_readiness=before_readiness,after_readiness=after_readiness,work_cost=work_cost,
++      forced_comparison=clone(forced_comparison),score_kind=bell and 'forced_card_lower_bound' or nil,
+       before_ordering=clone(a.ordering),after_ordering=clone(b.ordering),ordering_cost=ordering_cost,
+       before_finishing=clone(af),after_finishing=clone(bf),complete_finishing=not not complete_finishing,
+       before_startup=clone(a.startup),after_startup=clone(b.startup),
+--- a/Brainstorm/Advisor/gold_goal.lua
++++ b/Brainstorm/Advisor/gold_goal.lua
+@@ -92,7 +92,7 @@
+   local sorted={};for key in pairs(keys) do sorted[#sorted+1]=key end;table.sort(sorted)
+   return count,sorted
+ end
+-local function opening(e,target)
++local function opening(e,target,boss,bell)
+   if not e or e.incomplete or e.samples~=4 or e.uncertain~=false or e.temporal or e.before_startup or e.after_startup or
+       e.before_target~=target or e.after_target~=target or not finite(e.low_sample_delta) then return nil end
+   local after_low=math.huge
+@@ -106,6 +106,16 @@
+   end
+   local delta=math.huge
+   for i=1,4 do delta=math.min(delta,e.after_readiness.opening_scores[i]-e.before_readiness.opening_scores[i]) end
++  if boss=='bl_final_bell' then
++    if not bell or not bell.compare or e.score_kind~='forced_card_lower_bound' then return nil end
++    local forced=bell.compare(e.before_readiness.bell_opening,e.after_readiness.bell_opening,target)
++    if not forced then return nil end
++    for i=1,4 do
++      if forced.before_scores[i]~=e.before_readiness.opening_scores[i] or
++          forced.after_scores[i]~=e.after_readiness.opening_scores[i] then return nil end
++    end
++    after_low=math.min(after_low,forced.minimum_after);delta=math.min(delta,forced.minimum_delta)
++  end
+   return after_low,math.min(delta,e.low_sample_delta)
+ end
+ local function exact_incumbent(base)
+@@ -145,9 +155,10 @@
+   local b=snapshot.next_blind or {}
+   if snapshot.phase~='shop' or b.boss~=true or not integer(snapshot.win_ante) or snapshot.win_ante<1 or
+       snapshot.ante~=snapshot.win_ante or b.ante~=snapshot.win_ante or
+-      not ({bl_final_vessel=true,bl_final_leaf=true})[b.key] or not finite(b.chips) or b.chips<=0 then
++      not ({bl_final_vessel=true,bl_final_leaf=true,bl_final_bell=true})[b.key] or not finite(b.chips) or b.chips<=0 then
+     return no('This comparison requires the final known supported boss immediately after the current shop.')
+   end
++  if b.key=='bl_final_bell' and not modules.bell_opening then return no('Complete Bell forced-card dependencies are required.') end
+   local strategy=modules.strategy;local api=strategy and strategy.shop_sequence_api
+   local transition=modules.shop_sequences and modules.shop_sequences.transition
+   local liquidity=modules.liquidity or strategy and strategy.liquidity
+@@ -240,7 +251,7 @@
+   local function compare(left,right)
+     local e=context:compare(left.state,right.state);diag.comparisons=diag.comparisons+1
+     if context.truncated then return nil,'The shared score allowance could not complete all cargo comparisons.' end
+-    local low,delta=opening(e,b.chips)
++    local low,delta=opening(e,b.chips,b.key,modules.bell_opening)
+     if not low then return nil,'An admitted endpoint lacks complete supported nonrandom first-hand evidence.' end
+     return {evidence=e,low=low,delta=delta}
+   end
+@@ -257,11 +268,13 @@
+       ref.delta>=0 and p.state.dollars>=allowance.purchase_floor and allowance.shortfall==0
+     local row={actions=copy(p.actions),titles=copy(p.titles),key=p.key,carried_missing=p.carried,missing_keys=copy(p.keys),
+       cash_after=p.state.dollars,jokers=copy(p.state.jokers),inventory=copy(p.state.consumeables),
+-      hold_evidence=copy(hold.evidence),incumbent_evidence=copy(ref.evidence),liquidity=copy(allowance),eligible=safe}
++      hold_evidence=copy(hold.evidence),incumbent_evidence=copy(ref.evidence),liquidity=copy(allowance),eligible=safe,
++      setup_actions=b.key=='bl_final_bell' and hold.evidence.after_readiness.bell_opening.setup_actions or 0}
++    row.projected_actions=#p.actions+row.setup_actions;p.projected_actions=row.projected_actions
+     diag.endpoints[#diag.endpoints+1]=row;p.receipt=row;p.low=math.min(hold.low,ref.low)
+     if safe and p.carried>reference.carried and (not best or p.carried>best.carried or p.carried==best.carried and
+         (p.low>best.low or p.low==best.low and (p.state.dollars>best.state.dollars or p.state.dollars==best.state.dollars and
+-          (#p.actions<#best.actions or #p.actions==#best.actions and p.key<best.key)))) then best=p end
++          (p.projected_actions<best.projected_actions or p.projected_actions==best.projected_actions and p.key<best.key)))) then best=p end
+   end
+   diag.complete=true;diag.evidence_complete=true;diag.incumbent=copy(reference.receipt);diag.before_missing=reference.carried
+   if not best then return no('No completed endpoint adds a distinct missing Joker while preserving both sampled opening references and cash reserves.') end
+@@ -273,6 +286,7 @@
+       ' ($'..tostring(card and (first.kind=='sell' and card.sell_cost or card.cost) or '?')..')'
+   return {title=title,action=action,warnings={},completionist_goal=copy(best.receipt),
+     lines={'This complete paid endpoint carries '..best.carried..' distinct missing Gold-sticker Joker(s), versus '..reference.carried..' in the current plan.',
++      b.key=='bl_final_bell' and 'Every possible forced card in all four sampled first hands clears with at least 25% margin and no lower chips for the same forced identity. One fixed Joker layout is used per endpoint; later forced draws remain unresolved.' or
+       'All four supported sampled openings clear the final boss with at least 25% margin and no lower sampled chips than keeping the current row or taking the current recommendation.',
+       #best.actions>1 and 'Proposed endpoint: '..table.concat(best.titles,'; then ')..'. Take only the first step, then refresh advice.' or 'Refresh advice after this action.',
+       'These are composition samples, not a win guarantee. Gold progress changes only after the game records an eligible win.'}},diag
+--- a/Brainstorm/Advisor/shop_sequences.lua
++++ b/Brainstorm/Advisor/shop_sequences.lua
+@@ -3,7 +3,7 @@
+ local M={}
+ local function num(v,d) return type(v)=='number' and v or (d or 0) end
+ local function copy(v,seen)
+-  if type(v)~='table' then return type(v)~='function' and v or nil end
++  if type(v)~='table' then if type(v)=='function' then return nil end;return v end
+   seen=seen or {};if seen[v] then return seen[v] end
+   local out={};seen[v]=out
+   for k,x in pairs(v) do if k~='_shop_scoring' and k~='_readiness' then out[k]=copy(x,seen) end end

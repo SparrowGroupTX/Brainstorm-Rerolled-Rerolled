@@ -1,0 +1,134 @@
+{
+  "checks": {
+    "contiguous": true,
+    "decode_clean": true,
+    "stable_capture": true,
+    "frozen_hashes": true,
+    "ten_starts": true,
+    "all_classified": true,
+    "converter_clean": true,
+    "all_callbacks": true,
+    "all_accepted_settled": true,
+    "teacher_projection": true,
+    "runtime_hashes": true
+  },
+  "outcomes": {
+    "loss": 7,
+    "win": 3
+  },
+  "same_seed_order": false,
+  "receipts": 310,
+  "receipt_reasons": {
+    "hold_or_ordinary_purchase_preferred": 248,
+    "replacement_preferred": 8,
+    "unsupported_family": 17,
+    "budget_incomplete": 37
+  },
+  "shop_exits": 145,
+  "shop_exits_with_inventory": 120,
+  "late_shop_exits": 39,
+  "late_multiple_inventory": 32,
+  "comparison": [
+    {
+      "run": 1,
+      "seed": "SO1AWAOV",
+      "old_outcome": "unsupported",
+      "new_outcome": "loss",
+      "old_blind": "The Mouth",
+      "new_blind": "The Wall",
+      "old_ante": 7,
+      "new_ante": 3
+    },
+    {
+      "run": 2,
+      "seed": "CLGIQJOV",
+      "old_outcome": "win",
+      "new_outcome": "loss",
+      "old_blind": "Verdant Leaf",
+      "new_blind": "The Needle",
+      "old_ante": 9,
+      "new_ante": 5
+    },
+    {
+      "run": 3,
+      "seed": "AH4CBMOV",
+      "old_outcome": "loss",
+      "new_outcome": "loss",
+      "old_blind": "The House",
+      "new_blind": "Small Blind",
+      "old_ante": 2,
+      "new_ante": 4
+    },
+    {
+      "run": 4,
+      "seed": "BMYW2UOV",
+      "old_outcome": "loss",
+      "new_outcome": "loss",
+      "old_blind": "Big Blind",
+      "new_blind": "Big Blind",
+      "old_ante": 5,
+      "new_ante": 5
+    },
+    {
+      "run": 5,
+      "seed": "DXZFPXOV",
+      "old_outcome": "loss",
+      "new_outcome": "loss",
+      "old_blind": "Amber Acorn",
+      "new_blind": "The Manacle",
+      "old_ante": 8,
+      "new_ante": 1
+    },
+    {
+      "run": 6,
+      "seed": "OS3C1APV",
+      "old_outcome": "win",
+      "new_outcome": "loss",
+      "old_blind": "Crimson Heart",
+      "new_blind": "The Ox",
+      "old_ante": 9,
+      "new_ante": 6
+    },
+    {
+      "run": 7,
+      "seed": "FR67ZKPV",
+      "old_outcome": "unsupported",
+      "new_outcome": "win",
+      "old_blind": "Amber Acorn",
+      "new_blind": "Crimson Heart",
+      "old_ante": 8,
+      "new_ante": 9
+    },
+    {
+      "run": 8,
+      "seed": "AILQNQPV",
+      "old_outcome": "loss",
+      "new_outcome": "win",
+      "old_blind": "Small Blind",
+      "new_blind": "Cerulean Bell",
+      "old_ante": 4,
+      "new_ante": 9
+    },
+    {
+      "run": 9,
+      "seed": "8QEHTRPV",
+      "old_outcome": "win",
+      "new_outcome": "loss",
+      "old_blind": "Violet Vessel",
+      "new_blind": "Violet Vessel",
+      "old_ante": 9,
+      "new_ante": 8
+    },
+    {
+      "run": 10,
+      "seed": "RQFHXPV",
+      "old_outcome": "loss",
+      "new_outcome": "win",
+      "old_blind": "Violet Vessel",
+      "new_blind": "Crimson Heart",
+      "old_ante": 8,
+      "new_ante": 9
+    }
+  ],
+  "scope": "User-started completed diagnostic batch. No new experiments, gameplay, replay or policy/scorer calls."
+}

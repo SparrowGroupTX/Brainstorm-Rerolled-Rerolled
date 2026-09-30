@@ -1,0 +1,733 @@
+{
+  "schema": 1,
+  "scope": "Read-only named passive journal prefix freeze; no policy evaluations, replay, source/native components, searches, simulations, save/profile reads or game control.",
+  "prefix": "session-20260916T063659Z-1",
+  "inputs": [
+    {
+      "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T063659Z-1-000001.brj",
+      "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development349\\log_analysis\\frozen_prefix\\session-20260916T063659Z-1-000001.brj",
+      "bytes": 29283,
+      "sha256": "883e494c1a20d556c38e79b5b0b06fc1a89939b10e439372340983b6f05c9fa0",
+      "append_active": false,
+      "stat_unchanged_during_read": true,
+      "original_size_after_read": 29283,
+      "event_count": 10
+    },
+    {
+      "original_path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T063659Z-1-000002.brj",
+      "frozen_path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development349\\log_analysis\\frozen_prefix\\session-20260916T063659Z-1-000002.brj",
+      "bytes": 2448419,
+      "sha256": "fca661cb0a220b9a9843504e172df0add6b16f0928836600a7654507147d8f1c",
+      "append_active": true,
+      "stat_unchanged_during_read": true,
+      "original_size_after_read": 2448419,
+      "event_count": 854
+    }
+  ],
+  "hash_semantics": "Exact frozen byte prefixes; append-active source may grow later. Original and decoded-frame hashes preserve provenance.",
+  "loaded_versions": {
+    "Brainstorm v2.148.0-alpha": 646
+  },
+  "event_counts": {
+    "performance_window": 58,
+    "auto_run": 324,
+    "collection_search_started": 1,
+    "collection_search_finished": 1,
+    "collection_run_start": 1,
+    "action_requested": 160,
+    "action_callback_result": 160,
+    "state_after_actions": 159
+  },
+  "decode_errors": [],
+  "last_sequence": 864,
+  "last_at": "2026-09-16T06:41:47Z",
+  "droll_decisions": [
+    {
+      "anchor": {
+        "segment": "session-20260916T063659Z-1-000002.brj",
+        "ordinal": 75,
+        "sequence": 85,
+        "decoded_event_sha256": "151b348cb93835d925c07f965b889fac583aacdadaaf5bd2411f616bade6be6e",
+        "stored_frame_sha256": "3b0a179c2cd86118fd40869de1fb142ed511eb79f2f98ce77eeb94d352a4e475"
+      },
+      "at": "2026-09-16T06:37:27Z",
+      "kind": "action_requested",
+      "version": "Brainstorm v2.148.0-alpha",
+      "seed": "M4BVSY11",
+      "details": {
+        "action": "advisor_execute",
+        "input": {
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          }
+        },
+        "source": "auto_run"
+      },
+      "state": {
+        "ante": 1,
+        "round": 1,
+        "phase": "shop",
+        "state": 5,
+        "dollars": 5,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "next_blind": {
+          "ante": 1,
+          "boss": true,
+          "chips": 600,
+          "debuff": {
+            "h_size_ge": 5
+          },
+          "key": "bl_psychic",
+          "label": "Boss",
+          "mult": 2,
+          "name": "The Psychic"
+        },
+        "next_blind_chips": 600,
+        "hands_left": 4,
+        "discards_left": 3
+      },
+      "goal_counts": {
+        "complete": 59,
+        "missing": 91,
+        "total": 150,
+        "unknown": 0
+      },
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "acquisition_comparisons": 0,
+          "acquisition_complete": false,
+          "acquisition_endpoint_count": 0,
+          "acquisition_evaluations": 0,
+          "acquisition_projection_complete": false,
+          "acquisition_reason": "This acquisition family requires a known Small, Big, Vessel or Leaf next in the winning Ante.",
+          "acquisition_scope": "Winning-Ante Small/Big/Vessel/Leaf shop: current row plus bounded physical copy-target rows, an actual reorder then fresh advice before a visible missing buy or completed original sale/buy; inventory held unused.",
+          "final_comparisons": 0,
+          "final_complete": false,
+          "final_endpoint_count": 0,
+          "final_evidence_complete": false,
+          "final_projection_complete": false,
+          "final_reason": "This comparison requires the final known supported boss immediately after the current shop.",
+          "final_scope": "Final pre-boss shop: every admitted zero/one Joker buy with at most one original sale; four paired nonrandom opening scores, exact paid endpoints and unique missing keys. No sticker is awarded by this projection.",
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 48774,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Completionist++: 59/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Adds base Mult, which makes later XMult effects stronger. Eternal: this slot is permanent. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 137 -> 137 chips across 4 paired deck samples, allowing copy-target order shortlist (2/5 layouts); upcoming The Psychic; target 600. Samples are not a blind-win probability.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Psychic: you must play exactly five cards, even for Pair or High Card.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 1.9438614999999402,
+          "decision_id": 41,
+          "elapsed_seconds": 2.483778800000003,
+          "evaluations": 48774,
+          "finished_seconds": 53.3312018,
+          "max_resume_seconds": 0.3155588999999992,
+          "phase": "shop",
+          "resume_calls": 763,
+          "started_seconds": 50.847423,
+          "status": "completed"
+        },
+        "title": "Buy Droll Joker ($4)"
+      },
+      "selected_card": {
+        "id": "card:337",
+        "key": "j_droll",
+        "name": "Droll Joker",
+        "cost": 4,
+        "sell_cost": 2,
+        "edition": null,
+        "ability": {
+          "bonus": 0,
+          "d_size": 0,
+          "effect": "Type Mult",
+          "eternal": true,
+          "extra_value": 0,
+          "h_dollars": 0,
+          "h_mult": 0,
+          "h_size": 0,
+          "h_x_mult": 0,
+          "hands_played_at_create": 3,
+          "mult": 0,
+          "name": "Droll Joker",
+          "order": 10,
+          "p_dollars": 0,
+          "perma_bonus": 0,
+          "set": "Joker",
+          "t_chips": 0,
+          "t_mult": 10,
+          "type": "Flush",
+          "x_mult": 1
+        },
+        "debuff": false,
+        "gold_record": {
+          "key": "j_droll",
+          "status": "complete"
+        }
+      },
+      "selected_action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "jokers_before": [
+        {
+          "id": "card:334",
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_perkeo",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:335",
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1,
+            "yorick_discards": 14
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_yorick",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:341",
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 10,
+          "sell_cost": 5,
+          "edition": null,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_brainstorm",
+            "status": "complete"
+          }
+        }
+      ],
+      "hands": {
+        "Five of a Kind": {
+          "level": 1,
+          "chips": 120,
+          "mult": 12,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Flush": {
+          "level": 1,
+          "chips": 35,
+          "mult": 4,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Flush Five": {
+          "level": 1,
+          "chips": 160,
+          "mult": 16,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Flush House": {
+          "level": 1,
+          "chips": 140,
+          "mult": 14,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Four of a Kind": {
+          "level": 1,
+          "chips": 60,
+          "mult": 7,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Full House": {
+          "level": 1,
+          "chips": 40,
+          "mult": 4,
+          "played": 1,
+          "played_this_round": 1
+        },
+        "High Card": {
+          "level": 1,
+          "chips": 5,
+          "mult": 1,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Pair": {
+          "level": 1,
+          "chips": 10,
+          "mult": 2,
+          "played": 2,
+          "played_this_round": 2
+        },
+        "Straight": {
+          "level": 1,
+          "chips": 30,
+          "mult": 4,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Straight Flush": {
+          "level": 1,
+          "chips": 100,
+          "mult": 8,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Three of a Kind": {
+          "level": 1,
+          "chips": 30,
+          "mult": 3,
+          "played": 0,
+          "played_this_round": 0
+        },
+        "Two Pair": {
+          "level": 1,
+          "chips": 20,
+          "mult": 2,
+          "played": 0,
+          "played_this_round": 0
+        }
+      },
+      "shop_jokers": [
+        {
+          "id": "card:336",
+          "key": "j_loyalty_card",
+          "name": "Loyalty Card",
+          "cost": 1,
+          "sell_cost": 1,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "burnt_hand": 0,
+            "d_size": 0,
+            "effect": "1 in 10 mult",
+            "eternal": true,
+            "extra": {
+              "Xmult": 4,
+              "every": 5,
+              "remaining": "5 remaining"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "loyalty_remaining": 5,
+            "mult": 0,
+            "name": "Loyalty Card",
+            "order": 25,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_loyalty_card",
+            "status": "missing"
+          }
+        },
+        {
+          "id": "card:337",
+          "key": "j_droll",
+          "name": "Droll Joker",
+          "cost": 4,
+          "sell_cost": 2,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Type Mult",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Droll Joker",
+            "order": 10,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 10,
+            "type": "Flush",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_droll",
+            "status": "complete"
+          }
+        }
+      ],
+      "pack_cards": [],
+      "pack_type": null,
+      "pack_choices": 1,
+      "rank_population": {
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4,
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "14": 4,
+        "11": 4,
+        "13": 4,
+        "12": 4,
+        "10": 4
+      },
+      "jokers_after": [
+        {
+          "id": "card:334",
+          "key": "j_perkeo",
+          "name": "Perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_perkeo",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:335",
+          "key": "j_yorick",
+          "name": "Yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "edition": null,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1,
+            "yorick_discards": 14
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_yorick",
+            "status": "complete"
+          }
+        },
+        {
+          "id": "card:341",
+          "key": "j_brainstorm",
+          "name": "Brainstorm",
+          "cost": 10,
+          "sell_cost": 5,
+          "edition": null,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "gold_record": {
+            "key": "j_brainstorm",
+            "status": "complete"
+          }
+        }
+      ],
+      "immediate_following_records": [
+        {
+          "anchor": {
+            "segment": "session-20260916T063659Z-1-000002.brj",
+            "ordinal": 76,
+            "sequence": 86,
+            "decoded_event_sha256": "b590291d07c54f7fe31966a2f88a7b7a149e3e3c32b4a11055b905de884f2645",
+            "stored_frame_sha256": "00a67ce9d3f6ad6a0f7e58ce3f0260ab46567dcdf60034df9be77bafe4457543"
+          },
+          "at": "2026-09-16T06:37:27Z",
+          "kind": "action_callback_result",
+          "version": null,
+          "seed": null,
+          "details": {
+            "action_sequence": 85,
+            "callback_returned": true,
+            "completion": "Callback result only; queued effects may still be pending.",
+            "reason": ""
+          },
+          "state": {
+            "ante": null,
+            "round": null,
+            "phase": null,
+            "state": null,
+            "dollars": null,
+            "joker_limit": null,
+            "consumable_limit": null,
+            "next_blind": null,
+            "next_blind_chips": null,
+            "hands_left": null,
+            "discards_left": null
+          },
+          "goal_counts": null,
+          "advice": null
+        },
+        {
+          "anchor": {
+            "segment": "session-20260916T063659Z-1-000002.brj",
+            "ordinal": 77,
+            "sequence": 87,
+            "decoded_event_sha256": "a1baeb776223099528df9f87af2ce1cf717c00934627d5e534d4d5731a61d7e4",
+            "stored_frame_sha256": "875d389db390b4b3888d7bafb63b40962ac57f7f0094912ea4a8b2b672963e09"
+          },
+          "at": "2026-09-16T06:37:27Z",
+          "kind": "state_after_actions",
+          "version": "Brainstorm v2.148.0-alpha",
+          "seed": "M4BVSY11",
+          "details": {
+            "latest_action_sequence": 85,
+            "observation": "First settled observation after callbacks; not proof every queued event completed."
+          },
+          "state": {
+            "ante": 1,
+            "round": 1,
+            "phase": "shop",
+            "state": 5,
+            "dollars": 5,
+            "joker_limit": 5,
+            "consumable_limit": 2,
+            "next_blind": {
+              "ante": 1,
+              "boss": true,
+              "chips": 600,
+              "debuff": {
+                "h_size_ge": 5
+              },
+              "key": "bl_psychic",
+              "label": "Boss",
+              "mult": 2,
+              "name": "The Psychic"
+            },
+            "next_blind_chips": 600,
+            "hands_left": 4,
+            "discards_left": 3
+          },
+          "goal_counts": {
+            "complete": 59,
+            "missing": 91,
+            "total": 150,
+            "unknown": 0
+          },
+          "advice": {
+            "lines": [
+              "Executing recommendation..."
+            ],
+            "status": "unavailable",
+            "title": "Run Advisor"
+          }
+        }
+      ]
+    }
+  ],
+  "terminal_or_stop_records": [],
+  "original_event_receipts": [
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development349\\log_analysis\\original_event_85.json",
+      "sha256": "151b348cb93835d925c07f965b889fac583aacdadaaf5bd2411f616bade6be6e",
+      "anchor": {
+        "segment": "session-20260916T063659Z-1-000002.brj",
+        "ordinal": 75,
+        "sequence": 85,
+        "decoded_event_sha256": "151b348cb93835d925c07f965b889fac583aacdadaaf5bd2411f616bade6be6e",
+        "stored_frame_sha256": "3b0a179c2cd86118fd40869de1fb142ed511eb79f2f98ce77eeb94d352a4e475"
+      }
+    },
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development349\\log_analysis\\original_event_86.json",
+      "sha256": "b590291d07c54f7fe31966a2f88a7b7a149e3e3c32b4a11055b905de884f2645",
+      "anchor": {
+        "segment": "session-20260916T063659Z-1-000002.brj",
+        "ordinal": 76,
+        "sequence": 86,
+        "decoded_event_sha256": "b590291d07c54f7fe31966a2f88a7b7a149e3e3c32b4a11055b905de884f2645",
+        "stored_frame_sha256": "00a67ce9d3f6ad6a0f7e58ce3f0260ab46567dcdf60034df9be77bafe4457543"
+      }
+    },
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development349\\log_analysis\\original_event_87.json",
+      "sha256": "a1baeb776223099528df9f87af2ce1cf717c00934627d5e534d4d5731a61d7e4",
+      "anchor": {
+        "segment": "session-20260916T063659Z-1-000002.brj",
+        "ordinal": 77,
+        "sequence": 87,
+        "decoded_event_sha256": "a1baeb776223099528df9f87af2ce1cf717c00934627d5e534d4d5731a61d7e4",
+        "stored_frame_sha256": "875d389db390b4b3888d7bafb63b40962ac57f7f0094912ea4a8b2b672963e09"
+      }
+    }
+  ],
+  "limits": [
+    "No counterfactual policy was executed.",
+    "No outcome beyond the frozen prefix is imputed.",
+    "Scores and decision labels are recorded advice, not independently reevaluated."
+  ]
+}

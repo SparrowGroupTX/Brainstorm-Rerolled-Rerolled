@@ -299,6 +299,30 @@ IMMOLATE_API std::string brainstorm_estimate_v4_cpp(
     int stakeLevel,
     bool rejectPerishableTargets);
 extern "C" {
+    // v8 criteria plus an OR copy target and distinct visible missing-Joker
+    // quota. JSON result; free_result owns deallocation. budgetMs: 1..30000.
+    IMMOLATE_API const char* brainstorm_v9(
+        const char* seed, const char* voucher, const char* pack,
+        const char* tag, int souls, bool observatory,
+        int observatoryDeadline, bool perkeo, bool copymoney, bool retcon,
+        bool bean, bool burglar, const char* customFilter,
+        const char* targetRank, const char* targetSuit,
+        int specificRankMin, int anyRankMin, const char* targetJokers,
+        const char* deck, const char* targetJokerLocations,
+        int stakeLevel, bool rejectPerishableTargets,
+        bool interchangeableCopies, const char* missingNames,
+        int minimumDistinct, int firstAnte, int lastAnte, int budgetMs);
+    IMMOLATE_API void brainstorm_cancel_v9();
+    // Bounded, challenge-specific first-Small-Charm route. Returns JSON;
+    // release with free_result. No ordinary deck/shop filters are accepted.
+    IMMOLATE_API const char* brainstorm_challenge_opening_v1(
+        const char* seed, const char* challenge_id, const char* targetJokersCSV);
+    // Optional conditional initial-stock Rare offer after the same opening.
+    // rarePoolMask binds the live ordered twenty-position vanilla Rare pool;
+    // no acquisition, affordability or survival is implied. v1 is unchanged.
+    IMMOLATE_API const char* brainstorm_challenge_opening_v2(
+        const char* seed, const char* challenge_id, const char* targetJokersCSV,
+        const char* laterJokerKey, int deadlineAnte, const char* rarePoolMask);
     IMMOLATE_API const char* brainstorm(
         const char* seed,
         const char* voucher,

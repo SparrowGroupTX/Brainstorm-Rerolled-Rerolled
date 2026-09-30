@@ -1,0 +1,351 @@
+--- before426/Brainstorm/Advisor/joker_retirement.lua
++++ Brainstorm/Advisor/joker_retirement.lua
+@@ -56,11 +56,12 @@
+  end
+  return true
+ end
+-local function row(s)
++local function row(s,soul)
+  if not dense(s.jokers,8) or s.ordering_safe==false or s.jokers_shuffling or (s.blind or {}).shuffle_pending then return nil end
+  local ids={}
+  for _,c in ipairs(s.jokers)do
+-  if not plain(c) or not plain(c.ability) or c.ability.set~='Joker' or not independent[c.key] or
++  if not plain(c) or not plain(c.ability) or c.ability.set~='Joker' or
++   not (independent[c.key] or soul and (c.key=='j_mail' and expired(c) or c.key=='j_stencil')) or
+    c.unknown or c.face_down or c.facing=='back' or c.identity_redacted or c.concealed or c.getting_sliced or
+    not (type(c.id)=='string' and c.id~='' or finite(c.id)) or ids[tostring(c.id)] or
+    type(c.debuff)~='boolean' or type(c.blueprint_compat)~='boolean' or
+@@ -109,6 +110,67 @@
+   if math.min(50,b)<math.min(50,a)then return false end
+  end
+  return true
++end
++-- Exact disposal only; no generated Joker or temporary Stencil bonus is valued.
++-- The incoming Soul effect is intentionally left to fresh ordinary pack advice.
++function M.soul_sales(s,strategy)
++ local d={schema=1,complete=false,evaluations=0,reason='No supported Soul vacancy.'}
++ local function no(reason)d.reason=reason;return {},d end
++ local api=strategy and strategy.shop_sequence_api
++ if s.phase~='pack' or s.teacher_profile~='perkeo_yorick_win_v1' or s.completionist_goal or
++  not api or type(api.after_joker_sale)~='function' or not dense(s.pack_cards,8) or
++  not finite(s.pack_choices) or s.pack_choices%1~=0 or s.pack_choices<1 or
++  not finite(s.joker_limit) or s.joker_limit%1~=0 or not dense(s.jokers,8) or
++  #s.jokers~=s.joker_limit or (s.modifiers or {}).all_eternal or
++  not finite(s.dollars) or not finite(s.bankrupt_at) then return no('Exact full-row pack and cash metadata are required.')end
++ local soul_index,soul_id
++ for i,c in ipairs(s.pack_cards)do
++  if not plain(c) or c.unknown or c.identity_redacted or c.concealed or c.face_down or c.facing=='back' then
++   return no('All pack offers must be public.')end
++  if c.key=='c_soul' then
++   local a=c.ability
++   if soul_index or not plain(a) or a.set~='Spectral' or a.name~='The Soul' or
++    not plain(a.consumeable) or next(a.consumeable)~=nil or c.debuff~=false or
++    c.edition~=nil or not (type(c.id)=='string' and c.id~='' or finite(c.id)) then
++    return no('A unique canonical usable Soul is required.')end
++   soul_index,soul_id=i,c.id
++  end
++ end
++ if not soul_index then return no('No visible Soul offer.')end
++ d.index=soul_index;d.offer_id=soul_id;d.key='c_soul'
++ local protected={bl_final_leaf=true,bl_final_acorn=true,bl_final_heart=true}
++ local boss=(s.blind_choices or {}).Boss or ((s.round_resets or {}).blind_choices or {}).Boss
++ if type(boss)=='table'then boss=boss.key end
++ if protected[(s.next_blind or {}).key] or protected[boss]then
++  return no('Preserve the upcoming boss selection/sacrifice row.')end
++ local before_effects=row(s,true)
++ if not before_effects then return no('Unsupported, concealed or unsettled retained row.')end
++ -- Stencil gains during the vacancy, then returns to its original occupancy
++ -- after generation. Require the canonical public counter; promise no bonus.
++ local stencils=0;for _,c in ipairs(s.jokers)do if c.key=='j_stencil'then stencils=stencils+1 end end
++ for _,c in ipairs(s.jokers)do
++  if c.key=='j_stencil' and (c.ability.name~='Joker Stencil' or c.ability.x_mult~=stencils)then
++   return no('Stencil occupancy metadata is unsupported.')end
++ end
++ local plans={}
++ for i,c in ipairs(s.jokers)do
++  local a=c.ability
++  if expired(c) and not a.eternal and not c.pinned and not a.pinned and
++   not (c.edition and c.edition.negative) and c.key~='j_stencil' then
++   local after=api.after_joker_sale(s,i)
++   local valid=after and #after.jokers==#s.jokers-1 and #after.jokers<after.joker_limit and
++    after.dollars==s.dollars+c.sell_cost and after.dollars>=s.bankrupt_at and
++    equal(before_effects,row(after,true)) and inventory(s,after)
++   for _,field in ipairs({'playing_cards','hands','hand_size','hand_limit','round_resets','round_bonus','current_round',
++    'consumeable_buffer','consumable_limit','joker_limit','bankrupt_at','probabilities','modifiers',
++    'used_vouchers','interest_cap','interest_amount','pack_cards','pack_choices'})do
++    valid=valid and equal(s[field],after and after[field])
++   end
++   if valid then plans[#plans+1]={index=i,sold=c,after=after,soul_index=soul_index,soul_id=soul_id}end
++  end
++ end
++ d.complete=true;d.reason=#plans>0 and 'Exact expired sale preserves supported retained effects and inventory.' or 'No expired sale preserves the supported row and inventory.'
++ return plans,d
+ end
+ function M.suggest(s,strategy)
+  local d={schema=1,complete=false,evaluations=0,scope='Exact expired completed rental removal; supported independent active row and unchanged copy targets/inventory.'}
+--- before426/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -1535,6 +1535,9 @@
+ 
+ local function capacity(snapshot, card, in_pack)
+     local category = kind(card)
++    if in_pack and card.key=='c_soul' then
++        return not jokerless(snapshot) and #(snapshot.jokers or {})<num(snapshot.joker_limit,5)
++    end
+     if category == 'joker' then
+         if jokerless(snapshot) then return false end
+         local limit = num(snapshot.joker_limit, 5)
+@@ -1990,7 +1993,10 @@
+                             #(snapshot.jokers or {}) >= num(snapshot.joker_limit, 5))
+                 -- Do not liquidate an Egg for a purchase that was already
+                 -- usable, or for a speculative reroll with no known upgrade.
+-                if blocked then
++                -- Soul's newly explicit slot requirement must not turn this
++                -- legacy Egg-funding heuristic into an unproved sacrifice.
++                -- Its pack preparation belongs only to the expired-sale proof.
++                if blocked and not (in_pack and candidate.card.key=='c_soul') then
+                     local penalty = 10
+                     if has(snapshot, 'j_swashbuckler') then
+                         local total = joker_sell_value(snapshot, has(snapshot, 'j_swashbuckler'))
+@@ -3477,13 +3483,38 @@
+ local function pack_advice(snapshot, stats, engine)
+     local diagnostics={offers={},comparisons={}}
+     local function finish(result)
+-        diagnostics.complete=snapshot._shop_scoring~=nil and not diagnostics.incomplete and not snapshot._shop_scoring.truncated
++        diagnostics.complete=not diagnostics.structural_only and snapshot._shop_scoring~=nil and not diagnostics.incomplete and not snapshot._shop_scoring.truncated
+         for _,offer in ipairs(diagnostics.offers) do
+             if offer.legal and offer.collection_admitted~=false and num(offer.score)>0 and not offer.scoring_evidence then diagnostics.complete=false end
+         end
+         diagnostics.selected_action=result.action
+         result.pack_diagnostics=diagnostics
+         return result
++    end
++    if not jokerless(snapshot) and Strategy.joker_retirement and Strategy.joker_retirement.soul_sales then
++        local plans,receipt=Strategy.joker_retirement.soul_sales(snapshot,Strategy)
++        if receipt.index then
++            diagnostics.soul_vacancy_reason=receipt.reason
++            for _,plan in ipairs(plans) do
++                -- Soul has no deterministic scoring projection. Compare the
++                -- whole vacancy pack using the ordinary strategic fallback,
++                -- never a fabricated legendary or mixed partial score results.
++                local vacant=shallow_copy(plan.after);vacant._shop_scoring=nil;vacant._readiness=nil
++                local next_choice=best_pack_choice(vacant,deck_stats(vacant),components(vacant))
++                local retained=next_choice and next_choice.index==plan.soul_index and
++                    next_choice.card.id==plan.soul_id and next_choice.score>0 and not next_choice.hand_order
++                diagnostics.comparisons[#diagnostics.comparisons+1]={kind='expired_sale_for_soul',
++                    index=plan.soul_index,offer_id=plan.soul_id,key='c_soul',sold_index=plan.index,sold_id=plan.sold.id,
++                    legal=true,admitted=not not retained,status='structural',preserves_score=true,
++                    reason=retained and 'exact_expired_vacancy_then_fresh_soul' or 'fresh_pack_prefers_another_offer'}
++                if retained then
++                    diagnostics.structural_only=true;diagnostics.soul_vacancy_complete=receipt.complete
++                    return finish({title='Sell expired '..name(plan.sold)..' to make room for Soul',warnings={},
++                        lines={receipt.reason,'Then refresh advice for the visible Soul. No particular legendary or future score is assumed.'},
++                        action={kind='sell',area='jokers',index=plan.index}})
++                end
++            end
++        end
+     end
+     local best = best_pack_choice(snapshot, stats, engine, diagnostics)
+     local buffoon=false
+--- before426/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.208.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.209.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before426/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.208.0-alpha
++--- VERSION: 2.209.0-alpha
+--- before426/tests/advisor_soul_vacancy426.lua
++++ tests/advisor_soul_vacancy426.lua
+@@ -0,0 +1,180 @@
++-- Manufactured public metadata only; no captured run or original game execution.
++local S=dofile('Brainstorm/Advisor/strategy.lua')
++local R=dofile('Brainstorm/Advisor/joker_retirement.lua')
++local D=dofile('Brainstorm/Advisor/decision.lua')
++local E=dofile('Brainstorm/Advisor/execution.lua')
++local J=dofile('Brainstorm/Advisor/player_journal.lua')
++local F=dofile('tests/fixtures/gold_tarot_hold_support.lua')
++local Copy=F.Snapshot.copy
++S.joker_retirement=R
++local checks=0
++local function check(v,m)checks=checks+1;assert(v,m)end
++local function card(key,name,set,id)
++ return {key=key,name=name,id=id,ability={name=name,set=set,consumeable={}},debuff=false}
++end
++local function state()
++ local s=F.state();s.phase='pack';s.teacher_profile='perkeo_yorick_win_v1'
++ s.dollars=31;s.bankrupt_at=0;s.ante=6;s.win_ante=8;s.joker_limit=5;s.rental_rate=3
++ s.modifiers={};s.consumable_limit=20;s.pack_choices=1
++ s.hand={{id='manufactured:held',rank=13,nominal=10,suit='Clubs',ability={set='Default'}}}
++ s.deck={};s.hands={};s.round_resets={hands=4,discards=3};s.hand_size=8;s.hand_limit=5
++ s.next_blind={key='bl_big',chips=7000};s.interest_cap=25
++ s.jokers={F.joker('j_perkeo','Perkeo','p'),F.joker('j_yorick','Yorick','y'),
++  F.joker('j_stencil','Joker Stencil','s'),F.joker('j_raised_fist','Raised Fist','r'),
++  F.joker('j_mail','Mail-In Rebate','expired')}
++ s.jokers[2].ability.x_mult=5;s.jokers[2].ability.extra={discards=23,xmult=1};s.jokers[2].ability.yorick_discards=9
++ s.jokers[3].ability.x_mult=1;s.jokers[3].ability.eternal=true;s.jokers[3].ability.rental=true
++ local dead=s.jokers[5];dead.ability.perishable=true;dead.ability.perish_tally=0;dead.debuff=true
++ dead.edition={foil=true,type='foil',chips=50};dead.sell_cost=3
++ s.pack_cards={card('c_soul','The Soul','Spectral','soul'),card('c_devil','The Devil','Tarot','devil')}
++ s.pack_cards[2].ability.consumeable={max_highlighted=1,mod_conv='m_gold'}
++ return s
++end
++local function advise(s)return D.run(s,{strategy=S})end
++if SOUL_BASELINE426 then
++ local a=advise(state())
++ check(a.action.kind=='choose' and a.action.index==2,'Exact425 baseline takes Devil instead of admitting expired-Soul preparation')
++ print('soul426 baseline: full-row Soul was not admitted; action='..a.action.kind)
++ return
++end
++do
++ local s=state();local before=F.Snapshot.fingerprint(s)
++ local plans,proof=R.soul_sales(s,S)
++ check(#plans==1 and plans[1].index==5 and proof.complete,'Foil expired Mail frees the unique ordinary slot')
++ check(plans[1].after.dollars==34 and #plans[1].after.jokers==4,'Exact proceeds and physical capacity')
++ check(plans[1].after.jokers[3].ability.x_mult==1,'No projected temporary Stencil bonus is invented')
++ check(proof.evaluations==0,'Structural proof consumes no score calls')
++ local a=advise(s);check(a.action.kind=='sell' and a.action.index==5,'Real decision chooses sale for Soul')
++ check(not a.action.followup,'Execute only the sale, never a precommitted second action')
++ local receipt=a.strategy.pack_diagnostics.comparisons[1]
++ check(receipt.kind=='expired_sale_for_soul' and receipt.admitted and receipt.status=='structural','Auditable admission receipt')
++ local compact=J.compact_copy_death_review(a)
++ check(compact and compact.pack.candidates[1].sold_id=='expired' and compact.final_kind=='sell','Public compact journal preserves reason and final action')
++ check(F.Snapshot.fingerprint(s)==before,'Detached proposal leaves source public data unchanged')
++ local next_state=plans[1].after
++ local next_advice=advise(next_state)
++ check(next_advice.action.kind=='choose' and next_advice.action.index==1,'Fresh vacancy chooses actual visible Soul')
++ check(S.shop_sequence_api.capacity(s,s.pack_cards[1],true)==false,'Full row reports Soul slot as unavailable')
++ check(S.shop_sequence_api.capacity(next_state,next_state.pack_cards[1],true),'Fresh vacancy makes Soul legal')
++ check(not R.suggest(s,S),'No broadening of shop rental-retirement scope')
++end
++do
++ local Shop=dofile('Brainstorm/Advisor/shop_scoring.lua')
++ local Score=dofile('Brainstorm/Advisor/scoring.lua')
++ local Pack=dofile('Brainstorm/Advisor/pack_scoring.lua')
++ S.pack_scoring=Pack
++ local modules={strategy=S,shop_scoring=Shop,scoring=Score,pack_scoring=Pack}
++ local s=state();local a=D.run(s,modules)
++ check(a.action.kind=='sell' and a.action.index==5,'Real shop context retains exact structural vacancy advice')
++ check(a.evaluations<=50000,'Original shared computation budget remains bounded')
++ check(a.strategy.pack_diagnostics.comparisons[1].status=='structural','Sale has no fabricated score receipt')
++ check(a.strategy.pack_diagnostics.complete==false and a.strategy.pack_diagnostics.structural_only and
++  a.strategy.pack_diagnostics.soul_vacancy_complete,'Exact vacancy completion is separate from unperformed tactical pack coverage')
++ local after=S.shop_sequence_api.after_joker_sale(s,5)
++ local fresh=D.run(after,modules)
++ check(fresh.action.kind=='choose' and fresh.action.index==1,'Actual incomplete Soul projection uses whole strategic fallback')
++ check(fresh.strategy.pack_diagnostics.tactical_fallback,'Unsupported legendary outcome does not receive a scored claim')
++ check(fresh.evaluations<=50000,'Fallback preserves accumulated computation accounting')
++ S.pack_scoring=nil
++end
++local function reject(label,edit)
++ local s=state();edit(s)
++ local plans=R.soul_sales(s,S)
++ check(#plans==0,label)
++end
++for _,case in ipairs({
++ {'nonteacher',function(s)s.teacher_profile=nil end},
++ {'collection trade protected',function(s)s.completionist_goal={}end},
++ {'wrong phase',function(s)s.phase='shop'end},
++ {'no choices',function(s)s.pack_choices=0 end},
++ {'missing choices',function(s)s.pack_choices=nil end},
++ {'already vacant',function(s)s.joker_limit=6 end},
++ {'overfull',function(s)s.joker_limit=4 end},
++ {'temporary debuff',function(s)s.jokers[5].ability.perish_tally=1 end},
++ {'expiry absent',function(s)s.jokers[5].ability.perishable=nil end},
++ {'not debuffed',function(s)s.jokers[5].debuff=false end},
++ {'eternal',function(s)s.jokers[5].ability.eternal=true end},
++ {'pinned',function(s)s.jokers[5].pinned=true end},
++ {'ability pinned',function(s)s.jokers[5].ability.pinned=true end},
++ {'Negative frees no ordinary slot',function(s)s.jokers[5].edition={negative=true}end},
++ {'unknown edition',function(s)s.jokers[5].edition={foil=true,unknown_callback=true}end},
++ {'active Mail not covered',function(s)s.jokers[5].debuff=false;s.jokers[5].ability.perishable=false end},
++ {'unknown expired callback',function(s)s.jokers[5].key='j_unknown'end},
++ {'sale callback Joker',function(s)s.jokers[5].key='j_diet_cola'end},
++ {'Baseball body dependence',function(s)s.jokers[4].key='j_baseball'end},
++ {'Abstract body dependence',function(s)s.jokers[4].key='j_abstract'end},
++ {'Swashbuckler sell value',function(s)s.jokers[4].key='j_swashbuckler'end},
++ {'Campfire trigger',function(s)s.jokers[4].key='j_campfire'end},
++ {'unknown retained effect',function(s)s.jokers[4].key='j_unknown'end},
++ {'hidden retained card',function(s)s.jokers[1].face_down=true end},
++ {'ambiguous identities',function(s)s.jokers[5].id='y'end},
++ {'unknown copy capability',function(s)s.jokers[1].blueprint_compat=nil end},
++ {'unsettled order',function(s)s.ordering_safe=false end},
++ {'noncanonical Stencil',function(s)s.jokers[3].ability.x_mult=2 end},
++ {'cash lowers hand size',function(s)s.modifiers.minus_hand_size_per_X_dollar=5;s.dollars=34 end},
++ {'missing cash',function(s)s.dollars=nil end},
++ {'all eternal',function(s)s.modifiers.all_eternal=true end},
++ {'upcoming sacrifice boss',function(s)s.next_blind.key='bl_final_leaf'end},
++ {'pending shuffle boss',function(s)s.blind_choices={Boss='bl_final_acorn'}end},
++ {'random debuff boss',function(s)s.round_resets.blind_choices={Boss='bl_final_heart'}end},
++ {'hidden Soul',function(s)s.pack_cards[1].identity_redacted=true end},
++ {'hidden competing offer',function(s)s.pack_cards[2].face_down=true end},
++ {'stale Soul absent',function(s)table.remove(s.pack_cards,1)end},
++ {'duplicate Soul',function(s)s.pack_cards[2]=Copy(s.pack_cards[1])end},
++ {'debuffed Soul',function(s)s.pack_cards[1].debuff=true end},
++ {'modified Soul effect',function(s)s.pack_cards[1].ability.consumeable.extra=2 end},
++ {'modified Soul name',function(s)s.pack_cards[1].ability.name='Unknown'end},
++ {'wrong Soul set',function(s)s.pack_cards[1].ability.set='Tarot'end},
++ {'unknown Soul identity',function(s)s.pack_cards[1].id=nil end},
++ {'Soul edition',function(s)s.pack_cards[1].edition={negative=true}end},
++ {'unknown inventory',function(s)s.consumeables[1].key='c_ankh';s.consumeables[1].ability.set='Spectral'end},
++ {'Temperance sale-value decline',function(s)s.consumeables={card('c_temperance','Temperance','Tarot','t')};s.consumeables[1].ability.extra=50;s.consumeables[1].ability.consumeable.extra=50 end},
++ {'Fool can regenerate Temperance',function(s)s.consumeables={card('c_fool','The Fool','Tarot','f')};s.last_tarot_planet='c_temperance'end},
++ {'unknown inventory buffer',function(s)s.consumeable_buffer=nil end},
++ {'copy reroute after dead target',function(s)s.jokers[1]=F.joker('j_blueprint','Blueprint','b');s.jokers[2],s.jokers[5]=s.jokers[5],s.jokers[2]end},
++})do reject(case[1],case[2])end
++do
++ local s=state();s.jokers[4]=F.joker('j_blueprint','Blueprint','b')
++ -- A dead final target remains absent after removing it: no live effect is lost.
++ check(#R.soul_sales(s,S)==1,'Unresolved final copy stays unresolved; no imagined gain')
++ s=state();s.jokers[4]=F.joker('j_blueprint','Blueprint','b');s.jokers[4],s.jokers[2]=s.jokers[2],s.jokers[4]
++ check(#R.soul_sales(s,S)==1,'Active Blueprint retains same Stencil endpoint')
++ s=state();s.jokers[5].key='j_trio';s.jokers[5].ability.name='The Trio'
++ check(#R.soul_sales(s,S)==1,'Existing supported expired effects also qualify')
++ s=state();s.pack_cards[2]=card('c_black_hole','Black Hole','Spectral','better')
++ local a=advise(s)
++ check(a.action.kind=='choose' and a.action.index==2,'A stronger free alternative prevents the preparatory sale')
++ check(not a.strategy.pack_diagnostics.comparisons[1].admitted,'Preflight rejection remains visible')
++end
++for _,teacher in ipairs({true,false})do for _,pinned in ipairs({true,false})do
++ local s=state();s.challenge='c_omelette_1';s.teacher_profile=teacher and s.teacher_profile or nil
++ s.jokers[5]=F.joker('j_egg','Egg','valuable');s.jokers[5].sell_cost=40;s.jokers[5].pinned=pinned
++ local a=advise(s)
++ check(a.action.kind~='sell','Soul capacity cannot activate the legacy Omelette sale for an active/pinned Egg')
++end end
++-- Real execution adapter, manufactured callbacks: sale settles before a fresh
++-- decision. No real G, game process, source callbacks or generated identity.
++do
++ local s=state();local a=advise(s)
++ local g={STATES={SPECTRAL_PACK=1},STATE=1,GAME={pack_choices=1,STOP_USE=0},FUNCS={},
++  hand={cards={},highlighted={},config={highlighted_limit=5}},jokers={cards=Copy(s.jokers)},pack_cards={cards=Copy(s.pack_cards)}}
++ function g.hand:unhighlight_all()self.highlighted={}end
++ function g.hand:add_to_highlighted(c)self.highlighted[#self.highlighted+1]=c end
++ for _,area in ipairs({g.jokers,g.pack_cards})do for _,c in ipairs(area.cards)do c.area=area end end
++ local calls={}
++ g.FUNCS.can_sell_card=function(e)e.config.button='sell_card'end
++ g.FUNCS.sell_card=function(e)
++  check(e.config.ref_table.id=='expired','Adapter sells the actual expected expired card')
++  calls[#calls+1]='sell';table.remove(g.jokers.cards,5)
++ end
++ g.FUNCS.can_use_consumeable=function(e)if #g.jokers.cards<5 then e.config.button='use_card'end end
++ g.FUNCS.use_card=function(e)check(e.config.ref_table.id=='soul','Adapter selects the actual visible Soul');calls[#calls+1]='choose'end
++ local ok,why=E.execute(g,a.action);check(ok,why)
++ check(#calls==1 and calls[1]=='sell','Sale invokes only one callback')
++ s=S.shop_sequence_api.after_joker_sale(s,5);a=advise(s)
++ ok,why=E.execute(g,a.action);check(ok,why)
++ check(#calls==2 and calls[2]=='choose','Fresh decision reaches legal Soul use')
++ g.GAME.pack_choices=0
++ ok=E.execute(g,a.action);check(not ok and #calls==2,'Exhausted pack cannot execute stale choice')
++end
++print('advisor_soul_vacancy426: '..checks..' checks passed')

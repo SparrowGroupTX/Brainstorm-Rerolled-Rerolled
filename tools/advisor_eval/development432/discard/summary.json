@@ -1,0 +1,85 @@
+{
+  "discard_actions": 533,
+  "discarded_cards": 2101,
+  "discard_size_counts": {
+    "5": 282,
+    "2": 39,
+    "3": 88,
+    "1": 49,
+    "4": 75
+  },
+  "cards_per_discard": 3.9418386491557222,
+  "discard_resource_mismatches": [],
+  "unused_clear_count": 38,
+  "unused_total": 98,
+  "unused_by_run": {
+    "1": {
+      "rounds": 4,
+      "unused": 6
+    },
+    "2": {
+      "rounds": 6,
+      "unused": 17
+    },
+    "3": {
+      "rounds": 2,
+      "unused": 8
+    },
+    "4": {
+      "rounds": 4,
+      "unused": 8
+    },
+    "5": {
+      "rounds": 4,
+      "unused": 12
+    },
+    "6": {
+      "rounds": 3,
+      "unused": 10
+    },
+    "7": {
+      "rounds": 2,
+      "unused": 6
+    },
+    "8": {
+      "rounds": 9,
+      "unused": 19
+    },
+    "10": {
+      "rounds": 4,
+      "unused": 12
+    }
+  },
+  "unused_reasons": {
+    "Replacement draws can reduce or reorder the reserved score.": 4,
+    "Automatic hand sorting can change scoring-card order.": 20,
+    "A Joker lacks a monotone public held-card floor.": 3,
+    "No visible retained-clear proof completed within the allowance.": 3,
+    "No shortlisted legal discard preserved the supported clearing score and held resources.": 1,
+    "The supported floor is below target; a random clear remains possible.": 1,
+    "Automatic hand sorting can change scoring-trigger order.": 4,
+    "Draw or play changes the finishing conditions.": 2
+  },
+  "final_boss_unused_clears": 3,
+  "hand_rounds_observed": 200,
+  "short_receipts": {
+    "total": 251,
+    "risk_compared": 151,
+    "five_compared": 150,
+    "best_sampled_all_clear": 151
+  },
+  "development_deferred": 43,
+  "development_deferred_then_non_discard": 0,
+  "enhancement_then_clear_without_discard": 24,
+  "continuation_unavailable": {
+    "Note: Remaining-blind comparison unavailable: Random score or growth outcomes are not sampled by this continuation.": 93,
+    "Note: Remaining-blind comparison unavailable: A future hand is concealed; no hidden-card play policy is modeled.": 2,
+    "Note: Remaining-blind comparison unavailable: The Mouth requires Pair.": 2,
+    "Note: Remaining-blind comparison unavailable: The Mouth requires Straight.": 3,
+    "Note: Remaining-blind comparison unavailable: A compared continuation could not be modeled.": 1,
+    "Note: Remaining-blind comparison unavailable: The Mouth requires Two Pair.": 1,
+    "Note: Remaining-blind comparison unavailable: Unmodeled Joker debuff resources: Zany Joker": 1
+  },
+  "burnt_first_discards": 10,
+  "terminal_losses": 2
+}

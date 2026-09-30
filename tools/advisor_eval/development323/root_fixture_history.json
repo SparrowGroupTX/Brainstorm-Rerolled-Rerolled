@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "scope": "Routine manufactured fixture development, not source/captured/complete experiments. Summary of observed command output; no exact frozen provenance is claimed for the first draft.",
+  "failures": [
+    {"fixture": "tests/advisor_runtime.lua", "assertion": "only the final released state publishes: No scoring play found ~= 12", "resolution": "The new hand-phase fixture returned a strategy-only result and incorrectly expected its title to render. The test double now returns a valid play and checks the final captured cash-derived score of 12. Runtime was unchanged by this test repair."}
+  ],
+  "inactive_drafts": {
+    "development323/journal": "Two untested, unstaged action-time logging optimizations. Idle journal work is already event-gated, so this proposal was excluded from release323; no implementation or experiment remains pending."
+  },
+  "new_experiments": 0,
+  "historical_authority": "closed"
+}

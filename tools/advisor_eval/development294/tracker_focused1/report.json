@@ -1,0 +1,24 @@
+{
+  "kind": "routine_synthetic_fixture",
+  "status": "passed",
+  "returncode": 0,
+  "seconds": 0.09921539999777451,
+  "timeout_seconds": 60,
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "tests/run_lua_tests.py",
+    "tests/advisor_gold_stickers.lua"
+  ],
+  "sha256": {
+    "Brainstorm/Advisor/gold_stickers.lua": "d0c58b12b81c4a147b61d5824e1570423eb5c8a45331e399976fa2ebe90122ff",
+    "tests/advisor_gold_stickers.lua": "a456dbddfaa75c2427ad5bf78a6a1bad1601d040fb662765b9b17205feedbbd6"
+  },
+  "source_allowlist": {
+    "path": "tools\\advisor_eval\\runs\\source_profiles254_auditable\\source_default_jokers.json",
+    "sha256": "85dab0d1f5b1884d31b7244262b4d58c4aa50af525e050ca0c665759b5a4e136",
+    "keys": 150,
+    "exact_match": true
+  },
+  "scope": "Synthetic supplied loaded-profile/catalog tables only; no real profile, save, game, source execution, search or complete-attempt worker."
+}

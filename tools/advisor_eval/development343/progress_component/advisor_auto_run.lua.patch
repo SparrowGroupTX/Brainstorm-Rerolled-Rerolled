@@ -1,0 +1,87 @@
+--- before/tests/advisor_auto_run.lua
++++ tests/advisor_auto_run.lua
+@@ -505,4 +505,84 @@
+   h.controller.tick();eq(h.executions,1,'unknown collection metadata permits no subsequent gameplay')
+   eq(h.searches,1,'unknown collection metadata permits no subsequent search')
+ end
++-- Sticker progress comes only from the already verified original award
++-- callback, not from holding targets, total profile counts or GAME.won.
++local function award(h,before,after)
++  local context={stake=8,deck='b_red',round=23,seeded=false,boss=true,ante=8,win_ante=8}
++  local function row(values)
++    return {stake=8,deck='b_red',round=23,seeded=false,won=true,jokers=values}
++  end
++  for key in pairs(before) do h.obs.goal.by_key[key]={key=key,status='complete'} end
++  return {kind='win',verified=true,source='original_win_callback',run_id=h.obs.run_id,event_id='award:'..h.obs.run_id,
++    final_context=context,callbacks={{name='set_joker_win',verified=true,before=row(before),after=row(after)},
++      {name='set_deck_win',verified=true,before=row(after),after=row(after)}}}
++end
++local function finish_award(h,receipt)
++  h.obs.terminal=receipt;h.controller.tick()
++  eq(h.controller.status().state,'terminal','original win remains a win independently of sticker progress')
++  return h.controller.status()
++end
++do
++  local h=harness();h.play({max_runs=3})
++  local receipt=award(h,{j_yorick=4,j_perkeo=0,j_joker=0},{j_yorick=5,j_perkeo=2,j_joker=1})
++  local status=finish_award(h,receipt)
++  eq(status.last_gold_award.status,'confirmed','complete original callback confirms sticker accounting')
++  eq(status.last_gold_award.new_count,2,'only zero-to-positive counters earn a distinct new sticker')
++  eq(table.concat(status.last_gold_award.new_keys,','),'j_joker,j_perkeo','new sticker keys sorted deterministically; repeated copies count once')
++  eq(status.gold_progress.confirmed_new_count,2,'session exposes confirmed distinct new stickers')
++  eq(status.gold_progress.zero_new_wins,0,'productive win is not zero-progress')
++  eq(status.gold_progress.unknown_wins,0,'complete award receipt is known')
++  eq(status.outcomes.wins,1,'run win and sticker count remain separate')
++  local final
++  for _,e in ipairs(h.logs) do if e.event=='run_finished' then final=e end end
++  check(final and final.gold_award.new_count==2 and final.gold_progress.confirmed_new_count==2,'run log binds source award and cumulative progress')
++  h.controller.stop();check(h.controller.resume(),'Stop and Resume retain accounted terminal')
++  h.controller.tick();eq(h.controller.status().gold_progress.confirmed_new_count,2,'same receipt cannot duplicate sticker count after Resume')
++  h.obs.transition_ready=true;h.controller.tick();h.found_search('SECOND');h.ready();h.controller.tick()
++  status=finish_award(h,award(h,{j_yorick=5,j_perkeo=2},{j_yorick=6,j_perkeo=3}))
++  eq(status.last_gold_award.new_count,0,'already Gold Joker win explicitly awards zero new stickers')
++  eq(status.gold_progress.zero_new_wins,1,'zero-new-sticker win separately counted')
++  eq(status.gold_progress.confirmed_new_count,2,'completed Joker repeats add no session stickers')
++  h.obs.transition_ready=true;h.controller.tick();h.found_search('THIRD');h.ready();h.controller.tick()
++  status=finish_award(h,award(h,{j_perkeo=0},{j_perkeo=1}))
++  eq(status.last_gold_award.new_count,1,'receipt retains its literal zero-to-positive award after manual historical restoration')
++  eq(status.gold_progress.confirmed_new_count,2,'same key never counts twice in cumulative session achievement progress')
++  h.controller.tick();eq(h.controller.status().reason,'run_limit','progress bookkeeping preserves original consumed run limit')
++  local stopped=h.logs[#h.logs]
++  check(stopped.event=='session_stopped' and stopped.gold_progress.confirmed_new_count==2,'stopped session logs exact progress summary')
++end
++do
++  local mutations={
++    {'missing callback evidence',function(e) e.callbacks=nil end},
++    {'unverified callback',function(e) e.callbacks[1].verified=false end},
++    {'duplicate callback',function(e) e.callbacks[2].name='set_joker_win' end},
++    {'sparse callback family',function(e) e.callbacks[3]=e.callbacks[2];e.callbacks[2]=nil end},
++    {'wrong stake',function(e) e.callbacks[1].before.stake=7 end},
++    {'different final round',function(e) e.final_context.round=22 end},
++    {'different deck',function(e) e.callbacks[1].after.deck='b_blue' end},
++    {'seeded receipt',function(e) e.callbacks[1].before.seeded=true end},
++    {'challenge receipt',function(e) e.callbacks[1].after.challenge='challenge' end},
++    {'missing counter',function(e) e.callbacks[1].after.jokers.j_yorick=nil end},
++    {'extra counter',function(e) e.callbacks[1].after.jokers.j_joker=1 end},
++    {'unchanged counter',function(e) e.callbacks[1].after.jokers.j_yorick=0 end},
++    {'malformed counter',function(e) e.callbacks[1].before.jokers.j_yorick='0' end},
++    {'fractional counter',function(e) e.callbacks[1].after.jokers.j_yorick=.5 end},
++    {'unknown vanilla identity',function(e,h) h.obs.goal.by_key.j_yorick=nil end},
++  }
++  for _,entry in ipairs(mutations) do
++    local h=harness();h.play();local receipt=award(h,{j_yorick=0},{j_yorick=1});entry[2](receipt,h)
++    local s=finish_award(h,receipt)
++    eq(s.outcomes.wins,1,entry[1]..' does not erase the separately verified win')
++    eq(s.last_gold_award.status,'unknown',entry[1]..' is explicit unknown progress')
++    eq(s.last_gold_award.new_count,nil,entry[1]..' never imputes zero stickers')
++    eq(s.gold_progress.unknown_wins,1,entry[1]..' increases unknown count')
++    eq(s.gold_progress.zero_new_wins,0,entry[1]..' never increments confirmed zero-progress wins')
++    eq(s.gold_progress.confirmed_new_count,0,entry[1]..' grants no confirmed credit')
++  end
++  local h=harness();h.play();h.finish('win')
++  eq(h.controller.status().last_gold_award.status,'unknown','legacy terminal fixture without award detail is unknown')
++  h=harness();h.play();h.finish('loss')
++  eq(h.controller.status().last_gold_award.status,'not_applicable','loss is not misclassified as an unknown sticker win')
++  eq(h.controller.status().gold_progress.unknown_wins,0,'loss adds no unknown win')
++end
+ print('advisor_auto_run: '..checks..' checks passed')

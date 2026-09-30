@@ -1,0 +1,1 @@
+G.FUNCS.overlay_menu = function(e) if e then return e end end

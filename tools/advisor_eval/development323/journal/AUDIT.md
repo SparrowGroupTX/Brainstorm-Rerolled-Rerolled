@@ -1,0 +1,9 @@
+Journal CPU review against installed checkpoint322; read-only source inspection.
+
+No recurring snapshot capture, fingerprint, serialization, compression or disk write was found in an idle journal update. `Core/Brainstorm.lua` calls `install_hooks` and `update` per frame. Hook installation checks twelve callback identities and changes only a replaced hook. `update` returns before observation when `pending_state` is absent; an accepted callback schedules one observation, and the first settled update clears it before writing `state_after_actions`.
+
+Actual events can be expensive: action-entry observation captures and redacts a complete public snapshot, fingerprints it for current-advice attribution, encodes it, and appends a verified archive frame. The archive scans all existing journal file sizes, hashes/encodes the frame, optionally compresses and verifies decompression, appends, checks length, then verifies the exact appended byte range. These integrity and total-storage checks are event-driven. Caching the catalog without external-change detection would weaken the existing total-storage protection and was not proposed.
+
+Two small action-time inefficiencies were identified: fingerprinting when no published key belongs to the current game, and deep-copying the excluded top-level shop catalog before discarding it. They do not explain sustained idle CPU. A detached two-change sketch was created before the parent requested that these lower-value changes be deferred. `player_journal.base.lua` and `player_journal.lua` in this directory are untested, unstaged, inactive proposals. They are not release evidence or a tested improvement.
+
+No runtime, production fixture, archive, retry ledger or player file was changed or read by this audit. No game interaction, source experiment, captured replay, search or installation occurred. The original experiment cycle remains closed.

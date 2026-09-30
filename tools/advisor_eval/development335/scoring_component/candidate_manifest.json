@@ -1,0 +1,17 @@
+{
+  "source": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Advisor\\scoring.lua",
+  "baseline_sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+  "candidate_sha256": "547b4977cf310be54cf35df3f955cc747f54ee3fad6231b4ac414da8586fa686",
+  "changes": [
+    "Hoist five immutable enhancement/blind/suit lookup tables.",
+    "Skip lowest-held-card scan unless existing flags contain active Raised Fist."
+  ],
+  "cache_scope": "No new state cache; every lookup reads current inputs.",
+  "constant_literals": {
+    "enhancement_effects": "{['Stone Card']='m_stone',['Wild Card']='m_wild',['Bonus']='m_bonus',['Mult']='m_mult',\r\n          ['Glass Card']='m_glass',['Steel Card']='m_steel',['Gold Card']='m_gold',['Lucky Card']='m_lucky'}",
+    "score_blind_names": "{bl_psychic='The Psychic',bl_eye='The Eye',bl_mouth='The Mouth',bl_flint='The Flint',bl_arm='The Arm',bl_ox='The Ox',bl_tooth='The Tooth',bl_hook='The Hook'}",
+    "classification_suits": "{'Spades','Hearts','Clubs','Diamonds'}",
+    "seeing_double_suits": "{'Clubs','Diamonds','Spades','Hearts'}",
+    "flower_pot_suits": "{'Hearts','Diamonds','Spades','Clubs'}"
+  }
+}

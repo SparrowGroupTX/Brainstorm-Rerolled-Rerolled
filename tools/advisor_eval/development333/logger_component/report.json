@@ -1,0 +1,38 @@
+{
+  "scope": "Manufactured callbacks/write sinks and existing byte-roundtrip tests only. No game control, player files, source workers, searches or captured-state policy execution.",
+  "baseline_reproduction": {
+    "frames": 30,
+    "source_calls": 1,
+    "snapshot_captures": 30,
+    "journal_events": 60,
+    "observer_begin_actions": 31
+  },
+  "new_lua_checks": 17,
+  "existing_lua_checks": 130,
+  "existing_archive_python_tests": 17,
+  "validation": [
+    {
+      "command": [
+        "python",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development333\\logger_component\\reproduce_hook_growth.lua",
+        "tools\\advisor_eval\\development333\\logger_component\\test_logger_hooks.lua",
+        "tools\\advisor_eval\\development333\\logger_component\\existing_advisor_player_journal.lua",
+        "tools\\advisor_eval\\development333\\logger_component\\existing_advisor_player_journal_timing.lua"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "log": "validation_1.log"
+    },
+    {
+      "command": [
+        "python",
+        "tools\\advisor_eval\\development333\\logger_component\\run_archive_regression.py"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "log": "validation_2.log"
+    }
+  ],
+  "limits": "No measured live FPS improvement. Archive representation, every-event synchronous verification, caps and old logs unchanged."
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "recorded_utc": "2026-09-15T16:53:26.702026+00:00",
+  "command": [
+    "python",
+    "tests/run_lua_tests.py",
+    "tests/advisor_auto_run.lua",
+    "tests/advisor_auto_run_product.lua"
+  ],
+  "observed_exit_code": 0,
+  "checks": {
+    "advisor_auto_run": 680,
+    "advisor_auto_run_product": 640
+  },
+  "total_checks": 1320,
+  "fixtures_passed": 2,
+  "file_hashes_recorded_after_run": {
+    "tests/advisor_auto_run.lua": "e2517b2188f9be5a15b47d32d4945b4994d192d9039b9e288e8e4d0bfb979576",
+    "tests/advisor_auto_run_product.lua": "23d28cbc04e9f355572c8f0f1b1013b34c30249ddbee2431c51d0b7e64455738",
+    "Brainstorm/Advisor/auto_run.lua": "301303671238c4795ab960fcb74ec3d6fa33253517de8348f189a7c2cdb664ac",
+    "Brainstorm/Core/auto_run_product.lua": "73741fd90326790142240041a7f40936f4caa3d2785250fc905f5f545af65996",
+    "Brainstorm/Core/auto_terminal.lua": "985b9da3405506bfdd552d0d62b8eaaca1f3136c00452a872e8f90b7496fc230",
+    "Brainstorm/Advisor/snapshot.lua": "bfabf63f93db6d5ccb74f7976298ebfa3be7f9cca01494e90478617b070278c5",
+    "Brainstorm/Advisor/execution.lua": "89d71ddd3eb062c517ec3c923a317fe35b7235c94acada9cf84c0312bdc0a229"
+  },
+  "original_test_backups": {
+    "tools/advisor_eval/development325/resume_tests/advisor_auto_run.original.lua": "e1a18a13f0e8c4fa9f8a42b1a6280038d2aa261ca94ab25507bc572952e88388",
+    "tools/advisor_eval/development325/resume_tests/advisor_auto_run_product.original.lua": "dfec9c85b2ab331c44ca829751a4fca99878aeaf85f0e9a17d5d6bedbce5e650"
+  },
+  "changed_files_owned_by_this_task": [
+    "tests/advisor_auto_run.lua",
+    "tests/advisor_auto_run_product.lua"
+  ],
+  "scope": "Manufactured Lua fixtures using fake observations, callbacks, native receipts and monotonic clocks. No live game control, player files, executable archive, native search or source experiment was used. Root owns runtime changes and release validation.",
+  "search_resume_contract": "Explicit Resume after cancellation and confirmed drain authorizes a distinct bounded product request, retaining prior cancellation and new-work authorization receipts. It does not refund old work or imply cumulative search cost remained within the old request cap. Existing run, found receipt or accepted startup Resume does not search or launch again.",
+  "covered": [
+    "pending-action preservation and duplicate prevention",
+    "unchanged counters, options, run and session identities",
+    "absolute run/session caps while paused, modal or checkpoint-blocked",
+    "owned worker drain and separately authorized replacement query",
+    "found and accepted startup reuse without duplicate launch",
+    "ordinary keyboard/mouse/settings/checkpoint-save notifications do not revoke consent",
+    "long menu, drag and text-entry waits suspend only stall timers",
+    "terminal accounting before hard-limit or unknown-goal continuation refusal",
+    "verified active/stopped checkpoint continuation without renewed counts or incidental won credit",
+    "logging failure and context replacement fail closed",
+    "backwards monotonic clock during blocked Resume",
+    "input/watchdog overlap and repeated Stop accounting"
+  ]
+}

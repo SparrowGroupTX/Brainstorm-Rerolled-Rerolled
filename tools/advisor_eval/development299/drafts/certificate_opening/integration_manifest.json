@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "kind": "detached_certificate309_integration_v1",
+  "base_checkpoint": "308",
+  "runtime_files": 5,
+  "drafts": [
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\certificate.lua",
+      "target": "Brainstorm/Advisor/certificate.lua",
+      "sha256": "88604d4ab965dd1b185bb7eed8e961ccdbbb9b95d816ff8725420d5605ed6d5f",
+      "base_sha256": null
+    },
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\snapshot.lua",
+      "target": "Brainstorm/Advisor/snapshot.lua",
+      "sha256": "c07abea10de857fd03f6cbe2b3ef7db473978115c6c2c3da848f28721646e6c0",
+      "base_sha256": "9ff1034168d8ea6c70a4b20313d2c385b0c1e10e2c16be4a08697821d781397d"
+    },
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\shop_scoring.lua",
+      "target": "Brainstorm/Advisor/shop_scoring.lua",
+      "sha256": "dd7879b96042b01c4a77c53b906d28d45a3730748bbe76927f0d4396f127b301",
+      "base_sha256": "fa2fe290860f7f10d8052fdeedad981d60cc52ffabcb4b4d7678fff578bc924f"
+    },
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\blind_finishing.lua",
+      "target": "Brainstorm/Advisor/blind_finishing.lua",
+      "sha256": "e9e1d2c48a2134ac70d74e22860e029101032e798e3a2f3240530d3eeeaaab69",
+      "base_sha256": "f9e88225437b68bc36309fe038f5e14dc7588d25f296adc32d5b040f1a984a4d"
+    },
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\multi_discard.lua",
+      "target": "Brainstorm/Advisor/multi_discard.lua",
+      "sha256": "3d8c54323fa17c9dcfe05bf985f691d9ed2863aacbd8cd269829618988fe79b0",
+      "base_sha256": "5a7c679a778d1285247f113f60f7556f5320c6c87111957b8889192db80a518d"
+    },
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\test_certificate.lua",
+      "target": "tests/advisor_certificate.lua",
+      "sha256": "a2c7703a07e6804605f3454dbc20f03a167239e4345e63f2060275769ca6e2ff",
+      "base_sha256": null
+    },
+    {
+      "draft": "tools\\advisor_eval\\development299\\drafts\\certificate_opening\\INTEGRATION.md",
+      "target": null,
+      "sha256": "1f45be95a662633ae90814a5c8ae28d70f15f2a5e033d830b1df89824e390a55",
+      "base_sha256": null
+    }
+  ],
+  "validation": {
+    "command": "python tests/run_lua_tests.py tools/advisor_eval/development299/drafts/certificate_opening/test_certificate.lua tools/advisor_eval/development299/drafts/certificate_opening/test_legacy.lua",
+    "new_checks": 210,
+    "legacy_checks": 448,
+    "fixtures_passed": 2,
+    "single_card_family_score_calls": 796,
+    "five_card_family_score_calls": 4293,
+    "score_cap": 50000,
+    "source_execution": false,
+    "captured_replay": false
+  },
+  "wiring": [
+    "A.certificate=module(\"certificate\")",
+    "A.snapshot.certificate=A.certificate",
+    "A.shop_scoring.certificate=A.certificate"
+  ],
+  "note": "Deploy test with detached module paths replaced by actual runtime paths; verify base hashes before replacing files; preserve Bell308 branches."
+}

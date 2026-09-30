@@ -1,0 +1,1 @@
+G.FUNCS.go_to_menu = function(e) if e then return e end end

@@ -1,0 +1,78 @@
+function Blind:drawn_to_hand()
+    if not self.disabled then
+        if self.name == 'Cerulean Bell' then
+            local any_forced = nil
+            for k, v in ipairs(G.hand.cards) do
+                if v.ability.forced_selection then
+                    any_forced = true
+                end
+            end
+            if not any_forced then 
+                G.hand:unhighlight_all()
+                local forced_card = pseudorandom_element(G.hand.cards, pseudoseed('cerulean_bell'))
+                forced_card.ability.forced_selection = true
+                G.hand:add_to_highlighted(forced_card)
+            end
+        end
+        if self.name == 'Crimson Heart' and self.prepped and G.jokers.cards[1] then
+            local jokers = {}
+            for i = 1, #G.jokers.cards do
+                if not G.jokers.cards[i].debuff or #G.jokers.cards < 2 then jokers[#jokers+1] =G.jokers.cards[i] end
+                G.jokers.cards[i]:set_debuff(false)
+            end 
+            local _card = pseudorandom_element(jokers, pseudoseed('crimson_heart'))
+            if _card then
+                _card:set_debuff(true)
+                _card:juice_up()
+                self:wiggle()
+            end
+        end
+    end
+    self.prepped = nil
+end
+
+function Blind:press_play()
+    if self.disabled then return end
+    if self.name == "The Hook" then
+        G.E_MANAGER:add_event(Event({ func = function()
+            local any_selected = nil
+            local _cards = {}
+            for k, v in ipairs(G.hand.cards) do
+                _cards[#_cards+1] = v
+            end
+            for i = 1, 2 do
+                if G.hand.cards[i] then 
+                    local selected_card, card_key = pseudorandom_element(_cards, pseudoseed('hook'))
+                    G.hand:add_to_highlighted(selected_card, true)
+                    table.remove(_cards, card_key)
+                    any_selected = true
+                    play_sound('card1', 1)
+                end
+            end
+            if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+        return true end })) 
+        self.triggered = true
+        delay(0.7)
+        return true
+    end
+    if self.name == 'Crimson Heart' then 
+        if G.jokers.cards[1] then
+            self.triggered = true
+            self.prepped = true
+        end
+    end
+    if self.name == 'The Fish' then
+        self.prepped = true
+    end
+    if self.name == "The Tooth" then
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2, func = function()
+        for i = 1, #G.play.cards do
+            G.E_MANAGER:add_event(Event({func = function() G.play.cards[i]:juice_up(); return true end })) 
+            ease_dollars(-1)
+            delay(0.23)
+        end
+        return true end })) 
+        self.triggered = true
+        return true
+    end
+end

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "development_label": "growth318/revision2",
+  "candidate_checkpoint": null,
+  "release_number_reserved_by_root_for_other_work": 318,
+  "files": {
+    "growth.lua": "80e45f4befacb152dfbf73302eb21d61d639b2186ae7de7e4b31fa8ae3bc5d14",
+    "advisor_growth_additive.lua": "0b1049c85b6ce181969fe8e1b43d86abb185ab2f9ade7576596949d2a10a0aeb",
+    "detached_test.lua": "1570d9b5eb614fff7055c557354a4825ebb3d259774cc1a03e43956c65b2d63b",
+    "existing_fixtures.lua": "8d3a097d7f36c5bd3b6914690b78364f2d1ee3415bf218723f00364051ab0b3c",
+    "INTEGRATION.md": "f32124638c120a879b4a35af76b438b3b0e8007e9c69b06b80ad8119473b021e",
+    "manifest.py": "b9d2da9b0479d4d94cefaac6efa4bd6da7878fe34bea3f48c860c62655b9e9b2"
+  },
+  "stage": {
+    "growth.lua": "Brainstorm/Advisor/growth.lua",
+    "advisor_growth_additive.lua": "tests/advisor_growth_additive.lua"
+  },
+  "preserved_revision1_manifest_sha256": "d5b126376023a1e69f9f7fcb3026880c03d5c75d0f69014ceb68958814226139",
+  "baseline": {
+    "path": "tools\\advisor_eval\\runs\\copy315_installed\\policy\\Brainstorm\\Advisor\\growth.lua",
+    "sha256": "7ead01d6e25db1b5da774eaf7843b43a7412dc25c88b554e44a727989fe4b396"
+  },
+  "unchanged_dependencies": {
+    "Brainstorm\\Advisor\\scoring.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+    "Brainstorm\\Advisor\\strategy.lua": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960",
+    "Brainstorm\\Advisor\\search.lua": "63d0294f2825b2cfa740eadd84d0c24fa25dbb93f385ea4023866cb1289c6785",
+    "Brainstorm\\Advisor\\snapshot.lua": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8",
+    "Brainstorm\\Advisor\\decision.lua": "6f2b9cfc5fcb7dc1aa51616c2fd80e4d0e0ff08f22713ad3058a9805ac1e62ac"
+  },
+  "existing_fixtures": {
+    "advisor_growth": "48c17c17feff1ee170e99bfcc9e90c56ace71503ba6c280842a9c964570c31d7",
+    "advisor_growth_opportunities": "0fc42277ba3a5b586dd8417b2f4d6d23d4741cc5646cbd188642f94771a2b8cb",
+    "advisor_growth_retained_steel": "d3f8af29c1c5fbd59c473c3ca145454e2810a52a668cfcc00b287abfa8c7777b",
+    "advisor_weighted_growth": "a25d4f05175175c22046dbe08f9d3e9f226286d89818f30deb756baef5648e5e",
+    "advisor_burnt_population": "3a16ab84927b2a73a2839f88a1b4d38ba9f7e1edc53c823100ede85c9d9804d0",
+    "advisor_burnt_fallback": "2c24c151594a95cb2b2852e524e96e1e1d5f208119e6e263ca8ef6831ad7c861"
+  },
+  "validation": {
+    "command": "python -B tests/run_lua_tests.py tools/advisor_eval/development300/growth318/revision2/detached_test.lua tools/advisor_eval/development300/growth318/revision2/existing_fixtures.lua",
+    "passed": true,
+    "new_checks": 2543,
+    "existing_checks": 384,
+    "total_checks": 2927,
+    "manufactured_or_existing_pure_fixtures_only": true,
+    "new_source_or_native_experiments": 0
+  },
+  "installed_by_this_agent": false,
+  "runtime_worktree_edited": false
+}

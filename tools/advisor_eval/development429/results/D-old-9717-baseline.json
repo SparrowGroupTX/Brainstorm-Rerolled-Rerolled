@@ -1,0 +1,51 @@
+{
+  "job": "D-old-9717-baseline",
+  "mode": "decision",
+  "case": "old-9717",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 0.9539999999979045,
+  "log_sha256": "1dc4d867de8d7a904b922032500c004bf531c313b1a3e79c16b026bd85a5ac79",
+  "status": "complete",
+  "result": {
+    "case": "old-9717",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "evaluations": 1,
+        "final_action_kind": "play",
+        "final_play_score": 360,
+        "needed_score": 2000,
+        "reason": "The supported floor is below target; a random clear remains possible.",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 9653,
+      "play": {
+        "hand": "Two Pair",
+        "legal": true,
+        "score": 2520,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

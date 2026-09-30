@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-15T21:47:44.661808+00:00",
+  "release": 336,
+  "summary": "Remove repeated scoring-intrinsic work while retaining every complete scoring call. Five private constant lookup tables are built once; explicit numeric nominal values skip unused rank defaults and fallback resolves rank once; the lowest-held scan runs only when existing row flags contain active Raised Fist. Exact lookup precedence, ordered scoring and copy routing are preserved. No new state/result cache, scoring budget or sampling change is introduced.",
+  "outcome_summary": "Release 336 uses manufactured fixtures and routine regression only. Its independent scoring fixture passes 3,402 checks across 476 complete comparison cases, retaining all 2,217 full scorer invocations. Instrumented constant-table constructions decrease from 88,706 to five module-load tables, rank helper calls from 41,945 to 11,914, enhancement helper calls from 97,041 to 57,556, and lowest-held visits from 11,232 to 1,778. All 7,765 nominal lookups remain. Comparisons preserve complete expected/floor/ceiling outputs, uncertainty, ordered transitions, inventory order and population effects. These are manufactured work counts, not live timing or gameplay results. Previous journal335 measurements and historical complete-attempt outcomes remain attributed to their own releases.",
+  "limits_summary": "This slice reuses immutable intrinsic lookup data and removes provably unused helper work only. Current state is read on each scoring call, including in-place card/row/value changes; preexisting prepared caches still require detached immutable decision scopes. Numeric nominal zero, NaN and infinities, nonnumeric/false fallback precedence, Ace/Stone cases, copy/debuff/unknown routes, retained consumable ordering and Glass/Lucky effects are covered. No full-score partial-key cache is added. Prior journal335 and callback fixes are preserved, but activation and restored live responsiveness remain unconfirmed until the user normal restart and observation. No live FPS, terminal rescue, numerical win odds, achievement completion or stronger-than-human performance follows from the fixture. Preserve logs, settings, native dependencies and all dirty/untracked work.",
+  "budget_summary": "All experiment allowances remain CLOSED. Release 336 runs zero source components, captured-state policy replays, searches and complete attempts. It reads no source executable archive, player save or profile, and does not control the game. Only manufactured Lua fixtures and relevant full regressions run, with 60-second per-suite caps. Historical source authority, outcomes, budget usage and unused closed capacity are carried forward unchanged through the previous finalized335 context and its original evidence references. No worker, source attempt, search or scheduled continuation is pending. Activation waits for the user normal restart.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 4,
+    "captured_policy_evaluations": 8,
+    "search_workers": 0,
+    "complete_attempts": 6
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 3,
+    "error": 1,
+    "timeout": 1,
+    "unsupported": 1,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+      "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_SOURCE_EVIDENCE_332.json",
+      "sha256": "b185730878f01b1974f2ed0fcfb80cf8a09a309e8235e3b0f7b9098d68235924"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_BUDGET_332.json",
+      "sha256": "ebe6ec19dc594cb8b260883b761fe8d285edb523d5db584412b68cf1ec7b097d"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development328/shop_release_notes/limits.json",
+      "sha256": "abe07aa95ae18a8bf1704748f643e3b99b27a3c72c8e1fa7eb05917d02731d8c"
+    }
+  },
+  "historical_closed_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_closed_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_closed_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "diagnostic_evidence": {
+    "previous_checkpoint": {
+      "path": "tools/advisor_eval/development335/journal_release/release_final/context.json",
+      "sha256": "bfa7867f56970d4e7ff7d055dea89ccf42f8518754e24188a9a09972d09cd070"
+    },
+    "previous_installed_record": {
+      "path": "tools/advisor_eval/runs/journal335_installed/record.json",
+      "sha256": "689be1fbd61ebd60c1fe4285e4b02dcfce9594318db3b9b14831cb616eb3364c"
+    },
+    "before_module": {
+      "path": "tools/advisor_eval/development335/scoring_release/before/Brainstorm/Advisor/scoring.lua",
+      "sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf"
+    },
+    "candidate_module": {
+      "path": "tools/advisor_eval/development335/scoring_component/scoring.lua",
+      "sha256": "f625c294eb5ba9cf0b6da5eb8f871c58be0835aecf92396c09151becef1c80e9"
+    },
+    "manufactured_component_fixture": {
+      "path": "tools/advisor_eval/development335/scoring_component/test_scoring_reuse.lua",
+      "sha256": "0ca66e94cade5acaf8174e30e33c389c6f3b6bfa8d823f03dd244b7456e582c7"
+    },
+    "component_receipt": {
+      "path": "tools/advisor_eval/development335/scoring_component/fixture_receipt3.json",
+      "sha256": "9a986fdbfe3344e2f22b12a0c384140ac1331f6e1a0731a09b3a4a019c33469f"
+    },
+    "independent_production_fixture": {
+      "path": "tests/advisor_scoring_work336.lua",
+      "sha256": "9bbe84a8b4119c82bb788792789d1cbd3896ce179c484586da8f0fd94a998fee"
+    },
+    "frozen_test_baseline": {
+      "path": "tests/fixtures/advisor_scoring_reuse336/scoring_before.lua",
+      "sha256": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf"
+    },
+    "standalone_receipt": {
+      "path": "tools/advisor_eval/development335/scoring_release/standalone_validation3/receipt.json",
+      "sha256": "d5d0441c56fa22250df398264fcfbf18d10ca3e2f74d39c963abbb6674144e73"
+    },
+    "integration": {
+      "path": "tools/advisor_eval/development335/scoring_release/integration.json",
+      "sha256": "390e07ebab7a3a0bfae4228fed0d5f144a44cfdee2ab0d7b991e7db378dce87a"
+    },
+    "candidate_validation": {
+      "path": "tools/advisor_eval/runs/scoring336_candidate/validation/report.json",
+      "sha256": "6dd738672130a36ac10f79ed0a2756298d0b56ebf0b9f17dde2f1123e0860592"
+    }
+  },
+  "preparation_status": "passed_candidate_exact_installed_validation_bound_separately",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "previous_checkpoint_context": {
+    "path": "tools/advisor_eval/development335/journal_release/release_final/context.json",
+    "sha256": "bfa7867f56970d4e7ff7d055dea89ccf42f8518754e24188a9a09972d09cd070"
+  },
+  "manufactured_work_counts": {
+    "fixture_checks": 3402,
+    "complete_comparison_cases": 476,
+    "baseline_score_calls": 2217,
+    "candidate_score_calls": 2217,
+    "baseline_constant_table_allocations": 88706,
+    "candidate_constant_table_allocations": 5,
+    "baseline_rank_calls": 41945,
+    "candidate_rank_calls": 11914,
+    "baseline_enhancement_calls": 97041,
+    "candidate_enhancement_calls": 57556,
+    "baseline_lowest_held_visits": 11232,
+    "candidate_lowest_held_visits": 1778,
+    "baseline_nominal_calls": 7765,
+    "candidate_nominal_calls": 7765,
+    "measured_live_fps": false
+  }
+}

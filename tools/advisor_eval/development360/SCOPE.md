@@ -1,0 +1,9 @@
+# Consumable comparison reservation — 360
+
+Selected slice: avoid ordinary-search starvation of supported owned-consumable comparisons within the existing 140000 total and 25000 specialist limits. Earlier passive evidence: development357/shop_review/EMPRESS_BUDGET_ADDENDUM.md and development359/log_review/POSTMORTEM.md. No claim that a recorded run would be rescued. Whole-inventory utility redesign is not bundled into this change.
+
+Acceptance: reserve bounded work only when a supported active consumable can admit a complete play pass; never reduce complete initial-play capacity or the fast-clear allowance. Preserve caller limits, deterministic sampling and whole-candidate/world guards. Test production search/consumable integration, no-inventory/unsupported/disabled/large-hand cases, negative copies, small caps, safe clears, and manufactured before/after quality and latency on identical inputs. All required full candidate and exact-installed gates must pass before completion.
+
+Authority: current user continuation permits source repair, manufactured fixtures/regressions, passive logs and validated installation. No game control, saves/profiles, captured policy/scorer evaluation, source workers, hidden searches/attempts, GPU, automation or renewed historical allowances. Preserve all existing work, current settings and seven DLLs; no commit/reset/clean/delete/PR. One optional read-only independent reviewer, no recursive delegation.
+
+Fresh passive prefix: development360/logs1, cutoff 2026-09-22T16:31:52Z sequence 1995. Loaded 2.159 confirmed; normal collection (teacher_batch=false, no teacher_profile), three observed GAME_OVER losses and fourth started without terminal in prefix. Converter schema rejection is preserved, not a teacher-label success. All experiment counts zero.

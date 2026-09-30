@@ -1,0 +1,867 @@
+{
+  "schema": 1,
+  "scope": "Read-only passive shape inventory. No advisor policy/validator was applied to captured snapshots.",
+  "input": "tools\\advisor_eval\\development346\\log_analysis\\passive_audit.json",
+  "input_sha256": "0aefcae0d9ccc1388e66c41585b772c50ce0ecb927acb910359de9e62e83b1e3",
+  "summary": {
+    "c_empress": {
+      "unique_public_shapes": 3,
+      "observed_cards": 402,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 3
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000002.brj",
+          "ordinal": 283,
+          "sequence": 293,
+          "decoded_event_sha256": "fb895f10aff8154deb0830e15a334a9fba680931f9e4d1bd9de747f90f50800b",
+          "stored_frame_sha256": "76e177c2268d1665a33ab617ff851f428a714d79cb9943e8ef24ee41e93ff308"
+        },
+        "shape": {
+          "key": "c_empress",
+          "name": "The Empress",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_conv": "m_mult",
+              "mod_num": 2
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 8,
+            "mult": 0,
+            "name": "The Empress",
+            "order": 4,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 17
+      }
+    },
+    "c_heirophant": {
+      "unique_public_shapes": 2,
+      "observed_cards": 48,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 2
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 100,
+          "sequence": 1118,
+          "decoded_event_sha256": "04524084e61055b86024b87a4590feb0c465bb670dd9943648fdc505e799645d",
+          "stored_frame_sha256": "8e0e7440edcff4bea3b9cd36aaa3e72fe87dddc25e242fce2e1c03997fb96919"
+        },
+        "shape": {
+          "key": "c_heirophant",
+          "name": "The Hierophant",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_conv": "m_bonus",
+              "mod_num": 2
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "The Hierophant",
+            "order": 6,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 7
+      }
+    },
+    "c_justice": {
+      "unique_public_shapes": 1,
+      "observed_cards": 2,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 1
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 132,
+          "sequence": 1150,
+          "decoded_event_sha256": "efbbeb44dedcb26aef73126604d07a6046de31617776d50045b3151ab54656fd",
+          "stored_frame_sha256": "ac1ed561dd52d9b8a902ff836308cefcf929832ec66342fae868fdbf2e87db41"
+        },
+        "shape": {
+          "key": "c_justice",
+          "name": "Justice",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_glass",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Justice",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 2
+      }
+    },
+    "c_hanged_man": {
+      "unique_public_shapes": 3,
+      "observed_cards": 19,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 3
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 174,
+          "sequence": 1192,
+          "decoded_event_sha256": "e4e692404cd4d8097773cc09869309b762bfc37031e96276e59d68e22aa46baa",
+          "stored_frame_sha256": "f45c523882d090b3ceb3112097f2a2a1d2e53769e1655ca6cbeca48ac73d669c"
+        },
+        "shape": {
+          "key": "c_hanged_man",
+          "name": "The Hanged Man",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 1
+      }
+    },
+    "c_tower": {
+      "unique_public_shapes": 3,
+      "observed_cards": 3,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 3
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 231,
+          "sequence": 1249,
+          "decoded_event_sha256": "938d2033301b84bede83b74069f305162acda9a7b267a207cc17894b934d43fb",
+          "stored_frame_sha256": "62b9967714e183dbfc8e14d0ad3926c0650f1e651c16235c3a4ce5fc1368bbaf"
+        },
+        "shape": {
+          "key": "c_tower",
+          "name": "The Tower",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_stone",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 7,
+            "mult": 0,
+            "name": "The Tower",
+            "order": 17,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 1
+      }
+    },
+    "c_temperance": {
+      "unique_public_shapes": 3,
+      "observed_cards": 2324,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,money,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 3
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 435,
+          "sequence": 1453,
+          "decoded_event_sha256": "36b6fc9b8c2903203ab5eac19ef4679deddc4d42fa88a2a057ce096505420dee",
+          "stored_frame_sha256": "55d0ff3eadb2f5a7858a2fd8f05798543e95fcf330f7b86f4f31ab53d8933bf4"
+        },
+        "shape": {
+          "key": "c_temperance",
+          "name": "Temperance",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "extra": 50
+            },
+            "d_size": 0,
+            "effect": "Joker Payout",
+            "extra": 50,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "money": 43,
+            "mult": 0,
+            "name": "Temperance",
+            "order": 15,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 40
+      }
+    },
+    "c_devil": {
+      "unique_public_shapes": 1,
+      "observed_cards": 2,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 1
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 570,
+          "sequence": 1588,
+          "decoded_event_sha256": "7546e9f283f079def6f615d0dd0256134ab29297124f7f4d10fe66fb1d631436",
+          "stored_frame_sha256": "ced5936d6ffe4d0465b30b48cfbf3d96c29638461e948cc9f535ac5a6c25fef0"
+        },
+        "shape": {
+          "key": "c_devil",
+          "name": "The Devil",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_gold",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 13,
+            "mult": 0,
+            "name": "The Devil",
+            "order": 16,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 2
+      }
+    },
+    "c_lovers": {
+      "unique_public_shapes": 1,
+      "observed_cards": 2,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 1
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 617,
+          "sequence": 1635,
+          "decoded_event_sha256": "df5842497b3420f8f7705b5d196be969027d1b414d77dbcd741b3017f3708e40",
+          "stored_frame_sha256": "25c546b1f7e0d6d8cd4d4bd5e8a087dc997953a8cd7bf16c6d15053d8420ba98"
+        },
+        "shape": {
+          "key": "c_lovers",
+          "name": "The Lovers",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_wild",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 14,
+            "mult": 0,
+            "name": "The Lovers",
+            "order": 7,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 2
+      }
+    },
+    "c_moon": {
+      "unique_public_shapes": 2,
+      "observed_cards": 129,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 2
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 669,
+          "sequence": 1687,
+          "decoded_event_sha256": "07fd4389c2f2bc69a5f7df9309c4c8927194ff54a9e2d7893fc197e792f2345f",
+          "stored_frame_sha256": "93028e7bae266885f7a680e362df7cf4dd188097884c82354e7bedaac381624b"
+        },
+        "shape": {
+          "key": "c_moon",
+          "name": "The Moon",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 3,
+              "mod_num": 3,
+              "suit_conv": "Clubs"
+            },
+            "d_size": 0,
+            "effect": "Suit Conversion",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 15,
+            "mult": 0,
+            "name": "The Moon",
+            "order": 19,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 60
+      }
+    },
+    "c_sun": {
+      "unique_public_shapes": 2,
+      "observed_cards": 202,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 2
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 711,
+          "sequence": 1729,
+          "decoded_event_sha256": "703efe92da379640cdfbce05e90527da91047f10e8304618f639a3699f718e4b",
+          "stored_frame_sha256": "a4f3fa13e9e28eb4e2585fc68e3b80502b1c0a8c740bc7b59d21f342921a1f97"
+        },
+        "shape": {
+          "key": "c_sun",
+          "name": "The Sun",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 3,
+              "mod_num": 3,
+              "suit_conv": "Hearts"
+            },
+            "d_size": 0,
+            "effect": "Suit Conversion",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 16,
+            "mult": 0,
+            "name": "The Sun",
+            "order": 20,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 97
+      }
+    },
+    "c_wheel_of_fortune": {
+      "unique_public_shapes": 1,
+      "observed_cards": 43,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 1
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000004.brj",
+          "ordinal": 1082,
+          "sequence": 2100,
+          "decoded_event_sha256": "1e2d7af229324fc6364fad335eefa9f1e1fce60c1c8fd2cf99f678d06e275968",
+          "stored_frame_sha256": "b0db92b60ae3680c57a5ebd758cd4811ac9260c9d23096b5723747d55b747b04"
+        },
+        "shape": {
+          "key": "c_wheel_of_fortune",
+          "name": "The Wheel of Fortune",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "extra": 4
+            },
+            "d_size": 0,
+            "effect": "Round Bonus",
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "The Wheel of Fortune",
+            "order": 11,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 43
+      }
+    },
+    "c_judgement": {
+      "unique_public_shapes": 2,
+      "observed_cards": 22,
+      "ability_field_sets": [
+        "bonus,consumeable,d_size,effect,extra_value,h_dollars,h_mult,h_size,h_x_mult,hands_played_at_create,mult,name,order,p_dollars,perma_bonus,set,t_chips,t_mult,type,x_mult"
+      ],
+      "base_field_sets": [
+        "face_nominal,nominal,suit_nominal,times_played"
+      ],
+      "source_statuses": {
+        "{\"reason\": \"The copied Tarot ability, edition, front or parameters are unsupported.\", \"schema\": 1, \"supported\": false}": 2
+      },
+      "first_shape": {
+        "first_anchor": {
+          "segment": "session-20260916T050034Z-1-000006.brj",
+          "ordinal": 135,
+          "sequence": 2384,
+          "decoded_event_sha256": "f683498f7ffedbfcec6712ff2b0825abde182db9f31ca58b5000bb0787408174",
+          "stored_frame_sha256": "d84262b1141c5f410cac0838687ea984bd6e7ba97a682dde276c737a1025bcd5"
+        },
+        "shape": {
+          "key": "c_judgement",
+          "name": "Judgement",
+          "ability": {
+            "bonus": 0,
+            "consumeable": {},
+            "d_size": 0,
+            "effect": "Random Joker",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "Judgement",
+            "order": 21,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "base": {
+            "face_nominal": 0,
+            "nominal": 0,
+            "suit_nominal": 0,
+            "times_played": 0
+          },
+          "base_cost": 3,
+          "cost": 3,
+          "sell_cost": 1,
+          "debuff": false,
+          "pinned": false,
+          "face_down": false,
+          "edition": null,
+          "seal": null,
+          "tarot_hold_source": {
+            "reason": "The copied Tarot ability, edition, front or parameters are unsupported.",
+            "schema": 1,
+            "supported": false
+          }
+        },
+        "count": 13
+      }
+    }
+  }
+}

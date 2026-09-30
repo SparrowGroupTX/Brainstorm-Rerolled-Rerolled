@@ -1,0 +1,1369 @@
+{
+  "verified_utc": "2026-09-26T22:20:21.244172+00:00",
+  "session": "session-20260926T221209Z-1",
+  "segments": [
+    {
+      "name": "session-20260926T221209Z-1-000001.brj",
+      "bytes": 29207,
+      "sha256": "a4928675a72491565b412a9d30e5f255cf95a5d5ee0c0a2d17dd9a3bfb10c539",
+      "source_still_matched": true,
+      "events": 14,
+      "first_sequence": 1,
+      "last_sequence": 14
+    },
+    {
+      "name": "session-20260926T221209Z-1-000002.brj",
+      "bytes": 2498053,
+      "sha256": "b97ff73701c2b50d06f5e6d1b49855436ba9f66491a94b06c0c0ac9a8861e25a",
+      "source_still_matched": true,
+      "events": 1048,
+      "first_sequence": 15,
+      "last_sequence": 1062
+    }
+  ],
+  "events": 1062,
+  "failures": [],
+  "kinds": {
+    "teacher_observation": 182,
+    "teacher_advice": 299,
+    "auto_run": 280,
+    "collection_search_started": 1,
+    "performance_window": 23,
+    "collection_search_finished": 1,
+    "collection_run_start": 1,
+    "action_requested": 92,
+    "action_callback_result": 92,
+    "state_after_actions": 91
+  },
+  "versions": {
+    "Brainstorm v2.195.0-alpha": 947
+  },
+  "profiles": {
+    "perkeo_yorick_win_v1": 182
+  },
+  "starts": [
+    {
+      "anchor": {
+        "sequence": 22,
+        "segment": "session-20260926T221209Z-1-000002.brj",
+        "ordinal": 8,
+        "raw_sha256": "c7d96eba88487ad1640f8baa69948f6c1faabf45eb88747128511fde1c376640"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 28.7092211
+      },
+      "public_run_instance": "observed-game:2"
+    }
+  ],
+  "endings": [],
+  "unended_run_ids": [
+    "game:2"
+  ],
+  "lifecycle": [
+    {
+      "anchor": {
+        "sequence": 5,
+        "segment": "session-20260926T221209Z-1-000001.brj",
+        "ordinal": 5,
+        "raw_sha256": "ead15bdb6897c15590b3796774063c4ca649827a9ad905d05be0a204b77dbc3d"
+      },
+      "details": {
+        "binding": {
+          "checkpoint_generation": 0,
+          "consent_generation": 1,
+          "manual_generation": 0,
+          "profile_id": 1,
+          "settings_generation": 0
+        },
+        "event": "session_started",
+        "goal": {
+          "by_key": {
+            "j_8_ball": {
+              "key": "j_8_ball",
+              "status": "complete"
+            },
+            "j_abstract": {
+              "key": "j_abstract",
+              "status": "complete"
+            },
+            "j_acrobat": {
+              "key": "j_acrobat",
+              "status": "complete"
+            },
+            "j_ancient": {
+              "key": "j_ancient",
+              "status": "complete"
+            },
+            "j_arrowhead": {
+              "key": "j_arrowhead",
+              "status": "complete"
+            },
+            "j_astronomer": {
+              "key": "j_astronomer",
+              "status": "complete"
+            },
+            "j_banner": {
+              "key": "j_banner",
+              "status": "complete"
+            },
+            "j_baron": {
+              "key": "j_baron",
+              "status": "complete"
+            },
+            "j_baseball": {
+              "key": "j_baseball",
+              "status": "missing"
+            },
+            "j_blackboard": {
+              "key": "j_blackboard",
+              "status": "complete"
+            },
+            "j_bloodstone": {
+              "key": "j_bloodstone",
+              "status": "missing"
+            },
+            "j_blue_joker": {
+              "key": "j_blue_joker",
+              "status": "complete"
+            },
+            "j_blueprint": {
+              "key": "j_blueprint",
+              "status": "complete"
+            },
+            "j_bootstraps": {
+              "key": "j_bootstraps",
+              "status": "complete"
+            },
+            "j_brainstorm": {
+              "key": "j_brainstorm",
+              "status": "complete"
+            },
+            "j_bull": {
+              "key": "j_bull",
+              "status": "complete"
+            },
+            "j_burglar": {
+              "key": "j_burglar",
+              "status": "missing"
+            },
+            "j_burnt": {
+              "key": "j_burnt",
+              "status": "complete"
+            },
+            "j_business": {
+              "key": "j_business",
+              "status": "complete"
+            },
+            "j_caino": {
+              "key": "j_caino",
+              "status": "complete"
+            },
+            "j_campfire": {
+              "key": "j_campfire",
+              "status": "complete"
+            },
+            "j_card_sharp": {
+              "key": "j_card_sharp",
+              "status": "complete"
+            },
+            "j_cartomancer": {
+              "key": "j_cartomancer",
+              "status": "complete"
+            },
+            "j_castle": {
+              "key": "j_castle",
+              "status": "missing"
+            },
+            "j_cavendish": {
+              "key": "j_cavendish",
+              "status": "complete"
+            },
+            "j_ceremonial": {
+              "key": "j_ceremonial",
+              "status": "missing"
+            },
+            "j_certificate": {
+              "key": "j_certificate",
+              "status": "complete"
+            },
+            "j_chaos": {
+              "key": "j_chaos",
+              "status": "complete"
+            },
+            "j_chicot": {
+              "key": "j_chicot",
+              "status": "complete"
+            },
+            "j_clever": {
+              "key": "j_clever",
+              "status": "complete"
+            },
+            "j_cloud_9": {
+              "key": "j_cloud_9",
+              "status": "complete"
+            },
+            "j_constellation": {
+              "key": "j_constellation",
+              "status": "complete"
+            },
+            "j_crafty": {
+              "key": "j_crafty",
+              "status": "complete"
+            },
+            "j_crazy": {
+              "key": "j_crazy",
+              "status": "complete"
+            },
+            "j_credit_card": {
+              "key": "j_credit_card",
+              "status": "complete"
+            },
+            "j_delayed_grat": {
+              "key": "j_delayed_grat",
+              "status": "complete"
+            },
+            "j_devious": {
+              "key": "j_devious",
+              "status": "complete"
+            },
+            "j_diet_cola": {
+              "key": "j_diet_cola",
+              "status": "missing"
+            },
+            "j_dna": {
+              "key": "j_dna",
+              "status": "complete"
+            },
+            "j_drivers_license": {
+              "key": "j_drivers_license",
+              "status": "complete"
+            },
+            "j_droll": {
+              "key": "j_droll",
+              "status": "complete"
+            },
+            "j_drunkard": {
+              "key": "j_drunkard",
+              "status": "complete"
+            },
+            "j_duo": {
+              "key": "j_duo",
+              "status": "complete"
+            },
+            "j_dusk": {
+              "key": "j_dusk",
+              "status": "complete"
+            },
+            "j_egg": {
+              "key": "j_egg",
+              "status": "complete"
+            },
+            "j_erosion": {
+              "key": "j_erosion",
+              "status": "complete"
+            },
+            "j_even_steven": {
+              "key": "j_even_steven",
+              "status": "complete"
+            },
+            "j_faceless": {
+              "key": "j_faceless",
+              "status": "missing"
+            },
+            "j_family": {
+              "key": "j_family",
+              "status": "complete"
+            },
+            "j_fibonacci": {
+              "key": "j_fibonacci",
+              "status": "complete"
+            },
+            "j_flash": {
+              "key": "j_flash",
+              "status": "complete"
+            },
+            "j_flower_pot": {
+              "key": "j_flower_pot",
+              "status": "complete"
+            },
+            "j_fortune_teller": {
+              "key": "j_fortune_teller",
+              "status": "complete"
+            },
+            "j_four_fingers": {
+              "key": "j_four_fingers",
+              "status": "complete"
+            },
+            "j_gift": {
+              "key": "j_gift",
+              "status": "complete"
+            },
+            "j_glass": {
+              "key": "j_glass",
+              "status": "complete"
+            },
+            "j_gluttenous_joker": {
+              "key": "j_gluttenous_joker",
+              "status": "complete"
+            },
+            "j_golden": {
+              "key": "j_golden",
+              "status": "complete"
+            },
+            "j_greedy_joker": {
+              "key": "j_greedy_joker",
+              "status": "complete"
+            },
+            "j_green_joker": {
+              "key": "j_green_joker",
+              "status": "complete"
+            },
+            "j_gros_michel": {
+              "key": "j_gros_michel",
+              "status": "complete"
+            },
+            "j_hack": {
+              "key": "j_hack",
+              "status": "complete"
+            },
+            "j_half": {
+              "key": "j_half",
+              "status": "complete"
+            },
+            "j_hallucination": {
+              "key": "j_hallucination",
+              "status": "complete"
+            },
+            "j_hanging_chad": {
+              "key": "j_hanging_chad",
+              "status": "complete"
+            },
+            "j_hiker": {
+              "key": "j_hiker",
+              "status": "complete"
+            },
+            "j_hit_the_road": {
+              "key": "j_hit_the_road",
+              "status": "missing"
+            },
+            "j_hologram": {
+              "key": "j_hologram",
+              "status": "missing"
+            },
+            "j_ice_cream": {
+              "key": "j_ice_cream",
+              "status": "complete"
+            },
+            "j_idol": {
+              "key": "j_idol",
+              "status": "missing"
+            },
+            "j_invisible": {
+              "key": "j_invisible",
+              "status": "missing"
+            },
+            "j_joker": {
+              "key": "j_joker",
+              "status": "complete"
+            },
+            "j_jolly": {
+              "key": "j_jolly",
+              "status": "complete"
+            },
+            "j_juggler": {
+              "key": "j_juggler",
+              "status": "complete"
+            },
+            "j_loyalty_card": {
+              "key": "j_loyalty_card",
+              "status": "missing"
+            },
+            "j_luchador": {
+              "key": "j_luchador",
+              "status": "missing"
+            },
+            "j_lucky_cat": {
+              "key": "j_lucky_cat",
+              "status": "complete"
+            },
+            "j_lusty_joker": {
+              "key": "j_lusty_joker",
+              "status": "complete"
+            },
+            "j_mad": {
+              "key": "j_mad",
+              "status": "complete"
+            },
+            "j_madness": {
+              "key": "j_madness",
+              "status": "missing"
+            },
+            "j_mail": {
+              "key": "j_mail",
+              "status": "complete"
+            },
+            "j_marble": {
+              "key": "j_marble",
+              "status": "complete"
+            },
+            "j_matador": {
+              "key": "j_matador",
+              "status": "complete"
+            },
+            "j_merry_andy": {
+              "key": "j_merry_andy",
+              "status": "complete"
+            },
+            "j_midas_mask": {
+              "key": "j_midas_mask",
+              "status": "complete"
+            },
+            "j_mime": {
+              "key": "j_mime",
+              "status": "complete"
+            },
+            "j_misprint": {
+              "key": "j_misprint",
+              "status": "complete"
+            },
+            "j_mr_bones": {
+              "key": "j_mr_bones",
+              "status": "missing"
+            },
+            "j_mystic_summit": {
+              "key": "j_mystic_summit",
+              "status": "complete"
+            },
+            "j_obelisk": {
+              "key": "j_obelisk",
+              "status": "missing"
+            },
+            "j_odd_todd": {
+              "key": "j_odd_todd",
+              "status": "complete"
+            },
+            "j_onyx_agate": {
+              "key": "j_onyx_agate",
+              "status": "complete"
+            },
+            "j_oops": {
+              "key": "j_oops",
+              "status": "complete"
+            },
+            "j_order": {
+              "key": "j_order",
+              "status": "complete"
+            },
+            "j_pareidolia": {
+              "key": "j_pareidolia",
+              "status": "complete"
+            },
+            "j_perkeo": {
+              "key": "j_perkeo",
+              "status": "complete"
+            },
+            "j_photograph": {
+              "key": "j_photograph",
+              "status": "complete"
+            },
+            "j_popcorn": {
+              "key": "j_popcorn",
+              "status": "complete"
+            },
+            "j_raised_fist": {
+              "key": "j_raised_fist",
+              "status": "complete"
+            },
+            "j_ramen": {
+              "key": "j_ramen",
+              "status": "complete"
+            },
+            "j_red_card": {
+              "key": "j_red_card",
+              "status": "complete"
+            },
+            "j_reserved_parking": {
+              "key": "j_reserved_parking",
+              "status": "complete"
+            },
+            "j_ride_the_bus": {
+              "key": "j_ride_the_bus",
+              "status": "complete"
+            },
+            "j_riff_raff": {
+              "key": "j_riff_raff",
+              "status": "complete"
+            },
+            "j_ring_master": {
+              "key": "j_ring_master",
+              "status": "complete"
+            },
+            "j_rocket": {
+              "key": "j_rocket",
+              "status": "complete"
+            },
+            "j_rough_gem": {
+              "key": "j_rough_gem",
+              "status": "complete"
+            },
+            "j_runner": {
+              "key": "j_runner",
+              "status": "complete"
+            },
+            "j_satellite": {
+              "key": "j_satellite",
+              "status": "missing"
+            },
+            "j_scary_face": {
+              "key": "j_scary_face",
+              "status": "complete"
+            },
+            "j_scholar": {
+              "key": "j_scholar",
+              "status": "complete"
+            },
+            "j_seance": {
+              "key": "j_seance",
+              "status": "missing"
+            },
+            "j_seeing_double": {
+              "key": "j_seeing_double",
+              "status": "missing"
+            },
+            "j_selzer": {
+              "key": "j_selzer",
+              "status": "missing"
+            },
+            "j_shoot_the_moon": {
+              "key": "j_shoot_the_moon",
+              "status": "complete"
+            },
+            "j_shortcut": {
+              "key": "j_shortcut",
+              "status": "complete"
+            },
+            "j_sixth_sense": {
+              "key": "j_sixth_sense",
+              "status": "complete"
+            },
+            "j_sly": {
+              "key": "j_sly",
+              "status": "complete"
+            },
+            "j_smeared": {
+              "key": "j_smeared",
+              "status": "complete"
+            },
+            "j_smiley": {
+              "key": "j_smiley",
+              "status": "complete"
+            },
+            "j_sock_and_buskin": {
+              "key": "j_sock_and_buskin",
+              "status": "complete"
+            },
+            "j_space": {
+              "key": "j_space",
+              "status": "complete"
+            },
+            "j_splash": {
+              "key": "j_splash",
+              "status": "complete"
+            },
+            "j_square": {
+              "key": "j_square",
+              "status": "complete"
+            },
+            "j_steel_joker": {
+              "key": "j_steel_joker",
+              "status": "complete"
+            },
+            "j_stencil": {
+              "key": "j_stencil",
+              "status": "complete"
+            },
+            "j_stone": {
+              "key": "j_stone",
+              "status": "missing"
+            },
+            "j_stuntman": {
+              "key": "j_stuntman",
+              "status": "complete"
+            },
+            "j_supernova": {
+              "key": "j_supernova",
+              "status": "missing"
+            },
+            "j_superposition": {
+              "key": "j_superposition",
+              "status": "complete"
+            },
+            "j_swashbuckler": {
+              "key": "j_swashbuckler",
+              "status": "complete"
+            },
+            "j_throwback": {
+              "key": "j_throwback",
+              "status": "complete"
+            },
+            "j_ticket": {
+              "key": "j_ticket",
+              "status": "missing"
+            },
+            "j_to_the_moon": {
+              "key": "j_to_the_moon",
+              "status": "complete"
+            },
+            "j_todo_list": {
+              "key": "j_todo_list",
+              "status": "complete"
+            },
+            "j_trading": {
+              "key": "j_trading",
+              "status": "complete"
+            },
+            "j_tribe": {
+              "key": "j_tribe",
+              "status": "complete"
+            },
+            "j_triboulet": {
+              "key": "j_triboulet",
+              "status": "complete"
+            },
+            "j_trio": {
+              "key": "j_trio",
+              "status": "complete"
+            },
+            "j_troubadour": {
+              "key": "j_troubadour",
+              "status": "missing"
+            },
+            "j_trousers": {
+              "key": "j_trousers",
+              "status": "complete"
+            },
+            "j_turtle_bean": {
+              "key": "j_turtle_bean",
+              "status": "missing"
+            },
+            "j_vagabond": {
+              "key": "j_vagabond",
+              "status": "missing"
+            },
+            "j_vampire": {
+              "key": "j_vampire",
+              "status": "missing"
+            },
+            "j_walkie_talkie": {
+              "key": "j_walkie_talkie",
+              "status": "complete"
+            },
+            "j_wee": {
+              "key": "j_wee",
+              "status": "complete"
+            },
+            "j_wily": {
+              "key": "j_wily",
+              "status": "complete"
+            },
+            "j_wrathful_joker": {
+              "key": "j_wrathful_joker",
+              "status": "complete"
+            },
+            "j_yorick": {
+              "key": "j_yorick",
+              "status": "complete"
+            },
+            "j_zany": {
+              "key": "j_zany",
+              "status": "complete"
+            }
+          },
+          "catalog_status": "complete",
+          "counts": {
+            "complete": 123,
+            "missing": 27,
+            "total": 150,
+            "unknown": 0
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": {},
+            "status": "eligible"
+          },
+          "goal": "gold_stickers",
+          "held_keys": {},
+          "held_status": "complete",
+          "held_target_count": 0,
+          "held_target_keys": {},
+          "held_unknown_keys": {},
+          "metadata_status": "complete",
+          "profile_id": 1,
+          "schema": 1,
+          "scope": "Loaded active-profile vanilla Gold sticker history; holding a target is not a completed win.",
+          "stake_status": "complete",
+          "targets": [
+            {
+              "key": "j_8_ball",
+              "status": "complete"
+            },
+            {
+              "key": "j_abstract",
+              "status": "complete"
+            },
+            {
+              "key": "j_acrobat",
+              "status": "complete"
+            },
+            {
+              "key": "j_ancient",
+              "status": "complete"
+            },
+            {
+              "key": "j_arrowhead",
+              "status": "complete"
+            },
+            {
+              "key": "j_astronomer",
+              "status": "complete"
+            },
+            {
+              "key": "j_banner",
+              "status": "complete"
+            },
+            {
+              "key": "j_baron",
+              "status": "complete"
+            },
+            {
+              "key": "j_baseball",
+              "status": "missing"
+            },
+            {
+              "key": "j_blackboard",
+              "status": "complete"
+            },
+            {
+              "key": "j_bloodstone",
+              "status": "missing"
+            },
+            {
+              "key": "j_blue_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_blueprint",
+              "status": "complete"
+            },
+            {
+              "key": "j_bootstraps",
+              "status": "complete"
+            },
+            {
+              "key": "j_brainstorm",
+              "status": "complete"
+            },
+            {
+              "key": "j_bull",
+              "status": "complete"
+            },
+            {
+              "key": "j_burglar",
+              "status": "missing"
+            },
+            {
+              "key": "j_burnt",
+              "status": "complete"
+            },
+            {
+              "key": "j_business",
+              "status": "complete"
+            },
+            {
+              "key": "j_caino",
+              "status": "complete"
+            },
+            {
+              "key": "j_campfire",
+              "status": "complete"
+            },
+            {
+              "key": "j_card_sharp",
+              "status": "complete"
+            },
+            {
+              "key": "j_cartomancer",
+              "status": "complete"
+            },
+            {
+              "key": "j_castle",
+              "status": "missing"
+            },
+            {
+              "key": "j_cavendish",
+              "status": "complete"
+            },
+            {
+              "key": "j_ceremonial",
+              "status": "missing"
+            },
+            {
+              "key": "j_certificate",
+              "status": "complete"
+            },
+            {
+              "key": "j_chaos",
+              "status": "complete"
+            },
+            {
+              "key": "j_chicot",
+              "status": "complete"
+            },
+            {
+              "key": "j_clever",
+              "status": "complete"
+            },
+            {
+              "key": "j_cloud_9",
+              "status": "complete"
+            },
+            {
+              "key": "j_constellation",
+              "status": "complete"
+            },
+            {
+              "key": "j_crafty",
+              "status": "complete"
+            },
+            {
+              "key": "j_crazy",
+              "status": "complete"
+            },
+            {
+              "key": "j_credit_card",
+              "status": "complete"
+            },
+            {
+              "key": "j_delayed_grat",
+              "status": "complete"
+            },
+            {
+              "key": "j_devious",
+              "status": "complete"
+            },
+            {
+              "key": "j_diet_cola",
+              "status": "missing"
+            },
+            {
+              "key": "j_dna",
+              "status": "complete"
+            },
+            {
+              "key": "j_drivers_license",
+              "status": "complete"
+            },
+            {
+              "key": "j_droll",
+              "status": "complete"
+            },
+            {
+              "key": "j_drunkard",
+              "status": "complete"
+            },
+            {
+              "key": "j_duo",
+              "status": "complete"
+            },
+            {
+              "key": "j_dusk",
+              "status": "complete"
+            },
+            {
+              "key": "j_egg",
+              "status": "complete"
+            },
+            {
+              "key": "j_erosion",
+              "status": "complete"
+            },
+            {
+              "key": "j_even_steven",
+              "status": "complete"
+            },
+            {
+              "key": "j_faceless",
+              "status": "missing"
+            },
+            {
+              "key": "j_family",
+              "status": "complete"
+            },
+            {
+              "key": "j_fibonacci",
+              "status": "complete"
+            },
+            {
+              "key": "j_flash",
+              "status": "complete"
+            },
+            {
+              "key": "j_flower_pot",
+              "status": "complete"
+            },
+            {
+              "key": "j_fortune_teller",
+              "status": "complete"
+            },
+            {
+              "key": "j_four_fingers",
+              "status": "complete"
+            },
+            {
+              "key": "j_gift",
+              "status": "complete"
+            },
+            {
+              "key": "j_glass",
+              "status": "complete"
+            },
+            {
+              "key": "j_gluttenous_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_golden",
+              "status": "complete"
+            },
+            {
+              "key": "j_greedy_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_green_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_gros_michel",
+              "status": "complete"
+            },
+            {
+              "key": "j_hack",
+              "status": "complete"
+            },
+            {
+              "key": "j_half",
+              "status": "complete"
+            },
+            {
+              "key": "j_hallucination",
+              "status": "complete"
+            },
+            {
+              "key": "j_hanging_chad",
+              "status": "complete"
+            },
+            {
+              "key": "j_hiker",
+              "status": "complete"
+            },
+            {
+              "key": "j_hit_the_road",
+              "status": "missing"
+            },
+            {
+              "key": "j_hologram",
+              "status": "missing"
+            },
+            {
+              "key": "j_ice_cream",
+              "status": "complete"
+            },
+            {
+              "key": "j_idol",
+              "status": "missing"
+            },
+            {
+              "key": "j_invisible",
+              "status": "missing"
+            },
+            {
+              "key": "j_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_jolly",
+              "status": "complete"
+            },
+            {
+              "key": "j_juggler",
+              "status": "complete"
+            },
+            {
+              "key": "j_loyalty_card",
+              "status": "missing"
+            },
+            {
+              "key": "j_luchador",
+              "status": "missing"
+            },
+            {
+              "key": "j_lucky_cat",
+              "status": "complete"
+            },
+            {
+              "key": "j_lusty_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_mad",
+              "status": "complete"
+            },
+            {
+              "key": "j_madness",
+              "status": "missing"
+            },
+            {
+              "key": "j_mail",
+              "status": "complete"
+            },
+            {
+              "key": "j_marble",
+              "status": "complete"
+            },
+            {
+              "key": "j_matador",
+              "status": "complete"
+            },
+            {
+              "key": "j_merry_andy",
+              "status": "complete"
+            },
+            {
+              "key": "j_midas_mask",
+              "status": "complete"
+            },
+            {
+              "key": "j_mime",
+              "status": "complete"
+            },
+            {
+              "key": "j_misprint",
+              "status": "complete"
+            },
+            {
+              "key": "j_mr_bones",
+              "status": "missing"
+            },
+            {
+              "key": "j_mystic_summit",
+              "status": "complete"
+            },
+            {
+              "key": "j_obelisk",
+              "status": "missing"
+            },
+            {
+              "key": "j_odd_todd",
+              "status": "complete"
+            },
+            {
+              "key": "j_onyx_agate",
+              "status": "complete"
+            },
+            {
+              "key": "j_oops",
+              "status": "complete"
+            },
+            {
+              "key": "j_order",
+              "status": "complete"
+            },
+            {
+              "key": "j_pareidolia",
+              "status": "complete"
+            },
+            {
+              "key": "j_perkeo",
+              "status": "complete"
+            },
+            {
+              "key": "j_photograph",
+              "status": "complete"
+            },
+            {
+              "key": "j_popcorn",
+              "status": "complete"
+            },
+            {
+              "key": "j_raised_fist",
+              "status": "complete"
+            },
+            {
+              "key": "j_ramen",
+              "status": "complete"
+            },
+            {
+              "key": "j_red_card",
+              "status": "complete"
+            },
+            {
+              "key": "j_reserved_parking",
+              "status": "complete"
+            },
+            {
+              "key": "j_ride_the_bus",
+              "status": "complete"
+            },
+            {
+              "key": "j_riff_raff",
+              "status": "complete"
+            },
+            {
+              "key": "j_ring_master",
+              "status": "complete"
+            },
+            {
+              "key": "j_rocket",
+              "status": "complete"
+            },
+            {
+              "key": "j_rough_gem",
+              "status": "complete"
+            },
+            {
+              "key": "j_runner",
+              "status": "complete"
+            },
+            {
+              "key": "j_satellite",
+              "status": "missing"
+            },
+            {
+              "key": "j_scary_face",
+              "status": "complete"
+            },
+            {
+              "key": "j_scholar",
+              "status": "complete"
+            },
+            {
+              "key": "j_seance",
+              "status": "missing"
+            },
+            {
+              "key": "j_seeing_double",
+              "status": "missing"
+            },
+            {
+              "key": "j_selzer",
+              "status": "missing"
+            },
+            {
+              "key": "j_shoot_the_moon",
+              "status": "complete"
+            },
+            {
+              "key": "j_shortcut",
+              "status": "complete"
+            },
+            {
+              "key": "j_sixth_sense",
+              "status": "complete"
+            },
+            {
+              "key": "j_sly",
+              "status": "complete"
+            },
+            {
+              "key": "j_smeared",
+              "status": "complete"
+            },
+            {
+              "key": "j_smiley",
+              "status": "complete"
+            },
+            {
+              "key": "j_sock_and_buskin",
+              "status": "complete"
+            },
+            {
+              "key": "j_space",
+              "status": "complete"
+            },
+            {
+              "key": "j_splash",
+              "status": "complete"
+            },
+            {
+              "key": "j_square",
+              "status": "complete"
+            },
+            {
+              "key": "j_steel_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_stencil",
+              "status": "complete"
+            },
+            {
+              "key": "j_stone",
+              "status": "missing"
+            },
+            {
+              "key": "j_stuntman",
+              "status": "complete"
+            },
+            {
+              "key": "j_supernova",
+              "status": "missing"
+            },
+            {
+              "key": "j_superposition",
+              "status": "complete"
+            },
+            {
+              "key": "j_swashbuckler",
+              "status": "complete"
+            },
+            {
+              "key": "j_throwback",
+              "status": "complete"
+            },
+            {
+              "key": "j_ticket",
+              "status": "missing"
+            },
+            {
+              "key": "j_to_the_moon",
+              "status": "complete"
+            },
+            {
+              "key": "j_todo_list",
+              "status": "complete"
+            },
+            {
+              "key": "j_trading",
+              "status": "complete"
+            },
+            {
+              "key": "j_tribe",
+              "status": "complete"
+            },
+            {
+              "key": "j_triboulet",
+              "status": "complete"
+            },
+            {
+              "key": "j_trio",
+              "status": "complete"
+            },
+            {
+              "key": "j_troubadour",
+              "status": "missing"
+            },
+            {
+              "key": "j_trousers",
+              "status": "complete"
+            },
+            {
+              "key": "j_turtle_bean",
+              "status": "missing"
+            },
+            {
+              "key": "j_vagabond",
+              "status": "missing"
+            },
+            {
+              "key": "j_vampire",
+              "status": "missing"
+            },
+            {
+              "key": "j_walkie_talkie",
+              "status": "complete"
+            },
+            {
+              "key": "j_wee",
+              "status": "complete"
+            },
+            {
+              "key": "j_wily",
+              "status": "complete"
+            },
+            {
+              "key": "j_wrathful_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_yorick",
+              "status": "complete"
+            },
+            {
+              "key": "j_zany",
+              "status": "complete"
+            }
+          ]
+        },
+        "limits": {
+          "max_actions": 500,
+          "max_runs": 10,
+          "retire_runs": true,
+          "retire_unsupported": false,
+          "run_seconds": 1800,
+          "search_request": {
+            "budget_ms": 30000,
+            "burnt_fallback": true,
+            "deck_name": "Red Deck",
+            "first_ante": 1,
+            "interchangeable_copies": true,
+            "last_ante": 8,
+            "legendary_fallback": false,
+            "minimum_distinct": 0,
+            "objective": "win_first",
+            "quota_mode": "strict"
+          },
+          "search_seconds": 30,
+          "session_seconds": 21600,
+          "stall_seconds": 30,
+          "teacher_batch": true
+        },
+        "profile_id": 1,
+        "schema": 1,
+        "session": 1,
+        "state": "waiting",
+        "time": 27.1245866
+      }
+    },
+    {
+      "anchor": {
+        "sequence": 22,
+        "segment": "session-20260926T221209Z-1-000002.brj",
+        "ordinal": 8,
+        "raw_sha256": "c7d96eba88487ad1640f8baa69948f6c1faabf45eb88747128511fde1c376640"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 28.7092211
+      }
+    }
+  ],
+  "outcomes": {},
+  "database_sha256": "d27363ca11e557c454ad8b085321bb145fe1e46fb467c5443b58e5e589e3675e",
+  "indexer_sha256": "043599da41b8cb66009e36ebd3c16fa4086181b2f380a7fcee092dc281cc4e04"
+}

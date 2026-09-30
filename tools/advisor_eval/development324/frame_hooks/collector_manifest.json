@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "kind": "detached_collector324_fixture_integration",
+  "status": "ready_for_guarded_staging",
+  "integration": [
+    {
+      "source": "test_advisor_performance.lua",
+      "target": "tests/advisor_performance.lua",
+      "base_sha256": null,
+      "sha256": "7468273eb667216d26d71257fb16a790c6055311ab0774e1f9b46f81d41296db"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "Brainstorm/Advisor/performance.lua",
+      "sha256": "660a004a34fd405759298fc2bfa49a9310a99d962ff24551c4e9ee1fcc3573f4"
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+    }
+  ],
+  "validation": {
+    "path": "tools/advisor_eval/development324/frame_hooks/collector_report.json",
+    "sha256": "be92495845553f875af2a3e03d0ede584dede3f45ca9e4adc2ab1666fa1eebea"
+  },
+  "review": {
+    "path": "tools/advisor_eval/development324/frame_hooks/collector_review.json",
+    "sha256": "197d2f94a926d74cb94ce48ffc827f3270fbbde7f08c32159969f1f360fd161e"
+  },
+  "stage": {
+    "path": "tools/advisor_eval/development324/frame_hooks/collector_stage.py",
+    "sha256": "5564bd53e438b19d07b0cdead660b317ea19a7cb3fd7fe56528c553369e21d3b"
+  }
+}

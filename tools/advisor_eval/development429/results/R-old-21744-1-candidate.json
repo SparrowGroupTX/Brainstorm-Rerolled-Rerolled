@@ -1,0 +1,104 @@
+{
+  "job": "R-old-21744-1-candidate",
+  "mode": "continuation",
+  "case": "old-21744",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 1.125,
+  "log_sha256": "e0fdea7370fe17e8fed3e9dcffa6c7574359f89d0d35397627735b3f509f9dad",
+  "status": "complete",
+  "result": {
+    "cards_discarded": 0,
+    "case": "old-21744",
+    "chips": 0,
+    "clear_floor": 43008,
+    "discards": 0,
+    "five_card_discards": 0,
+    "full_run": false,
+    "initial_discards_left": 3,
+    "input_unchanged": true,
+    "mode": "continuation",
+    "plays": 1,
+    "policy": "candidate",
+    "reason": "Supported immediate floor reaches target; round-end rewards not simulated",
+    "remaining_discards": 3,
+    "sorting": "rank",
+    "status": "supported_clear",
+    "steps": [
+      {
+        "before_chips": 0,
+        "before_discards": 3,
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              7,
+              8
+            ],
+            "kind": "play"
+          },
+          "discard_before_clear": {
+            "category": "public_model_gap",
+            "clear_supported": true,
+            "evaluations": 4,
+            "final_action_kind": "play",
+            "final_play_score": 43008,
+            "needed_score": 37500,
+            "reason": "Automatic hand sorting can change scoring-card order.",
+            "remaining_discards": 3,
+            "schema": 1,
+            "selected": false,
+            "status": "exception"
+          },
+          "evaluations": 38973,
+          "play": {
+            "hand": "Two Pair",
+            "legal": true,
+            "score": 43008,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 218,
+              "qualified": 0
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 0,
+              "max_evaluations": 12,
+              "reasons": [
+                "Automatic hand sorting can change scoring-card order."
+              ]
+            },
+            "risk": {
+              "bonus": 0.0015428571428571427,
+              "candidate_count": 16,
+              "compared": true,
+              "compared_five_count": 3,
+              "exact_transition": true,
+              "final_action_kind": "play",
+              "final_action_matches_search": false,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "minimum_score": 43008,
+              "qualified_count": 0,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": false,
+              "selected": false,
+              "taper": 0.012
+            },
+            "schema": 1
+          }
+        }
+      }
+    ],
+    "target": 37500,
+    "world": 1
+  }
+}

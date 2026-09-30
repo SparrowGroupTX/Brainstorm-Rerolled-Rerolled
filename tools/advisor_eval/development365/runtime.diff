@@ -1,0 +1,196 @@
+--- before/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -1054,7 +1054,7 @@
+ -- Replacement offers are scored against the complete row we actually own.
+ -- Vacant-slot previews still fund the purchase but never become score baselines.
+ local function best_shop_purchase(snapshot, stats, engine, final_endpoint, replacement_before)
+-    local candidates,planet_candidates = {},{}
++    local candidates,planet_candidates,replacement_candidates = {},{},{}
+     for _, area in ipairs({'shop_jokers', 'shop_vouchers', 'shop_booster'}) do
+         for index, card in ipairs(snapshot[area] or {}) do
+             local cost = num(card.cost)
+@@ -1087,6 +1087,10 @@
+                     planet_candidates[#planet_candidates+1]={candidate=candidate,after=planet_after,eligible=score>0 and not dominated}
+                 end
+                 local admitted=kind(card)~='joker' or Strategy.joker_admission(replacement_before or snapshot,card,after,evidence)
++                if replacement_before and kind(card)=='joker' then
++                    candidate.replacement_admitted=admitted
++                    replacement_candidates[#replacement_candidates+1]=candidate
++                end
+                 if score>0 and not dominated and admitted then
+                     candidates[#candidates+1]=candidate
+                 end
+@@ -1105,7 +1109,7 @@
+         local selected,diagnostics=planet_shop_dominance(snapshot,candidates)
+         if selected then return selected,diagnostics end
+     end
+-    return candidates[1]
++    return candidates[1],nil,replacement_candidates
+ end
+ 
+ local function after_egg_sale(snapshot, index)
+@@ -1278,6 +1282,20 @@
+     local stats=deck_stats(snapshot)
+     local before=replacement_build_value(snapshot,stats,true)
+     local best
++    -- The generic purchase winner is not the winner of the final-row comparison.
++    -- Reuse all already-scored Joker endpoints; no second scorer or larger graph.
++    local ctx=snapshot._shop_scoring
++    local complete_family=snapshot.phase=='shop' and ctx and #(snapshot.jokers or {})<=6 and
++        #(snapshot.shop_jokers or {})<=3
++    local receipt
++    if snapshot.phase=='shop' and ctx and not complete_family then
++        ctx.replacement_diagnostics={schema=1,complete=false,reason='replacement_receipt_scope_bound',candidates={}}
++    end
++    if complete_family then
++        receipt={schema=1,scope='Visible one-sale one-buy endpoints; held inventory unchanged.',
++            complete=true,candidates={},evaluations_before=num(ctx.evaluations)}
++        ctx.replacement_diagnostics=receipt
++    end
+     for index,sold in ipairs(snapshot.jokers or {}) do
+         local _,_,known=joker_value(snapshot,sold,stats,components(snapshot))
+         -- Unknown effects are preserved; Diet Cola is a known non-scoring sale
+@@ -1285,8 +1303,38 @@
+         if not ability(sold).eternal and (known or expired(sold) or sold.key=='j_diet_cola') and
+             not (omelette(snapshot) and sold.key=='j_egg') then
+             local state=after_joker_sale(snapshot,index)
+-            local candidate=state and choose(state,deck_stats(state),components(state),nil,snapshot)
+-            if candidate and kind(candidate.card)=='joker' and candidate.known and candidate.score>=26 and
++            local candidate,_,family
++            if state then candidate,_,family=choose(state,deck_stats(state),components(state),nil,snapshot) end
++            local choices=complete_family and family or {candidate}
++            if receipt then
++                for offer,card in ipairs(snapshot.shop_jokers or {}) do if kind(card)=='joker' then
++                    local found
++                    for _,c in ipairs(choices or {}) do if c.index==offer then found=c end end
++                    if not found then receipt.candidates[#receipt.candidates+1]={sale_index=index,offer_index=offer,key=card.key,
++                        compared=false,reason=modifiers(snapshot).no_shop_jokers and 'shop_jokers_forbidden' or not state and 'unsupported_sale' or
++                        not capacity(state,card,false) and 'no_slot_after_sale' or 'unaffordable_after_sale'} end
++                end end
++            end
++            for _,candidate in ipairs(choices or {}) do
++            local entry
++            if receipt then
++                local e=candidate.scoring_evidence
++                entry={sale_index=index,offer_index=candidate.index,key=candidate.card.key,compared=e~=nil,
++                    family_id='replacement:'..index..':'..candidate.index,
++                    purchase_rating=candidate.score,admitted=candidate.replacement_admitted==true,
++                    ratio=e and e.ratio,score_kind=e and (e.uncertain and 'uncertain_mean' or 'sampled_opening_comparison'),
++                    samples=e and e.samples,common_worlds=e and type(e.common_worlds)=='table' or false,
++                    reason=not candidate.known and 'unknown_effect' or not e and 'unsupported_comparison' or
++                        candidate.replacement_admitted~=true and 'objective_admission_rejected' or
++                        (sold.pinned or ability(sold).pinned) and 'protected_sale' or
++                        capacity(snapshot,candidate.card,false) and 'sale_not_needed' or 'evaluated'}
++                receipt.candidates[#receipt.candidates+1]=entry
++                if candidate.known and (not e or e.incomplete) then receipt.complete=false end
++            end
++            if candidate and kind(candidate.card)=='joker' and candidate.known and
++                (complete_family and candidate.scoring_evidence and candidate.replacement_admitted or
++                 not complete_family and candidate.score>=26) and
++                not sold.pinned and not ability(sold).pinned and
+                 not capacity(snapshot,candidate.card,snapshot.phase=='pack') then
+                 local after=after_joker_purchase(state,candidate.card)
+                 local cost=snapshot.phase=='shop' and num(candidate.card.cost) or 0
+@@ -1302,6 +1350,12 @@
+                     merit=merit+adjustment
+                     if evidence.ratio<0.85 or survival_dominated(evidence) then merit=-math.huge end
+                 end
++                if entry then
++                    entry.merit=merit~=-math.huge and merit or nil
++                    entry.cash_after=after.dollars;entry.cost=cost
++                    entry.reason=merit==-math.huge and 'survival_dominated' or merit<26 and 'insufficient_gain' or
++                        direct and direct.score>=26 and merit<=direct.score and 'ordinary_purchase_preferred' or 'eligible'
++                end
+                 if Strategy.joker_admission(snapshot,candidate.card,after,evidence) and
+                     merit>=26 and (not direct or direct.score<26 or merit>direct.score) and
+                     (not best or merit>best.score) then
+@@ -1309,7 +1363,21 @@
+                         remaining_cash=after.dollars,scoring_evidence=evidence}
+                 end
+             end
+-        end
++            end
++        elseif receipt then
++            for offer,card in ipairs(snapshot.shop_jokers or {}) do if kind(card)=='joker' then
++                receipt.candidates[#receipt.candidates+1]={sale_index=index,offer_index=offer,key=card.key,
++                    compared=false,reason=ability(sold).eternal and 'protected_sale' or 'unsupported_sale'}
++            end end
++        end
++    end
++    if receipt then
++        receipt.evaluations=num(ctx.evaluations)-receipt.evaluations_before
++        receipt.complete=receipt.complete and not ctx.truncated
++        receipt.reason=ctx.truncated and 'budget_incomplete' or not receipt.complete and 'unsupported_family' or
++            best and 'replacement_preferred' or 'hold_or_ordinary_purchase_preferred'
++        if not receipt.complete then return end
++        if best then receipt.selected_sale=best.index;receipt.selected_offer=best.purchase.index end
+     end
+     return best
+ end
+--- before/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -253,6 +253,10 @@
+       local route;route,routing_diagnostics=modules.blind_routing.suggest(snapshot,modules,routing_options)
+       if route then strategy=route end
+     end
++    if context and context.replacement_diagnostics then
++      local d,a=context.replacement_diagnostics,strategy.action or {}
++      d.final_action_kind=a.kind;d.final_action_area=a.area;d.final_action_index=a.index
++    end
+     return {kind='strategy', strategy=strategy, action=strategy.action,
+       evaluations=prehand_work+retention_work+(context and context.evaluations or 0)+(routing_diagnostics and routing_diagnostics.evaluations or 0),
+       gold_planet_diagnostics=prehand_diagnostics,
+@@ -263,6 +267,7 @@
+       pack_diagnostics=strategy.pack_diagnostics,
+       shop_diagnostics=context and {evaluations=context.evaluations,truncated=context.truncated,
+         unavailable_reason=context.unavailable_reason,metrics=context.metrics,sequences=sequence_diagnostics,
++        replacements=context.replacement_diagnostics,
+         catalog_replacements=context.catalog_replacement_diagnostics,
+         reroll_miss=context.reroll_miss_diagnostics} or nil}
+   end
+--- before/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -437,6 +437,35 @@
+   end
+   if fields==0 and omitted==0 then return nil end
+   if omitted>0 then out.omitted_fields=omitted end
++  return out
++end
++-- Explicit scalar allowlist: never serialize endpoint states/world assignments.
++function M.compact_replacement_review(result)
++  local function plain(t)return type(t)=='table' and not getmetatable(t)end
++  local shop=plain(result) and rawget(result,'shop_diagnostics')
++  local source=plain(shop) and rawget(shop,'replacements')
++  if not plain(source) then return end
++  local function fields(from,to,keys)
++    for _,key in ipairs(keys)do
++      local v=rawget(from,key);local t=type(v)
++      if t=='boolean' or t=='number' and v==v and math.abs(v)<=1e300 or t=='string' and #v<=128 then to[key]=v end
++    end
++  end
++  local out={schema=1,candidates={}}
++  fields(source,out,{'complete','scope','reason','evaluations','evaluations_before','selected_sale','selected_offer',
++    'final_action_kind','final_action_area','final_action_index'})
++  local entries=rawget(source,'candidates')
++  if plain(entries) then
++    for i=1,math.min(18,#entries)do
++      local entry=rawget(entries,i)
++      if plain(entry)then
++        local row={};fields(entry,row,{'sale_index','offer_index','family_id','key','compared','purchase_rating','admitted',
++          'ratio','score_kind','samples','common_worlds','reason','merit','cash_after','cost'})
++        out.candidates[#out.candidates+1]=row
++      end
++    end
++    if #entries>18 then out.truncated=true end
++  end
+   return out
+ end
+ function M.attach(A,B,deps)
+@@ -499,6 +528,7 @@
+       advice={status=current and 'current' or A.result and 'stale' or A.worker and 'computing' or 'unavailable',
+         timing=current and A.last_decision_result==A.result and A.last_decision_timing or nil,
+         gold_review=current and compact_gold_review(A.result) or nil,
++        replacement_review=current and M.compact_replacement_review(A.result) or nil,
+         title=A.display and A.display.title,lines=A.lines,action=A.result and A.result.action}}
+   end
+   local J=M.new({enabled=function()return B.config.advisor.player_logging==true end,append=deps.append,

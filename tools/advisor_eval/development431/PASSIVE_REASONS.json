@@ -1,0 +1,32 @@
+{
+  "source": "development429/DECISION_PAIRS.json",
+  "source_sha256": "d76fbf8f02c9018292db7ed29e0bfa17fefa2230fe536efed48603c3c9a0929b",
+  "unchanged_play_states": 55,
+  "reason_counts": {
+    "The supported floor is below target; a random clear remains possible.": 8,
+    "Automatic hand sorting can change scoring-card order.": 19,
+    "Replacement draws can reduce or reorder the reserved score.": 14,
+    "Purple Seal generation needs an explicit full Tarot outcome.": 1,
+    "Draw or play changes the finishing conditions.": 3,
+    "Automatic hand sorting can change scoring-trigger order.": 9,
+    "No shortlisted legal discard preserved the supported clearing score and held resources.": 1
+  },
+  "conditional_guard_cases": [
+    "old-3753",
+    "old-4006",
+    "old-4097",
+    "old-4190",
+    "old-4274",
+    "old-4418",
+    "old-4861",
+    "old-4955",
+    "old-5300",
+    "old-5410",
+    "current-443",
+    "current-488",
+    "current-621",
+    "current-731"
+  ],
+  "policy_executed": false,
+  "all_fourteen_fixed_claim": false
+}

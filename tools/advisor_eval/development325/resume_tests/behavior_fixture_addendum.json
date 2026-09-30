@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "recorded_utc": "2026-09-15T16:57:29.466450+00:00",
+  "command": [
+    "python",
+    "tests/run_lua_tests.py",
+    "tests/advisor_adaptive_quota.lua",
+    "tests/advisor_auto_observation.lua",
+    "tests/advisor_auto_run.lua",
+    "tests/advisor_auto_run_product.lua",
+    "tests/advisor_input_ui.lua"
+  ],
+  "observed_exit_code": 0,
+  "checks": {
+    "advisor_adaptive_quota": 69,
+    "advisor_auto_observation": 331,
+    "advisor_auto_run": 680,
+    "advisor_auto_run_product": 640,
+    "advisor_input_ui": 98
+  },
+  "total_checks": 1818,
+  "fixtures_passed": 5,
+  "file_hashes_recorded_after_run": {
+    "tests/advisor_adaptive_quota.lua": "3dd3e872d3f8a76a08e2a365c919db923a78e4b27292f7634624d38d010c4ff9",
+    "tests/advisor_auto_observation.lua": "c5c0f79304950f774bdc075cbaa6f407aa47d8370060ff74c424673426731bce",
+    "tests/advisor_auto_run.lua": "e2517b2188f9be5a15b47d32d4945b4994d192d9039b9e288e8e4d0bfb979576",
+    "tests/advisor_auto_run_product.lua": "23d28cbc04e9f355572c8f0f1b1013b34c30249ddbee2431c51d0b7e64455738",
+    "tests/advisor_input_ui.lua": "a64301cb2dce2789c6ff1cb0cbcaf1648a16e5f586a354af0f2ea33a8152724d"
+  },
+  "original_test_backups": {
+    "tools/advisor_eval/development325/resume_tests/advisor_adaptive_quota.before_behavior_update.lua": "379b543f336841b9afb4ddddc2279b6cc0caa29b7ff1301e8898f9e86856ee51",
+    "tools/advisor_eval/development325/resume_tests/advisor_auto_observation.before_behavior_update.lua": "8bc691700b20b7956e430879200abee1e2cc5fee10866f84e3d7a7a49ca4d346"
+  },
+  "changed_files_this_followup": [
+    "tests/advisor_adaptive_quota.lua",
+    "tests/advisor_auto_observation.lua"
+  ],
+  "superseded_expectations": [
+    "future quota edits no longer stop engaged auto-run or its owned query; standalone search cancellation remains",
+    "ordinary modal/pause observations remain active and cheap while input is blocked instead of immediately stopping"
+  ],
+  "retained_or_added_protections": [
+    "accepted active request options are unchanged while future UI options persist",
+    "manual search cannot overlap an engaged automatic request",
+    "120 blocked observations over60seconds perform zero snapshot/fingerprint/action serialization with malformed unused advice",
+    "Gold metadata is reread on every blocked frame",
+    "changed public state after input settles refuses stale publication without mutating the key",
+    "fresh matching advice retains one observation plus both original exact execution gates"
+  ],
+  "prior_failed_validation_preserved": "tools/advisor_eval/runs/resume325_candidate/validation",
+  "scope": "Fixture-only repairs and manufactured validation. No runtime, original failed validation, player data, game, native or experiment changes."
+}

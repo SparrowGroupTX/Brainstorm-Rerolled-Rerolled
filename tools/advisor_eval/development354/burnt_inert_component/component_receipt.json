@@ -1,0 +1,78 @@
+{
+  "status": "staged_manufactured_component_complete_not_promoted",
+  "scope": "Post-first-discard inert Burnt support only; no new experiment workers.",
+  "baseline": "Frozen 353 margin candidate; shared runtime was not mutated by this task.",
+  "files": {
+    "Brainstorm/Advisor/growth.lua": "db6f3a66d66a1949616aee2dd8b149686948ab4a578fa09d023c10e0ab8f4ecf",
+    "tests/advisor_yorick_pair.lua": "e927e33dc177deb9a8609dcce6053f3f1785c5668d7f9deac93f56869a593834",
+    "tests/advisor_burnt_pair_inert.lua": "694f4433fee347c70d0aadd1ae15c2eee5e4aa14fb824bc8acd52ea97f91bb3d",
+    "before/growth.lua": "727bca0858ca327d7bdf4d85e5826abc7ad61bb2b77a17ae324d059e6f3df9b3",
+    "before/advisor_yorick_pair.lua": "b7aa6401a64516fd56ef94ae0b2c8ded21ac9f1435cb7d85c20c7c22acef4a7b",
+    "prepare_receipt.json": "d1934729ae044ed452fcf66d5110a6e890460c1a51d746b62a05b6da30ed187e",
+    "validate.py": "345ea5a7aab84aa4db81074c5d3f924e7b5b243dca90ecbddc1d7db72726fde1",
+    "run_baseline.lua": "3d8b384ab229cf12972ea3ba4029bd8f1a04af24821d78fbdfe2aecc6146fcb4",
+    "run_candidate.lua": "03402de316e8c444e878e13027adcb79e69855f89c547a624555a3710b545caa",
+    "run_pair.lua": "8ecf09c63757e22e62482f76a8305d7b00891607eb8c90d687a130e7b35ee23b",
+    "run_margin.lua": "49cecf8f5054853f615502bd36f55301d438d26ce51189c23d9065a574a580e3",
+    "README.md": "9c0f82a467691a6b4aa85e44aad0c3c053c1f1ddaf65ca07fc2b956497c1e14e",
+    "seal.py": "7d3af2f77800da665ced035c2ab317bae65d9f24b23157539fea7ad61a0bacd4"
+  },
+  "results": [
+    {
+      "label": "baseline01",
+      "report": "tools/advisor_eval/development354/burnt_inert_component/baseline01/report.json",
+      "report_sha256": "2439d69b25243814e3d82f22aed3bf4de8104de7be660c2a920e12d5e93a6876",
+      "status": "failed",
+      "seconds": 0.09399999992456287,
+      "inputs_unchanged": true,
+      "fixture_sha256": "4da5dfde6ddc6a82d10226470386bb33fa21d4033cd404c6b89f7ac4d32a94c1",
+      "output_sha256": "7ce5663f720cc463c25e1934bdbd7180ec999d1979b448360b800f82d0208e08"
+    },
+    {
+      "label": "baseline02",
+      "report": "tools/advisor_eval/development354/burnt_inert_component/baseline02/report.json",
+      "report_sha256": "f6dad08ca68ff2d5bd74a571f849ea2008e9c4ccaca8729dfa06e6857eddc06c",
+      "status": "failed",
+      "seconds": 0.09299999999348074,
+      "inputs_unchanged": true,
+      "fixture_sha256": "694f4433fee347c70d0aadd1ae15c2eee5e4aa14fb824bc8acd52ea97f91bb3d",
+      "output_sha256": "3f4a0625536463b6af8c3114e602e499ccfe1f1cae63d5fe0ede53f6ee661824"
+    },
+    {
+      "label": "candidate01",
+      "report": "tools/advisor_eval/development354/burnt_inert_component/candidate01/report.json",
+      "report_sha256": "24c7342362c8320ce48b5dd626c2b8788cc6d645ebd6c85c8b29080b6bcca754",
+      "status": "passed",
+      "seconds": 0.375,
+      "inputs_unchanged": true,
+      "fixture_sha256": "694f4433fee347c70d0aadd1ae15c2eee5e4aa14fb824bc8acd52ea97f91bb3d",
+      "output_sha256": "e36ed7b0b4d75bcf88e91fc7b29856343dd5001c52fcd512a1f7f46de6528264"
+    },
+    {
+      "label": "pair01",
+      "report": "tools/advisor_eval/development354/burnt_inert_component/pair01/report.json",
+      "report_sha256": "7bec7f2ffc198a47fc3a5c13b376f827678f73250101d2505a4b7191494436b8",
+      "status": "passed",
+      "seconds": 0.25,
+      "inputs_unchanged": true,
+      "fixture_sha256": "e927e33dc177deb9a8609dcce6053f3f1785c5668d7f9deac93f56869a593834",
+      "output_sha256": "b43ec2453d26206dfa67a9dcc06c1bbf9cc4c1d1aff079aa634a8632bd0a4ccf"
+    },
+    {
+      "label": "margin01",
+      "report": "tools/advisor_eval/development354/burnt_inert_component/margin01/report.json",
+      "report_sha256": "45ce4e4c2d6d0ee6fa69df35388eede1b92adcb4936a59e6464de702958a92c9",
+      "status": "passed",
+      "seconds": 0.0940000000409782,
+      "inputs_unchanged": true,
+      "fixture_sha256": "9275acc957f8ff44509a87629525d56473d5353a2658da1cbdb798e0a21e550d",
+      "output_sha256": "47c3a197fc91ce0a0cde9ccc72e4ec7ea984c47825d89fdb3c4a303fdeb64c25"
+    }
+  ],
+  "source_grounding": {
+    "path": "tools/advisor_eval/runs/planet_pool_source1/source/card.lua",
+    "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+    "mode": "Previously preserved source read only; no original-source execution."
+  },
+  "limits": "No complete outcome or win/sticker improvement demonstrated."
+}

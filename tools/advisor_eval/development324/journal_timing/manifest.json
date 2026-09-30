@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "status": "detached_ready_for_review",
+  "runtime_changed": false,
+  "experiments": 0,
+  "integration": [
+    {
+      "source": "player_journal.lua",
+      "target": "Brainstorm/Advisor/player_journal.lua",
+      "base_sha256": "38b081ea58c53f9dba98046a64ddb9601e62f9d414b35851172684ff8d379fe9",
+      "sha256": "339643589dce6dc1d3684b7b0971c733e15d60886c983b89e6733252a3bd14d6"
+    },
+    {
+      "source": "test_player_journal_timing.lua",
+      "target": "tests/advisor_player_journal_timing.lua",
+      "base_sha256": null,
+      "sha256": "4f0dd01995eb1f1311fca06e56df1a5c313d3b874953aabd8f2705a0e57b2890"
+    }
+  ],
+  "collector_api": [
+    "P:now()",
+    "P:record(label, seconds)"
+  ],
+  "collector_labels": [
+    "journal.observe",
+    "journal.encode",
+    "journal.append",
+    "journal.total"
+  ],
+  "files": [
+    {
+      "path": "player_journal.base.lua",
+      "sha256": "38b081ea58c53f9dba98046a64ddb9601e62f9d414b35851172684ff8d379fe9"
+    },
+    {
+      "path": "player_journal.lua",
+      "sha256": "339643589dce6dc1d3684b7b0971c733e15d60886c983b89e6733252a3bd14d6"
+    },
+    {
+      "path": "test_player_journal_timing.lua",
+      "sha256": "4f0dd01995eb1f1311fca06e56df1a5c313d3b874953aabd8f2705a0e57b2890"
+    },
+    {
+      "path": "run_candidate.lua",
+      "sha256": "2d784b5f94afd92b7f8b9e74e1912662a1db670161e28214f76abb7c783c42b2"
+    },
+    {
+      "path": "run_archive.py",
+      "sha256": "40fbb7ddd27c38dcec8ea921c68081828d41f2bdaf1a7c39477c97e5a8ccfff5"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "9eff8e85b637e56014731f24db56d1348599b606ee2c818062c24247efde9f54"
+    },
+    {
+      "path": "package.py",
+      "sha256": "f12274058e905e0abcdc4e0dc3385182f6ad1c99de0905af3a5e06a6025cab53"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "Brainstorm/Advisor/player_log_archive.lua",
+      "sha256": "a25fffd012ec4c52de40d7b7f945486e0e586ee0b7e675314f315b5a032b64ca"
+    },
+    {
+      "path": "tools/advisor_eval/read_player_log.py",
+      "sha256": "81fe0b98ce1afdcf7b9670eb22ac65ce501c055b4873d9d0bfd155c3289418ea"
+    },
+    {
+      "path": "tests/advisor_player_journal.lua",
+      "sha256": "1820e319ed9575f21d54bbdcf7bb0acc89ac24f6426695be5bfaae8f58395510"
+    },
+    {
+      "path": "tests/test_advisor_player_log_archive.py",
+      "sha256": "164a6ffa9d7541bf51d81d5189c748a1cd54e2d5803104eb208a48fb0557e664"
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+    }
+  ],
+  "validation": [
+    {
+      "command": "python tests/run_lua_tests.py tools/advisor_eval/development324/journal_timing/run_candidate.lua",
+      "exit_code": 0,
+      "new_checks": 105,
+      "existing_checks": 21
+    },
+    {
+      "command": "python tools/advisor_eval/development324/journal_timing/run_archive.py",
+      "exit_code": 0,
+      "python_tests": 16,
+      "new_tests": 1,
+      "existing_tests": 15
+    }
+  ],
+  "limitations": [
+    "Elapsed wall timing, not process CPU time.",
+    "No live timing benefit or freeze diagnosis demonstrated.",
+    "Advice performance summary API and root collector flush/acknowledgment integration remain parent-owned.",
+    "Existing append/storage/sequence/rotation/retry protections unchanged."
+  ]
+}

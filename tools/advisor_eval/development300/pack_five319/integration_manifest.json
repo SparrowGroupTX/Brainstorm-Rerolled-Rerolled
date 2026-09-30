@@ -1,0 +1,58 @@
+{
+  "kind": "optional_five_card_pack_detached_ready",
+  "version_reserved": false,
+  "root_staged": false,
+  "integration": {
+    "Brainstorm/Advisor/multi_discard.lua": {
+      "draft": "Brainstorm/Advisor/multi_discard.lua",
+      "base_sha256": "3d8c54323fa17c9dcfe05bf985f691d9ed2863aacbd8cd269829618988fe79b0",
+      "candidate_sha256": "6dd7ae33275fc5b7e234259b66280941a73f2395c244ac7831b93153b2fd8320"
+    },
+    "Brainstorm/Advisor/blind_finishing.lua": {
+      "draft": "Brainstorm/Advisor/blind_finishing.lua",
+      "base_sha256": "14cf8a3fd95a62fb285aaecdfe0574379c0c79151537b1b1037edab5dfc58524",
+      "candidate_sha256": "6d8f57a42c70047edf032c659f24331ae97c1a7ce27c306d450ff09a0c8d6ffe"
+    },
+    "Brainstorm/Advisor/shop_scoring.lua": {
+      "draft": "Brainstorm/Advisor/shop_scoring.lua",
+      "base_sha256": "5e2aab150144236ffcffa661ab1d98c1eee19b059d92790a938c2c1f79596ace",
+      "candidate_sha256": "2e2cc549e0db79660e0324f432fa2718a142b0ad806688db492c8d3f90ebc74b"
+    },
+    "Brainstorm/Advisor/pack_survival.lua": {
+      "draft": "Brainstorm/Advisor/pack_survival.lua",
+      "base_sha256": "23fc71eff267f6d70cc17001e8824c3241e9740e75f402e23ef855cf26a1a801",
+      "candidate_sha256": "d30af961566a3ae0c048efd4ec38404790900ecb5f877f8a978737ce675e9116"
+    },
+    "tests/advisor_pack_five.lua": {
+      "draft": "test_advisor_pack_five.lua",
+      "base_sha256": null,
+      "candidate_sha256": "2d31b4d03dd356a070e3ba0df030995d2187f043f4b19e4204eca016125613be"
+    }
+  },
+  "files": {
+    "Brainstorm/Advisor/multi_discard.lua": "6dd7ae33275fc5b7e234259b66280941a73f2395c244ac7831b93153b2fd8320",
+    "Brainstorm/Advisor/blind_finishing.lua": "6d8f57a42c70047edf032c659f24331ae97c1a7ce27c306d450ff09a0c8d6ffe",
+    "Brainstorm/Advisor/shop_scoring.lua": "2e2cc549e0db79660e0324f432fa2718a142b0ad806688db492c8d3f90ebc74b",
+    "Brainstorm/Advisor/pack_survival.lua": "d30af961566a3ae0c048efd4ec38404790900ecb5f877f8a978737ce675e9116",
+    "origins.json": "2598b9997c1663da47aafd379ba0392b85bc407bf8accb0c737941cff7c181f9",
+    "stage.py": "7a0671b8227a1cfb4d44daa063c7305c4ed882d5db677bf9181688b13f2fd116",
+    "INTEGRATION.md": "b0df8e55e5d43c5212c441371af56a97c91405fc431911290eae5f981da4b0ae",
+    "focused_report.json": "462fb66009aba19afbdb2b0508a1f2fed29a8551f484b3f4db4c07222fe9d9aa",
+    "integration.patch": "2862cc7ec971092d040654ad66d447c7dce721abd62fa223505e17939690f3bb",
+    "test_advisor_pack_five.lua": "2d31b4d03dd356a070e3ba0df030995d2187f043f4b19e4204eca016125613be",
+    "run_new.lua": "496195604514626dd33c2b8f276f3ac5150fa6cdf22bd24f1660e75e57d034e2",
+    "test_existing_advisor_multi_discard.lua": "b5f1f9a8930c819fb79451aa6c69be48471a77e99cbe61d0ad6d4ec91c21d7f8",
+    "test_existing_advisor_blind_finishing.lua": "68334be41f6ff7c2d697883c50bb1367362f25e2e46450b77bcb88006873bd87",
+    "test_existing_advisor_certificate.lua": "7569bc84295b4082284a5632aea1be48aa72d44c4253801c1ef28c7304a98376",
+    "test_existing_advisor_pack_survival.lua": "49a539818a702ce367c63bec8379aa1176690ab440de009346008fc6f3a73f04"
+  },
+  "validation": {
+    "fixtures": 5,
+    "checks": 1449,
+    "shared_score_cap": 50000,
+    "main_fixture_scores": 6406
+  },
+  "new_runtime_modules": 0,
+  "original_source_or_captured_workers": 0,
+  "prior_review_manifest_sha256": "27aac523fff43d169850ddcf1ab8d4caeedbfaaf3372f8f9d502d2af396d4e19"
+}

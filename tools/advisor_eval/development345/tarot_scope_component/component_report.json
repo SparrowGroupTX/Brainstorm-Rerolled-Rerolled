@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "scope": "Staged unused Tarot score-equivalence broadening and manufactured fixtures only.",
+  "before_sha256": "9a4453db6ddbea30482235a9b150932daf849879ab5f58037ec4163138ee44e9",
+  "after_sha256": "df177b074faf92a3a273ea615eec62b914be8f44beecac6e8faddf3ae10727d1",
+  "base_includes_pin_component": true,
+  "row_names_unchanged": true,
+  "change": "All22 vanilla Tarot identities qualify only when public constructor data is consistent and all score/hand/discard defaults are zero. Magician/Hermit remain strict exact configs. Other use data is plain, fully retained and never used/valued. Temperance money is a finite bounded display value and receives no payout credit.",
+  "proof": "No admitted Tarot name triggers a named Card:add_to_deck Joker side effect. Withzero h_size/d_size and a forced Negative edition, every new nonplaying Tarot only adds one consumable and one capacity slot. Neither held Tarot identities nor their unused effect/config data enter first-hand scoring; Observatory only recognizes Planets, and Fortune Teller counts uses, which do notoccur. Existing originals stay preserved in the comparison; this is explicitly not exact future inventory or money-display reconstruction.",
+  "source_provenance": {
+    "tools/advisor_eval/runs/chicot_order_source1/source/card.lua": {
+      "lines": [
+        "273-309",
+        "564-640",
+        "2413-2428",
+        "4167-4174"
+      ],
+      "use": "Generic constructor zero score/size defaults, exact Negative slot contribution, named Joker-only add effects, copying, and non-scoring Temperance money display.",
+      "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453"
+    },
+    "tools/advisor_eval/runs/chicot_order_source1/source/functions/common_events.lua": {
+      "lines": [
+        "2156-2183"
+      ],
+      "use": "Copy entire ability/params/base; retain nil pin.",
+      "sha256": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc"
+    },
+    "Brainstorm/Advisor/consumables.lua": {
+      "lines": [
+        "45-63"
+      ],
+      "use": "Existing vanilla Tarot source key/name identities; use models are not invoked.",
+      "sha256": "09742ebfd68787b5a9480d186d7e0ca17656f88c7a4f1a80a3cf5a032a574ba3"
+    },
+    "Brainstorm/Advisor/scoring.lua": {
+      "lines": [
+        "514",
+        "542-547"
+      ],
+      "use": "Tarot use count is independent of held inventory; held scoring depends on editions/Planet Observatory only.",
+      "sha256": "f625c294eb5ba9cf0b6da5eb8f871c58be0835aecf92396c09151becef1c80e9"
+    }
+  },
+  "files": {
+    "tools\\advisor_eval\\development345\\tarot_scope_component\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "df177b074faf92a3a273ea615eec62b914be8f44beecac6e8faddf3ae10727d1",
+    "tools\\advisor_eval\\development345\\tarot_scope_component\\before\\Brainstorm\\Advisor\\gold_tarot_hold.lua": "9a4453db6ddbea30482235a9b150932daf849879ab5f58037ec4163138ee44e9",
+    "tools\\advisor_eval\\development345\\tarot_scope_component\\tests\\advisor_gold_tarot_hold_scope.lua": "3426aa8f33d4062a31ef4f1557f2f245f0d26ad05169cec7da4ac47524d9a616",
+    "tools\\advisor_eval\\development345\\tarot_scope_component\\validation.json": "d02f2d05af733178166215b78af8d78d7a8bbc3db5e8a07c1c66a92138369bdf",
+    "tools\\advisor_eval\\development345\\tarot_scope_component\\existing_validation.json": "db3304d340ba9ace7f4a588e9223a566c7a5b3a1c1411d2195fff4192baf6c66",
+    "tools\\advisor_eval\\development345\\tarot_scope_component\\gold_tarot_hold.lua.patch": "a3f4c12b8e074976312a4216b21bc78a9d7a7c0fe92d854691bcd5e6c84c3e6c"
+  },
+  "validation": "Old pin-fixed helper fails first Temperance fixture; expanded helper passes508 checks across20 newidentity constructors, all common guards and score-dependency examples. Existing70-check helper fixture,52-check pin fixture and67-check productionDecision sale\u2192fresh-buy fixture also pass.",
+  "limits": "Fixed row and hold-all first hand only. No Tarot use, arbitrarymodcallback, futureutility, sourceworker, capturedreplay, livegamecontrol, search, attempt, save/profileaccess or terminalwin claim."
+}

@@ -1,0 +1,283 @@
+# Suspect-decision review queue
+
+Heuristic review hypotheses, not confirmed mistakes or win estimates.
+
+27163 supplied events; 250 flags; 0 omitted by the ranked output cap.
+
+| Rule | Flags |
+| --- | ---: |
+| Visible copy offer closed without acquisition | 0 |
+| Visible Invisible Joker opportunity closed | 0 |
+| Chosen Joker has lower recorded pack merit | 0 |
+| Purchase after sale differs from its explicit plan | 0 |
+| Fewer than five cards discarded | 199 |
+| Round cleared with discards remaining | 50 |
+| Durable engine sold without a structured funded continuation | 1 |
+| Revealed free permanent Planet upgrade skipped | 0 |
+| Non-Jupiter Fool stock retained with active Perkeo | 0 |
+| Selected pack merit conflicts with complete opening-score evidence | 0 |
+
+Review one example per family first; these are context groups, not established common causes.
+
+| Rule | Context family | Count | Example action sequences |
+| --- | --- | ---: | --- |
+| short_discard | growth_present_five_unproved | 199 | 75, 88, 101 |
+| unused_discards_at_clear | growth_present_safety_unproved | 44 | 1426, 1565, 1829 |
+| unused_discards_at_clear | final_boss_no_later_round_growth | 6 | 7763, 11166, 14879 |
+| core_sale_without_plan | core_sale_without_plan | 1 | 11157 |
+
+Projected decision contexts, reasons, scope and exact segment/ordinal/hash anchors are in report.json.
+Review missing-receipt, suppression and unconfirmed counts before interpreting coverage.
+
+| Priority | Run | Action sequence | Rule | Flag ID |
+| ---: | --- | ---: | --- | --- |
+| 95 | 4 | 11157 | core_sale_without_plan | 6cd6643a32ef2da79c38 |
+| 40 | 2 | 1426 | unused_discards_at_clear | 96e931b35902d6109b10 |
+| 40 | 2 | 1565 | unused_discards_at_clear | eef6dafc227339ae8b98 |
+| 40 | 2 | 1829 | unused_discards_at_clear | 217d11ca3bb5b90e19b4 |
+| 40 | 2 | 3547 | unused_discards_at_clear | fb691811552ded4b6d04 |
+| 40 | 2 | 3985 | unused_discards_at_clear | 7e2fb604b1cb9547b78c |
+| 40 | 3 | 7102 | unused_discards_at_clear | 94c0241bf5ba1168f15a |
+| 40 | 3 | 7462 | unused_discards_at_clear | 254b5ecbd8d6ed76fbe9 |
+| 40 | 3 | 7572 | unused_discards_at_clear | 4a77206b2c970e068178 |
+| 40 | 4 | 10706 | unused_discards_at_clear | 3e13b518d145a78175ee |
+| 40 | 4 | 10826 | unused_discards_at_clear | 9d521f7d5587d90978a0 |
+| 40 | 4 | 10939 | unused_discards_at_clear | e7d3c9b4dc053c97f4e1 |
+| 40 | 4 | 11038 | unused_discards_at_clear | 83cf28b477597d6ddefa |
+| 40 | 5 | 12648 | unused_discards_at_clear | 111bd21eddc16b5ed788 |
+| 40 | 5 | 12829 | unused_discards_at_clear | 30783c1742a0621df950 |
+| 40 | 5 | 12982 | unused_discards_at_clear | f894821ad95572c3d44d |
+| 40 | 5 | 13200 | unused_discards_at_clear | 8ddab0cef3b7d7d96ad3 |
+| 40 | 5 | 13993 | unused_discards_at_clear | ab54c85f14cfd34abc58 |
+| 40 | 5 | 14533 | unused_discards_at_clear | 942153be4ce8c38270f9 |
+| 40 | 5 | 14720 | unused_discards_at_clear | c020d9d0b5bcb0bc1755 |
+| 40 | 6 | 16015 | unused_discards_at_clear | cab195ac4fbebb5627f0 |
+| 40 | 6 | 16444 | unused_discards_at_clear | beaed4cb9aff7c6e2d71 |
+| 40 | 6 | 16515 | unused_discards_at_clear | 20bded8a592aaffad593 |
+| 40 | 6 | 17014 | unused_discards_at_clear | 52ef500b8ec762110bad |
+| 40 | 7 | 19288 | unused_discards_at_clear | 0eb2be956b220a4ebcb7 |
+| 40 | 7 | 19634 | unused_discards_at_clear | ab77d9e5a25f5dddce43 |
+| 40 | 7 | 19772 | unused_discards_at_clear | 59bb987cd63e0346de8c |
+| 40 | 7 | 19873 | unused_discards_at_clear | f8ce1f1ea9cd606ea0c5 |
+| 40 | 7 | 19983 | unused_discards_at_clear | 74d5da7306fa1ab50f55 |
+| 40 | 7 | 20119 | unused_discards_at_clear | 880e7004402e947244c7 |
+| 40 | 7 | 20539 | unused_discards_at_clear | 1d075b1aeb28369d3abb |
+| 40 | 7 | 20911 | unused_discards_at_clear | 1923f8864e40a18739f3 |
+| 40 | 7 | 21070 | unused_discards_at_clear | 2228c9c4ac4d77b3e08a |
+| 40 | 7 | 21210 | unused_discards_at_clear | 75db9ed8bccd47ee9d79 |
+| 40 | 7 | 21358 | unused_discards_at_clear | ffa6317c62c17ff04eb4 |
+| 40 | 7 | 21535 | unused_discards_at_clear | 042cdd3c7e9480e58417 |
+| 40 | 9 | 23023 | unused_discards_at_clear | 87543306775997e43767 |
+| 40 | 9 | 23708 | unused_discards_at_clear | 364d80739f31fc2a6d7b |
+| 40 | 9 | 23923 | unused_discards_at_clear | f7022d4a9a024775077f |
+| 40 | 9 | 24271 | unused_discards_at_clear | e0f9a22153be6684142f |
+| 40 | 9 | 24383 | unused_discards_at_clear | 40620845514000e23298 |
+| 40 | 9 | 25377 | unused_discards_at_clear | bf861a555b228d66b7b0 |
+| 40 | 9 | 25737 | unused_discards_at_clear | bd00df414c140c1ed89b |
+| 40 | 9 | 26059 | unused_discards_at_clear | b9bcdef2d18f6489379a |
+| 40 | 9 | 26271 | unused_discards_at_clear | 04c3d8727107c23f0b82 |
+| 35 | 1 | 75 | short_discard | 71ba94796d637b4f7364 |
+| 35 | 1 | 88 | short_discard | 37164487cf430dbf584c |
+| 35 | 1 | 101 | short_discard | 9ec33b5b993cf07afa1d |
+| 35 | 1 | 217 | short_discard | 28af9e723fc97ca307e6 |
+| 35 | 1 | 230 | short_discard | a47bbf1692c9114555df |
+| 35 | 1 | 243 | short_discard | a809bf4acf72a2e5c738 |
+| 35 | 2 | 385 | short_discard | e575d5513a129087817e |
+| 35 | 2 | 517 | short_discard | 6a170941960f2b0c4584 |
+| 35 | 2 | 811 | short_discard | d1dfe388c19ca3d177a4 |
+| 35 | 2 | 915 | short_discard | 8b722a7d6ee48b77ceed |
+| 35 | 2 | 929 | short_discard | 4d8526f0e935b6663fc6 |
+| 35 | 2 | 1044 | short_discard | affe12062c2373d837c7 |
+| 35 | 2 | 1056 | short_discard | adaac2bf5446d9b9f0c6 |
+| 35 | 2 | 1068 | short_discard | b1e5b29250d4b3c9239a |
+| 35 | 2 | 1683 | short_discard | e6acf000b87cfce162a5 |
+| 35 | 2 | 1697 | short_discard | 03b27e89280ca41a8b1a |
+| 35 | 2 | 2215 | short_discard | fecd9c164f3558be2b4c |
+| 35 | 2 | 2369 | short_discard | e5ee1966451e443102cb |
+| 35 | 2 | 2555 | short_discard | 44d2a92eb20fbea35211 |
+| 35 | 2 | 2569 | short_discard | e0dbe47ccac3e2b425b9 |
+| 35 | 2 | 2582 | short_discard | 0e5af52d147af2f6ea71 |
+| 35 | 2 | 2730 | short_discard | 57fc7405c6fe86ebf196 |
+| 35 | 2 | 2743 | short_discard | 4571c2e89078abf0e6eb |
+| 35 | 2 | 2756 | short_discard | d0254ee40fdc10309462 |
+| 35 | 2 | 3804 | short_discard | e6f63a742af16f06f5d7 |
+| 35 | 2 | 3816 | short_discard | cf313044a4d3e476c90a |
+| 35 | 2 | 3828 | short_discard | 3b5b029c86b5175e0967 |
+| 35 | 3 | 4241 | short_discard | 10e2069160118c5ccf03 |
+| 35 | 3 | 4254 | short_discard | 9c5d2f4f9798117c0f19 |
+| 35 | 3 | 4571 | short_discard | 516eedd6675c7cbf55cf |
+| 35 | 3 | 4584 | short_discard | 2744379c1e9d81f20782 |
+| 35 | 3 | 4842 | short_discard | 79e44477fe39a60e9aa4 |
+| 35 | 3 | 4979 | short_discard | 6b32c1fda4f4d2e8dc43 |
+| 35 | 3 | 4992 | short_discard | 79df5c37a2833dba6de8 |
+| 35 | 3 | 5005 | short_discard | 646c18ecba787c5b73ac |
+| 35 | 3 | 6676 | short_discard | 81c9877e90775e59428c |
+| 35 | 3 | 6688 | short_discard | 3dd37d4129a182e70874 |
+| 35 | 3 | 6700 | short_discard | 2a41f128fd2b76265ebc |
+| 35 | 3 | 6712 | short_discard | f5965beff5d68c6a3bbd |
+| 35 | 3 | 6918 | short_discard | 82c2b3792280d32aea51 |
+| 35 | 4 | 7849 | short_discard | d3f56cdd66bdee1f5f33 |
+| 35 | 4 | 7862 | short_discard | 6c18363561996157cb0f |
+| 35 | 4 | 7889 | short_discard | 84089ff76c040e4df438 |
+| 35 | 4 | 7994 | short_discard | e5f3a5da5dfdc1f65b97 |
+| 35 | 4 | 8008 | short_discard | 6417e7ac242614fa5661 |
+| 35 | 4 | 8092 | short_discard | e6c41d622fcfd8495629 |
+| 35 | 4 | 8181 | short_discard | 14ea885f2cc01e818626 |
+| 35 | 4 | 8194 | short_discard | ee4376b206e3a348e8e4 |
+| 35 | 4 | 8207 | short_discard | 17e4fe44d92ba6587a21 |
+| 35 | 4 | 8308 | short_discard | c1018cf82a24acc70d95 |
+| 35 | 4 | 8320 | short_discard | e0164d7250afa5344f11 |
+| 35 | 4 | 8447 | short_discard | c28617dd9d9327bc57c7 |
+| 35 | 4 | 8733 | short_discard | b75fcb7089236f75aa7a |
+| 35 | 4 | 8867 | short_discard | fcf5048386690641714b |
+| 35 | 4 | 8880 | short_discard | 88657413d9f27e68874c |
+| 35 | 4 | 8893 | short_discard | a23659d30115d99e6586 |
+| 35 | 4 | 9096 | short_discard | 62fff203f348c6e6a96f |
+| 35 | 4 | 9110 | short_discard | 4f1e7ca032a67f54f81a |
+| 35 | 4 | 9123 | short_discard | e6dc5b73e2f504938492 |
+| 35 | 4 | 10043 | short_discard | 237afa7a2752e04b8b5f |
+| 35 | 4 | 10057 | short_discard | f0b0baed99f604fa9eb0 |
+| 35 | 4 | 10070 | short_discard | 1276016a4acc2c5e168d |
+| 35 | 4 | 10260 | short_discard | 498ef00b909296c4c331 |
+| 35 | 4 | 10274 | short_discard | de07b9313c1f4b0dbad4 |
+| 35 | 4 | 10287 | short_discard | 924799697fd66eb77eb3 |
+| 35 | 4 | 10517 | short_discard | 83c7f4a6755588922b43 |
+| 35 | 4 | 10529 | short_discard | 3a15ab30b597bba5417a |
+| 35 | 4 | 10541 | short_discard | 595e6da211cd2f5526ff |
+| 35 | 5 | 11268 | short_discard | d36bafc06a539542f9a7 |
+| 35 | 5 | 11281 | short_discard | 3b29877cc3b861bdab81 |
+| 35 | 5 | 11399 | short_discard | 8e3d441e44cabc03f848 |
+| 35 | 5 | 11482 | short_discard | 3ac88f46e845a20ec944 |
+| 35 | 5 | 11496 | short_discard | a4b278030ffcd5e6e947 |
+| 35 | 5 | 11509 | short_discard | 38001dde0894f20f1f8b |
+| 35 | 5 | 11604 | short_discard | cf00f446be2cfd0ad4f1 |
+| 35 | 5 | 11618 | short_discard | e45fcbf4729066a6a03f |
+| 35 | 5 | 11631 | short_discard | 003ebc68e27e9b7e519d |
+| 35 | 5 | 11724 | short_discard | c8b286a145f3dfe0b67b |
+| 35 | 5 | 11737 | short_discard | e6661e9ff14597a7e4fd |
+| 35 | 5 | 11750 | short_discard | da4fc0ffc199260f4229 |
+| 35 | 5 | 11832 | short_discard | 075dacbb58c3d804536d |
+| 35 | 5 | 11855 | short_discard | bcacd69394cfb89ad399 |
+| 35 | 5 | 11869 | short_discard | 5cda285164cb7376e216 |
+| 35 | 5 | 11960 | short_discard | 9a0ec0d850493be863b0 |
+| 35 | 5 | 11984 | short_discard | 4aed44c791650260fbf4 |
+| 35 | 5 | 12160 | short_discard | e16dac71ba5705267cd8 |
+| 35 | 5 | 12173 | short_discard | f98fa9ae87eb0d34c4ee |
+| 35 | 5 | 12186 | short_discard | 840cd696bea1b5802ea3 |
+| 35 | 5 | 12266 | short_discard | e13aaec6e253ff5f5fa0 |
+| 35 | 5 | 12279 | short_discard | 4edf62d341b194d9ffd3 |
+| 35 | 5 | 12293 | short_discard | 4a8543bac8a28685ba4a |
+| 35 | 5 | 12471 | short_discard | 2e33e987182d895c6a2c |
+| 35 | 5 | 13341 | short_discard | 4b248bd775b99e36caa0 |
+| 35 | 5 | 13365 | short_discard | 3e1f7f1ac7df275eeeb4 |
+| 35 | 5 | 13378 | short_discard | 020faeb0b6e38cd739e9 |
+| 35 | 5 | 13479 | short_discard | 6b0975ba6acdbe19991d |
+| 35 | 5 | 13493 | short_discard | 8f569d37d9ca64694636 |
+| 35 | 5 | 13506 | short_discard | 35d7766265a220470827 |
+| 35 | 5 | 13519 | short_discard | 8f5dd7c219e84704169e |
+| 35 | 5 | 13768 | short_discard | b1446633dd1c91053a89 |
+| 35 | 5 | 13781 | short_discard | 3ca117d7bd1979e3e655 |
+| 35 | 5 | 13805 | short_discard | b2cfcc1bd7a30bf958fc |
+| 35 | 5 | 13818 | short_discard | 72ffa686716a213871eb |
+| 35 | 5 | 14140 | short_discard | 7fe7dfec673b71ae70c4 |
+| 35 | 5 | 14153 | short_discard | ad881ad79090b0e5e707 |
+| 35 | 5 | 14166 | short_discard | 4f0803d5555c5ef37a49 |
+| 35 | 5 | 14329 | short_discard | f3afa11c5f5cb6a8737b |
+| 35 | 5 | 14342 | short_discard | f818acbb677f1bd5af57 |
+| 35 | 5 | 14356 | short_discard | 66613204a4aa4d8ec573 |
+| 35 | 6 | 14972 | short_discard | 4de9ef80d0f4bdc4f339 |
+| 35 | 6 | 14985 | short_discard | 96a787b9d983d72fd104 |
+| 35 | 6 | 14999 | short_discard | 500f70711749361fcfe5 |
+| 35 | 6 | 15105 | short_discard | 9ead04ab5c933db80d0e |
+| 35 | 6 | 15118 | short_discard | cce005976d466e65f716 |
+| 35 | 6 | 15222 | short_discard | bb5371508f7f730d573c |
+| 35 | 6 | 15235 | short_discard | 00f643e1852182586e25 |
+| 35 | 6 | 15262 | short_discard | 8fa7efdea742923ec2c8 |
+| 35 | 6 | 15484 | short_discard | 38137407c69df1107c3f |
+| 35 | 6 | 15499 | short_discard | c544ca7e77c92c162cc6 |
+| 35 | 6 | 15511 | short_discard | 76e7e32c024845d20d8e |
+| 35 | 6 | 15602 | short_discard | 21729ee5e5a29ad5d13b |
+| 35 | 6 | 15615 | short_discard | 53ade23dba23b422298e |
+| 35 | 6 | 15629 | short_discard | 26f4acf14c1c66c5adff |
+| 35 | 6 | 15736 | short_discard | 7b89654065813f5f6584 |
+| 35 | 6 | 15857 | short_discard | 27f1d52f9f455da7e45d |
+| 35 | 6 | 15870 | short_discard | 588799dfac6a35e89a83 |
+| 35 | 6 | 15883 | short_discard | 4bc8a76d19f03d41a8ef |
+| 35 | 6 | 15977 | short_discard | 31798115ebb94cdfc355 |
+| 35 | 6 | 15991 | short_discard | d9085e397a428e51caca |
+| 35 | 6 | 16210 | short_discard | b93aa64ba951cc517ab2 |
+| 35 | 6 | 16328 | short_discard | 3ee556fe643474b3861b |
+| 35 | 6 | 16365 | short_discard | 10a35e94f9106e783354 |
+| 35 | 6 | 16572 | short_discard | 52e821d93d2dc03ff065 |
+| 35 | 6 | 16711 | short_discard | f2b00c8da305719626df |
+| 35 | 6 | 16725 | short_discard | b90b502fc16bb69bdabb |
+| 35 | 6 | 16749 | short_discard | 20897ad3007fdf8c8e25 |
+| 35 | 6 | 16839 | short_discard | ed86a4c25cfa8821b6b0 |
+| 35 | 6 | 16853 | short_discard | 2ddf7f2dddb7305c8cd6 |
+| 35 | 6 | 16866 | short_discard | 53b76874c0576c63496e |
+| 35 | 6 | 17185 | short_discard | d4d46ff99becf5344757 |
+| 35 | 6 | 17199 | short_discard | cc7518efaa767241fb3a |
+| 35 | 6 | 17213 | short_discard | 5e8cae634355cd17c1bd |
+| 35 | 6 | 17502 | short_discard | 53542cd4ff07924294a7 |
+| 35 | 6 | 17515 | short_discard | 20fcd7c7c057a7a6a69f |
+| 35 | 6 | 17596 | short_discard | d0480c713115b31e845b |
+| 35 | 7 | 18185 | short_discard | 66906ab37a07dcdd63fb |
+| 35 | 7 | 18198 | short_discard | 522d837bb2ef59c8edff |
+| 35 | 7 | 18211 | short_discard | c20023ca66931513a2de |
+| 35 | 7 | 18331 | short_discard | b283e29a5ce576047514 |
+| 35 | 7 | 18344 | short_discard | 198c37248b7422645210 |
+| 35 | 7 | 18499 | short_discard | 6c1bdfb996b65c7cd4f8 |
+| 35 | 7 | 18512 | short_discard | 73b0dc3b103ffb2afa96 |
+| 35 | 7 | 18524 | short_discard | b5ff3a4cc0a2ab62a9fe |
+| 35 | 7 | 19236 | short_discard | 0bc4aa5a1cf624e05079 |
+| 35 | 7 | 19249 | short_discard | d2bd9467bdc848edb906 |
+| 35 | 7 | 20325 | short_discard | 4edc920357e3a5a71ece |
+| 35 | 7 | 20339 | short_discard | b13b3849c1bd36a1c266 |
+| 35 | 7 | 20352 | short_discard | 0ba5c325bb8528d74f79 |
+| 35 | 7 | 20512 | short_discard | b14feed64391c03312f4 |
+| 35 | 7 | 20526 | short_discard | 8e1d2f1a2819c6d4bbaa |
+| 35 | 7 | 20665 | short_discard | e75f8ae03b0d1868a599 |
+| 35 | 7 | 20678 | short_discard | 4643c8a79d5d23555ead |
+| 35 | 7 | 20692 | short_discard | 256b86461894cafa2c6a |
+| 35 | 7 | 20876 | short_discard | 88b13d485ba44edfb7a2 |
+| 35 | 7 | 21498 | short_discard | 4f47e3c4b11055f04926 |
+| 35 | 7 | 21684 | short_discard | 379196301b14a874af02 |
+| 35 | 8 | 21806 | short_discard | 155681d73be65d006cd7 |
+| 35 | 8 | 21833 | short_discard | 8f54a8a3094ea5ca5555 |
+| 35 | 8 | 21939 | short_discard | 1baa4684f6442528ec93 |
+| 35 | 8 | 22046 | short_discard | 802d5e541ceaf03df50c |
+| 35 | 8 | 22060 | short_discard | 239e1bef6d202637df46 |
+| 35 | 8 | 22073 | short_discard | 62009bded1a2a85dad51 |
+| 35 | 8 | 22199 | short_discard | 5e8fafacec07024d1836 |
+| 35 | 8 | 22212 | short_discard | 3a78406a3200ea936f8b |
+| 35 | 8 | 22226 | short_discard | e3ad33e34157692626e6 |
+| 35 | 9 | 22394 | short_discard | 9f5a1715d1c873928ae2 |
+| 35 | 9 | 22500 | short_discard | 6cf26dfeba19a021cefa |
+| 35 | 9 | 22514 | short_discard | a108c904567af9609a60 |
+| 35 | 9 | 22647 | short_discard | d9a4cc52d7bccb4594c3 |
+| 35 | 9 | 22660 | short_discard | 7f42af8b1f09920163b6 |
+| 35 | 9 | 23201 | short_discard | 01aba93f84b02bf9e19d |
+| 35 | 9 | 23575 | short_discard | 008960235ba8e8681742 |
+| 35 | 9 | 24539 | short_discard | 6d96fa6ede287904ceae |
+| 35 | 9 | 24908 | short_discard | 615b854d6862a3066327 |
+| 35 | 9 | 24920 | short_discard | 46015a0ddebd3a948375 |
+| 35 | 9 | 24933 | short_discard | a7ae4dbef219161263c1 |
+| 35 | 9 | 25102 | short_discard | 1d3d748d16197b8631ec |
+| 35 | 9 | 25349 | short_discard | 4daf6e27fc60e4aa2355 |
+| 35 | 9 | 25364 | short_discard | a7eac61c4acc13e2c8f1 |
+| 35 | 9 | 25568 | short_discard | 46c4b87419a7cb19eb8e |
+| 35 | 9 | 25582 | short_discard | 8a78a953967a8bc487b0 |
+| 35 | 10 | 26622 | short_discard | 36e24a0978f7786f4b80 |
+| 35 | 10 | 26717 | short_discard | 70f56c60aef57ee53332 |
+| 35 | 10 | 26744 | short_discard | 91fd7abd896386b2b6ad |
+| 35 | 10 | 26758 | short_discard | 98e43606b21f67793aac |
+| 35 | 10 | 26869 | short_discard | 29ec07d05ab9eac00128 |
+| 35 | 10 | 26882 | short_discard | 66b4f4ed5ba5754e4549 |
+| 35 | 10 | 26954 | short_discard | 8531af12c28e4601daa1 |
+| 35 | 10 | 26968 | short_discard | bdb1fe3cc25d848a8c6d |
+| 5 | 3 | 7763 | unused_discards_at_clear | e9c9ac8ace81895ab3f0 |
+| 5 | 4 | 11166 | unused_discards_at_clear | 482d94aa811539b28e05 |
+| 5 | 5 | 14879 | unused_discards_at_clear | ac7e0e9d1bd6dcdca77f |
+| 5 | 6 | 18088 | unused_discards_at_clear | d240891a25981d7bf500 |
+| 5 | 7 | 21722 | unused_discards_at_clear | dcd964fd67e25f584cdf |
+| 5 | 9 | 26509 | unused_discards_at_clear | d7e7a9e1f041cafaf7fd |

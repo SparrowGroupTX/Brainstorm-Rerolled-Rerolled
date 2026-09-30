@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "root_owned_staging_helper315",
+  "source_manifest_sha256": "1fae3c305b75189aa8940974842f467beaaadf58f14a395ab66c1baf63a44156",
+  "files": {
+    "stage.py": "3dcbb3ac83fbd64abba91477278e6888b01a006f0db3845cd6e10fb014a594d5",
+    "advisor_hand_copy_preflight.lua": "1232cf94656bdd5f9b8ef1616f453d5b30f894906e6b6d7b38567d3eb8d0d53b"
+  },
+  "status": "prepared_not_staged",
+  "default": "read-only check",
+  "required_root_action": "--stage --expected-staging-manifest <this manifest SHA256>",
+  "new_fixture": "tests/advisor_hand_copy_preflight.lua",
+  "runtime_merge": "Exact base currently matches; helper adds only one module load when newer runtime differs",
+  "source_or_captured_execution": false
+}

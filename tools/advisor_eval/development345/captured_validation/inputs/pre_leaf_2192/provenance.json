@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "kind": "gold345_exact_public_snapshot",
+  "anchor": {
+    "segment": "session-20260916T042025Z-1-000004.brj",
+    "ordinal": 1177,
+    "sequence": 2192,
+    "decoded_event_sha256": "17b24fea58cb583a252abe36a816c51e80e0a13aac0ee0188c798d046cf87050",
+    "stored_frame_sha256": "2e1327526fb44c511581b53a88f0dbeec2bc0ec9a92ef35a8a7526e8e6648540"
+  },
+  "source_prefix": {
+    "path": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260916T042025Z-1-000004.brj",
+    "bytes": 3630302,
+    "input_sha256": "0f1d0e87d1cbf2929e9e2e4aaf44336ce834ddb88368380f575d65b870a43109",
+    "stat_unchanged_during_read": true,
+    "append_active": false,
+    "event_count": 1225
+  },
+  "loaded_version": "Brainstorm v2.144.0-alpha",
+  "seed": "YVYN2Z11",
+  "profile_id": 1,
+  "snapshot_sha256": "48a94ef4e234e4ce8f3e704b473db2432f8e617eced270fa2e1039dc9301bdd9",
+  "snapshot_bytes": 114506,
+  "event_sha256": "17b24fea58cb583a252abe36a816c51e80e0a13aac0ee0188c798d046cf87050",
+  "event_bytes": 117172,
+  "event_contains_original_public_snapshot": true,
+  "snapshot_serialization": "Exact UTF-8 lexical field bytes from the reconstructed original public JSONL event; no reserialization or field changes.",
+  "snapshot_canonical_sha256": "6227310cbf277b2bdb382d5d61a517a919b5b20e9d547307c594cd403037fdc0",
+  "phase": "shop",
+  "ante": 8,
+  "next_blind": {
+    "ante": 8,
+    "boss": true,
+    "chips": 400000,
+    "debuff": {},
+    "key": "bl_final_leaf",
+    "label": "Boss",
+    "mult": 2,
+    "name": "Verdant Leaf"
+  },
+  "certificate_refresh": false,
+  "policy_execution": false,
+  "action_dispatch": false,
+  "selected_action_rescore": false,
+  "missing_public_fields": [
+    "shop_forecast",
+    "retry_context"
+  ],
+  "certificate_classes": [
+    {
+      "key": "c_temperance",
+      "reason": "This Tarot constructor is outside the qualified Magician/Hermit family.",
+      "supported": false,
+      "count": 23
+    },
+    {
+      "key": "c_sun",
+      "reason": "This Tarot constructor is outside the qualified Magician/Hermit family.",
+      "supported": false,
+      "count": 1
+    },
+    {
+      "key": "c_wheel_of_fortune",
+      "reason": "This Tarot constructor is outside the qualified Magician/Hermit family.",
+      "supported": false,
+      "count": 1
+    },
+    {
+      "key": "c_hanged_man",
+      "reason": "This Tarot constructor is outside the qualified Magician/Hermit family.",
+      "supported": false,
+      "count": 1
+    }
+  ],
+  "qualification": "Dependent recorded development input. Original unsupported constructor certificates remain unsupported. Raw registry identity, card params/front/pinned and settled visibility inputs were not logged and must not be inferred or refreshed."
+}

@@ -1,0 +1,19 @@
+{
+  "old_helper_sha256": "4f23babaf52448bf1bb063507a7e2ead41763404a116f6481c07edbe44f6a2e8",
+  "fixed_helper_sha256": "befdc0a74e69300a3e67a0e7758334516c197f8f71805a1afa85bff0a8111b94",
+  "failure": "After2 completed synthetic payloads and an injected third-push failure, negative rev-list traversal still listed all5 target blobs under original filenames instead of only3.",
+  "old_failure_log": "PARTIAL_RESUME_BEFORE_FIX.log",
+  "repair": "Exclude complete remote-held object IDs regardless of path. For real publication only advertised head IDs matching cached remote refs count; stale tracking refs are excluded. Fetch skips automatic maintenance.",
+  "new_test": "tests.test_push_in_batches.BatchedPushTests.test_partial_transfer_resumes_only_missing_blobs_under_new_paths",
+  "controls": [
+    "2 payloads completed before injected failure",
+    "main branch preserved after failure",
+    "3 missing blobs remain after fetch",
+    "stale tracking ref points at all5 unpublished blobs and must not suppress upload",
+    "restart publishes exact original target commit and files",
+    "local history unchanged"
+  ],
+  "uploader_tests_passed": 5,
+  "existing_packaging_tests_previously_passed": 9,
+  "real_GitHub_transfer_was_not_used_for_failure_injection": true
+}

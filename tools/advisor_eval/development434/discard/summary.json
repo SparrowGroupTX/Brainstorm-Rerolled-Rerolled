@@ -1,0 +1,70 @@
+{
+  "discard_actions": 510,
+  "discarded_cards": 1939,
+  "discard_size_counts": {
+    "3": 112,
+    "1": 40,
+    "2": 39,
+    "4": 110,
+    "5": 209
+  },
+  "cards_per_discard": 3.8019607843137253,
+  "discard_resource_mismatches": [],
+  "unused_clear_count": 28,
+  "unused_total": 57,
+  "unused_by_run": {
+    "1": {
+      "rounds": 1,
+      "unused": 3
+    },
+    "2": {
+      "rounds": 7,
+      "unused": 15
+    },
+    "3": {
+      "rounds": 9,
+      "unused": 18
+    },
+    "5": {
+      "rounds": 4,
+      "unused": 6
+    },
+    "6": {
+      "rounds": 1,
+      "unused": 1
+    },
+    "9": {
+      "rounds": 5,
+      "unused": 11
+    },
+    "8": {
+      "rounds": 1,
+      "unused": 3
+    }
+  },
+  "unused_reasons": {
+    "A Joker lacks a monotone public held-card floor.": 4,
+    "No shortlisted legal discard preserved the supported clearing score and held resources.": 5,
+    "Automatic hand sorting can change scoring-card order.": 18,
+    "The complete public retained-clear family exceeds the twelve-score allowance.": 1
+  },
+  "final_boss_unused_clears": 2,
+  "hand_rounds_observed": 192,
+  "short_receipts": {
+    "total": 301,
+    "risk_compared": 144,
+    "five_compared": 142,
+    "best_sampled_all_clear": 143
+  },
+  "development_deferred": 65,
+  "development_deferred_then_non_discard": 3,
+  "enhancement_then_clear_without_discard": 14,
+  "continuation_unavailable": {
+    "Note: Remaining-blind comparison unavailable: Random score or growth outcomes are not sampled by this continuation.": 101,
+    "Note: Remaining-blind comparison unavailable: Unmodeled Joker debuff resources: Clever Joker": 7,
+    "Note: Remaining-blind comparison unavailable: A compared continuation could not be modeled.": 1,
+    "Note: Remaining-blind comparison unavailable: A future hand is concealed; no hidden-card play policy is modeled.": 3
+  },
+  "burnt_first_discards": 48,
+  "terminal_losses": 4
+}

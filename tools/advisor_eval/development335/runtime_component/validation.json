@@ -1,0 +1,18 @@
+{
+  "kind": "manufactured_journal_short_circuit_regression",
+  "timeout_seconds": 60,
+  "elapsed_seconds": 0.15600000007543713,
+  "returncode": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development335\\runtime_component\\test_journal_work.lua\nPASS tools\\advisor_eval\\development335\\runtime_component\\test_journal_work.lua\nRunning tools\\advisor_eval\\development335\\runtime_component\\run_advisor_player_journal.lua\nPASS tools\\advisor_eval\\development335\\runtime_component\\run_advisor_player_journal.lua\nRunning tools\\advisor_eval\\development335\\runtime_component\\run_advisor_player_journal_timing.lua\nPASS tools\\advisor_eval\\development335\\runtime_component\\run_advisor_player_journal_timing.lua\nRunning tools\\advisor_eval\\development335\\runtime_component\\run_advisor_logger_hooks.lua\nPASS tools\\advisor_eval\\development335\\runtime_component\\run_advisor_logger_hooks.lua\nRunning tools\\advisor_eval\\development335\\runtime_component\\run_advisor_callback_hooks.lua\nPASS tools\\advisor_eval\\development335\\runtime_component\\run_advisor_callback_hooks.lua\n5/5 fixtures passed\njournal_work335: 236 checks; avoided detail gathers=9; avoided full fingerprints=16; all serialized event bytes equivalent\nadvisor_player_journal: 25 checks passed\nplayer_journal_timing: 105 manufactured checks passed; elapsed wall time only\nlogger_shared_hooks: 17 checks passed\ncallback_hooks333: 60 checks passed\n",
+  "stderr": "",
+  "sha256": {
+    "tools\\advisor_eval\\development335\\runtime_component\\player_journal.base.lua": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b",
+    "tools\\advisor_eval\\development335\\runtime_component\\player_journal.lua": "1d41e9fe61ee25c4397a8a3b5ce1e598f1410c3a3f7ff5277345301e2455962e",
+    "tools\\advisor_eval\\development335\\runtime_component\\test_journal_work.lua": "bc592c769b40d5e7d1518625767c546a52a6212af29ab37986d27ddb68e12255",
+    "tools\\advisor_eval\\development335\\runtime_component\\run_advisor_player_journal.lua": "671c9df35db3698766308fcdeb16d81e36f19f3fe3cc063e016a7728fead55ca",
+    "tools\\advisor_eval\\development335\\runtime_component\\run_advisor_player_journal_timing.lua": "a61af1e9f4ca15167474dfaabf48045ea8aae937e3ac2ecbc08b345beecd7f8d",
+    "tools\\advisor_eval\\development335\\runtime_component\\run_advisor_logger_hooks.lua": "aec05d0fab4b9caea9676585013a05c0ba9770763367e7db2c3962e24aeed11f",
+    "tools\\advisor_eval\\development335\\runtime_component\\run_advisor_callback_hooks.lua": "b10ecf6b4bfee38a2df3b4f87f7eda3666ac5005e64d0bec5a48ef3f48462223"
+  },
+  "scope": "Detached manufactured Lua data and frozen existing fixtures only; no game control, saves, profiles or logs read."
+}

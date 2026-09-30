@@ -1,0 +1,47 @@
+{
+  "scope": "Manufactured terminal lifecycle fixtures only; no game process, source archive, saves/profiles, captured-state policy replay, search experiment or complete attempt.",
+  "supersedes": "result.json (retained unchanged)",
+  "changed_files": [
+    {
+      "path": "Brainstorm/Advisor/auto_run.lua",
+      "original_before_sha256": "301303671238c4795ab960fcb74ec3d6fa33253517de8348f189a7c2cdb664ac",
+      "before2_sha256": "5ed858a4a03b089d64e5af46fcf6d5319182108ceb832841c1243636c7cb3303",
+      "after_sha256": "5ed858a4a03b089d64e5af46fcf6d5319182108ceb832841c1243636c7cb3303"
+    },
+    {
+      "path": "Brainstorm/Core/auto_run_product.lua",
+      "original_before_sha256": "def5c4c878ddcacd114e832ae8c24f186c249c3bac12a0ad13e0a863359a06ff",
+      "before2_sha256": "bdc7ffdc584246b3367bbdbc5828b2f4c0789514b3e7715f06750afc525e5c22",
+      "after_sha256": "dbc68a1768ed894e9dc73303aef3926f9cf5de00909847c6c7cd71cb802cf5d0",
+      "incremental_patch": "tools\\advisor_eval\\development341\\terminal_component\\auto_run_product.lua.patch2"
+    },
+    {
+      "path": "tests/advisor_auto_run_product.lua",
+      "original_before_sha256": "656941217615560b8683ffa2780a3f52024c01823e905a8843362c7a5f273256",
+      "before2_sha256": "efda945c4423003741534b195fcb157cd72a78fe2ea695e6354b990cac67dcbc",
+      "after_sha256": "7b125da1e3678792039939f903c57374a1d68f3703867e45039c02fdb3102418",
+      "incremental_patch": "tools\\advisor_eval\\development341\\terminal_component\\advisor_auto_run_product.lua.patch2"
+    }
+  ],
+  "baseline_expected_failure": "Resume callback retains the exact owned result pending fresh terminal checks",
+  "candidate_fixtures": 5,
+  "candidate_checks": 2146,
+  "max_suite_seconds": 60,
+  "baseline_receipt": "baseline2.json",
+  "candidate_receipt": "candidate2.json",
+  "additional_behavior": "Explicit Resume retains an exact terminal-owned result overlay. The resuming readiness gate ignores only that same owned surface; fresh controller observations then retain the prior outcome and decide collection completion, unavailable metadata, original run cap or absolute deadline before any dismissal. Below-cap Resume still closes the result only after its fresh terminal check, then starts a later search.",
+  "coverage": [
+    "Stop after final run_finished and before terminal cap decision",
+    "Fresh collection completion precedence while stopped",
+    "Fresh unavailable metadata and session deadline while stopped",
+    "Original terminal callback arriving while stopped",
+    "Delayed original winning surface arriving during Resume",
+    "Below-cap terminal Stop/Resume still continues on separate updates"
+  ],
+  "edit_preflight_failure": "edit2_preflight_failure.json records one no-write LF/CRLF exact-match assertion; source newline conventions were preserved.",
+  "notes": [
+    "No controller edit was needed for the Resume correction.",
+    "No release metadata, installed tree, or documentation finalization changed.",
+    "All prior result, before, baseline and candidate receipts remain unchanged."
+  ]
+}

@@ -1,0 +1,4502 @@
+{
+  "event_count": 3179,
+  "input_bytes": 9059398,
+  "decoded_bytes": 238408536,
+  "versions": {
+    "Brainstorm v2.162.0-alpha": 2353
+  },
+  "kinds": {
+    "performance_window": 242,
+    "auto_run": 1180,
+    "collection_search_started": 5,
+    "collection_search_finished": 5,
+    "collection_run_start": 5,
+    "action_requested": 584,
+    "action_callback_result": 584,
+    "state_after_actions": 574
+  },
+  "last_at": "2026-09-22T17:47:04Z",
+  "last_sequence": 3179,
+  "decode_errors": [],
+  "converter_error": {
+    "sequence": 1,
+    "error": "Expected a versioned teacher collection event"
+  },
+  "converter": {
+    "schema": "brainstorm_teacher_demonstrations_v1",
+    "counts": {
+      "events": 0,
+      "observations": 0,
+      "recommendations": 0,
+      "action_requests": 0,
+      "callback_results": 0,
+      "settled_observations": 0,
+      "wins": 0,
+      "losses": 0,
+      "abandoned_stall": 0,
+      "unsupported": 0,
+      "error": 0
+    },
+    "collections": 0,
+    "actions_without_callback": 0,
+    "accepted_callbacks_without_settled_observation": 0,
+    "legacy_checkpoint_compatible": false,
+    "expert_labels_assigned": 0,
+    "limitations": [
+      "No legal-candidate reconstruction or training is performed.",
+      "Callback acceptance and first settled state do not prove complete queued effects.",
+      "Outcomes are audited journal evidence, not independent game replay verification.",
+      "Unfinished collections remain incomplete; no missing outcome is imputed."
+    ]
+  },
+  "lifecycle": [
+    {
+      "sequence": 11,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:26:58Z",
+      "monotonic_seconds": 28.1870081,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "M4BVSY11",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000002.brj",
+        "ordinal": 2,
+        "raw_sha256": "4897a6791c3358e382553e7a4b18feeefaa0207997178d2555a864d4272da111"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 28.1833645
+      },
+      "advice": {
+        "action": {
+          "blind": "Small",
+          "kind": "select_blind"
+        },
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Playing gives a shop visit, income, hand experience, and Joker growth.",
+          "Upcoming boss - Psychic: you must play exactly five cards, even for Pair or High Card.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "stale",
+        "title": "Play the Small Blind"
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 0,
+        "dollars": 4,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 0,
+        "discards_used": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {
+              "h_size_ge": 5
+            },
+            "dollars": 5,
+            "key": "bl_psychic",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Psychic",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Select"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "reroll_cost": 5,
+        "jokers": [],
+        "consumeables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 0
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 0
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 0
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 668,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:30:45Z",
+      "monotonic_seconds": 255.409923,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "M4BVSY11",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000002.brj",
+        "ordinal": 659,
+        "raw_sha256": "2893cd822b457972a8a6d73a477589f9ba56571bce71f43c6f59d6e15e498cc4"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:2",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:2",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 122,
+        "run_id": "game:2",
+        "run_number": 1,
+        "run_seconds": 227.3091509,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "terminal",
+        "time": 255.4097656
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "state": {
+        "phase": "other",
+        "ante": 5,
+        "round": 12,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 21340,
+        "dollars": 13,
+        "hands_left": 0,
+        "discards_left": 0,
+        "hands_played": 4,
+        "discards_used": 4,
+        "blind": {
+          "boss": false,
+          "chips": 25000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "next_blind": null,
+        "route_blinds": {
+          "Big": {
+            "ante": 5,
+            "boss": false,
+            "chips": 37500,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 5,
+            "boss": true,
+            "chips": 50000,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 5,
+            "boss": false,
+            "chips": 25000,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Current"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "reroll_cost": 5,
+        "jokers": [
+          {
+            "id": "card:326",
+            "key": "j_supernova",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Hand played mult",
+              "extra": 1,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 5,
+              "mult": 0,
+              "name": "Supernova",
+              "order": 43,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 5,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:383",
+            "key": "j_fortune_teller",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": 1,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 21,
+              "mult": 0,
+              "name": "Fortune Teller",
+              "order": 86,
+              "p_dollars": 0,
+              "perish_tally": 3,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 6,
+            "sell_cost": 3,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:324",
+            "key": "j_sixth_sense",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 3,
+              "mult": 0,
+              "name": "Sixth Sense",
+              "order": 54,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 6,
+            "sell_cost": 3,
+            "blueprint_compat": false,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:316",
+            "key": "j_perkeo",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:317",
+            "key": "j_yorick",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 5,
+              "yorick_discards": 11
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "consumeables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [
+          {
+            "id": "playing:23",
+            "key": "m_steel",
+            "rank": 13,
+            "suit": "Diamonds",
+            "enhancement": "m_steel",
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Steel Card",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 1.5,
+              "hands_played_at_create": 14,
+              "mult": 0,
+              "name": "Steel Card",
+              "order": 6,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Enhanced",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:20",
+            "key": "c_base",
+            "rank": 9,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:44",
+            "key": "c_base",
+            "rank": 8,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:43",
+            "key": "c_base",
+            "rank": 7,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:17",
+            "key": "c_base",
+            "rank": 6,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:40",
+            "key": "c_base",
+            "rank": 4,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:14",
+            "key": "c_base",
+            "rank": 3,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 7
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 4
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 1
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 7
+          },
+          "Straight": {
+            "level": 2,
+            "chips": 60,
+            "mult": 7,
+            "played": 5
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 1
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 4
+          }
+        },
+        "population": {
+          "3": 3,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 5,
+          "10": 4,
+          "2": 2
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 677,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:30:45Z",
+      "monotonic_seconds": 255.7189449,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "YVYN2Z11",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000004.brj",
+        "ordinal": 2,
+        "raw_sha256": "97c6b7e1c94ab90d089099e59f96b1dc885ee21d071e975a8227d1c03ae30368"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:3",
+        "run_number": 2,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "playing",
+        "time": 255.7152615
+      },
+      "advice": {
+        "action": {
+          "blind": "Small",
+          "kind": "select_blind"
+        },
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Playing gives a shop visit, income, hand experience, and Joker growth.",
+          "Upcoming boss - Head: Hearts are debuffed. Favor other suits for scoring cards.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "stale",
+        "title": "Play the Small Blind"
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 0,
+        "dollars": 4,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 0,
+        "discards_used": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {
+              "suit": "Hearts"
+            },
+            "dollars": 5,
+            "key": "bl_head",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Head",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Select"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "reroll_cost": 5,
+        "jokers": [],
+        "consumeables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 0
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 0
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 0
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 1027,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:32:17Z",
+      "monotonic_seconds": 347.2217138,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "YVYN2Z11",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000004.brj",
+        "ordinal": 352,
+        "raw_sha256": "a37939d42c101c4ca82977e7e42e429c4efcf312b14d7909206fc78b0ac10050"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:3",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:3",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 66,
+        "run_id": "game:3",
+        "run_number": 2,
+        "run_seconds": 91.60294240000002,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "terminal",
+        "time": 347.2215628
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "state": {
+        "phase": "other",
+        "ante": 3,
+        "round": 7,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 4736,
+        "dollars": 1,
+        "hands_left": 0,
+        "discards_left": 0,
+        "hands_played": 4,
+        "discards_used": 3,
+        "blind": {
+          "boss": false,
+          "chips": 4800,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_big",
+          "mult": 1.5,
+          "name": "Big Blind"
+        },
+        "next_blind": null,
+        "route_blinds": {
+          "Big": {
+            "ante": 3,
+            "boss": false,
+            "chips": 4800,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Current"
+          },
+          "Boss": {
+            "ante": 3,
+            "boss": true,
+            "chips": 6400,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_tooth",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Tooth",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 3,
+            "boss": false,
+            "chips": 3200,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Defeated"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 4,
+        "reroll_cost": 5,
+        "jokers": [
+          {
+            "id": "card:450",
+            "key": "j_yorick",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 4,
+              "yorick_discards": 23
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:451",
+            "key": "j_perkeo",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:467",
+            "key": "j_devious",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Devious Joker",
+              "order": 14,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 100,
+              "t_mult": 0,
+              "type": "Straight",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 4,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "consumeables": [
+          {
+            "id": "card:477",
+            "key": "c_venus",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "Three of a Kind"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 8,
+              "mult": 0,
+              "name": "Venus",
+              "order": 2,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 3,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:484",
+            "key": "c_venus",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "Three of a Kind"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 8,
+              "mult": 0,
+              "name": "Venus",
+              "order": 2,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:493",
+            "key": "c_venus",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "Three of a Kind"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 8,
+              "mult": 0,
+              "name": "Venus",
+              "order": 2,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [
+          {
+            "id": "playing:48",
+            "key": "c_base",
+            "rank": 14,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:49",
+            "key": "c_base",
+            "rank": 11,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:7",
+            "key": "c_base",
+            "rank": 8,
+            "suit": "Clubs",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:29",
+            "key": "c_base",
+            "rank": 4,
+            "suit": "Hearts",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:16",
+            "key": "c_base",
+            "rank": 4,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:27",
+            "key": "c_base",
+            "rank": 2,
+            "suit": "Hearts",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 2,
+            "chips": 25,
+            "mult": 3,
+            "played": 4
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 2
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 1
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 5,
+          "9": 3,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 1036,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:32:17Z",
+      "monotonic_seconds": 347.8570597,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "S7PXV521",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000006.brj",
+        "ordinal": 2,
+        "raw_sha256": "66621843633220927e5e0a0a31b9d8e1c6e07f8eaae320be8a9d6b875dd9b869"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:4",
+        "run_number": 3,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "playing",
+        "time": 347.853331
+      },
+      "advice": {
+        "action": {
+          "blind": "Small",
+          "kind": "select_blind"
+        },
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Playing gives a shop visit, income, hand experience, and Joker growth.",
+          "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "stale",
+        "title": "Play the Small Blind"
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 0,
+        "dollars": 4,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 0,
+        "discards_used": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_pillar",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Pillar",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Select"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "reroll_cost": 5,
+        "jokers": [],
+        "consumeables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 0
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 0
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 0
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 1304,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:33:34Z",
+      "monotonic_seconds": 424.8748747,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "S7PXV521",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000006.brj",
+        "ordinal": 270,
+        "raw_sha256": "ee792709583b532465aa56caa4bab67bef003057c9d47688748db932efdf9103"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:4",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:4",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 50,
+        "run_id": "game:4",
+        "run_number": 3,
+        "run_seconds": 77.1482689,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "terminal",
+        "time": 424.8746376
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "state": {
+        "phase": "other",
+        "ante": 2,
+        "round": 5,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 460,
+        "dollars": 0,
+        "hands_left": 0,
+        "discards_left": 3,
+        "hands_played": 4,
+        "discards_used": 0,
+        "blind": {
+          "boss": true,
+          "chips": 2000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_house",
+          "mult": 2,
+          "name": "The House"
+        },
+        "next_blind": null,
+        "route_blinds": {
+          "Big": {
+            "ante": 2,
+            "boss": false,
+            "chips": 1500,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 2,
+            "boss": true,
+            "chips": 2000,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_house",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The House",
+            "state": "Current"
+          },
+          "Small": {
+            "ante": 2,
+            "boss": false,
+            "chips": 1000,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Defeated"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 5,
+        "reroll_cost": 5,
+        "jokers": [
+          {
+            "id": "card:563",
+            "key": "j_droll",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Type Mult",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Droll Joker",
+              "order": 10,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 10,
+              "type": "Flush",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 4,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:553",
+            "key": "j_yorick",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 2,
+              "yorick_discards": 9
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:559",
+            "key": "j_certificate",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Certificate",
+              "order": 112,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 6,
+            "sell_cost": 3,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:555",
+            "key": "j_faceless",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": {
+                "dollars": 5,
+                "faces": 3
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Faceless Joker",
+              "order": 57,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 4,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:552",
+            "key": "j_perkeo",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "consumeables": [
+          {
+            "id": "card:562",
+            "key": "c_judgement",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {},
+              "d_size": 0,
+              "effect": "Random Joker",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Judgement",
+              "order": 21,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 3,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:567",
+            "key": "c_judgement",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {},
+              "d_size": 0,
+              "effect": "Random Joker",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Judgement",
+              "order": 21,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:574",
+            "key": "c_judgement",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {},
+              "d_size": 0,
+              "effect": "Random Joker",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Judgement",
+              "order": 21,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:589",
+            "key": "c_judgement",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {},
+              "d_size": 0,
+              "effect": "Random Joker",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Judgement",
+              "order": 21,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [
+          {
+            "id": "playing:55",
+            "key": "c_base",
+            "rank": 14,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": "Blue",
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 7,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:12",
+            "key": "c_base",
+            "rank": 12,
+            "suit": "Clubs",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:3",
+            "key": "c_base",
+            "rank": 4,
+            "suit": "Clubs",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 3,
+            "chips": 65,
+            "mult": 8,
+            "played": 3
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 2
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 2
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 1
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 0
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 1
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 3
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 6,
+          "8": 4,
+          "9": 5,
+          "14": 5,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 1313,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:33:35Z",
+      "monotonic_seconds": 425.6061928,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "RH45AD21",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000008.brj",
+        "ordinal": 2,
+        "raw_sha256": "c794636c407371304fbcecd6658491b0d847281400cb250e570be059741422b6"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:5",
+        "run_number": 4,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "playing",
+        "time": 425.6025211
+      },
+      "advice": {
+        "action": {
+          "blind": "Small",
+          "kind": "select_blind"
+        },
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Playing gives a shop visit, income, hand experience, and Joker growth.",
+          "Upcoming boss - Hook: two random held cards are discarded after each play; do not depend on saving a fragile second hand.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "stale",
+        "title": "Play the Small Blind"
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 0,
+        "dollars": 4,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 0,
+        "discards_used": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_hook",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Hook",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Select"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "reroll_cost": 5,
+        "jokers": [],
+        "consumeables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 0
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 0
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 0
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 2095,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:38:19Z",
+      "monotonic_seconds": 709.1523393,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "RH45AD21",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000008.brj",
+        "ordinal": 784,
+        "raw_sha256": "75f2cfd307625706dcf6a910a2195326520dae04f22b2d3bd106ec34db0049ca"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:5",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:5",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 144,
+        "run_id": "game:5",
+        "run_number": 4,
+        "run_seconds": 283.6778436,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "terminal",
+        "time": 709.1521821
+      },
+      "advice": {
+        "lines": [
+          "Waiting for a decision..."
+        ],
+        "status": "unavailable",
+        "title": "Run Advisor"
+      },
+      "state": {
+        "phase": "other",
+        "ante": 6,
+        "round": 15,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 8334,
+        "dollars": 36,
+        "hands_left": 0,
+        "discards_left": 0,
+        "hands_played": 4,
+        "discards_used": 3,
+        "blind": {
+          "boss": false,
+          "chips": 60000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "next_blind": null,
+        "route_blinds": {
+          "Big": {
+            "ante": 6,
+            "boss": false,
+            "chips": 90000,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 6,
+            "boss": true,
+            "chips": 120000,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_wheel",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Wheel",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 6,
+            "boss": false,
+            "chips": 60000,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Current"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 3,
+        "reroll_cost": 5,
+        "jokers": [
+          {
+            "id": "card:649",
+            "key": "j_yorick",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 6,
+              "yorick_discards": 12
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:650",
+            "key": "j_perkeo",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:659",
+            "key": "j_greedy_joker",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Suit Mult",
+              "extra": {
+                "s_mult": 3,
+                "suit": "Diamonds"
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Greedy Joker",
+              "order": 2,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 5,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:709",
+            "key": "j_trio",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "X2 Mult",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 14,
+              "mult": 0,
+              "name": "The Trio",
+              "order": 132,
+              "p_dollars": 0,
+              "perish_tally": 0,
+              "perishable": true,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "Three of a Kind",
+              "x_mult": 3
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:732",
+            "key": "j_certificate",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 19,
+              "mult": 0,
+              "name": "Certificate",
+              "order": 112,
+              "p_dollars": 0,
+              "perish_tally": 2,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 6,
+            "sell_cost": 3,
+            "blueprint_compat": true,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "consumeables": [
+          {
+            "id": "card:688",
+            "key": "c_hermit",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "extra": 20
+              },
+              "d_size": 0,
+              "effect": "Dollar Doubler",
+              "extra": 20,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 9,
+              "mult": 0,
+              "name": "The Hermit",
+              "order": 10,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 3,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:765",
+            "key": "c_hermit",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "extra": 20
+              },
+              "d_size": 0,
+              "effect": "Dollar Doubler",
+              "extra": 20,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 9,
+              "mult": 0,
+              "name": "The Hermit",
+              "order": 10,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [
+          {
+            "id": "playing:37",
+            "key": "c_base",
+            "rank": 13,
+            "suit": "Hearts",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:43",
+            "key": "c_base",
+            "rank": 5,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:4",
+            "key": "c_base",
+            "rank": 5,
+            "suit": "Clubs",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:14",
+            "key": "c_base",
+            "rank": 2,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 5
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 1
+          },
+          "High Card": {
+            "level": 2,
+            "chips": 15,
+            "mult": 2,
+            "played": 0
+          },
+          "Pair": {
+            "level": 2,
+            "chips": 25,
+            "mult": 3,
+            "played": 8
+          },
+          "Straight": {
+            "level": 2,
+            "chips": 60,
+            "mult": 7,
+            "played": 2
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 13,
+            "chips": 270,
+            "mult": 27,
+            "played": 5
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 6
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 5,
+          "5": 4,
+          "6": 3,
+          "7": 4,
+          "8": 6,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 5,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 2105,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:38:21Z",
+      "monotonic_seconds": 711.4868966,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "YAEARC31",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000010.brj",
+        "ordinal": 2,
+        "raw_sha256": "5fa2726497273353879bcd0c07e01ef728085512adb7bb841991a26d732f78e7"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:6",
+        "run_number": 5,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "playing",
+        "time": 711.4830153
+      },
+      "advice": {
+        "action": {
+          "blind": "Small",
+          "kind": "select_blind"
+        },
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Playing gives a shop visit, income, hand experience, and Joker growth.",
+          "Upcoming boss - Head: Hearts are debuffed. Favor other suits for scoring cards.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "stale",
+        "title": "Play the Small Blind"
+      },
+      "state": {
+        "phase": "blind",
+        "ante": 1,
+        "round": 0,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 0,
+        "dollars": 4,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 0,
+        "discards_used": 0,
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "next_blind": {
+          "ante": 1,
+          "boss": false,
+          "chips": 300,
+          "debuff": {},
+          "key": "bl_small",
+          "label": "Small",
+          "mult": 1,
+          "name": "Small Blind"
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 1,
+            "boss": false,
+            "chips": 450,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 1,
+            "boss": true,
+            "chips": 600,
+            "debuff": {
+              "suit": "Hearts"
+            },
+            "dollars": 5,
+            "key": "bl_head",
+            "label": "Boss",
+            "mult": 2,
+            "name": "The Head",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 1,
+            "boss": false,
+            "chips": 300,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Select"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 2,
+        "reroll_cost": 5,
+        "jokers": [],
+        "consumeables": [],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 0
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 0
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 1,
+            "chips": 10,
+            "mult": 2,
+            "played": 0
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 0
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 0
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "9": 4,
+          "14": 4,
+          "11": 4,
+          "13": 4,
+          "12": 4,
+          "10": 4
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    },
+    {
+      "sequence": 3142,
+      "kind": "auto_run",
+      "at": "2026-09-22T17:44:01Z",
+      "monotonic_seconds": 1051.8155294,
+      "observation_id": null,
+      "advice_sequence": null,
+      "seed": "YAEARC31",
+      "run_instance": null,
+      "anchor": {
+        "segment": "session-20260922T172657Z-1-000010.brj",
+        "ordinal": 1039,
+        "raw_sha256": "82c345ab6f8457d62727a45a9099415bfb0b62fbef17f329c304ebfa7c612c6c"
+      },
+      "details": {
+        "actions": 574,
+        "event": "session_stopped",
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcomes": {
+          "losses": 4,
+          "wins": 0
+        },
+        "profile_id": 1,
+        "reason": "unsupported_stalled",
+        "run_id": "game:6",
+        "runs_started": 5,
+        "schema": 1,
+        "search_draining": false,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "start_attempts": 0,
+        "state": "stopped",
+        "time": 1051.8111945,
+        "uncertain_starts": 0
+      },
+      "advice": {
+        "lines": [
+          "Completionist++: 108/150 Gold stickers; carrying 0 distinct missing Jokers.",
+          "Concealed, destructible, unknown or held-reward playing-card effects remain outside this immediate comparison.",
+          "No concealed Joker identity or order was read to fill this gap.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "active_seconds": 0.0003980999999839696,
+          "decision_id": 1454,
+          "elapsed_seconds": 0.00040250000006381015,
+          "evaluations": 0,
+          "finished_seconds": 1021.8092327,
+          "max_resume_seconds": 0.0003980999999839696,
+          "phase": "hand",
+          "resume_calls": 1,
+          "started_seconds": 1021.8088302,
+          "status": "completed"
+        },
+        "title": "Public Joker-order advice unavailable"
+      },
+      "state": {
+        "phase": "hand",
+        "ante": 8,
+        "round": 23,
+        "deck_key": "b_red",
+        "stake": 8,
+        "chips": 0,
+        "dollars": -19,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 0,
+        "discards_used": 0,
+        "blind": {
+          "boss": true,
+          "chips": 400000,
+          "debuff": {},
+          "disabled": false,
+          "key": "bl_final_acorn",
+          "mult": 2,
+          "name": "Amber Acorn"
+        },
+        "next_blind": null,
+        "route_blinds": {
+          "Big": {
+            "ante": 8,
+            "boss": false,
+            "chips": 300000,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Defeated"
+          },
+          "Boss": {
+            "ante": 8,
+            "boss": true,
+            "chips": 400000,
+            "debuff": {},
+            "dollars": 8,
+            "key": "bl_final_acorn",
+            "label": "Boss",
+            "mult": 2,
+            "name": "Amber Acorn",
+            "state": "Current"
+          },
+          "Small": {
+            "ante": 8,
+            "boss": false,
+            "chips": 200000,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Defeated"
+          }
+        },
+        "teacher_profile": null,
+        "joker_limit": 5,
+        "consumable_limit": 4,
+        "reroll_cost": 5,
+        "jokers": [
+          {
+            "id": null,
+            "key": null,
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": null,
+            "ability": null,
+            "edition": null,
+            "cost": null,
+            "sell_cost": null,
+            "blueprint_compat": null,
+            "face_down": true,
+            "identity_redacted": true
+          },
+          {
+            "id": null,
+            "key": null,
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": null,
+            "ability": null,
+            "edition": null,
+            "cost": null,
+            "sell_cost": null,
+            "blueprint_compat": null,
+            "face_down": true,
+            "identity_redacted": true
+          },
+          {
+            "id": null,
+            "key": null,
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": null,
+            "ability": null,
+            "edition": null,
+            "cost": null,
+            "sell_cost": null,
+            "blueprint_compat": null,
+            "face_down": true,
+            "identity_redacted": true
+          },
+          {
+            "id": null,
+            "key": null,
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": null,
+            "ability": null,
+            "edition": null,
+            "cost": null,
+            "sell_cost": null,
+            "blueprint_compat": null,
+            "face_down": true,
+            "identity_redacted": true
+          },
+          {
+            "id": null,
+            "key": null,
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": null,
+            "ability": null,
+            "edition": null,
+            "cost": null,
+            "sell_cost": null,
+            "blueprint_compat": null,
+            "face_down": true,
+            "identity_redacted": true
+          }
+        ],
+        "consumeables": [
+          {
+            "id": "card:962",
+            "key": "c_mercury",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "Pair"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 11,
+              "mult": 0,
+              "name": "Mercury",
+              "order": 1,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "card:968",
+            "key": "c_mercury",
+            "rank": null,
+            "suit": null,
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "Pair"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 11,
+              "mult": 0,
+              "name": "Mercury",
+              "order": 1,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "cost": 8,
+            "sell_cost": 4,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "shop_jokers": [],
+        "shop_booster": [],
+        "shop_vouchers": [],
+        "pack_cards": [],
+        "hand": [
+          {
+            "id": "playing:30",
+            "key": "c_base",
+            "rank": 14,
+            "suit": "Hearts",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:42",
+            "key": "c_base",
+            "rank": 9,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:29",
+            "key": "m_lucky",
+            "rank": 9,
+            "suit": "Hearts",
+            "enhancement": "m_lucky",
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Lucky Card",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 20,
+              "name": "Lucky Card",
+              "order": 9,
+              "p_dollars": 20,
+              "perma_bonus": 0,
+              "set": "Enhanced",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:41",
+            "key": "c_base",
+            "rank": 8,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "played_this_ante": true,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:7",
+            "key": "m_glass",
+            "rank": 8,
+            "suit": "Clubs",
+            "enhancement": "m_glass",
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Glass Card",
+              "extra": 4,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 9,
+              "mult": 0,
+              "name": "Glass Card",
+              "order": 5,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "played_this_ante": true,
+              "set": "Enhanced",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 2
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:14",
+            "key": "c_base",
+            "rank": 5,
+            "suit": "Diamonds",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:37",
+            "key": "c_base",
+            "rank": 4,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:35",
+            "key": "c_base",
+            "rank": 2,
+            "suit": "Spades",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          },
+          {
+            "id": "playing:22",
+            "key": "c_base",
+            "rank": 2,
+            "suit": "Hearts",
+            "enhancement": null,
+            "seal": null,
+            "debuff": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Base",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Default Base",
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Default",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null,
+            "cost": 1,
+            "sell_cost": 1,
+            "blueprint_compat": null,
+            "face_down": false,
+            "identity_redacted": null
+          }
+        ],
+        "hands": {
+          "Five of a Kind": {
+            "level": 1,
+            "chips": 120,
+            "mult": 12,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "chips": 35,
+            "mult": 4,
+            "played": 4
+          },
+          "Flush Five": {
+            "level": 1,
+            "chips": 160,
+            "mult": 16,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "chips": 140,
+            "mult": 14,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "chips": 60,
+            "mult": 7,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "chips": 40,
+            "mult": 4,
+            "played": 4
+          },
+          "High Card": {
+            "level": 1,
+            "chips": 5,
+            "mult": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 15,
+            "chips": 220,
+            "mult": 16,
+            "played": 33
+          },
+          "Straight": {
+            "level": 1,
+            "chips": 30,
+            "mult": 4,
+            "played": 5
+          },
+          "Straight Flush": {
+            "level": 1,
+            "chips": 100,
+            "mult": 8,
+            "played": 1
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "chips": 30,
+            "mult": 3,
+            "played": 1
+          },
+          "Two Pair": {
+            "level": 1,
+            "chips": 20,
+            "mult": 2,
+            "played": 0
+          }
+        },
+        "population": {
+          "2": 4,
+          "3": 4,
+          "4": 4,
+          "5": 4,
+          "6": 4,
+          "7": 4,
+          "8": 4,
+          "11": 4,
+          "13": 4,
+          "10": 3,
+          "9": 3,
+          "12": 3,
+          "14": 2
+        },
+        "collection_counts": {
+          "complete": 108,
+          "missing": 42,
+          "total": 150,
+          "unknown": 0
+        }
+      }
+    }
+  ]
+}

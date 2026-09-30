@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-15T21:40:54.592386+00:00",
+  "kind": "routine_manufactured_fixture_runtime_slice",
+  "version": "2.135.0-alpha",
+  "prefix": "journal335",
+  "previous_policy_digest": "64b99ea570d39ff9b8f46aff97f8bafa21eb6fe83ade8e8ea58cb72581d1ad14",
+  "policy_files": 99,
+  "deployment_files": 83,
+  "changed_files": {
+    "Brainstorm/Advisor/player_journal.lua": "1d41e9fe61ee25c4397a8a3b5ce1e598f1410c3a3f7ff5277345301e2455962e",
+    "Brainstorm/Core/Brainstorm.lua": "205620baeb5523b143b3c3a1c1d0210a39de8e526e49f547e67bf997f06b7c76",
+    "Brainstorm/steamodded_compat.lua": "7c3e18aba46d801c7541bbd0dcda5ed118db5b57f1f26d20354d73963eacfa1c"
+  },
+  "added_test_dependencies": {
+    "tests/advisor_journal_reuse.lua": "c7b5110783c3b6989f64c15ecdf4b1f82c282c6641279d432e7dee491f511c92",
+    "tests/fixtures/journal_reuse335/player_journal334.lua": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b",
+    "tests/fixtures/journal_reuse335/hashes.lua": "f1d14d43995a80cfcc3fbb25c12fe71419a0755197752cacb6ba2c1a6a3c7d25"
+  },
+  "policy_digest": "3a7546c34abf0310a4b437aca9b104792044fb91ebda47e53ef3507d5587d9a9",
+  "previous_installed_record": {
+    "path": "tools/advisor_eval/runs/duplicates334_installed/record.json",
+    "sha256": "10c369da2e76a689eb86f1a198dadf51e7be516a2c0106a4c7f648ee6e68eadf"
+  },
+  "changed_runtime": {
+    "Brainstorm/Advisor/player_journal.lua": {
+      "before": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b",
+      "after": "1d41e9fe61ee25c4397a8a3b5ce1e598f1410c3a3f7ff5277345301e2455962e",
+      "preserved": "tools/advisor_eval/development335/journal_release/before/Brainstorm/Advisor/player_journal.lua"
+    },
+    "Brainstorm/Core/Brainstorm.lua": {
+      "before": "753bd65a3c9cce3a10d22337f63b9be380c63fbbd070f7413cc182d55f8ddb85",
+      "after": "205620baeb5523b143b3c3a1c1d0210a39de8e526e49f547e67bf997f06b7c76",
+      "preserved": "tools/advisor_eval/development335/journal_release/before/Brainstorm/Core/Brainstorm.lua"
+    },
+    "Brainstorm/steamodded_compat.lua": {
+      "before": "9a2d555bd8fc47e227876f8d5e16f6995f9a0ff5537eb8a55c6f5870fa772806",
+      "after": "7c3e18aba46d801c7541bbd0dcda5ed118db5b57f1f26d20354d73963eacfa1c",
+      "preserved": "tools/advisor_eval/development335/journal_release/before/Brainstorm/steamodded_compat.lua"
+    }
+  },
+  "component_inputs": {
+    "player_journal.base.lua": {
+      "path": "tools/advisor_eval/development335/runtime_component/player_journal.base.lua",
+      "sha256": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b"
+    },
+    "player_journal.lua": {
+      "path": "tools/advisor_eval/development335/runtime_component/player_journal.lua",
+      "sha256": "1d41e9fe61ee25c4397a8a3b5ce1e598f1410c3a3f7ff5277345301e2455962e"
+    },
+    "test_journal_work.lua": {
+      "path": "tools/advisor_eval/development335/runtime_component/test_journal_work.lua",
+      "sha256": "bc592c769b40d5e7d1518625767c546a52a6212af29ab37986d27ddb68e12255"
+    },
+    "validation.json": {
+      "path": "tools/advisor_eval/development335/runtime_component/validation.json",
+      "sha256": "7ff4b1303425de02561a3b8f91e5fc865e5f9e43a326df0328258089b662f0dc"
+    }
+  },
+  "source_workers": 0,
+  "captured_replays": 0,
+  "complete_attempts": 0,
+  "searches": 0,
+  "game_control": false,
+  "saves_read": false,
+  "installation_performed": false,
+  "experiments": "all historical allowances remain closed"
+}

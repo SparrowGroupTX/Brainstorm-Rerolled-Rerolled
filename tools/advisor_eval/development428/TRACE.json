@@ -1,0 +1,79 @@
+{
+  "loaded_version": "2.209.0-alpha",
+  "session": "session-20260927T190548Z-1",
+  "capture": "captures/001",
+  "prefix_events": 4206,
+  "outcomes": {
+    "loss": 1,
+    "unended": 1
+  },
+  "complete_session": false,
+  "discard_cases": [
+    {
+      "request": 3661,
+      "ante": 7,
+      "remaining_discards": 3,
+      "mechanism": "additive Flush rejected by canonical Smeared/deck-only Foil scope",
+      "repair": "canonical additive/held input qualification"
+    },
+    {
+      "request": 3839,
+      "ante": 7,
+      "remaining_discards": 3,
+      "mechanism": "Pair rejected by canonical Smeared/deck-only Foil scope",
+      "repair": "canonical and complete small-family qualification"
+    },
+    {
+      "request": 4008,
+      "ante": 7,
+      "remaining_discards": 2,
+      "mechanism": "multi-selected Pair/order guard; smaller alternatives not admitted",
+      "repair": "bounded alternative qualification; captured alternatives remain unscored"
+    },
+    {
+      "requests": [
+        443,
+        488,
+        621,
+        731
+      ],
+      "mechanism": "Raised Fist replacement held floor unsupported",
+      "repair": "not included"
+    }
+  ],
+  "fool_case": {
+    "observation": 2215,
+    "advice": 2219,
+    "request": 2222,
+    "callback": 2223,
+    "after": 2226,
+    "settlement": 2228,
+    "cash": 35,
+    "offers": [
+      {
+        "id": "card:359",
+        "key": "c_fool",
+        "cost": 3
+      },
+      {
+        "id": "card:358",
+        "key": "c_jupiter",
+        "cost": 3
+      }
+    ],
+    "inventory": {
+      "ordinary_world": 1,
+      "ordinary_hierophant": 1,
+      "negative_world": 8,
+      "count": 10,
+      "capacity": 10
+    },
+    "last_tarot_planet": "c_jupiter",
+    "confirmed_cause": "full-slot purchase rejected before valuation; stock replacement admission did not consider ordinary World/Hierophant",
+    "fix_status": "unresolved; future generic Fool stock also lacks supported use route",
+    "sequence_rule": "target -> Fool -> generated target -> Fool; refresh after each step",
+    "existing_supported_cycle_test": "tests/advisor_fool_stock376.lua:43 checks passed"
+  },
+  "captured_state_replay": false,
+  "counterfactual_saved_win_claim": false
+}

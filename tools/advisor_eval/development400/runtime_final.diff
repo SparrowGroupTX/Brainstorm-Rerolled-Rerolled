@@ -1,0 +1,665 @@
+--- 2.193/Brainstorm/Advisor/strategy.lua
++++ 2.194/Brainstorm/Advisor/strategy.lua
+@@ -1060,6 +1060,20 @@
+         score = score + 33
+         reasons[#reasons + 1] = card.seal .. ' Seal'
+     elseif card.seal == 'Gold' then score = score + 16 end
++    if snapshot.teacher_profile=='perkeo_yorick_win_v1' then
++        -- Independent properties stack. These are development priors, not
++        -- score multipliers; contextual rank/hand/Joker utility follows below.
++        local enhancements={m_glass=90,m_steel=60,m_mult=24,m_bonus=12}
++        if enhancements[enhancement] then
++            score=score+enhancements[enhancement]-18-
++                ((enhancement=='m_glass' or enhancement=='m_steel') and 12 or 0)
++        end
++        if edition(card,'polychrome') then score=score+72-30 end
++        if edition(card,'foil') then score=score+48-18 end
++        if edition(card,'holo') then score=score+36-22 end
++        local seals={Red=28,Blue=20,Purple=6,Gold=4}
++        if seals[card.seal] then score=score+seals[card.seal]-(card.seal=='Gold' and 16 or 33) end
++    end
+     if has(snapshot, 'j_hologram') then score = score + 22; reasons[#reasons + 1] = 'grows Hologram' end
+     if has(snapshot, 'j_vampire') and enhancement then score = score + 8 end
+     local rank = card.rank or card.base and card.base.id
+@@ -1121,11 +1135,52 @@
+     return true
+ end
+ 
++local known_buffoon_packs={p_buffoon_normal_1=true,p_buffoon_normal_2=true,
++    p_buffoon_jumbo_1=true,p_buffoon_mega_1=true}
++local function useful_copy_target(snapshot)
++    for _,j in ipairs(snapshot.jokers or {}) do
++        local a=ability(j)
++        if not j.debuff and not j.unknown and not j.identity_redacted and j.blueprint_compat~=false and
++            not (a.perishable and num(a.perish_tally,5)<=0) and
++            (j.key=='j_yorick' and a.name=='Yorick' and num(a.x_mult)>1 or
++             j.key=='j_perkeo' and #(snapshot.consumeables or {})>0 or
++             j.blueprint_compat==true and (flat_mult[j.key] or flat_chips[j.key] or xmult[j.key])) then return true end
++    end
++    return false
++end
++local function copy_cash_reserve(snapshot)
++    local rentals=0
++    for _,j in ipairs(snapshot.jokers or {}) do if ability(j).rental then
++        rentals=rentals+math.max(0,num(snapshot.rental_rate,3))
++    end end
++    return rentals+math.max(0,num(modifiers(snapshot).discard_cost))*
++        math.max(0,num((snapshot.round_resets or {}).discards,3)+num((snapshot.round_bonus or {}).discards))
++end
++local function seeking_blueprint(snapshot)
++    return snapshot.teacher_profile=='perkeo_yorick_win_v1' and not has(snapshot,'j_blueprint') and
++        useful_copy_target(snapshot)
++end
+ local function booster_value(snapshot, card, engine)
+     local key = card.key or ''
+     local source_search=needs_death_source(snapshot) and
+         num(snapshot.dollars)-num(card.cost)>=num(snapshot.interest_cap,25)+12
+     if key:find('buffoon', 1, true) then
++        if known_buffoon_packs[key] and seeking_blueprint(snapshot) and
++            num(snapshot.dollars)-num(card.cost)<15+copy_cash_reserve(snapshot) then
++            return 0,'Keep purchase cash for a future Blueprint; this unknown Joker pack would spend the $15 plus rental/discard reserve.'
++        end
++        if known_buffoon_packs[key] and seeking_blueprint(snapshot) and not jokerless(snapshot) and
++            num(snapshot.dollars)-num(card.cost)>=15+copy_cash_reserve(snapshot) then
++            local space=#(snapshot.jokers or {})<num(snapshot.joker_limit,5)
++            for _,j in ipairs(snapshot.jokers or {}) do
++                local _,_,known=joker_value(snapshot,j,deck_stats(snapshot),engine)
++                if known and not ability(j).eternal and not modifiers(snapshot).all_eternal and
++                    not j.pinned and not ability(j).pinned and not edition(j,'negative') and
++                    not ({j_yorick=true,j_perkeo=true,j_blueprint=true,j_brainstorm=true})[j.key] then space=true end
++            end
++            if space then return 88,
++                'Look for Blueprint in this Joker pack, retaining $15 plus current rental/discard costs for future purchases. Contents are unknown; sell a replaceable Joker only after a valuable reveal.' end
++        end
+         if jokerless(snapshot) or #(snapshot.jokers or {}) >= num(snapshot.joker_limit, 5) then return 0, 'No free Joker space.' end
+         return engine.mult == 0 and 68 or 46, 'Find a scoring Joker; the contents are unknown until opened.'
+     elseif key:find('celestial', 1, true) then
+@@ -1165,6 +1220,14 @@
+     if Strategy.liquidity and purchase_liquidity then
+         if not omit_liquidity then penalty=penalty+purchase_liquidity(snapshot,cost,card,after,after_readiness) end
+     elseif modifiers(snapshot).discard_cost and remaining < 6 and cost~=0 then penalty = penalty + 10 end
++    if cost>0 and seeking_blueprint(snapshot) and card.key~='j_blueprint' and card.key~='j_brainstorm' then
++        local rescue=after_readiness and after_readiness.supported and after_readiness.status=='sampled_safe' and
++            snapshot._readiness and snapshot._readiness.supported and snapshot._readiness.status~='sampled_safe'
++        if not rescue then
++            local floor=15+copy_cash_reserve(snapshot)
++            penalty=penalty+5*math.max(0,math.min(dollars,floor)-remaining)
++        end
++    end
+     return penalty
+ end
+ 
+@@ -1256,6 +1319,40 @@
+     return a.selected.clearing_samples==a.samples and num(b.selected.clearing_samples,a.samples)<a.samples
+ end
+ Strategy.survival_dominated=survival_dominated
++
++-- A complete supported acquisition can outweigh the additive retained-row
++-- rating (which undervalues multiplicative copies). Cash is actual endpoint
++-- cash, not future income. No fixed $20 floor, first-copy or rental veto.
++local function supported_copy_priority(snapshot,sold,card,after,evidence)
++    local function finite(v) return type(v)=='number' and v==v and math.abs(v)<math.huge end
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or not card or
++        (card.key~='j_blueprint' and card.key~='j_brainstorm') or card.debuff or card.unknown or
++        card.identity_redacted or card.face_down or
++        ability(card).perishable and num(ability(card).perish_tally,5)<2 or not useful_copy_target(snapshot) then return false end
++    if sold and (sold.pinned or ability(sold).pinned or ability(sold).eternal or edition(sold,'negative') or
++        ({j_yorick=true,j_perkeo=true,j_blueprint=true,j_brainstorm=true})[sold.key]) then return false end
++    if not after or not finite(after.dollars) or after.dollars<copy_cash_reserve(after) or
++        not evidence or evidence.incomplete or evidence.uncertain or evidence.samples~=4 or
++        not evidence.complete_finishing or not finite(evidence.ratio) or evidence.ratio<1.05 or
++        not finite(evidence.before_target) or evidence.before_target<=0 or evidence.before_target~=evidence.after_target then return false end
++    local worlds=evidence.common_worlds
++    if not worlds or worlds.kind~='shop_four_common_worlds_v1' or worlds.samples~=4 or
++        type(worlds.family_key)~='string' or worlds.family_key=='' or type(worlds.world_ids)~='table' or #worlds.world_ids~=4 then return false end
++    local before,following=evidence.before_finishing,evidence.after_finishing
++    for _,f in ipairs({before or {},following or {}}) do
++        if not f.complete or not f.supported or not f.known_mechanics or f.samples~=4 or
++            not f.selected or type(f.selected.worlds)~='table' or #f.selected.worlds~=4 then return false end
++    end
++    if following.selected.clearing_samples~=4 then return false end
++    for i=1,4 do
++        local a,b=before.selected.worlds[i],following.selected.worlds[i]
++        if worlds.world_ids[i]~=i or type(a)~='table' or type(b)~='table' or type(a.clear)~='boolean' or
++            b.clear~=true or not finite(a.progress) or not finite(b.progress) or a.progress<0 or a.progress>1 or
++            b.progress<0 or b.progress>1 or b.progress+0.000000001<a.progress then return false end
++    end
++    return true
++end
++Strategy.supported_copy_priority=supported_copy_priority
+ 
+ local function shop_score_evidence(snapshot,after,card,whole_row)
+     local ctx=snapshot._shop_scoring
+@@ -1343,8 +1440,7 @@
+ end
+ 
+ local planet_shop_dominance,planet_shop_commitment
+-local known_buffoon_packs={p_buffoon_normal_1=true,p_buffoon_normal_2=true,
+-    p_buffoon_jumbo_1=true,p_buffoon_mega_1=true}
++
+ -- Replacement offers are scored against the complete row we actually own.
+ -- Vacant-slot previews still fund the purchase but never become score baselines.
+ local function best_shop_purchase(snapshot, stats, engine, final_endpoint, replacement_before)
+@@ -1352,7 +1448,8 @@
+     for _, area in ipairs({'shop_jokers', 'shop_vouchers', 'shop_booster'}) do
+         for index, card in ipairs(snapshot[area] or {}) do
+             local cost = num(card.cost)
+-            if (cost <= 0 or cost <= num(snapshot.dollars) - num(snapshot.bankrupt_at)) and capacity(snapshot, card, false)
++            if (not snapshot._copy_acquisition or card.key=='j_blueprint' or card.key=='j_brainstorm') and
++                (cost <= 0 or cost <= num(snapshot.dollars) - num(snapshot.bankrupt_at)) and capacity(snapshot, card, false)
+                 and not (modifiers(snapshot).no_shop_jokers and kind(card) == 'joker') then
+                 local score, reason, known, forecast = card_value(snapshot, card, stats, engine)
+                 local evidence,after,planet_after,replacement_adjustment
+@@ -1389,11 +1486,12 @@
+                     planet_candidates[#planet_candidates+1]={candidate=candidate,after=planet_after,eligible=score>0 and not dominated}
+                 end
+                 local admitted=kind(card)~='joker' or Strategy.joker_admission(replacement_before or snapshot,card,after,evidence)
++                candidate.copy_priority=not replacement_before and supported_copy_priority(snapshot,nil,card,after,evidence)
+                 if replacement_before and kind(card)=='joker' then
+                     candidate.replacement_admitted=admitted
+                     replacement_candidates[#replacement_candidates+1]=candidate
+                 end
+-                if score>0 and not dominated and admitted then
++                if (score>0 or candidate.copy_priority) and not dominated and admitted then
+                     candidates[#candidates+1]=candidate
+                 end
+             end
+@@ -1412,6 +1510,12 @@
+         selected,diagnostics=planet_shop_dominance(snapshot,candidates)
+     end
+     local best=selected or candidates[1]
++    for _,candidate in ipairs(candidates) do
++        if candidate.copy_priority then
++            candidate.score=math.max(26,candidate.score)
++            best=candidate;break
++        end
++    end
+     -- A revealed durable copy Joker is a scarce known offer. Opening an
+     -- unknown pack first can spend the cash or last Joker slot needed for that
+     -- offer, even when their one-step ratings are nearly tied. Only break a tie for the
+@@ -1779,6 +1883,8 @@
+         -- Unknown effects are preserved; Diet Cola is a known non-scoring sale
+         -- resource. Eggs retain their specialized Omelette economy policy.
+         if not ability(sold).eternal and (known or expired(sold) or sold.key=='j_diet_cola') and
++            (not snapshot._copy_acquisition or not (sold.pinned or ability(sold).pinned or edition(sold,'negative') or
++              ({j_yorick=true,j_perkeo=true,j_blueprint=true,j_brainstorm=true})[sold.key])) and
+             not (omelette(snapshot) and sold.key=='j_egg') then
+             local state=after_joker_sale(snapshot,index)
+             local candidate,_,family
+@@ -1843,6 +1949,8 @@
+                     copy_exception,copy_exception_reason=copy_replacement_exception(
+                         snapshot,sold,candidate.card,after,evidence,merit)
+                 end
++                local copy_priority=complete_family and merit~=-math.huge and
++                    supported_copy_priority(snapshot,sold,candidate.card,after,evidence)
+                 if entry then
+                     entry.merit=merit~=-math.huge and merit or nil
+                     entry.cash_after=after.dollars;entry.cost=cost
+@@ -1852,20 +1960,23 @@
+                     if exception then entry.perishable_exception=true end
+                     if copy_exception_reason then entry.copy_exception_reason=copy_exception_reason end
+                     if copy_exception then entry.copy_exception=true end
++                    entry.copy_priority=copy_priority or nil
+                     local finish=evidence and evidence.after_finishing
+                     entry.finishing_complete=evidence and evidence.complete_finishing==true or false
+                     entry.finishing_supported=finish and finish.supported==true and finish.known_mechanics==true or false
+                     entry.finishing_all_clear=finish and finish.selected and finish.selected.clearing_samples==4 or false
+-                    entry.reason=merit==-math.huge and 'survival_dominated' or merit<26 and not exception and not copy_exception and 'insufficient_gain' or
++                    entry.reason=copy_priority and 'supported_copy_priority' or merit==-math.huge and 'survival_dominated' or merit<26 and not exception and not copy_exception and 'insufficient_gain' or
+                         direct and direct.score>=26 and merit<=direct.score and 'ordinary_purchase_preferred' or 'eligible'
+                 end
+                 if Strategy.joker_admission(snapshot,candidate.card,after,evidence) and
+-                    (merit>=26 or exception or copy_exception) and (not direct or direct.score<26 or merit>direct.score) then
++                    (merit>=26 or exception or copy_exception or copy_priority) and
++                    (copy_priority and not (direct and direct.copy_priority) or not direct or direct.score<26 or merit>direct.score) then
+                     local endpoint={score=merit,index=index,sold=sold,purchase=candidate,gain=gain,
+                         remaining_cash=after.dollars,scoring_evidence=evidence,
+-                        perishable_exception=exception,copy_exception=copy_exception}
++                        perishable_exception=exception,copy_exception=copy_exception,copy_priority=copy_priority}
+                     eligible[#eligible+1]=endpoint
+-                    if not best or merit>best.score then best=endpoint end
++                    if not best or copy_priority and not best.copy_priority or
++                        (not not copy_priority)==(not not best.copy_priority) and merit>best.score then best=endpoint end
+                 end
+             end
+             end
+@@ -1963,6 +2074,8 @@
+           'The paid replacement has positive retained-row value before the incumbent expires, with no supported next-blind world losing progress.' or
+         sale.copy_exception and
+           'The developed Yorick copy has positive retained-row value and preserves a supported next-blind finish in all four paired worlds.' or
++        sale.copy_priority and
++          'The copy improves the paired opening score and preserves all four supported next-blind finishes; that evidence outweighs the additive Joker rating.' or
+           'The resulting Joker row has a substantial estimated improvement after retained synergies, current scaling, and spending are considered.',
+         'Sell only this Joker, then refresh advice before taking the next action.'}
+     if expired(sale.sold) then lines[#lines+1]='The replaced perishable Joker has no rounds left.' end
+@@ -1978,7 +2091,35 @@
+         forecast=purchase.forecast,action={kind='sell',area='jokers',index=sale.index,
+             followup={kind=verb,area=purchase.area or 'pack_cards',index=purchase.index}},
+         scoring_evidence=sale.scoring_evidence,
++        copy_acquisition_review=sale.copy_priority and {schema=1,complete=true,reason='supported_copy_priority',
++          selected_sale=sale.index,selected_offer=purchase.index,cash_after=sale.remaining_cash} or nil,
+         replacement={utility_gain=sale.gain,cash_after_purchase=sale.remaining_cash}}
++end
++
++-- Run this small declared family before optional purchases and broader shop
++-- sequences. It uses the same supported transitions and all legal sale victims,
++-- then publishes exactly one step. An incomplete family never yields a prefix.
++function Strategy.copy_acquisition(snapshot,context)
++    if snapshot.phase~='shop' or snapshot.teacher_profile~='perkeo_yorick_win_v1' or
++        not context or not useful_copy_target(snapshot) then return end
++    local visible=false
++    for _,c in ipairs(snapshot.shop_jokers or {}) do
++        if c.key=='j_blueprint' or c.key=='j_brainstorm' then visible=true end
++    end
++    if not visible then return end
++    local state=copy_table(snapshot);state._copy_acquisition=true;state._shop_scoring=context
++    local best=best_shop_purchase(state,deck_stats(state),components(state),true)
++    local replacement=replacement_sale_plan(state,best,best_shop_purchase)
++    local receipt=context.replacement_diagnostics
++    if context.truncated or receipt and not receipt.complete then return nil,receipt end
++    if replacement and replacement.copy_priority then return replacement_sale_advice(snapshot,replacement),receipt end
++    if best and best.copy_priority then
++        return {title='Buy '..name(best.card)..' ($'..num(best.card.cost)..')',lines={best.reason,
++          'Acquire the visible copy while its cash and slot are available; all four supported next-blind finishes remain.'},warnings={},
++          action={kind='buy',area=best.area,index=best.index},scoring_evidence=best.scoring_evidence,
++          copy_acquisition_review={schema=1,complete=true,reason='supported_copy_priority',selected_offer=best.index}},receipt
++    end
++    return nil,receipt
+ end
+ 
+ local function temperance_before_spending(snapshot, best, sale)
+@@ -2289,6 +2430,10 @@
+     local stone = card.enhancement == 'm_stone'
+     if not stone then
+         value = value + (rank == 14 and 11 or math.min(rank,10)) * 0.3
++        if snapshot.teacher_profile=='perkeo_yorick_win_v1' then
++            value=value+(({[13]=8,[12]=6,[14]=4,[10]=2,[11]=1})[rank] or 0)+
++                (({Clubs=0.3,Spades=0.2,Diamonds=0.1,Hearts=0})[card.suit] or 0)
++        end
+         local focus = favored_hand(snapshot)
+         if focus ~= 'Straight' and focus ~= 'Straight Flush' and focus ~= 'Flush' then
+             value = value + (stats.ranks[rank] or 0) * 1.5
+@@ -2410,20 +2555,23 @@
+     local minimum = num(config.min_highlighted, effect == 'death' and 2 or 1)
+     if #hand < minimum or maximum < minimum then return nil end
+     if effect == 'death' then
+-        local best, gain = nil, 0
+-        for left=1,#hand-1 do for right=left+1,#hand do
+-            local projected={hand={}};projected.hand[left]=hand[right]
+-            local delta = development_gain(snapshot,projected,{left},profile)
+-            if delta > gain then best,gain={left,right},delta end
+-        end end
+-        if best then return best, 'Death copies the selected RIGHT card onto the LEFT card.' end
+-        local source,target,highest,lowest
+-        for i,c in ipairs(hand) do
+-            local value=target_value(snapshot,c,stats)
+-            if highest==nil or value>highest then source,highest=i,value end
+-            if lowest==nil or value<lowest then target,lowest=i,value end
+-        end
+-        if source and target and highest>lowest and source<#hand then
++        local best,gain=nil,0
++        for target=1,#hand do for source=1,#hand do if source~=target then
++            local visible=true
++            for _,i in ipairs({target,source}) do
++                local c=hand[i]
++                if c.unknown or c.identity_redacted or c.face_down then visible=false end
++            end
++            for i,c in ipairs(hand) do
++                if ability(c).forced_selection and i~=target and i~=source then visible=false end
++            end
++            local projected={hand={}};projected.hand[target]=hand[source]
++            local delta=visible and development_gain(snapshot,projected,{target},profile) or 0
++            if delta>gain+0.000000001 then best,gain={target,source},delta end
++        end end end
++        if best and best[1]<best[2] then return best,'Death copies the selected RIGHT card onto the LEFT card.' end
++        if best then
++            local source=best[2]
+             local order={}
+             for i=1,#hand do if i~=source then order[#order+1]=i end end
+             order[#order+1]=source
+@@ -2818,10 +2966,13 @@
+                 end
+             end
+             local candidate={score=score, reason=reason, card=card, index=index, known=known,forecast=forecast,
+-                targets=targets,target_reason=target_reason,hand_order=hand_order,scoring_evidence=evidence}
++                targets=targets,target_reason=target_reason,hand_order=hand_order,scoring_evidence=evidence,
++                copy_priority=category=='joker' and supported_copy_priority(snapshot,nil,card,joker_after,evidence)}
++            if candidate.copy_priority then score=math.max(26,score);candidate.score=score end
+             if admitted then
+                 candidates[#candidates+1]=candidate
+-                if not best or score>best.score then best=candidate end
++                if not best or candidate.copy_priority and not best.copy_priority or
++                    (not not candidate.copy_priority)==(not not best.copy_priority) and score>best.score then best=candidate end
+             end
+         elseif entry then entry.reason='No legal direct selection with the current Joker capacity.' end
+     end
+@@ -2900,13 +3051,16 @@
+                         entry.score=merit;entry.utility_gain=gain;entry.cash_after_selection=after.dollars
+                         entry.known=candidate_known;entry.preserves_score=preserves_score
+                         entry.collection_admitted=Strategy.joker_admission(snapshot,card,after,evidence)
+-                        if entry.collection_admitted and candidate_known and score>=26 and merit>=26 and preserves_score and
+-                            (not best or best.score<26 or merit>best.score) and
+-                            (not replacement or merit>replacement.score) then
++                        local priority=supported_copy_priority(snapshot,sold,card,after,evidence)
++                        entry.copy_priority=priority or nil
++                        if entry.collection_admitted and candidate_known and (priority or score>=26 and merit>=26) and preserves_score and
++                            (priority and not (best and best.copy_priority) or not best or best.score<26 or merit>best.score) and
++                            (not replacement or priority and not replacement.copy_priority or
++                              (not not priority)==(not not replacement.copy_priority) and merit>replacement.score) then
+                             local candidate={score=score,reason=reason,card=card,index=index,known=candidate_known,
+                                 forecast=forecast,scoring_evidence=evidence}
+                             replacement={score=merit,index=sold_index,sold=sold,egg=egg and sold or nil,
+-                                purchase=candidate,gain=gain,remaining_cash=after.dollars,scoring_evidence=evidence}
++                                purchase=candidate,gain=gain,remaining_cash=after.dollars,scoring_evidence=evidence,copy_priority=priority}
+                         end
+                     else entry.status='blocked';entry.reason='The owned Joker cannot be safely sold or its sale does not free a legal slot.' end
+                 end
+--- 2.193/Brainstorm/Advisor/consumables.lua
++++ 2.194/Brainstorm/Advisor/consumables.lua
+@@ -552,14 +552,31 @@
+       seen[d.key]=true
+       if d.kind~='hermit' and d.kind~='temperance' and d.kind~='generator' then
+         local deck_action=M.deck_development and M.deck_development.supports(owned.key)
+-        local targets
++        local targets,hand_order
+         if deck_action then targets=M.deck_development.targets(snapshot,owned,profile,baseline,strategy)
+-        else targets=strategy.development_targets(snapshot,owned,profile) end
++        else local why;targets,why,hand_order=strategy.development_targets(snapshot,owned,profile) end
++        local working,clear_indices=snapshot,baseline.indices
++        if hand_order then
++          -- A better source left of its recipient needs a real reorder first.
++          -- Prove that exact order and endpoint, then publish only the reorder.
++          working=copy(snapshot);working.hand={};local map={}
++          for i,old in ipairs(hand_order) do working.hand[i]=snapshot.hand[old];map[old]=i end
++          clear_indices={};for i,old in ipairs(baseline.indices) do clear_indices[i]=map[old] end
++          table.sort(clear_indices)
++          targets=strategy.development_targets(working,owned,profile)
++          if evaluations+2>cap then targets=nil
++          else
++            evaluations=evaluations+1
++            local reordered=scorer.lower_bound and scorer.lower_bound(working,clear_indices) or scorer.score(working,clear_indices)
++            if not finite_score(reordered) or reordered.legal==false or reordered.uncertain or
++                scorer.lower_bound and not floor_supported(reordered) then targets=nil end
++          end
++        end
+         if targets then
+-          local state=M.apply(snapshot,index,targets)
++          local state=M.apply(working,index,targets)
+           if state then
+-            local gain=deck_action and M.deck_development.gain(snapshot,state,targets,profile,strategy,owned,baseline) or
+-              strategy.development_gain(snapshot,state,targets,profile)
++            local gain=deck_action and M.deck_development.gain(working,state,targets,profile,strategy,owned,baseline) or
++              strategy.development_gain(working,state,targets,profile)
+             if not preservation and strategy.preservation_context then
+               preservation=strategy.preservation_context(snapshot,profile)
+             end
+@@ -567,10 +584,10 @@
+             if preservation then cost,reason,last=strategy.preservation_cost(snapshot,state,index,preservation)
+             else cost,reason,last=strategy.preservation_cost(snapshot,state,index) end
+             if last and reason then diagnostics.retention_reasons[#diagnostics.retention_reasons+1]=reason end
+-            local merit=gain-cost-4 -- one extra action and consumable scarcity
++            local merit=gain-cost-4-(hand_order and 2 or 0) -- real reorder plus use costs
+             if not last and merit>0 then
+               diagnostics.evaluated_candidates=diagnostics.evaluated_candidates+1
+-              local indices=d.kind=='remove' and M.deck_development.remap_indices(snapshot,state,baseline.indices) or baseline.indices
++              local indices=d.kind=='remove' and M.deck_development.remap_indices(working,state,clear_indices) or clear_indices
+               -- A Lucky enhancement need not trigger to preserve an existing
+               -- clear. Use the supported floor in the same one-call slot; an
+               -- uncertain average is never promoted to a proof of survival.
+@@ -599,7 +616,7 @@
+               end
+               if modeled and (not best or merit>best.merit) then
+                 play=copy(play);play.indices=list(indices)
+-                best={index=index,targets=targets,definition=d,play=play,merit=merit,bounded=bounded}
++                best={index=index,targets=targets,definition=d,play=play,merit=merit,bounded=bounded,hand_order=hand_order}
+               end
+             end
+           end
+@@ -617,6 +634,16 @@
+     'The supported minimum for the same clearing play still clears without favorable random activations; refresh advice after using it.' or
+     'The existing clearing play was rescored after the change and still clears; refresh advice after using it.'
+   local development={utility=best.merit,hand=profile.hand,rank=profile.rank}
++  if best.definition.kind=='death' then
++    development.death=true;development.source_index=best.targets[2];development.target_index=best.targets[1]
++    development.reorder_first=best.hand_order~=nil
++  end
++  if best.hand_order then
++    return done({title='Arrange the strongest Death source on the right',lines={
++      'The better source requires a hand reorder; the retained clear and subsequent copy were checked.',
++      'Refresh after rearranging. Death is not used until the new hand is observed.'},warnings={},
++      action={kind='reorder_hand',area='hand',order=list(best.hand_order)},development=development})
++  end
+   if best.bounded then
+     development.bound_kind='supported_random_floor';development.conservative=true;development.deterministic_exact=false
+   end
+--- 2.193/Brainstorm/Advisor/growth.lua
++++ 2.194/Brainstorm/Advisor/growth.lua
+@@ -579,12 +579,77 @@
+   end
+ 
+   local yoricks,burnt={},false
++  local death_option
++  if s.teacher_profile=='perkeo_yorick_win_v1' and modules.consumables and
++      modules.consumables.apply and strategy.development_gain and strategy.preservation_cost and
++      #(s.playing_cards or {})>0 and #(s.deck or {})>0 then
++    local public,ids=true,{}
++    for _,c in ipairs(s.playing_cards) do
++      if c.id==nil or ids[c.id] or c.unknown or c.identity_redacted then public=false end
++      if c.id~=nil then ids[c.id]=true end
++    end
++    local seen={}
++    for _,area in ipairs({s.hand,s.deck}) do for _,c in ipairs(area) do
++      if c.id==nil or not ids[c.id] or seen[c.id] or c.unknown or c.identity_redacted or
++          (c.ability or {}).forced_selection then public=false end
++      if c.id~=nil then seen[c.id]=true end
++    end end
++    for _,c in ipairs(s.hand) do if c.face_down then public=false end end
++    if public then for index,owned in ipairs(s.consumeables or {}) do
++      if owned.key=='c_death' and not owned.debuff then
++        -- Validate the actual owned type/capacity/metadata on a legal pair.
++        local projected=modules.consumables.apply(s,index,{1,2})
++        if projected then
++          local loss,_,last=strategy.preservation_cost(s,projected,index)
++          if not last and finite(loss) then
++            local function gain(recipient,source)
++              local after={hand={}};after.hand[recipient]=source
++              return strategy.development_gain(s,after,{recipient},profile)-loss-4
++            end
++            local now=0
++            for i in ipairs(s.hand) do for j,c in ipairs(s.hand) do if i~=j and not c.debuff then
++              now=math.max(now,gain(i,c))
++            end end end
++            death_option={index=index,gain=gain,now=now}
++            break
++          end
++        end
++      end
++    end end
++  end
++  -- Exact expected best-source value under an unordered public finite deck.
++  -- Integrate its maximum using hypergeometric tail probabilities, so every
++  -- possible draw has the same hold/use-now reference. No sampled prefix or
++  -- hidden next-card order is consulted. Misses retain their actual utility.
++  local function death_draw_value(state,removed)
++    if not death_option then return 0 end
++    local draws=draw_count(s,state);if draws<1 then return 0 end
++    local best=0
++    for recipient in ipairs(s.hand) do if not removed[recipient] and not reserve[recipient] then
++      local held=0
++      for source,c in ipairs(s.hand) do if source~=recipient and not removed[source] and not c.debuff then
++        held=math.max(held,death_option.gain(recipient,c))
++      end end
++      local values={}
++      for _,c in ipairs(s.deck) do values[#values+1]=c.debuff and 0 or math.max(0,death_option.gain(recipient,c)) end
++      table.sort(values)
++      local expected,previous=held,held
++      for i,value in ipairs(values) do if value>previous then
++        expected=expected+(value-previous)*hit_probability(#values,#values-i+1,draws)
++        previous=value
++      end end
++      best=math.max(best,expected-death_option.now)
++    end end
++    return best,{schema=1,consumable_index=death_option.index,draws=draws,population=#s.deck,
++      use_now_utility=death_option.now,expected_improvement=best,
++      complete_public_distribution=true,guaranteed_source=false}
++  end
+   local yorick_positions={}
+   for _,j in ipairs(s.jokers or {}) do if not j.debuff then
+     if name(j)=='Yorick' then yoricks[#yoricks+1]=j
+     elseif name(j)=='Burnt Joker' and num(s.discards_used,round.discards_used)==0 then burnt=true end
+   end end
+-  if scorer.after_discard and num(s.discards_left,round.discards_left)>0 and (#yoricks>0 or burnt) then
++  if scorer.after_discard and num(s.discards_left,round.discards_left)>0 and (#yoricks>0 or burnt or death_option) then
+     -- Progress belongs only to physical Yoricks, while the current scoring row
+     -- may apply the same multiplier more than once. A bounded same-play rescore
+     -- measures that row's marginal effect, including intervening additive Mult.
+@@ -717,10 +782,14 @@
+           utility=utility+10*growth_values[category]*num(effects.burnt_levels)*math.min(1,profile.horizon/3)
+         end
+         local cost=cash_cost(s,state,false,indices)
++        local removed={};for _,i in ipairs(indices) do removed[i]=true end
++        local source_value,source_receipt=death_draw_value(state,removed)
++        utility=utility+source_value
+         local merit=utility*weight('growth_utility_scale',1)-cost
+         local threshold=pair_value(s,state,#indices,pair,profile,utility,cost,copy_credit)
+         if threshold and threshold.merit>merit then merit=threshold.merit else threshold=nil end
+-        if merit>0 then candidates[#candidates+1]={state=state,effects=effects,indices=indices,merit=merit,threshold=threshold} end
++        if merit>0 then candidates[#candidates+1]={state=state,effects=effects,indices=indices,merit=merit,threshold=threshold,
++          death_source=source_value>0 and source_receipt or nil} end
+       end
+     end
+     table.sort(candidates,function(a,b)
+@@ -746,7 +815,7 @@
+       local c=shortlist[i];local removed={};for _,index in ipairs(c.indices) do removed[index]=true end
+       local indices=remap(known_clear.indices,removed,#s.hand)
+       diagnostics.candidates=diagnostics.candidates+1
+-      local purpose=c.effects.burnt_hand and ('level '..c.effects.burnt_hand) or 'grow Yorick'
++      local purpose=c.death_source and 'find a stronger Death source' or c.effects.burnt_hand and ('level '..c.effects.burnt_hand) or 'grow Yorick'
+       accept({kind='discard',area='hand',indices=list(c.indices)},c.state,indices,c.merit,
+         c.threshold and ('Discard '..#c.indices..' toward a guaranteed Yorick threshold') or 'Discard '..#c.indices..' to '..purpose,
+         {c.threshold and ('The same physical clear survives two discards of '..#c.indices..' then '..c.threshold.second_count..
+@@ -756,11 +825,12 @@
+           #yoricks>0 and 'Refresh after each draw. Use more full Yorick discards while the clear and resource tradeoff remain safe.' or
+             'Burnt upgrades the actual first-discard hand; its value depends on the deck, levels and scoring support.'},
+         {kind='discard',effects=c.effects,utility=c.merit,remaining_discards=c.state.discards_left,
+-          repeatable_yorick=#yoricks>0,first_burnt_discard=burnt,two_discard_threshold=c.threshold})
++          repeatable_yorick=#yoricks>0,first_burnt_discard=burnt,two_discard_threshold=c.threshold,death_source=c.death_source})
+     end
+   end
+ 
+   if unused_setup and scorer.after_play and strategy.development_gain and strategy.preservation_cost and
++    (s.teacher_profile~='perkeo_yorick_win_v1' or death_option) and
+     num(s.hands_left,round.hands_left)>=2 and #(s.deck or {})>0 and not (s.modifiers or {}).debuff_played_cards then
+     local death_index
+     for i,c in ipairs(s.consumeables or {}) do if c.key=='c_death' and not c.debuff then death_index=i;break end end
+--- 2.193/Brainstorm/Advisor/decision.lua
++++ 2.194/Brainstorm/Advisor/decision.lua
+@@ -218,10 +218,36 @@
+     local requested=shop_options and shop_options.max_evaluations
+     local shop_limit=type(requested)=='number' and requested==requested and math.abs(requested)<math.huge and
+       math.max(0,math.min(50000,math.floor(requested))) or requested==nil and 50000 or 0
++    local copy_diagnostics
++    if snapshot.phase=='shop' and snapshot.teacher_profile=='perkeo_yorick_win_v1' and
++        modules.strategy.copy_acquisition and modules.shop_scoring then
++      local visible=false
++      for _,c in ipairs(snapshot.shop_jokers or {}) do
++        if c.key=='j_blueprint' or c.key=='j_brainstorm' then visible=true end
++      end
++      if visible then
++        local focused_options={};for k,v in pairs(shop_options or {}) do focused_options[k]=v end
++        focused_options.max_evaluations=math.max(0,shop_limit-prehand_work)
++        -- Current and generic sorted rows occupy the first two slots. Leave
++        -- room for explicit copy-target layouts in the declared shortlist.
++        focused_options.max_orders=4
++        local focused=modules.shop_scoring.new(snapshot,modules.scoring,yield_fn,focused_options)
++        local choice,receipt=modules.strategy.copy_acquisition(snapshot,focused)
++        prehand_work=prehand_work+focused.evaluations
++        copy_diagnostics={schema=1,evaluations=focused.evaluations,truncated=focused.truncated,
++          complete=not focused.truncated and (not receipt or receipt.complete),replacements=receipt,
++          reason=choice and 'supported_copy_priority' or focused.unavailable_reason or 'no_supported_copy_priority'}
++        if choice then return {kind='strategy',strategy=choice,action=choice.action,evaluations=prehand_work,
++          copy_acquisition_diagnostics=copy_diagnostics,shop_diagnostics={evaluations=focused.evaluations,
++            truncated=focused.truncated,replacements=receipt}} end
++        shop_options={};for k,v in pairs(options.shop_scoring or {}) do shop_options[k]=v end
++        shop_options.max_evaluations=math.max(0,shop_limit-prehand_work)
++      end
++    end
+     if snapshot.phase=='shop' and snapshot.completionist_goal and modules.gold_acquisition then
+       -- Give the declared collection family first use of the existing shop
+       -- allowance. Any unsuccessful work is still charged to ordinary advice.
+-      local limit=shop_limit
++      local limit=math.max(0,shop_limit-prehand_work)
+       local actual,exhausted=0,false
+       local scoped={};for k,v in pairs(modules) do scoped[k]=v end
+       scoped.scoring=setmetatable({}, {__index=modules.scoring})
+@@ -360,6 +386,7 @@
+       routing_diagnostics=routing_diagnostics,
+       gold_diagnostics=gold_diagnostics,
+       gold_acquisition_diagnostics=acquisition_diagnostics,
++      copy_acquisition_diagnostics=copy_diagnostics,
+       gold_retention_diagnostics=retention_diagnostics,
+       pack_diagnostics=strategy.pack_diagnostics,
+       shop_diagnostics=context and {evaluations=context.evaluations,truncated=context.truncated,
+@@ -416,6 +443,15 @@
+   result.consumable_reserved_evaluations=consumable_reserve
+   if result.reorder_only and result.copy_preflight and result.copy_preflight.complete then return result end
+   local clear_shortcut=result.fast_clear or result.clear_shortcut
++  local held_death=false
++  if snapshot.teacher_profile=='perkeo_yorick_win_v1' then
++    for _,c in ipairs(snapshot.consumeables or {}) do if c.key=='c_death' and not c.debuff then held_death=true end end
++  end
++  if not clear_shortcut and held_death and result.play and result.play.legal~=false and
++      result.play.uncertain~=true and type(result.play.score)=='number' and
++      result.play.score>=math.max(1,(snapshot.blind or {}).chips-(snapshot.chips or 0))*1.05 then
++    clear_shortcut={search_path='death_retained_clear'};result.clear_shortcut=clear_shortcut
++  end
+   if not clear_shortcut and search_options.win_first_yorick_clear_discard and
+     result.kind=='play' and result.play and result.play.legal~=false and
+     result.play.uncertain~=true and type(result.play.score)=='number' and
+@@ -449,7 +485,7 @@
+     -- Do not let a repeatable Empress use prevent this comparison altogether.
+     -- Every survival/resource guard remains in growth.suggest; this gate only
+     -- changes the order of optional comparisons and never forces a discard.
+-    if discard_growth_available(snapshot) then consider_growth() end
++    if discard_growth_available(snapshot) or held_death then consider_growth() end
+     local discard_growth=growth and growth.action and growth.action.kind=='discard'
+     if discard_growth then clear_shortcut.development_deferred_for_discard=true end
+     if not discard_growth and modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
+--- 2.193/Brainstorm/Advisor/player_journal.lua
++++ 2.194/Brainstorm/Advisor/player_journal.lua
+@@ -551,6 +551,27 @@
+     if #reasons>0 then out.growth.reasons=reasons end
+   end
+   if out.risk or out.anchor or out.growth then return out end
++end
++function M.compact_copy_death_review(result)
++  if type(result)~='table' or getmetatable(result) then return nil end
++  local out={schema=1}
++  local function scalars(key,source)
++    if type(source)~='table' or getmetatable(source) then return end
++    local row={}
++    for k,v in pairs(source) do
++      if type(k)=='string' and #k<=64 and (type(v)=='boolean' or type(v)=='number' and
++          v==v and math.abs(v)<=1e300 or type(v)=='string' and #v<=256) then row[k]=v end
++    end
++    if next(row) then out[key]=row end
++  end
++  scalars('acquisition',result.copy_acquisition_diagnostics)
++  scalars('choice',result.strategy and result.strategy.copy_acquisition_review)
++  scalars('death',result.consumable and result.consumable.development)
++  scalars('fishing',result.growth and result.growth.growth and result.growth.growth.death_source)
++  if out.acquisition or out.choice or out.death or out.fishing then
++    local a=result.action or {};out.final_kind=a.kind;out.final_area=a.area;out.final_index=a.index
++    return out
++  end
+ end
+ function M.attach(A,B,deps)
+   deps=deps or {};local fs=deps.fs or love and love.filesystem
+@@ -614,6 +635,7 @@
+         gold_review=current and compact_gold_review(A.result) or nil,
+         replacement_review=current and M.compact_replacement_review(A.result) or nil,
+         yorick_review=current and M.compact_yorick_review(A.result) or nil,
++        copy_death_review=current and M.compact_copy_death_review(A.result) or nil,
+       reroll_review=current and M.compact_reroll_review(A.result) or nil,
+         title=A.display and A.display.title,lines=A.lines,action=A.result and A.result.action}}
+   end

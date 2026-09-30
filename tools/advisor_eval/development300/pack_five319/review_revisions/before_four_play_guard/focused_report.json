@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "timestamp_utc": "2026-09-14T20:49:54.596008+00:00",
+  "fixtures": 5,
+  "checks": 1447,
+  "fixture_checks": {
+    "advisor_pack_five": 676,
+    "advisor_multi_discard": 217,
+    "advisor_blind_finishing": 41,
+    "advisor_certificate": 318,
+    "advisor_pack_survival": 195
+  },
+  "command": [
+    "python",
+    "tests/run_lua_tests.py",
+    "tools/advisor_eval/development300/pack_five319/run_new.lua",
+    "tools/advisor_eval/development300/pack_five319/test_existing_advisor_multi_discard.lua",
+    "tools/advisor_eval/development300/pack_five319/test_existing_advisor_blind_finishing.lua",
+    "tools/advisor_eval/development300/pack_five319/test_existing_advisor_certificate.lua",
+    "tools/advisor_eval/development300/pack_five319/test_existing_advisor_pack_survival.lua"
+  ],
+  "main_manufactured_case": {
+    "ordinary_fronts": 52,
+    "pair_level": 3,
+    "yorick_xmult_before": 1,
+    "yorick_countdown_before": 5,
+    "target": 1809,
+    "shared_scores": 6406,
+    "selected_offer": "j_card_sharp",
+    "selected_policy": "one_five_card_targeted_discard",
+    "candidate_scores": [
+      1888,
+      2352,
+      1840,
+      2064
+    ],
+    "incumbent_scores": [
+      1776,
+      1808,
+      1264,
+      1808
+    ],
+    "all_worlds_fixture_only": true
+  },
+  "unchanged_runtime_dependencies": {
+    "Brainstorm/Advisor/scoring.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+    "Brainstorm/Advisor/snapshot.lua": "10c960f29dfeb907e1d8917f1928d7138d707f188fba34820f80762e05c9e3b8",
+    "Brainstorm/Advisor/strategy.lua": "d759a9b1ea5e9bd36e7722a3d0b5d2af253065e19d6857967d94ad01a663a960",
+    "Brainstorm/Advisor/certificate.lua": "e67ad169b40e4cce90a5126ff94d6fa631cebbbb426b3a103117e874f5d0504e",
+    "Brainstorm/Advisor/draws.lua": "a1b7c7239659b505ae02e6976d5e3eb95488fe6ebd57adffa8b6703c8b491169",
+    "Brainstorm/Advisor/search.lua": "63d0294f2825b2cfa740eadd84d0c24fa25dbb93f385ea4023866cb1289c6785",
+    "Brainstorm/Advisor/sampled_outcomes.lua": "72a4bcd9ba65c03ff9b571449aaa0f4c4a8d41c6df40bfe9846d813c3297508a",
+    "Brainstorm/Advisor/finish_rewards.lua": "5f459a9e273a9f6cc970804ffe0e28c0e95a05d056ed9ce413d2611ec5d098ae",
+    "Brainstorm/Advisor/paired_deck.lua": "c16a1df59b6b665aeef61533299f053135401bf96343285e641fa180207ae913",
+    "Brainstorm/Advisor/blind_start.lua": "e7edb7cc1a6ab7e442d95d6193b5a513dfdaa8e2e18dc9e87116d76dcf33d8b5",
+    "Brainstorm/Advisor/liquidity.lua": "e97dcfd7ce958bff2415d5ccf507b7c1f0e6152e1caea92afcfcbb6776233c8d"
+  },
+  "fixture_runtime_sha256": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+  "source_or_captured_workers": 0,
+  "runtime_staged": false,
+  "limitations": "Manufactured fixture evidence only. No complete run, actual player file, live execution, source qualification, win probability or runtime installation."
+}

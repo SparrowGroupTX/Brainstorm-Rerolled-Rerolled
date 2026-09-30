@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "kind": "prepared_M19_captured_inputs",
+  "source_attempt": "C04",
+  "source_outcome": "timeout_censored_no_terminal_result",
+  "source_files": {
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\trace.log": "7230d5f01ef34575a7417c3f1d85c034a2114891c59278dcf82396baf002b139",
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\record.json": "51708908da000b5b548553487ce1b4606cd0bbfd5d21ffbb5d8c07dacc3f08c9",
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\registration.json": "7ae385f154059f78bd31cffa56548d44e4c1c9d71897818d77f61a93fe0b42c8",
+    "tools\\advisor_eval\\runs\\gold299_20260914\\C04\\audit.json": "bac4eb8605331d154d8af5f62534437fdfb4840edd0f431df5345d2c7cc64ac7"
+  },
+  "source_policy_digest": "3179b32252e53e0424af3bcd1f99384ca0bb8e5dd80db4e03cdcfe0f52c53ae8",
+  "source_adapter_digest": "701c6ef1644603fa331555da2585c2e8306c730896d11dfd6e77cd82429037a1",
+  "source_runtime_digest": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2",
+  "source_rules_digest": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+  "gold_objective_context": {
+    "schema": 1,
+    "mode": "synthetic_fresh_all_missing_v1",
+    "enabled": true,
+    "profile": "all_unlocked_discovered_v1",
+    "initial_history": "natural_empty_loaded_joker_usage",
+    "initial_counts": {
+      "total": 150,
+      "complete": 0,
+      "missing": 150,
+      "unknown": 0
+    },
+    "missing_population": "all_150_vanilla_jokers",
+    "capture": "frozen_gold_stickers.capture_loaded_profile",
+    "policy_context": "completionist_goal",
+    "collection_policy": "frozen_gold_goal",
+    "metadata_failure": "explicit_unsupported_error_before_next_action",
+    "profile_writes": "none_by_objective_adapter; original source callbacks only",
+    "qualification": false,
+    "actual_player_profile": false
+  },
+  "profile_spec": {
+    "schema": 1,
+    "name": "all_unlocked_discovered_v1",
+    "scope": [
+      "P_CENTERS",
+      "P_TAGS",
+      "P_SEALS",
+      "P_BLINDS"
+    ],
+    "transform": "set_unlock_and_discovery_true",
+    "progress": "fresh_in_memory_no_completed_challenges",
+    "user_profile": false,
+    "qualification_compatible": false
+  },
+  "profile_spec_digest": "d02d4571ecd30c555d9b25bea7feebabfe9fad589416520432accae3da258a13",
+  "snapshots": {
+    "85": {
+      "trace_line": 630,
+      "trace_line_sha256": "3d83aac48aa2f096726cb873e68f7525fa428d1a33dbe7e5fdce262c8e67d15e",
+      "state_fingerprint": "734346dbbae701ab79ebca5b7e21452eff4922ef5954f64824513d519f3afc18",
+      "snapshot_canonical_sha256": "b424a686a8d67be0b1b95d3eefa226bd3b1ff4b9e39b6a4bcd0052286db73f88",
+      "snapshot_file_sha256": "bbed67ffb836a3dedf4775c40e088d8fcc7238f262e54a531acb82e6ce1daed3",
+      "historical_profile": {
+        "advisor_seconds": 2.231231899932,
+        "advisor_skipped": false,
+        "evaluations": 139996,
+        "phase": "hand",
+        "score_calls": 139996,
+        "snapshot_seconds": 0.00034979998599738,
+        "step": 85,
+        "type": "engine_episode_profile",
+        "work_scope": "advisor_decision"
+      }
+    },
+    "185": {
+      "trace_line": 1350,
+      "trace_line_sha256": "b09fdd8f1df6dd7f5c4bd2cf10538d3b8242f4d7afe58f5f33e1488d76cceafc",
+      "state_fingerprint": "d25de7b1ea3349db4f8bc576cc48604d1a9c2e57aa865ff2af471d8fe6cd2502",
+      "snapshot_canonical_sha256": "0e8c529434fcae9ea5424331178912c8336b41ee35c2a31b87365d321d655e1f",
+      "snapshot_file_sha256": "34819bdc733dc6a57a7080d39b769fa9e29c628b468999a5f079b196950729b1",
+      "historical_profile": {
+        "advisor_seconds": 2.5978888999671,
+        "advisor_skipped": false,
+        "evaluations": 140000,
+        "phase": "hand",
+        "score_calls": 140000,
+        "snapshot_seconds": 0.00034540006890893,
+        "step": 185,
+        "type": "engine_episode_profile",
+        "work_scope": "advisor_decision"
+      }
+    }
+  },
+  "baseline_policy_digest": "725fcf5666d5291c8a1b19cba952baa05e80f6ece4fdff1e071ac5a9f18e8a08",
+  "candidate_policy_digest": "38955e5220cc06d325c122ecefc9ec9900ac7f2108c89e5ca197ab9f81f90437",
+  "module_setup_parent_sha256": "6ea3b7bab61eade7554dea46fff984d6548958427a7eca2ccfb12af8d223405f",
+  "module_setup_sha256": "91b14161299b8797886d74ccb337111a72a2b17257f80df72d98835a6d5f97e0",
+  "omitted_product_integrations": [
+    "A.execution = module('execution')",
+    "A.retry_memory, A.retry_policy, A.retry_journal = module('retry_memory'), module('retry_policy'), module('retry_journal')",
+    "A.retry_generation, A.state_epoch = 0, 0",
+    "A.opening = Brainstorm.ChallengeOpening",
+    "A.jokerless_opening = Brainstorm.JokerlessOpening"
+  ],
+  "qualification": false,
+  "captured_policy_evaluated": false,
+  "source_initialized": false
+}

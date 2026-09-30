@@ -1,0 +1,92 @@
+{
+  "scope": "Static field-shape comparison of existing passive public Tarot records against documented staged helper requirements; no helper invocation, candidate policy replay, scoring, source worker or game interaction.",
+  "input": {
+    "path": "tools\\advisor_eval\\development343\\log_analysis\\final_shop_details.json",
+    "sha256": "223492e297d534a1e6bf12b25561aeec6b17fc893ee4b594f7a20c324208adf2"
+  },
+  "findings": [
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1193,
+        "sequence": 5789,
+        "decoded_event_sha256": "b06f508b8106d509b6a324b112258614a4ef8f30246d06d9f401456eceeeeaac",
+        "stored_frame_sha256": "778df98c99adb05452a2db55218e3550eb3207462e7a5c9dc3d91b7d2e5ac83f"
+      },
+      "count": 15,
+      "class_counts": {
+        "c_magician": 14,
+        "c_hermit": 1
+      },
+      "captured_field_mismatches": []
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1280,
+        "sequence": 5876,
+        "decoded_event_sha256": "086d8a0a1b81340925ae653095d29ae332a2d2b76550785950b23eaf5d8f8e0d",
+        "stored_frame_sha256": "decd8d4c50c13243516791a767fce9d68eb75210c25fc843519f5f7528e76732"
+      },
+      "count": 14,
+      "class_counts": {
+        "c_magician": 13,
+        "c_hermit": 1
+      },
+      "captured_field_mismatches": []
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1285,
+        "sequence": 5881,
+        "decoded_event_sha256": "4e9419eab6d9857e821eb93969ee167190d9eec38d9b40ca17b42bc52df076cb",
+        "stored_frame_sha256": "6bb3450447bf13ac6872a33b72c71316d6066fb591934b2a482bed5e3ac86bdc"
+      },
+      "count": 16,
+      "class_counts": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "captured_field_mismatches": []
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1329,
+        "sequence": 5925,
+        "decoded_event_sha256": "fbce4be686435c1357388da1323e799173debc6eff7e32df8fdbf43f17b693cb",
+        "stored_frame_sha256": "602a1afff2078ae95639a80faf7e8a2f15be4d658575414aa0102f2d483fade1"
+      },
+      "count": 16,
+      "class_counts": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "captured_field_mismatches": []
+    },
+    {
+      "anchor": {
+        "segment": "session-20260916T031815Z-1-000013.brj",
+        "ordinal": 1333,
+        "sequence": 5929,
+        "decoded_event_sha256": "9fc151f28549f8dfb8dc0f614fe8b4f22e24d628a4bc899554dedbe9a8b2ddf5",
+        "stored_frame_sha256": "7767997c1b31155126958d180b87296dafa78e8d1afeb261aff61e7ab02acdbc"
+      },
+      "count": 16,
+      "class_counts": {
+        "c_magician": 14,
+        "c_hermit": 2
+      },
+      "captured_field_mismatches": []
+    }
+  ],
+  "uncaptured_requirements": [
+    "Loaded registry object identity",
+    "Raw center config/effect/order/cost equality",
+    "Raw constructor params and empty front",
+    "Current settled front/flip/drag presentation",
+    "New tarot_hold_source certificate (absent in old logs)"
+  ],
+  "conclusion": "No mismatch in recorded Magician/Hermit ability/base/edition/public physical fields. This does not qualify uncaptured constructor or current presentation fields; normal restart into new capture is required."
+}

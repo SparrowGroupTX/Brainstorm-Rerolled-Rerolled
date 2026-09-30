@@ -1,0 +1,27 @@
+{
+  "torch": "2.9.0.dev20250801+cu128",
+  "cuda": "12.8",
+  "device": "NVIDIA GeForce RTX 5090",
+  "compute_capability": [
+    12,
+    0
+  ],
+  "free_bytes_before": 32496418816,
+  "total_bytes": 34162016256,
+  "bf16_supported": true,
+  "allocated_peak_bytes": 20054016,
+  "checks": {
+    "torch.float32": {
+      "20_matmuls_seconds": 0.0019676999654620886,
+      "rms_error": 0.0,
+      "finite": true
+    },
+    "torch.bfloat16": {
+      "20_matmuls_seconds": 0.11710879998281598,
+      "rms_error": 0.0013002522755414248,
+      "finite": true
+    }
+  },
+  "training_done": false,
+  "simulation_episodes": 0
+}

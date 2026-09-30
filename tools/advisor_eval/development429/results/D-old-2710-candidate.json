@@ -1,0 +1,71 @@
+{
+  "job": "D-old-2710-candidate",
+  "mode": "decision",
+  "case": "old-2710",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 0.875,
+  "log_sha256": "d1c393049d076b666f579f7d117fef19836ac071c83c8545953d5f0526e84731",
+  "status": "complete",
+  "result": {
+    "case": "old-2710",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          5,
+          6,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 12,
+        "final_action_kind": "discard",
+        "reason": "supported_retained_clear",
+        "remaining_discards": 7,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 30,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 199680,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 17,
+          "qualified": 1,
+          "selected_cards": 2,
+          "selected_score": 199680
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 5,
+          "max_evaluations": 12
+        },
+        "order_floor": {
+          "complete": true,
+          "maximum_glass": 0.5,
+          "members": 2,
+          "minimum": 225420,
+          "scope": "complete_small_selected_order_family"
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

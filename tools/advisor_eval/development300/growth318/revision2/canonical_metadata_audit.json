@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "scope": "Read-only canonical field audit, not predicate/policy evaluation",
+  "input": "tools\\advisor_eval\\development300\\c06_postmortem\\recorded_decisions.json",
+  "input_sha256": "a83c504d06c5ef210d49b4ffc18b71bd52806d06987af75ce414ef14ceb36a5e",
+  "snapshot_digest": "9be37bd6b04949fcb222ad7c3f491f39c5abccb13289f6534933ff1ab1e2617e",
+  "step": 59,
+  "selected_cards": [
+    {
+      "id": "playing:34",
+      "key": "m_mult",
+      "name": "Mult",
+      "effect": "Mult Card",
+      "rank": 9,
+      "nominal": 9,
+      "base_times_played": 0,
+      "bonus": 0,
+      "perma_bonus": 0,
+      "rank_and_nominal_agree": true,
+      "unknown_ability_fields": []
+    },
+    {
+      "id": "playing:33",
+      "key": "m_mult",
+      "name": "Mult",
+      "effect": "Mult Card",
+      "rank": 8,
+      "nominal": 8,
+      "base_times_played": 1,
+      "bonus": 0,
+      "perma_bonus": 0,
+      "rank_and_nominal_agree": true,
+      "unknown_ability_fields": []
+    },
+    {
+      "id": "playing:32",
+      "key": "m_mult",
+      "name": "Mult",
+      "effect": "Mult Card",
+      "rank": 7,
+      "nominal": 7,
+      "base_times_played": 0,
+      "bonus": 0,
+      "perma_bonus": 0,
+      "rank_and_nominal_agree": true,
+      "unknown_ability_fields": []
+    },
+    {
+      "id": "playing:31",
+      "key": "m_mult",
+      "name": "Mult",
+      "effect": "Mult Card",
+      "rank": 6,
+      "nominal": 6,
+      "base_times_played": 0,
+      "bonus": 0,
+      "perma_bonus": 0,
+      "rank_and_nominal_agree": true,
+      "unknown_ability_fields": []
+    },
+    {
+      "id": "playing:30",
+      "key": "c_base",
+      "name": "Default Base",
+      "effect": "Base",
+      "rank": 5,
+      "nominal": 5,
+      "base_times_played": 0,
+      "bonus": 0,
+      "perma_bonus": 0,
+      "rank_and_nominal_agree": true,
+      "unknown_ability_fields": []
+    }
+  ],
+  "owned_jokers": [
+    {
+      "key": "j_perkeo",
+      "name": "Perkeo",
+      "effect": "",
+      "extra": null,
+      "x_mult": 1,
+      "unknown_ability_fields": []
+    },
+    {
+      "key": "j_supernova",
+      "name": "Supernova",
+      "effect": "Hand played mult",
+      "extra": 1,
+      "x_mult": 1,
+      "unknown_ability_fields": []
+    },
+    {
+      "key": "j_brainstorm",
+      "name": "Brainstorm",
+      "effect": "Copycat",
+      "extra": null,
+      "x_mult": 1,
+      "unknown_ability_fields": []
+    },
+    {
+      "key": "j_droll",
+      "name": "Droll Joker",
+      "effect": "Type Mult",
+      "extra": null,
+      "x_mult": 1,
+      "unknown_ability_fields": []
+    },
+    {
+      "key": "j_yorick",
+      "name": "Yorick",
+      "effect": "",
+      "extra": {
+        "discards": 23,
+        "xmult": 1
+      },
+      "x_mult": 3,
+      "unknown_ability_fields": []
+    }
+  ],
+  "first_recorded_hand_history_fields": {
+    "played_this_ante": {
+      "step": 17,
+      "id": "playing:38",
+      "value": true,
+      "python_type": "bool"
+    }
+  },
+  "source_provenance_for_discarded": "Current scoring.after_discard sets ability.discarded=true; projection has no held discarded field.",
+  "limitations": [
+    "Projection omits deck identities and full hands table at this step.",
+    "No complete guard eligibility, action, counterfactual score or outcome was evaluated.",
+    "C06 remains a timeout."
+  ],
+  "policy_executions": 0,
+  "source_executions": 0
+}

@@ -1,0 +1,169 @@
+{
+  "captured_utc": "2026-09-25T17:09:26.168867+00:00",
+  "source": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2",
+  "scope": "Completed public segments 1\u20136 only; active game tail excluded. No save/profile access or policy/scorer execution.",
+  "segments": [
+    {
+      "name": "session-20260925T165555Z-1-000001.brj",
+      "bytes": 25901,
+      "sha256": "4b386d77982a931b484faa952f4d895987a6913dbc11b00c9ee52b5c31590159",
+      "events": 11
+    },
+    {
+      "name": "session-20260925T165555Z-1-000002.brj",
+      "bytes": 4711745,
+      "sha256": "4fa8fe9adae6e0966badfff4778d89428ea10be95551dda2ce0553376711bcc7",
+      "events": 2048
+    },
+    {
+      "name": "session-20260925T165555Z-1-000003.brj",
+      "bytes": 1529067,
+      "sha256": "35c41d3ba860a37a8d8967406ebe56982c7a623c756dc5cc1e5a3e6562310908",
+      "events": 662
+    },
+    {
+      "name": "session-20260925T165555Z-1-000004.brj",
+      "bytes": 12816,
+      "sha256": "7c5a9c79854539857fe07533089aa842100eeb21016ed5cc8f0832b6e49e4708",
+      "events": 9
+    },
+    {
+      "name": "session-20260925T165555Z-1-000005.brj",
+      "bytes": 2941337,
+      "sha256": "008db5636a79e178e7fe7d1a35ebae0dfa4ccdbab5a11e5fbe114ea0cd1dba4a",
+      "events": 1281
+    },
+    {
+      "name": "session-20260925T165555Z-1-000006.brj",
+      "bytes": 12839,
+      "sha256": "070141df258dc3e85d97f0fe01a2b48d0b9185544bfa601c8e44a9bef0140048",
+      "events": 9
+    }
+  ],
+  "bytes": 9233705,
+  "events": 4020,
+  "last_sequence": 4020,
+  "last_at": "2026-09-25T17:05:19Z",
+  "versions": {
+    "Brainstorm v2.182.0-alpha": 3546
+  },
+  "profiles": {
+    "perkeo_yorick_win_v1": 613
+  },
+  "kinds": {
+    "teacher_observation": 613,
+    "teacher_advice": 1103,
+    "auto_run": 1100,
+    "collection_search_started": 3,
+    "collection_search_finished": 3,
+    "collection_run_start": 2,
+    "action_requested": 362,
+    "action_callback_result": 362,
+    "state_after_actions": 360,
+    "performance_window": 112
+  },
+  "lifecycle": [
+    {
+      "sequence": 19,
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 38.3351065
+      }
+    },
+    {
+      "sequence": 2721,
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:2",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:2",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 245,
+        "run_id": "game:2",
+        "run_number": 1,
+        "run_seconds": 385.8629159,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "terminal",
+        "time": 424.0584466
+      }
+    },
+    {
+      "sequence": 2738,
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:3",
+        "run_number": 2,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "playing",
+        "time": 425.5955481
+      }
+    },
+    {
+      "sequence": 4011,
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:3",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:3",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 0
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 115,
+        "run_id": "game:3",
+        "run_number": 2,
+        "run_seconds": 172.89142500000003,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "terminal",
+        "time": 598.380297
+      }
+    }
+  ]
+}

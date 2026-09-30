@@ -1,0 +1,837 @@
+{
+  "migration": "generic_v1_actor_to_completionist_distinct_v1",
+  "compatibility_scope": "actor_only_with_zero_new_goal_inputs; value_head_reset",
+  "source_dimensions": [
+    80,
+    64,
+    160
+  ],
+  "target_dimensions": [
+    530,
+    67,
+    163
+  ],
+  "source_model_metadata": {
+    "architecture": "public_candidate_policy_v1",
+    "config": {
+      "global_dim": 80,
+      "entity_dim": 64,
+      "candidate_dim": 160,
+      "width": 384,
+      "heads": 8,
+      "depth": 2,
+      "expansion": 2,
+      "catalog_size": 299,
+      "catalog_embedding_dim": 64,
+      "selected_card_encoding": true,
+      "selected_card_width": 32
+    },
+    "parameter_count": 5431874,
+    "input_scope": "public_features_and_environment_legal_candidates",
+    "mask_true_means": "valid",
+    "output_dtype": "float32",
+    "catalog_encoding": "normalized_sorted_center_id_v1",
+    "selected_card_encoding": "five_ordered_public_hand_slots_v1"
+  },
+  "target_model_metadata": {
+    "architecture": "public_candidate_policy_v1",
+    "config": {
+      "global_dim": 530,
+      "entity_dim": 67,
+      "candidate_dim": 163,
+      "width": 384,
+      "heads": 8,
+      "depth": 2,
+      "expansion": 2,
+      "catalog_size": 299,
+      "catalog_embedding_dim": 64,
+      "selected_card_encoding": true,
+      "selected_card_width": 32,
+      "goal_schema": "completionist_distinct_v1"
+    },
+    "parameter_count": 5607074,
+    "input_scope": "public_features_and_environment_legal_candidates",
+    "mask_true_means": "valid",
+    "output_dtype": "float32",
+    "catalog_encoding": "normalized_sorted_center_id_v1",
+    "selected_card_encoding": "five_ordered_public_hand_slots_v1",
+    "goal_observation": {
+      "schema": "completionist_distinct_v1",
+      "joker_count": 150,
+      "status_order": [
+        "missing",
+        "gold",
+        "unknown"
+      ],
+      "global_status_offset": 80,
+      "entity_status_offset": 64,
+      "candidate_target_status_offset": 160,
+      "registry_order": "sorted_vanilla_joker_keys",
+      "scope": "public_objective_history_not_hidden_card_identity"
+    }
+  },
+  "source_environment_sha256": "3799635be447900a41bfeae32cabf558034f986720be3b817e3b254112025f87",
+  "source_transitions": 100000,
+  "source_updates": 391,
+  "all_source_and_target_tensors_accounted": true,
+  "tensor_count": 70,
+  "tensor_accounting": [
+    {
+      "tensor": "catalog_embedding.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        300,
+        64
+      ],
+      "target_shape": [
+        300,
+        64
+      ]
+    },
+    {
+      "tensor": "global_encoder.0.weight",
+      "operation": "retain_base_and_categorical_insert_450_zero_input_columns_at_80",
+      "source_shape": [
+        384,
+        80
+      ],
+      "target_shape": [
+        384,
+        530
+      ]
+    },
+    {
+      "tensor": "global_encoder.0.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.0.norm.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.0.norm.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.0.up.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.0.up.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.0.down.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        768
+      ],
+      "target_shape": [
+        384,
+        768
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.0.down.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.1.norm.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.1.norm.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.1.up.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.1.up.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.1.down.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        768
+      ],
+      "target_shape": [
+        384,
+        768
+      ]
+    },
+    {
+      "tensor": "global_encoder.2.1.down.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.3.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "global_encoder.3.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.0.weight",
+      "operation": "retain_base_and_categorical_insert_3_zero_input_columns_at_64",
+      "source_shape": [
+        384,
+        128
+      ],
+      "target_shape": [
+        384,
+        131
+      ]
+    },
+    {
+      "tensor": "entity_encoder.0.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.2.0.norm.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.2.0.norm.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.2.0.up.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.2.0.up.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "entity_encoder.2.0.down.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        768
+      ],
+      "target_shape": [
+        384,
+        768
+      ]
+    },
+    {
+      "tensor": "entity_encoder.2.0.down.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.3.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "entity_encoder.3.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "query.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        384
+      ],
+      "target_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "tensor": "query.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "key_value.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "key_value.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "attention_output.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        384
+      ],
+      "target_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "tensor": "attention_output.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "context.0.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        1152
+      ],
+      "target_shape": [
+        768,
+        1152
+      ]
+    },
+    {
+      "tensor": "context.0.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "context.2.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        768
+      ],
+      "target_shape": [
+        384,
+        768
+      ]
+    },
+    {
+      "tensor": "context.2.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "context.3.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "context.3.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_encoder.0.weight",
+      "operation": "retain_base_and_categorical_insert_3_zero_input_columns_at_160",
+      "source_shape": [
+        384,
+        224
+      ],
+      "target_shape": [
+        384,
+        227
+      ]
+    },
+    {
+      "tensor": "candidate_encoder.0.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "selected_card_encoder.0.weight",
+      "operation": "retain_base_and_categorical_insert_3_zero_input_columns_at_64",
+      "source_shape": [
+        32,
+        128
+      ],
+      "target_shape": [
+        32,
+        131
+      ]
+    },
+    {
+      "tensor": "selected_card_encoder.0.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        32
+      ],
+      "target_shape": [
+        32
+      ]
+    },
+    {
+      "tensor": "selected_card_encoder.2.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        32,
+        32
+      ],
+      "target_shape": [
+        32,
+        32
+      ]
+    },
+    {
+      "tensor": "selected_card_encoder.2.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        32
+      ],
+      "target_shape": [
+        32
+      ]
+    },
+    {
+      "tensor": "selected_card_projection.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        160
+      ],
+      "target_shape": [
+        384,
+        160
+      ]
+    },
+    {
+      "tensor": "candidate_condition.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_condition.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.0.norm.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.0.norm.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.0.up.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.0.up.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.0.down.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        768
+      ],
+      "target_shape": [
+        384,
+        768
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.0.down.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.1.norm.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.1.norm.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.1.up.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        768,
+        384
+      ],
+      "target_shape": [
+        768,
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.1.up.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        768
+      ],
+      "target_shape": [
+        768
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.1.down.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        768
+      ],
+      "target_shape": [
+        384,
+        768
+      ]
+    },
+    {
+      "tensor": "candidate_blocks.1.down.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_norm.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "candidate_norm.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "policy_head.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        1,
+        384
+      ],
+      "target_shape": [
+        1,
+        384
+      ]
+    },
+    {
+      "tensor": "policy_head.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        1
+      ],
+      "target_shape": [
+        1
+      ]
+    },
+    {
+      "tensor": "value_body.0.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384,
+        384
+      ],
+      "target_shape": [
+        384,
+        384
+      ]
+    },
+    {
+      "tensor": "value_body.0.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "value_body.2.weight",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "value_body.2.bias",
+      "operation": "retain_exact",
+      "source_shape": [
+        384
+      ],
+      "target_shape": [
+        384
+      ]
+    },
+    {
+      "tensor": "value_head.weight",
+      "operation": "reset_value_head_zero_for_new_objective",
+      "source_shape": [
+        1,
+        384
+      ],
+      "target_shape": [
+        1,
+        384
+      ]
+    },
+    {
+      "tensor": "value_head.bias",
+      "operation": "reset_value_head_zero_for_new_objective",
+      "source_shape": [
+        1
+      ],
+      "target_shape": [
+        1
+      ]
+    }
+  ],
+  "new_goal_input_weights": "all_zero",
+  "value_head": "weight_and_bias_zero; old_win_value_not_reused",
+  "optimizer_state": "not_loaded; fresh_optimizer_required",
+  "source_identity_requirement": "Caller must record source checkpoint SHA and verify unchanged frozen catalog-key ordering; old metadata lacks catalog-key-list digest.",
+  "input_checkpoint_sha256": "99bc2d8ed96a31f2ff041d83216af1a016ccc7f887e6dcb66aa4d02f6a57491c"
+}

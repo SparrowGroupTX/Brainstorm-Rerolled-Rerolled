@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-16T02:14:52.981790+00:00",
+  "release": 341,
+  "summary": "Preserve the original result screen when auto-run has reached its configured run cap, completed the collection, or cannot verify fresh collection metadata. The controller now checks a fresh terminal observation before the product closes its owned result overlay. Under-limit continuation still closes that overlay before searching; a reached run cap has a plain-language count/outcome message and cannot Resume or renew the session allowance.",
+  "outcome_summary": "Read-only passive session session-20260916T005407Z-1 confirms loaded 2.140. It played four hands against Amber Acorn, scoring 147,894/400,000, lost with zero hands and three unused discards, then stopped at the configured five-run limit. Its passive session totals were one win and four losses; these are not a new simulated cohort or a general win-rate estimate. The product had closed the loss overlay before discovering the cap, leaving an unclear dead table. The manufactured baseline fails the new final-cap assertion and the candidate passes the relevant controller/product/terminal fixtures. No logged run was replayed or rescued. Historical closed loss328 outcomes remain three losses, one error, one timeout, one unsupported and zero wins.",
+  "limits_summary": "This slice fixes terminal presentation and transition ordering, not the recorded loss. The four Acorn decisions used immediate public-world play comparisons and left all three discards unused. There were zero public Joker activation observations; a separate read-only source inspection found a persistent-flipping-field mismatch, for a subsequent separately tested repair. That diagnosis is not evidence of an improved terminal outcome. All existing search, session, action and retry limits, saved settings, logs and native dependencies remain preserved. Activation of this new installation waits for the user normal restart; the observed prior loaded version was 2.140.",
+  "budget_summary": "All experiment allowances remain CLOSED. Release 341 uses read-only existing passive logs/source excerpts and manufactured fixture/regression validation only, with 60-second per-suite caps. Zero source components, captured-policy replays, searches or complete attempts were started; no executable archive, player save/profile, live game control or scheduled continuation was used. Historical loss328 accounting remains 1,200 seconds reserved/685.3740000000689 seconds actual; unused P05/P06 and 60 seconds remain closed.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 4,
+    "captured_policy_evaluations": 8,
+    "search_workers": 0,
+    "complete_attempts": 6
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 3,
+    "error": 1,
+    "timeout": 1,
+    "unsupported": 1,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+      "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_SOURCE_EVIDENCE_332.json",
+      "sha256": "b185730878f01b1974f2ed0fcfb80cf8a09a309e8235e3b0f7b9098d68235924"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_BUDGET_332.json",
+      "sha256": "ebe6ec19dc594cb8b260883b761fe8d285edb523d5db584412b68cf1ec7b097d"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development328/shop_release_notes/limits.json",
+      "sha256": "abe07aa95ae18a8bf1704748f643e3b99b27a3c72c8e1fa7eb05917d02731d8c"
+    }
+  },
+  "historical_closed_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_closed_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_closed_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "diagnostic_evidence": {
+    "previous_checkpoint": {
+      "path": "tools/advisor_eval/development340/release_final/context.json",
+      "sha256": "ba2327e4b28444d43968ace3bc43b48f207d5733c5d3dd34a2214498d784a405"
+    },
+    "integration": {
+      "path": "tools/advisor_eval/development341/integration.json",
+      "sha256": "33a5abf88033ba0200c5312ca0cf651b1e3c4ca6a4bfc389c3f82729d19eeef5"
+    },
+    "passive_log_analysis": {
+      "path": "tools/advisor_eval/development341/log_analysis/acorn_session_audit.json",
+      "sha256": "130231bd7bf8fbb42ff13e5cbff2b6675a32c84b57d5c86fafe514badfa0a8cf"
+    },
+    "manufactured_baseline_failure": {
+      "path": "tools/advisor_eval/development341/terminal_component/baseline.json",
+      "sha256": "af6a557e0eea24c504d1d3baf1474d7f6478a8076c9cbca7409b29ea9f495ea6"
+    },
+    "manufactured_candidate_pass": {
+      "path": "tools/advisor_eval/development341/terminal_component/candidate2.json",
+      "sha256": "97c72251741bfebc013ff6dccce66e6d131d0972bddc924a2ebd81a68c48fe59"
+    },
+    "component_result": {
+      "path": "tools/advisor_eval/development341/terminal_component/result2.json",
+      "sha256": "07bf261865cca89bd7b49722e3f4bf9cf0bc9fcab1a3cf728a59c625e21423f5"
+    },
+    "component_before_manifest": {
+      "path": "tools/advisor_eval/development341/terminal_component/before.json",
+      "sha256": "fef8663a816cf663b51614ddd221e1f241eaaa9ee82fc3f1f54a169b5034b17a"
+    },
+    "controller_fixture": {
+      "path": "tests/advisor_auto_run.lua",
+      "sha256": "e2517b2188f9be5a15b47d32d4945b4994d192d9039b9e288e8e4d0bfb979576"
+    },
+    "product_fixture": {
+      "path": "tests/advisor_auto_run_product.lua",
+      "sha256": "7b125da1e3678792039939f903c57374a1d68f3703867e45039c02fdb3102418"
+    },
+    "candidate_validation": {
+      "path": "tools/advisor_eval/runs/terminal341_candidate/validation/report.json",
+      "sha256": "426aec0bcff0b3469548a8a4f94fc47f77d21f8f8684b1efda12409bacfd3ccf"
+    }
+  },
+  "preparation_status": "passed_candidate_exact_installed_validation_bound_separately",
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "previous_checkpoint_context": {
+    "path": "tools/advisor_eval/development340/release_final/context.json",
+    "sha256": "ba2327e4b28444d43968ace3bc43b48f207d5733c5d3dd34a2214498d784a405"
+  }
+}

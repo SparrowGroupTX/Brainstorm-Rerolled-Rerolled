@@ -1,0 +1,6247 @@
+{
+  "scope": "Descriptive public links only; no policy/scorer execution or counterfactual outcome.",
+  "database_sha256": "f584d3267fcfd1c0a1544974d5da04b90e0964ca0663878b77644b11c0c4d4af",
+  "findings": [
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 329,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000002.brj",
+        "ordinal": 315,
+        "raw_sha": "a2a34fb2f0af284adb7feb65608354dacfb48ebf4202fc42bdc3d75a3a20be02"
+      },
+      "observation_anchor": {
+        "seq": 323,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000002.brj",
+        "ordinal": 309,
+        "raw_sha": "caeabaaec28a15650765f66a9948543ee2e5b061a4f4f5e625a748242b6174ff"
+      },
+      "advice_seq": 326,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 10143,
+          "shop_truncated": false,
+          "shop_unavailable_reason": "Hit the Road growth needs a real discard path.",
+          "status": "current"
+        },
+        "lines": [
+          "Adds base Mult, which makes later XMult effects stronger. Rental drains $3 every round. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 137 -> 388 chips across 4 paired deck samples, allowing sensible Joker order; upcoming Small Blind; target 1000. Samples are not a blind-win probability. Both complete bounded policies fall short in all four composition worlds after actual plays and the admitted discard; broader policies and unseen draws remain unresolved.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Both complete bounded policies fall short in all four composition worlds after actual plays and the admitted discard; broader policies and unseen draws remain unresolved.",
+          "Upcoming boss - Mark: face cards are drawn face down.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 0.9923473999998009,
+          "decision_id": 61,
+          "elapsed_seconds": 1.5091844000000378,
+          "evaluations": 10143,
+          "finished_seconds": 332.2000429,
+          "max_resume_seconds": 0.3243563999999992,
+          "phase": "shop",
+          "resume_calls": 159,
+          "started_seconds": 330.6908585,
+          "status": "completed"
+        },
+        "title": "Buy Smiley Face ($1)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "ante": 2,
+      "dollars": 7,
+      "run_instance": "observed-game:2",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:324",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1,
+            "yorick_discards": 4
+          },
+          "edition": null
+        },
+        {
+          "id": "card:325",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:331",
+          "key": "j_hit_the_road",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Jack Discard Effect",
+            "extra": 0.5,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Hit the Road",
+            "order": 130,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:336",
+          "key": "j_gift",
+          "cost": 6,
+          "sell_cost": 3,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "eternal": true,
+            "extra": 1,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "Gift Card",
+            "order": 79,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:337",
+          "key": "j_smiley",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 5,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "Smiley Face",
+            "order": 104,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 330,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000002.brj",
+        "ordinal": 316,
+        "raw_sha": "ebf37cf72f7598e9ce5f9e0d3541613ee5a21555c4cefd51ac4c63265b3f948a"
+      },
+      "callback": {
+        "action_sequence": 329,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 333,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000002.brj",
+        "ordinal": 319,
+        "raw_sha": "0f947f29971a7673f9b05d123b8cdce99e7336c1953ae99e1d5631112915840f"
+      },
+      "after_observation_anchor": {
+        "seq": 323,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000002.brj",
+        "ordinal": 309,
+        "raw_sha": "caeabaaec28a15650765f66a9948543ee2e5b061a4f4f5e625a748242b6174ff"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 7,
+        "row": [
+          {
+            "id": "card:324",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 4
+            },
+            "edition": null
+          },
+          {
+            "id": "card:325",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:331",
+            "key": "j_hit_the_road",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Jack Discard Effect",
+              "extra": 0.5,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Hit the Road",
+              "order": 130,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 3841,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000005.brj",
+        "ordinal": 267,
+        "raw_sha": "edd752bfbe69b0f5100f0380a38b60775c88e3cda9f1378989504fc23a53f8d2"
+      },
+      "observation_anchor": {
+        "seq": 3834,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000005.brj",
+        "ordinal": 260,
+        "raw_sha": "75f00761502a6f45477ed43003e35301b3c647f528cafea55568dfacee09150f"
+      },
+      "advice_seq": 3838,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 31300,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Adds Chips to support your hand levels and Mult. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 137 -> 387 chips across 4 paired deck samples, allowing sensible Joker order; upcoming Small Blind; target 1000. Samples are not a blind-win probability. Both complete bounded policies fall short in all four composition worlds after actual plays and the admitted discard; broader policies and unseen draws remain unresolved.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Both complete bounded policies fall short in all four composition worlds after actual plays and the admitted discard; broader policies and unseen draws remain unresolved.",
+          "Upcoming boss - Flint: base hand Chips and Mult are halved; Joker and card bonuses matter more.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "shop_sequence_review": {
+          "continuation": {},
+          "evidence": {
+            "adjustment": 3.405298084200549,
+            "after_mean": 537,
+            "after_target": 1000,
+            "before_mean": 137,
+            "before_target": 1000,
+            "complete_finishing": true,
+            "ratio": 3.9197080291970803,
+            "samples": 4,
+            "uncertain": false
+          },
+          "final_action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          },
+          "plan": {
+            "cash_after": 7,
+            "complete": true,
+            "liquidity_penalty": 0,
+            "utility": 104.76683654573901
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 3.174183100000505,
+          "decision_id": 650,
+          "elapsed_seconds": 4.5698280000000295,
+          "evaluations": 31300,
+          "finished_seconds": 670.4408231,
+          "max_resume_seconds": 0.5478234999999358,
+          "phase": "shop",
+          "resume_calls": 490,
+          "started_seconds": 665.8709951,
+          "status": "completed"
+        },
+        "title": "Buy Ice Cream ($5)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "ante": 2,
+      "dollars": 13,
+      "run_instance": "observed-game:3",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:614",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:615",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1,
+            "yorick_discards": 4
+          },
+          "edition": null
+        },
+        {
+          "id": "card:621",
+          "key": "j_golden",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Bonus dollars",
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Golden Joker",
+            "order": 90,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:623",
+          "key": "j_ice_cream",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": {
+              "chip_mod": 5,
+              "chips": 100
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Ice Cream",
+            "order": 50,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:624",
+          "key": "j_odd_todd",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Odd Card Buff",
+            "extra": 31,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Odd Todd",
+            "order": 40,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 3842,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000005.brj",
+        "ordinal": 268,
+        "raw_sha": "d9525d395b6d7d10b6415455b90571ebba1d278272b107273ee5fe4625515655"
+      },
+      "callback": {
+        "action_sequence": 3841,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 3845,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000005.brj",
+        "ordinal": 271,
+        "raw_sha": "1628f2ee91accdf66607aa68800231a1dbc162703b8192a9e198d77c29890bd4"
+      },
+      "after_observation_anchor": {
+        "seq": 3834,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000005.brj",
+        "ordinal": 260,
+        "raw_sha": "75f00761502a6f45477ed43003e35301b3c647f528cafea55568dfacee09150f"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 13,
+        "row": [
+          {
+            "id": "card:614",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:615",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 4
+            },
+            "edition": null
+          },
+          {
+            "id": "card:621",
+            "key": "j_golden",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Bonus dollars",
+              "extra": 4,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Golden Joker",
+              "order": 90,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 5038,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000007.brj",
+        "ordinal": 856,
+        "raw_sha": "b1b92d3eb7586f4279f7dceedbd3ff276f59d4a48fe584bbe114d5ceea6e8592"
+      },
+      "observation_anchor": {
+        "seq": 5031,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000007.brj",
+        "ordinal": 849,
+        "raw_sha": "dd0efd59878057877839940d9b6c7a7a1cfeb231d54cd49afd7e2a7ab8b5f191"
+      },
+      "advice_seq": 5035,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 45443,
+          "shop_truncated": true,
+          "shop_unavailable_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "status": "current"
+        },
+        "lines": [
+          "Generates income for upgrades and interest over later rounds. A legal discard must contain enough face cards; changing the scoring plan for that discard is not free. Conditional income opportunity is unverified; no cash forecast is supplied. Perishable: only 5 rounds remain.",
+          "Upcoming boss - Window: Diamonds are debuffed. Favor other suits for scoring cards.",
+          "Keep the last The Devil for Perkeo copies.",
+          "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 3.426117900000463,
+          "decision_id": 857,
+          "elapsed_seconds": 5.2082346999999345,
+          "evaluations": 49561,
+          "finished_seconds": 799.8969896,
+          "max_resume_seconds": 0.5053244000000632,
+          "phase": "shop",
+          "resume_calls": 775,
+          "started_seconds": 794.6887549,
+          "status": "completed"
+        },
+        "title": "Buy Faceless Joker ($4)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "ante": 3,
+      "dollars": 40,
+      "run_instance": "observed-game:4",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [
+        {
+          "id": "card:742",
+          "key": "c_devil",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_gold",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "The Devil",
+            "order": 16,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        }
+      ],
+      "row": [
+        {
+          "id": "card:701",
+          "key": "j_yorick",
+          "cost": 22,
+          "sell_cost": 11,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 3,
+            "yorick_discards": 10
+          },
+          "edition": {
+            "chips": 50,
+            "foil": true,
+            "type": "foil"
+          }
+        },
+        {
+          "id": "card:702",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:739",
+          "key": "j_red_card",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 3,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 9,
+            "mult": 0,
+            "name": "Red Card",
+            "order": 63,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:754",
+          "key": "j_faceless",
+          "cost": 4,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": {
+              "dollars": 5,
+              "faces": 3
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 12,
+            "mult": 0,
+            "name": "Faceless Joker",
+            "order": 57,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:755",
+          "key": "j_satellite",
+          "cost": 6,
+          "sell_cost": 3,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": 1,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 12,
+            "mult": 0,
+            "name": "Satellite",
+            "order": 139,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 5039,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000007.brj",
+        "ordinal": 857,
+        "raw_sha": "ed0167fdb445856dd319ad0bd2ca94e894393caece7cc65a1315b04b63d9d931"
+      },
+      "callback": {
+        "action_sequence": 5038,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 5042,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000007.brj",
+        "ordinal": 860,
+        "raw_sha": "9baa80c8f045e5cee5d21c4d433e333a7f0dd511415a4ca7fbce92ca59a5deb6"
+      },
+      "after_observation_anchor": {
+        "seq": 5031,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000007.brj",
+        "ordinal": 849,
+        "raw_sha": "dd0efd59878057877839940d9b6c7a7a1cfeb231d54cd49afd7e2a7ab8b5f191"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 40,
+        "row": [
+          {
+            "id": "card:701",
+            "key": "j_yorick",
+            "cost": 22,
+            "sell_cost": 11,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 3,
+              "yorick_discards": 10
+            },
+            "edition": {
+              "chips": 50,
+              "foil": true,
+              "type": "foil"
+            }
+          },
+          {
+            "id": "card:702",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:739",
+            "key": "j_red_card",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 3,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 9,
+              "mult": 0,
+              "name": "Red Card",
+              "order": 63,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": [
+          {
+            "id": "card:742",
+            "key": "c_devil",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 1,
+                "mod_conv": "m_gold",
+                "mod_num": 1
+              },
+              "d_size": 0,
+              "effect": "Enhance",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "The Devil",
+              "order": 16,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 5644,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 475,
+        "raw_sha": "7663ff1e9950f7b0270bc4116b18c5a01fa04dbb51ffaa549c3ae8668a566988"
+      },
+      "observation_anchor": {
+        "seq": 5636,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 467,
+        "raw_sha": "9187b67c9ef76e3c1f48190ac2a9fe20f0214bbc91113cde64f3323d49c200df"
+      },
+      "advice_seq": 5641,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 44898,
+          "shop_truncated": true,
+          "shop_unavailable_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "status": "current"
+        },
+        "lines": [
+          "Adds base Mult, which makes later XMult effects stronger. Perishable: only 5 rounds remain.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Upcoming boss - Mouth: the first played hand locks your hand type for this round.",
+          "Keep the last Pluto for Perkeo copies.",
+          "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 1.4753114999999752,
+          "decision_id": 957,
+          "elapsed_seconds": 2.3365742999999384,
+          "evaluations": 48438,
+          "finished_seconds": 859.8735082,
+          "max_resume_seconds": 0.42137030000003506,
+          "phase": "shop",
+          "resume_calls": 757,
+          "started_seconds": 857.5369339,
+          "status": "completed"
+        },
+        "title": "Buy Jolly Joker ($3)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "ante": 2,
+      "dollars": 24,
+      "run_instance": "observed-game:5",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [
+        {
+          "id": "card:835",
+          "key": "c_pluto",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "High Card"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Pluto",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        }
+      ],
+      "row": [
+        {
+          "id": "card:815",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 3,
+            "yorick_discards": 22
+          },
+          "edition": null
+        },
+        {
+          "id": "card:816",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:823",
+          "key": "j_blue_joker",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Blue Joker",
+            "order": 53,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:836",
+          "key": "j_jolly",
+          "cost": 3,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Type Mult",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 8,
+            "mult": 0,
+            "name": "Jolly Joker",
+            "order": 6,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 8,
+            "type": "Pair",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:837",
+          "key": "j_superposition",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 8,
+            "mult": 0,
+            "name": "Superposition",
+            "order": 59,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 5645,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 476,
+        "raw_sha": "91df4a59d0be00b341157c71598ddebbaab621cb9a01bc0df089772f05917324"
+      },
+      "callback": {
+        "action_sequence": 5644,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 5648,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 479,
+        "raw_sha": "31fe0801e6b74eb15a13b2784aaf7d4137e79b5751b62135a5a8c08858f4a91f"
+      },
+      "after_observation_anchor": {
+        "seq": 5636,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 467,
+        "raw_sha": "9187b67c9ef76e3c1f48190ac2a9fe20f0214bbc91113cde64f3323d49c200df"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 24,
+        "row": [
+          {
+            "id": "card:815",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 3,
+              "yorick_discards": 22
+            },
+            "edition": null
+          },
+          {
+            "id": "card:816",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:823",
+            "key": "j_blue_joker",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 2,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 3,
+              "mult": 0,
+              "name": "Blue Joker",
+              "order": 53,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": [
+          {
+            "id": "card:835",
+            "key": "c_pluto",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "High Card"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 5,
+              "mult": 0,
+              "name": "Pluto",
+              "order": 9,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 5937,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 768,
+        "raw_sha": "4d51b245f79a44dad249dbcf7d2fa158e466022002bf1a69e96344afe7f4fd68"
+      },
+      "observation_anchor": {
+        "seq": 5930,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 761,
+        "raw_sha": "2384937dc0e7a5db08f2d110f2f8a354a96b328c54cf563c4b8b20a29c599f79"
+      },
+      "advice_seq": 5934,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 14848,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Adds base Mult, which makes later XMult effects stronger. Rental drains $3 every round. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 9907 -> 24995 chips across 4 paired deck samples, allowing copy-target order shortlist (5/6 layouts); upcoming Big Blind; target 4800. Samples are not a blind-win probability.",
+          "Upcoming boss - House: the first draw is face down; discarding reveals fresh cards.",
+          "Keep the last Pluto for Perkeo copies.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 0.4199551000003794,
+          "decision_id": 1013,
+          "elapsed_seconds": 0.7261622999999418,
+          "evaluations": 23584,
+          "finished_seconds": 888.9327847,
+          "max_resume_seconds": 0.07614360000002307,
+          "phase": "shop",
+          "resume_calls": 369,
+          "started_seconds": 888.2066224,
+          "status": "completed"
+        },
+        "title": "Buy Popcorn ($1)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "ante": 3,
+      "dollars": 37,
+      "run_instance": "observed-game:5",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [
+        {
+          "id": "card:855",
+          "key": "c_pluto",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "High Card"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 5,
+            "mult": 0,
+            "name": "Pluto",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        }
+      ],
+      "row": [
+        {
+          "id": "card:816",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:815",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 3,
+            "yorick_discards": 2
+          },
+          "edition": null
+        },
+        {
+          "id": "card:852",
+          "key": "j_brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 9,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "holo": true,
+            "mult": 10,
+            "type": "holo"
+          }
+        },
+        {
+          "id": "card:861",
+          "key": "j_ice_cream",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": {
+              "chip_mod": 5,
+              "chips": 100
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 10,
+            "mult": 0,
+            "name": "Ice Cream",
+            "order": 50,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:856",
+          "key": "j_banner",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Discard Chips",
+            "eternal": true,
+            "extra": 30,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 10,
+            "mult": 0,
+            "name": "Banner",
+            "order": 22,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:857",
+          "key": "j_popcorn",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 10,
+            "mult": 20,
+            "name": "Popcorn",
+            "order": 97,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 5938,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 769,
+        "raw_sha": "bfb69d7df1cfb1b4989c391550c183381ab039107bc93a042bf1cbbf3e932554"
+      },
+      "callback": {
+        "action_sequence": 5937,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 5941,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 772,
+        "raw_sha": "513549952a57baa95cf095fb49da1579f59306462d99356cbf7821884863612c"
+      },
+      "after_observation_anchor": {
+        "seq": 5930,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000009.brj",
+        "ordinal": 761,
+        "raw_sha": "2384937dc0e7a5db08f2d110f2f8a354a96b328c54cf563c4b8b20a29c599f79"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 37,
+        "row": [
+          {
+            "id": "card:816",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:815",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 3,
+              "yorick_discards": 2
+            },
+            "edition": null
+          },
+          {
+            "id": "card:852",
+            "key": "j_brainstorm",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "blueprint_compat": "compatible",
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Copycat",
+              "eternal": true,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 9,
+              "mult": 0,
+              "name": "Brainstorm",
+              "order": 138,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "holo": true,
+              "mult": 10,
+              "type": "holo"
+            }
+          },
+          {
+            "id": "card:861",
+            "key": "j_ice_cream",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": {
+                "chip_mod": 5,
+                "chips": 100
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 10,
+              "mult": 0,
+              "name": "Ice Cream",
+              "order": 50,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": [
+          {
+            "id": "card:855",
+            "key": "c_pluto",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "High Card"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 5,
+              "mult": 0,
+              "name": "Pluto",
+              "order": 9,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "tags": [
+        "perkeo_sale"
+      ],
+      "action_anchor": {
+        "seq": 8996,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000010.brj",
+        "ordinal": 1779,
+        "raw_sha": "8b5de4f364aa28c1bfc1c775755c4bbef4d3d003c21601bb76282696534d10a3"
+      },
+      "observation_anchor": {
+        "seq": 8988,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000010.brj",
+        "ordinal": 1771,
+        "raw_sha": "1947f67300215e9e3c09ea23ad62470ca42294ae59a380090b9d87dd39bd034d"
+      },
+      "advice_seq": 8993,
+      "advice": {
+        "action": {
+          "area": "jokers",
+          "index": 2,
+          "kind": "sell"
+        },
+        "copy_death_review": {
+          "final_area": "jokers",
+          "final_index": 2,
+          "final_kind": "sell",
+          "fishing": {
+            "attempted": false,
+            "complete": false,
+            "reason": "no_held_death",
+            "schema": 1,
+            "status": "not_applicable"
+          },
+          "schema": 1
+        },
+        "lines": [
+          "Sell Joker #2 (Perkeo) to disable Verdant Leaf.",
+          "The comparison removes that Joker, adds $10, and updates the surviving Joker effects.",
+          "After the sale, High Card estimates 457215 chips against 400000 remaining.",
+          "Recalculate after selling before selecting or playing any cards.",
+          "Remaining-blind check: 8 paired draw samples across up to 4 hands; later discards are not searched.",
+          "Verdant Leaf: selling one non-eternal Joker disables all playing-card debuffs.",
+          "Note: This verifies an immediate boss clear, not later draws or the cost of losing this Joker in future rounds.",
+          "Note: One-discard lookahead; discard-trigger Joker effects and later draws are approximate.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "sell",
+          "active_seconds": 0.6827722000002723,
+          "decision_id": 1492,
+          "elapsed_seconds": 1.9385388000000603,
+          "evaluations": 108933,
+          "finished_seconds": 1133.8411954,
+          "max_resume_seconds": 0.007910799999990559,
+          "phase": "hand",
+          "resume_calls": 3405,
+          "started_seconds": 1131.9026566,
+          "status": "completed"
+        },
+        "title": "Sell Perkeo to disable Verdant Leaf"
+      },
+      "action": {
+        "area": "jokers",
+        "index": 2,
+        "kind": "sell"
+      },
+      "ante": 8,
+      "dollars": 40,
+      "run_instance": "observed-game:5",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [
+        {
+          "id": "card:1049",
+          "key": "c_justice",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_glass",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "mult": 0,
+            "name": "Justice",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        },
+        {
+          "id": "card:1061",
+          "key": "c_hanged_man",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        },
+        {
+          "id": "card:1062",
+          "key": "c_hanged_man",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        },
+        {
+          "id": "card:1071",
+          "key": "c_justice",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 1,
+              "mod_conv": "m_glass",
+              "mod_num": 1
+            },
+            "d_size": 0,
+            "effect": "Enhance",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 11,
+            "mult": 0,
+            "name": "Justice",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        },
+        {
+          "id": "card:1072",
+          "key": "c_hanged_man",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "max_highlighted": 2,
+              "mod_num": 2,
+              "remove_card": true
+            },
+            "d_size": 0,
+            "effect": "Card Removal",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 23,
+            "mult": 0,
+            "name": "The Hanged Man",
+            "order": 13,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Tarot",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          }
+        }
+      ],
+      "row": [
+        {
+          "id": "card:815",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 17,
+            "yorick_discards": 21
+          },
+          "edition": null
+        },
+        {
+          "id": "card:816",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:852",
+          "key": "j_brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 9,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": {
+            "holo": true,
+            "mult": 10,
+            "type": "holo"
+          }
+        },
+        {
+          "id": "card:963",
+          "key": "j_wily",
+          "cost": 4,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 19,
+            "mult": 0,
+            "name": "Wily Joker",
+            "order": 12,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 100,
+            "t_mult": 0,
+            "type": "Three of a Kind",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1002",
+          "key": "j_selzer",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 6,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 22,
+            "mult": 0,
+            "name": "Seltzer",
+            "order": 102,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [],
+      "callback_anchor": {
+        "seq": 8997,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000010.brj",
+        "ordinal": 1780,
+        "raw_sha": "b9ed22c0616dcde1a71135c29c2e8ba24003cf5dad63f5080b4a7bb9e93a5655"
+      },
+      "callback": {
+        "action_sequence": 8996,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 9002,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000010.brj",
+        "ordinal": 1785,
+        "raw_sha": "c62ff7917dfa5ddba902cf9104e11da9f75d57b1c3842aaeff8550d8331d4704"
+      },
+      "after_observation_anchor": {
+        "seq": 9000,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000010.brj",
+        "ordinal": 1783,
+        "raw_sha": "bb52b79fe1bcff476c60c7a97f5f60d28631b13b9107e5a29119878691a52678"
+      },
+      "after": {
+        "phase": "hand",
+        "dollars": 50,
+        "row": [
+          {
+            "id": "card:815",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 17,
+              "yorick_discards": 21
+            },
+            "edition": null
+          },
+          {
+            "id": "card:852",
+            "key": "j_brainstorm",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "blueprint_compat": "compatible",
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Copycat",
+              "eternal": true,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 9,
+              "mult": 0,
+              "name": "Brainstorm",
+              "order": 138,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "holo": true,
+              "mult": 10,
+              "type": "holo"
+            }
+          },
+          {
+            "id": "card:963",
+            "key": "j_wily",
+            "cost": 4,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "eternal": true,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 19,
+              "mult": 0,
+              "name": "Wily Joker",
+              "order": 12,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 100,
+              "t_mult": 0,
+              "type": "Three of a Kind",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1002",
+            "key": "j_selzer",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 6,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 22,
+              "mult": 0,
+              "name": "Seltzer",
+              "order": 102,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": [
+          {
+            "id": "card:1049",
+            "key": "c_justice",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 1,
+                "mod_conv": "m_glass",
+                "mod_num": 1
+              },
+              "d_size": 0,
+              "effect": "Enhance",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 11,
+              "mult": 0,
+              "name": "Justice",
+              "order": 9,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          },
+          {
+            "id": "card:1061",
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 2,
+                "mod_num": 2,
+                "remove_card": true
+              },
+              "d_size": 0,
+              "effect": "Card Removal",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 23,
+              "mult": 0,
+              "name": "The Hanged Man",
+              "order": 13,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          },
+          {
+            "id": "card:1062",
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 2,
+                "mod_num": 2,
+                "remove_card": true
+              },
+              "d_size": 0,
+              "effect": "Card Removal",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 23,
+              "mult": 0,
+              "name": "The Hanged Man",
+              "order": 13,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          },
+          {
+            "id": "card:1071",
+            "key": "c_justice",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 1,
+                "mod_conv": "m_glass",
+                "mod_num": 1
+              },
+              "d_size": 0,
+              "effect": "Enhance",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 11,
+              "mult": 0,
+              "name": "Justice",
+              "order": 9,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          },
+          {
+            "id": "card:1072",
+            "key": "c_hanged_man",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 2,
+                "mod_num": 2,
+                "remove_card": true
+              },
+              "d_size": 0,
+              "effect": "Card Removal",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 23,
+              "mult": 0,
+              "name": "The Hanged Man",
+              "order": 13,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 9274,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 183,
+        "raw_sha": "7f930a5e6f0e446ba577a3719f6676502dc3277c954224b7071a9893003e29df"
+      },
+      "observation_anchor": {
+        "seq": 9266,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 175,
+        "raw_sha": "9cbeebed15c276f09a5b9ef6eafd728f1522ce929f8f6c8a00a1c80875b4e1fc"
+      },
+      "advice_seq": 9271,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "copy_death_review": {
+          "acquisition": {
+            "attempted": false,
+            "complete": false,
+            "evaluations": 0,
+            "reason": "no_supported_copy_priority",
+            "schema": 1,
+            "truncated": false
+          },
+          "final_area": "shop_jokers",
+          "final_index": 1,
+          "final_kind": "buy",
+          "schema": 1
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 24036,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Copy your strongest compatible Joker; placement determines the target. Rental drains $3 every round. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 125 -> 125 chips across 4 paired deck samples, allowing copy-target order shortlist (1/4 layouts); upcoming The Manacle; target 600. Samples are not a blind-win probability.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Manacle: reduced hand size favors small, repeatable hand types.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "shop_sequence_review": {
+          "continuation": {},
+          "evidence": {
+            "adjustment": -4.0389773206903445,
+            "after_mean": 125,
+            "after_target": 600,
+            "before_mean": 125,
+            "before_target": 600,
+            "complete_finishing": true,
+            "ratio": 1,
+            "samples": 4,
+            "uncertain": false
+          },
+          "final_action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          },
+          "plan": {
+            "cash_after": 3,
+            "complete": true,
+            "liquidity_penalty": 0,
+            "utility": 47.66102267930966
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 1.8003469000018413,
+          "decision_id": 1536,
+          "elapsed_seconds": 2.546705100000054,
+          "evaluations": 24036,
+          "finished_seconds": 1155.0690082,
+          "max_resume_seconds": 0.29590550000011717,
+          "phase": "shop",
+          "resume_calls": 376,
+          "started_seconds": 1152.5223031,
+          "status": "completed"
+        },
+        "title": "Buy Brainstorm ($1)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "ante": 1,
+      "dollars": 4,
+      "run_instance": "observed-game:6",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1131",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1132",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1,
+            "yorick_discards": 10
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1139",
+          "key": "j_burnt",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "eternal": true,
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Burnt Joker",
+            "order": 144,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1133",
+          "key": "j_brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1134",
+          "key": "j_diet_cola",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Diet Cola",
+            "order": 94,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 9275,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 184,
+        "raw_sha": "e77259eb357b8731a76db39569ec20b726ffa9f442c4178874bf286483fad1c5"
+      },
+      "callback": {
+        "action_sequence": 9274,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 9278,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 187,
+        "raw_sha": "616d5761daa205b6e90b0198956ad16528dfa2c7d7e5537bbf700c3db6938335"
+      },
+      "after_observation_anchor": {
+        "seq": 9266,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 175,
+        "raw_sha": "9cbeebed15c276f09a5b9ef6eafd728f1522ce929f8f6c8a00a1c80875b4e1fc"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 4,
+        "row": [
+          {
+            "id": "card:1131",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1132",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 10
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1139",
+            "key": "j_burnt",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "eternal": true,
+              "extra": 4,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Burnt Joker",
+              "order": 144,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "empty_neptune_offer"
+      ],
+      "action_anchor": {
+        "seq": 9396,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 305,
+        "raw_sha": "5f04ac8d5d1d8be27a546643f7e05d99b7735f40c536376f7a0417f5dff25850"
+      },
+      "observation_anchor": {
+        "seq": 9390,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 299,
+        "raw_sha": "6035cf1989e9b8e9fc1fd9ce5c6011b2dfa5752a01c93df1b3c1579a36d12518"
+      },
+      "advice_seq": 9393,
+      "advice": {
+        "action": {
+          "kind": "leave_shop"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 11606,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Upcoming boss - Water: there are no discards; use consumables and spare hands to improve draws.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "phase_copy_review": {
+          "aggregate_limit": 50000,
+          "complete": false,
+          "final_action_kind": "leave_shop",
+          "reason": "Perkeo has no copying inventory.",
+          "schema": 1,
+          "scope": "shop_perkeo",
+          "score_calls": 0,
+          "selected": false
+        },
+        "reroll_review": {
+          "cash": 6,
+          "cost": 5,
+          "development": {
+            "cash": 6,
+            "cost": 5,
+            "mode": "durable_engine_development",
+            "schema": 1,
+            "status": "copy_already_owned"
+          },
+          "mode": "durable_engine_development",
+          "schema": 1,
+          "selected_action": "leave_shop",
+          "status": "copy_already_owned",
+          "surplus": {
+            "cash": 6,
+            "cash_after": 1,
+            "cost": 5,
+            "cost_cap": 12,
+            "credited_slots": 1,
+            "interest_floor": 25,
+            "late_surplus": false,
+            "mode": "surplus_catalog_opportunity",
+            "purchase_floor": 28,
+            "required_after": 40,
+            "schema": 2,
+            "scoring_claim": false,
+            "status": "cash_floor",
+            "survival_reserve": 3
+          }
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "leave_shop",
+          "active_seconds": 0.3114913999986584,
+          "decision_id": 1556,
+          "elapsed_seconds": 0.4947239000000536,
+          "evaluations": 11606,
+          "finished_seconds": 1166.2574625,
+          "max_resume_seconds": 0.09481920000007449,
+          "phase": "shop",
+          "resume_calls": 182,
+          "started_seconds": 1165.7627386,
+          "status": "completed"
+        },
+        "title": "Leave the shop and save your money"
+      },
+      "action": {
+        "kind": "leave_shop"
+      },
+      "ante": 2,
+      "dollars": 6,
+      "run_instance": "observed-game:6",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1131",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1132",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 2,
+            "yorick_discards": 22
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1139",
+          "key": "j_burnt",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "eternal": true,
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Burnt Joker",
+            "order": 144,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1133",
+          "key": "j_brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1140",
+          "key": "c_neptune",
+          "cost": 3,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "Straight Flush"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 7,
+            "mult": 0,
+            "name": "Neptune",
+            "order": 8,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1141",
+          "key": "j_sock_and_buskin",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Face card double",
+            "extra": 1,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 7,
+            "mult": 0,
+            "name": "Sock and Buskin",
+            "order": 109,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 9397,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 306,
+        "raw_sha": "4aea50d85647ea7ec0d1b4b6065de8865afae15414ed6e4da9c1eb8fe3cb4355"
+      },
+      "callback": {
+        "action_sequence": 9396,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 9402,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 311,
+        "raw_sha": "5ddddcbb252f9cee4bc76188f4d81adedcc3f7d7fcaefb3c0437d984906b39b0"
+      },
+      "after_observation_anchor": {
+        "seq": 9400,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 309,
+        "raw_sha": "7dc7ae7b8850857da73d70709414de07f70ff7468e0cbf5613429f83c8d773f4"
+      },
+      "after": {
+        "phase": "blind",
+        "dollars": 6,
+        "row": [
+          {
+            "id": "card:1131",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1132",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 2,
+              "yorick_discards": 22
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1139",
+            "key": "j_burnt",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "eternal": true,
+              "extra": 4,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Burnt Joker",
+              "order": 144,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1133",
+            "key": "j_brainstorm",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "blueprint_compat": "compatible",
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Copycat",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Brainstorm",
+              "order": 138,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 9659,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 568,
+        "raw_sha": "14bcc574f50e7629d1cdb84c495f51eba20b903ac5312e1071b0932ebae5b149"
+      },
+      "observation_anchor": {
+        "seq": 9653,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 562,
+        "raw_sha": "7857b188208fed688fec3eb0a635ec5b9c3ab18037ea477b47f74bd7fe4cc368"
+      },
+      "advice_seq": 9656,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 46545,
+          "shop_truncated": true,
+          "shop_unavailable_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "status": "current"
+        },
+        "lines": [
+          "Adds base Mult, which makes later XMult effects stronger.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Upcoming boss - Flint: base hand Chips and Mult are halved; Joker and card bonuses matter more.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 1.747983400001658,
+          "decision_id": 1608,
+          "elapsed_seconds": 2.563739899999973,
+          "evaluations": 46545,
+          "finished_seconds": 1193.4075483,
+          "max_resume_seconds": 0.3628940999999486,
+          "phase": "shop",
+          "resume_calls": 728,
+          "started_seconds": 1190.8438084,
+          "status": "completed"
+        },
+        "title": "Buy Half Joker ($5)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "ante": 3,
+      "dollars": 13,
+      "run_instance": "observed-game:6",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1132",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 2,
+            "yorick_discards": 4
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1131",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1139",
+          "key": "j_burnt",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "eternal": true,
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Burnt Joker",
+            "order": 144,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1133",
+          "key": "j_brainstorm",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Brainstorm",
+            "order": 138,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1155",
+          "key": "j_bootstraps",
+          "cost": 7,
+          "sell_cost": 3,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "dollars": 5,
+              "mult": 2
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 13,
+            "mult": 0,
+            "name": "Bootstraps",
+            "order": 145,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1156",
+          "key": "j_half",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Hand Size Mult",
+            "extra": {
+              "mult": 20,
+              "size": 3
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 13,
+            "mult": 0,
+            "name": "Half Joker",
+            "order": 16,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 9660,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 569,
+        "raw_sha": "89661f9c7bed3ad9356c985c1e4ace60ad5b305480fca7d6147643ee7765474d"
+      },
+      "callback": {
+        "action_sequence": 9659,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 9663,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 572,
+        "raw_sha": "7a35349aa2b8d1dc49f49d82e628497388e5496960c56474324c3c6e396ded8e"
+      },
+      "after_observation_anchor": {
+        "seq": 9653,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000012.brj",
+        "ordinal": 562,
+        "raw_sha": "7857b188208fed688fec3eb0a635ec5b9c3ab18037ea477b47f74bd7fe4cc368"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 13,
+        "row": [
+          {
+            "id": "card:1132",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 2,
+              "yorick_discards": 4
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1131",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1139",
+            "key": "j_burnt",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "eternal": true,
+              "extra": 4,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Burnt Joker",
+              "order": 144,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1133",
+            "key": "j_brainstorm",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "blueprint_compat": "compatible",
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Copycat",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Brainstorm",
+              "order": 138,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 10163,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 193,
+        "raw_sha": "25f64e1923517a2bbdf77bd849479b5d4fbdce3598fa694abb29dac816c96c57"
+      },
+      "observation_anchor": {
+        "seq": 10156,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 186,
+        "raw_sha": "38d47070f5f09cc0b201a5e2043c9550b69351cd8a89d044027cd6b803785dbc"
+      },
+      "advice_seq": 10160,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 21436,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Scales with empty Joker slots; each non-Stencil Joker reduces that multiplier. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 181 -> 542 chips across 4 paired deck samples, allowing sensible Joker order; upcoming The Window; target 600. Samples are not a blind-win probability.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Window: Diamonds are debuffed. Favor other suits for scoring cards.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "shop_sequence_review": {
+          "continuation": {
+            "complete": false,
+            "id": "shop408:1:1:card:1219",
+            "status": "public_context_changed"
+          },
+          "evidence": {
+            "adjustment": 0.9035000492550771,
+            "after_mean": 542.25,
+            "after_target": 600,
+            "before_mean": 180.75,
+            "before_target": 600,
+            "complete_finishing": true,
+            "ratio": 3,
+            "samples": 4,
+            "uncertain": false
+          },
+          "final_action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "plan": {
+            "cash_after": 4,
+            "complete": true,
+            "liquidity_penalty": 0,
+            "utility": 70.46186870929836
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 1.9716228000006595,
+          "decision_id": 1680,
+          "elapsed_seconds": 3.3839287000000695,
+          "evaluations": 21436,
+          "finished_seconds": 1251.6877087,
+          "max_resume_seconds": 0.28980810000007295,
+          "phase": "shop",
+          "resume_calls": 335,
+          "started_seconds": 1248.30378,
+          "status": "completed"
+        },
+        "title": "Buy Joker Stencil ($8)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "ante": 1,
+      "dollars": 12,
+      "run_instance": "observed-game:7",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1218",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1225",
+          "key": "j_hiker",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 5,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Hiker",
+            "order": 56,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1220",
+          "key": "j_vagabond",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "eternal": true,
+            "extra": 4,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Vagabond",
+            "order": 71,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1221",
+          "key": "j_stencil",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Hand Size Mult",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Joker Stencil",
+            "order": 17,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 3
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 10164,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 194,
+        "raw_sha": "319dd110fec8e03ba6ee7e861f8609be09812aa740f921504fe0fbcd7936fd0d"
+      },
+      "callback": {
+        "action_sequence": 10163,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 10168,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 198,
+        "raw_sha": "84783e39b582b288fcf33cbad1827ad7b41ae95c19906510284d0bb8bcbb4b3d"
+      },
+      "after_observation_anchor": {
+        "seq": 10165,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 195,
+        "raw_sha": "33186ad73dd657f410279947121997ef5b582e67d7afdf046a17b2b68b855552"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 12,
+        "row": [
+          {
+            "id": "card:1218",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1225",
+            "key": "j_hiker",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 5,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Hiker",
+              "order": 56,
+              "p_dollars": 0,
+              "perish_tally": 5,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "trading_acquisition",
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 10309,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 339,
+        "raw_sha": "9cca98f1236b878b34dce9da273cc7d74feeb8a67a9a99bd9e5514a4bff875c6"
+      },
+      "observation_anchor": {
+        "seq": 10302,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 332,
+        "raw_sha": "c788fdb3cf1b4efcf2a74315e46d4448aa9f7929712903ffe29ef1db95c7c665"
+      },
+      "advice_seq": 10306,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 2,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 40266,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Use a single-card first discard to remove a weak card and earn money. The first discard must legally destroy exactly one card; discard cost and the retained finish need their own comparison. Conditional income opportunity is unverified; no cash forecast is supplied. Rental drains $3 every round.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - Manacle: reduced hand size favors small, repeatable hand types.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "shop_sequence_review": {
+          "continuation": {},
+          "evidence": {
+            "adjustment": -14,
+            "after_mean": 722.25,
+            "after_target": 1500,
+            "before_mean": 722.25,
+            "before_target": 1500,
+            "complete_finishing": true,
+            "ratio": 1,
+            "samples": 4,
+            "uncertain": false
+          },
+          "final_action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "plan": {
+            "cash_after": 13,
+            "complete": true,
+            "liquidity_penalty": 0,
+            "utility": -4.300000000000001
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 3.3005536999992273,
+          "decision_id": 1711,
+          "elapsed_seconds": 5.183712399999877,
+          "evaluations": 40266,
+          "finished_seconds": 1264.8958693,
+          "max_resume_seconds": 0.6228662000000895,
+          "phase": "shop",
+          "resume_calls": 630,
+          "started_seconds": 1259.7121569,
+          "status": "completed"
+        },
+        "title": "Buy Trading Card ($1)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "ante": 2,
+      "dollars": 12,
+      "run_instance": "observed-game:7",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1218",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1225",
+          "key": "j_hiker",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 5,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Hiker",
+            "order": 56,
+            "p_dollars": 0,
+            "perish_tally": 3,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1221",
+          "key": "j_stencil",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Hand Size Mult",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Joker Stencil",
+            "order": 17,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 3
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1240",
+          "key": "j_duo",
+          "cost": 8,
+          "sell_cost": 4,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "X1.5 Mult",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "The Duo",
+            "order": 131,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "Pair",
+            "x_mult": 2
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1241",
+          "key": "j_trading",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 3,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 4,
+            "mult": 0,
+            "name": "Trading Card",
+            "order": 95,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 10310,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 340,
+        "raw_sha": "423c355b36bcee50faa849604cf9efc12dfa360394b809f02c50732429cd5625"
+      },
+      "callback": {
+        "action_sequence": 10309,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 10313,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 343,
+        "raw_sha": "392d7458d5635eae1abf804c57e15634280d598011ad0d6f028053caf1c639f9"
+      },
+      "after_observation_anchor": {
+        "seq": 10302,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000013.brj",
+        "ordinal": 332,
+        "raw_sha": "c788fdb3cf1b4efcf2a74315e46d4448aa9f7929712903ffe29ef1db95c7c665"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 12,
+        "row": [
+          {
+            "id": "card:1218",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1225",
+            "key": "j_hiker",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 5,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Hiker",
+              "order": 56,
+              "p_dollars": 0,
+              "perish_tally": 3,
+              "perishable": true,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1221",
+            "key": "j_stencil",
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Hand Size Mult",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Joker Stencil",
+              "order": 17,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 3
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 10780,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 241,
+        "raw_sha": "866165ea9cae1594540a157a9a34c1c6b8420c337604fe8716b4f5ca1b8c6cda"
+      },
+      "observation_anchor": {
+        "seq": 10773,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 234,
+        "raw_sha": "9d8f456bee4f9a7b87a4905a20825955daa9748e2d946670117100dc190969e6"
+      },
+      "advice_seq": 10777,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 32490,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Adds Chips to support your hand levels and Mult. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 310 -> 873 chips across 4 paired deck samples, allowing sensible Joker order; upcoming Small Blind; target 1000. Samples are not a blind-win probability.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+          "Upcoming boss - House: the first draw is face down; discarding reveals fresh cards.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "shop_sequence_review": {
+          "continuation": {},
+          "evidence": {
+            "adjustment": -1.0797417390835062,
+            "after_mean": 873,
+            "after_target": 1000,
+            "before_mean": 310.5,
+            "before_target": 1000,
+            "complete_finishing": true,
+            "ratio": 2.8115942028985508,
+            "samples": 4,
+            "uncertain": false
+          },
+          "final_action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          },
+          "plan": {
+            "cash_after": 4,
+            "complete": true,
+            "liquidity_penalty": 0,
+            "utility": 71.62025826091649
+          },
+          "schema": 1,
+          "steps": {}
+        },
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 3.153318999998646,
+          "decision_id": 1790,
+          "elapsed_seconds": 4.470806099999891,
+          "evaluations": 32490,
+          "finished_seconds": 1323.7059378,
+          "max_resume_seconds": 0.5300413999998455,
+          "phase": "shop",
+          "resume_calls": 508,
+          "started_seconds": 1319.2351317,
+          "status": "completed"
+        },
+        "title": "Buy Banner ($5)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "ante": 2,
+      "dollars": 15,
+      "run_instance": "observed-game:8",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1305",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1,
+            "yorick_discards": 6
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1306",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1313",
+          "key": "j_wrathful_joker",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Suit Mult",
+            "extra": {
+              "s_mult": 3,
+              "suit": "Spades"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Wrathful Joker",
+            "order": 4,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1314",
+          "key": "j_banner",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Discard Chips",
+            "extra": 30,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Banner",
+            "order": 22,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1315",
+          "key": "j_card_sharp",
+          "cost": 6,
+          "sell_cost": 3,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": {
+              "Xmult": 3
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Card Sharp",
+            "order": 62,
+            "p_dollars": 0,
+            "perish_tally": 5,
+            "perishable": true,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 10781,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 242,
+        "raw_sha": "ec1ec3bc5a5684ff938dc7f4e790818169284307ad2189484ad80825bf910aee"
+      },
+      "callback": {
+        "action_sequence": 10780,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 10784,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 245,
+        "raw_sha": "31c9a29b9ce88f15a9ad219cd59e08cbf4dc9493cea9ec4e12134da9756cb5ce"
+      },
+      "after_observation_anchor": {
+        "seq": 10773,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 234,
+        "raw_sha": "9d8f456bee4f9a7b87a4905a20825955daa9748e2d946670117100dc190969e6"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 15,
+        "row": [
+          {
+            "id": "card:1305",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1,
+              "yorick_discards": 6
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1306",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1313",
+            "key": "j_wrathful_joker",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Suit Mult",
+              "extra": {
+                "s_mult": 3,
+                "suit": "Spades"
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Wrathful Joker",
+              "order": 4,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "early_joker_buy"
+      ],
+      "action_anchor": {
+        "seq": 10957,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 418,
+        "raw_sha": "eb5efe38af5d10b031940291ad8e56b775bf8b3f8346df4dd98408829d9f8ea6"
+      },
+      "observation_anchor": {
+        "seq": 10951,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 412,
+        "raw_sha": "63ad12e853c59ef8c286364bffccbee0b4531cdf03d82bb9d3ec05aa8b7a2710"
+      },
+      "advice_seq": 10954,
+      "advice": {
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "gold_review": {
+          "retention_comparisons": 0,
+          "retention_complete": false,
+          "retention_evaluations": 0,
+          "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+          "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+          "schema": 1,
+          "shop_evaluations": 5232,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Adds Chips to support your hand levels and Mult. Rental drains $3 every round. Opening-hand scoring estimate: 1746 -> 2846 chips across 4 paired deck samples, allowing sensible Joker order; upcoming The House; target 2000; opening capacity only, later concealed draws are not projected. Samples are not a blind-win probability.",
+          "Build toward $25 for maximum interest, once survival is covered.",
+          "Concealed opening cards prevent a supported readiness plan.",
+          "Upcoming boss - House: the first draw is face down; discarding reveals fresh cards.",
+          "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "buy",
+          "active_seconds": 0.11371909999706986,
+          "decision_id": 1825,
+          "elapsed_seconds": 0.20329930000002605,
+          "evaluations": 8720,
+          "finished_seconds": 1337.6698033,
+          "max_resume_seconds": 0.018039300000054936,
+          "phase": "shop",
+          "resume_calls": 136,
+          "started_seconds": 1337.466504,
+          "status": "completed"
+        },
+        "title": "Buy Blue Joker ($1)"
+      },
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "ante": 2,
+      "dollars": 24,
+      "run_instance": "observed-game:8",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [],
+      "row": [
+        {
+          "id": "card:1305",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 2,
+            "yorick_discards": 15
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1306",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1313",
+          "key": "j_wrathful_joker",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Suit Mult",
+            "extra": {
+              "s_mult": 3,
+              "suit": "Spades"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Wrathful Joker",
+            "order": 4,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1314",
+          "key": "j_banner",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Discard Chips",
+            "extra": 30,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Banner",
+            "order": 22,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "card:1324",
+          "key": "j_blue_joker",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "Blue Joker",
+            "order": 53,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1325",
+          "key": "c_venus",
+          "cost": 3,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "Three of a Kind"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "Venus",
+            "order": 2,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "callback_anchor": {
+        "seq": 10958,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 419,
+        "raw_sha": "34c6ae571707a97ed6f875b15af3a1c3f49e6302d14557960ecf411d5ac10a3b"
+      },
+      "callback": {
+        "action_sequence": 10957,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 10961,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 422,
+        "raw_sha": "017ddfeb74fb7a0008afec3504bfaf8493936a56971f0082c4f1d9f4a631e5a3"
+      },
+      "after_observation_anchor": {
+        "seq": 10951,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 412,
+        "raw_sha": "63ad12e853c59ef8c286364bffccbee0b4531cdf03d82bb9d3ec05aa8b7a2710"
+      },
+      "after": {
+        "phase": "shop",
+        "dollars": 24,
+        "row": [
+          {
+            "id": "card:1305",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 2,
+              "yorick_discards": 15
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1306",
+            "key": "j_perkeo",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1313",
+            "key": "j_wrathful_joker",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Suit Mult",
+              "extra": {
+                "s_mult": 3,
+                "suit": "Spades"
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Wrathful Joker",
+              "order": 4,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1314",
+            "key": "j_banner",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Discard Chips",
+              "extra": 30,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 3,
+              "mult": 0,
+              "name": "Banner",
+              "order": 22,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": []
+      }
+    },
+    {
+      "tags": [
+        "perkeo_sale"
+      ],
+      "action_anchor": {
+        "seq": 11048,
+        "kind": "action_requested",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 509,
+        "raw_sha": "8fa0d2a649f5458ec4f96060641d82c032e78825913c0e6dda642726451c17e7"
+      },
+      "observation_anchor": {
+        "seq": 11042,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 503,
+        "raw_sha": "079325534a598f5d686bdef534c5fd2cb4b2498cf508e95e020cd5b4a169707c"
+      },
+      "advice_seq": 11045,
+      "advice": {
+        "action": {
+          "area": "jokers",
+          "followup": {
+            "area": "pack_cards",
+            "index": 1,
+            "kind": "choose"
+          },
+          "index": 2,
+          "kind": "sell"
+        },
+        "copy_death_review": {
+          "choice": {
+            "cash_after": 34,
+            "complete": true,
+            "reason": "supported_copy_priority",
+            "schema": 1,
+            "selected_offer": 1,
+            "selected_sale": 2
+          },
+          "final_area": "jokers",
+          "final_index": 2,
+          "final_kind": "sell",
+          "pack": {
+            "candidates": [
+              {
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": false,
+                "offer_id": "card:1334",
+                "reason": "The owned Joker cannot be safely sold or its sale does not free a legal slot.",
+                "sold_id": "card:1305",
+                "sold_index": 1,
+                "status": "blocked"
+              },
+              {
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": false,
+                "offer_id": "card:1335",
+                "reason": "The owned Joker cannot be safely sold or its sale does not free a legal slot.",
+                "sold_id": "card:1305",
+                "sold_index": 1,
+                "status": "blocked"
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -11.736224,
+                "admitted": true,
+                "after_mean": 5692,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": true,
+                "ratio": 2,
+                "reason": "perkeo_yorick_copy_exchange",
+                "score": -124.40393242199946,
+                "sold_id": "card:1306",
+                "sold_index": 2,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": false,
+                "after_mean": 3196,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": false,
+                "offer_id": "card:1335",
+                "preserves_score": true,
+                "ratio": 1.1229796205200282,
+                "reason": "temporary_core_bridge_guard",
+                "score": -273.49931516465364,
+                "sold_id": "card:1306",
+                "sold_index": 2,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -15.131888,
+                "admitted": false,
+                "after_mean": 2328,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": false,
+                "ratio": 0.8179901616303584,
+                "reason": "survival_ratio_guard",
+                "score": 28.909055603006223,
+                "sold_id": "card:1313",
+                "sold_index": 3,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -16.263776,
+                "admitted": false,
+                "after_mean": 1364,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "preserves_score": false,
+                "ratio": 0.4792691496837667,
+                "reason": "survival_ratio_guard",
+                "score": -324.02667646355303,
+                "sold_id": "card:1313",
+                "sold_index": 3,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": true,
+                "after_mean": 3442,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": true,
+                "ratio": 1.2094167252283907,
+                "reason": "eligible_endpoint",
+                "score": 87.44401945912642,
+                "sold_id": "card:1314",
+                "sold_index": 4,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -15.131888,
+                "admitted": false,
+                "after_mean": 2071,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "preserves_score": false,
+                "ratio": 0.7276879831342234,
+                "reason": "survival_ratio_guard",
+                "score": -267.5466720476824,
+                "sold_id": "card:1314",
+                "sold_index": 4,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -14,
+                "admitted": true,
+                "after_mean": 3492,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 76,
+                "index": 1,
+                "key": "j_brainstorm",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1334",
+                "preserves_score": true,
+                "ratio": 1.2269852424455376,
+                "reason": "eligible_endpoint",
+                "score": 95.83352947040962,
+                "sold_id": "card:1324",
+                "sold_index": 5,
+                "status": "complete",
+                "uncertain": false
+              },
+              {
+                "acquisition_hurdle": 14,
+                "adjustment": -15.131888,
+                "admitted": false,
+                "after_mean": 2096,
+                "after_target": 3200,
+                "complete_finishing": true,
+                "incoming_score": 33,
+                "index": 2,
+                "key": "j_devious",
+                "kind": "sell_then_choose",
+                "legal": true,
+                "objective_admitted": true,
+                "offer_id": "card:1335",
+                "preserves_score": false,
+                "ratio": 0.7364722417427969,
+                "reason": "survival_ratio_guard",
+                "score": -259.30092056488576,
+                "sold_id": "card:1324",
+                "sold_index": 5,
+                "status": "complete",
+                "uncertain": false
+              }
+            ],
+            "complete": true,
+            "truncated": false
+          },
+          "schema": 1
+        },
+        "gold_review": {
+          "schema": 1,
+          "shop_evaluations": 26224,
+          "shop_truncated": false,
+          "status": "current"
+        },
+        "lines": [
+          "Then choose Brainstorm.",
+          "Copy your strongest compatible Joker; placement determines the target. Eternal: this slot is permanent.",
+          "The copy improves the paired opening score and preserves all four supported next-blind finishes; that evidence outweighs the additive Joker rating.",
+          "Sell only this Joker, then refresh advice before taking the next action.",
+          "Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 2846 -> 5692 chips across 4 paired deck samples, allowing copy-target order shortlist (2/4 layouts); upcoming Small Blind; target 3200. Samples are not a blind-win probability.",
+          "Keep the last Pluto for Perkeo copies.",
+          "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+        ],
+        "status": "current",
+        "timing": {
+          "action_kind": "sell",
+          "active_seconds": 0.9131443999979183,
+          "decision_id": 1846,
+          "elapsed_seconds": 1.5855510000001232,
+          "evaluations": 26224,
+          "finished_seconds": 1346.2910084,
+          "max_resume_seconds": 0.06823400000007496,
+          "phase": "pack",
+          "resume_calls": 410,
+          "started_seconds": 1344.7054574,
+          "status": "completed"
+        },
+        "title": "Sell Perkeo #2 ($10)"
+      },
+      "action": {
+        "area": "jokers",
+        "followup": {
+          "area": "pack_cards",
+          "index": 1,
+          "kind": "choose"
+        },
+        "index": 2,
+        "kind": "sell"
+      },
+      "ante": 3,
+      "dollars": 24,
+      "run_instance": "observed-game:8",
+      "profile": "perkeo_yorick_win_v1",
+      "stock": [
+        {
+          "id": "card:1329",
+          "key": "c_pluto",
+          "cost": 3,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "consumeable": {
+              "hand_type": "High Card"
+            },
+            "d_size": 0,
+            "effect": "Hand Upgrade",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 8,
+            "mult": 0,
+            "name": "Pluto",
+            "order": 9,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Planet",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "row": [
+        {
+          "id": "card:1305",
+          "key": "j_yorick",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 2,
+            "yorick_discards": 15
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1306",
+          "key": "j_perkeo",
+          "cost": 20,
+          "sell_cost": 10,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1313",
+          "key": "j_wrathful_joker",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Suit Mult",
+            "extra": {
+              "s_mult": 3,
+              "suit": "Spades"
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 2,
+            "mult": 0,
+            "name": "Wrathful Joker",
+            "order": 4,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1314",
+          "key": "j_banner",
+          "cost": 5,
+          "sell_cost": 2,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Discard Chips",
+            "extra": 30,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 3,
+            "mult": 0,
+            "name": "Banner",
+            "order": 22,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        },
+        {
+          "id": "card:1324",
+          "key": "j_blue_joker",
+          "cost": 1,
+          "sell_cost": 1,
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 6,
+            "mult": 0,
+            "name": "Blue Joker",
+            "order": 53,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "edition": null
+        }
+      ],
+      "offers": [],
+      "callback_anchor": {
+        "seq": 11049,
+        "kind": "action_callback_result",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 510,
+        "raw_sha": "ba0191a38daf75a14a6726cd7fa1d8d34e5d7122d53115c523e0b24d633dcf71"
+      },
+      "callback": {
+        "action_sequence": 11048,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      },
+      "settlement_anchor": {
+        "seq": 11054,
+        "kind": "state_after_actions",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 515,
+        "raw_sha": "30c6b24bb60e6d6423025797fa4b3f2ad276259571da417e4947d7aceb651e8c"
+      },
+      "after_observation_anchor": {
+        "seq": 11052,
+        "kind": "teacher_observation",
+        "segment": "session-20260927T045909Z-1-000015.brj",
+        "ordinal": 513,
+        "raw_sha": "1c8660fad22fe4ae0eacc22fe8d14169c2ef9f0bcb91a1d5f3c3dbba7c1680fe"
+      },
+      "after": {
+        "phase": "pack",
+        "dollars": 34,
+        "row": [
+          {
+            "id": "card:1305",
+            "key": "j_yorick",
+            "cost": 20,
+            "sell_cost": 10,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 2,
+              "yorick_discards": 15
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1313",
+            "key": "j_wrathful_joker",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Suit Mult",
+              "extra": {
+                "s_mult": 3,
+                "suit": "Spades"
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 2,
+              "mult": 0,
+              "name": "Wrathful Joker",
+              "order": 4,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1314",
+            "key": "j_banner",
+            "cost": 5,
+            "sell_cost": 2,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Discard Chips",
+              "extra": 30,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 3,
+              "mult": 0,
+              "name": "Banner",
+              "order": 22,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          },
+          {
+            "id": "card:1324",
+            "key": "j_blue_joker",
+            "cost": 1,
+            "sell_cost": 1,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "extra": 2,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "Blue Joker",
+              "order": 53,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "rental": true,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ],
+        "stock": [
+          {
+            "id": "card:1329",
+            "key": "c_pluto",
+            "cost": 3,
+            "sell_cost": 1,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "hand_type": "High Card"
+              },
+              "d_size": 0,
+              "effect": "Hand Upgrade",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 8,
+              "mult": 0,
+              "name": "Pluto",
+              "order": 9,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Planet",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            },
+            "edition": null
+          }
+        ]
+      }
+    }
+  ]
+}

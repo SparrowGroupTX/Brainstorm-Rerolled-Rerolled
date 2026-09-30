@@ -1,0 +1,682 @@
+--- before423/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -335,12 +335,16 @@
+       shop_options={};for k,v in pairs(options.shop_scoring or {}) do shop_options[k]=v end
+       shop_options.max_evaluations=limit-actual
+     end
+-    local fallback_survival
++    local fallback_survival,source_exploration,source_review
+     if snapshot.phase=='shop' and snapshot.teacher_profile=='perkeo_yorick_win_v1' and
+         modules.shop_scoring and modules.strategy.shortfall_fallback_evidence then
+       local probe_options={};for k,v in pairs(shop_options or {}) do probe_options[k]=v end
+       probe_options.max_evaluations=math.min(12000,math.max(0,shop_limit-prehand_work))
+       local probe=modules.shop_scoring.new(snapshot,modules.scoring,yield_fn,probe_options)
++      if modules.strategy.copy_source_exploration then
++        source_exploration=modules.strategy.copy_source_exploration(snapshot,probe)
++        source_review=probe.copy_source_diagnostics
++      end
+       fallback_survival=modules.strategy.shortfall_fallback_evidence(snapshot,probe)
+       prehand_work=prehand_work+probe.evaluations
+     end
+@@ -443,8 +447,12 @@
+       if retention_diagnostics then retention_diagnostics.reserved_evaluations=retention_reserve end
+       if retained and retention_diagnostics and retention_diagnostics.complete then strategy=retained end
+     end
++    -- This proposal has its own complete early paid-miss proof. It survives
++    -- an unrelated optional-family budget fallback, but never displaces a
++    -- visible purchase, pack, stock cleanup, commitment or copy arrangement.
++    if source_exploration and strategy.action and strategy.action.kind=='leave_shop' then strategy=source_exploration end
+     if snapshot.phase=='shop' and modules.strategy.late_cash_spend then
+-      strategy=modules.strategy.late_cash_spend(snapshot,strategy) or strategy
++      strategy=modules.strategy.late_cash_spend(snapshot,strategy,source_review) or strategy
+     end
+     local routing_diagnostics
+     if snapshot.phase=='blind' and snapshot.teacher_profile~='perkeo_yorick_win_v1' and
+@@ -468,6 +476,7 @@
+       gold_retention_diagnostics=retention_diagnostics,
+       pack_diagnostics=strategy.pack_diagnostics,
+       shop_diagnostics=context and {evaluations=context.evaluations,truncated=context.truncated,continuation=continuation_diagnostics,
++        copy_source=source_review,
+         unavailable_reason=context.unavailable_reason,metrics=context.metrics,sequences=sequence_diagnostics,
+         replacements=context.replacement_diagnostics,
+         catalog_replacements=context.catalog_replacement_diagnostics,
+@@ -530,11 +539,20 @@
+       result.play.score>=math.max(1,(snapshot.blind or {}).chips-(snapshot.chips or 0))*1.05 then
+     clear_shortcut={search_path='death_retained_clear'};result.clear_shortcut=clear_shortcut
+   end
+-  if not clear_shortcut and search_options.win_first_yorick_clear_discard and
++  -- Every teacher clear with expiring discards gets the retained comparison
++  -- before optional Tarot development, including mature/mixed Joker rows.
++  -- A search-selected discard still wins; no unsupported redraw is forced.
++  local current_clear_action=true
++  if result.action then
++    local selected=result.action.indices or {};local scored=result.play and result.play.indices or {}
++    current_clear_action=result.action.kind=='play' and #selected==#scored
++    for i,index in ipairs(selected) do if scored[i]~=index then current_clear_action=false end end
++  end
++  if not clear_shortcut and current_clear_action and exhaust_discards(snapshot) and
+     result.kind=='play' and result.play and result.play.legal~=false and
+     result.play.uncertain~=true and type(result.play.score)=='number' and
+     result.play.score>=math.max(1,(snapshot.blind or {}).chips-(snapshot.chips or 0)) then
+-    clear_shortcut={search_path='paired_yorick_clear'}
++    clear_shortcut={search_path='discard_before_development'}
+     result.clear_shortcut=clear_shortcut
+   end
+   if clear_shortcut then
+--- before423/Brainstorm/Advisor/growth.lua
++++ Brainstorm/Advisor/growth.lua
+@@ -20,12 +20,22 @@
+   j_cloud_9='Cloud 9',j_popcorn='Popcorn',j_flower_pot='Flower Pot',j_even_steven='Even Steven',
+   j_greedy_joker='Greedy Joker',j_hanging_chad='Hanging Chad',j_ice_cream='Ice Cream',
+   j_fortune_teller='Fortune Teller',j_devious='Devious Joker',j_card_sharp='Card Sharp',
+-  j_hiker='Hiker',j_stencil='Joker Stencil',j_selzer='Seltzer'}
++  j_hiker='Hiker',j_stencil='Joker Stencil',j_selzer='Seltzer',
++  j_lusty_joker='Lusty Joker',j_wrathful_joker='Wrathful Joker',j_gluttenous_joker='Gluttonous Joker',
++  j_sly='Sly Joker',j_clever='Clever Joker',j_crafty='Crafty Joker',
++  j_jolly='Jolly Joker',j_zany='Zany Joker',j_mad='Mad Joker',j_crazy='Crazy Joker'}
+ local joker_effects={j_yorick='',j_perkeo='',j_brainstorm='Copycat',j_blueprint='Copycat',
+   j_supernova='Hand played mult',j_droll='Type Mult',j_burnt='',j_smiley='',
+   j_duo='X1.5 Mult',j_wily='',j_swashbuckler='Set Mult',j_flower_pot='',
+   j_even_steven='Even Card Buff',j_greedy_joker='Suit Mult',j_hanging_chad='',j_fortune_teller='',
+-  j_stencil='Hand Size Mult'}
++  j_stencil='Hand Size Mult',j_lusty_joker='Suit Mult',j_wrathful_joker='Suit Mult',j_gluttenous_joker='Suit Mult',
++  j_jolly='Type Mult',j_zany='Type Mult',j_mad='Type Mult',j_crazy='Type Mult'}
++-- These vanilla families add integer card-stage Mult or fixed main-stage
++-- chips/Mult. They depend on the retained category/suits, never their order.
++local type_chips={j_sly={'Pair',50},j_wily={'Three of a Kind',100},j_clever={'Two Pair',80},
++  j_devious={'Straight',100},j_crafty={'Flush',80}}
++local type_mult={j_jolly={'Pair',8},j_zany={'Three of a Kind',12},j_mad={'Two Pair',10},
++  j_crazy={'Straight',12},j_droll={'Flush',10}}
+ local additive_cards={c_base={'Default Base','Default',0,'Base'},m_mult={'Mult','Enhanced',4,'Mult Card'},
+   m_bonus={'Bonus','Enhanced',0,'Bonus Card'},m_steel={'Steel Card','Enhanced',0,'Steel Card'},
+   m_gold={'Gold Card','Enhanced',0,'Gold Card'}}
+@@ -53,7 +63,8 @@
+   return true
+ end
+ local extra_shapes={j_greedy_joker={s_mult=3,suit='Diamonds'},j_ice_cream={chip_mod=5,chips='integer'},
+-  j_card_sharp={Xmult=3}}
++  j_card_sharp={Xmult=3},j_lusty_joker={s_mult=3,suit='Hearts'},
++  j_wrathful_joker={s_mult=3,suit='Spades'},j_gluttenous_joker={s_mult=3,suit='Clubs'}}
+ local extra_scalars={j_flower_pot=3,j_even_steven=4,j_hanging_chad=2,j_fortune_teller=1,j_hiker=5}
+ local function qualified_extra(key,value)
+   if extra_scalars[key] then return value==extra_scalars[key] end
+@@ -230,11 +241,11 @@
+   if not j.debuff then
+     local fixed_mult=j.key=='j_swashbuckler' or j.key=='j_popcorn'
+     if (fixed_mult and not small_integer(a.mult) or not fixed_mult and not zero(a.mult)) or
+-      not zero(a.bonus) or ((j.key=='j_wily' or j.key=='j_devious') and a.t_chips~=100 or j.key~='j_wily' and j.key~='j_devious' and not zero(a.t_chips)) or
++      not zero(a.bonus) or (type_chips[j.key] and a.t_chips~=type_chips[j.key][2] or not type_chips[j.key] and not zero(a.t_chips)) or
+       not zero(a.h_mult) or not zero(a.h_x_mult) or not zero(a.p_dollars) or not zero(a.h_dollars) or
+       not zero(a.h_size) or not zero(a.d_size) then return false end
+-    if j.key=='j_droll' then
+-      if a.type~='Flush' or a.t_mult~=10 then return false end
++    if type_mult[j.key] then
++      if a.type~=type_mult[j.key][1] or a.t_mult~=type_mult[j.key][2] then return false end
+     elseif not zero(a.t_mult) then return false end
+     if j.key=='j_yorick' then
+       if not small_integer(a.x_mult) or a.x_mult<1 then return false end
+@@ -246,7 +257,7 @@
+     elseif j.key=='j_duo' then
+       if a.x_mult~=2 or a.type~='Pair' then return false end
+     elseif a.x_mult~=1 then return false end
+-    if j.key=='j_wily' and a.type~='Three of a Kind' or j.key=='j_devious' and a.type~='Straight' then return false end
++    if type_chips[j.key] and a.type~=type_chips[j.key][1] then return false end
+     if (extra_shapes[j.key] or extra_scalars[j.key]) and not qualified_extra(j.key,a.extra) then return false end
+     -- One repeat per scoring card; the public counter decreases only on play.
+     -- Its canonical Holo adds fixed Joker-stage Mult after all card additions.
+--- before423/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -484,8 +484,10 @@
+   local shop=plain(result) and rawget(result,'shop_diagnostics')
+   local surplus=plain(shop) and rawget(shop,'reroll_surplus')
+   local development=plain(shop) and rawget(shop,'reroll_development')
+-  local source=plain(surplus) and rawget(surplus,'status')=='admitted' and surplus or
+-    plain(development) and rawget(development,'status')~='out_of_scope' and development or surplus or development
++  local copy_source=plain(shop) and rawget(shop,'copy_source')
++  local source=plain(copy_source) and rawget(copy_source,'status')=='admitted' and copy_source or
++    plain(surplus) and rawget(surplus,'status')=='admitted' and surplus or
++    plain(development) and rawget(development,'status')~='out_of_scope' and development or surplus or development or copy_source
+   if not plain(source) then return end
+   local fields={'schema','mode','status','cost','cost_cap','cash','cash_after',
+     'purchase_floor','survival_reserve','interest_floor','required_after',
+@@ -493,7 +495,7 @@
+     'admitted_endpoints','catalog_candidates','comparison_count',
+     'credited_first_slot_mass','required_first_slot_mass','utility','penalty',
+     'miss_complete','expected_development_utility','best_heuristic_gain',
+-    'scoring_claim','credited_slots'}
++    'scoring_claim','credited_slots','opportunity_mass','complete_paid_miss','lost_clear','scores_declined'}
+   local function compact(source)
+     if not plain(source) then return end
+     local out={}
+@@ -507,6 +509,7 @@
+   local out=compact(source) or {}
+   out.development=compact(development)
+   out.surplus=compact(surplus)
++  out.copy_source=compact(copy_source)
+   local action=plain(result) and rawget(result,'action')
+   if plain(action) and type(rawget(action,'kind'))=='string' then
+     out.selected_action=rawget(action,'kind')
+--- before423/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -935,14 +935,28 @@
+     return count
+ end
+ 
++local repeat_size={Pair=2,['Three of a Kind']=3,['Four of a Kind']=4,['Five of a Kind']=5}
++local function planet_copy_weight(snapshot,hand,profile)
++    if hand==profile.hand then return 1 end
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' then return 0.18 end
++    if hand=='Pair' then return 0.45 end -- broadly available rank-repeat fallback
++    -- A secondary rank hand already used successfully is still a development
++    -- path. One favored category must not erase every other rank-repeat Planet.
++    -- For an unplayed category require an actual concentrated public rank plan.
++    local need=repeat_size[hand]
++    if need and (num(((snapshot.hands or {})[hand] or {}).played)>0 or
++        not profile.stats.incomplete and profile.rank and num(profile.rank_count)>=need+2) then return 0.65 end
++    return 0.05
++end
+ local function weak_copy_filler(snapshot,card,profile)
+     if snapshot.teacher_profile~='perkeo_yorick_win_v1' or card.debuff then return false end
+     local key=card.key
+     if key=='c_tower' then return true end
++    if key=='c_judgement' and #(snapshot.jokers or {})>=num(snapshot.joker_limit,5) then return true end
+     local flush=profile.hand and profile.hand:find('Flush',1,true)
+     if not flush and ({c_lovers=true,c_star=true,c_moon=true,c_sun=true,c_world=true})[key] then return true end
+     local hand=hand_type(card)
+-    return hand and hand~=profile.hand or false
++    return hand and planet_copy_weight(snapshot,hand,profile)<=0.05 or false
+ end
+ 
+ local function unusable_fool_stock(snapshot,card,profile)
+@@ -1005,8 +1019,7 @@
+         local level=num(h.level,1)
+         local relative=(num(h.l_chips,15)/math.max(10,num(h.chips,10+15*(level-1)))+
+             num(h.l_mult,1)/math.max(2,num(h.mult,2+level-1)))
+-        local weight=hand==profile.hand and 1 or
+-            snapshot.teacher_profile=='perkeo_yorick_win_v1' and 0.05 or 0.18
++        local weight=planet_copy_weight(snapshot,hand,profile)
+         return weight*(8+math.min(100,65*relative))
+     elseif card.key=='c_strength' then
+         -- Redaction removes evidence for a particular rank plan, not evidence
+@@ -1075,7 +1088,7 @@
+     if card.key=='c_hanged_man' and type(snapshot.playing_cards)=='table' and #snapshot.playing_cards>0 then
+         return math.max(0,math.ceil((#snapshot.playing_cards-28)/2))
+     end
+-    if hand_type(card) and hand_type(card)~=profile.hand then return 1 end
++    if hand_type(card) and planet_copy_weight(snapshot,hand_type(card),profile)<=0.18 then return 1 end
+     local suits={c_world='Spades',c_sun='Hearts',c_moon='Clubs',c_star='Diamonds'}
+     if suits[card.key] then
+         if not profile.hand:find('Flush',1,true) then return 1 end
+@@ -3765,17 +3778,21 @@
+     replacement_value=function(s) return replacement_build_value(s,deck_stats(s),true) end,
+     card_value=function(s,c) return card_value(s,c,deck_stats(s),components(s)) end}
+ 
+--- Explicit late-run spending preference, after supported purchases and plans.
++-- Explicit cash spending preference, after supported purchases and plans.
+ -- This buys a public opportunity, not a forecast hit or a simulated win.
+-function Strategy.late_cash_spend(snapshot,base)
++function Strategy.late_cash_spend(snapshot,base,paid_miss)
+     if snapshot.teacher_profile~='perkeo_yorick_win_v1' or snapshot.phase~='shop' or
+-        num(snapshot.ante,1)<5 or num(snapshot.ante,1)>num(snapshot.win_ante,8) or
++        num(snapshot.ante,1)>num(snapshot.win_ante,8) or
+         not base or not base.action or base.action.kind~='leave_shop' then return end
++    if paid_miss and paid_miss.complete_paid_miss and paid_miss.lost_clear then
++        base.late_spend_review={schema=1,status='paid_miss_loses_clear',scoring_claim=false}
++        return
++    end
+     local cash=snapshot.dollars
+     if type(cash)~='number' or cash~=cash or math.abs(cash)==math.huge then return end
+     local reserve=near_term_cash_reserve(snapshot)
+-    local target=num(snapshot.ante,1)>=7 and 25 or 40
+-    local floor=target+reserve
++    local target=num(snapshot.ante,1)>=7 and 25 or num(snapshot.ante,1)>=4 and 35 or 50
++    local floor=math.max(target,reserve)
+     local chosen
+     for index,card in ipairs(snapshot.shop_booster or {}) do
+         local cost=card.cost
+@@ -3791,8 +3808,8 @@
+         receipt.status='no_affordable_spend_above_buffer';base.late_spend_review=receipt;return
+     end
+     receipt.status='admitted';receipt.cash_after=cash-cost
+-    return {title=chosen and ('Open '..name(chosen.card)..' with late-run surplus') or 'Spend late-run surplus on a shop refresh',
+-        lines={'Spend cash above the $'..target..' buffer and reserved rental/discard costs at this ante.',
++    return {title=chosen and ('Open '..name(chosen.card)..' with surplus cash') or 'Spend surplus cash on a shop refresh',
++        lines={'Spend cash above the $'..target..' buffer; preserve any larger required rental/discard reserve.',
+             'Reassess after this one action; no unopened pack contents or future shop offer are assumed.'},warnings={},
+         action=chosen and {kind='open',area='shop_booster',index=chosen.index} or {kind='reroll'},late_spend_review=receipt}
+ end
+@@ -3984,6 +4001,133 @@
+             best_heuristic_gain=best_gain,scope='bounded source opportunity; no promised hit or blind clear'}}
+ end
+ Strategy.surplus_reroll=surplus_reroll
++
++-- Search for a retainable Perkeo source even when immediate scoring is safe.
++-- Packs use their selected Tarot/Planet immediately; no pack card is credited
++-- as held stock here. Only the first refreshed shop slot earns catalog mass.
++function Strategy.copy_source_exploration(snapshot,context)
++    local function finite(v)return type(v)=='number' and v==v and math.abs(v)<math.huge end
++    local d={schema=1,status='out_of_scope',credited_slots=1,scoring_claim=false}
++    if context then context.copy_source_diagnostics=d end
++    if snapshot.phase~='shop' or snapshot.teacher_profile~='perkeo_yorick_win_v1' or
++        not future_core_horizon(snapshot) or not context or context.truncated or
++        not context.compare or not has(snapshot,'j_perkeo') or #(snapshot.consumeables or {})==0 then return end
++    local profile=build_profile(snapshot)
++    for _,c in ipairs(snapshot.consumeables) do
++        if c.debuff or c.unknown or c.identity_redacted or c.face_down or c.facing=='back' or
++            not weak_copy_filler(snapshot,c,profile) then d.status='useful_or_unknown_stock';return end
++    end
++    if #(snapshot.consumeables or {})>=num(snapshot.consumable_limit,2) or num(snapshot.consumeable_buffer)~=0 then
++        d.status='no_purchase_slot';return
++    end
++    local meta=snapshot.shop_forecast or {};local rates=meta.rates or {};local mods=modifiers(snapshot)
++    local cost=snapshot.reroll_cost or (snapshot.current_round or {}).reroll_cost
++    if not finite(cost) or cost<=0 or cost>8 or not finite(snapshot.dollars) or
++        meta.special_shop_rules or mods.inflation or mods.minus_hand_size_per_X_dollar or
++        meta.consumable_pool_schema~='source_shop_consumables_v1' or
++        type(meta.consumable_used)~='table' or not finite(meta.slots) or meta.slots<1 or meta.slots>10 or meta.slots%1~=0 or
++        not finite(meta.inflation) or meta.inflation<0 or not finite(meta.discount_percent) or
++        meta.discount_percent<0 or meta.discount_percent>100 then d.status='forecast_unsupported';return end
++    local total=0
++    for _,k in ipairs({'joker','tarot','planet','playing','spectral'}) do
++        if not finite(rates[k]) or rates[k]<0 then d.status='forecast_unsupported';return end
++        total=total+rates[k]
++    end
++    if total<=0 then d.status='forecast_unsupported';return end
++    local interest=no_interest(snapshot) and 0 or num(snapshot.interest_cap,25)
++    local floor=math.max(interest,15)+near_term_cash_reserve(snapshot)
++    if not finite(floor) or floor<0 or snapshot.dollars-cost<floor then d.status='cash_reserve';return end
++    local funded=copy_table(snapshot);change_preview_cash(funded,-cost)
++    local used={};for k,v in pairs(meta.consumable_used) do if v then used[k]=true end end
++    for _,c in ipairs(snapshot.shop_jokers or {}) do used[c.key]=nil end
++    for _,c in ipairs(snapshot.consumeables) do used[c.key]=true end
++    local tarot={c_death={'Death','Card Conversion',{mod_conv='card',max_highlighted=2,min_highlighted=2}},
++        c_strength={'Strength','Round Bonus',{mod_conv='up_rank',max_highlighted=2}},
++        c_empress={'The Empress','Enhance',{mod_conv='m_mult',max_highlighted=2}},
++        c_heirophant={'The Hierophant','Enhance',{mod_conv='m_bonus',max_highlighted=2}},
++        c_hermit={'The Hermit','Dollar Doubler',{extra=20}},
++        c_temperance={'Temperance','Joker Payout',{extra=50}}}
++    local planets={c_mercury='Mercury',c_venus='Venus',c_earth='Earth',c_mars='Mars',c_jupiter='Jupiter',
++        c_saturn='Saturn',c_uranus='Uranus',c_neptune='Neptune',c_pluto='Pluto',
++        c_planet_x='Planet X',c_ceres='Ceres',c_eris='Eris'}
++    local mass,candidates=0,{}
++    for _,set in ipairs({'planet','tarot'}) do
++        local source=meta[set..'_pool'];if type(source)~='table' then d.status='forecast_unsupported';return end
++        local pool,seen={},{}
++        for _,entry in ipairs(source) do
++            if type(entry)~='table' or type(entry.key)~='string' or seen[entry.key] then d.status='forecast_unsupported';return end
++            seen[entry.key]=true
++            if has(snapshot,'j_ring_master') or not used[entry.key] then pool[#pool+1]=entry end
++        end
++        for _,entry in ipairs(pool) do if finite(entry.cost) and entry.cost>=0 then
++            local price=set=='planet' and has(snapshot,'j_astronomer') and 0 or
++                math.max(1,math.floor((entry.cost+meta.inflation+0.5)*(100-meta.discount_percent)/100))
++            local card
++            if set=='planet' and Strategy.paid_reroll and Strategy.paid_reroll.planet_card then
++                card=Strategy.paid_reroll.planet_card(entry,price)
++                local softlock=entry.key=='c_planet_x' or entry.key=='c_ceres' or entry.key=='c_eris'
++                if card and (not planets[entry.key] or entry.name~=planets[entry.key] or
++                    entry.source_effect~='Hand Upgrade' or planet_hands[entry.key]~=entry.source_config.hand_type or
++                    (softlock and entry.source_config.softlock~=true or not softlock and entry.source_config.softlock~=nil)) then card=nil end
++            else
++                local spec=tarot[entry.key];local config=entry.source_config
++                local valid=spec and entry.source_set=='Tarot' and entry.name==spec[1] and
++                    entry.source_effect==spec[2] and type(config)=='table'
++                if valid then
++                    for k,v in pairs(spec[3]) do if config[k]~=v then valid=false end end
++                    for k in pairs(config) do if spec[3][k]==nil then valid=false end end
++                end
++                if valid then card={key=entry.key,name=entry.name,cost=price,sell_cost=math.max(1,math.floor(price/2)),
++                    ability={name=entry.name,set='Tarot',effect=entry.source_effect,consumeable=copy_table(config)}} end
++            end
++            if card and funded.dollars-price>=floor and not weak_copy_filler(funded,card,profile) and
++                copy_utility(funded,card,profile)>=15 then
++                local value=consumable_value(funded,card,deck_stats(funded))
++                if value-purchase_penalty(funded,price,card)>=26 then
++                    local share=rates[set]/total/#pool;mass=mass+share
++                    candidates[#candidates+1]={key=card.key,price=price,first_slot_mass=share}
++                end
++            end
++        end end
++    end
++    d.opportunity_mass=mass;d.candidates=candidates;d.purchase_floor=floor;d.cost=cost
++    if mass<0.005 then d.status='no_supported_source_opportunity';return end
++    local e=context:compare(snapshot,funded)
++    local worlds=e and e.common_worlds
++    local before,after=e and e.before_finishing,e and e.after_finishing
++    if context.truncated or not e or e.incomplete or e.uncertain or not e.complete_finishing or e.samples~=4 or
++        not finite(e.before_target) or e.before_target<=0 or e.before_target~=e.after_target or
++        not worlds or worlds.kind~='shop_four_common_worlds_v1' or worlds.samples~=4 or
++        type(worlds.family_key)~='string' or worlds.family_key=='' or
++        type(worlds.world_ids)~='table' or #worlds.world_ids~=4 then d.status='incomplete_paid_miss';return end
++    if type(before)~='table' or type(after)~='table' then d.status='unsupported_paid_miss';return end
++    for _,finish in ipairs({before,after}) do
++        if not finish.complete or not finish.supported or not finish.known_mechanics or finish.samples~=4 or
++            not finish.selected or type(finish.selected.worlds)~='table' or #finish.selected.worlds~=4 then
++            d.status='unsupported_paid_miss';return
++        end
++    end
++    local all_clear,declined,lost_clear=true,false,false
++    for i=1,4 do
++        local l,r=before.selected.worlds[i],after.selected.worlds[i]
++        if worlds.world_ids[i]~=i or type(l)~='table' or type(r)~='table' or
++            type(l.clear)~='boolean' or type(r.clear)~='boolean' or
++            not finite(l.score) or not finite(r.score) or l.score<0 or r.score<0 then
++            d.status='unsupported_paid_miss';return
++        end
++        all_clear=all_clear and l.clear and r.clear
++        declined=declined or r.score<l.score;lost_clear=lost_clear or l.clear and not r.clear
++    end
++    d.complete_paid_miss=true;d.lost_clear=lost_clear;d.scores_declined=declined
++    if not all_clear or declined then d.status='paid_miss_loses_support';return end
++    d.status='admitted';d.complete_paid_miss=true;d.cash_after=funded.dollars
++    return {title='Reroll for a stronger Perkeo source',action={kind='reroll'},warnings={},
++        lines={'The entire held copying pool is temporary filler. Seek an affordable supported Planet or Tarot source.',
++            'Pay the refresh even on a miss; preserve copy-purchase, interest and next-blind costs. The complete paired miss keeps its supported scores.',
++            'Only first-slot catalog opportunity is credited. Reassess revealed stock; no hit or future win is promised.'},
++        reroll_forecast={mode='perkeo_source_exploration',cost=cost,credited_slots=1,opportunity_mass=mass,
++            candidates=candidates,purchase_floor=floor,complete_paid_miss=true,scoring_claim=false}},d
++end
+ 
+ -- Charge a complete incumbent and paid-miss comparison before optional shop
+ -- families spend the budget. This carries no partial candidate ranking forward.
+--- before423/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.205.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.206.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before423/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.205.0-alpha
++--- VERSION: 2.206.0-alpha
+--- before423/tests/advisor_discard_order423.lua
++++ tests/advisor_discard_order423.lua
+@@ -0,0 +1,79 @@
++-- Invented states only. No captured-state policy/scorer execution.
++local F=dofile('tests/fixtures/retained418.lua');local m=F.modules()
++if GROWTH423_PATH then m.growth=dofile(GROWTH423_PATH) end
++if DECISION423_PATH then m.decision=dofile(DECISION423_PATH) end
++local count=0;local function check(v,msg)count=count+1;assert(v,msg)end
++local shapes={
++ j_lusty_joker={'Lusty Joker',{effect='Suit Mult',extra={s_mult=3,suit='Hearts'}}},
++ j_wrathful_joker={'Wrathful Joker',{effect='Suit Mult',extra={s_mult=3,suit='Spades'}}},
++ j_gluttenous_joker={'Gluttonous Joker',{effect='Suit Mult',extra={s_mult=3,suit='Clubs'}}},
++ j_sly={'Sly Joker',{type='Pair',t_chips=50}},j_clever={'Clever Joker',{type='Two Pair',t_chips=80}},
++ j_crafty={'Crafty Joker',{type='Flush',t_chips=80}},
++ j_jolly={'Jolly Joker',{type='Pair',t_mult=8,effect='Type Mult'}},
++ j_zany={'Zany Joker',{type='Three of a Kind',t_mult=12,effect='Type Mult'}},
++ j_mad={'Mad Joker',{type='Two Pair',t_mult=10,effect='Type Mult'}},
++ j_crazy={'Crazy Joker',{type='Straight',t_mult=12,effect='Type Mult'}}}
++local function joker(key)
++ local x=shapes[key];local j=F.joker(key,x[1],F.copy(x[2]));if x[2].t_chips then j.ability.effect=nil end;return j
++end
++local function state(key)
++ local s=F.state(false);s.blind={key='bl_big',name='Big Blind',chips=2000};s.hand={};s.hand_size=8
++ for i,r in ipairs({13,13,2,4,6,8,10,12})do s.hand[i]=F.card('made423:'..i,r,'Hearts',i<=2 and 'm_mult' or 'c_base')end
++ s.jokers={F.j('j_yorick'),F.j('j_perkeo'),joker(key),F.j('j_fortune_teller'),F.j('j_brainstorm')}
++ s.consumeable_usage_total={tarot=9};F.population(s);return s
++end
++for key in pairs(shapes)do
++ local s=state(key);local c=F.clear(m,s,{1,2});s.blind.chips=c.score
++ local before=m.snapshot.fingerprint(s);local g,n,d=m.growth.suggest(s,m,c,{exhaust_discards=true})
++ check(g and g.action.kind=='discard' and #g.action.indices==5,key..' supports full retained discard: '..table.concat(d.reasons,' / '))
++ check(n<=12 and m.snapshot.fingerprint(s)==before,'bounded detached proof '..key)
++ local after=assert(m.scoring.after_discard(s,g.action.indices))
++ F.permutations(g.play.indices,function(indices)
++  local p=m.scoring.score(after,indices);check(p.score==g.play.score,'retained permutations agree '..key)
++ end)
++ local invalid=F.copy(s);invalid.jokers[3].ability.h_mult=1
++ local no=m.growth.suggest(invalid,m,F.clear(m,invalid,{1,2}),{exhaust_discards=true})
++ check(not no,'modified held arithmetic rejected '..key)
++end
++for _,spec in ipairs({{'j_zany',{13,13,13,2,4}},{'j_clever',{13,13,12,12,4}},
++ {'j_mad',{13,13,12,12,4}},{'j_crazy',{13,12,11,10,9}},{'j_crafty',{13,11,8,5,2}}})do
++ local key=spec[1];local s=state(key)
++ for i,r in ipairs(spec[2])do s.hand[i]=F.card('active423:'..i,r,key=='j_crafty' and 'Hearts' or ({'Clubs','Spades','Diamonds','Hearts'})[(i-1)%4+1],'m_mult')end
++ F.population(s);local c=F.clear(m,s,{1,2,3,4,5});s.blind.chips=c.score
++ local plain=F.copy(s);table.remove(plain.jokers,3)
++ check(F.clear(m,plain,{1,2,3,4,5}).score<c.score,'conditional family actually active '..key)
++ local g,n,d=m.growth.suggest(s,m,c,{exhaust_discards=true})
++ check(g and g.action.kind=='discard' and n<=12,'active category admits retained proof '..key..' '..table.concat(d.reasons,' / '))
++ local after=assert(m.scoring.after_discard(s,g.action.indices))
++ F.permutations(g.play.indices,function(indices)check(m.scoring.score(after,indices).score==g.play.score,'active-family order invariant '..key)end)
++end
++-- A mature Yorick previously bypassed pre-development discard arbitration.
++-- The exact starting hand already clears, so optional enhancement must wait.
++for _,key in ipairs({'j_lusty_joker','j_sly'})do
++ local s=state(key);s.jokers[1].ability.x_mult=10;s.ante=6
++ s.blind.chips=F.clear(m,s,{1,2}).score
++ s.consumeables={{id='empress423',key='c_empress',ability={name='The Empress',set='Tarot',consumeable={max_highlighted=2,mod_conv='m_mult',mod_num=2}}}}
++ local initial=m.snapshot.fingerprint(s)
++ local r=m.decision.run(s,m,nil,{prepared_scoring=false,search={fast_clear=false,max_evaluations=140000}})
++ check(r.action.kind=='discard' and #r.action.indices==5,'production defers optional Empress '..key..': '..tostring(r.action.kind))
++ check(r.evaluations<=140000 and (r.discard_preference_work or 0)<=12,'shared production budgets '..key)
++ check(m.snapshot.fingerprint(s)==initial,'production does not mutate input '..key)
++ -- Refill with invented ordinary cards after each legal discard, then observe
++ -- the fresh state. No next-card assumption enters the actual proof.
++ for left=2,1,-1 do
++  s=assert(m.scoring.after_discard(s,r.action.indices))
++  while #s.hand<8 do s.hand[#s.hand+1]=table.remove(s.deck) end
++  F.population(s);r=m.decision.run(s,m,nil,{prepared_scoring=false,search={fast_clear=false,max_evaluations=140000}})
++  check(s.discards_left==left and r.action.kind=='discard','continues through last discard '..key..' '..left)
++ end
++end
++do
++ local s=state('j_sly');s.jokers[3].ability.t_chips=51
++ local g=m.growth.suggest(s,m,F.clear(m,s,{1,2}),{exhaust_discards=true});check(not g,'modified type amount remains outside canonical qualification')
++ s=state('j_lusty_joker');s.jokers[3].ability.extra.s_mult=3.5
++ s.blind.chips=F.clear(m,s,{1,2}).score
++ g=m.growth.suggest(s,m,F.clear(m,s,{1,2}),{exhaust_discards=true});check(not g,'fractional card arithmetic excluded')
++ s=state('j_sly');s.modifiers.discard_cost=1
++ g=m.growth.suggest(s,m,F.clear(m,s,{1,2}),{exhaust_discards=true});check(not g,'paid-discard policy not silently relaxed')
++end
++print('Discard order423: '..count..' manufactured assertions passed')
+--- before423/tests/advisor_perkeo_exit414.lua
++++ tests/advisor_perkeo_exit414.lua
+@@ -168,10 +168,11 @@
+  eq(Decision.run(s,scoped).action.kind,'leave_shop','existing certified fixed-row retention boundary remains authoritative')
+ end
+ -- Independently invented tie case, distinct from the archived run: a played
+--- Flush plan holding Pair and Straight Planets, with both copy Joker kinds.
++-- Flush plan holding unplayed Straight Flush and Straight Planets, with both
++-- copy Joker kinds.423 gives Pair fallback scaling value, so it is not saturated.
+ for _,key in ipairs({'j_blueprint','j_brainstorm'}) do
+  local s=state();s.hands.Flush={played=17,level=5,chips=95,mult=12}
+- s.consumeables={{key='c_mercury',ability={name='Mercury',set='Planet'}},
++ s.consumeables={{key='c_neptune',ability={name='Neptune',set='Planet'}},
+   {key='c_saturn',ability={name='Saturn',set='Planet'},edition={negative=true}}}
+  s.jokers[2]=joker('copy',key,key=='j_blueprint' and 'Blueprint' or 'Brainstorm')
+  -- Place Blueprint at the right edge so neither copy initially targets Perkeo.
+--- before423/tests/advisor_perkeo_sources423.lua
++++ tests/advisor_perkeo_sources423.lua
+@@ -0,0 +1,127 @@
++-- Manufactured public states and complete comparison witnesses, never captures.
++local F=dofile('tests/fixtures/retained418.lua');local m=F.modules();local S=m.strategy
++S.liquidity=dofile('Brainstorm/Advisor/liquidity.lua');S.paid_reroll=dofile('Brainstorm/Advisor/paid_reroll.lua')
++local count=0;local function check(v,msg)count=count+1;assert(v,msg)end
++local function planet(k,h)return {id=k,key=k,name=k,cost=3,sell_cost=1,ability={name=k,set='Planet',consumeable={hand_type=h}}}end
++local function tarot(k)return {id=k,key=k,name=k,cost=3,sell_cost=1,ability={name=k,set='Tarot'}}end
++local function state()
++ local s=F.state(false);s.phase='shop';s.dollars=38;s.ante=3;s.reroll_cost=5;s.shop_jokers={};s.shop_vouchers={};s.shop_booster={}
++ s.jokers={F.j('j_yorick'),F.j('j_perkeo'),F.j('j_brainstorm')};s.hands={Pair={played=8,level=3,chips=40,mult=4,l_chips=15,l_mult=1},Straight={played=0,level=1,chips=30,mult=4,l_chips=30,l_mult=3}}
++ s.consumeables={planet('c_saturn','Straight')};s.consumable_limit=2;s.joker_limit=5;s.round_resets={hands=4,discards=3};s.round_bonus={};s.next_blind={key='bl_big',label='Big',ante=3,chips=2000}
++ s.shop_forecast={slots=2,rates={joker=20,tarot=4,planet=4,playing=0,spectral=0},inflation=0,discount_percent=0,
++  consumable_pool_schema='source_shop_consumables_v1',consumable_used={c_saturn=true},
++  planet_pool={{key='c_mercury',name='Mercury',cost=3,source_set='Planet',source_effect='Hand Upgrade',source_config={hand_type='Pair'}}},
++  tarot_pool={{key='c_death',name='Death',cost=3,source_set='Tarot',source_effect='Card Conversion',source_config={mod_conv='card',max_highlighted=2,min_highlighted=2}}}}
++ return s
++end
++local function context(change)
++ local ctx={evaluations=0,truncated=false}
++ function ctx:compare(before,after)
++  self.evaluations=self.evaluations+8;check(before.dollars-after.dollars==5,'paid miss actually debits reroll')
++  local w={};for i=1,4 do w[i]={score=5000,clear=true,progress=1}end
++  local f={complete=true,supported=true,known_mechanics=true,samples=4,selected={clearing_samples=4,worlds=w}}
++  local e={samples=4,complete_finishing=true,before_target=2000,after_target=2000,
++   common_worlds={kind='shop_four_common_worlds_v1',samples=4,world_ids={1,2,3,4},family_key='manufactured423'},before_finishing=f,after_finishing=F.copy(f)}
++  if change then change(e,self) end;return e
++ end
++ return ctx
++end
++do
++ local s=state();local before=m.snapshot.fingerprint(s);local ctx=context();local a=S.copy_source_exploration(s,ctx)
++ check(a and a.action.kind=='reroll' and #a.reroll_forecast.candidates==2,'mixed shop credits retainable Planet and Death even with Brainstorm owned')
++ check(a.reroll_forecast.credited_slots==1 and ctx.evaluations==8,'one paired paid miss, first slot only')
++ check(m.snapshot.fingerprint(s)==before and s.consumeables[1].key=='c_saturn','no hypothetical acquisition or seed deletion')
++ local J=dofile('Brainstorm/Advisor/player_journal.lua');local review=J.compact_reroll_review({action=a.action,strategy=a,shop_diagnostics={copy_source=ctx.copy_source_diagnostics}})
++ check(review.copy_source.complete_paid_miss and not review.copy_source.candidates,'journal retains scalar evidence, no catalog/world dump')
++end
++local controls={
++ {'matching Saturn',function(s)s.hands.Straight.played=40;s.hands.Straight.level=8 end},
++ {'useful Negative Death',function(s)local c=tarot('c_death');c.edition={negative=true};s.consumeables[2]=c;s.consumable_limit=3 end},
++ {'unknown stock',function(s)s.consumeables[1].unknown=true end},
++ {'cash floor',function(s)s.dollars=29 end},
++ {'rental reserve',function(s)s.dollars=33;s.jokers[1].ability.rental=true end},
++ {'paid discard reserve',function(s)s.dollars=35;s.modifiers.discard_cost=2 end},
++ {'full ordinary slots',function(s)s.consumable_limit=1 end},
++ {'missing catalog',function(s)s.shop_forecast=nil end},
++ {'modified Death and irrelevant Planet',function(s)s.shop_forecast.tarot_pool[1].source_config.h_size=1;s.shop_forecast.planet_pool[1].source_config.hand_type='Straight Flush' end},
++ {'duplicate metadata',function(s)s.shop_forecast.planet_pool[2]=F.copy(s.shop_forecast.planet_pool[1]) end},
++ {'unknown Planet identity',function(s)s.shop_forecast.planet_pool[1].key='c_modded_planet';s.shop_forecast.tarot_pool={} end},
++ {'modified Planet effect',function(s)s.shop_forecast.planet_pool[1].source_effect='Draw Cards';s.shop_forecast.tarot_pool={} end},
++ {'modified Planet name',function(s)s.shop_forecast.planet_pool[1].name='Not Mercury';s.shop_forecast.tarot_pool={} end},
++ {'modified Planet softlock',function(s)s.shop_forecast.planet_pool[1].source_config.softlock=true;s.shop_forecast.tarot_pool={} end},
++ {'no future copy',function(s)s.next_blind={ante=8,boss=true} end},
++ {'generic profile',function(s)s.teacher_profile='collection_progress' end}}
++for _,v in ipairs(controls)do local s=state();v[2](s);local x=S.copy_source_exploration(s,context());check(not x,'no source hunt: '..v[1]..' / '..tostring(S.build_profile(s).hand)..' / '..tostring(x and x.reroll_forecast.candidates[1].key))end
++for _,v in ipairs({
++ {'incomplete',function(e)e.complete_finishing=false end},
++ {'budget',function(e,c)c.truncated=true end},
++ {'unpaired',function(e)e.common_worlds.world_ids[4]=3 end},
++ {'cash-sensitive decline',function(e)e.after_finishing.selected.worlds[4].score=4999 end},
++ {'uncertain',function(e)e.uncertain=true end},
++ {'miss loses clear',function(e)e.after_finishing.selected.worlds[4].clear=false end}})do
++ check(not S.copy_source_exploration(state(),context(v[2])),'reject '..v[1])
++end
++-- Observed secondary rank-repeat hands remain useful Perkeo scaling stock.
++do
++ local s=state();s.consumeables={tarot('c_judgement')};s.hands.Pair.played=0
++ s.hands['Full House']={played=5,level=2,chips=65,mult=6};s.hands['Four of a Kind']={played=1,level=1,chips=60,mult=7,l_chips=30,l_mult=3}
++ s.shop_jokers={planet('c_mars','Four of a Kind')};s.dollars=26
++ local a=S.advise(s);check(a.action.kind=='buy','buy supported secondary Mars over keeping only Judgement: '..a.action.kind)
++ s.consumeables[2]=planet('c_venus','Three of a Kind');s.hands['Three of a Kind']={played=2,level=1,chips=30,mult=3,l_chips=20,l_mult=2}
++ s.shop_jokers={};a=S.manage_teacher_stock(s)
++ check(a and a.action.kind=='sell' and a.action.index==1,'useful Venus displaces saturating Judgement even with Joker space')
++ s.jokers[4]=F.j('j_ice_cream');s.jokers[5]=F.j('j_greedy_joker');s.shop_jokers={}
++ a=S.manage_teacher_stock(s);check(a and a.action.kind=='sell' and a.action.index==1,'remove unusable Judgement from useful Venus pool')
++ s=state();s.consumeables={};s.dollars=10;s.hands.Pair.played=0;s.hands.Pair.level=1;s.hands.Straight.played=2
++ s.shop_jokers={planet('c_mercury','Pair'),tarot('c_lovers')}
++ a=S.advise(s);check(a.action.kind=='buy' and a.action.index==1,'prefer broadly usable Pair scaling source over Wild filler')
++end
++-- Spending caps cannot introduce any Joker sale or weak Joker purchase.
++for _,ante in ipairs({1,3,4,6,7,8})do
++ local s=state();s.ante=ante;local target=ante>=7 and 25 or ante>=4 and 35 or 50;s.dollars=target+5
++ s.shop_jokers={F.j('j_ice_cream')};s.joker_limit=#s.jokers
++ local a=S.late_cash_spend(s,{action={kind='leave_shop'}})
++ check(a and a.action.kind=='reroll' and a.late_spend_review.cash_after==target,'cash cap only spends existing surplus '..ante)
++ check(not S.late_cash_spend(s,{action={kind='buy',index=1,area='shop_jokers'}}),'purchase wins over cash cap '..ante)
++ s.dollars=target+4;check(not S.late_cash_spend(s,{action={kind='leave_shop'}}),'indivisible costs respect cap '..ante)
++end
++do
++ local s=state();s.ante=7;s.modifiers.discard_cost=10;s.dollars=34
++ check(not S.late_cash_spend(s,{action={kind='leave_shop'}}),'larger actual discard reserve protected')
++end
++do
++ local s=state();s.ante=2;s.next_blind.ante=2;s.next_blind.chips=100;s.dollars=38
++ m.shop_scoring=dofile('Brainstorm/Advisor/shop_scoring.lua')
++ m.shop_scoring.blind_finishing=dofile('Brainstorm/Advisor/blind_finishing.lua')
++ m.shop_scoring.paired_deck=dofile('Brainstorm/Advisor/paired_deck.lua')
++ for _,k in ipairs({'search','draws','sampled_outcomes','multi_discard','finish_rewards','strategy','pack_survival'})do
++  m.shop_scoring.blind_finishing[k]=m[k] or dofile('Brainstorm/Advisor/'..k..'.lua')
++ end
++ local r=m.decision.run(s,m,nil,{prepared_scoring=false})
++ check(r.action.kind=='reroll' and r.strategy.reroll_forecast and r.strategy.reroll_forecast.mode=='perkeo_source_exploration',
++  'production source hunt: '..tostring(r.action.kind)..' / '..tostring(r.shop_diagnostics and r.shop_diagnostics.copy_source and r.shop_diagnostics.copy_source.status))
++ check(r.evaluations<=50000 and r.shop_diagnostics.copy_source.complete_paid_miss,'production paid miss completes inside shared shop budget')
++ s.shop_jokers={planet('c_mercury','Pair')}
++ r=m.decision.run(s,m,nil,{prepared_scoring=false})
++ check(r.action.kind=='buy','visible useful stock takes priority over optional source hunt')
++ s.shop_jokers={};r=m.decision.run(s,m,nil,{prepared_scoring=false,shop_scoring={max_evaluations=1}})
++ check(r.action.kind~='reroll','unavailable paired proof does not bypass low shop allowance')
++end
++-- Inject complete manufactured comparison witnesses at the shop-scoring seam;
++-- exercise real final arbitration, including the newly widened cash rule.
++for _,case in ipairs({'lost_clear','less_overkill','same_score'})do
++ local s=state();s.ante=1;s.next_blind.ante=1;s.dollars=55
++ local provider={};for k,v in pairs(S)do provider[k]=v end
++ provider.advise=function()return {action={kind='leave_shop'},lines={},warnings={}}end
++ local scoped={strategy=provider,scoring=m.scoring,shop_scoring={new=function()
++  return context(function(e)
++   if case=='lost_clear' then e.after_finishing.selected.worlds[4].clear=false;e.after_finishing.selected.worlds[4].score=1900
++   elseif case=='less_overkill' then e.after_finishing.selected.worlds[4].score=4999 end
++  end)
++ end}}
++ local r=m.decision.run(s,scoped,nil,{prepared_scoring=false})
++ check((r.action.kind=='leave_shop')==(case=='lost_clear'),'final cash cap respects actual lost clear '..case)
++ if case=='lost_clear' then check(r.strategy.late_spend_review.status=='paid_miss_loses_clear','visible final rejection reason')end
++ check(r.evaluations<=50000,'seam comparisons share actual decision count '..case)
++end
++print('Perkeo sources423: '..count..' manufactured assertions passed')
+--- before423/tests/advisor_runtime.lua
++++ tests/advisor_runtime.lua
+@@ -1529,7 +1529,8 @@
+  G.jokers.align_cards=function()end;G.jokers.set_ranks=function()end
+  G.consumeables.cards={};G.consumeables.config.card_limit=11
+  local keys={'c_death','c_strength','c_hanged_man','c_empress','c_heirophant','c_chariot','c_justice','c_devil','c_temperance'}
+- if inventory_case=='saturated' then keys={'c_mercury','c_saturn'};G.GAME.hands.Flush={played=17,level=5,chips=95,mult=12} end
++ --423 gives Pair fallback utility; use two genuinely off-plan capped sources.
++ if inventory_case=='saturated' then keys={'c_neptune','c_saturn'};G.GAME.hands.Flush={played=17,level=5,chips=95,mult=12} end
+  for i,key in ipairs(keys) do
+   local c=live(50+i,key,key,'Tarot');c.edition={negative=true,type='negative'};G.consumeables.cards[i]=c
+  end
+--- before423/tests/advisor_shop_alignment419.lua
++++ tests/advisor_shop_alignment419.lua
+@@ -128,28 +128,28 @@
+ for _,ante in ipairs({6,7,8})do
+  local s=state();s.ante=ante;s.dollars=36;s.shop_jokers={};local base={action={kind='leave_shop'}}
+  local a=S.late_cash_spend(s,base)
+- check((a~=nil)==(ante>=7),'$36 is surplus at ante7 but below the ante6 $40 buffer')
++ check((a~=nil)==(ante>=7),'$36 cannot fund a $5 action above the ante6 $35 buffer')
+  if a then check(a.action.kind=='reroll' and a.late_spend_review.cash_after==31,'refresh preserves $25 plus rental reserve')end
+- s.dollars=32;check(not S.late_cash_spend(s,base),'indivisible paid action cannot cross reserved buffer')
++ s.dollars=29;check(not S.late_cash_spend(s,base),'indivisible paid action cannot cross reserved buffer')
+  s.dollars=36;s.shop_booster={{key='p_buffoon_normal_1',name='Buffoon Pack',cost=4,ability={set='Booster'}}}
+  a=S.late_cash_spend(s,base)
+  if ante>=7 then check(a and a.action.kind=='open','use affordable visible pack before otherwise idle cash')end
+  check(not S.late_cash_spend(s,{action={kind='buy',area='shop_jokers',index=1}}),'never displace a chosen purchase')
+  s.teacher_profile='collection_progress';check(not S.late_cash_spend(s,base),'generic spending unchanged')
+ end
+-for _,ante in ipairs({4,5,6,7,8})do
+- local s=state();s.ante=ante;s.dollars=51;s.shop_jokers={};s.shop_booster={}
++for _,ante in ipairs({1,2,3,4,5,6,7,8})do
++ local s=state();s.ante=ante;s.dollars=60;s.shop_jokers={};s.shop_booster={}
+  local base={action={kind='leave_shop'}};local a=S.late_cash_spend(s,base)
+- check((a~=nil)==(ante>=5),'surplus spending starts at ante5')
++ check(a~=nil,'cash cap applies at every ante')
+  if a then
+-  local target=ante>=7 and 25 or 40
+-  check(a.action.kind=='reroll' and a.late_spend_review.target==target and a.late_spend_review.floor==target+3,'ante-specific cash target retains rental cost')
+-  s.dollars=target+3;check(not S.late_cash_spend(s,base),'exact reserve floor is not surplus')
+-  s.dollars=target+7;check(not S.late_cash_spend(s,base),'indivisible reroll never spends the reserved floor')
++  local target=ante>=7 and 25 or ante>=4 and 35 or 50
++  check(a.action.kind=='reroll' and a.late_spend_review.target==target and a.late_spend_review.floor==target,'ante cash cap includes the smaller rental reserve')
++  s.dollars=target;check(not S.late_cash_spend(s,base),'exact reserve floor is not surplus')
++  s.dollars=target+4;check(not S.late_cash_spend(s,base),'indivisible reroll never spends the reserved floor')
+   s.shop_booster={{key='p_buffoon_normal_1',name='Buffoon Pack',cost=4,ability={set='Booster'}}}
+   local pack=S.late_cash_spend(s,base)
+-  check(pack and pack.action.kind=='open' and pack.late_spend_review.cash_after==target+3,'visible pack can spend the remaining affordable surplus')
+-  s.shop_booster={};s.dollars=target+13
++  check(pack and pack.action.kind=='open' and pack.late_spend_review.cash_after==target,'visible pack can spend the remaining affordable surplus')
++  s.shop_booster={};s.dollars=target+10
+   local first=S.late_cash_spend(s,base);s.dollars=first.late_spend_review.cash_after
+   local second=S.late_cash_spend(s,base);s.dollars=second.late_spend_review.cash_after
+   check(not S.late_cash_spend(s,base),'fresh repeated spending stops at the correct ante buffer')

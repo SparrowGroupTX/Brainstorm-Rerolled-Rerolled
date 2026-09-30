@@ -1,0 +1,89 @@
+{
+  "job": "D-old-3753-baseline",
+  "mode": "decision",
+  "case": "old-3753",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 1.3440000000118744,
+  "log_sha256": "d058cca4947a589fe54ad72dc783d8aafde2e2e6e6aa1a656fa3be785261a070",
+  "status": "complete",
+  "result": {
+    "case": "old-3753",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          3,
+          4,
+          5,
+          7,
+          8
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "clear_supported": true,
+        "evaluations": 5,
+        "final_action_kind": "play",
+        "final_play_score": 1968,
+        "needed_score": 1236,
+        "reason": "Replacement draws can reduce or reorder the reserved score.",
+        "remaining_discards": 1,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 68752,
+      "play": {
+        "hand": "Full House",
+        "legal": true,
+        "score": 1968,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": false,
+          "considered": 218,
+          "qualified": 0
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 0,
+          "max_evaluations": 12,
+          "reasons": [
+            "Replacement draws can reduce or reorder the reserved score."
+          ]
+        },
+        "risk": {
+          "bonus": 0.0054,
+          "candidate_count": 16,
+          "compared": true,
+          "compared_five_count": 3,
+          "exact_transition": true,
+          "final_action_kind": "play",
+          "final_action_matches_search": false,
+          "full_batch_preference": false,
+          "late_margin": true,
+          "minimum_score": 0,
+          "qualified_count": 0,
+          "qualified_five_count": 0,
+          "required_fraction": 0.95,
+          "sampled_clears": 19,
+          "samples": 24,
+          "search_selected": false,
+          "selected": false,
+          "taper": 0.006
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

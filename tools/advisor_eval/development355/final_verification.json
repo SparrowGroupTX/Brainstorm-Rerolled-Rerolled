@@ -1,0 +1,182 @@
+{
+  "verified_utc": "2026-09-16T16:22:31.309619+00:00",
+  "experiment_status": "CLOSED",
+  "runtime_unchanged": true,
+  "runtime_file_count": 105,
+  "policy_digest": "8fa9954f51479f82f658949f9737d40c978b5f3fa28d6304fae9b0e8938ed949",
+  "jobs": {
+    "P01": {
+      "status": "completed",
+      "actual_coordinator_seconds": 2.687999999965541,
+      "reserved_seconds": 30
+    },
+    "S01": {
+      "status": "completed",
+      "actual_coordinator_seconds": 17.85999999998603,
+      "reserved_seconds": 120
+    },
+    "T01": {
+      "status": "completed",
+      "actual_coordinator_seconds": 407.219000000041,
+      "reserved_seconds": 600
+    },
+    "T02": {
+      "status": "completed",
+      "actual_coordinator_seconds": 883.3429999999935,
+      "reserved_seconds": 900
+    },
+    "T03": {
+      "status": "closed_unused",
+      "actual_coordinator_seconds": 0,
+      "reserved_seconds": 900
+    },
+    "V01": {
+      "status": "completed",
+      "actual_coordinator_seconds": 2.640999999945052,
+      "reserved_seconds": 120
+    },
+    "V02": {
+      "status": "completed",
+      "actual_coordinator_seconds": 25.18700000003446,
+      "reserved_seconds": 180
+    },
+    "V03": {
+      "status": "completed",
+      "actual_coordinator_seconds": 14.858999999938533,
+      "reserved_seconds": 180
+    }
+  },
+  "manufactured_tests": {
+    "finished_utc": "2026-09-16T16:22:05.857672+00:00",
+    "command": [
+      "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools/advisor_learning",
+      "-t",
+      ".",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "cap_seconds": 60,
+    "elapsed_seconds": 2.344000000040978,
+    "scope": "Manufactured fixtures only; no simulator episodes, training or GPU benchmarks.",
+    "output_sha256": "cda7a9aa1dce73401d16da483f10fbb713876193191610676ce41069feecc4dc"
+  },
+  "documents": {
+    "ADVISOR_START_HERE.md": "1013c0caf159f5405b4a41803d4d7b4b14fbf2704b2e2685114350ac24d3b6c0",
+    "ADVISOR_HANDOFF.md": "ed404afe16f1d4a386f1f3aacde0c25ae64d964d2d962746e11364baf921fc87",
+    "ADVISOR_RESUME_PROMPT.md": "9da5296c6f6e4829d3484cb55a11d751cbc222403314da4963a0dfa1ac90b589",
+    "tools/advisor_eval/SESSION_RESET_355.md": "c6a1780a31688c7f00dc8b0296406c278a67974709af539f21a40b0252dcc785",
+    "tools/advisor_eval/SESSION_RESET_355.json": "9c61f2d68b9888f612fa71c791c99b76b15e8afaad51feb7088808fdd1a046c3",
+    "tools/advisor_eval/NEXT_PRIORITIES_355.md": "334f4bed8eb8522e38d436fec8d393dcce4f1e973fed982fb40d0fb962f52f0f",
+    "tools/advisor_eval/ARCHITECTURE_MAP_355.md": "278fea0981efae31565449d7fc9f79b4ae9853a0c0a543f23b4cf507c4b64853"
+  },
+  "learning_source_hashes": {
+    "tools/advisor_learning/analyze.py": "1429cc19babc1cb943196bd8bd457b54378c68e5d160813ffe6b905831aebd56",
+    "tools/advisor_learning/environment.py": "3799635be447900a41bfeae32cabf558034f986720be3b817e3b254112025f87",
+    "tools/advisor_learning/experiment.py": "3e3986e1a69c9056a1b9856455b993acc358a13ccc0bd6b9c2266bad9aa68174",
+    "tools/advisor_learning/gae.py": "68abf715597d9e107431725194cd5fde7182ac47a12aef3b7f43da0be01463d6",
+    "tools/advisor_learning/hardware_probe.py": "3e4543319289402d522b14d2608a3dfdc275bb5d8c11d108b44168c9d76cd17b",
+    "tools/advisor_learning/heuristic.py": "ec8e4704c8b83e4e3d7c2d6233a04a332f993dfa0f5a9a4842338d695bb466f7",
+    "tools/advisor_learning/migration.py": "52725be8ed4654da7d53154e2b77f662057645cc0a5ed422f9c475c88e81c09e",
+    "tools/advisor_learning/model.py": "87465d8a7e7e9fa61dfa47ef5fefd75884588755e8abfd0c1f0458fa1fcea86a",
+    "tools/advisor_learning/objective.py": "a3130c866003230236b9aa466937227605b9aed29b21c7d2ba1f79ac80738826",
+    "tools/advisor_learning/README.md": "6803c3c83564f16894cce5a9959ce87d0352f8811a149f67864d3e5d46bea5b7",
+    "tools/advisor_learning/simulator_patches.py": "19d7b7e7a46e910cefbe9a66b11cb4ff826c541de08f32ae14386d7103a7d9d2",
+    "tools/advisor_learning/specialized_environment.py": "86b625e22bb2bce4d83f2a0cfafe009dfa6cf6eeae7d8cfe83b7802922e43890",
+    "tools/advisor_learning/test_analysis.py": "80aa565e0b936684ab037f82b01ea9d1ca1b111c2824c230117e8967cc949109",
+    "tools/advisor_learning/test_collector.py": "ddd9f5c7e7974b043c5982261516df6950a8618c2984ea79ba044c19ae0b9fef",
+    "tools/advisor_learning/test_curriculum.py": "86dadb26bff4c4097382d1f157f9ba40960673ff127322ccd898812ee20dc830",
+    "tools/advisor_learning/test_environment.py": "fdc0f64545393f1ba676fea23455f2e645922f089c126231bc07a4fd7894c343",
+    "tools/advisor_learning/test_migration.py": "0f4c8f5dc4303b82bee0c7a87479b88d62506373659e96dc427efba5ca93ef51",
+    "tools/advisor_learning/test_model.py": "18b5300479fff843bfe0b62ae519072b66de67d920264fc249ed0b396cf59941",
+    "tools/advisor_learning/test_objective.py": "3d23ef2ff30ad4427634b1ae51685af7c1206e35feb2e37528144e12b252c4dd",
+    "tools/advisor_learning/test_simulator_patches.py": "6acb65e42afe736f5246e561679ff24a341b6efca83d1e56a364d9646dfd630c",
+    "tools/advisor_learning/test_specialized_environment.py": "4ec0d93872c0c1f2d5f2e1f16b775f501f74532ec247a677074555f49e36e3d0",
+    "tools/advisor_learning/test_training.py": "97b26d6ba68c117fd123579d93ad7a49243b94d8aba69e91fc14ce0c2117d26a",
+    "tools/advisor_learning/train.py": "94b19df61c3fe2be0d8f5615ce97435433631731a2cc8b31c6e295a4b26dc2d0",
+    "tools/advisor_learning/__init__.py": "7687ccafe6e87007c1ef198a085b1a8befadb4dc256606622167e609ba79ad3c"
+  },
+  "evidence_hashes": {
+    "tools/advisor_eval/development355/AMENDMENT_SPECIALIZED.json": "a4f0db8f9452897c3cce5b33238547a0335b9be4b17a267e5b47fceb804c6f3a",
+    "tools/advisor_eval/development355/AWARD_OBJECTIVE_AUDIT.md": "35eaca32042a28d99b0df64b0bb6e3a23273aa717dbb785f131798fb05963822",
+    "tools/advisor_eval/development355/BASELINE_POSTMORTEM.md": "a325727485ab80e15b3d99a1820dace1645e88834482477ee4bb90d935e8d47a",
+    "tools/advisor_eval/development355/CLOSED.json": "c0f22f8e01cae66b74531ee137e54b38abdc4940db774cf9679c1428432fb624",
+    "tools/advisor_eval/development355/close_experiment.py": "6ddd8a58b0e90231e97e0cdb7754905a752b0ffed1bc846c1ab5aa4eb4b3de9a",
+    "tools/advisor_eval/development355/configure_specialized.py": "9ae185d7529fbbb8a4e336f3ae415211417f5936faee3733137e6ac14c500d87",
+    "tools/advisor_eval/development355/EXPERIMENT_355.json": "84ab08497703f5d23cb048a18865500f106b0245a601099e280363d9e2aaee4e",
+    "tools/advisor_eval/development355/fetch_simulator.py": "acf83c702f2043b0b369c9e89c016b61c2c29b7da5a7d0d26b2989d7ea0f979d",
+    "tools/advisor_eval/development355/finalize.py": "9e45d8b67b8145220f677c5612d9b152a2df2b42549650fcbdf920661a521d1d",
+    "tools/advisor_eval/development355/FINAL_POLICY_SELECTION.json": "f6317a8b1b9ab25c032b6927fe032d446b08325b38a7ae86daf8afa53fd7b06c",
+    "tools/advisor_eval/development355/manufactured_tests.log": "443b99207112e69635af488665669f5cde59968dfae611bf512598a12658ea07",
+    "tools/advisor_eval/development355/MODERN_GAME_LEARNING.md": "95c2ee6587aa92281cf9ceb3534132419f440e830502b5dec4a8b077d9fe2861",
+    "tools/advisor_eval/development355/PERISHABLE_EXPIRY_REFINEMENT.md": "cce8c4970c8458466a8858ef58510b5d7c640302945a2ddfb373765f5cb260d6",
+    "tools/advisor_eval/development355/record_runtime.py": "3c4925088e7118eccfb328f7c29d99fbc48bcb86dc8a7e701e0cf6581fa312f8",
+    "tools/advisor_eval/development355/runtime_provenance.json": "df7ff2b36ac9082e4a47738e8d86e1bc4d0a4dd4f534ede26085e39addcea197",
+    "tools/advisor_eval/development355/SIMULATOR_FIDELITY_AUDIT.md": "25d192f07186bc9f2aacee66f1c8fb3b58dc2209a9b4741891a08440dbff3ef0",
+    "tools/advisor_eval/development355/SPARSE_REWARD_NEXT.md": "4a7af801fa38516d694571e4362c0ebcbcead45c2ef34103ec28ff3fa5a1b816",
+    "tools/advisor_eval/development355/SPECIALIZED_DATA_AUDIT.md": "23a23c3091e3acb8cb8cba7930574bf98ba8da85734d5ca9a686a2cfea4353b3",
+    "tools/advisor_eval/development355/specialized_goal.json": "7d66a6eb7f03edff83c151958dd4b9e9375cb460b724d7baf1088fe9d21a6db8",
+    "tools/advisor_eval/development355/SPECIALIZED_OPENING_SNAPSHOTS.json": "414666da6b32ebb65218473a91057b31bc12c4709477d2bef877a9739ea703ce",
+    "tools/advisor_eval/development355/SPECIALIZED_POSTMORTEM.md": "fe2c6f39586160308d80e639199dbabba43f765e5545989c5dd0eea7eec26d14",
+    "tools/advisor_eval/development355/SPECIALIZED_POSTMORTEM_DATA.json": "55d4f1a0cd039ec088b83ae4dfc768c5ad871b5ff0afe2120f6343ff04f1a795",
+    "tools/advisor_eval/development355/SPECIALIZED_POSTMORTEM_OPENING.json": "00b594ae0db35d8c2ae635b670ed2de37fd38540f6124077f51cc945a3845b05",
+    "tools/advisor_eval/development355/SPECIALIZED_PUBLIC_DATA.json": "c6572dcb8a42db0dbfa81752fc9b65ab926d992ceac4c8bc6c621fdb934237fe",
+    "tools/advisor_eval/development355/test_receipt.json": "0f0f51c860bc536fa12df05fe6476ef2a009e6bf48e241f829ffab2a6b2e7c59",
+    "tools/advisor_eval/development355/V02_LEARNING_REVIEW.md": "9d9242d2970b7f36f3041450efe2c4dbdd4de7b475615c5cc1be7670ebd77b71",
+    "tools/advisor_eval/development355/validate.py": "cd38534a54fc21cc4385eac73f36d48b30c7b82beb56aa1d08aa90de430556c8"
+  },
+  "artifact_bytes": 219785345,
+  "model_promoted": false,
+  "settings_written": false,
+  "native_files_preserved": [
+    {
+      "path": "Brainstorm/Immolate-advisor-a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885.dll",
+      "repository_sha256": "a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885",
+      "installed_sha256": "a569e1cb834352c23fed5eac3db30059279a57fe1eaf46e71cc8a594b672f885",
+      "matches_frozen354": true
+    },
+    {
+      "path": "Brainstorm/Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll",
+      "repository_sha256": "ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf",
+      "installed_sha256": "ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf",
+      "matches_frozen354": true
+    },
+    {
+      "path": "Brainstorm/Immolate-v2.16.dll",
+      "repository_sha256": "34598478571391d272c1e1a837832061bd767a09ab552bb61ef3458e24e9d751",
+      "installed_sha256": "34598478571391d272c1e1a837832061bd767a09ab552bb61ef3458e24e9d751",
+      "matches_frozen354": true
+    },
+    {
+      "path": "Brainstorm/Immolate.dll",
+      "repository_sha256": "c25645875d6508ef2b5a69353feb831f7a8a075cf945c78dc209326891f32734",
+      "installed_sha256": "c25645875d6508ef2b5a69353feb831f7a8a075cf945c78dc209326891f32734",
+      "matches_frozen354": true
+    },
+    {
+      "path": "Brainstorm/libgcc_s_seh-1.dll",
+      "repository_sha256": "0e41bb41c8d5d5a1c16150cf860225e835ff8fdbb351073835bf45eaa8fe831d",
+      "installed_sha256": "0e41bb41c8d5d5a1c16150cf860225e835ff8fdbb351073835bf45eaa8fe831d",
+      "matches_frozen354": true
+    },
+    {
+      "path": "Brainstorm/libstdc++-6.dll",
+      "repository_sha256": "d1aebaa36202db736b96a7e4f491eb457256ff6e3cac8e225dae05790bacd147",
+      "installed_sha256": "d1aebaa36202db736b96a7e4f491eb457256ff6e3cac8e225dae05790bacd147",
+      "matches_frozen354": true
+    },
+    {
+      "path": "Brainstorm/libwinpthread-1.dll",
+      "repository_sha256": "a9230c9b3590af438066c18afa2185ac6c74b544f58606a0d20d80039b102179",
+      "installed_sha256": "a9230c9b3590af438066c18afa2185ac6c74b544f58606a0d20d80039b102179",
+      "matches_frozen354": true
+    }
+  ]
+}

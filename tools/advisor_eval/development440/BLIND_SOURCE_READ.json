@@ -1,0 +1,73 @@
+{
+  "sha256": "0a7e5fde144da36d4ca1a96950b4bf51e3c95be55fb02764a555de53a3bd8afb",
+  "matches": [
+    {
+      "line": 93,
+      "text": "        self.disabled = false\n        self.discards_sub = nil\n        self.hands_sub = nil\n        self.boss = blind and not not blind.boss\n        self.blind_set = false\n        self.triggered = nil\n        self.prepped = true\n        self:set_text()\n\n        G.GAME.last_blind = G.GAME.last_blind or {}\n        G.GAME.last_blind.boss = self.boss"
+    },
+    {
+      "line": 484,
+      "text": "                    play_sound('card1', 1)\n                end\n            end\n            if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end\n        return true end })) \n        self.triggered = true\n        delay(0.7)\n        return true\n    end\n    if self.name == 'Crimson Heart' then \n        if G.jokers.cards[1] then"
+    },
+    {
+      "line": 490,
+      "text": "        delay(0.7)\n        return true\n    end\n    if self.name == 'Crimson Heart' then \n        if G.jokers.cards[1] then\n            self.triggered = true\n            self.prepped = true\n        end\n    end\n    if self.name == 'The Fish' then\n        self.prepped = true"
+    },
+    {
+      "line": 505,
+      "text": "            G.E_MANAGER:add_event(Event({func = function() G.play.cards[i]:juice_up(); return true end })) \n            ease_dollars(-1)\n            delay(0.23)\n        end\n        return true end })) \n        self.triggered = true\n        return true\n    end\nend\n\nfunction Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)"
+    },
+    {
+      "line": 513,
+      "text": "end\n\nfunction Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)\n    if self.disabled then return mult, hand_chips, false end\n    if self.name == \"The Flint\" then\n        self.triggered = true\n        return math.max(math.floor(mult*0.5 + 0.5), 1), math.max(math.floor(hand_chips*0.5 + 0.5), 0), true\n    end\n    return mult, hand_chips, false\nend\n"
+    },
+    {
+      "line": 522,
+      "text": "end\n\nfunction Blind:debuff_hand(cards, hand, handname, check)\n    if self.disabled then return end\n    if self.debuff then\n        self.triggered = false\n        if self.debuff.hand and next(hand[self.debuff.hand]) then\n            self.triggered = true\n            return true\n        end\n        if self.debuff.h_size_ge and #cards < self.debuff.h_size_ge then"
+    },
+    {
+      "line": 524,
+      "text": "function Blind:debuff_hand(cards, hand, handname, check)\n    if self.disabled then return end\n    if self.debuff then\n        self.triggered = false\n        if self.debuff.hand and next(hand[self.debuff.hand]) then\n            self.triggered = true\n            return true\n        end\n        if self.debuff.h_size_ge and #cards < self.debuff.h_size_ge then\n            self.triggered = true\n            return true"
+    },
+    {
+      "line": 528,
+      "text": "        if self.debuff.hand and next(hand[self.debuff.hand]) then\n            self.triggered = true\n            return true\n        end\n        if self.debuff.h_size_ge and #cards < self.debuff.h_size_ge then\n            self.triggered = true\n            return true\n        end\n        if self.debuff.h_size_le and #cards > self.debuff.h_size_le then\n            self.triggered = true\n            return true"
+    },
+    {
+      "line": 532,
+      "text": "        if self.debuff.h_size_ge and #cards < self.debuff.h_size_ge then\n            self.triggered = true\n            return true\n        end\n        if self.debuff.h_size_le and #cards > self.debuff.h_size_le then\n            self.triggered = true\n            return true\n        end\n        if self.name == \"The Eye\" then\n            if self.hands[handname] then\n                self.triggered = true"
+    },
+    {
+      "line": 537,
+      "text": "            self.triggered = true\n            return true\n        end\n        if self.name == \"The Eye\" then\n            if self.hands[handname] then\n                self.triggered = true\n                return true\n            end\n            if not check then self.hands[handname] = true end\n        end\n        if self.name == \"The Mouth\" then"
+    },
+    {
+      "line": 544,
+      "text": "            end\n            if not check then self.hands[handname] = true end\n        end\n        if self.name == \"The Mouth\" then\n            if self.only_hand and self.only_hand ~= handname then\n                self.triggered = true\n                return true\n            end\n            if not check then self.only_hand = handname end\n        end\n    end"
+    },
+    {
+      "line": 551,
+      "text": "            end\n            if not check then self.only_hand = handname end\n        end\n    end\n    if self.name == 'The Arm' then \n        self.triggered = false\n        if G.GAME.hands[handname].level > 1 then\n            self.triggered = true\n            if not check then\n                level_up_hand(self.children.animatedSprite, handname, nil, -1)\n                self:wiggle()"
+    },
+    {
+      "line": 553,
+      "text": "        end\n    end\n    if self.name == 'The Arm' then \n        self.triggered = false\n        if G.GAME.hands[handname].level > 1 then\n            self.triggered = true\n            if not check then\n                level_up_hand(self.children.animatedSprite, handname, nil, -1)\n                self:wiggle()\n            end\n        end "
+    },
+    {
+      "line": 561,
+      "text": "                self:wiggle()\n            end\n        end \n    end\n    if self.name == 'The Ox' then \n        self.triggered = false\n        if handname == G.GAME.current_round.most_played_poker_hand then\n            self.triggered = true\n            if not check then\n                ease_dollars(-G.GAME.dollars, true)\n                self:wiggle()"
+    },
+    {
+      "line": 563,
+      "text": "        end \n    end\n    if self.name == 'The Ox' then \n        self.triggered = false\n        if handname == G.GAME.current_round.most_played_poker_hand then\n            self.triggered = true\n            if not check then\n                ease_dollars(-G.GAME.dollars, true)\n                self:wiggle()\n            end\n        end "
+    },
+    {
+      "line": 700,
+      "text": "        config_blind = '',\n        chips = self.chips,\n        chip_text =self.chip_text,\n        hands = self.hands,\n        only_hand = self.only_hand,\n        triggered = self.triggered\n    }\n\n    for k, v in pairs(G.P_BLINDS) do\n        if v and v.name and v.name == blindTable.name then\n            blindTable.config_blind = k"
+    },
+    {
+      "line": 728,
+      "text": "    self.boss = blindTable.boss\n    self.chips = blindTable.chips\n    self.chip_text = blindTable.chip_text\n    self.hands = blindTable.hands\n    self.only_hand = blindTable.only_hand\n    self.triggered = blindTable.triggered\n\n    G.ARGS.spin.real = (G.SETTINGS.reduced_motion and 0 or 1)*(self.config.blind.boss and (self.config.blind.boss.showdown and 1 or 0.3) or 0)\n\n    if G.P_BLINDS[blindTable.config_blind] then\n        self.blind_set = true"
+    }
+  ]
+}

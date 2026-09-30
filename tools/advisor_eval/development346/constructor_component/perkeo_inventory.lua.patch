@@ -1,0 +1,24 @@
+--- before/Brainstorm/Advisor/perkeo_inventory.lua
++++ Brainstorm/Advisor/perkeo_inventory.lua
+@@ -40,10 +40,19 @@
+   return true
+ end
+ local empty_base={nominal=0,suit_nominal=0,face_nominal=0,times_played=0}
+-local parameter_keys={discover=true,bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true}
++local parameter_keys={discover=true,bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true,viewed_back=true}
++local function back_position(p)
++  if type(p)~='table' or getmetatable(p) or not integer(p.x) or not integer(p.y) then return false end
++  for k in pairs(p) do if k~='x' and k~='y' then return false end end
++  return true
++end
+ local function safe_params(params)
+   if type(params)~='table' or not plain(params) then return false end
+-  for key,value in pairs(params) do if not parameter_keys[key] or type(value)~='boolean' then return false end end
++  for key,value in pairs(params) do
++    -- Source create_card/copy_card retain this back Sprite atlas position.
++    if key=='bypass_back' then if not back_position(value) then return false end
++    elseif not parameter_keys[key] or type(value)~='boolean' then return false end
++  end
+   return true
+ end
+ local function source_key(card)

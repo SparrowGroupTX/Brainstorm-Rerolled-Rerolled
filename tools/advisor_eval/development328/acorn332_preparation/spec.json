@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "kind": "unexecuted_root_integration_preparation",
+  "expected_root": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled",
+  "baseline": {
+    "freeze_path": "tools/advisor_eval/runs/nine331_candidate/freeze.json",
+    "freeze_sha256": "d89afec3e2965451dfc555dbc236996e7efb2ec945217c9f30c453d69aa0439b",
+    "policy_root": "tools/advisor_eval/runs/nine331_candidate/policy",
+    "policy_digest": "29f5f3112a7170c7a1181bde7ee91b436aa386ec7ff88145d4ed24b711807983",
+    "file_count": 94,
+    "validation_path": "tools/advisor_eval/runs/nine331_candidate/validation/report.json",
+    "validation_sha256": "ae0014285980d9f34cde681c65fe9ff78033ccb93770d5a34d235a91e4c32fea"
+  },
+  "seals": [
+    {
+      "directory": "tools/advisor_eval/development328/acorn_belief_component",
+      "manifest_sha256": "67fcda98924892bac530fc8d0a8148d41c2c12414d5574531b9a51fc7e6f002b"
+    },
+    {
+      "directory": "tools/advisor_eval/development328/acorn_public_component",
+      "manifest_sha256": "69ee2c6beae565b8e82b871cfb194802a956d8901242e357337fc5263bd9bfff"
+    }
+  ],
+  "destinations": [
+    {
+      "path": "Brainstorm/Advisor/acorn_belief.lua",
+      "before_sha256": null,
+      "after_sha256": "1eca4dc4c6cde8603da637da80470726b5b54823e42dbdaac5e1b1a08f6bbfd7",
+      "bytes": 13032,
+      "source": "tools/advisor_eval/development328/acorn_belief_component/acorn_belief.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/acorn_ordering.lua",
+      "before_sha256": null,
+      "after_sha256": "afc94cade464f67b941a6b70a2e66e9e856eed0a61895c4974e9fa59d1618e93",
+      "bytes": 9519,
+      "source": "tools/advisor_eval/development328/acorn_belief_component/acorn_ordering.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/decision.lua",
+      "before_sha256": "46f6919bddb7457b5bc18ae6eadf34d4e921822abfe145588a73f1bebd975d8c",
+      "after_sha256": "0b5b4eee6590c79a49c022050069b60e3e18b464d764b749aa61d5be563fc98a",
+      "bytes": 21064,
+      "source": "tools/advisor_eval/development328/acorn_belief_component/decision.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/acorn_public.lua",
+      "before_sha256": null,
+      "after_sha256": "18f0971b189d1ec19f21eb96deb7fcb5a768569a6d775d29a6ccca5d1a561cf0",
+      "bytes": 18012,
+      "source": "tools/advisor_eval/development328/acorn_public_component/Brainstorm/Advisor/acorn_public.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/acorn_public_hooks.lua",
+      "before_sha256": null,
+      "after_sha256": "7cec3e6ac4f122b0a5915109626a7d4b4f9da7cb8de2c368f6038887daef18e6",
+      "bytes": 3359,
+      "source": "tools/advisor_eval/development328/acorn_public_component/Brainstorm/Advisor/acorn_public_hooks.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/execution.lua",
+      "before_sha256": "89d71ddd3eb062c517ec3c923a317fe35b7235c94acada9cf84c0312bdc0a229",
+      "after_sha256": "4cd9e7ffd056f8c285a9c8195aab134e18ef78ce17883e33cdf1c736309577f0",
+      "bytes": 18276,
+      "source": "tools/advisor_eval/development328/acorn_public_component/Brainstorm/Advisor/execution.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/gold_stickers.lua",
+      "before_sha256": "61eb91c9df44fefb97da216d8c38a80f4e8b9e63c53d13be48ecad2445f38843",
+      "after_sha256": "86e4b5712adb6c9776eb01ddb00788b095c603b6f215747715554e7ae472e98b",
+      "bytes": 12501,
+      "source": "tools/advisor_eval/development328/acorn_public_component/Brainstorm/Advisor/gold_stickers.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "before_sha256": "7b733e458dfc873632eeadb6247b0d58414a7d45c9a73264f3a48cda63aaaa74",
+      "after_sha256": "bb3215bf3ec02ab067703c422c8e9a943af32b10a74211c090bf73e73e4e78c3",
+      "bytes": 42208,
+      "source": "tools/advisor_eval/development328/acorn_public_component/Brainstorm/Advisor/runtime.lua"
+    },
+    {
+      "path": "Brainstorm/Advisor/snapshot.lua",
+      "before_sha256": "66853fc50efdb71164d768b0af1ffcf09a3574adf53e08501e01c61422d6d9bb",
+      "after_sha256": "63a1ec4b77f0608923b0e906dab56fa0853f3be4aeb7dec8a2beb22f03a30648",
+      "bytes": 16540,
+      "source": "tools/advisor_eval/development328/acorn_public_component/Brainstorm/Advisor/snapshot.lua"
+    },
+    {
+      "path": "tests/advisor_acorn_belief.lua",
+      "before_sha256": null,
+      "after_sha256": "5bb98b7027239ce3f6d1e260b705e55495b85004cde94a9463e9aa1aabab4cd1",
+      "bytes": 17302,
+      "source": "converted sealed belief fixture"
+    },
+    {
+      "path": "tests/advisor_acorn_public.lua",
+      "before_sha256": null,
+      "after_sha256": "cb5197a6243d2164ed813f776f2efecda730a6671d36c28c9476bf90d3224c10",
+      "bytes": 14975,
+      "source": "converted sealed public fixture"
+    },
+    {
+      "path": "tests/advisor_runtime.lua",
+      "before_sha256": "708f5363b2a5a483651d2a4c6e9ca023b5168fbb580ee888a88e955f43a42a32",
+      "after_sha256": "bdb847818d78aabcf41e0303a82d2571a810d53da6f61469ec8d4a77cca92baa",
+      "bytes": 76671,
+      "source": "331 runtime fixture plus sealed four-check UI appendix"
+    },
+    {
+      "path": "tools/advisor_eval/component_profile.lua",
+      "before_sha256": "1956280924824e533b26687b8cf6b49b74eafa76beb76b4eb43ff4d7e5aec21d",
+      "after_sha256": "24851542237cc4a1ab8166410f2c7e1e661a51a212b41d3aa009cde49b78d929",
+      "bytes": 9528,
+      "source": "inert pure-module map; no live observer or source adapter binding"
+    }
+  ],
+  "protected_unchanged": {
+    "tools/advisor_eval/engine_run.lua": "ac7003fe7428dae8c08ed9d550201a81898e8b0a6e13bcf6769af180bc275b23",
+    "tests/run_lua_tests.py": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7",
+    "tools/advisor_eval/benchmark.py": "b089d4fe7d3e79201b8ef279aeda9731c5b0aca63e26a885ad9040fa7515faca",
+    "tools/advisor_eval/install_slice.py": "bc7f33c1faefc78e8b15076c46bcdbd964cc573fb162059a7bb6530b999e1a9c"
+  },
+  "versions_stamped": false,
+  "experiments_run": 0,
+  "production_writes_performed_by_preparation": 0,
+  "install_relative_files": [
+    "Advisor/acorn_belief.lua",
+    "Advisor/acorn_ordering.lua",
+    "Advisor/decision.lua",
+    "Advisor/acorn_public.lua",
+    "Advisor/acorn_public_hooks.lua",
+    "Advisor/execution.lua",
+    "Advisor/gold_stickers.lua",
+    "Advisor/runtime.lua",
+    "Advisor/snapshot.lua"
+  ]
+}

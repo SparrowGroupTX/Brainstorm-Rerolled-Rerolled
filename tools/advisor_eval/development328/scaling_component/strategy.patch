@@ -1,0 +1,60 @@
+--- a/Brainstorm/Advisor/strategy.lua
++++ b/Brainstorm/Advisor/strategy.lua
+@@ -1029,7 +1029,9 @@
+ end
+ 
+ local planet_shop_dominance,planet_shop_commitment
+-local function best_shop_purchase(snapshot, stats, engine, final_endpoint)
++-- Replacement offers are scored against the complete row we actually own.
++-- Vacant-slot previews still fund the purchase but never become score baselines.
++local function best_shop_purchase(snapshot, stats, engine, final_endpoint, replacement_before)
+     local candidates,planet_candidates = {},{}
+     for _, area in ipairs({'shop_jokers', 'shop_vouchers', 'shop_booster'}) do
+         for index, card in ipairs(snapshot[area] or {}) do
+@@ -1037,11 +1039,12 @@
+             if (cost <= 0 or cost <= num(snapshot.dollars) - num(snapshot.bankrupt_at)) and capacity(snapshot, card, false)
+                 and not (modifiers(snapshot).no_shop_jokers and kind(card) == 'joker') then
+                 local score, reason, known, forecast = card_value(snapshot, card, stats, engine)
+-                local evidence,after,planet_after
++                local evidence,after,planet_after,replacement_adjustment
+                 if known and kind(card)=='joker' then
+                     local adjustment
+                     after=after_joker_purchase(snapshot,card)
+-                    adjustment,evidence=shop_score_evidence(snapshot,after,card)
++                    adjustment,evidence=shop_score_evidence(replacement_before or snapshot,after,card,replacement_before~=nil)
++                    replacement_adjustment=replacement_before and adjustment
+                     if evidence then score=score+adjustment; reason=reason..' '..evidence.reason end
+                 elseif kind(card)=='consumable' and hand_type(card) then
+                     local adjustment
+@@ -1055,7 +1058,9 @@
+                     ctx.survival_dominated_actions['buy:'..area..':'..index]={area=area,index=index,key=card.key,evidence=evidence}
+                 end
+                 local candidate={score=score-purchase_penalty(snapshot, cost, card,after,evidence and evidence.after_readiness),
+-                    reason=reason,card=card,area=area,index=index,known=known,forecast=forecast,scoring_evidence=evidence}
++                    reason=reason,card=card,area=area,index=index,known=known,forecast=forecast,scoring_evidence=evidence,
++                    replacement_evaluated=replacement_before~=nil and known and kind(card)=='joker' or nil,
++                    replacement_adjustment=replacement_adjustment}
+                 if area=='shop_jokers' and kind(card)=='consumable' and hand_type(card) then
+                     planet_candidates[#planet_candidates+1]={candidate=candidate,after=planet_after,eligible=score>0 and not dominated}
+                 end
+@@ -1249,13 +1254,18 @@
+         if not ability(sold).eternal and (known or expired(sold) or sold.key=='j_diet_cola') and
+             not (omelette(snapshot) and sold.key=='j_egg') then
+             local state=after_joker_sale(snapshot,index)
+-            local candidate=state and choose(state,deck_stats(state),components(state))
++            local candidate=state and choose(state,deck_stats(state),components(state),nil,snapshot)
+             if candidate and kind(candidate.card)=='joker' and candidate.known and candidate.score>=26 and
+                 not capacity(snapshot,candidate.card,snapshot.phase=='pack') then
+                 local after=after_joker_purchase(state,candidate.card)
+                 local cost=snapshot.phase=='shop' and num(candidate.card.cost) or 0
+                 local gain=replacement_build_value(after,deck_stats(after))-before
+-                local adjustment,evidence=shop_score_evidence(snapshot,after,candidate.card,true)
++                local adjustment,evidence
++                -- Reuse the exact original-row endpoint evidence and its full
++                -- adjusted delta; do not add the candidate rating a second time.
++                if candidate.replacement_evaluated then
++                    adjustment,evidence=candidate.replacement_adjustment,candidate.scoring_evidence
++                else adjustment,evidence=shop_score_evidence(snapshot,after,candidate.card,true) end
+                 local merit=gain-purchase_penalty(state,cost,candidate.card,after,evidence and evidence.after_readiness)-6
+                 if evidence then
+                     merit=merit+adjustment

@@ -1,0 +1,42 @@
+{
+  "kind": "cashout_fixtures317_detached_ready",
+  "runtime_changes": false,
+  "root_staging_only": true,
+  "integration": {
+    "tests/advisor_cashout_button.lua": {
+      "draft": "production_tests/advisor_cashout_button.lua",
+      "base_sha256": null,
+      "candidate_sha256": "d1305782fa2e5c9837a106753cc348f9512c3facb9a43e21ad862feadde0f8bc"
+    },
+    "tests/advisor_runtime.lua": {
+      "draft": "production_tests/advisor_runtime.lua",
+      "base_sha256": "442a4114223131d149a7d12436ad18a3711ab06a01ffee95e10696e9214c3a35",
+      "candidate_sha256": "c35dfa4707aeda3231204bcf8fe94c693c8a67b1a296240f578f74218dba61a7"
+    },
+    "tests/advisor_auto_run_product.lua": {
+      "draft": "production_tests/advisor_auto_run_product.lua",
+      "base_sha256": "d73639e48780e36b595d2b821e4e2ddd85db2385e8bc16013f76f344e1ea17e4",
+      "candidate_sha256": "dfec9c85b2ab331c44ca829751a4fca99878aeaf85f0e9a17d5d6bedbce5e650"
+    }
+  },
+  "files": {
+    "advisor_cashout_button.lua": "d1305782fa2e5c9837a106753cc348f9512c3facb9a43e21ad862feadde0f8bc",
+    "runtime_addition.lua": "37c52c91430b8a9aedd267cc068eddaca004f10858ef88e6820cebbbe5dfb8db",
+    "auto_product_addition.lua": "ebc33c74c207950663abea2af76f64cacb9f19553019e40161f86b90fda8bd0f",
+    "base_hashes.json": "a744883595379067e95e4534c0450b06b75591567ea32dcf910863782cdbfc8e",
+    "stage.py": "1859925cc6bad467308f37bd649e7081a1b819519f1138fcd46993d4657132ca",
+    "INTEGRATION.md": "375dec1ac763c896bd0f6fcf502e5a1c5d14078e063dc2dd7f8b73610c45bc85",
+    "integration.patch": "852a96c2b7620f4543fa751c3fbfb8a6dbe0293c2be5ca45864c6b40295c1907",
+    "focused_report.json": "dd987a32c922e031d67938ffd1ec631f184c818c08a7ae9d8c115e03463c5d57",
+    "production_tests/advisor_cashout_button.lua": "d1305782fa2e5c9837a106753cc348f9512c3facb9a43e21ad862feadde0f8bc",
+    "production_tests/advisor_runtime.lua": "c35dfa4707aeda3231204bcf8fe94c693c8a67b1a296240f578f74218dba61a7",
+    "production_tests/advisor_auto_run_product.lua": "dfec9c85b2ab331c44ca829751a4fca99878aeaf85f0e9a17d5d6bedbce5e650"
+  },
+  "validation": {
+    "fixtures": 3,
+    "checks": 801,
+    "runtime_fixture_checks": 499,
+    "auto_product_fixture_checks": 202,
+    "button_fixture_checks": 100
+  }
+}

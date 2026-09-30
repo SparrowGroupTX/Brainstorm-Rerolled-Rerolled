@@ -1,0 +1,15 @@
+{"status": "verified_offline_review", "coverage": {"eligible_settled_decisions": 4, "eligible_by_action": {"discard": 4}, "eligible_classes": ["discard", "clearing play", "Joker buy/choose", "voucher buy", "Joker sell", "leave_shop", "skip_pack", "reroll"], "unsupported_settlement_classes": ["non-clearing play", "consumable use/purchase/choice", "open pack", "ordering", "other actions without a qualified settlement join"], "legacy_flagged_decisions": 2, "legacy_unflagged_population": 2, "sample_retained": 2, "sample_rule": "Bottom SHA256(scope, request sequence, request event hash) among ALL eligible decisions with NO legacy rule hit, including capped-away hits.", "sample_representative_of_all_actions": false, "raw_rule_hits": {"short_discard": 2}, "all_eligible_finding_counts": {}, "contradiction_decisions": 0, "contradiction_reservoir_omitted": 0, "packets_retained": 4, "legacy_flagged_decisions_without_packet": 0, "legacy_flag_rows_omitted": 0, "old_reader_counts": {"explicit_run_starts": 1, "requests_in_open_runs": 4, "linked_current_advisor_requests": 4, "discard_requests": 4, "unique_observer_eligible_settlements": 4, "eligible_settlement_discard": 4, "physically_confirmed_screened_actions": 4}, "old_reader_suppressions": {}, "unconfirmed_actions_at_tail": 0, "unconfirmed_rule_candidates_at_tail": 0, "contradictions_without_packet": 0}, "subsets": 872}
+{"split": "development", "pair_index": 0, "role": "incumbent", "challenge": "c_knife_1", "seed": "BF3EJT48", "outcome": "unsupported", "reason": "fixture unresolved", "elapsed_seconds": 0.01}
+{"split": "development", "pair_index": 0, "role": "candidate", "challenge": "c_knife_1", "seed": "BF3EJT48", "outcome": "unsupported", "reason": "fixture unresolved", "elapsed_seconds": 0.01}
+{"split": "development", "pair_index": 1, "role": "candidate", "challenge": "c_jokerless_1", "seed": "8R5VQW7A", "outcome": "unsupported", "reason": "fixture unresolved", "elapsed_seconds": 0.01}
+{"split": "development", "pair_index": 1, "role": "incumbent", "challenge": "c_jokerless_1", "seed": "8R5VQW7A", "outcome": "unsupported", "reason": "fixture unresolved", "elapsed_seconds": 0.01}
+{"version": "2.65.0-alpha", "installedAt": "fixture", "backup": "C:\\Users\\trevo\\AppData\\Local\\Temp\\tmp1fnmah04\\installed\\deployment-backups\\new", "configSHA256": "unchanged", "activation": "normal restart"}
+Verified runtime files: 0
+
+...............................................................................................................................[WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\trevo\\AppData\\Local\\Temp\\tmpqyqx7mww\\out'
+...Verified analysis passes disagree
+......................................................................................................................................................................................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 472 tests in 13.774s
+
+OK

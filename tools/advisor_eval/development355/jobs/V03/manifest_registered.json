@@ -1,0 +1,22 @@
+{
+  "schema": "learning-experiment-v1",
+  "registered_utc": "2026-09-16T15:12:10Z",
+  "timestamp_correction": "Initial manually entered 15:15 timestamp was a transcription error. File CreationTimeUtc establishes 15:12:10, before P01 started 15:12:28. Original manifest and receipt preserved in jobs/P01; no limits or authorization changed.",
+  "authority": "Current conversation: build and try a learned Balatro agent today; explicitly use RTX 5090 GPU training, model as large as useful; research modern efficiency and game learning. Supersedes historical no-neural/GPU clause only for this isolated prototype. No historical allowance reused.",
+  "hypothesis": "A public-information, candidate-conditioned GPU policy can learn useful action selection in a fast isolated simulator. First measure interface correctness, learning signal and throughput; no claim of retail qualification or better win rate.",
+  "source": {"repository": "https://github.com/TylerFlar/jackdaw-balatro", "commit": "92df18c27e26e6d324132942905e41242e4e24bf", "qualified": false, "hashes": "external/provenance.json"},
+  "profile": "isolated simulator default catalog, not player profile",
+  "limits": {"coordinator_wall_seconds_reserved": 3030, "max_simulator_processes_per_job": 8, "worst_case_simulator_process_seconds": 24240, "training_device": "cuda RTX 5090 only", "max_allocated_gpu_gib": 24, "minimum_initial_gpu_headroom_gib": 6, "artifact_gib": 2, "source_executable_workers": 0, "seed_search": 0, "live_game_control": 0, "saves_or_player_profiles": 0},
+  "design": {"development_seed_namespace": "L355TRAIN", "validation_seed_namespace": "L355DEV", "final_seed_namespace": "L355FINAL", "partition": "disjoint namespace-hashed seed families; final evaluation after model choice; no seed selection for favorable outcomes", "outcomes": ["win", "loss", "unsupported", "error", "censored"], "win_definition": "Simulator final Ante8 boss clear and won latch before endless mode; separately retain threshold and phase evidence", "retail_win_claim": false, "censoring": "Unsupported/errors/limits retained separately. No fabricated terminal labels. Final records not recycled into training in this experiment.", "metrics": ["terminal counts", "win fraction only with population and censoring reported", "blinds cleared", "transitions per second", "GPU memory", "losses", "action coverage"], "selection": "Development results may guide later registered jobs; final evaluation is descriptive pilot evidence, not proof of competence."},
+  "jobs": {
+    "P01": {"module": "tools.advisor_learning.hardware_probe", "seconds": 30, "transitions": 0, "episodes": 0, "purpose": "Device, memory, BF16 versus FP32 finite numerical check; no games"},
+    "S01": {"module": "tools.advisor_learning.train", "seconds": 120, "transitions": 10000, "episodes": 512, "purpose": "Deterministic heuristic/interface smoke and throughput"},
+    "T01": {"module": "tools.advisor_learning.train", "seconds": 600, "transitions": 100000, "episodes": 5000, "purpose": "Initial GPU policy pilot"},
+    "T02": {"module": "tools.advisor_learning.train", "seconds": 900, "transitions": 200000, "episodes": 10000, "purpose": "Measured successor pilot, selected using development evidence"},
+    "T03": {"module": "tools.advisor_learning.train", "seconds": 900, "transitions": 200000, "episodes": 10000, "purpose": "One bounded repair or continuation pilot if useful"},
+    "V01": {"module": "tools.advisor_learning.train", "seconds": 120, "transitions": 20000, "episodes": 32, "purpose": "Development heuristic baseline"},
+    "V02": {"module": "tools.advisor_learning.train", "seconds": 180, "transitions": 40000, "episodes": 64, "purpose": "Development learned policy evaluation"},
+    "V03": {"module": "tools.advisor_learning.train", "seconds": 180, "transitions": 40000, "episodes": 64, "purpose": "Final frozen policy unseen-namespace pilot"}
+  },
+  "one_use": "Exclusive job directory consumes each lease including setup error/timeout. Jobs cannot be rerun or replaced by new directory. Closing closes all unused jobs. Each job freezes implementation, simulator, arguments, profile and Python runtime before execution. No CPU training, installations, promotions or automatic continuation."
+}

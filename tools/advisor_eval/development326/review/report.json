@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "at_utc": "2026-09-15T17:35:33.717385+00:00",
+  "reviewer": "storage_review326",
+  "scope": "Read-only runtime and fixture review versus frozen installed325; manufactured relevant fixtures only. Writes confined to this new review receipt directory.",
+  "comparison_policy": "tools/advisor_eval/runs/resume325_installed/policy",
+  "findings": [],
+  "result": "no_concrete_defect_found",
+  "files": {
+    "Brainstorm/Advisor/player_log_archive.lua": "f583927de83d9536d6b20d3c207805d126430a496528e16fd8052ea255713d11",
+    "Brainstorm/Advisor/player_journal.lua": "5e306140c9eebb328815edcd5e960ada6931a72d913c3c4fc0f5c8a7fe66b93b",
+    "Brainstorm/Advisor/performance.lua": "bdd2bf8658236a4e139c3d8735bc9b84f31dd916198d005f4f0324cac984e3eb",
+    "Brainstorm/Core/Brainstorm.lua": "1c0f4b493f8e62902ec6f24198a4d4562e2b7bb5a16373c9d1aced1a8b0016c9",
+    "Brainstorm/UI/advisor.lua": "c8ff4ceac56e7cbb161c0160fbdf4582697c63c6eb60f9001088e3f5f042a47e",
+    "tests/advisor_performance.lua": "c8639fc33e5f3bfb68a35cff6dd887898093c5df40404072f8bf76920388f20b",
+    "tests/advisor_frame_timing.lua": "b10e36dc5b77c9af277749945b36a5583eef37a1c1130385c87ff8f2624a62c5",
+    "tests/advisor_player_journal.lua": "bbf3141a4e468e233f1690aaa1fd9d2c6e3883166edbf37002bfcc2ee3cb37a2",
+    "tests/advisor_logging_status.lua": "5990f26639befbdfeb7be787b2f1089a65b57e364adf37dfc5e96cca9ebf3ca9",
+    "tests/advisor_ui.lua": "57af86dd29c7de562fa158d3206556e71c123a50e0bfa0cab16696c97736b893",
+    "tests/test_advisor_player_log_archive.py": "5dbc8d37604aeb7518e81f73f5e62c20e8dd99d34a2194ca094a7202f59e6c41"
+  },
+  "baseline_runtime_files": {
+    "Brainstorm/Advisor/player_log_archive.lua": "a25fffd012ec4c52de40d7b7f945486e0e586ee0b7e675314f315b5a032b64ca",
+    "Brainstorm/Advisor/player_journal.lua": "fbf8871d82fe93e659beaf4a6d1b2cc5feef3122516d1cee34ed22dfc1c4e329",
+    "Brainstorm/Advisor/performance.lua": "6595aba266db35f34237803ba85b568aeb57218879da661dafc04f78dcc9cc1c",
+    "Brainstorm/Core/Brainstorm.lua": "1b47524df8e05db6d63bd9cd5c11c6d20df4801f11adaa4d53b251fdb472bc80",
+    "Brainstorm/UI/advisor.lua": "5ff37af0aaa52c817e167b9b5f71c13ae425e324d04fddefae2d24904c3a3e64"
+  },
+  "validation": [
+    {
+      "command": "python tests/run_lua_tests.py tests/advisor_performance.lua tests/advisor_frame_timing.lua tests/advisor_player_journal.lua tests/advisor_logging_status.lua tests/advisor_ui.lua",
+      "status": "passed",
+      "fixtures": 5,
+      "checks": 1203,
+      "check_counts": {
+        "advisor_performance": 188,
+        "advisor_frame_timing": 86,
+        "advisor_player_journal": 25,
+        "advisor_logging_status": 791,
+        "advisor_ui": 113
+      }
+    },
+    {
+      "command": "python -m unittest tests.test_advisor_player_log_archive",
+      "status": "passed",
+      "tests": 17,
+      "reported_seconds": 0.107
+    }
+  ],
+  "limits": [
+    "No game execution, UI control, save/profile reads, source experiment, search, terminal attempt or new external player-log content read.",
+    "Observed transient popup text was not recovered; storage-limit cause remains an inference from root metadata analysis.",
+    "Live timing overhead, loaded activation and performance improvement are not measured by this review.",
+    "Root cleanup receipt was read as repository evidence; this reviewer did not repeat deletion or inspect external directories."
+  ],
+  "cleanup_receipt_sha256": "f52ec8becda45e3268e8a680eb81eca08ebae0f45a52cc20cf5e595512d9d573"
+}

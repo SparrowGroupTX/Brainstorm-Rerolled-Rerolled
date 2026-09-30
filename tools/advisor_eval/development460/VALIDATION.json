@@ -1,0 +1,369 @@
+{
+  "attempt_artifact_bytes": 23686,
+  "attempt_files": {
+    "LEASE.json": {
+      "bytes": 672,
+      "sha256": "9e77ecf2c8f3db2196126d0f86bcaedb4244efc6678dfa5f714f0f780cb3c7f0"
+    },
+    "report.json": {
+      "bytes": 18498,
+      "sha256": "dabfbbdc39943cc778af1579cfbed1803cfd1069c91e9b268bfa1c7ab0dd3bde"
+    },
+    "stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.log": {
+      "bytes": 4516,
+      "sha256": "afe066ab9dcf6a7c2b6823a05502ddee440b946204cf23c291de8b2d9d1b401a"
+    }
+  },
+  "before_hashes_verified": true,
+  "candidate_patch_sha256": "7a539e3070ec3a5cb458f9413a97f794e10643b9221444aef5f09f829614e084",
+  "client_date": "2026-09-30",
+  "code_changes": false,
+  "current_document_sha256": {
+    "ADVISOR_HANDOFF.md": "079cf8da9138f15ea68866edac1f6592619e4a60fd9a17cb1ddef158de913caa",
+    "ADVISOR_RESUME_PROMPT.md": "ed273a19bca3e0567355afa48ab2bbdd00eebf112b6121296d6610bcd7ee81e7",
+    "ADVISOR_START_HERE.md": "00e524e29ba457dca5b39adaa3c9c2c7b30ced613dda3547d68057372e4249ff",
+    "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md": "782d381628cd84bccde7edad2a32e266b9cde7d00b4be1d91d71868ac32651b5",
+    "tools/advisor_eval/RESUME_PROMPT_460.txt": "0d1370a646a3c3a460b28d782f5cf43341d0f4d3d015d127a65678a87df51574",
+    "tools/advisor_eval/SIMULATOR_FIDELITY_PLAN_452.md": "a2eeeb871900509955c94f579eb488a00ce218367beec6a09d162d63f4b2134f",
+    "tools/advisor_eval/development458/REPORT.md": "24a82f11cca1f1a2e2d0884fdd6549eeaa74bdebe3cc18d06171dd342b39263a",
+    "tools/advisor_eval/development460/REPORT.md": "5c8a5dc956fcd42725135e411b9c6e361133743ea6065d0eab1bdadba0ebe297"
+  },
+  "full_regression_rerun": false,
+  "initial_document_check_failure": "Receipt self-link was checked before VALIDATION.json existed; deferred only that self-link until writing this receipt.",
+  "local_link_checks": [
+    {
+      "exists": true,
+      "file": "ADVISOR_RESUME_PROMPT.md",
+      "target": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_RESUME_PROMPT.md",
+      "target": "tools/advisor_eval/development458/SOURCE_EXECUTION_PROPOSAL.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_RESUME_PROMPT.md",
+      "target": "tools/advisor_eval/development460/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_RESUME_PROMPT.md",
+      "target": "tools/advisor_eval/development460/before/ADVISOR_RESUME_PROMPT.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_RESUME_PROMPT.md",
+      "target": "tools/advisor_eval/SIMULATOR_FIDELITY_PLAN_452.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_RESUME_PROMPT.md",
+      "target": "tools/advisor_eval/INSTALLATION_POLICY.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_START_HERE.md",
+      "target": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_START_HERE.md",
+      "target": "ADVISOR_RESUME_PROMPT.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_START_HERE.md",
+      "target": "tools/advisor_eval/SIMULATOR_FIDELITY_PLAN_452.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_START_HERE.md",
+      "target": "tools/advisor_eval/INSTALLED_CHECKPOINT_451.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_START_HERE.md",
+      "target": "tools/advisor_eval/development460/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_START_HERE.md",
+      "target": "tools/advisor_eval/RESUME_PROMPT_460.txt"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_HANDOFF.md",
+      "target": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_HANDOFF.md",
+      "target": "ADVISOR_RESUME_PROMPT.md"
+    },
+    {
+      "exists": true,
+      "file": "ADVISOR_HANDOFF.md",
+      "target": "tools/advisor_eval/development460/before/ADVISOR_HANDOFF.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/SIMULATOR_FIDELITY_PLAN_452.md",
+      "target": "FRESH_CHAT_HANDOFF_460.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/SIMULATOR_FIDELITY_PLAN_452.md",
+      "target": "../../ADVISOR_RESUME_PROMPT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/SIMULATOR_FIDELITY_PLAN_452.md",
+      "target": "development459/before/SIMULATOR_FIDELITY_PLAN_452.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "../development460/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "source_attempt_001/report.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "../../advisor_learning/lifecycle_458.py"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "../development457/frozen/"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "MANUFACTURED_COMPARISONS.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "../../advisor_learning/lifecycle_reference_458.py"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "ACCEPTANCE.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "SOURCE_EXECUTION_PROPOSAL.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "prepare_source_probe.py"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "prepared_source_probe.lua"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "EXPECTED_COMPARISONS.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "SOURCE_PROBE_PREPARED.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "probe_body.lua"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "run_source_probe.py"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "test_probe_parser.py"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development458/REPORT.md",
+      "target": "SOURCE_EXECUTION_PROPOSAL.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "../../ADVISOR_RESUME_PROMPT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "SIMULATOR_FIDELITY_PLAN_452.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development453/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development454/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development455/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development456/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development457/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development460/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development458/source_attempt_001/report.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development458/source_attempt_001/LEASE.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development458/source_attempt_001/stdout.log"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development458/source_attempt_001/stderr.log"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development458/SOURCE_EXECUTION_PROPOSAL.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "ARCHITECTURE_MAP_452.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "CURRENT_EVIDENCE_452.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "STRATEGY_CONTEXT_452.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "WORKFLOW_452.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "INSTALLED_CHECKPOINT_451.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "development460/REPORT.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/FRESH_CHAT_HANDOFF_460.md",
+      "target": "RESUME_PROMPT_460.txt"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../development458/source_attempt_001/LEASE.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../development458/SOURCE_EXECUTION_PROPOSAL.md"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../development458/source_attempt_001/report.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../development458/source_attempt_001/stdout.log"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../development458/source_attempt_001/stderr.log"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../development458/MANUFACTURED_COMPARISONS.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "VALIDATION.json"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "before/"
+    },
+    {
+      "exists": true,
+      "file": "tools/advisor_eval/development460/REPORT.md",
+      "target": "../FRESH_CHAT_HANDOFF_460.md"
+    }
+  ],
+  "parser_tests": {
+    "command": "python -B -m unittest tools.advisor_eval.development458.test_probe_parser -v",
+    "passed": 4
+  },
+  "prepared_dependencies": 22,
+  "prepared_integrity_verified": true,
+  "prepared_manifest_sha256": "89319182932454a41483f0a0f9bf6ef659532ad6f755d1af7f6dc2fc1a6e7e7e",
+  "prescribed_draw_calls": 5,
+  "saved_stdout_reparse_matches_original_report": true,
+  "schema": "source_completion_checkpoint460_v1",
+  "source_case_agreements": 8,
+  "source_rerun": false,
+  "stub_card_constructions": 12,
+  "stub_open_calls": 1,
+  "user_requested_pause": true
+}

@@ -1,0 +1,480 @@
+{
+  "revision": 422,
+  "scope": "passive_report_verification_no_runtime_change",
+  "session": "session-20260927T163146Z-1",
+  "loaded_version": "Brainstorm v2.205.0-alpha",
+  "capture_events": 745,
+  "run_outcome": "unended_at_capture",
+  "database_sha256": "9993874ecf5f9cb846baf3bd836195c1cf24ddfabcf3d33768d46c8b19ec6f54",
+  "blueprint_acquired": true,
+  "mr_bones_from_paid_pack_free_choice": true,
+  "reported_missed_blueprint_demonstrated": false,
+  "user_clarification": "User confirmed current run and acknowledged possible observation mistake.",
+  "runtime_digest": "b20623afa6560daf11552206749aa238df212cc4f0fa6233f79861a8d98b1988",
+  "runtime_and_tests_unchanged": true,
+  "native_and_config_preserved": true,
+  "game_control": false,
+  "policy_replay": false,
+  "original_game_execution": false,
+  "events": [
+    {
+      "sequence": 153,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:153",
+      "phase": "shop",
+      "ante": 1,
+      "cash": 9,
+      "jokers": [
+        "j_perkeo",
+        "j_yorick"
+      ]
+    },
+    {
+      "sequence": 156,
+      "kind": "teacher_advice",
+      "observation_id": "teacher356-1790526706-1:153",
+      "action": {
+        "area": "shop_booster",
+        "index": 1,
+        "kind": "open"
+      },
+      "status": "current",
+      "title": "Open Buffoon Pack ($4)",
+      "lines": [
+        "Find a scoring Joker; the contents are unknown until opened.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+        "Upcoming boss - Window: Diamonds are debuffed. Favor other suits for scoring cards.",
+        "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "open",
+        "active_seconds": 0.25157159999998413,
+        "decision_id": 30,
+        "elapsed_seconds": 0.4292699000000013,
+        "evaluations": 5302,
+        "finished_seconds": 61.7338352,
+        "max_resume_seconds": 0.049467100000001096,
+        "phase": "shop",
+        "resume_calls": 83,
+        "started_seconds": 61.3045653,
+        "status": "completed"
+      },
+      "copy_review": {
+        "acquisition": {
+          "attempted": false,
+          "complete": false,
+          "evaluations": 0,
+          "reason": "no_supported_copy_priority",
+          "schema": 1,
+          "truncated": false
+        },
+        "final_area": "shop_booster",
+        "final_index": 1,
+        "final_kind": "open",
+        "schema": 1
+      }
+    },
+    {
+      "sequence": 159,
+      "kind": "action_requested",
+      "observation_id": "teacher356-1790526706-1:153",
+      "details": {
+        "action": "advisor_execute",
+        "input": {
+          "action": {
+            "area": "shop_booster",
+            "index": 1,
+            "kind": "open"
+          }
+        },
+        "source": "auto_run"
+      }
+    },
+    {
+      "sequence": 160,
+      "kind": "action_callback_result",
+      "observation_id": "teacher356-1790526706-1:153",
+      "details": {
+        "action_sequence": 159,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      }
+    },
+    {
+      "sequence": 165,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:165",
+      "phase": "pack",
+      "ante": 1,
+      "cash": 5,
+      "jokers": [
+        "j_perkeo",
+        "j_yorick"
+      ]
+    },
+    {
+      "sequence": 166,
+      "kind": "teacher_advice",
+      "observation_id": "teacher356-1790526706-1:165",
+      "action": {
+        "area": "pack_cards",
+        "index": 2,
+        "kind": "choose"
+      },
+      "status": "current",
+      "title": "Choose Mr. Bones",
+      "lines": [
+        "One-time survival insurance when the score reaches its requirement. Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee. Perishable: only 5 rounds remain. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 111 -> 111 chips across 4 paired deck samples, allowing sensible Joker order; upcoming The Window; target 600. Samples are not a blind-win probability.",
+        "After each choice, refresh advice for the remaining options.",
+        "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "choose",
+        "active_seconds": 0.2594602000000208,
+        "decision_id": 32,
+        "elapsed_seconds": 0.4557418999999996,
+        "evaluations": 4089,
+        "finished_seconds": 62.4280892,
+        "max_resume_seconds": 0.030561699999999803,
+        "phase": "pack",
+        "resume_calls": 64,
+        "started_seconds": 61.9723473,
+        "status": "completed"
+      },
+      "copy_review": {
+        "final_area": "pack_cards",
+        "final_index": 2,
+        "final_kind": "choose",
+        "pack": {
+          "candidates": [
+            {
+              "acquisition_hurdle": 14,
+              "adjustment": -14,
+              "admitted": true,
+              "after_mean": 111,
+              "after_target": 600,
+              "complete_finishing": true,
+              "index": 1,
+              "key": "j_baseball",
+              "kind": "choose",
+              "objective_admitted": true,
+              "offer_id": "card:341",
+              "ratio": 1,
+              "reason": "endpoint_compared",
+              "score": 8.81593412844724,
+              "status": "complete",
+              "uncertain": false
+            },
+            {
+              "acquisition_hurdle": 14,
+              "adjustment": -14,
+              "admitted": true,
+              "after_mean": 111,
+              "after_target": 600,
+              "complete_finishing": true,
+              "index": 2,
+              "key": "j_mr_bones",
+              "kind": "choose",
+              "objective_admitted": true,
+              "offer_id": "card:342",
+              "ratio": 1,
+              "reason": "endpoint_compared",
+              "score": 32.81593412844724,
+              "status": "complete",
+              "uncertain": false
+            }
+          ],
+          "complete": true,
+          "truncated": false
+        },
+        "schema": 1
+      }
+    },
+    {
+      "sequence": 170,
+      "kind": "action_requested",
+      "observation_id": "teacher356-1790526706-1:165",
+      "details": {
+        "action": "advisor_execute",
+        "input": {
+          "action": {
+            "area": "pack_cards",
+            "index": 2,
+            "kind": "choose"
+          }
+        },
+        "source": "auto_run"
+      }
+    },
+    {
+      "sequence": 171,
+      "kind": "action_callback_result",
+      "observation_id": "teacher356-1790526706-1:165",
+      "details": {
+        "action_sequence": 170,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      }
+    },
+    {
+      "sequence": 175,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:175",
+      "phase": "shop",
+      "ante": 1,
+      "cash": 5,
+      "jokers": [
+        "j_perkeo",
+        "j_yorick",
+        "j_mr_bones"
+      ]
+    },
+    {
+      "sequence": 177,
+      "kind": "state_after_actions",
+      "observation_id": "teacher356-1790526706-1:175",
+      "details": {
+        "action_sequences": [
+          170
+        ],
+        "latest_action_sequence": 170,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "sequence": 179,
+      "kind": "teacher_advice",
+      "observation_id": "teacher356-1790526706-1:175",
+      "action": {
+        "area": "shop_jokers",
+        "index": 2,
+        "kind": "buy"
+      },
+      "status": "current",
+      "title": "Buy Uranus ($3)",
+      "lines": [
+        "Levels Two Pair. Holding it strengthens the copying pool or matching Observatory engine. It supplies the currently empty Perkeo pool. Replace this temporary filler when a stronger source is visible. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 111 -> 111 chips across 4 paired deck samples, allowing sensible Joker order; upcoming The Window; target 600. Samples are not a blind-win probability.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+        "Upcoming boss - Window: Diamonds are debuffed. Favor other suits for scoring cards.",
+        "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "buy",
+        "active_seconds": 2.640957999999827,
+        "decision_id": 35,
+        "elapsed_seconds": 3.656859599999997,
+        "evaluations": 35206,
+        "finished_seconds": 67.0165717,
+        "max_resume_seconds": 0.3568866999999898,
+        "phase": "shop",
+        "resume_calls": 551,
+        "started_seconds": 63.3597121,
+        "status": "completed"
+      },
+      "copy_review": {
+        "acquisition": {
+          "attempted": false,
+          "complete": false,
+          "evaluations": 0,
+          "reason": "no_supported_copy_priority",
+          "schema": 1,
+          "truncated": false
+        },
+        "final_area": "shop_jokers",
+        "final_index": 2,
+        "final_kind": "buy",
+        "schema": 1
+      }
+    },
+    {
+      "sequence": 182,
+      "kind": "action_requested",
+      "observation_id": "teacher356-1790526706-1:175",
+      "details": {
+        "action": "advisor_execute",
+        "input": {
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          }
+        },
+        "source": "auto_run"
+      }
+    },
+    {
+      "sequence": 190,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:190",
+      "phase": "shop",
+      "ante": 1,
+      "cash": 2,
+      "jokers": [
+        "j_perkeo",
+        "j_yorick",
+        "j_mr_bones"
+      ]
+    },
+    {
+      "sequence": 192,
+      "kind": "teacher_advice",
+      "observation_id": "teacher356-1790526706-1:190",
+      "action": {
+        "area": "shop_jokers",
+        "index": 1,
+        "kind": "buy"
+      },
+      "status": "current",
+      "title": "Buy Blueprint ($1)",
+      "lines": [
+        "Copy your strongest compatible Joker; placement determines the target. Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee. Rental drains $3 every round. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 111 -> 111 chips across 4 paired deck samples, allowing copy-target order shortlist (1/4 layouts); upcoming The Window; target 600. Samples are not a blind-win probability.",
+        "Build toward $25 for maximum interest, once survival is covered.",
+        "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+        "Upcoming boss - Window: Diamonds are debuffed. Favor other suits for scoring cards.",
+        "Keep the last Uranus for Perkeo copies.",
+        "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+      ],
+      "timing": {
+        "action_kind": "buy",
+        "active_seconds": 1.2189890000000503,
+        "decision_id": 37,
+        "elapsed_seconds": 1.8425603999999964,
+        "evaluations": 22858,
+        "finished_seconds": 69.239226,
+        "max_resume_seconds": 0.1760660999999999,
+        "phase": "shop",
+        "resume_calls": 357,
+        "started_seconds": 67.3966656,
+        "status": "completed"
+      },
+      "copy_review": {
+        "acquisition": {
+          "attempted": true,
+          "complete": true,
+          "evaluations": 4988,
+          "reason": "no_supported_copy_priority",
+          "schema": 1,
+          "truncated": false
+        },
+        "final_area": "shop_jokers",
+        "final_index": 1,
+        "final_kind": "buy",
+        "focused_direct": {
+          "candidates": [
+            {
+              "admitted": true,
+              "cash_after": 1,
+              "compared": true,
+              "copy_priority": false,
+              "cost": 1,
+              "finishing_complete": true,
+              "key": "j_blueprint",
+              "offer_id": "card:336",
+              "offer_index": 1,
+              "opening_mean_after": 111,
+              "ratio": 1,
+              "reason": "no_supported_copy_priority",
+              "samples": 4
+            }
+          ],
+          "complete": true,
+          "evaluations": 4988,
+          "schema": 1,
+          "stage": "focused_direct"
+        },
+        "schema": 1
+      }
+    },
+    {
+      "sequence": 195,
+      "kind": "action_requested",
+      "observation_id": "teacher356-1790526706-1:190",
+      "details": {
+        "action": "advisor_execute",
+        "input": {
+          "action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          }
+        },
+        "source": "auto_run"
+      }
+    },
+    {
+      "sequence": 196,
+      "kind": "action_callback_result",
+      "observation_id": "teacher356-1790526706-1:190",
+      "details": {
+        "action_sequence": 195,
+        "callback_returned": true,
+        "completion": "Callback result only; queued effects may still be pending.",
+        "outcome_kind": "returned",
+        "reason": ""
+      }
+    },
+    {
+      "sequence": 199,
+      "kind": "state_after_actions",
+      "observation_id": "teacher356-1790526706-1:190",
+      "details": {
+        "action_sequences": [
+          195
+        ],
+        "latest_action_sequence": 195,
+        "observation": "First settled observation after callbacks; not proof every queued event completed."
+      }
+    },
+    {
+      "sequence": 200,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:200",
+      "phase": "shop",
+      "ante": 1,
+      "cash": 1,
+      "jokers": [
+        "j_perkeo",
+        "j_yorick",
+        "j_mr_bones",
+        "j_blueprint"
+      ]
+    },
+    {
+      "sequence": 210,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:210",
+      "phase": "shop",
+      "ante": 1,
+      "cash": 1,
+      "jokers": [
+        "j_blueprint",
+        "j_perkeo",
+        "j_yorick",
+        "j_mr_bones"
+      ]
+    },
+    {
+      "sequence": 220,
+      "kind": "teacher_observation",
+      "observation_id": "teacher356-1790526706-1:220",
+      "phase": "blind",
+      "ante": 1,
+      "cash": 1,
+      "jokers": [
+        "j_blueprint",
+        "j_perkeo",
+        "j_yorick",
+        "j_mr_bones"
+      ]
+    }
+  ]
+}

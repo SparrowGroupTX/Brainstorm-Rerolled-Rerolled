@@ -1,0 +1,361 @@
+-- Explicitly started, injected auto-run controller. No game globals, RNG,
+-- persistence, filesystem, threads or native calls belong in this module.
+local M={schema=1}
+local function finite(v) return type(v)=='number' and v==v and v~=math.huge and v~=-math.huge end
+local function integer(v,lo,hi) return finite(v) and v%1==0 and v>=lo and (not hi or v<=hi) end
+local function id(v) return type(v)=='string' and v~='' and #v<=256 or integer(v,0) end
+local function clone(value,seen,budget,depth)
+  seen=seen or {};budget=budget or {left=20000};depth=depth or 0
+  budget.left=budget.left-1
+  if budget.left<0 or depth>16 then error('Controller data exceeded its copy bound.',0) end
+  if type(value)~='table' then
+    if value==nil or type(value)=='boolean' or finite(value) or type(value)=='string' and #value<=262144 then return value end
+    error('Controller data must be plain finite values.',0)
+  end
+  if getmetatable(value) or seen[value] then error('Controller data must be plain and acyclic.',0) end
+  seen[value]=true;local result={}
+  for key,v in pairs(value) do
+    if type(key)~='string' and not integer(key,1) then error('Invalid controller data key.',0) end
+    result[key]=clone(v,seen,budget,depth+1)
+  end
+  seen[value]=nil;return result
+end
+local generation_fields={'consent_generation','settings_generation','checkpoint_generation','manual_generation'}
+local function config(options)
+  options=options or {}
+  if type(options)~='table' then return nil,'Options must be a table.' end
+  local c={}
+  for _,entry in ipairs({{'search_seconds',30,30},{'stall_seconds',30,30},{'max_actions',500,500},
+      {'run_seconds',1800,1800},{'max_runs',25,100},{'session_seconds',21600,21600}}) do
+    local value=options[entry[1]];if value==nil then value=entry[2] end
+    if not integer(value,1,entry[3]) then return nil,'Invalid '..entry[1]..' limit.' end
+    c[entry[1]]=value
+  end
+  local ok,request=pcall(clone,options.search_request or {})
+  if not ok then return nil,request end
+  c.search_request=request
+  return c
+end
+local function goal_status(goal,profile)
+  if type(goal)~='table' or goal.schema~=1 or goal.goal~='gold_stickers' or goal.profile_id~=profile or
+      goal.metadata_status~='complete' or goal.catalog_status~='complete' or goal.stake_status~='complete' then
+    return nil,'Loaded Gold-sticker metadata is unavailable or changed.'
+  end
+  local c=goal.counts
+  if type(c)~='table' or c.total~=150 or not integer(c.complete,0,150) or not integer(c.missing,0,150) or
+      not integer(c.unknown,0,150) or c.complete+c.missing+c.unknown~=150 then
+    return nil,'Gold-sticker counts are inconsistent.'
+  end
+  if c.unknown~=0 then return nil,'Unknown Gold-sticker records cannot support auto-run.' end
+  return c.missing==0 and 'complete' or 'missing'
+end
+function M.new(callbacks)
+  local cb={}
+  for _,key in ipairs({'observe','search_start','search_poll','search_cancel','start_run','can_execute','execute','log','now'}) do
+    assert(type(callbacks and callbacks[key])=='function','Missing auto-run callback '..key)
+    cb[key]=callbacks[key]
+  end
+  local state={state='idle',active=false,complete=false,search_pending=false,session_serial=0,
+    runs_started=0,actions=0,outcomes={wins=0,losses=0},last_time=nil}
+  local api={}
+  local function emit(event,details)
+    local record={schema=1,event=event,time=state.last_time,session=state.session_serial,
+      profile_id=state.binding and state.binding.profile_id,run_id=state.run_id,
+      search_id=state.search_id,state=state.state}
+    for k,v in pairs(details or {}) do record[k]=v end
+    local copied,payload=pcall(clone,record)
+    if not copied then return false,tostring(payload) end
+    local ok,result=pcall(cb.log,payload)
+    if not ok or result==false then return false,ok and 'The event log rejected a record.' or tostring(result) end
+    return true
+  end
+  local function cancel_search()
+    if not state.search_pending or state.cancel_requested then return end
+    state.cancel_requested=true
+    local ok,result=pcall(cb.search_cancel,state.search_id)
+    state.cancel_error=not ok and tostring(result) or result==false and 'Cancellation request was rejected.' or nil
+    emit('search_cancel_requested',{reason=state.reason,cancel_error=state.cancel_error})
+  end
+  local function stop(reason,detail,completed)
+    if state.active or state.state~='stopped' then
+      state.active=false;state.state='stopped';state.reason=reason;state.detail=detail
+      state.complete=completed==true
+      local ok,why=emit(completed and 'collection_complete' or 'session_stopped',
+        {reason=reason,detail=detail,runs_started=state.runs_started,actions=state.actions,
+          outcomes=state.outcomes,search_draining=state.search_pending})
+      if not ok then state.log_error=why end
+    end
+    cancel_search()
+  end
+  local function clock()
+    local ok,t=pcall(cb.now)
+    if not ok or not finite(t) or state.last_time and t<state.last_time then
+      stop('clock_unavailable','A finite monotonic clock is required.');return nil
+    end
+    state.last_time=t;return t
+  end
+  local function observe()
+    local ok,obs=pcall(cb.observe)
+    if not ok or type(obs)~='table' or getmetatable(obs) then
+      stop('observation_unavailable',ok and 'No plain observation.' or tostring(obs));return nil
+    end
+    return obs
+  end
+  local function checked_log(event,details)
+    local ok,why=emit(event,details)
+    if not ok then stop('log_unavailable',why);return false end
+    return true
+  end
+  local function binding(obs)
+    if not id(obs.profile_id) then return nil,'The current profile identity is unavailable.' end
+    local b={profile_id=obs.profile_id}
+    for _,field in ipairs(generation_fields) do
+      if not integer(obs[field],0) then return nil,'Missing '..field..' change tracking.' end
+      b[field]=obs[field]
+    end
+    return b
+  end
+  local function check_observation(obs)
+    if obs.profile_id~=state.binding.profile_id then stop('profile_changed');return false end
+    for _,field in ipairs(generation_fields) do
+      if obs[field]~=state.binding[field] then stop(field..'_changed');return false end
+    end
+    if obs.modal or obs.paused then stop('manual_pause','A menu, modal or pause was opened.');return false end
+    return true
+  end
+  local function ready(obs)
+    return obs.ready==true and not obs.modal and not obs.paused and not obs.advisor_busy and not obs.action_pending and not obs.search_busy
+  end
+  local function progress(obs,t)
+    if type(obs.fingerprint)=='string' and obs.fingerprint~='' and obs.fingerprint~=state.progress_fingerprint then
+      -- Animations or changing metadata must not continually renew a missing
+      -- action's thirty-second allowance. Only accepted lifecycle progress and
+      -- observation of a dispatched action renew that allowance.
+      state.progress_fingerprint=obs.fingerprint
+    end
+  end
+  local function stalled(t,reason)
+    if t-(state.progress_at or t)>=state.config.stall_seconds then stop(reason or 'stalled');return true end
+    return false
+  end
+  local function poll_search(t,draining)
+    local ok,poll=pcall(cb.search_poll,state.search_id)
+    if not ok or type(poll)~='table' then
+      if not draining then stop('search_poll_error',ok and 'Missing search status.' or tostring(poll)) end
+      return
+    end
+    if poll.request_id~=state.search_id then
+      if not draining then stop('search_identity_changed','The owned search worker has a different request identity.') end
+      return
+    end
+    if poll.exited~=true then return end
+    state.search_pending=false
+    if draining or state.cancel_requested or not state.active then
+      emit('search_worker_exited',{status=poll.status,late_result_discarded=poll.status=='found'})
+      return
+    end
+    -- Check time again after the nonblocking poll. A late result cannot win a
+    -- race against the hard deadline simply because it arrived between ticks.
+    local current=clock();if not current then return end
+    if current>=state.search_deadline then stop('search_timeout');return end
+    if poll.status~='found' then stop(poll.status=='not_found' and 'search_not_found' or 'search_failed',poll.reason);return end
+    if type(poll.found)~='table' or type(poll.found.seed)~='string' or poll.found.seed=='' or #poll.found.seed>16 then
+      stop('search_result_invalid');return
+    end
+    local copied,found=pcall(clone,poll.found)
+    if not copied then stop('search_result_invalid',tostring(found));return end
+    state.found=found;state.state='waiting';state.waiting_for='start_ready';state.progress_at=current
+    checked_log('search_found',{found=found,search_seconds=current-state.search_started_at})
+  end
+  local function begin_search(obs,t)
+    if state.runs_started>=state.config.max_runs then stop('run_limit');return end
+    if obs.search_busy then stop('external_search_active');return end
+    local goal,why=goal_status(obs.goal,state.binding.profile_id)
+    if not goal then stop('goal_unavailable',why);return end
+    if goal=='complete' then stop('collection_complete',nil,true);return end
+    local ok,request=pcall(clone,{recipe=state.config.search_request,goal=obs.goal,
+      profile_id=state.binding.profile_id,consent_generation=state.binding.consent_generation,
+      budget_seconds=state.config.search_seconds})
+    if not ok then stop('search_request_invalid',tostring(request));return end
+    state.search_number=state.search_number+1
+    state.search_id='auto:'..tostring(state.binding.consent_generation)..':'..state.session_serial..':'..state.search_number
+    request.request_id=state.search_id;request.deadline=t+state.config.search_seconds
+    state.search_started_at=t;state.search_deadline=request.deadline
+    state.search_pending=false;state.cancel_requested=false;state.cancel_error=nil;state.found=nil
+    state.state='searching';state.waiting_for=nil
+    if not checked_log('search_requested',{request=request}) then return end
+    state.search_pending=true
+    local called,accepted,detail=pcall(cb.search_start,request)
+    if not called then stop('search_start_uncertain',tostring(accepted));return end
+    if accepted~=true then
+      -- Contract: an explicit false return proves that no worker started.
+      -- Throws remain uncertain and retain cancellation/poll obligations.
+      if accepted==false then state.search_pending=false end
+      stop('search_start_failed',detail);return
+    end
+    if not checked_log('search_started',{request_id=state.search_id}) then return end
+    local current=clock()
+    if current and current>=state.search_deadline then stop('search_timeout') end
+  end
+  local function begin_run(obs,t)
+    if not ready(obs) or obs.transition_ready~=true then
+      state.state='waiting';state.waiting_for='start_ready';stalled(t,'start_not_ready');return
+    end
+    if state.runs_started>=state.config.max_runs then stop('run_limit');return end
+    if obs.search_busy then stop('external_search_active');return end
+    state.previous_run_id=obs.run_id;state.run_id=nil;state.run_actions=0;state.pending_action=nil
+    state.run_started_at=t;state.progress_at=t;state.progress_fingerprint=nil
+    local next_run=state.runs_started+1;state.run_finalized=false
+    state.state='starting';state.waiting_for=nil
+    if not checked_log('run_start_requested',{found=state.found,run_number=next_run}) then return end
+    local ok,accepted,detail=pcall(cb.start_run,clone(state.found),clone(state.binding))
+    if not ok or accepted~=true then stop('run_start_uncertain',ok and detail or tostring(accepted));return end
+    state.runs_started=next_run
+    state.found=nil
+  end
+  local function terminal(obs,t)
+    local ended=obs.terminal
+    if ended==nil then return false end
+    if type(ended)~='table' or ended.verified~=true or ended.run_id~=state.run_id or not id(ended.event_id) or
+        not (ended.kind=='win' and ended.source=='original_win_callback' or ended.kind=='loss' and ended.source=='GAME_OVER') then
+      stop('terminal_unverified','A loaded GAME.won flag or an unbound terminal report cannot establish a win.');return true
+    end
+    if state.run_finalized then return true end
+    state.run_finalized=true;state.pending_action=nil;state.state='terminal';state.waiting_for=nil;state.progress_at=t
+    state.terminal_event=clone(ended)
+    local kind=ended.kind=='win' and 'wins' or 'losses';state.outcomes[kind]=state.outcomes[kind]+1
+    checked_log('run_finished',{outcome=ended.kind,evidence=ended,run_seconds=t-state.run_started_at,
+      run_actions=state.run_actions,run_number=state.runs_started})
+    return true
+  end
+  function api.start(options)
+    if state.active or state.search_pending then return false,'The previous session or search worker is still active.' end
+    local c,why=config(options);if not c then return false,why end
+    local t=clock();if not t then return false,state.reason end
+    local obs=observe();if not obs then return false,state.reason end
+    local b;b,why=binding(obs);if not b then return false,why end
+    if obs.modal or obs.paused or obs.search_busy or obs.action_pending then return false,'Close menus and wait for existing activity before starting.' end
+    local goal;goal,why=goal_status(obs.goal,b.profile_id);if not goal then return false,why end
+    state.session_serial=state.session_serial+1;state.config=c;state.binding=b;state.session_started_at=t
+    state.active=true;state.complete=false;state.reason=nil;state.detail=nil;state.log_error=nil
+    state.state='waiting';state.waiting_for='search_ready';state.search_number=0
+    state.runs_started=0;state.actions=0;state.outcomes={wins=0,losses=0};state.run_id=nil
+    state.run_actions=0;state.pending_action=nil;state.found=nil;state.terminal_event=nil
+    state.progress_at=t;state.progress_fingerprint=nil;state.cancel_requested=false
+    if not checked_log('session_started',{binding=b,limits=c,goal=obs.goal}) then return false,state.reason end
+    if goal=='complete' then stop('collection_complete',nil,true) end
+    -- Starting never performs gameplay or dispatches a search in the UI call.
+    -- The next explicit tick observes the state afresh before doing either.
+    return true
+  end
+  function api.stop(reason)
+    clock();stop(reason or 'user_stop')
+    return not state.search_pending
+  end
+  function api.status()
+    return clone({schema=1,state=state.state,active=state.active,busy=state.active or state.search_pending,
+      complete=state.complete,reason=state.reason,detail=state.detail,waiting_for=state.waiting_for,
+      search_draining=state.search_pending and not state.active,cancel_requested=state.cancel_requested,
+      cancel_error=state.cancel_error,log_error=state.log_error,search_id=state.search_id,
+      runs_started=state.runs_started,actions=state.actions,run_actions=state.run_actions,
+      outcomes=state.outcomes,profile_id=state.binding and state.binding.profile_id,run_id=state.run_id,
+      session_started_at=state.session_started_at,search_deadline=state.search_deadline,
+      pending_action=state.pending_action~=nil})
+  end
+  local function tick()
+    if not state.active then
+      if state.search_pending then poll_search(state.last_time,true) end
+      return api.status()
+    end
+    local t=clock();if not t then return api.status() end
+    if t-state.session_started_at>=state.config.session_seconds then stop('session_time_limit');return api.status() end
+    local obs=observe();if not obs then return api.status() end
+    if not check_observation(obs) then return api.status() end
+    local goal,goal_reason=goal_status(obs.goal,state.binding.profile_id)
+    if state.search_pending then
+      if not goal then stop('goal_unavailable',goal_reason);return api.status() end
+      if goal=='complete' then stop('collection_complete',nil,true);return api.status() end
+      if t>=state.search_deadline then stop('search_timeout');return api.status() end
+      poll_search(t,false);return api.status()
+    end
+    if obs.search_busy then stop('external_search_active');return api.status() end
+    if state.state=='waiting' and state.waiting_for=='search_ready' then
+      if ready(obs) and obs.transition_ready==true then begin_search(obs,t)
+      else stalled(t,'search_not_ready') end
+      return api.status()
+    end
+    if state.state=='waiting' and state.waiting_for=='start_ready' then
+      if not goal then stop('goal_unavailable',goal_reason)
+      elseif goal=='complete' then stop('collection_complete',nil,true)
+      else begin_run(obs,t) end
+      return api.status()
+    end
+    if state.state=='starting' then
+      if id(obs.run_id) and obs.run_id~=state.previous_run_id and ready(obs) then
+        state.run_id=obs.run_id;state.state='playing';state.progress_at=t
+        if not checked_log('run_started',{run_number=state.runs_started}) then return api.status() end
+      else stalled(t,'run_start_stalled');return api.status() end
+    end
+    if obs.run_id~=state.run_id then stop('run_changed','The active run was replaced outside this controller.');return api.status() end
+    if state.state=='terminal' then
+      -- This is a different observe() call from the terminal receipt. The
+      -- adapter must reread loaded sticker metadata each time, never cache it.
+      if not goal then stop('goal_unavailable',goal_reason)
+      elseif ready(obs) and obs.transition_ready==true then
+        if goal=='complete' then stop('collection_complete',nil,true)
+        else begin_search(obs,t) end
+      else stalled(t,'terminal_transition_stalled') end
+      return api.status()
+    end
+    if terminal(obs,t) then return api.status() end
+    if not goal then stop('goal_unavailable',goal_reason);return api.status() end
+    if t-state.run_started_at>=state.config.run_seconds then stop('run_time_limit');return api.status() end
+    progress(obs,t)
+    if state.pending_action then
+      local changed=type(obs.fingerprint)=='string' and obs.fingerprint~='' and obs.fingerprint~=state.pending_action.fingerprint
+      if changed and ready(obs) and obs.advice_fingerprint==obs.fingerprint then
+        if not checked_log('action_observed',{before=state.pending_action.fingerprint,after=obs.fingerprint,
+            action_token=state.pending_action.action_token}) then return api.status() end
+        state.pending_action=nil;state.state='playing';state.waiting_for=nil;state.progress_at=t
+      else
+        state.state='waiting';state.waiting_for='action_observation'
+        if t-state.pending_action.time>=state.config.stall_seconds then stop('action_observation_stalled') end
+        return api.status()
+      end
+    end
+    if not ready(obs) or type(obs.fingerprint)~='string' or obs.fingerprint=='' or obs.advice_fingerprint~=obs.fingerprint or
+        not id(obs.action_token) then
+      state.state='waiting';state.waiting_for=obs.unsupported and 'unsupported' or 'fresh_advice'
+      stalled(t,obs.unsupported and 'unsupported_stalled' or 'advisor_stalled');return api.status()
+    end
+    if state.run_actions>=state.config.max_actions then stop('action_limit');return api.status() end
+    local ok,allowed,why=pcall(cb.can_execute,obs.fingerprint,obs.action_token)
+    if not ok then stop('execution_check_failed',tostring(allowed));return api.status() end
+    if not state.active then return api.status() end
+    if allowed~=true then
+      state.state='waiting';state.waiting_for='executable_action';state.detail=why
+      stalled(t,'no_executable_action');return api.status()
+    end
+    -- Consume the attempt before entering the callback. Even a thrown or
+    -- rejected Execute is never silently retried from the same public state.
+    state.pending_action={fingerprint=obs.fingerprint,action_token=obs.action_token,time=t}
+    state.actions=state.actions+1;state.run_actions=state.run_actions+1
+    state.state='waiting';state.waiting_for='action_observation'
+    if not checked_log('action_attempt',{fingerprint=obs.fingerprint,action_token=obs.action_token,
+      action=obs.action,advice=obs.advice,run_action=state.run_actions}) then return api.status() end
+    local called,accepted,detail=pcall(cb.execute,obs.fingerprint,obs.action_token)
+    if not called or accepted~=true then stop('execute_failed',called and detail or tostring(accepted)) end
+    return api.status()
+  end
+  local stepping=false
+  function api.tick()
+    if stepping then return api.status() end
+    stepping=true
+    local ok,result=pcall(tick)
+    stepping=false
+    if not ok then stop('controller_error',tostring(result));return api.status() end
+    return result
+  end
+  return api
+end
+return M

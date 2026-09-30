@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "job": "M22",
+  "baseline_checkpoint": 314,
+  "candidate_checkpoint": 315,
+  "roles": {
+    "baseline": {
+      "stem": "pack314",
+      "version": "2.114.0-alpha",
+      "policy_digest": "40ce8ca5f3c5860cc377309fe3b4a1bb608a6332f4bed8484ee3e68a482eacc0",
+      "files": {
+        "record": {
+          "path": "tools/advisor_eval/runs/pack314_installed/record.json",
+          "sha256": "10473351958cd4f3dabef72287c59edc34ed6f76622f28b6d0b5c8ca41ebc7f6"
+        },
+        "installed_validation": {
+          "path": "tools/advisor_eval/runs/pack314_installed_validation/report.json",
+          "sha256": "c65f45cf584d48a357f92a441d124acb0ca5631f546c38dd8178da77ddcf8eb4"
+        },
+        "final_verification": {
+          "path": "tools/advisor_eval/runs/pack314_final/final_verification.json",
+          "sha256": "55225ddcad4cc180267b96a8bdaf075ed3291dd1422defc0f9431710bb242a9f"
+        }
+      }
+    },
+    "candidate": {
+      "stem": "copy315",
+      "version": "2.115.0-alpha",
+      "policy_digest": "e591f83e9b8bdcdbba288ff199836db12d40711d9b38b0df958c350bbbd0228f",
+      "files": {
+        "record": {
+          "path": "tools/advisor_eval/runs/copy315_installed/record.json",
+          "sha256": "4e64c0433a460faa3b7503dfa097cfb9aad1b0abef163d4083a1516e441cd886"
+        },
+        "installed_validation": {
+          "path": "tools/advisor_eval/runs/copy315_installed_validation/report.json",
+          "sha256": "15ef35ea825eb16d4e3aa44edfd18229d5431d582202d2a1d1f6e61e73181c53"
+        },
+        "final_verification": {
+          "path": "tools/advisor_eval/runs/copy315_final/final_verification.json",
+          "sha256": "c8a07a036365414f0ed2381ef5e745a99e6a69a8fcc8092185a427197b96e779"
+        }
+      }
+    }
+  }
+}

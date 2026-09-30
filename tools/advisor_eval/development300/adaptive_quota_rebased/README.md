@@ -1,0 +1,13 @@
+# Adaptive collection quota, rebased onto startup304
+
+Three runtime drafts change: `Advisor/collection_search.lua`, `Core/auto_run_product.lua`, and `UI/collection_run.lua`. Preserve the latest304 `Core/collection_search_product.lua` unchanged. The rebase retains both source-proven startup fixes and every focused304 product test.
+
+The explicit Start page now cycles **Auto / Off / 1–5**. Auto requires at least one distinct reachable missing Joker on the declared route. The mandatory opening naturally meets that condition while Yorick or Perkeo is still missing. Once the opening already has Gold, another reachable missing offer is required. No remaining-population threshold, probability estimate or native budget increase is introduced.
+
+Migration is explicit in the product behavior: the302 page had only a number, with zero as its unset default. On the new opt-in page, absent/old-zero mode displays Auto; an existing positive numeric request remains strict. Once the user chooses Off, the explicit `quota_mode='strict', minimum_distinct=0` setting persists. The underlying standalone query builder continues to interpret an absent mode as strict, preserving direct/manual numeric callers. The auto-run facade selects Auto for an absent/legacy-zero mode and preserves explicit strict zero or positive numeric requests. Drawing the page neither starts work nor writes configuration; a subsequent explicit Start uses the displayed mode.
+
+Eligibility now matches this fixed route. Six unmodeled prerequisite Jokers remain excluded. Canio, Triboulet and Chicot are additionally excluded because both starting Soul choices are already reserved and the modeled later route only covers shop stock/Buffoon packs. Yorick/Perkeo are excluded when the requested counting window begins after Ante1. Every exclusion retains its identity and reason. Auto stops clearly when no reachable missing targets remain; strict counts are never silently relaxed.
+
+This does not complete coverage for all150 Jokers. The remaining Legendary/prerequisite identities require a separate supported opening or development route. Static encounter filters still establish neither affordable purchase, retention nor wins. No positive-quota original-source run or new native search was performed for this feature.
+
+Stage only these three runtime files after review. Existing `advisor_collection_query.lua` and `advisor_auto_run_product.lua` fixtures change; `advisor_adaptive_quota.lua` is new. Their draft paths must be rewritten to production paths on staging. The copied `advisor_collection_product.lua` exists only to test the new query against304 startup behavior and does not need an additional behavioral test edit.

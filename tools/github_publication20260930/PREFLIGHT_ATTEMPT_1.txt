@@ -1,0 +1,18 @@
+Isolated Git preflight attempt1, 2026-09-30.
+
+Prepared a temporary index and object directory under .git/publication-preflight-ribct9wi.
+Actual proposed index: 31455 files; largest ordinary Git blob48MiB; no oversized blobs.
+Measured a prospective pack against HEAD without a commit or upload.
+After packing, the conservative assertion that the real index still had its
+initial SHA256 failed. GitHub Desktop had concurrently run update-index.
+The exact final tool output was:
+
+Traceback (most recent call last):
+  File "<stdin>", line 40, in <module>
+AssertionError
+
+The size/hash values held in that finished process were not saved after this
+assertion, so no completed bundle-size result is claimed for attempt1.
+The original isolated files/logs are preserved. Current staged blobs were
+independently checked and have no ordinary files above100MiB. The repeated
+measurement accounts for external index changes without modifying the real index.

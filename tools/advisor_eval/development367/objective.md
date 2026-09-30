@@ -1,0 +1,1 @@
+Improve actual win-first Yorick/Perkeo play under public information and existing budgets. User authorized current repairs; no new runs/searches/simulations/training or captured policy/scorer execution. Preserve all work, logs/settings/saves/DLLs.

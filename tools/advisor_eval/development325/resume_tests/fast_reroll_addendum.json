@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "recorded_utc": "2026-09-15T16:54:35.239185+00:00",
+  "command": [
+    "python",
+    "tests/run_lua_tests.py",
+    "tests/advisor_input_ui.lua"
+  ],
+  "observed_exit_code": 0,
+  "checks": 98,
+  "new_checks": 12,
+  "file_hashes_recorded_after_run": {
+    "tests/advisor_input_ui.lua": "a64301cb2dce2789c6ff1cb0cbcaf1648a16e5f586a354af0f2ea33a8152724d",
+    "Brainstorm/Core/Brainstorm.lua": "1b47524df8e05db6d63bd9cd5c11c6d20df4801f11adaa4d53b251fdb472bc80",
+    "tools/advisor_eval/development325/resume_tests/advisor_input_ui.before_fast_reroll.lua": "70e5328179222ffb1da2fb360026b206e5f35bfa800cc818879e8d6813453d18",
+    "tools/advisor_eval/development325/resume_tests/focused_report.json": "8a2790c17fd8ae9a308f7082a127dbae304f7ccb4971d54d5b2f5431f8c648a8"
+  },
+  "changes": "Manufactured actual-hook fixture verifies engaged fast-reroll suppression in native-search, legacy-search and idle conditions; original input handler still executes. Unengaged modifier+hotkey still rerolls exactly once, and missing modifier does not reroll. Original fixture backup and prior controller/product focused record remain unchanged.",
+  "scope": "No runtime edit by this task; fake callbacks only, no live input, gameplay, search or player data."
+}

@@ -1,0 +1,105 @@
+{
+  "link_checks": 2639,
+  "link_failures": [],
+  "watch_offers": {
+    "j_blueprint": {
+      "offered": 5,
+      "acquired": 4
+    },
+    "j_brainstorm": {
+      "offered": 5,
+      "acquired": 4
+    },
+    "j_invisible": {
+      "offered": 2,
+      "acquired": 0
+    }
+  },
+  "buffoon_reveals": 26,
+  "buffoon_reveals_confirmed": 26,
+  "death_uses": 21,
+  "death_confirmed": 21,
+  "display_score_divergences": 10,
+  "undisclosed_divergences": 0,
+  "exact_cap_decisions": {
+    "hand": 3,
+    "shop": 6,
+    "pack": 5
+  },
+  "copy_receipt_counts": {
+    "fishing": 1043,
+    "death": 121,
+    "pack": 251,
+    "acquisition": 13,
+    "focused_direct": 10,
+    "choice": 4,
+    "focused_replacements": 4
+  },
+  "death_fishing_reasons": {
+    "no_held_death": 1007,
+    "no_reliable_retained_clear": 14,
+    "inventory_hold": 3,
+    "Automatic hand sorting can change scoring-card order.": 8,
+    "Draw or play changes the finishing conditions.": 1,
+    "cost_or_retained_clear": 4,
+    "no_discards": 6
+  },
+  "flag_categories": [
+    {
+      "rule": "core_sale_without_plan",
+      "category": "no_watched_growth_joker",
+      "count": 2
+    },
+    {
+      "rule": "pack_score_merit_conflict",
+      "category": "no_watched_growth_joker",
+      "count": 2
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "explicit_conservative_guard",
+      "count": 28
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "no_growth_receipt_for_this_decision",
+      "count": 7
+    },
+    {
+      "rule": "short_discard",
+      "category": "no_growth_receipt_for_this_decision",
+      "count": 84
+    },
+    {
+      "rule": "short_discard",
+      "category": "compared_five_but_none_qualified",
+      "count": 149
+    },
+    {
+      "rule": "short_discard",
+      "category": "comparison_receipt_without_complete_rejection_utility",
+      "count": 16
+    },
+    {
+      "rule": "short_discard",
+      "category": "explicit_conservative_guard",
+      "count": 2
+    },
+    {
+      "rule": "unused_discards_at_clear",
+      "category": "final_boss_no_later_growth",
+      "count": 3
+    }
+  ],
+  "coverage_or_support_notes": {
+    "Note: Every reported play is fully scored; later draws and consumable sequences outside the bounded upgrade-then-Tarot shortlist are not modeled.": 24,
+    "Note: Pack scoring could not complete every legal comparison; this decision uses the strategic ratings.": 160,
+    "Adds Chips to support your hand levels and Mult. Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee. Eternal: this slot is permanent. Opening-hand scoring estimate: 137 -> 494 chips across 4 paired deck samples, allowing sensible Joker order; neutral blind; upcoming random or unknown boss mechanics are outside this comparison. Samples are not a blind-win probability.": 1,
+    "Copy your strongest compatible Joker; placement determines the target. Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee. Rental drains $3 every round. Opening-hand scoring estimate: 494 -> 932 chips across 4 paired deck samples, allowing copy-target order shortlist (1/4 layouts); neutral blind; upcoming random or unknown boss mechanics are outside this comparison. Samples are not a blind-win probability.": 1,
+    "Held consumables remain in scoring; spending them is outside this comparison.": 14,
+    "Note: Shop scoring preview unavailable: Nonempty shop-exit Perkeo copying is outside this Certificate family. Using strategy estimates.": 114,
+    "Nonempty shop-exit Perkeo copying is outside this Certificate family.": 51,
+    "Note: A future hand is concealed; identity-based play optimization is unsupported.": 1,
+    "Levels your main hand: Pair. Opening-hand scoring estimate: 690 -> 824 chips across 4 paired deck samples, allowing sensible Joker order; neutral blind; upcoming random or unknown boss mechanics are outside this comparison. Samples are not a blind-win probability.": 1
+  }
+}

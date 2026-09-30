@@ -1,0 +1,2804 @@
+{
+  "T02": {
+    "policies": {
+      "learned": {
+        "episodes": 6986,
+        "actions": 127744,
+        "outcomes": {
+          "loss": 6859,
+          "unsupported": 119,
+          "censored": 8
+        },
+        "reasons": {
+          "fidelity_perishable_expiry_order": 105,
+          "candidate_capacity_exceeded": 13,
+          "fidelity_mime_round_end_repetition": 1
+        },
+        "kind_counts": {
+          "2": 13949,
+          "1": 13612,
+          "0": 48206,
+          "4": 6965,
+          "8": 5562,
+          "6": 6965,
+          "5": 328,
+          "16": 3855,
+          "9": 14457,
+          "11": 221,
+          "12": 4381,
+          "20": 2,
+          "13": 2323,
+          "14": 2004,
+          "15": 3325,
+          "10": 274,
+          "3": 716,
+          "7": 586,
+          "18": 7,
+          "17": 5,
+          "19": 1
+        },
+        "outcome_clears": [
+          {
+            "outcome": "censored",
+            "clears": 0,
+            "count": 6
+          },
+          {
+            "outcome": "censored",
+            "clears": 1,
+            "count": 2
+          },
+          {
+            "outcome": "loss",
+            "clears": 0,
+            "count": 3163
+          },
+          {
+            "outcome": "loss",
+            "clears": 1,
+            "count": 2289
+          },
+          {
+            "outcome": "loss",
+            "clears": 2,
+            "count": 772
+          },
+          {
+            "outcome": "loss",
+            "clears": 3,
+            "count": 278
+          },
+          {
+            "outcome": "loss",
+            "clears": 4,
+            "count": 213
+          },
+          {
+            "outcome": "loss",
+            "clears": 5,
+            "count": 56
+          },
+          {
+            "outcome": "loss",
+            "clears": 6,
+            "count": 33
+          },
+          {
+            "outcome": "loss",
+            "clears": 7,
+            "count": 27
+          },
+          {
+            "outcome": "loss",
+            "clears": 8,
+            "count": 6
+          },
+          {
+            "outcome": "loss",
+            "clears": 9,
+            "count": 11
+          },
+          {
+            "outcome": "loss",
+            "clears": 10,
+            "count": 7
+          },
+          {
+            "outcome": "loss",
+            "clears": 12,
+            "count": 2
+          },
+          {
+            "outcome": "loss",
+            "clears": 13,
+            "count": 2
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 1,
+            "count": 10
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 2,
+            "count": 3
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 4,
+            "count": 68
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 5,
+            "count": 21
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 6,
+            "count": 9
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 7,
+            "count": 5
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 9,
+            "count": 2
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 10,
+            "count": 1
+          }
+        ],
+        "counts": {
+          "episodes_no_discard": 2812,
+          "episodes_no_buy": 4423,
+          "episodes_sell_joker": 6359,
+          "episodes_zero_clears": 3169,
+          "loss_last_blind_no_discard": 3329,
+          "loss_last_blind_discard_count": 7676
+        },
+        "mean_steps": 18.285714285714285,
+        "max_ante": 5,
+        "mean_clears": 0.996993987975952,
+        "play_sizes": {
+          "4": 16225,
+          "5": 12412,
+          "1": 2503,
+          "2": 13415,
+          "3": 3651
+        },
+        "discard_sizes": {
+          "4": 5668,
+          "5": 1752,
+          "3": 2324,
+          "2": 1499,
+          "1": 2369
+        },
+        "zero_base_plays": 34,
+        "buy_target_ids": {
+          "121": 89,
+          "165": 73,
+          "173": 60,
+          "134": 53,
+          "117": 15,
+          "125": 26,
+          "222": 59,
+          "177": 49,
+          "66": 20,
+          "155": 68,
+          "138": 52,
+          "75": 39,
+          "88": 18,
+          "107": 94,
+          "148": 55,
+          "171": 81,
+          "84": 28,
+          "65": 28,
+          "127": 43,
+          "146": 59,
+          "54": 25,
+          "167": 14,
+          "106": 15,
+          "27": 34,
+          "195": 10,
+          "43": 39,
+          "174": 22,
+          "209": 22,
+          "81": 83,
+          "194": 68,
+          "220": 12,
+          "178": 36,
+          "77": 19,
+          "76": 54,
+          "119": 52,
+          "172": 51,
+          "137": 94,
+          "110": 66,
+          "120": 28,
+          "203": 99,
+          "140": 18,
+          "145": 13,
+          "181": 15,
+          "160": 18,
+          "86": 35,
+          "163": 96,
+          "93": 59,
+          "102": 52,
+          "205": 33,
+          "136": 16,
+          "224": 60,
+          "55": 31,
+          "49": 38,
+          "204": 34,
+          "141": 18,
+          "185": 67,
+          "176": 43,
+          "168": 14,
+          "47": 29,
+          "122": 14,
+          "206": 34,
+          "189": 72,
+          "153": 84,
+          "108": 31,
+          "147": 52,
+          "85": 26,
+          "132": 56,
+          "135": 112,
+          "213": 13,
+          "183": 17,
+          "111": 102,
+          "104": 74,
+          "218": 15,
+          "109": 54,
+          "143": 71,
+          "62": 39,
+          "210": 26,
+          "131": 46,
+          "197": 45,
+          "116": 57,
+          "221": 77,
+          "50": 4,
+          "166": 23,
+          "101": 24,
+          "128": 27,
+          "118": 27,
+          "179": 12,
+          "186": 18,
+          "158": 22,
+          "188": 28,
+          "90": 17,
+          "157": 14,
+          "198": 60,
+          "217": 12,
+          "51": 26,
+          "113": 11,
+          "184": 92,
+          "196": 12,
+          "98": 30,
+          "95": 14,
+          "139": 35,
+          "164": 15,
+          "175": 53,
+          "211": 16,
+          "154": 26,
+          "152": 52,
+          "24": 10,
+          "159": 22,
+          "115": 37,
+          "91": 18,
+          "200": 12,
+          "44": 12,
+          "190": 21,
+          "216": 20,
+          "133": 59,
+          "126": 25,
+          "46": 25,
+          "169": 15,
+          "100": 22,
+          "83": 11,
+          "208": 16,
+          "105": 24,
+          "219": 52,
+          "187": 20,
+          "37": 18,
+          "30": 8,
+          "87": 11,
+          "193": 27,
+          "123": 6,
+          "36": 12,
+          "82": 12,
+          "80": 12,
+          "60": 5,
+          "97": 21,
+          "182": 68,
+          "89": 14,
+          "180": 22,
+          "191": 15,
+          "161": 43,
+          "19": 18,
+          "192": 78,
+          "68": 7,
+          "162": 21,
+          "26": 12,
+          "92": 12,
+          "215": 13,
+          "67": 10,
+          "144": 38,
+          "39": 7,
+          "124": 16,
+          "96": 18,
+          "78": 26,
+          "129": 26,
+          "22": 9,
+          "214": 19,
+          "156": 15,
+          "45": 6,
+          "63": 12,
+          "58": 9,
+          "149": 18,
+          "35": 4,
+          "112": 17,
+          "142": 19,
+          "150": 17,
+          "29": 6,
+          "59": 8,
+          "33": 9,
+          "114": 8,
+          "79": 16,
+          "42": 12,
+          "202": 13
+        },
+        "sell_target_ids": {
+          "165": 40,
+          "76": 29,
+          "223": 5661,
+          "170": 6096,
+          "125": 13,
+          "172": 32,
+          "174": 19,
+          "116": 25,
+          "168": 5,
+          "147": 24,
+          "189": 47,
+          "194": 50,
+          "133": 29,
+          "155": 31,
+          "137": 66,
+          "146": 26,
+          "175": 29,
+          "120": 15,
+          "215": 9,
+          "75": 17,
+          "131": 20,
+          "126": 15,
+          "171": 42,
+          "159": 8,
+          "188": 24,
+          "204": 13,
+          "121": 46,
+          "135": 115,
+          "205": 19,
+          "190": 8,
+          "144": 21,
+          "93": 34,
+          "81": 72,
+          "173": 26,
+          "152": 25,
+          "109": 28,
+          "139": 13,
+          "98": 13,
+          "105": 14,
+          "124": 10,
+          "203": 64,
+          "184": 60,
+          "177": 18,
+          "186": 7,
+          "211": 8,
+          "224": 28,
+          "153": 53,
+          "191": 6,
+          "77": 12,
+          "78": 13,
+          "217": 7,
+          "192": 44,
+          "154": 16,
+          "129": 18,
+          "82": 5,
+          "216": 13,
+          "96": 8,
+          "178": 13,
+          "176": 14,
+          "181": 6,
+          "85": 7,
+          "100": 12,
+          "110": 30,
+          "222": 37,
+          "164": 11,
+          "108": 9,
+          "117": 6,
+          "180": 10,
+          "163": 63,
+          "185": 41,
+          "202": 8,
+          "91": 10,
+          "86": 13,
+          "182": 37,
+          "221": 39,
+          "107": 55,
+          "214": 13,
+          "161": 26,
+          "127": 27,
+          "156": 4,
+          "145": 5,
+          "143": 76,
+          "119": 32,
+          "132": 27,
+          "128": 18,
+          "210": 11,
+          "166": 11,
+          "196": 4,
+          "208": 8,
+          "209": 7,
+          "88": 8,
+          "160": 8,
+          "111": 63,
+          "213": 4,
+          "149": 5,
+          "141": 11,
+          "162": 13,
+          "206": 12,
+          "112": 10,
+          "219": 30,
+          "148": 23,
+          "118": 18,
+          "140": 4,
+          "134": 14,
+          "150": 13,
+          "115": 7,
+          "138": 17,
+          "104": 44,
+          "169": 5,
+          "193": 6,
+          "95": 11,
+          "198": 23,
+          "106": 4,
+          "158": 7,
+          "101": 9,
+          "113": 6,
+          "89": 7,
+          "92": 7,
+          "142": 14,
+          "102": 21,
+          "90": 9,
+          "136": 6,
+          "183": 6,
+          "195": 2,
+          "80": 6,
+          "79": 11,
+          "197": 10,
+          "84": 17,
+          "122": 5,
+          "220": 5,
+          "187": 10,
+          "114": 3,
+          "87": 6,
+          "167": 8,
+          "94": 1,
+          "97": 5,
+          "200": 5,
+          "157": 4,
+          "83": 3,
+          "218": 6,
+          "123": 2,
+          "179": 4
+        },
+        "buy_stickers": {
+          "[0.0, 0.0, 1.0]": 364,
+          "[0.0, 1.0, 0.0]": 1092,
+          "[1.0, 0.0, 0.0]": 1185,
+          "[0.0, 0.0, 0.0]": 2440,
+          "[1.0, 0.0, 1.0]": 234,
+          "[0.0, 1.0, 1.0]": 247
+        },
+        "zero_clear_examples": [
+          {
+            "episode": 4,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 8,
+            "dollars": 4,
+            "play_sizes": {
+              "2": 2,
+              "1": 2
+            },
+            "discard_sizes": {
+              "4": 1,
+              "5": 2
+            }
+          },
+          {
+            "episode": 5,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 8,
+            "dollars": 4,
+            "play_sizes": {
+              "1": 1,
+              "2": 3
+            },
+            "discard_sizes": {
+              "5": 3
+            }
+          },
+          {
+            "episode": 12,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 8,
+            "dollars": 4,
+            "play_sizes": {
+              "4": 1,
+              "2": 2,
+              "1": 1
+            },
+            "discard_sizes": {
+              "5": 3
+            }
+          },
+          {
+            "episode": 22,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "0": 4,
+              "1": 2
+            },
+            "steps": 7,
+            "dollars": 4,
+            "play_sizes": {
+              "4": 4
+            },
+            "discard_sizes": {
+              "5": 2
+            }
+          },
+          {
+            "episode": 25,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 8,
+            "dollars": 4,
+            "play_sizes": {
+              "2": 4
+            },
+            "discard_sizes": {
+              "5": 3
+            }
+          }
+        ],
+        "censored": [
+          {
+            "episode": 6985,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 1
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              }
+            ]
+          },
+          {
+            "episode": 6981,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "0": 2,
+              "1": 1
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 3,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 4,
+                "candidate_index": 52,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.03125,
+                  0.0390625,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 5,
+                "candidate_index": 208,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.046875,
+                  0.0546875,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 6,
+                "candidate_index": 157,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0234375,
+                  0.0390625,
+                  0.0625,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              }
+            ]
+          },
+          {
+            "episode": 6978,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2,
+              "2": 2,
+              "1": 3,
+              "0": 4,
+              "4": 1,
+              "12": 1,
+              "8": 1,
+              "6": 1
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 3,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 4,
+                "candidate_index": 315,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.03125,
+                  0.0390625,
+                  0.046875,
+                  0.0546875,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 5,
+                "candidate_index": 15,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0625,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 6,
+                "candidate_index": 13,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0546875,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 7,
+                "candidate_index": 8,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 234,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 8,
+                "candidate_index": 162,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.0234375,
+                  0.03125,
+                  0.0390625
+                ],
+                "candidate_count": 234,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 9,
+                "candidate_index": 197,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.015625,
+                  0.0234375,
+                  0.03125,
+                  0.0390625,
+                  0.046875
+                ],
+                "candidate_count": 234,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 10,
+                "candidate_index": 0,
+                "candidate_kind": 4,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 1,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 11,
+                "candidate_index": 2,
+                "candidate_kind": 12,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 7,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 12,
+                "candidate_index": 0,
+                "candidate_kind": 8,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 6,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 13,
+                "candidate_index": 4,
+                "candidate_kind": 6,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 6,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 14,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 15,
+                "candidate_index": 258,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.0234375,
+                  0.03125,
+                  0.0
+                ],
+                "candidate_count": 781,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              }
+            ]
+          },
+          {
+            "episode": 6979,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2,
+              "2": 2,
+              "0": 3,
+              "1": 5,
+              "4": 1,
+              "12": 1,
+              "6": 1
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 3,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 4,
+                "candidate_index": 294,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0234375,
+                  0.03125,
+                  0.0390625,
+                  0.046875,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 5,
+                "candidate_index": 299,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0234375,
+                  0.03125,
+                  0.0390625,
+                  0.0625,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 6,
+                "candidate_index": 113,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0078125,
+                  0.0546875,
+                  0.0625,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 7,
+                "candidate_index": 208,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.046875,
+                  0.0546875,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 8,
+                "candidate_index": 303,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0234375,
+                  0.03125,
+                  0.046875,
+                  0.0625,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 9,
+                "candidate_index": 162,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.0234375,
+                  0.03125,
+                  0.0390625
+                ],
+                "candidate_count": 234,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 10,
+                "candidate_index": 0,
+                "candidate_kind": 4,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 1,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 11,
+                "candidate_index": 2,
+                "candidate_kind": 12,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 7,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 12,
+                "candidate_index": 5,
+                "candidate_kind": 6,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 6,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 13,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 1,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 14,
+                "candidate_index": 301,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0234375,
+                  0.03125,
+                  0.046875,
+                  0.0546875,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              },
+              {
+                "step": 15,
+                "candidate_index": 295,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0234375,
+                  0.03125,
+                  0.0390625,
+                  0.046875,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 1
+              }
+            ]
+          },
+          {
+            "episode": 6983,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2,
+              "2": 1
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 3,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              }
+            ]
+          },
+          {
+            "episode": 6980,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "1": 2,
+              "0": 2
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 3,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 4,
+                "candidate_index": 177,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.0390625,
+                  0.046875,
+                  0.0546875,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 5,
+                "candidate_index": 254,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.015625,
+                  0.0234375,
+                  0.03125,
+                  0.0390625,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 6,
+                "candidate_index": 194,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.0078125,
+                  0.015625,
+                  0.03125,
+                  0.0390625,
+                  0.0
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 7,
+                "candidate_index": 403,
+                "candidate_kind": 1,
+                "target_slots": [
+                  0.015625,
+                  0.0234375,
+                  0.03125,
+                  0.046875,
+                  0.0625
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              }
+            ]
+          },
+          {
+            "episode": 6982,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "0": 1
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 3,
+                "candidate_index": 0,
+                "candidate_kind": 2,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 2,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 4,
+                "candidate_index": 418,
+                "candidate_kind": 0,
+                "target_slots": [
+                  0.015625,
+                  0.03125,
+                  0.0390625,
+                  0.0546875,
+                  0.0625
+                ],
+                "candidate_count": 452,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              }
+            ]
+          },
+          {
+            "episode": 6984,
+            "reason": "job_limit",
+            "kinds": {
+              "9": 2
+            },
+            "last20": [
+              {
+                "step": 1,
+                "candidate_index": 3,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 4,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              },
+              {
+                "step": 2,
+                "candidate_index": 2,
+                "candidate_kind": 9,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 3,
+                "outcome": "ongoing",
+                "blinds_cleared": 0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "input_hashes": {
+      "actions.jsonl": "24e7c83e16a810b9de16c17803cad1093bd3d81fea25ca3ea66955411a6d108d",
+      "episodes.jsonl": "30d520600c395853ce9f760dfc9dfb9c5298d03c9c9c8d466e0a7ecee0e14132",
+      "configuration.json": "e212b1c17ee50c6dd70e6c2ba20d5bd960523d246d902bc8f23da1db053904ab",
+      "summary.json": "5fe4ccf1c16afe420db1aa4be9c1bbe4e3d8f29b990574a4e12d327eb076e3de"
+    },
+    "windows": [
+      {
+        "first": 0,
+        "episodes": 1000,
+        "mean_clears": 1.39,
+        "kind_counts": {
+          "2": 2390,
+          "1": 3065,
+          "0": 7756,
+          "4": 1390,
+          "8": 1533,
+          "6": 1390,
+          "16": 2346,
+          "12": 541,
+          "11": 143,
+          "20": 1,
+          "5": 82,
+          "9": 2050,
+          "13": 753,
+          "14": 787,
+          "15": 1710,
+          "10": 111,
+          "3": 125,
+          "7": 39
+        },
+        "outcomes": {
+          "loss": 947,
+          "unsupported": 53
+        }
+      },
+      {
+        "first": 1000,
+        "episodes": 1000,
+        "mean_clears": 0.715,
+        "kind_counts": {
+          "9": 2162,
+          "2": 1715,
+          "0": 6198,
+          "4": 715,
+          "12": 477,
+          "13": 541,
+          "14": 361,
+          "8": 689,
+          "5": 27,
+          "11": 26,
+          "6": 715,
+          "10": 36,
+          "1": 466,
+          "7": 208,
+          "16": 361,
+          "3": 63,
+          "15": 280,
+          "18": 3,
+          "17": 2
+        },
+        "outcomes": {
+          "loss": 999,
+          "unsupported": 1
+        }
+      },
+      {
+        "first": 2000,
+        "episodes": 1000,
+        "mean_clears": 0.777,
+        "kind_counts": {
+          "2": 1777,
+          "0": 6331,
+          "9": 1828,
+          "17": 2,
+          "1": 1320,
+          "4": 777,
+          "12": 587,
+          "6": 777,
+          "3": 152,
+          "8": 507,
+          "13": 169,
+          "14": 83,
+          "15": 75,
+          "16": 98,
+          "10": 12,
+          "18": 3,
+          "7": 120,
+          "19": 1,
+          "5": 14,
+          "11": 4
+        },
+        "outcomes": {
+          "loss": 994,
+          "unsupported": 6
+        }
+      },
+      {
+        "first": 3000,
+        "episodes": 1000,
+        "mean_clears": 0.944,
+        "kind_counts": {
+          "2": 1944,
+          "1": 1751,
+          "0": 6823,
+          "9": 1823,
+          "4": 944,
+          "12": 573,
+          "8": 754,
+          "6": 944,
+          "13": 305,
+          "7": 80,
+          "14": 261,
+          "3": 138,
+          "15": 181,
+          "16": 186,
+          "11": 24,
+          "5": 49,
+          "10": 50,
+          "17": 1,
+          "18": 1
+        },
+        "outcomes": {
+          "loss": 986,
+          "unsupported": 14
+        }
+      },
+      {
+        "first": 4000,
+        "episodes": 1000,
+        "mean_clears": 1.139,
+        "kind_counts": {
+          "2": 2139,
+          "0": 7235,
+          "4": 1139,
+          "9": 2078,
+          "6": 1139,
+          "1": 3017,
+          "12": 768,
+          "8": 796,
+          "3": 114,
+          "5": 29,
+          "14": 304,
+          "13": 317,
+          "16": 121,
+          "15": 91,
+          "7": 65,
+          "11": 11,
+          "20": 1,
+          "10": 17
+        },
+        "outcomes": {
+          "loss": 969,
+          "unsupported": 31
+        }
+      },
+      {
+        "first": 5000,
+        "episodes": 1000,
+        "mean_clears": 0.984,
+        "kind_counts": {
+          "9": 2327,
+          "2": 1984,
+          "0": 6925,
+          "1": 1897,
+          "4": 984,
+          "12": 658,
+          "6": 984,
+          "8": 705,
+          "13": 201,
+          "14": 174,
+          "15": 590,
+          "16": 516,
+          "7": 61,
+          "3": 105,
+          "5": 87,
+          "10": 32,
+          "11": 12
+        },
+        "outcomes": {
+          "loss": 995,
+          "unsupported": 5
+        }
+      },
+      {
+        "first": 6000,
+        "episodes": 986,
+        "mean_clears": 1.0304259634888437,
+        "kind_counts": {
+          "9": 2189,
+          "2": 2000,
+          "0": 6938,
+          "4": 1016,
+          "6": 1016,
+          "1": 2096,
+          "8": 578,
+          "12": 777,
+          "13": 37,
+          "14": 34,
+          "3": 19,
+          "7": 13,
+          "16": 227,
+          "15": 398,
+          "5": 40,
+          "10": 16,
+          "11": 1
+        },
+        "outcomes": {
+          "loss": 969,
+          "unsupported": 9,
+          "censored": 8
+        }
+      }
+    ]
+  },
+  "V02": {
+    "policies": {
+      "heuristic": {
+        "episodes": 32,
+        "actions": 1091,
+        "outcomes": {
+          "loss": 23,
+          "unsupported": 9
+        },
+        "reasons": {
+          "fidelity_perishable_expiry_order": 9
+        },
+        "kind_counts": {
+          "2": 133,
+          "1": 283,
+          "0": 355,
+          "4": 101,
+          "8": 81,
+          "6": 101,
+          "11": 9,
+          "13": 14,
+          "7": 3,
+          "14": 11
+        },
+        "outcome_clears": [
+          {
+            "outcome": "loss",
+            "clears": 0,
+            "count": 2
+          },
+          {
+            "outcome": "loss",
+            "clears": 1,
+            "count": 8
+          },
+          {
+            "outcome": "loss",
+            "clears": 2,
+            "count": 3
+          },
+          {
+            "outcome": "loss",
+            "clears": 3,
+            "count": 2
+          },
+          {
+            "outcome": "loss",
+            "clears": 4,
+            "count": 3
+          },
+          {
+            "outcome": "loss",
+            "clears": 5,
+            "count": 2
+          },
+          {
+            "outcome": "loss",
+            "clears": 6,
+            "count": 1
+          },
+          {
+            "outcome": "loss",
+            "clears": 7,
+            "count": 2
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 4,
+            "count": 6
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 5,
+            "count": 3
+          }
+        ],
+        "counts": {
+          "episodes_no_discard": 0,
+          "episodes_no_buy": 2,
+          "episodes_sell_joker": 0,
+          "episodes_zero_clears": 2,
+          "loss_last_blind_no_discard": 1,
+          "loss_last_blind_discard_count": 65
+        },
+        "mean_steps": 34.09375,
+        "max_ante": 3,
+        "mean_clears": 3.15625,
+        "play_sizes": {
+          "5": 153,
+          "2": 67,
+          "1": 21,
+          "4": 98,
+          "3": 16
+        },
+        "discard_sizes": {
+          "5": 105,
+          "3": 58,
+          "4": 120
+        },
+        "zero_base_plays": 7,
+        "buy_target_ids": {
+          "211": 1,
+          "154": 1,
+          "149": 3,
+          "143": 1,
+          "131": 1,
+          "204": 3,
+          "115": 3,
+          "81": 2,
+          "128": 1,
+          "121": 1,
+          "129": 1,
+          "182": 1,
+          "156": 1,
+          "203": 1,
+          "43": 1,
+          "110": 1,
+          "184": 3,
+          "75": 1,
+          "192": 3,
+          "188": 2,
+          "176": 2,
+          "132": 1,
+          "116": 1,
+          "49": 2,
+          "95": 1,
+          "93": 2,
+          "165": 1,
+          "147": 3,
+          "65": 5,
+          "197": 1,
+          "137": 3,
+          "55": 1,
+          "222": 1,
+          "111": 2,
+          "122": 2,
+          "219": 1,
+          "210": 1,
+          "153": 3,
+          "97": 2,
+          "80": 1,
+          "185": 1,
+          "134": 1,
+          "152": 1,
+          "171": 1,
+          "166": 1,
+          "172": 1,
+          "90": 1,
+          "101": 1,
+          "102": 1,
+          "107": 2,
+          "187": 1,
+          "163": 1
+        },
+        "sell_target_ids": {},
+        "buy_stickers": {
+          "[0.0, 0.0, 0.0]": 38,
+          "[1.0, 0.0, 0.0]": 15,
+          "[0.0, 1.0, 0.0]": 16,
+          "[0.0, 0.0, 1.0]": 7,
+          "[1.0, 0.0, 1.0]": 3,
+          "[0.0, 1.0, 1.0]": 2
+        },
+        "zero_clear_examples": [
+          {
+            "episode": 8,
+            "policy": "heuristic",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 8,
+            "dollars": 4,
+            "play_sizes": {
+              "5": 1,
+              "2": 3
+            },
+            "discard_sizes": {
+              "5": 1,
+              "4": 2
+            }
+          },
+          {
+            "episode": 22,
+            "policy": "heuristic",
+            "outcome": "loss",
+            "kinds": {
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 8,
+            "dollars": 4,
+            "play_sizes": {
+              "4": 1,
+              "2": 1,
+              "1": 1,
+              "5": 1
+            },
+            "discard_sizes": {
+              "5": 3
+            }
+          }
+        ],
+        "censored": []
+      },
+      "learned": {
+        "episodes": 32,
+        "actions": 2177,
+        "outcomes": {
+          "loss": 28,
+          "unsupported": 2,
+          "censored": 2
+        },
+        "reasons": {
+          "fidelity_perishable_expiry_order": 2
+        },
+        "kind_counts": {
+          "9": 65,
+          "2": 78,
+          "1": 48,
+          "0": 249,
+          "4": 48,
+          "12": 37,
+          "8": 41,
+          "6": 46,
+          "15": 1174,
+          "16": 390,
+          "11": 1
+        },
+        "outcome_clears": [
+          {
+            "outcome": "censored",
+            "clears": 2,
+            "count": 1
+          },
+          {
+            "outcome": "censored",
+            "clears": 3,
+            "count": 1
+          },
+          {
+            "outcome": "loss",
+            "clears": 0,
+            "count": 10
+          },
+          {
+            "outcome": "loss",
+            "clears": 1,
+            "count": 10
+          },
+          {
+            "outcome": "loss",
+            "clears": 2,
+            "count": 4
+          },
+          {
+            "outcome": "loss",
+            "clears": 3,
+            "count": 2
+          },
+          {
+            "outcome": "loss",
+            "clears": 5,
+            "count": 2
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 4,
+            "count": 1
+          },
+          {
+            "outcome": "unsupported",
+            "clears": 5,
+            "count": 1
+          }
+        ],
+        "counts": {
+          "episodes_no_discard": 11,
+          "episodes_no_buy": 14,
+          "episodes_sell_joker": 32,
+          "episodes_zero_clears": 10,
+          "loss_last_blind_no_discard": 15,
+          "loss_last_blind_discard_count": 27
+        },
+        "mean_steps": 68.03125,
+        "max_ante": 3,
+        "mean_clears": 1.5,
+        "play_sizes": {
+          "2": 100,
+          "5": 68,
+          "4": 57,
+          "3": 11,
+          "1": 13
+        },
+        "discard_sizes": {
+          "1": 33,
+          "3": 3,
+          "2": 4,
+          "4": 8
+        },
+        "zero_base_plays": 0,
+        "buy_target_ids": {
+          "128": 1,
+          "137": 3,
+          "149": 1,
+          "129": 1,
+          "121": 2,
+          "153": 4,
+          "110": 1,
+          "134": 1,
+          "80": 2,
+          "184": 3,
+          "76": 1,
+          "192": 1,
+          "95": 1,
+          "93": 2,
+          "82": 1,
+          "97": 1,
+          "111": 1,
+          "185": 1,
+          "152": 1,
+          "171": 1,
+          "203": 1,
+          "222": 1,
+          "166": 1,
+          "131": 1,
+          "132": 1,
+          "90": 1,
+          "101": 1,
+          "187": 1,
+          "107": 1,
+          "204": 1,
+          "163": 1
+        },
+        "sell_target_ids": {
+          "223": 32,
+          "170": 32,
+          "137": 1
+        },
+        "buy_stickers": {
+          "[0.0, 0.0, 0.0]": 16,
+          "[1.0, 0.0, 1.0]": 1,
+          "[0.0, 1.0, 0.0]": 9,
+          "[1.0, 0.0, 0.0]": 12,
+          "[0.0, 0.0, 1.0]": 2,
+          "[0.0, 1.0, 1.0]": 1
+        },
+        "zero_clear_examples": [
+          {
+            "episode": 3,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "0": 4
+            },
+            "steps": 7,
+            "dollars": 24,
+            "play_sizes": {
+              "4": 1,
+              "5": 1,
+              "2": 2
+            },
+            "discard_sizes": {}
+          },
+          {
+            "episode": 5,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "0": 4
+            },
+            "steps": 7,
+            "dollars": 24,
+            "play_sizes": {
+              "5": 1,
+              "2": 2,
+              "4": 1
+            },
+            "discard_sizes": {}
+          },
+          {
+            "episode": 1,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "1": 3,
+              "0": 4
+            },
+            "steps": 10,
+            "dollars": 24,
+            "play_sizes": {
+              "2": 3,
+              "5": 1
+            },
+            "discard_sizes": {
+              "1": 3
+            }
+          },
+          {
+            "episode": 9,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "0": 4,
+              "1": 1
+            },
+            "steps": 8,
+            "dollars": 24,
+            "play_sizes": {
+              "2": 2,
+              "4": 2
+            },
+            "discard_sizes": {
+              "3": 1
+            }
+          },
+          {
+            "episode": 21,
+            "policy": "learned",
+            "outcome": "loss",
+            "kinds": {
+              "9": 2,
+              "2": 1,
+              "0": 4
+            },
+            "steps": 7,
+            "dollars": 24,
+            "play_sizes": {
+              "5": 1,
+              "2": 3
+            },
+            "discard_sizes": {}
+          }
+        ],
+        "censored": [
+          {
+            "episode": 11,
+            "reason": "step_limit",
+            "kinds": {
+              "9": 2,
+              "2": 3,
+              "0": 9,
+              "1": 1,
+              "4": 3,
+              "12": 2,
+              "8": 4,
+              "6": 2,
+              "15": 388,
+              "16": 386
+            },
+            "last20": [
+              {
+                "step": 781,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 782,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 783,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 784,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 785,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 786,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 787,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 788,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 789,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 790,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 791,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 792,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 793,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 794,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 795,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 796,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 797,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 798,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 799,
+                "candidate_index": 5,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "ongoing",
+                "blinds_cleared": 3
+              },
+              {
+                "step": 800,
+                "candidate_index": 8,
+                "candidate_kind": 16,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 14,
+                "outcome": "censored",
+                "blinds_cleared": 3
+              }
+            ]
+          },
+          {
+            "episode": 59,
+            "reason": "step_limit",
+            "kinds": {
+              "9": 2,
+              "2": 2,
+              "0": 7,
+              "4": 2,
+              "12": 2,
+              "8": 3,
+              "6": 1,
+              "1": 3,
+              "15": 778
+            },
+            "last20": [
+              {
+                "step": 781,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 782,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 783,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 784,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 785,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 786,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 787,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 788,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 789,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 790,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 791,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 792,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 793,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 794,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 795,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 796,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 797,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 798,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 799,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "ongoing",
+                "blinds_cleared": 2
+              },
+              {
+                "step": 800,
+                "candidate_index": 4,
+                "candidate_kind": 15,
+                "target_slots": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "candidate_count": 10,
+                "outcome": "censored",
+                "blinds_cleared": 2
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "input_hashes": {
+      "actions.jsonl": "12301b0af672eb08288c848d8a767c87078c3c49fc3f3a831933db964f3e9cd1",
+      "episodes.jsonl": "e78016d805346c349423e61d82af1eff4804fdfb7dc34d5c365228a78126b6ee",
+      "configuration.json": "c2524404387a4fc0fcbd0b52c7ebb073542b19cb44c241f4252489dacb0df71d",
+      "summary.json": "7a1912f77081d0820eb1ecd04e960295b85caa0e7e5c8af8fcf5eae34a369358"
+    }
+  }
+}

@@ -1,0 +1,1203 @@
+{
+  "schema": 1,
+  "scope": "Passive frozen public-log and source review; no policy evaluation, new game, save or profile access.",
+  "observation_anchor": {
+    "segment": "session-20260916T175531Z-1-000009.brj",
+    "ordinal": 1418,
+    "raw_sha256": "649c53a85f7bbfa5368e0991aa67f10a58f93cb68190ff5c8046a7cbf39a282c"
+  },
+  "sequence": 6277,
+  "at": "2026-09-16T18:20:36Z",
+  "seed": "RH45AD21",
+  "state": {
+    "phase": "shop",
+    "ante": 6,
+    "round": 14,
+    "teacher_profile": "perkeo_yorick_win_v1",
+    "dollars": 92,
+    "bankrupt_at": 0,
+    "rental_rate": 3,
+    "next_blind": {
+      "ante": 6,
+      "boss": false,
+      "chips": 60000,
+      "debuff": {},
+      "key": "bl_small",
+      "label": "Small",
+      "mult": 1,
+      "name": "Small Blind"
+    },
+    "blind_choices": {
+      "Big": "bl_big",
+      "Boss": "bl_wheel",
+      "Small": "bl_small"
+    },
+    "modifiers": {
+      "enable_eternals_in_shop": true,
+      "enable_perishables_in_shop": true,
+      "enable_rentals_in_shop": true,
+      "no_blind_reward": {
+        "Small": true
+      },
+      "scaling": 3
+    },
+    "ordering_safe": null,
+    "jokers_shuffling": null,
+    "consumeable_buffer": 0,
+    "consumable_limit": 3,
+    "joker_limit": 5,
+    "last_tarot_planet": "c_death"
+  },
+  "completionist_goal_absent": true,
+  "collection_progress": {
+    "catalog_status": "complete",
+    "counts": {
+      "complete": 60,
+      "missing": 90,
+      "total": 150,
+      "unknown": 0
+    },
+    "eligibility": {
+      "eligible": true,
+      "reasons": {},
+      "status": "eligible"
+    },
+    "goal": "gold_stickers",
+    "held_keys": [
+      "j_blueprint",
+      "j_greedy_joker",
+      "j_perkeo",
+      "j_trio",
+      "j_yorick"
+    ],
+    "held_status": "complete",
+    "held_target_count": 1,
+    "held_target_keys": [
+      "j_greedy_joker"
+    ],
+    "held_unknown_keys": {},
+    "metadata_status": "complete",
+    "profile_id": 1,
+    "schema": 1,
+    "scope": "Loaded active-profile vanilla Gold sticker history; holding a target is not a completed win.",
+    "stake_status": "complete",
+    "targets": [
+      {
+        "key": "j_8_ball",
+        "status": "missing"
+      },
+      {
+        "key": "j_abstract",
+        "status": "missing"
+      },
+      {
+        "key": "j_acrobat",
+        "status": "missing"
+      },
+      {
+        "key": "j_ancient",
+        "status": "missing"
+      },
+      {
+        "key": "j_arrowhead",
+        "status": "complete"
+      },
+      {
+        "key": "j_astronomer",
+        "status": "complete"
+      },
+      {
+        "key": "j_banner",
+        "status": "missing"
+      },
+      {
+        "key": "j_baron",
+        "status": "complete"
+      },
+      {
+        "key": "j_baseball",
+        "status": "missing"
+      },
+      {
+        "key": "j_blackboard",
+        "status": "complete"
+      },
+      {
+        "key": "j_bloodstone",
+        "status": "missing"
+      },
+      {
+        "key": "j_blue_joker",
+        "status": "complete"
+      },
+      {
+        "key": "j_blueprint",
+        "status": "complete"
+      },
+      {
+        "key": "j_bootstraps",
+        "status": "complete"
+      },
+      {
+        "key": "j_brainstorm",
+        "status": "complete"
+      },
+      {
+        "key": "j_bull",
+        "status": "missing"
+      },
+      {
+        "key": "j_burglar",
+        "status": "missing"
+      },
+      {
+        "key": "j_burnt",
+        "status": "complete"
+      },
+      {
+        "key": "j_business",
+        "status": "missing"
+      },
+      {
+        "key": "j_caino",
+        "status": "complete"
+      },
+      {
+        "key": "j_campfire",
+        "status": "missing"
+      },
+      {
+        "key": "j_card_sharp",
+        "status": "complete"
+      },
+      {
+        "key": "j_cartomancer",
+        "status": "complete"
+      },
+      {
+        "key": "j_castle",
+        "status": "missing"
+      },
+      {
+        "key": "j_cavendish",
+        "status": "complete"
+      },
+      {
+        "key": "j_ceremonial",
+        "status": "missing"
+      },
+      {
+        "key": "j_certificate",
+        "status": "missing"
+      },
+      {
+        "key": "j_chaos",
+        "status": "complete"
+      },
+      {
+        "key": "j_chicot",
+        "status": "complete"
+      },
+      {
+        "key": "j_clever",
+        "status": "missing"
+      },
+      {
+        "key": "j_cloud_9",
+        "status": "missing"
+      },
+      {
+        "key": "j_constellation",
+        "status": "missing"
+      },
+      {
+        "key": "j_crafty",
+        "status": "missing"
+      },
+      {
+        "key": "j_crazy",
+        "status": "missing"
+      },
+      {
+        "key": "j_credit_card",
+        "status": "missing"
+      },
+      {
+        "key": "j_delayed_grat",
+        "status": "missing"
+      },
+      {
+        "key": "j_devious",
+        "status": "complete"
+      },
+      {
+        "key": "j_diet_cola",
+        "status": "missing"
+      },
+      {
+        "key": "j_dna",
+        "status": "complete"
+      },
+      {
+        "key": "j_drivers_license",
+        "status": "complete"
+      },
+      {
+        "key": "j_droll",
+        "status": "complete"
+      },
+      {
+        "key": "j_drunkard",
+        "status": "missing"
+      },
+      {
+        "key": "j_duo",
+        "status": "complete"
+      },
+      {
+        "key": "j_dusk",
+        "status": "complete"
+      },
+      {
+        "key": "j_egg",
+        "status": "missing"
+      },
+      {
+        "key": "j_erosion",
+        "status": "missing"
+      },
+      {
+        "key": "j_even_steven",
+        "status": "missing"
+      },
+      {
+        "key": "j_faceless",
+        "status": "missing"
+      },
+      {
+        "key": "j_family",
+        "status": "complete"
+      },
+      {
+        "key": "j_fibonacci",
+        "status": "complete"
+      },
+      {
+        "key": "j_flash",
+        "status": "missing"
+      },
+      {
+        "key": "j_flower_pot",
+        "status": "missing"
+      },
+      {
+        "key": "j_fortune_teller",
+        "status": "complete"
+      },
+      {
+        "key": "j_four_fingers",
+        "status": "missing"
+      },
+      {
+        "key": "j_gift",
+        "status": "complete"
+      },
+      {
+        "key": "j_glass",
+        "status": "complete"
+      },
+      {
+        "key": "j_gluttenous_joker",
+        "status": "complete"
+      },
+      {
+        "key": "j_golden",
+        "status": "missing"
+      },
+      {
+        "key": "j_greedy_joker",
+        "status": "missing"
+      },
+      {
+        "key": "j_green_joker",
+        "status": "complete"
+      },
+      {
+        "key": "j_gros_michel",
+        "status": "missing"
+      },
+      {
+        "key": "j_hack",
+        "status": "complete"
+      },
+      {
+        "key": "j_half",
+        "status": "missing"
+      },
+      {
+        "key": "j_hallucination",
+        "status": "complete"
+      },
+      {
+        "key": "j_hanging_chad",
+        "status": "complete"
+      },
+      {
+        "key": "j_hiker",
+        "status": "complete"
+      },
+      {
+        "key": "j_hit_the_road",
+        "status": "missing"
+      },
+      {
+        "key": "j_hologram",
+        "status": "missing"
+      },
+      {
+        "key": "j_ice_cream",
+        "status": "complete"
+      },
+      {
+        "key": "j_idol",
+        "status": "missing"
+      },
+      {
+        "key": "j_invisible",
+        "status": "missing"
+      },
+      {
+        "key": "j_joker",
+        "status": "missing"
+      },
+      {
+        "key": "j_jolly",
+        "status": "complete"
+      },
+      {
+        "key": "j_juggler",
+        "status": "complete"
+      },
+      {
+        "key": "j_loyalty_card",
+        "status": "missing"
+      },
+      {
+        "key": "j_luchador",
+        "status": "missing"
+      },
+      {
+        "key": "j_lucky_cat",
+        "status": "missing"
+      },
+      {
+        "key": "j_lusty_joker",
+        "status": "missing"
+      },
+      {
+        "key": "j_mad",
+        "status": "missing"
+      },
+      {
+        "key": "j_madness",
+        "status": "missing"
+      },
+      {
+        "key": "j_mail",
+        "status": "complete"
+      },
+      {
+        "key": "j_marble",
+        "status": "missing"
+      },
+      {
+        "key": "j_matador",
+        "status": "missing"
+      },
+      {
+        "key": "j_merry_andy",
+        "status": "missing"
+      },
+      {
+        "key": "j_midas_mask",
+        "status": "complete"
+      },
+      {
+        "key": "j_mime",
+        "status": "complete"
+      },
+      {
+        "key": "j_misprint",
+        "status": "complete"
+      },
+      {
+        "key": "j_mr_bones",
+        "status": "missing"
+      },
+      {
+        "key": "j_mystic_summit",
+        "status": "missing"
+      },
+      {
+        "key": "j_obelisk",
+        "status": "missing"
+      },
+      {
+        "key": "j_odd_todd",
+        "status": "missing"
+      },
+      {
+        "key": "j_onyx_agate",
+        "status": "complete"
+      },
+      {
+        "key": "j_oops",
+        "status": "missing"
+      },
+      {
+        "key": "j_order",
+        "status": "missing"
+      },
+      {
+        "key": "j_pareidolia",
+        "status": "missing"
+      },
+      {
+        "key": "j_perkeo",
+        "status": "complete"
+      },
+      {
+        "key": "j_photograph",
+        "status": "missing"
+      },
+      {
+        "key": "j_popcorn",
+        "status": "complete"
+      },
+      {
+        "key": "j_raised_fist",
+        "status": "missing"
+      },
+      {
+        "key": "j_ramen",
+        "status": "missing"
+      },
+      {
+        "key": "j_red_card",
+        "status": "missing"
+      },
+      {
+        "key": "j_reserved_parking",
+        "status": "missing"
+      },
+      {
+        "key": "j_ride_the_bus",
+        "status": "complete"
+      },
+      {
+        "key": "j_riff_raff",
+        "status": "missing"
+      },
+      {
+        "key": "j_ring_master",
+        "status": "complete"
+      },
+      {
+        "key": "j_rocket",
+        "status": "missing"
+      },
+      {
+        "key": "j_rough_gem",
+        "status": "missing"
+      },
+      {
+        "key": "j_runner",
+        "status": "missing"
+      },
+      {
+        "key": "j_satellite",
+        "status": "missing"
+      },
+      {
+        "key": "j_scary_face",
+        "status": "complete"
+      },
+      {
+        "key": "j_scholar",
+        "status": "missing"
+      },
+      {
+        "key": "j_seance",
+        "status": "missing"
+      },
+      {
+        "key": "j_seeing_double",
+        "status": "missing"
+      },
+      {
+        "key": "j_selzer",
+        "status": "missing"
+      },
+      {
+        "key": "j_shoot_the_moon",
+        "status": "missing"
+      },
+      {
+        "key": "j_shortcut",
+        "status": "missing"
+      },
+      {
+        "key": "j_sixth_sense",
+        "status": "complete"
+      },
+      {
+        "key": "j_sly",
+        "status": "missing"
+      },
+      {
+        "key": "j_smeared",
+        "status": "missing"
+      },
+      {
+        "key": "j_smiley",
+        "status": "complete"
+      },
+      {
+        "key": "j_sock_and_buskin",
+        "status": "complete"
+      },
+      {
+        "key": "j_space",
+        "status": "complete"
+      },
+      {
+        "key": "j_splash",
+        "status": "missing"
+      },
+      {
+        "key": "j_square",
+        "status": "complete"
+      },
+      {
+        "key": "j_steel_joker",
+        "status": "missing"
+      },
+      {
+        "key": "j_stencil",
+        "status": "complete"
+      },
+      {
+        "key": "j_stone",
+        "status": "missing"
+      },
+      {
+        "key": "j_stuntman",
+        "status": "missing"
+      },
+      {
+        "key": "j_supernova",
+        "status": "missing"
+      },
+      {
+        "key": "j_superposition",
+        "status": "missing"
+      },
+      {
+        "key": "j_swashbuckler",
+        "status": "complete"
+      },
+      {
+        "key": "j_throwback",
+        "status": "missing"
+      },
+      {
+        "key": "j_ticket",
+        "status": "missing"
+      },
+      {
+        "key": "j_to_the_moon",
+        "status": "complete"
+      },
+      {
+        "key": "j_todo_list",
+        "status": "missing"
+      },
+      {
+        "key": "j_trading",
+        "status": "complete"
+      },
+      {
+        "key": "j_tribe",
+        "status": "complete"
+      },
+      {
+        "key": "j_triboulet",
+        "status": "complete"
+      },
+      {
+        "key": "j_trio",
+        "status": "complete"
+      },
+      {
+        "key": "j_troubadour",
+        "status": "missing"
+      },
+      {
+        "key": "j_trousers",
+        "status": "complete"
+      },
+      {
+        "key": "j_turtle_bean",
+        "status": "missing"
+      },
+      {
+        "key": "j_vagabond",
+        "status": "missing"
+      },
+      {
+        "key": "j_vampire",
+        "status": "missing"
+      },
+      {
+        "key": "j_walkie_talkie",
+        "status": "missing"
+      },
+      {
+        "key": "j_wee",
+        "status": "missing"
+      },
+      {
+        "key": "j_wily",
+        "status": "missing"
+      },
+      {
+        "key": "j_wrathful_joker",
+        "status": "complete"
+      },
+      {
+        "key": "j_yorick",
+        "status": "complete"
+      },
+      {
+        "key": "j_zany",
+        "status": "missing"
+      }
+    ]
+  },
+  "trio_gold_status": {
+    "key": "j_trio",
+    "status": "complete"
+  },
+  "jokers": [
+    {
+      "ability": {
+        "blueprint_compat": "compatible",
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "Copycat",
+        "eternal": true,
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 17,
+        "mult": 0,
+        "name": "Blueprint",
+        "order": 123,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 10,
+      "blueprint_compat": true,
+      "cost": 10,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:840",
+      "key": "j_blueprint",
+      "name": "Blueprint",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 3,
+      "sell_cost": 5
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "",
+        "extra": {
+          "discards": 23,
+          "xmult": 1
+        },
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 0,
+        "mult": 0,
+        "name": "Yorick",
+        "order": 148,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 5,
+        "yorick_discards": 20
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 20,
+      "blueprint_compat": true,
+      "cost": 20,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:764",
+      "key": "j_yorick",
+      "name": "Yorick",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 4,
+      "sell_cost": 10
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "Suit Mult",
+        "extra": {
+          "s_mult": 3,
+          "suit": "Diamonds"
+        },
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 4,
+        "mult": 0,
+        "name": "Greedy Joker",
+        "order": 2,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 5,
+      "blueprint_compat": true,
+      "cost": 5,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:774",
+      "key": "j_greedy_joker",
+      "name": "Greedy Joker",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 1,
+      "sell_cost": 2
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "X2 Mult",
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 15,
+        "mult": 0,
+        "name": "The Trio",
+        "order": 132,
+        "p_dollars": 0,
+        "perish_tally": 0,
+        "perishable": true,
+        "perma_bonus": 0,
+        "rental": true,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "Three of a Kind",
+        "x_mult": 3
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 8,
+      "blueprint_compat": true,
+      "cost": 1,
+      "debuff": true,
+      "face_down": false,
+      "id": "card:824",
+      "key": "j_trio",
+      "name": "The Trio",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 3,
+      "sell_cost": 1
+    },
+    {
+      "ability": {
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "",
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 0,
+        "mult": 0,
+        "name": "Perkeo",
+        "order": 150,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "base": {
+        "face_nominal": 0,
+        "nominal": 0,
+        "suit_nominal": 0,
+        "times_played": 0
+      },
+      "base_cost": 20,
+      "blueprint_compat": true,
+      "cost": 20,
+      "debuff": false,
+      "face_down": false,
+      "id": "card:765",
+      "key": "j_perkeo",
+      "name": "Perkeo",
+      "nominal": 0,
+      "pinned": false,
+      "rarity": 4,
+      "sell_cost": 10
+    }
+  ],
+  "consumables": [
+    {
+      "id": "card:863",
+      "key": "c_hermit",
+      "ability": {
+        "bonus": 0,
+        "consumeable": {
+          "extra": 20
+        },
+        "d_size": 0,
+        "effect": "Dollar Doubler",
+        "extra": 20,
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 10,
+        "mult": 0,
+        "name": "The Hermit",
+        "order": 10,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Tarot",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      },
+      "edition": {
+        "negative": true,
+        "type": "negative"
+      },
+      "debuff": false
+    }
+  ],
+  "expired_rental_counts": [
+    {
+      "seed": "RH45AD21",
+      "phase": "blind",
+      "key": "j_trio",
+      "observations": 5
+    },
+    {
+      "seed": "RH45AD21",
+      "phase": "hand",
+      "key": "j_trio",
+      "observations": 38
+    },
+    {
+      "seed": "RH45AD21",
+      "phase": "other",
+      "key": "j_trio",
+      "observations": 21
+    },
+    {
+      "seed": "RH45AD21",
+      "phase": "pack",
+      "key": "j_trio",
+      "observations": 15
+    },
+    {
+      "seed": "RH45AD21",
+      "phase": "round",
+      "key": "j_trio",
+      "observations": 7
+    },
+    {
+      "seed": "RH45AD21",
+      "phase": "shop",
+      "key": "j_trio",
+      "observations": 24
+    }
+  ],
+  "expired_rental_shop_observation_ids": [
+    "teacher356-1789581331-1:6277",
+    "teacher356-1789581331-1:6288",
+    "teacher356-1789581331-1:6310",
+    "teacher356-1789581331-1:6319",
+    "teacher356-1789581331-1:6383",
+    "teacher356-1789581331-1:6394",
+    "teacher356-1789581331-1:6405",
+    "teacher356-1789581331-1:6427",
+    "teacher356-1789581331-1:6450",
+    "teacher356-1789581331-1:6459",
+    "teacher356-1789581331-1:6545",
+    "teacher356-1789581331-1:6556",
+    "teacher356-1789581331-1:6567",
+    "teacher356-1789581331-1:6589",
+    "teacher356-1789581331-1:6598",
+    "teacher356-1789581331-1:6664",
+    "teacher356-1789581331-1:6675",
+    "teacher356-1789581331-1:6686",
+    "teacher356-1789581331-1:6694",
+    "teacher356-1789581331-1:6802",
+    "teacher356-1789581331-1:6813",
+    "teacher356-1789581331-1:6824",
+    "teacher356-1789581331-1:6846",
+    "teacher356-1789581331-1:6855"
+  ],
+  "leave_shop_attempts": [
+    {
+      "sequence": 6326,
+      "at": "2026-09-16T18:20:55Z",
+      "observation_id": "teacher356-1789581331-1:6319",
+      "ante": 6,
+      "round": 14,
+      "dollars": 76,
+      "next_blind": {
+        "ante": 6,
+        "boss": false,
+        "chips": 60000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 1467,
+        "raw_sha256": "53a350ed43132a497feea0c601be8a0c4274389b6e32f5321c226cc8b728ff1e"
+      }
+    },
+    {
+      "sequence": 6466,
+      "at": "2026-09-16T18:21:38Z",
+      "observation_id": "teacher356-1789581331-1:6459",
+      "ante": 6,
+      "round": 15,
+      "dollars": 111,
+      "next_blind": {
+        "ante": 6,
+        "boss": false,
+        "chips": 90000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 1607,
+        "raw_sha256": "bb84547b12edd1e499ff2e891cd2133b6beaf51647e1b6b8568fec9034a5f2cf"
+      }
+    },
+    {
+      "sequence": 6605,
+      "at": "2026-09-16T18:22:12Z",
+      "observation_id": "teacher356-1789581331-1:6598",
+      "ante": 6,
+      "round": 16,
+      "dollars": 154,
+      "next_blind": {
+        "ante": 6,
+        "boss": true,
+        "chips": 120000,
+        "debuff": {},
+        "key": "bl_wheel",
+        "label": "Boss",
+        "mult": 2,
+        "name": "The Wheel"
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 1746,
+        "raw_sha256": "b1ec713b7958d1875eedb216578e0014824ae6c5b143b2e98696bc58bfa6a9b3"
+      }
+    },
+    {
+      "sequence": 6701,
+      "at": "2026-09-16T18:22:32Z",
+      "observation_id": "teacher356-1789581331-1:6694",
+      "ante": 7,
+      "round": 17,
+      "dollars": 203,
+      "next_blind": {
+        "ante": 7,
+        "boss": false,
+        "chips": 110000,
+        "debuff": {},
+        "key": "bl_small",
+        "label": "Small",
+        "mult": 1,
+        "name": "Small Blind"
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 1842,
+        "raw_sha256": "680bd452d177b5b9442344e53393b4550abe8163df454c655bb3fb6269fee82c"
+      }
+    },
+    {
+      "sequence": 6862,
+      "at": "2026-09-16T18:23:19Z",
+      "observation_id": "teacher356-1789581331-1:6855",
+      "ante": 7,
+      "round": 18,
+      "dollars": 242,
+      "next_blind": {
+        "ante": 7,
+        "boss": false,
+        "chips": 165000,
+        "debuff": {},
+        "key": "bl_big",
+        "label": "Big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "anchor": {
+        "segment": "session-20260916T175531Z-1-000009.brj",
+        "ordinal": 2003,
+        "raw_sha256": "51595705171c0ddb3fe4c6d3257bfd6f7e3c3f4868512931aac9cc4dcd20d755"
+      }
+    }
+  ],
+  "terminal": {
+    "sequence": 6968,
+    "kind": "auto_run",
+    "at": "2026-09-16T18:23:45Z",
+    "monotonic_seconds": 1719.519807,
+    "observation_id": "teacher356-1789581331-1:6965",
+    "advice_sequence": 6966,
+    "seed": "RH45AD21",
+    "run_instance": "observed-game:5",
+    "anchor": {
+      "segment": "session-20260916T175531Z-1-000010.brj",
+      "ordinal": 61,
+      "raw_sha256": "6f79a4e65fd7ad84629fb7e64470886fef989148d61a9855667042b48df1e0b9"
+    },
+    "details": {
+      "event": "run_finished",
+      "evidence": {
+        "event_id": "loss:game:5",
+        "kind": "loss",
+        "result_surface_seen": true,
+        "run_id": "game:5",
+        "source": "GAME_OVER",
+        "source_won_field": false,
+        "verified": true
+      },
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      },
+      "gold_progress": {
+        "confirmed_new_count": 0,
+        "confirmed_new_keys": {},
+        "schema": 1,
+        "unknown_wins": 0,
+        "zero_new_wins": 1
+      },
+      "outcome": "loss",
+      "profile_id": 1,
+      "run_actions": 195,
+      "run_id": "game:5",
+      "run_number": 4,
+      "run_seconds": 530.2215956,
+      "schema": 1,
+      "search_id": "auto:1:1:4",
+      "session": 1,
+      "state": "terminal",
+      "time": 1719.5138744
+    },
+    "advice": null
+  },
+  "terminal_state": {
+    "phase": "other",
+    "ante": 7,
+    "round": 19,
+    "chips": 130932,
+    "dollars": 242,
+    "hands_left": 0,
+    "blind": {
+      "boss": false,
+      "chips": 165000,
+      "debuff": {},
+      "disabled": false,
+      "key": "bl_big",
+      "mult": 1.5,
+      "name": "Big Blind"
+    }
+  },
+  "limits": "Retention is directly observed. Its contribution to the loss and the outcome of selling earlier are unmeasured. Manufactured tests do not replay this state.",
+  "input_hashes": {
+    "tools/advisor_eval/development357/logs1/manifest.json": "9be46d55e8dda1af7271ce6c9bfd07942d5061a7a9e9c24bb475f74bdc30d068",
+    "tools/advisor_eval/development357/logs1/events.json": "9f18fd8106c108d78272789455a06337da26838ac4cad83336cb2e35ae779301",
+    "tools/advisor_eval/development357/logs1/observations.json": "3a86d59088dd1b831f7faf01ae56ff7e56b3c60559425f1cc6ed422136e5e68b",
+    "tools/advisor_eval/development357/logs1/frozen/session-20260916T175531Z-1-000009.brj": "91ff20c9fe61c7e96e40bf8d7d3aba5b89a412ac3d1c32580971ecad413f0e6b"
+  }
+}

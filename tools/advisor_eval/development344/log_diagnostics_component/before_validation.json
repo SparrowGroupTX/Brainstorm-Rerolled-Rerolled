@@ -1,0 +1,32 @@
+{
+  "kind": "manufactured_fixture_only",
+  "live_game": false,
+  "source_execution": false,
+  "captured_replay": false,
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_gold.lua",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_journal.lua",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_timing.lua",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_reuse.lua"
+  ],
+  "timeout_seconds": 60,
+  "files": {
+    "Brainstorm/Advisor/player_journal.lua": "1d41e9fe61ee25c4397a8a3b5ce1e598f1410c3a3f7ff5277345301e2455962e",
+    "tools/advisor_eval/development344/log_diagnostics_component/before/Brainstorm/Advisor/player_journal.lua": "1d41e9fe61ee25c4397a8a3b5ce1e598f1410c3a3f7ff5277345301e2455962e",
+    "tools/advisor_eval/development344/log_diagnostics_component/tests/advisor_gold_journal.lua": "0c0a3a04d5b506020eab1c2e9444996ad8a7b13ffb2667c361423d076f87791e",
+    "tests/advisor_player_journal.lua": "bbf3141a4e468e233f1690aaa1fd9d2c6e3883166edbf37002bfcc2ee3cb37a2",
+    "tests/advisor_player_journal_timing.lua": "4f0dd01995eb1f1311fca06e56df1a5c313d3b874953aabd8f2705a0e57b2890",
+    "tests/advisor_journal_reuse.lua": "c7b5110783c3b6989f64c15ecdf4b1f82c282c6641279d432e7dee491f511c92",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_gold.lua": "f87e4bbed771d3931db158759ef1115c22e5e0a5f486394e9256f993673233e1",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_journal.lua": "a56de3e3b5c4bc253e2de627caa1188295b8b87484d7d5d1305178f2f8a7457e",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_timing.lua": "6ad6b231dd609804bc04f85baab7b180eed8c90555636601134db09150827342",
+    "tools/advisor_eval/development344/log_diagnostics_component/run_before_reuse.lua": "ccd37bd5a70d1a9a52a9bb9c5b9d2bc288a43109418a1bdabfb3e9f9ee08792e"
+  },
+  "exit_code": 1,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_gold.lua\nFAIL tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_gold.lua\nRunning tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_journal.lua\nPASS tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_journal.lua\nRunning tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_timing.lua\nPASS tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_timing.lua\nRunning tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_reuse.lua\nPASS tools\\advisor_eval\\development344\\log_diagnostics_component\\run_before_reuse.lua\n3/4 fixtures passed\nadvisor_player_journal: 25 checks passed\nplayer_journal_timing: 105 manufactured checks passed; elapsed wall time only\njournal_work335: 236 checks; avoided detail gathers=9; avoided full fingerprints=16; all serialized event bytes equivalent\n",
+  "stderr": "...log_diagnostics_component/tests/advisor_gold_journal.lua:5: current Gold review is recorded\n",
+  "duration_seconds": 0.125,
+  "files_unchanged": true
+}

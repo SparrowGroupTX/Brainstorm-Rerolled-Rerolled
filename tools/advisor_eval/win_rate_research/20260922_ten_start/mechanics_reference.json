@@ -1,0 +1,34 @@
+{
+  "scope": "read-only ZIP source; never executed",
+  "exe": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\Balatro.exe",
+  "card_sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+  "preserved_card_sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+  "matches_preserved": true,
+  "version_lines": [
+    "VERSION = '1.0.1o'",
+    "VERSION = VERSION..'-FULL'",
+    "self.VERSION = VERSION"
+  ],
+  "observatory": {
+    "card_lua_lines": [
+      2293,
+      2301
+    ],
+    "game_lua_config": [
+      {
+        "line": 614,
+        "text": "v_observatory=      {order = 12,    discovered = false, unlocked = false, available = true, cost = 10, name = \"Observatory\", pos = {x=3,y=3}, set = \"Voucher\", config = {extra = 1.5}, requires = {'v_telescope'},unlock_condition = {type = 'c_planetarium_used', extra = 25}},"
+      }
+    ],
+    "game_lua_sha256": "bbc67bd3fbadd1ea3f3f0aba07ef8596118d89ff1e9758718f9e17c07a96e912"
+  },
+  "state_events_sha256": "6c86aefb42d0323d737f87aaa84f53e42b755e72cd0bfd163b7d9cca5c0a99a9",
+  "perkeo_lines": [
+    2412,
+    2424
+  ],
+  "yorick_lines": [
+    2788,
+    2802
+  ]
+}

@@ -1,0 +1,10 @@
+--- a/Brainstorm/Advisor/strategy.lua
++++ b/Brainstorm/Advisor/strategy.lua
+@@ -1304,6 +1304,7 @@
+     return {title='Sell '..name(sale.sold)..' #'..sale.index..' ($'..num(sale.sold.sell_cost)..')',lines=lines,warnings={},
+         forecast=purchase.forecast,action={kind='sell',area='jokers',index=sale.index,
+             followup={kind=verb,area=purchase.area or 'pack_cards',index=purchase.index}},
++        scoring_evidence=sale.scoring_evidence,
+         replacement={utility_gain=sale.gain,cash_after_purchase=sale.remaining_cash}}
+ end
+ 

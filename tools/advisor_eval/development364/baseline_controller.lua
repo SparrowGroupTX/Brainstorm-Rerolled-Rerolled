@@ -1,0 +1,1 @@
+local f=assert(io.open('tests/advisor_collection_marathon364.lua','r'));local s=f:read('*a');f:close();s=s:gsub("Brainstorm/Advisor/auto_run.lua","tools/advisor_eval/development364/before/Brainstorm/Advisor/auto_run.lua",1);assert(loadstring(s))()

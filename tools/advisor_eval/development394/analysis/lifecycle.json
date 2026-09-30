@@ -1,0 +1,658 @@
+[
+  {
+    "anchor": {
+      "sequence": 21,
+      "segment": "session-20260925T214542Z-1-000002.brj",
+      "ordinal": 8,
+      "raw_sha256": "bf9088edc3c09b21794d01425a636ed42452717288449eefca30ee311547b35b"
+    },
+    "event": "run_started",
+    "run_number": 1,
+    "run_id": "game:2",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 2104,
+      "segment": "session-20260925T214542Z-1-000003.brj",
+      "ordinal": 43,
+      "raw_sha256": "e583c9b1d02d96a46546e3bc7d04ded492753dab78094f4821502579c2a25409"
+    },
+    "event": "run_finished",
+    "run_number": 1,
+    "run_id": "game:2",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:2",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:2",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 2125,
+      "segment": "session-20260925T214542Z-1-000005.brj",
+      "ordinal": 8,
+      "raw_sha256": "94030fb6bd2858072bd0a049e1d6001bfdef1b0fb6bba87e0817e9cf9a78c824"
+    },
+    "event": "run_started",
+    "run_number": 2,
+    "run_id": "game:3",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 2372,
+      "segment": "session-20260925T214542Z-1-000005.brj",
+      "ordinal": 255,
+      "raw_sha256": "5047c22a63ca6874b2a261a4672dbfcaf848a139f2f8d1ad0cf7367d86d4ecbf"
+    },
+    "event": "run_finished",
+    "run_number": 2,
+    "run_id": "game:3",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:3",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:3",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 2390,
+      "segment": "session-20260925T214542Z-1-000007.brj",
+      "ordinal": 8,
+      "raw_sha256": "9f5fcb18cb0ba316e3be9bd906ddf7dd5555ba737d046cd6da175ed9f70fad9a"
+    },
+    "event": "run_started",
+    "run_number": 3,
+    "run_id": "game:4",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 5206,
+      "segment": "session-20260925T214542Z-1-000008.brj",
+      "ordinal": 776,
+      "raw_sha256": "0d56f5ac0f5ea2d281d288cf1ac13c910053736971e4beaf2ef750aaf1fa5822"
+    },
+    "event": "run_finished",
+    "run_number": 3,
+    "run_id": "game:4",
+    "outcome": "win",
+    "reason": null,
+    "evidence": {
+      "callbacks": [
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1313664,
+            "deck": "b_red",
+            "deck_wins": 78,
+            "jokers": {
+              "j_brainstorm": 59,
+              "j_family": 4,
+              "j_greedy_joker": 2,
+              "j_perkeo": 82,
+              "j_yorick": 81
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1313664,
+            "deck": "b_red",
+            "deck_wins": 78,
+            "jokers": {
+              "j_brainstorm": 58,
+              "j_family": 3,
+              "j_greedy_joker": 1,
+              "j_perkeo": 81,
+              "j_yorick": 80
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_joker_win",
+          "verified": true
+        },
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1313664,
+            "deck": "b_red",
+            "deck_wins": 79,
+            "jokers": {
+              "j_brainstorm": 59,
+              "j_family": 4,
+              "j_greedy_joker": 2,
+              "j_perkeo": 82,
+              "j_yorick": 81
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1313664,
+            "deck": "b_red",
+            "deck_wins": 78,
+            "jokers": {
+              "j_brainstorm": 59,
+              "j_family": 4,
+              "j_greedy_joker": 2,
+              "j_perkeo": 82,
+              "j_yorick": 81
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_deck_win",
+          "verified": true
+        }
+      ],
+      "event_id": "win:game:4",
+      "final_context": {
+        "ante": 8,
+        "boss": true,
+        "chips": 1313664,
+        "deck": "b_red",
+        "deck_wins": 78,
+        "jokers": {
+          "j_brainstorm": 58,
+          "j_family": 3,
+          "j_greedy_joker": 1,
+          "j_perkeo": 81,
+          "j_yorick": 80
+        },
+        "round": 23,
+        "seeded": false,
+        "stake": 8,
+        "state": 19,
+        "target": 1200000,
+        "win_ante": 8,
+        "won": false
+      },
+      "game_over": false,
+      "kind": "win",
+      "result_surface_seen": false,
+      "run_id": "game:4",
+      "source": "original_win_callback",
+      "source_saved": false,
+      "threshold_met": true,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 5227,
+      "segment": "session-20260925T214542Z-1-000010.brj",
+      "ordinal": 8,
+      "raw_sha256": "cbefb64320fb6fa4d5549263c84f8da9aec6d026a4b190cf28d2d65c9ab9419f"
+    },
+    "event": "run_started",
+    "run_number": 4,
+    "run_id": "game:5",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 6690,
+      "segment": "session-20260925T214542Z-1-000010.brj",
+      "ordinal": 1471,
+      "raw_sha256": "f9c55dcf062ead75b8467a74aae8562b3424cd319ad94a11eb4cb2239d0766ae"
+    },
+    "event": "run_finished",
+    "run_number": 4,
+    "run_id": "game:5",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:5",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:5",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 6707,
+      "segment": "session-20260925T214542Z-1-000012.brj",
+      "ordinal": 8,
+      "raw_sha256": "ad178c0860e3cd6a58d10c846e1d57679320b0a2a9bf1d80066f1ae6a1a48719"
+    },
+    "event": "run_started",
+    "run_number": 5,
+    "run_id": "game:6",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 6954,
+      "segment": "session-20260925T214542Z-1-000012.brj",
+      "ordinal": 255,
+      "raw_sha256": "3b629dd110fd5168ab6e71c0347c2bd4986480beb021a3d9c52cf4cecc7fdc8d"
+    },
+    "event": "run_finished",
+    "run_number": 5,
+    "run_id": "game:6",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:6",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:6",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 6971,
+      "segment": "session-20260925T214542Z-1-000014.brj",
+      "ordinal": 8,
+      "raw_sha256": "0b284e62eb530d5dcadf1de30b31aac24c3d5c83dea00d6a8d84e8be0fef5009"
+    },
+    "event": "run_started",
+    "run_number": 6,
+    "run_id": "game:7",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 8609,
+      "segment": "session-20260925T214542Z-1-000014.brj",
+      "ordinal": 1646,
+      "raw_sha256": "a0ee2966bd1cb5d5cd86df024b02164fcd1844dc63d3b18e87b21cbd57c27d3a"
+    },
+    "event": "run_finished",
+    "run_number": 6,
+    "run_id": "game:7",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:7",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:7",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 8628,
+      "segment": "session-20260925T214542Z-1-000016.brj",
+      "ordinal": 8,
+      "raw_sha256": "f3b32e552083dbea05e4f705ee1583e7cd70391d6d0c7903b129f8b0741dd889"
+    },
+    "event": "run_started",
+    "run_number": 7,
+    "run_id": "game:8",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 11293,
+      "segment": "session-20260925T214542Z-1-000017.brj",
+      "ordinal": 625,
+      "raw_sha256": "22e615d53a4b91c7e21553b106c998314495395b6c489567ff7a1232c249b273"
+    },
+    "event": "run_finished",
+    "run_number": 7,
+    "run_id": "game:8",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:8",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:8",
+      "source": "GAME_OVER",
+      "source_won_field": true,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 11315,
+      "segment": "session-20260925T214542Z-1-000019.brj",
+      "ordinal": 8,
+      "raw_sha256": "1aec9a21c23ffe5b3f96e3ef408de96237bba78b9a64d1307c09a483cc7b21f5"
+    },
+    "event": "run_started",
+    "run_number": 8,
+    "run_id": "game:9",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 13736,
+      "segment": "session-20260925T214542Z-1-000020.brj",
+      "ordinal": 381,
+      "raw_sha256": "a81eb470b2758c58e779bb669a917be708e4dcd83d166464f0c2329706ebcaba"
+    },
+    "event": "run_finished",
+    "run_number": 8,
+    "run_id": "game:9",
+    "outcome": "win",
+    "reason": null,
+    "evidence": {
+      "callbacks": [
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1305558,
+            "deck": "b_red",
+            "deck_wins": 79,
+            "jokers": {
+              "j_blue_joker": 4,
+              "j_blueprint": 60,
+              "j_half": 3,
+              "j_perkeo": 83,
+              "j_yorick": 82
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1305558,
+            "deck": "b_red",
+            "deck_wins": 79,
+            "jokers": {
+              "j_blue_joker": 3,
+              "j_blueprint": 59,
+              "j_half": 2,
+              "j_perkeo": 82,
+              "j_yorick": 81
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_joker_win",
+          "verified": true
+        },
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1305558,
+            "deck": "b_red",
+            "deck_wins": 80,
+            "jokers": {
+              "j_blue_joker": 4,
+              "j_blueprint": 60,
+              "j_half": 3,
+              "j_perkeo": 83,
+              "j_yorick": 82
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 1305558,
+            "deck": "b_red",
+            "deck_wins": 79,
+            "jokers": {
+              "j_blue_joker": 4,
+              "j_blueprint": 60,
+              "j_half": 3,
+              "j_perkeo": 83,
+              "j_yorick": 82
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_deck_win",
+          "verified": true
+        }
+      ],
+      "event_id": "win:game:9",
+      "final_context": {
+        "ante": 8,
+        "boss": true,
+        "chips": 1305558,
+        "deck": "b_red",
+        "deck_wins": 79,
+        "jokers": {
+          "j_blue_joker": 3,
+          "j_blueprint": 59,
+          "j_half": 2,
+          "j_perkeo": 82,
+          "j_yorick": 81
+        },
+        "round": 23,
+        "seeded": false,
+        "stake": 8,
+        "state": 19,
+        "target": 1200000,
+        "win_ante": 8,
+        "won": false
+      },
+      "game_over": false,
+      "kind": "win",
+      "result_surface_seen": false,
+      "run_id": "game:9",
+      "source": "original_win_callback",
+      "source_saved": false,
+      "threshold_met": true,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 13757,
+      "segment": "session-20260925T214542Z-1-000022.brj",
+      "ordinal": 8,
+      "raw_sha256": "005117e806d7b7b5d5012db9c6f795ba62e64b5fccf2e9f7af30d41ba68bb078"
+    },
+    "event": "run_started",
+    "run_number": 9,
+    "run_id": "game:10",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 15918,
+      "segment": "session-20260925T214542Z-1-000023.brj",
+      "ordinal": 121,
+      "raw_sha256": "0ec5f02b95484374dbd3f4e600e30658f673e17fca88ae5b062a0b0bbeceff48"
+    },
+    "event": "run_finished",
+    "run_number": 9,
+    "run_id": "game:10",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:10",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:10",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 15937,
+      "segment": "session-20260925T214542Z-1-000025.brj",
+      "ordinal": 8,
+      "raw_sha256": "2ebe7f62a5dfe05c4c42daa9bd3bdab69c4dc13087effe4cd1d6c60751c6f362"
+    },
+    "event": "run_started",
+    "run_number": 10,
+    "run_id": "game:11",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 18639,
+      "segment": "session-20260925T214542Z-1-000026.brj",
+      "ordinal": 662,
+      "raw_sha256": "3d68d1e929a25c3a24d7467eb8e45b0e246bf7205948e81f3019e7d9cfe6cd8f"
+    },
+    "event": "run_finished",
+    "run_number": 10,
+    "run_id": "game:11",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:11",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:11",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 18640,
+      "segment": "session-20260925T214542Z-1-000027.brj",
+      "ordinal": 1,
+      "raw_sha256": "b6bf8dc039418288f10120d2bc0c3d2c72e4687893a8e53f4080dcb333502782"
+    },
+    "event": "session_stopped",
+    "run_number": null,
+    "run_id": "game:11",
+    "outcome": null,
+    "reason": "run_limit",
+    "evidence": null,
+    "runs_started": 10,
+    "outcomes": {
+      "abandoned_stall": 0,
+      "error": 0,
+      "losses": 8,
+      "unsupported": 0,
+      "wins": 2
+    }
+  }
+]

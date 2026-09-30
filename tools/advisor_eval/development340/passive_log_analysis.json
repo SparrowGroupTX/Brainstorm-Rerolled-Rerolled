@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "kind": "read_only_passive_log_analysis",
+  "created_utc": "2026-09-16T00:06:09.751343+00:00",
+  "source": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\advisor_player_log_v2\\session-20260915T233321Z-1-000010.brj",
+  "source_sha256": "6fa8c37d4baaf962603775834e23685f69c719df97a531f4a799f58268bacae4",
+  "loaded_version": "2.138.0-alpha",
+  "initial_decision": {
+    "sequence": 4547,
+    "ordinal": 1078,
+    "time_utc": "2026-09-15T23:58:25Z",
+    "reason": "Concealed, random, destructible or held-reward playing-card effects remain outside this immediate comparison.",
+    "public_belief": {
+      "supported": true,
+      "complete": true,
+      "state_valid": true,
+      "jokers": 5,
+      "worlds": 120
+    },
+    "hand_summary": {
+      "cards": 8,
+      "lucky_cards": 1,
+      "lucky_slot": 2,
+      "other_cards_plain": true,
+      "seals": 0
+    },
+    "resources": {
+      "hands_left": 4,
+      "discards_left": 3,
+      "chips": 0,
+      "target": 400000
+    }
+  },
+  "stop": {
+    "sequence": 4554,
+    "ordinal": 1085,
+    "time_utc": "2026-09-15T23:58:55Z",
+    "reason": "unsupported_stalled",
+    "stored_interval": [
+      3034770,
+      3035906
+    ],
+    "stored_bytes": 1136,
+    "stored_sha256": "fdb585f3c43255a18785250ba9c3e34c8de1b345c3710d701bea7a4a0cd133b4"
+  },
+  "later_observations": [
+    {
+      "segment": 11,
+      "sequence": 4562,
+      "ordinal": 6,
+      "status": "First manual play retains supported public belief"
+    },
+    {
+      "segment": 11,
+      "sequence": 4564,
+      "ordinal": 8,
+      "status": "Unobserved drag origin invalidates support before second play"
+    },
+    {
+      "segment": 11,
+      "sequence": 4567,
+      "ordinal": 11,
+      "status": "Subsequent completion reports unqualified ability transition"
+    },
+    {
+      "segment": 19,
+      "sequence": 4586,
+      "ordinal": 1,
+      "status": "Checkpoint reload has no complete pre-concealment inventory"
+    }
+  ],
+  "scope": "Read-only public log analysis; no captured-policy replay, source worker, simulation, save/profile read or live-game control. No terminal result or rescued run inferred.",
+  "new_experiments": 0
+}

@@ -1,0 +1,47 @@
+{
+  "kind": "ordinary_synthetic_fixture_validation",
+  "source_execution": false,
+  "captured_replay": false,
+  "search": false,
+  "base_sha256": {
+    "Brainstorm\\Advisor\\shop_scoring.lua": "b19a2c8d8b110327ecf443839a30c543d967a2bdb5a4977fc36e5ace0ca7f409",
+    "Brainstorm\\Advisor\\gold_goal.lua": "4ca01a8e455c96d50b2a69789932a2042c97d8c8d145c2c3fd968c8fbfcee134",
+    "Brainstorm\\Advisor\\shop_sequences.lua": "4ba432c9c64c5d4719464352076cde1d42634a372f567ea1042cc85ba3dcc90c"
+  },
+  "files_sha256": {
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\bell_opening.lua": "9bf41bf141f1e526afef1e40ae6def6e4e7a621f0f748f13babb7f14e0f7dff8",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\shop_scoring.lua": "7cc172f11ba3ab85ef64c07b923e5befd8382eb83f5a4f42eab2a95defc02bc4",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\gold_goal.lua": "15bb054ace6fb7438f2b2794c68c4ae1fe0e105afa2930ae1f7e7da8c2c3b2f3",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\shop_sequences.lua": "31b4be054d9fd8a5acc19ed56f32dd22d92551bb548a9103839ddf9c886acdad",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\advisor_bell_opening.lua": "7e1121281f0714df5aa70dc694697a0cc1f9d5c19512a93f8cbda3209e9658be",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\install_advisor_bell_opening.lua": "f052eb062b4553b4c2c8e73dda4f992f6cf1db2b0b11fad4bf1e4afe2a63cfe6",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\integration.patch": "0c64b2109f66d1d46f5b529c050f71e55121a678fc0294824f5e8e6ac7a90887"
+  },
+  "command": [
+    "python",
+    "-B",
+    "tests/run_lua_tests.py",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\advisor_bell_opening.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_gold_goal.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_shop_scoring.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_shop_order.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_shop_sequences.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_shop_sequence_finish.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_shop_boss.lua",
+    "tools\\advisor_eval\\development299\\drafts\\bell_opening\\regression_advisor_readiness.lua"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 1.1152598999906331,
+  "timeout_seconds": 60,
+  "fixtures_passed": 8,
+  "new_checks": 144,
+  "older_checks": [
+    81,
+    60,
+    103,
+    55,
+    42,
+    64,
+    24
+  ]
+}

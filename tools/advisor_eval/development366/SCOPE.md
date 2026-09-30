@@ -1,0 +1,5 @@
+# Marathon repairs366 — authorized request
+User: fix repeated batch seeds, hard stops, unused consumable stock and early-game discards.
+This supersedes the earlier one-small-slice priority selection, not preservation or execution constraints.
+Acceptance: independent persistent search progression across restart/log clear, fail closed on invalid persistence; Acorn bounded candidates with complete public worlds and unchanged140000 cap; qualified zero-score Mouth cycling without invented draws; whole-inventory saturation/use/hold/sale comparison including Negative slots and Observatory; early teacher growth preference still subject to supported105% retained clear and every resource/boss guard.
+Manufactured fixtures and full frozen candidate/exact-installed gates required. No real captured state evaluation, source execution, game control, search, simulations, training, automation, save/profile access or log purge. Preserve all tracked/untracked work, settings and seven DLLs. No new experiment or cohort budget. No native changes. No performance/win claims from fixtures.

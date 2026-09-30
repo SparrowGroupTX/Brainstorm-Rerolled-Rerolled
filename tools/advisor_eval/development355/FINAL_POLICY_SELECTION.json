@@ -1,0 +1,15 @@
+{
+  "schema": "learning355-final-policy-selection-v1",
+  "decision_utc": "2026-09-16T16:10:30Z",
+  "decision_timestamp_note": "Clock tool UTC at creation; file creation and V03 receipt retain exact ordering.",
+  "development_evidence": ["jobs/T02/summary.json", "jobs/V02/summary.json", "jobs/V02/actions.jsonl", "jobs/V02/episodes.jsonl"],
+  "selected_checkpoint": "jobs/T02/policy.pt",
+  "selected_checkpoint_sha256": "86d4c62a0a375c9ab5e44a07732f7fa7051528ad773bd1369ddb51d2b7883086",
+  "choice": "Freeze T02 for a descriptive final evaluation; do not promote it. No alternative learned specialized checkpoint is selected after seeing final results.",
+  "T03": "Close unused. Repeating this sparse-reward training or tuning GPU kernels does not address absence of successful terminal examples, liquidation of both opening Jokers and reorder loops.",
+  "V03": "Use only the existing one-use 180-second, 40000-transition, 64-episode lease: 32 matched pairs of frozen learned and weak heuristic policies in L355FINAL. Preserve all unsupported, errors and censored outcomes. Do not tune after this evaluation.",
+  "objective": "Distinct new Gold stickers per eligible simulated game, using the unchanged frozen initial collection mask.",
+  "promotion": "Rejected on development evidence; final evaluation is descriptive, not a new chance to justify installation.",
+  "scope": "Synthetic public-conditioned Red/Gold post-Soul opening; no supplied-seed equivalence, original-source workers, live-game control, saves, search, actual awards, or retail win-rate claim.",
+  "budgets": "No new jobs, limits or authority. All unused capacity closes at the end of this pilot."
+}

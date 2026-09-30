@@ -1,0 +1,434 @@
+--- before412/Brainstorm/Advisor/phase_copy.lua
++++ Brainstorm/Advisor/phase_copy.lua
+@@ -131,21 +131,35 @@
+ end
+ local function shop(s,modules,base,d)
+   if not base.action or base.action.kind~='leave_shop' then return nil end
++  d.scope='shop_perkeo'
+   if #(s.consumeables or {})==0 then d.reason='Perkeo has no copying inventory.';return nil end
+   local before=effects(s,'j_perkeo')
+   local order,after,count=target_order(s,'j_perkeo');d.orders=count
+-  if after<=before then return nil end
+-  if after>4 or not modules.strategy or not modules.strategy.inventory_value or not modules.strategy.build_profile then d.reason='The whole-inventory copying comparison is unavailable.';return nil end
++  d.events_before=before;d.events_after=after
++  if after<=before then d.reason='No legal shortlisted order adds a Perkeo copy event.';return nil end
++  if not modules.strategy or not modules.strategy.inventory_value or not modules.strategy.build_profile then d.reason='The whole-inventory copying comparison is unavailable.';return nil end
+   -- This is the immediate exit, including the final pre-boss shop. A zero
+   -- future-shop horizon must not erase copies that are created right now.
+   local profile=shallow(modules.strategy.build_profile(s));profile.horizon=math.max(1,num(profile.horizon))
+-  local original=modules.strategy.inventory_value(s,nil,{events=before,profile=profile})
++  local original,old_info=modules.strategy.inventory_value(s,nil,{events=before,profile=profile,immediate_exit=true})
+   local changed=reorder(s,order)
+-  local improved,info=modules.strategy.inventory_value(changed,nil,{events=after,profile=profile})
+-  if not info or info.approximate or improved<=original+0.000001 then d.reason='Extra copying has no qualified positive inventory value.';return nil end
++  local improved,info=modules.strategy.inventory_value(changed,nil,{events=after,profile=profile,immediate_exit=true})
++  if not old_info or not info or old_info.approximate or info.approximate or
++      old_info.events~=before or info.events~=after or old_info.valuation~='exact_immediate_urn' or
++      info.valuation~='exact_immediate_urn' then d.reason='The exact immediate whole-inventory comparison is unavailable.';return nil end
++  d.valuation=info.valuation;d.inventory_value_gain=improved-original
++  local tied=math.abs(improved-original)<=0.000001
++  if improved<original-0.000001 or tied and s.teacher_profile~='perkeo_yorick_win_v1' then
++    d.reason='Extra copying has no qualified positive inventory value.';return nil
++  end
++  -- Stock caps express a bounded planning preference, not that another free
++  -- Negative card is harmful or literally unusable. In win-first mode prefer
++  -- the extra options on an exact utility tie. Reordering costs no cash or
++  -- owned card; the existing pinned/Dagger and fresh-advice guards still apply.
++  d.inventory_value_tie=tied
+   d.complete=true;d.scope='shop_perkeo';d.events_before=before;d.events_after=after
+   d.inventory_before=#s.consumeables;d.inventory_after=#s.consumeables;d.inventory_value_gain=improved-original
+-  d.proof='The same whole inventory and cash gain more Perkeo copy events; all cards remain physically owned.'
++  d.proof='The same whole inventory and cash gain more Perkeo copy events without reducing the bounded expected inventory utility; all cards remain physically owned.'
+   return suggestion(s,order,'Copy Perkeo before leaving the shop',{
+     'This changes the next shop exit from '..before..' to '..after..' Perkeo copy events.',
+     'All held consumables, including Negative cards, remain in the copying pool. Their identities are still random.'},d)
+@@ -259,6 +273,7 @@
+ function M.suggest(s,modules,base,options)
+   options=options or {};base=base or {}
+   local d={complete=false,score_calls=0,bounded=true,needs_refresh=true}
++  if s.phase=='shop' and base.action and base.action.kind=='leave_shop' then d.scope='shop_perkeo' end
+   local ok,why=available(s,modules)
+   if not ok then d.reason=why;return nil,0,d end
+   if s.phase=='shop' then local result=shop(s,modules,base,d);return result,0,d end
+--- before412/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -638,6 +638,25 @@
+   end
+   local e=type(plan)=='table' and plan.scoring_evidence
+   out.evidence=scalars(e,{'adjustment','ratio','before_mean','after_mean','before_target','after_target','samples','complete_finishing','uncertain'})
++  return out
++end
++-- Public reason for preparing (or declining) the immediate Perkeo exit order.
++-- Only bounded scalars are retained, not profiles, inventory projections or RNG.
++function M.compact_phase_copy_review(result)
++  if type(result)~='table' or getmetatable(result) then return end
++  local d=rawget(result,'phase_copy_diagnostics')
++  if type(d)~='table' or getmetatable(d) or rawget(d,'scope')~='shop_perkeo' then return end
++  local out={schema=1}
++  for _,k in ipairs({'scope','complete','reason','events_before','events_after','orders',
++      'inventory_before','inventory_after','inventory_value_gain','inventory_value_tie','valuation','score_calls','aggregate_limit'}) do
++    local v=rawget(d,k)
++    if type(v)=='string' and #v<=256 or type(v)=='boolean' or
++      type(v)=='number' and v==v and math.abs(v)<1e300 then out[k]=v end
++  end
++  local a=rawget(result,'action')
++  local kind=type(a)=='table' and not getmetatable(a) and rawget(a,'kind')
++  if type(kind)=='string' and #kind<=64 then out.final_action_kind=kind end
++  out.selected=rawget(result,'phase_copy')==d and out.complete==true and kind=='reorder_jokers'
+   return out
+ end
+ function M.attach(A,B,deps)
+@@ -704,6 +723,7 @@
+         yorick_review=current and M.compact_yorick_review(A.result) or nil,
+         copy_death_review=current and M.compact_copy_death_review(A.result) or nil,
+         shop_sequence_review=current and M.compact_shop_sequence_review(A.result) or nil,
++        phase_copy_review=current and M.compact_phase_copy_review(A.result) or nil,
+         discard_before_clear=current and M.compact_discard_before_clear(A.result) or nil,
+       reroll_review=current and M.compact_reroll_review(A.result) or nil,
+         title=A.display and A.display.title,lines=A.lines,action=A.result and A.result.action}}
+--- before412/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -1008,7 +1008,10 @@
+     inventory=inventory or snapshot.consumeables or {}
+     local profile=options.profile or build_profile(snapshot)
+     local effects=perkeo_effects(snapshot)
+-    local events=math.min(4,math.max(0,math.floor(num(options.events,effects*math.min(2,profile.horizon)))))
++    -- The ordinary strategic horizon stays bounded to four events. A phase
++    -- comparison may value the actual immediate exit of the <=8-Joker row.
++    local immediate=options.immediate_exit==true
++    local events=math.min(immediate and 8 or 4,math.max(0,math.floor(num(options.events,effects*math.min(2,profile.horizon)))))
+     -- On the win-first final pre-boss shop exit, only this exit can create a
+     -- copy before the Ante 8 objective. Do not price a nonexistent second shop.
+     local next_blind=snapshot.next_blind
+@@ -1048,6 +1051,44 @@
+     local direct=direct_value(counts)
+     local held=held_value(counts)
+     local saturated=false;for _,g in ipairs(groups) do saturated=saturated or g.capacity<math.huge end
++    if immediate then
++        -- Each group's count in a sequential uniform Perkeo pool is a two-colour
++        -- Polya urn (this group versus every other card). Direct stock utility
++        -- is additive across groups; Observatory depends only on the combined
++        -- matching-Planet count. Sum their exact marginal expectations instead
++        -- of enumerating the exponentially many joint inventories. Negative
++        -- copies remain in every subsequent draw's denominator.
++        local function expected(initial,value)
++            if total==0 then return value(initial) end
++            local probabilities={[0]=1}
++            for step=0,events-1 do
++                local next_probabilities={}
++                for added=0,step do
++                    local p=probabilities[added] or 0
++                    local hit=(initial+added)/(total+step)
++                    next_probabilities[added]=(next_probabilities[added] or 0)+p*(1-hit)
++                    next_probabilities[added+1]=(next_probabilities[added+1] or 0)+p*hit
++                end
++                probabilities=next_probabilities
++            end
++            local out=0
++            for added=0,events do out=out+(probabilities[added] or 0)*value(initial+added) end
++            return out
++        end
++        local projected,matching=0,0
++        for _,g in ipairs(groups) do
++            projected=projected+expected(g.count,function(n)return math.min(n,g.capacity)*g.utility end)
++            if g.matching then matching=matching+g.count end
++        end
++        if observatory then
++            projected=projected+expected(matching,function(n)return 24*(math.min(32,1.5^n)-1) end)
++        end
++        local probabilities={}
++        for _,g in ipairs(groups) do probabilities[g.card.key or name(g.card)]=(probabilities[g.card.key or name(g.card)] or 0)+g.count/math.max(1,total) end
++        return projected,{direct=direct,held=held,future=projected-direct-held,events=events,
++            effects=effects,probabilities=probabilities,approximate=false,profile=profile,
++            saturated=saturated or nil,valuation='exact_immediate_urn'}
++    end
+     local memo={}
+     local function recurse(left,size)
+         local key=left..':'..table.concat(counts,',')
+--- before412/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.198.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.199.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before412/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.198.0-alpha
++--- VERSION: 2.199.0-alpha
+--- before412/tests/advisor_perkeo_exit414.lua
++++ tests/advisor_perkeo_exit414.lua
+@@ -0,0 +1,205 @@
++-- Independently invented public states; no captured-state replay or RNG.
++local Phase=dofile('Brainstorm/Advisor/phase_copy.lua')
++local Strategy=dofile('Brainstorm/Advisor/strategy.lua')
++local Gold=dofile('Brainstorm/Advisor/gold_stickers.lua')
++local Decision=dofile('Brainstorm/Advisor/decision.lua')
++local Snapshot=dofile('Brainstorm/Advisor/snapshot.lua')
++local checks,failures=0,0
++local function check(v,label) checks=checks+1;if not v then failures=failures+1;print('FAIL: '..label) end end
++local function eq(a,b,label) check(a==b,label..': '..tostring(a)..' ~= '..tostring(b)) end
++local function near(a,b,label) check(type(a)=='number' and math.abs(a-b)<0.000001,label..': '..tostring(a)..' ~= '..tostring(b)) end
++local function joker(id,key,name) return {id=id,key=key,blueprint_compat=true,ability={name=name,set='Joker'},sell_cost=4} end
++local function tarot(key) return {key=key,ability={name=key,set='Tarot'},edition={negative=true}} end
++local function state()
++ local s={phase='shop',teacher_profile='perkeo_yorick_win_v1',ante=3,win_ante=8,dollars=20,
++  jokers={joker('y','j_yorick','Yorick'),joker('b','j_brainstorm','Brainstorm'),joker('p','j_perkeo','Perkeo')},
++  consumeables={tarot('c_death')},hand={},deck={},playing_cards={},hands={},blind={chips=1000},
++  next_blind={chips=2000},shop_jokers={},shop_vouchers={},shop_booster={},modifiers={},current_round={},
++  consumable_limit=2,consumeable_buffer=0,joker_limit=5,hand_size=8}
++ s.jokers[1].ability.x_mult=4
++ for i=1,32 do s.playing_cards[i]={id='card'..i,rank=i%13+2,nominal=5,suit='Clubs',enhancement='c_base',ability={}} end
++ return s
++end
++local modules={phase_copy=Phase,strategy=Strategy,gold_stickers=Gold}
++local leave={kind='strategy',action={kind='leave_shop'},strategy={action={kind='leave_shop'}},evaluations=50000}
++local function mixed(s)
++ s.consumeables={}
++ for _,key in ipairs({'c_death','c_strength','c_hanged_man','c_empress','c_heirophant','c_chariot','c_justice','c_devil','c_temperance'}) do
++  s.consumeables[#s.consumeables+1]=tarot(key)
++ end
++end
++math.random=function()error('RNG forbidden')end
++pseudorandom=function()error('game RNG forbidden')end
++
++do
++ local s=state();mixed(s)
++ local before=Snapshot.fingerprint(s)
++ local _,old=Strategy.inventory_value(s,nil,{events=2})
++ check(old.approximate,'ordinary large mixed-stock estimate remains explicitly approximate')
++ local result=Phase.apply(s,modules,leave)
++ check(result.action.kind=='reorder_jokers','nine distinct useful held keys do not suppress the immediate Perkeo setup')
++ if result.action.kind=='reorder_jokers' then
++  local changed=Phase.reorder(s,result.action.order)
++  eq(Phase.copy_effects(changed,'j_perkeo'),2,'published row physically adds one Perkeo copy')
++  eq(Phase.apply(changed,modules,leave).action.kind,'leave_shop','fresh arranged row leaves without a reorder bounce')
++ end
++ eq(result.evaluations,50000,'shop setup does not enlarge exhausted score allowance')
++ eq(Snapshot.fingerprint(s),before,'input cash, physical row and whole inventory remain intact')
++end
++
++do
++ local s=state()
++ s.jokers={s.jokers[1],s.jokers[3],joker('b1','j_blueprint','Blueprint'),joker('b2','j_blueprint','Blueprint'),
++  joker('r1','j_brainstorm','Brainstorm'),joker('r2','j_brainstorm','Brainstorm')}
++ local result=Phase.apply(s,modules,leave)
++ check(result.action.kind=='reorder_jokers','five immediate Perkeo effects are not rejected by the four-event strategic horizon')
++ if result.action.kind=='reorder_jokers' then eq(Phase.copy_effects(Phase.reorder(s,result.action.order),'j_perkeo'),5,'all four copy Jokers resolve to Perkeo') end
++end
++
++-- Exact separable expectation: two groups start at one each. After two urn
++-- draws, 0/1/2 additions to either group have equal probability. One held Death
++-- has unbounded useful stock and one Chariot can enhance the sole base card.
++do
++ local s=state();s.consumeables={tarot('c_death'),tarot('c_chariot')};s.playing_cards={s.playing_cards[1]}
++ local profile=Strategy.build_profile(s);profile.horizon=2
++ local direct=Strategy.inventory_value(s,nil,{events=0,profile=profile})
++ local deathOnly=Snapshot.copy(s);deathOnly.consumeables={tarot('c_death')}
++ local deathUtility=Strategy.inventory_value(deathOnly,nil,{events=0,profile=profile})
++ local value,info=Strategy.inventory_value(s,nil,{events=2,profile=profile,immediate_exit=true})
++ near(value,direct+deathUtility,'saturated Chariot contributes no new utility; Death expected gain is exactly one copy')
++ check(not info.approximate,'immediate urn value is exact, not a mean-stock substitution')
++end
++-- Independent exhaustive draws: evaluate only terminal stock utility with zero
++-- future draws. The new DP must agree without sharing its marginal recurrence.
++local function exhaustive(s,profile,events)
++ local function visit(pool,left)
++  if left==0 then return Strategy.inventory_value(s,pool,{events=0,profile=profile}) end
++  local value=0
++  for _,c in ipairs(pool) do
++   local more={};for i,x in ipairs(pool) do more[i]=x end;more[#more+1]=c
++   value=value+visit(more,left-1)/#pool
++  end
++  return value
++ end
++ return visit(s.consumeables,events)
++end
++do
++ local s=state();s.consumeables={tarot('c_death'),tarot('c_chariot')}
++ s.playing_cards={s.playing_cards[1],s.playing_cards[2],s.playing_cards[3]}
++ local profile=Strategy.build_profile(s);profile.horizon=2
++ for events=0,4 do
++  near(Strategy.inventory_value(s,nil,{events=events,profile=profile,immediate_exit=true}),
++   exhaustive(s,profile,events),'exact mixed-stock expectation agrees with exhaustive draws, events '..events)
++  near(Strategy.inventory_value(s,nil,{events=events,profile=profile,immediate_exit=true}),
++   Strategy.inventory_value(s,nil,{events=events,profile=profile}),'small-family old and immediate estimates agree, events '..events)
++ end
++ local planet={key='c_jupiter',ability={name='Jupiter',set='Planet',consumeable={hand_type='Flush'}}}
++ s.consumeables={planet,tarot('c_chariot')};s.used_vouchers={v_observatory=true};profile.hand='Flush'
++ for events=1,4 do near(Strategy.inventory_value(s,nil,{events=events,profile=profile,immediate_exit=true}),
++  exhaustive(s,profile,events),'matching-Planet marginal preserves nonlinear Observatory utility '..events) end
++ s.consumeables={planet,planet,planet,planet,planet,planet,planet,planet,tarot('c_chariot')}
++ near(Strategy.inventory_value(s,nil,{events=2,profile=profile,immediate_exit=true}),exhaustive(s,profile,2),
++  'Observatory strategic cap crossed mid-exit agrees with exhaustive outcomes')
++ s.consumeables={};eq(Strategy.inventory_value(s,nil,{events=8,profile=profile,immediate_exit=true}),0,'empty pools invent no stock')
++end
++do
++ local s=state();local profile=Strategy.build_profile(s)
++ local unit=Strategy.inventory_value(s,nil,{events=0,profile=profile})
++ for events=5,8 do
++  near(Strategy.inventory_value(s,nil,{events=events,profile=profile,immediate_exit=true}),(events+1)*unit,
++   'homogeneous useful stock handles '..events..' immediate events')
++ end
++ local _,ordinary=Strategy.inventory_value(s,nil,{events=8,profile=profile})
++ eq(ordinary.events,4,'default strategic event bound remains four')
++ local _,immediate=Strategy.inventory_value(s,nil,{events=100,profile=profile,immediate_exit=true})
++ eq(immediate.events,8,'immediate valuation is bounded to eight events')
++ mixed(s);s.teacher_profile=nil;profile=Strategy.build_profile(s)
++ local direct=Strategy.inventory_value(s,nil,{events=0,profile=profile})
++ near(Strategy.inventory_value(s,nil,{events=8,profile=profile,immediate_exit=true}),direct*(1+8/#s.consumeables),
++  'nine uncapped types have the exact additive Polya mean')
++end
++do
++ local s=state();mixed(s);s.ante=8;s.next_blind.boss=true
++ check(Phase.apply(s,modules,leave).action.kind=='reorder_jokers','final pre-boss immediate mixed-stock copies still count')
++ s=state();s.consumeables={tarot('c_chariot')};s.playing_cards={s.playing_cards[1]}
++ local r=Phase.apply(s,modules,leave)
++ eq(r.action.kind,'reorder_jokers','win-first exact utility tie prefers extra free options despite strategic stock saturation')
++ check(r.phase_copy_diagnostics.inventory_value_tie,'saturated utility is explicitly distinguished from a positive gain')
++ s.teacher_profile=nil
++ -- Generic stock caps differ; use an explicitly saturated Observatory-only
++ -- valuation to check that the new tie preference is teacher-scoped.
++ local zero={gold_stickers=Gold,strategy={build_profile=Strategy.build_profile,
++  inventory_value=function(_,_,o)return 10,{events=o.events,valuation='exact_immediate_urn',approximate=false}end}}
++ eq(Phase.apply(s,zero,leave).action.kind,'leave_shop','generic profile retains its strict positive-gain admission')
++ s.teacher_profile='perkeo_yorick_win_v1'
++ zero.strategy.inventory_value=function(_,_,o)return 10-o.events,{events=o.events,valuation='exact_immediate_urn',approximate=false}end
++ eq(Phase.apply(s,zero,leave).action.kind,'leave_shop','teacher tie-break cannot waive a lower qualified inventory value')
++ for _,blocked in ipairs({'empty','pinned','hidden','unknown','moving','debuff'}) do
++  s=state();mixed(s)
++  if blocked=='empty' then s.consumeables={}
++  elseif blocked=='pinned' then for _,j in ipairs(s.jokers) do j.pinned=true end
++  elseif blocked=='hidden' then s.jokers[1].face_down=true
++  elseif blocked=='unknown' then s.jokers[1].key='j_custom'
++  elseif blocked=='moving' then s.ordering_safe=false
++  else s.jokers[3].debuff=true end
++  eq(Phase.apply(s,modules,leave).action.kind,'leave_shop','existing '..blocked..' boundary remains')
++ end
++ s=state();mixed(s)
++ local buy={kind='strategy',action={kind='buy',area='shop_jokers',index=1}}
++ eq(Phase.apply(s,modules,buy).action,buy.action,'active purchase is preserved')
++ local unqualified={strategy={inventory_value=function()return 5,{approximate=true}end,build_profile=Strategy.build_profile},gold_stickers=Gold}
++ eq(Phase.apply(s,unqualified,leave).action.kind,'leave_shop','unqualified valuation cannot manufacture a setup proof')
++end
++-- Full production decision arbitration with ordinary empty-shop strategy.
++do
++ local s=state();s.dollars=0;s.reroll_cost=5
++ local before=Snapshot.fingerprint(s)
++ local result=Decision.run(s,modules)
++ check(result.action and result.action.kind=='reorder_jokers','real teacher shop decision selects Perkeo before exit')
++ if result.action and result.action.kind=='reorder_jokers' then
++  local next_state=Phase.reorder(s,result.action.order)
++  local fresh=Decision.run(next_state,modules)
++  eq(fresh.action.kind,'leave_shop','fresh real teacher strategy leaves after separate physical reorder')
++  eq(fresh.evaluations,0,'fresh exit uses no score calls')
++ end
++ eq(Snapshot.fingerprint(s),before,'real decision preserves source inventory and cash')
++ local retained={suggest=function(_,_,base)return {action=base.action,gold_retention={}},0,{complete=true}end}
++ local scoped={phase_copy=Phase,strategy=Strategy,gold_stickers=Gold,gold_retention=retained}
++ eq(Decision.run(s,scoped).action.kind,'leave_shop','existing certified fixed-row retention boundary remains authoritative')
++end
++-- Independently invented tie case, distinct from the archived run: a played
++-- Flush plan holding Pair and Straight Planets, with both copy Joker kinds.
++for _,key in ipairs({'j_blueprint','j_brainstorm'}) do
++ local s=state();s.hands.Flush={played=17,level=5,chips=95,mult=12}
++ s.consumeables={{key='c_mercury',ability={name='Mercury',set='Planet'}},
++  {key='c_saturn',ability={name='Saturn',set='Planet'},edition={negative=true}}}
++ s.jokers[2]=joker('copy',key,key=='j_blueprint' and 'Blueprint' or 'Brainstorm')
++ -- Place Blueprint at the right edge so neither copy initially targets Perkeo.
++ if key=='j_blueprint' then s.jokers[2],s.jokers[3]=s.jokers[3],s.jokers[2] end
++ local value,info=Strategy.inventory_value(s,nil,{events=1,immediate_exit=true})
++ local profile=Strategy.build_profile(s)
++ eq(profile.hand,'Flush','invented plan is established independently')
++ local r=Phase.apply(s,modules,leave)
++ check(r.action.kind=='reorder_jokers' and r.phase_copy.inventory_value_tie,'off-plan Planet saturation cannot veto free '..key..' copies')
++ if r.action.kind=='reorder_jokers' then
++  local ready=Phase.reorder(s,r.action.order)
++  eq(Phase.copy_effects(ready,'j_perkeo'),2,'physical tie-break row has both copy effects')
++  near(Strategy.inventory_value(ready,nil,{events=2,immediate_exit=true}),value,'bounded stock utility genuinely ties')
++  eq(Phase.apply(ready,modules,leave).action.kind,'leave_shop','tied setup exits after one reorder')
++ end
++end
++do
++ local Journal=dofile('Brainstorm/Advisor/player_journal.lua')
++ local s=state();mixed(s);local r=Phase.apply(s,modules,leave)
++ local receipt=Journal.compact_phase_copy_review(r)
++ check(receipt.selected and receipt.valuation=='exact_immediate_urn' and receipt.events_after==2,'selected public receipt names exact immediate utility and event gain')
++ check(not receipt.profile and not receipt.inventory and Journal.encode(receipt),'receipt contains bounded public scalars only')
++ r.action={kind='leave_shop'}
++ check(not Journal.compact_phase_copy_review(r).selected,'superseded action is not falsely marked selected')
++ local bad={phase_copy_diagnostics={scope='shop_perkeo',reason=string.rep('x',257),events_before=0/0,inventory={secret=true}}}
++ receipt=Journal.compact_phase_copy_review(bad)
++ check(not receipt.reason and not receipt.events_before and not receipt.inventory,'long, nonfinite and nested fields are excluded')
++ eq(Journal.compact_phase_copy_review(setmetatable({},{})),nil,'metatable-bearing result is not traversed')
++end
++print('advisor_perkeo_exit414: '..checks..' checks, '..failures..' failures')
++assert(failures==0,'Perkeo exit regressions failed')
+--- before412/tests/advisor_runtime.lua
++++ tests/advisor_runtime.lua
+@@ -1504,3 +1504,57 @@
+  check(not A.execute() and callbacks==1,'asynchronous duplicate protection retained')
+ end
+ print('advisor_discard_runtime410: '..checks..' checks passed')
++
++--414: actual capture -> phase arbitration -> presentation -> Execute reorders
++-- the physical mock row first, then fresh advice invokes the shop exit callback.
++-- The empty-shop incumbent is fixed to isolate this gate from stock liquidation.
++for _,inventory_case in ipairs({'mixed','saturated'}) do
++ local A=setup();A.teacher_profile='perkeo_yorick_win_v1';G.STATE=G.STATES.SHOP
++ Brainstorm.config.advisor.gold_stickers=true
++ A.strategy=dofile('Brainstorm/Advisor/strategy.lua')
++ A.strategy.advise=function()return {title='Leave shop',lines={},warnings={},action={kind='leave_shop'}}end
++ A.shop_scoring=nil;A.economy=nil;A.gold_retention=nil
++ G.GAME.challenge=nil;G.GAME.round=4;G.GAME.dollars=20;G.GAME.win_ante=8
++ G.GAME.round_resets={ante=3,hands=4,discards=3}
++ G.playing_cards=G.hand.cards;G.deck.cards=G.playing_cards;G.hand.cards={}
++ for i,c in ipairs(G.playing_cards) do c.playing_card=i;c.config.center={key='c_base',set='Default'} end
++ local function live(id,key,name,set)
++  return {sort_id=id,facing='front',sprite_facing='front',base={},debuff=false,
++   config={center_key=key,center={key=key,name=name,set=set,blueprint_compat=true}},
++   ability={name=name,set=set},states={drag={can=true,is=false}},cost=3,base_cost=3,sell_cost=4}
++ end
++ G.jokers.cards={live(41,'j_yorick','Yorick','Joker'),live(42,'j_brainstorm','Brainstorm','Joker'),live(43,'j_perkeo','Perkeo','Joker')}
++ G.jokers.cards[1].ability.x_mult=4
++ G.jokers.align_cards=function()end;G.jokers.set_ranks=function()end
++ G.consumeables.cards={};G.consumeables.config.card_limit=11
++ local keys={'c_death','c_strength','c_hanged_man','c_empress','c_heirophant','c_chariot','c_justice','c_devil','c_temperance'}
++ if inventory_case=='saturated' then keys={'c_mercury','c_saturn'};G.GAME.hands.Flush={played=17,level=5,chips=95,mult=12} end
++ for i,key in ipairs(keys) do
++  local c=live(50+i,key,key,'Tarot');c.edition={negative=true,type='negative'};G.consumeables.cards[i]=c
++ end
++ G.shop_jokers={cards={}};G.shop_vouchers={cards={}};G.shop_booster={cards={}}
++ local exits=0;local button={config={button='toggle_shop'}}
++ G.shop={get_UIE_by_ID=function(_,id)if id=='next_round_button' then return button end end}
++ G.FUNCS.toggle_shop=function()exits=exits+1 end
++ local inventory=A.snapshot.fingerprint(A.snapshot.capture(G).consumeables)
++ complete(A)
++ check(A.result.action.kind=='reorder_jokers','large physical inventory selects Perkeo reorder in runtime')
++ check(A.display.title:find('Copy Perkeo',1,true),'runtime displays the Perkeo preparation')
++ local observed=A.player_log_observe()
++ check(observed.advice.phase_copy_review.selected,'current public advice carries selected Perkeo setup receipt')
++ equal(observed.advice.phase_copy_review.inventory_value_tie,inventory_case=='saturated','public receipt distinguishes utility tie from useful mixed-stock gain')
++ local order=A.snapshot.copy(A.result.action.order);local row={};for i,c in ipairs(G.jokers.cards) do row[i]=c end
++ check(A.execute(),'real execution adapter accepts the separate reorder')
++ for i,source in ipairs(order) do equal(G.jokers.cards[i],row[source],'adapter physically applies published Joker permutation') end
++ equal(exits,0,'reorder never calls the irreversible shop exit')
++ check(not A.execute(),'old reorder publication cannot be executed again')
++ complete(A)
++ equal(A.result.action.kind,'leave_shop','fresh runtime advice exits the arranged shop')
++ equal(A.phase_copy.copy_effects(A.snapshot.capture(G),'j_perkeo'),2,'actual fresh row resolves Brainstorm to Perkeo')
++ equal(A.snapshot.fingerprint(A.snapshot.capture(G).consumeables),inventory,'all held physical consumables preserved')
++ equal(G.GAME.dollars,20,'setup preserves actual cash')
++ check(A.execute(),'fresh exit executes through the same production adapter')
++ equal(exits,1,'shop callback receives exactly one exit')
++ check(not A.execute(),'pending exit duplicate remains latched')
++end
++print('advisor_perkeo_exit_runtime414: '..checks..' checks passed')

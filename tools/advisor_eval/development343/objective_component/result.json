@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "status": "production_edits_review_ready",
+  "release": 343,
+  "scope": "Strictly more distinct missing Jokers may trade surplus sampled score above the existing final-boss margin.",
+  "files": [
+    {
+      "path": "Brainstorm/Advisor/gold_goal.lua",
+      "kind": "runtime",
+      "before_sha256": "b4d1e9865ad25fd1b6d594c8ae9b99ebf552c86477bbbe22279e19f1c1120894",
+      "after_sha256": "a997000c66802949dd102d6ed1723b0246445f4176f7effcb2aeab82484e9008"
+    },
+    {
+      "path": "Brainstorm/Advisor/perkeo_inventory.lua",
+      "kind": "runtime",
+      "before_sha256": "7bd16d518dcc9b979104b8524fdf8303dc1435675fed66c8b2a79c61d02ad549",
+      "after_sha256": "34840071e1956a8d6f743f962af30cc6945b76d024271b42ab2e518de2769710"
+    },
+    {
+      "path": "tests/advisor_bell_opening.lua",
+      "kind": "test",
+      "before_sha256": "f052eb062b4553b4c2c8e73dda4f992f6cf1db2b0b11fad4bf1e4afe2a63cfe6",
+      "after_sha256": "eefb41c281e6a721194538bdd2fc5c0b7d7d054dcadeeb96a69685b82bf9b29b"
+    },
+    {
+      "path": "tests/advisor_gold_goal.lua",
+      "kind": "test",
+      "before_sha256": "b7cb0dfd64e0fbf9939729bb48392ab434e2f6d4d43cd207db7c76da3c609de2",
+      "after_sha256": "ec572cfdbcd8d920417010b72f4b953155c4b1a3f7d333ba20482696ef9af4e8"
+    },
+    {
+      "path": "tests/advisor_gold_planet_policy.lua",
+      "kind": "test",
+      "before_sha256": "3bd0095f631ed6a29bc4d007bb3efe44cc0f53904b9f9de16936e49c66225f99",
+      "after_sha256": "b0fc02ef69a623095d4caec7211f5d573482773922a8ce713eac7567ca91b793"
+    },
+    {
+      "path": "tests/advisor_perkeo_inventory.lua",
+      "kind": "test",
+      "before_sha256": "6b42a05a51ad04b2a9f36b83081b8def3898a64950d89f3f841209739c46e491",
+      "after_sha256": "43c231ab666ae2e0c36c49ea0b0daabb57c4cbba7e801494798d4da04e7c2246"
+    }
+  ],
+  "validation": [
+    {
+      "path": "tools\\advisor_eval\\development343\\objective_component\\validation_01_before.json",
+      "sha256": "6923167b38119c5df09cf39c79321da961a6dd0bdce13b44e6de24ab0eae2106",
+      "exit_code": 1,
+      "expected_failure": true,
+      "seconds": 0.3279999999795109,
+      "inputs_unchanged": true
+    },
+    {
+      "path": "tools\\advisor_eval\\development343\\objective_component\\validation_01_current.json",
+      "sha256": "83b2f43a60509442b38c26dfa949265f7954991e7b115b8f14e89c98bada6565",
+      "exit_code": 0,
+      "expected_failure": false,
+      "seconds": 1.187999999965541,
+      "inputs_unchanged": true
+    }
+  ],
+  "checks": {
+    "advisor_gold_goal": 101,
+    "advisor_bell_opening": 146,
+    "advisor_perkeo_inventory": 153,
+    "advisor_gold_planet_policy": 194,
+    "total": 594
+  },
+  "preserved_contracts": [
+    "Every admitted endpoint and every declared paired world/forced branch completes within the unchanged shared budget.",
+    "Every resulting sampled score is at least 1.25 times the supported final boss target; uncertain evidence still rejects the family.",
+    "Whole inventory, borrowing, rental reserves, protected population, Eternal/Negative legality and source qualification remain unchanged.",
+    "Explicit protected Perkeo references retain one fixed policy dominating its entire own hold/use family; fresh delivery defaults protect all references.",
+    "Only one actual first action is published; fresh manufactured sell/buy/blind delivery preserves physical identity and inventory."
+  ],
+  "limitations": [
+    "No live run rescue, sticker award, calibrated win probability or general performance improvement is demonstrated.",
+    "Final pre-boss Vessel/Leaf/Bell only; one buy and one original sale, <=3 offers and <=6 owned Jokers.",
+    "Nonempty Perkeo goal comparisons still require <=8 homogeneous qualified Planets; Tarot/mixed inventory remains outside scope.",
+    "No missing visible offer means this objective cannot add cargo; no reroll/search/earlier-shop expansion occurs here."
+  ],
+  "experiment_jobs": {
+    "source_components": 0,
+    "captured_policy_replays": 0,
+    "searches": 0,
+    "complete_attempts": 0
+  },
+  "live_game_control": false,
+  "save_profile_reads": false,
+  "installation": "Root owns version, candidate/exact-installed verification and installation."
+}

@@ -1,0 +1,228 @@
+{
+  "schema": 1,
+  "kind": "normal_filtered_product_v1",
+  "qualification": false,
+  "seed": "ITKSGS21",
+  "deck": "b_red",
+  "stake": 8,
+  "expected_opening_jokers": [
+    "j_caino",
+    "j_perkeo"
+  ],
+  "filter_info": {
+    "native_api_version": 9,
+    "stake_level": 8,
+    "soul_count": 2,
+    "required_soul_count": 2,
+    "joker_targets": "Canio\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+    "joker_target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+    "no_perishable_jokers": true,
+    "observatory_deadline": 0,
+    "deck_name": "Red Deck",
+    "multi_soul_pack_consumed": false,
+    "filter_params": [
+      "ITKSGS21",
+      "",
+      "",
+      "Charm Tag",
+      2,
+      false,
+      0,
+      false,
+      false,
+      false,
+      false,
+      false,
+      "No Filter",
+      "Kings",
+      "Any Suit",
+      0,
+      0,
+      "Canio\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+      "Red Deck",
+      "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+      8,
+      true,
+      true,
+      "Canio",
+      1,
+      1,
+      8,
+      9000
+    ],
+    "normal_opening": {
+      "schema": 1,
+      "kind": "normal_two_soul_v1",
+      "deck_key": "b_red",
+      "stake": 8,
+      "seed": "ITKSGS21",
+      "required_souls": 2,
+      "no_perishable_targets": true,
+      "targets": [
+        {
+          "key": "j_caino",
+          "location": "soul_pack",
+          "edition": "any"
+        },
+        {
+          "key": "j_brainstorm",
+          "location": "by_ante_5",
+          "edition": "any"
+        },
+        {
+          "key": "j_burnt",
+          "location": "by_ante_5",
+          "edition": "any"
+        },
+        {
+          "key": "j_perkeo",
+          "location": "soul_pack",
+          "edition": "any"
+        }
+      ]
+    },
+    "collection_search": {
+      "schema": 1,
+      "interchangeable_copies": true,
+      "copy_alternatives": [
+        "j_brainstorm",
+        "j_blueprint"
+      ],
+      "minimum_distinct": 1,
+      "missing_names": "Canio",
+      "first_ante": 1,
+      "last_ante": 8,
+      "route": "conditional_no_reroll_stock_and_buffoon",
+      "quota_mode": "auto",
+      "burnt_required": true,
+      "burnt_relaxed": false,
+      "primary_legendary_key": "j_caino",
+      "opening_adapted": true,
+      "opening_note": "The fixed Yorick route has no reachable missing target; use missing Canio with Perkeo. Survival on this alternate opening is unverified.",
+      "original_native_budget_ms": 27000,
+      "total_native_reserved_ms": 9000,
+      "profile_id": "synthetic_s06_only_canio",
+      "profile_token": "string:24:synthetic_s06_only_canio|j_caino",
+      "future_acquisition_verified": false,
+      "observed_copy_key": null,
+      "native_result": {
+        "schema": 1,
+        "status": "found",
+        "seed": "ITKSGS21",
+        "screened": 376745984,
+        "exact_candidates": 2220,
+        "seconds": 0.418769,
+        "budget_ms": 9000,
+        "threads": 32,
+        "route": "conditional_no_reroll_stock_and_buffoon"
+      },
+      "external_native_receipt": {
+        "phase": 1,
+        "query": {
+          "any_rank_min": 0,
+          "assumes_complete_profile_unlocks": true,
+          "bean": false,
+          "budget_ms": 9000,
+          "burglar": false,
+          "burnt_fallback": true,
+          "burnt_required": true,
+          "copymoney": false,
+          "custom_filter": "No Filter",
+          "deck": "Red Deck",
+          "estimate_status": "unavailable",
+          "excluded_missing_keys": [],
+          "excluded_missing_reasons": [],
+          "first_ante": 1,
+          "interchangeable_copies": true,
+          "last_ante": 8,
+          "legendary_fallback": true,
+          "limitation": "Encounter counts are conditional offers, not affordable acquisition, retention, survival or wins.",
+          "minimum_distinct": 1,
+          "missing_names": "Canio",
+          "native_api_version": 9,
+          "native_cpu_mode": "maximum",
+          "observatory": false,
+          "observatory_deadline": 0,
+          "opening_adapted": true,
+          "opening_note": "The fixed Yorick route has no reachable missing target; use missing Canio with Perkeo. Survival on this alternate opening is unverified.",
+          "pack": "",
+          "perkeo": false,
+          "primary_legendary_key": "j_caino",
+          "primary_legendary_name": "Canio",
+          "profile_id": "synthetic_s06_only_canio",
+          "profile_unlocks_verified": false,
+          "quota_mode": "auto",
+          "quota_scope": "Distinct reachable conditional offers on this fixed opening and Ante window; no acquisition or win credit.",
+          "reject_perishable_targets": true,
+          "requested_minimum_distinct": 0,
+          "retcon": false,
+          "route": "conditional_no_reroll_stock_and_buffoon",
+          "route_note": "Take both starting Souls; inspect initial shop stock and open displayed Buffoon packs in order without rerolls. Other Joker acquisitions can change later offers.",
+          "schema": 1,
+          "souls": 2,
+          "specific_rank_min": 0,
+          "stake_level": 8,
+          "starts_search": false,
+          "supported_missing_count": 1,
+          "tag": "Charm Tag",
+          "target_jokers": "Canio\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+          "target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+          "target_rank": "Kings",
+          "target_suit": "Any Suit",
+          "voucher": ""
+        },
+        "start_index": 3000000001,
+        "start_seed": "1RO2IL21",
+        "max_indices": 1000000000000,
+        "native_call_elapsed_seconds": 0.4190653000259772,
+        "elapsed_search_seconds": 0.4414781000232324,
+        "fully_exited": true,
+        "result": {
+          "schema": 1,
+          "status": "found",
+          "seed": "ITKSGS21",
+          "screened": 376745984,
+          "exact_candidates": 2220,
+          "seconds": 0.418769,
+          "budget_ms": 9000,
+          "threads": 32,
+          "route": "conditional_no_reroll_stock_and_buffoon"
+        }
+      },
+      "external_receipt_method": "S06_serial_native_worker_v1; not a live LOVE thread receipt"
+    }
+  },
+  "conditional_later_requirements": [
+    {
+      "any_of": [
+        "j_brainstorm",
+        "j_blueprint"
+      ],
+      "by_ante": 5
+    },
+    {
+      "key": "j_burnt",
+      "by_ante": 5
+    }
+  ],
+  "discovery": {
+    "job": "S06",
+    "evidence_sha256": {
+      "registration.json": "5818b31a7cf97b67175eb1dc29b10bc82ab1df69e25564785e167b8d6a4fd713",
+      "record.json": "35c0b355d9306b7f1f56ac2c7ec22120fe491f9508e023fc6f9eed836daf43f6",
+      "trace.log": "f78b8502528e3a174b9fc2c47a127771417aacd77fa3c47c7e03d2a780c733dc",
+      "request.json": "ca00ab6c8f933e6d825e91a2b272bbae3d8ed82728ab6e87d2a5b7d004ab192b",
+      "result.json": "1b6c35bb08639bb0bf9dd21f6f6f62d06d76446eafe66dc1142dde7923f77f70",
+      "phase1_raw.json": "daed5b120ee5cb8882f6db7375b697a954cee51675b2a08f219bbbf0538b12b4",
+      "phase1_phase_started.json": "116ca78bfa0c0685f0c6edc765357e6796cebd05b0a01b0c3a328622ab108305",
+      "phase1_phase_complete.json": "298ffb1cf7eb792cfe8b608427317331a415afd476d04aff63d1805f15bfcfd5",
+      "query_generation.json": "4522053f127faff008b8c52aaf3a3e0496bef3c0ab76c0ccdd3b4131135a7855",
+      "generation_receipt.json": "d9c66d07c6d71037d823ac42c37fb7a8deeab1da337b927d930f7851b6554576",
+      "profile_assumption.json": "02b846e4e0f0f76e5b7cd1e870861c9546cb3ecb5f5485716beb5e0dee4d3247",
+      "installed_policy_record.json": "71022d7a9a3aee1b804a5f0cd263db1320695e2143912ecabbff0c0311eca3d1",
+      "native_sequence_spent.json": "9ff62a92f73109708604dbb829d5df2eab1ec67653cfe1014893d317be523836"
+    },
+    "copy_branch_observed": false,
+    "interpretation": "Exact observed native conditional alternate opening; later copy and Burnt acquisition remain unobserved."
+  }
+}

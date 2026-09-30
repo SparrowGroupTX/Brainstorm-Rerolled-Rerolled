@@ -1,0 +1,1 @@
+function win_game() return "synthetic" end

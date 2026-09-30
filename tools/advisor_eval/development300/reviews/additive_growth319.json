@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "independent_code_review_and_manufactured_fixture_validation",
+  "status": "no_remaining_blocking_defect_found",
+  "development_package": "tools/advisor_eval/development300/growth318/revision2",
+  "candidate_checkpoint": 319,
+  "manifest": "manifest.reviewed.json",
+  "manifest_sha256": "bf5423a3f1d4cd9b9e9ff94fa73932ffed1191d4ab470da464310b461959a511",
+  "runtime_sha256": "757a7bbefee73a8ad2690257ae5fc0b7df3ad130e9c8386680eaf8eecddee2f1",
+  "fixture_sha256": "80cbc5b039559ece57ab5ff2ea97200016a14af94b297ab1f0a8499d850d87a3",
+  "canonical_metadata_audit_sha256": "6b8a02068c60f5af7d8af2610fb7cf25642feb2eb8d6fafecbd4ae3c0fab753c",
+  "independent_validation": {
+    "command": "python -B tests/run_lua_tests.py tools/advisor_eval/development300/growth318/revision2/detached_test.lua",
+    "exit_code": 0,
+    "passed_fixtures": 1,
+    "manufactured_checks": 2558,
+    "tool_chunk_id": "6c4c13",
+    "author_additional_existing_checks": 384,
+    "author_reported_combined_checks": 2942
+  },
+  "resolved_findings": [
+    "Finite-only additions were insufficient for exact commutation. Final selected card and hand inputs are bounded nonnegative integers; canonical rank/nominal and required bonus checks keep reordered sums below2^43.",
+    "Arbitrary effect strings could contradict the enhancement and invoke source Lucky/Stone behavior. Final card and Joker effect/name/key checks reject these contradictions.",
+    "Arbitrary unequal held multipliers were outside the proof. Final new scope permits only identity held scoring or repeated ordinary Steel1.5, including Red repetition, with nonnegative complete consumable edition arithmetic.",
+    "Actual Burnt offers carry effect empty-string and extra4. Final scope and positive fixture explicitly admit this source-recorded shape.",
+    "History coverage previously tested top-level flags only. Final ability schema accepts exact discarded/played_this_ante booleans, with ability-level positive and malformed negative fixtures.",
+    "Ordinary unscored Glass extra4 was incorrectly excluded. Final held-only allowance admits that exact shape and tests population conservation; scored Glass remains excluded."
+  ],
+  "checked_invariants": [
+    "The runtime delta only qualifies an exception to the existing sorting hazard; it does not change growth utility, action choice rules or horizon.",
+    "Canonical ordinary selected cards preserve poker category and physical scoring membership under permutation, including debuffed cards.",
+    "The complete ordinary Joker row constrains copy targets to supported stage effects and retains existing order-sensitive Joker/boss/visibility exclusions.",
+    "Every accepted candidate still exactly rescores the retained physical finish without replacement draws, using the complete inventory and current resources.",
+    "Existing Blue/Gold/cash costs, Steel retention, Glass exposure, population conservation, Arm cost, score margins and horizon remain intact.",
+    "The growth cap remains12 scores and the whole fast-clear cap remains70; no new source, search or outcome budget is implied."
+  ],
+  "limits": [
+    "The preserved C06 data motivated the repair and supported a read-only canonical-field audit; no captured C06 decision was evaluated in this review.",
+    "No original-source, native search, complete-attempt or other experimental worker ran. The only executed validation was the routine manufactured Lua fixture.",
+    "C06 remains censored by timeout. This component has no demonstrated terminal benefit, rescued run or win-rate improvement.",
+    "Root owns staging, full candidate regression, installation and exact-installed validation."
+  ]
+}

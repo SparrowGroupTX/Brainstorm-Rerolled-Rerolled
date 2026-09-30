@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "kind": "M22_preparation_ready_not_registered",
+  "files": {
+    "baseline_module_setup.lua": "ea59deae9e1b06b705c4f4dd79d531bc2c400e5ad2e95d75c04d974237cd1a07",
+    "baseline_record.json": "10473351958cd4f3dabef72287c59edc34ed6f76622f28b6d0b5c8ca41ebc7f6",
+    "binding.json": "073f5c6edc7adc89f5a63b6f74def69afcfcdba4ed9367dec71fc07d163cc210",
+    "candidate_module_setup.lua": "10a7bb6d22fefa9907c2e0a0c2ef6151d441573f342011020d7ecfa91a48a469",
+    "candidate_record.json": "4e64c0433a460faa3b7503dfa097cfb9aad1b0abef163d4083a1516e441cd886",
+    "compare_copy22.py": "ca950cdfd4a55d8791f7f55ea538448b0eacb8d575fa5965a92b7a13ce773df1",
+    "driver.lua": "c426033eef0b638c24e1d4df6835245274c34c31b55f2bbaf2aff7c302920678",
+    "engine_contract.lua": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da",
+    "input_provenance.json": "cd27a712dc3a1c88f73594c9608751d10a44c7a47971ecde9fe1c002929a37c8",
+    "INTEGRATION.md": "fc092212973c0f695d2f4a70153e40659f6c8f651f7b22f1d1e5dbc7abbc97c9",
+    "lua_bytes.py": "225a9fbd4f25f6dad61857dc30966dec2a421b48564fc6919c900e142dd89c20",
+    "prepare_inputs.py": "9556eb4e8df4efc102c8f84e84be311ea977c3708e7e21d7f1245b6067c25b74",
+    "register.py": "d719199a5bab2c89a30a85bf612e444a46e3894ad83e36c8a2089de96e5a1d77",
+    "step31.json": "1679e125c658af50221f14b5490783a5cf048b484b72961aa2eea94d83e7da87",
+    "step96.json": "aa2563137109eadb1467c7921bd4d65b4dde966652dc842c939457973b5cec0b",
+    "test_driver.lua": "27bb40a8bfbc083c5e088a3eb5be2bbb613521af186f5a9b91161b2c0f36ec79",
+    "test_spec.py": "8714f9fbfe50f085909e0f063dc3bd72a3f3989c103e8f770ba5b43568b0f2a9"
+  },
+  "validation": {
+    "python_tests": 9,
+    "lua_fixture_entries": 1,
+    "lua_inert_checks": 589,
+    "registration_describe": "passed210frozenfiles",
+    "earlier_preparation_failure": "Initial pure Python plan test found Windows separator mismatch in source trace metadata key; fixed without any registration or decision execution."
+  },
+  "source_execution": false,
+  "captured_policy_evaluation": false,
+  "registration": false,
+  "score_cap": 560000,
+  "wall_cap_seconds": 30,
+  "decision_order": [
+    [
+      "baseline",
+      31
+    ],
+    [
+      "candidate",
+      31
+    ],
+    [
+      "candidate",
+      96
+    ],
+    [
+      "baseline",
+      96
+    ]
+  ],
+  "root_next_step": "Review, then root-only register/dispatch if still wanted; agent holding per startup priority."
+}

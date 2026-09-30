@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "scope": "Staged implementation and manufactured fixtures only. No runtime integration, installation, policy replay, source execution, search, simulations, saves or game control.",
+  "source_provenance": {
+    "tools/advisor_eval/runs/chicot_order_source1/source/card.lua": {
+      "lines": [
+        "273-309",
+        "387-423",
+        "564-640",
+        "2413-2428"
+      ],
+      "use": "Ability constructor, Negative overwrite/add-to-deck capacity, zero h/d_size condition, Perkeo growing-pool copy timing.",
+      "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453"
+    },
+    "tools/advisor_eval/runs/chicot_order_source1/source/functions/common_events.lua": {
+      "lines": [
+        "2156-2183"
+      ],
+      "use": "copy_card resets empty front then copies full ability/base/params/debuff/pinned; no RNG executed.",
+      "sha256": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc"
+    },
+    "Brainstorm/Advisor/scoring.lua": {
+      "lines": [
+        "514",
+        "542-547"
+      ],
+      "use": "First-hand held-consumable dependencies are edition and Observatory Planet; Fortune Teller uses usage count.",
+      "sha256": "f625c294eb5ba9cf0b6da5eb8f871c58be0835aecf92396c09151becef1c80e9"
+    },
+    "Brainstorm/Advisor/runtime.lua": {
+      "lines": [
+        "157-159",
+        "584",
+        "653",
+        "663",
+        "690",
+        "710"
+      ],
+      "use": "Established scheduler/execution drag guards; optional ordering_safe nil is not invented positive evidence.",
+      "sha256": "4e5963f8e39653984a3ccf3695f1d8e33af2d1d588fc3b1e6bbc41a55e90c48e"
+    }
+  },
+  "files": {
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\fixture.lua": {
+      "bytes": 8922,
+      "sha256": "25ae0b84c9c839fd588f562b43ac8a49be65634bb1d0d1ff99a626b14d46ccbb"
+    },
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\fixture_support.lua": {
+      "bytes": 2039,
+      "sha256": "071ff8a17bfe0e5de6f126b3e9507560ccc7bc49c31d1c7cd522bbf8b941a299"
+    },
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\gold_tarot_hold.lua": {
+      "bytes": 11979,
+      "sha256": "0d831d99900f4a19bae3bc3643d65779b29a0896f840ea0241a141d9a1508522"
+    },
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\passive_shape_audit.json": {
+      "bytes": 3472,
+      "sha256": "636f49d108d84fdc453669820c2f410aade9f1d692c3450453c6feac74870ab1"
+    },
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\test_receipt_1.json": {
+      "bytes": 1239,
+      "sha256": "47eabb01f5c819d2cc5f67066676afd4135a412ae47d87ebf4cda6293cd3fb2b"
+    },
+    "tools\\advisor_eval\\development344\\tarot_hold_component\\test_receipt_2.json": {
+      "bytes": 1239,
+      "sha256": "4d827b69b1d8b4c471eb30a37b76c2282a4f9d63dff41b69269ce157b4c768c8"
+    }
+  },
+  "fixture_result": "70 checks passed;60-second per-command cap; test_receipt_2.json exact output.",
+  "limits": [
+    "Constructor whitelist is Magician/Hermit only, ordinary or exact Negative.",
+    "Whole original inventory1..64; fixed public Joker row1..6 with explicit supported identities.",
+    "Public optional ordering flags follow existingnil/false convention; explicitdrag/hidden/unknown/pending flags reject.",
+    "Original cards retained exactly. Generated class/count/capacity is proved but identities/prices are unresolved and receive no future utility/resale/payout credit.",
+    "First-hand hold-all scoring equivalence only; caller must qualify complete cash-aware endpoint family and known scoring. No future blind or terminal win guarantee."
+  ]
+}

@@ -1,0 +1,72 @@
+diff --git "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before2\\tests\\advisor_auto_run_product.lua" "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tests\\advisor_auto_run_product.lua"
+index 03a7fa4..92191af 100644
+--- "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before2\\tests\\advisor_auto_run_product.lua"
++++ "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tests\\advisor_auto_run_product.lua"
+@@ -125,6 +125,57 @@ local function terminal_result(x,kind,queued)
+   check(x.api:status().state=='terminal' and x.api:status().active,'outcome is logged before the separate terminal decision')
+ end
+ 
++-- Explicit Stop in the one-update gap after run_finished must not let Resume
++-- discard a final result before fresh completion, metadata and cap checks.
++for _,reason in ipairs({'run_limit','collection_complete','goal_unavailable','session_time_limit'})do
++  local x=terminal_fixture({max_runs=1,session_seconds=10})
++  terminal_result(x,reason=='collection_complete' and 'win' or 'loss')
++  local overlay=x.g.OVERLAY_MENU;local before=x.api:status()
++  x.api:stop()
++  check(x.api:status().resume_available and x.g.OVERLAY_MENU==overlay,
++    'explicit Stop preserves the final receipt and its pre-decision Resume point')
++  if reason=='collection_complete'then x.complete()
++  elseif reason=='goal_unavailable'then x.A.gold_stickers.capture=function()return nil end
++  elseif reason=='session_time_limit'then x.time(10)end
++  check(x.api:resume(),'explicit final-result Resume requests the same bounded session')
++  check(x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and x.api:status().resume_pending,
++    'Resume callback retains the exact owned result pending fresh terminal checks')
++  x.api:update()
++  check(x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and x.api:status().active,
++    'resuming readiness ignores only the original result and leaves it visible')
++  x.api:update();local after=x.api:status()
++  check(not after.active and after.reason==reason and not after.resume_available,
++    'fresh final-result Resume honors its original terminal decision: '..reason)
++  check(x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and x.stats().begins==1 and x.stats().starts==1,
++    'final-result Resume never dismisses or dispatches past its terminal decision')
++  check(after.runs_started==before.runs_started and after.max_runs==1 and after.actions==before.actions and
++    after.outcomes.wins==before.outcomes.wins and after.outcomes.losses==before.outcomes.losses and
++    after.session_serial==before.session_serial and after.session_started_at==before.session_started_at,
++    'final-result Resume retains counters, cap, outcome history and absolute session origin')
++  check(terminal_events(x,'run_finished')==1 and terminal_events(x,'terminal_overlay_close_requested')==0 and
++    terminal_events(x,'session_started')==1 and terminal_events(x,'session_resumed')==1,
++    'final-result Resume neither recounts the receipt nor creates another session')
++  if reason=='run_limit'then
++    check(x.api.status_text=='Auto-run stopped: run limit reached (1 of 1 runs; wins: 0, losses: 1).',
++      'final-result Resume reports the retained cap and outcome counts')
++  end
++end
++
++do
++  local x=terminal_fixture({max_runs=1});x.api:stop()
++  x.g.STATE=99;x.game_class.update_game_over(x.g);local overlay=x.g.OVERLAY_MENU
++  check(terminal_events(x,'run_finished')==0,'manufactured loss arrives while the controller is stopped')
++  check(x.api:resume(),'Resume can account an original terminal callback received while stopped')
++  for _=1,3 do x.api:update();check(x.g.OVERLAY_MENU==overlay,'not-yet-recorded terminal result survives every Resume stage')end
++  check(x.api:status().reason=='run_limit' and terminal_events(x,'run_finished')==1 and x.stats().closed==0 and x.stats().begins==1,
++    'stopped callback is counted once before its unchanged cap stops continuation')
++  x=terminal_fixture({max_runs=1});terminal_result(x,'win',true);x.api:stop()
++  check(x.api:resume(),'queued final winning surface can resume its same terminal session')
++  x.win_ui();overlay=x.g.OVERLAY_MENU;x.api:update();x.api:update()
++  check(x.api:status().reason=='run_limit' and x.g.OVERLAY_MENU==overlay and x.stats().closed==0 and terminal_events(x,'run_finished')==1,
++    'original winning surface arriving during Resume is retained at the final cap')
++end
++
+ do
+   local x=terminal_fixture({max_runs=5,max_actions=3,run_seconds=100,session_seconds=500})
+   local origin=x.api:status().session_started_at
+@@ -206,6 +257,9 @@ do
+   x.api:update();x.api:update()
+   check(x.api:status().max_runs==2 and x.api:status().runs_started==1 and terminal_events(x,'run_finished')==1,
+     'explicit terminal Resume preserves cap, consumed run and unique outcome')
++  check(x.stats().closed==1 and not x.g.OVERLAY_MENU and x.stats().begins==1,
++    'below-cap Resume dismisses the owned result only after its fresh terminal check')
++  x.api:update();check(x.stats().begins==2,'below-cap Resume starts its next search on the later settled update')
+   x=terminal_fixture({max_runs=2,session_seconds=1});terminal_result(x,'loss');overlay=x.g.OVERLAY_MENU
+   x.time(1);x.api:update()
+   check(x.api:status().reason=='session_time_limit' and x.g.OVERLAY_MENU==overlay and x.stats().closed==0,

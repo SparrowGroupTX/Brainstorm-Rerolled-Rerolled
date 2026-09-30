@@ -1,0 +1,47 @@
+{
+  "job": "D-old-3632-baseline",
+  "mode": "decision",
+  "case": "old-3632",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 1.4689999999827705,
+  "log_sha256": "450a529da39a0f2ad8cf477a19c01652a6e49e7a16a26e3d42cd5b380d5ea551",
+  "status": "complete",
+  "result": {
+    "case": "old-3632",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          4,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 82654,
+      "play": {
+        "hand": "Three of a Kind",
+        "legal": true,
+        "score": 810,
+        "uncertain": false
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

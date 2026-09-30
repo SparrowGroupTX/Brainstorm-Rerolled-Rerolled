@@ -1,0 +1,17 @@
+--- before/Brainstorm/Core/auto_run_product.lua
++++ Brainstorm/Core/auto_run_product.lua
+@@ -300,6 +300,14 @@
+       self.status_text=self.status_text..' '..tostring(state.detail)
+     end
+     if state.search_draining then self.status_text=self.status_text..' Waiting for the owned search worker to exit.'end
++    if state.outcomes and state.outcomes.wins>0 and state.gold_progress then
++      local progress=state.gold_progress
++      self.status_text=self.status_text..' '..(progress.unknown_wins>0 and 'Confirmed new Gold: ' or 'New Gold: ')..
++        tostring(progress.confirmed_new_count)..'; wins with no new Gold: '..tostring(progress.zero_new_wins)..'.'
++      if progress.unknown_wins>0 then
++        self.status_text=self.status_text..' Sticker progress unknown for '..tostring(progress.unknown_wins)..' win(s).'
++      end
++    end
+     return state
+   end
+   -- Controller.status returns a copy; this getter does not update status or work.

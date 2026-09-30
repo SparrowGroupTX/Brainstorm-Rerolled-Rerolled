@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "kind": "detached_public_joker_observation_component",
+  "timestamp_utc": "2026-09-15T19:46:28.102065+00:00",
+  "production_files_modified": false,
+  "files": {
+    "Brainstorm/Advisor/acorn_public.lua": {
+      "sha256": "18f0971b189d1ec19f21eb96deb7fcb5a768569a6d775d29a6ccca5d1a561cf0",
+      "bytes": 18012
+    },
+    "Brainstorm/Advisor/acorn_public_hooks.lua": {
+      "sha256": "7cec3e6ac4f122b0a5915109626a7d4b4f9da7cb8de2c368f6038887daef18e6",
+      "bytes": 3359
+    },
+    "Brainstorm/Advisor/execution.lua": {
+      "sha256": "4cd9e7ffd056f8c285a9c8195aab134e18ef78ce17883e33cdf1c736309577f0",
+      "bytes": 18276
+    },
+    "Brainstorm/Advisor/gold_stickers.lua": {
+      "sha256": "86e4b5712adb6c9776eb01ddb00788b095c603b6f215747715554e7ae472e98b",
+      "bytes": 12501
+    },
+    "Brainstorm/Advisor/runtime.lua": {
+      "sha256": "bb3215bf3ec02ab067703c422c8e9a943af32b10a74211c090bf73e73e4e78c3",
+      "bytes": 42208
+    },
+    "Brainstorm/Advisor/snapshot.lua": {
+      "sha256": "63a1ec4b77f0608923b0e906dab56fa0853f3be4aeb7dec8a2beb22f03a30648",
+      "bytes": 16540
+    },
+    "execution.patch": {
+      "sha256": "6cb28bde4e4223429fd793e5769903642a8dce0558c25d62704bf39b7a34179b",
+      "bytes": 1295
+    },
+    "fixture_revision_evidence.json": {
+      "sha256": "e2a4cae010fb28952ce98c8c284a89828cc4544e4cc350f9d1e1581763e6686e",
+      "bytes": 1605
+    },
+    "gold_stickers.patch": {
+      "sha256": "bd6483f37b9b9f65b076778a92bc0803e751d358f4e521c1626577bf5ac84021",
+      "bytes": 1643
+    },
+    "INTEGRATION.md": {
+      "sha256": "e3977df79d8853275970e4404e4c7fb5bc5b0a9f49a83cc85f27e0604d599ef0",
+      "bytes": 6055
+    },
+    "runtime.patch": {
+      "sha256": "52b2e38e3b59678534ff186bbfb20e93916eca364c15ee7015ee523d13ce1f97",
+      "bytes": 4738
+    },
+    "snapshot.patch": {
+      "sha256": "4b1b33da7d2805cf87308f566c245ac9e84afc1fd021f9a3058e949d3dc2083c",
+      "bytes": 2847
+    },
+    "source_evidence.json": {
+      "sha256": "604dd4662c94c828f2a217883455948694768f3a46455acffce385dea60fbadc",
+      "bytes": 2594
+    },
+    "tests/advisor_acorn_public.lua": {
+      "sha256": "a5ecc8fd3852f578eeddbd82e1f0548c1f2d975f4208db8bd014012b31c96192",
+      "bytes": 15083
+    },
+    "tests/run_capture.lua": {
+      "sha256": "ba7efffd82c5bf78bbf317ec3f030bb7a33c388a73b3c6d1a39ef9b5590bb690",
+      "bytes": 376
+    },
+    "tests/run_execution.lua": {
+      "sha256": "2f0b466685ef035aa9f757dbe9704219d374cafbd98ec2c90193a7d4b761568c",
+      "bytes": 279
+    },
+    "tests/run_runtime.lua": {
+      "sha256": "328031108ccc7dcf8c54164abb6f0b18a5859cd98366d08ae6af1881fdeea5ae",
+      "bytes": 1315
+    },
+    "tests/runtime_public_append.lua": {
+      "sha256": "cc6e3423a430ffda7781ae273c1e0cd7cc9c663636bef2db9992009cabc90470",
+      "bytes": 1069
+    }
+  },
+  "tested_belief_dependencies": {
+    "tools\\advisor_eval\\development328\\acorn_belief_component\\acorn_belief.lua": "1eca4dc4c6cde8603da637da80470726b5b54823e42dbdaac5e1b1a08f6bbfd7",
+    "tools\\advisor_eval\\development328\\acorn_belief_component\\acorn_ordering.lua": "afc94cade464f67b941a6b70a2e66e9e856eed0a61895c4974e9fa59d1618e93"
+  },
+  "patch_bases": {
+    "Brainstorm\\Advisor\\runtime.lua": "7b733e458dfc873632eeadb6247b0d58414a7d45c9a73264f3a48cda63aaaa74",
+    "Brainstorm\\Advisor\\execution.lua": "89d71ddd3eb062c517ec3c923a317fe35b7235c94acada9cf84c0312bdc0a229",
+    "Brainstorm\\Advisor\\snapshot.lua": "66853fc50efdb71164d768b0af1ffcf09a3574adf53e08501e01c61422d6d9bb",
+    "Brainstorm\\Advisor\\gold_stickers.lua": "61eb91c9df44fefb97da216d8c38a80f4e8b9e63c53d13be48ecad2445f38843"
+  },
+  "validation": {
+    "status": "passed",
+    "fixtures": 4,
+    "observer_checks": 115,
+    "existing_runtime_checks": 642,
+    "additional_runtime_checks": 4,
+    "existing_execution_checks": 313,
+    "existing_snapshot_checks": 110,
+    "existing_gold_sticker_checks": 316,
+    "command": [
+      "python",
+      "-B",
+      "tests/run_lua_tests.py",
+      "tools\\advisor_eval\\development328\\acorn_public_component\\tests\\advisor_acorn_public.lua",
+      "tools\\advisor_eval\\development328\\acorn_public_component\\tests\\run_runtime.lua",
+      "tools\\advisor_eval\\development328\\acorn_public_component\\tests\\run_execution.lua",
+      "tools\\advisor_eval\\development328\\acorn_public_component\\tests\\run_capture.lua"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.2028022
+  },
+  "source_executions": 0,
+  "captured_policy_jobs": 0,
+  "complete_attempts": 0,
+  "search_jobs": 0,
+  "game_control": false,
+  "save_or_profile_access": false,
+  "qualification": false,
+  "terminal_rescue_demonstrated": false,
+  "source_evidence_sha256": "604dd4662c94c828f2a217883455948694768f3a46455acffce385dea60fbadc",
+  "handoff": "Root composes observer/runtime/snapshot/Gold/Execute with acorn_belief_component decision/ordering, adds full module/test/deployment graph, and owns full regression/install."
+}

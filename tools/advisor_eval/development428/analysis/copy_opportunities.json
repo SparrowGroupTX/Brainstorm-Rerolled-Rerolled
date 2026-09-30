@@ -1,0 +1,1378 @@
+[
+  {
+    "run": 2,
+    "card": {
+      "id": "card:313",
+      "key": "j_blueprint",
+      "debuff": false,
+      "face_down": false,
+      "cost": 10,
+      "sell_cost": 5,
+      "blueprint_compat": true,
+      "ability": {
+        "blueprint_compat": "incompatible",
+        "bonus": 0,
+        "d_size": 0,
+        "effect": "Copycat",
+        "extra_value": 0,
+        "h_dollars": 0,
+        "h_mult": 0,
+        "h_size": 0,
+        "h_x_mult": 0,
+        "hands_played_at_create": 8,
+        "mult": 0,
+        "name": "Blueprint",
+        "order": 123,
+        "p_dollars": 0,
+        "perma_bonus": 0,
+        "set": "Joker",
+        "t_chips": 0,
+        "t_mult": 0,
+        "type": "",
+        "x_mult": 1
+      }
+    },
+    "area": "shop_jokers",
+    "first_sequence": 1641,
+    "observation_ids": [
+      "teacher356-1790535948-1:1641"
+    ],
+    "opened_actions": [],
+    "purchase_actions": [
+      1647
+    ],
+    "last_sequence": 1641,
+    "first_owned_sequence": 1652,
+    "observations": [
+      {
+        "sequence": 1641,
+        "phase": "shop",
+        "ante": 3,
+        "round": 6,
+        "dollars": 27,
+        "chips": 0,
+        "hands_left": 4,
+        "discards_left": 3,
+        "hands_played": 1,
+        "discards_used": 3,
+        "hand_size": 9,
+        "joker_limit": 5,
+        "consumable_limit": 3,
+        "rental_rate": 3,
+        "bankrupt_at": 0,
+        "reroll_cost": 5,
+        "interest_amount": 1,
+        "round_bonus": {
+          "discards": 0,
+          "next_hands": 0
+        },
+        "blind_on_deck": "Small",
+        "blind": {
+          "chips": 0,
+          "debuff": {},
+          "disabled": false,
+          "mult": 0,
+          "name": "",
+          "prepped": true
+        },
+        "route_blinds": {
+          "Big": {
+            "ante": 3,
+            "boss": false,
+            "chips": 4800,
+            "debuff": {},
+            "dollars": 4,
+            "key": "bl_big",
+            "label": "Big",
+            "mult": 1.5,
+            "name": "Big Blind",
+            "state": "Upcoming"
+          },
+          "Boss": {
+            "ante": 3,
+            "boss": true,
+            "chips": 3200,
+            "debuff": {},
+            "dollars": 5,
+            "key": "bl_needle",
+            "label": "Boss",
+            "mult": 1,
+            "name": "The Needle",
+            "state": "Upcoming"
+          },
+          "Small": {
+            "ante": 3,
+            "boss": false,
+            "chips": 3200,
+            "debuff": {},
+            "dollars": 0,
+            "key": "bl_small",
+            "label": "Small",
+            "mult": 1,
+            "name": "Small Blind",
+            "state": "Defeated"
+          }
+        },
+        "jokers": [
+          {
+            "id": "card:275",
+            "key": "j_yorick",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra": {
+                "discards": 23,
+                "xmult": 1
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Yorick",
+              "order": 148,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 3,
+              "yorick_discards": 6
+            }
+          },
+          {
+            "id": "card:276",
+            "key": "j_perkeo",
+            "debuff": false,
+            "face_down": false,
+            "cost": 20,
+            "sell_cost": 10,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 0,
+              "mult": 0,
+              "name": "Perkeo",
+              "order": 150,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:282",
+            "key": "j_smeared",
+            "debuff": false,
+            "face_down": false,
+            "cost": 7,
+            "sell_cost": 3,
+            "blueprint_compat": false,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "",
+              "eternal": true,
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 3,
+              "mult": 0,
+              "name": "Smeared Joker",
+              "order": 113,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:278",
+            "key": "j_greedy_joker",
+            "debuff": false,
+            "face_down": false,
+            "cost": 5,
+            "sell_cost": 2,
+            "blueprint_compat": true,
+            "ability": {
+              "bonus": 0,
+              "d_size": 0,
+              "effect": "Suit Mult",
+              "extra": {
+                "s_mult": 3,
+                "suit": "Diamonds"
+              },
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 3,
+              "mult": 0,
+              "name": "Greedy Joker",
+              "order": 2,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Joker",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          }
+        ],
+        "consumeables": [
+          {
+            "id": "card:284",
+            "key": "c_judgement",
+            "debuff": false,
+            "face_down": false,
+            "cost": 3,
+            "sell_cost": 1,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {},
+              "d_size": 0,
+              "effect": "Random Joker",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 4,
+              "mult": 0,
+              "name": "Judgement",
+              "order": 21,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:297",
+            "key": "c_world",
+            "debuff": false,
+            "face_down": false,
+            "cost": 3,
+            "sell_cost": 1,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 3,
+                "mod_num": 3,
+                "suit_conv": "Spades"
+              },
+              "d_size": 0,
+              "effect": "Suit Conversion",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "The World",
+              "order": 22,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          },
+          {
+            "id": "card:312",
+            "key": "c_world",
+            "edition": {
+              "negative": true,
+              "type": "negative"
+            },
+            "debuff": false,
+            "face_down": false,
+            "cost": 8,
+            "sell_cost": 4,
+            "ability": {
+              "bonus": 0,
+              "consumeable": {
+                "max_highlighted": 3,
+                "mod_num": 3,
+                "suit_conv": "Spades"
+              },
+              "d_size": 0,
+              "effect": "Suit Conversion",
+              "extra_value": 0,
+              "h_dollars": 0,
+              "h_mult": 0,
+              "h_size": 0,
+              "h_x_mult": 0,
+              "hands_played_at_create": 6,
+              "mult": 0,
+              "name": "The World",
+              "order": 22,
+              "p_dollars": 0,
+              "perma_bonus": 0,
+              "set": "Tarot",
+              "t_chips": 0,
+              "t_mult": 0,
+              "type": "",
+              "x_mult": 1
+            }
+          }
+        ],
+        "hand_levels": {
+          "Five of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush": {
+            "level": 1,
+            "played": 5
+          },
+          "Flush Five": {
+            "level": 1,
+            "played": 0
+          },
+          "Flush House": {
+            "level": 1,
+            "played": 0
+          },
+          "Four of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Full House": {
+            "level": 1,
+            "played": 1
+          },
+          "High Card": {
+            "level": 1,
+            "played": 0
+          },
+          "Pair": {
+            "level": 2,
+            "played": 1
+          },
+          "Straight": {
+            "level": 1,
+            "played": 1
+          },
+          "Straight Flush": {
+            "level": 1,
+            "played": 0
+          },
+          "Three of a Kind": {
+            "level": 1,
+            "played": 0
+          },
+          "Two Pair": {
+            "level": 1,
+            "played": 0
+          }
+        },
+        "deck_population": 52,
+        "composition": {
+          "rank": {
+            "2": 4,
+            "3": 4,
+            "4": 4,
+            "5": 4,
+            "6": 4,
+            "7": 4,
+            "8": 4,
+            "9": 4,
+            "14": 4,
+            "11": 4,
+            "13": 4,
+            "12": 4,
+            "10": 4
+          },
+          "suit": {
+            "Clubs": 11,
+            "Hearts": 16,
+            "Diamonds": 13,
+            "Spades": 12
+          },
+          "enhancement": {
+            "None": 52
+          },
+          "seal": {
+            "None": 52
+          }
+        },
+        "editions": {
+          "null": 52
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "sequence": 1647,
+        "run": 2,
+        "observation_id": "teacher356-1790535948-1:1641",
+        "advice_sequence": 1644,
+        "source": "auto_run",
+        "input": {
+          "action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          }
+        },
+        "action": {
+          "area": "shop_jokers",
+          "index": 1,
+          "kind": "buy"
+        },
+        "observation_sequence": 1641,
+        "advice": {
+          "action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          },
+          "copy_death_review": {
+            "acquisition": {
+              "attempted": true,
+              "complete": true,
+              "evaluations": 9144,
+              "reason": "no_supported_copy_priority",
+              "schema": 1,
+              "truncated": false
+            },
+            "final_area": "shop_jokers",
+            "final_index": 1,
+            "final_kind": "buy",
+            "focused_direct": {
+              "candidates": [
+                {
+                  "admitted": true,
+                  "cash_after": 17,
+                  "compared": true,
+                  "copy_priority": false,
+                  "cost": 10,
+                  "finishing_complete": false,
+                  "key": "j_blueprint",
+                  "offer_id": "card:313",
+                  "offer_index": 1,
+                  "opening_mean_after": 10712.25,
+                  "ratio": 3,
+                  "reason": "no_supported_copy_priority",
+                  "samples": 4
+                }
+              ],
+              "complete": true,
+              "evaluations": 9144,
+              "schema": 1,
+              "stage": "focused_direct"
+            },
+            "schema": 1
+          },
+          "gold_review": {
+            "retention_comparisons": 0,
+            "retention_complete": false,
+            "retention_evaluations": 0,
+            "retention_reason": "No ordinary sale-first Joker action needs retention review.",
+            "retention_scope": "Winning-Ante current or explicit copy-target row hold versus the complete visible sale-first incumbent; all consumables held.",
+            "schema": 1,
+            "shop_evaluations": 30480,
+            "shop_truncated": true,
+            "shop_unavailable_reason": "The shared scoring budget cannot complete this paired comparison.",
+            "status": "current"
+          },
+          "lines": [
+            "Copy your strongest compatible Joker; placement determines the target. Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee. Buy the visible durable copy Joker before a Buffoon pack could occupy the last Joker slot.",
+            "Upcoming boss - Needle: only one hand. Use available discards and consumables before committing.",
+            "Note: Shop scoring comparison reached its limit; this decision uses the strategic ratings.",
+            "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+          ],
+          "reroll_review": {
+            "copy_source": {
+              "credited_slots": 1,
+              "schema": 1,
+              "scoring_claim": false,
+              "status": "useful_or_unknown_stock"
+            },
+            "credited_slots": 1,
+            "schema": 1,
+            "scoring_claim": false,
+            "selected_action": "buy",
+            "status": "useful_or_unknown_stock"
+          },
+          "status": "current",
+          "timing": {
+            "action_kind": "buy",
+            "active_seconds": 0.4485280000000387,
+            "decision_id": 293,
+            "elapsed_seconds": 1.0147715000000233,
+            "evaluations": 45720,
+            "finished_seconds": 186.7320649,
+            "max_resume_seconds": 0.07964680000000612,
+            "phase": "shop",
+            "resume_calls": 714,
+            "started_seconds": 185.7172934,
+            "status": "completed"
+          },
+          "title": "Buy Blueprint ($10)"
+        },
+        "selected_card": {
+          "id": "card:313",
+          "key": "j_blueprint",
+          "debuff": false,
+          "face_down": false,
+          "cost": 10,
+          "sell_cost": 5,
+          "blueprint_compat": true,
+          "ability": {
+            "blueprint_compat": "incompatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 8,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          }
+        },
+        "before": {
+          "phase": "shop",
+          "ante": 3,
+          "round": 6,
+          "dollars": 27,
+          "chips": 0,
+          "hands_left": 4,
+          "discards_left": 3,
+          "hands_played": 1,
+          "discards_used": 3,
+          "hand_size": 9,
+          "joker_limit": 5,
+          "consumable_limit": 3,
+          "rental_rate": 3,
+          "bankrupt_at": 0,
+          "reroll_cost": 5,
+          "interest_amount": 1,
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "blind_on_deck": "Small",
+          "blind": {
+            "chips": 0,
+            "debuff": {},
+            "disabled": false,
+            "mult": 0,
+            "name": "",
+            "prepped": true
+          },
+          "route_blinds": {
+            "Big": {
+              "ante": 3,
+              "boss": false,
+              "chips": 4800,
+              "debuff": {},
+              "dollars": 4,
+              "key": "bl_big",
+              "label": "Big",
+              "mult": 1.5,
+              "name": "Big Blind",
+              "state": "Upcoming"
+            },
+            "Boss": {
+              "ante": 3,
+              "boss": true,
+              "chips": 3200,
+              "debuff": {},
+              "dollars": 5,
+              "key": "bl_needle",
+              "label": "Boss",
+              "mult": 1,
+              "name": "The Needle",
+              "state": "Upcoming"
+            },
+            "Small": {
+              "ante": 3,
+              "boss": false,
+              "chips": 3200,
+              "debuff": {},
+              "dollars": 0,
+              "key": "bl_small",
+              "label": "Small",
+              "mult": 1,
+              "name": "Small Blind",
+              "state": "Defeated"
+            }
+          },
+          "jokers": [
+            {
+              "id": "card:275",
+              "key": "j_yorick",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra": {
+                  "discards": 23,
+                  "xmult": 1
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Yorick",
+                "order": 148,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 3,
+                "yorick_discards": 6
+              }
+            },
+            {
+              "id": "card:276",
+              "key": "j_perkeo",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Perkeo",
+                "order": 150,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:282",
+              "key": "j_smeared",
+              "debuff": false,
+              "face_down": false,
+              "cost": 7,
+              "sell_cost": 3,
+              "blueprint_compat": false,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "eternal": true,
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 3,
+                "mult": 0,
+                "name": "Smeared Joker",
+                "order": 113,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:278",
+              "key": "j_greedy_joker",
+              "debuff": false,
+              "face_down": false,
+              "cost": 5,
+              "sell_cost": 2,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "Suit Mult",
+                "extra": {
+                  "s_mult": 3,
+                  "suit": "Diamonds"
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 3,
+                "mult": 0,
+                "name": "Greedy Joker",
+                "order": 2,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            }
+          ],
+          "consumeables": [
+            {
+              "id": "card:284",
+              "key": "c_judgement",
+              "debuff": false,
+              "face_down": false,
+              "cost": 3,
+              "sell_cost": 1,
+              "ability": {
+                "bonus": 0,
+                "consumeable": {},
+                "d_size": 0,
+                "effect": "Random Joker",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 4,
+                "mult": 0,
+                "name": "Judgement",
+                "order": 21,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:297",
+              "key": "c_world",
+              "debuff": false,
+              "face_down": false,
+              "cost": 3,
+              "sell_cost": 1,
+              "ability": {
+                "bonus": 0,
+                "consumeable": {
+                  "max_highlighted": 3,
+                  "mod_num": 3,
+                  "suit_conv": "Spades"
+                },
+                "d_size": 0,
+                "effect": "Suit Conversion",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 6,
+                "mult": 0,
+                "name": "The World",
+                "order": 22,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:312",
+              "key": "c_world",
+              "edition": {
+                "negative": true,
+                "type": "negative"
+              },
+              "debuff": false,
+              "face_down": false,
+              "cost": 8,
+              "sell_cost": 4,
+              "ability": {
+                "bonus": 0,
+                "consumeable": {
+                  "max_highlighted": 3,
+                  "mod_num": 3,
+                  "suit_conv": "Spades"
+                },
+                "d_size": 0,
+                "effect": "Suit Conversion",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 6,
+                "mult": 0,
+                "name": "The World",
+                "order": 22,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            }
+          ],
+          "hand_levels": {
+            "Five of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush": {
+              "level": 1,
+              "played": 5
+            },
+            "Flush Five": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush House": {
+              "level": 1,
+              "played": 0
+            },
+            "Four of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Full House": {
+              "level": 1,
+              "played": 1
+            },
+            "High Card": {
+              "level": 1,
+              "played": 0
+            },
+            "Pair": {
+              "level": 2,
+              "played": 1
+            },
+            "Straight": {
+              "level": 1,
+              "played": 1
+            },
+            "Straight Flush": {
+              "level": 1,
+              "played": 0
+            },
+            "Three of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Two Pair": {
+              "level": 1,
+              "played": 0
+            }
+          },
+          "deck_population": 52,
+          "composition": {
+            "rank": {
+              "2": 4,
+              "3": 4,
+              "4": 4,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "14": 4,
+              "11": 4,
+              "13": 4,
+              "12": 4,
+              "10": 4
+            },
+            "suit": {
+              "Clubs": 11,
+              "Hearts": 16,
+              "Diamonds": 13,
+              "Spades": 12
+            },
+            "enhancement": {
+              "None": 52
+            },
+            "seal": {
+              "None": 52
+            }
+          },
+          "editions": {
+            "null": 52
+          }
+        },
+        "callback": {
+          "sequence": 1648,
+          "details": {
+            "action_sequence": 1647,
+            "callback_returned": true,
+            "completion": "Callback result only; queued effects may still be pending.",
+            "outcome_kind": "returned",
+            "reason": ""
+          }
+        },
+        "settlement": {
+          "sequence": 1651,
+          "observation_id": "teacher356-1790535948-1:1641",
+          "details": {
+            "action_sequences": [
+              1647
+            ],
+            "latest_action_sequence": 1647,
+            "observation": "First settled observation after callbacks; not proof every queued event completed."
+          }
+        },
+        "after": {
+          "phase": "shop",
+          "ante": 3,
+          "round": 6,
+          "dollars": 27,
+          "chips": 0,
+          "hands_left": 4,
+          "discards_left": 3,
+          "hands_played": 1,
+          "discards_used": 3,
+          "hand_size": 9,
+          "joker_limit": 5,
+          "consumable_limit": 3,
+          "rental_rate": 3,
+          "bankrupt_at": 0,
+          "reroll_cost": 5,
+          "interest_amount": 1,
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "blind_on_deck": "Small",
+          "blind": {
+            "chips": 0,
+            "debuff": {},
+            "disabled": false,
+            "mult": 0,
+            "name": "",
+            "prepped": true
+          },
+          "route_blinds": {
+            "Big": {
+              "ante": 3,
+              "boss": false,
+              "chips": 4800,
+              "debuff": {},
+              "dollars": 4,
+              "key": "bl_big",
+              "label": "Big",
+              "mult": 1.5,
+              "name": "Big Blind",
+              "state": "Upcoming"
+            },
+            "Boss": {
+              "ante": 3,
+              "boss": true,
+              "chips": 3200,
+              "debuff": {},
+              "dollars": 5,
+              "key": "bl_needle",
+              "label": "Boss",
+              "mult": 1,
+              "name": "The Needle",
+              "state": "Upcoming"
+            },
+            "Small": {
+              "ante": 3,
+              "boss": false,
+              "chips": 3200,
+              "debuff": {},
+              "dollars": 0,
+              "key": "bl_small",
+              "label": "Small",
+              "mult": 1,
+              "name": "Small Blind",
+              "state": "Defeated"
+            }
+          },
+          "jokers": [
+            {
+              "id": "card:275",
+              "key": "j_yorick",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra": {
+                  "discards": 23,
+                  "xmult": 1
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Yorick",
+                "order": 148,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 3,
+                "yorick_discards": 6
+              }
+            },
+            {
+              "id": "card:276",
+              "key": "j_perkeo",
+              "debuff": false,
+              "face_down": false,
+              "cost": 20,
+              "sell_cost": 10,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 0,
+                "mult": 0,
+                "name": "Perkeo",
+                "order": 150,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:282",
+              "key": "j_smeared",
+              "debuff": false,
+              "face_down": false,
+              "cost": 7,
+              "sell_cost": 3,
+              "blueprint_compat": false,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "",
+                "eternal": true,
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 3,
+                "mult": 0,
+                "name": "Smeared Joker",
+                "order": 113,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:278",
+              "key": "j_greedy_joker",
+              "debuff": false,
+              "face_down": false,
+              "cost": 5,
+              "sell_cost": 2,
+              "blueprint_compat": true,
+              "ability": {
+                "bonus": 0,
+                "d_size": 0,
+                "effect": "Suit Mult",
+                "extra": {
+                  "s_mult": 3,
+                  "suit": "Diamonds"
+                },
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 3,
+                "mult": 0,
+                "name": "Greedy Joker",
+                "order": 2,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Joker",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            }
+          ],
+          "consumeables": [
+            {
+              "id": "card:284",
+              "key": "c_judgement",
+              "debuff": false,
+              "face_down": false,
+              "cost": 3,
+              "sell_cost": 1,
+              "ability": {
+                "bonus": 0,
+                "consumeable": {},
+                "d_size": 0,
+                "effect": "Random Joker",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 4,
+                "mult": 0,
+                "name": "Judgement",
+                "order": 21,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:297",
+              "key": "c_world",
+              "debuff": false,
+              "face_down": false,
+              "cost": 3,
+              "sell_cost": 1,
+              "ability": {
+                "bonus": 0,
+                "consumeable": {
+                  "max_highlighted": 3,
+                  "mod_num": 3,
+                  "suit_conv": "Spades"
+                },
+                "d_size": 0,
+                "effect": "Suit Conversion",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 6,
+                "mult": 0,
+                "name": "The World",
+                "order": 22,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            },
+            {
+              "id": "card:312",
+              "key": "c_world",
+              "edition": {
+                "negative": true,
+                "type": "negative"
+              },
+              "debuff": false,
+              "face_down": false,
+              "cost": 8,
+              "sell_cost": 4,
+              "ability": {
+                "bonus": 0,
+                "consumeable": {
+                  "max_highlighted": 3,
+                  "mod_num": 3,
+                  "suit_conv": "Spades"
+                },
+                "d_size": 0,
+                "effect": "Suit Conversion",
+                "extra_value": 0,
+                "h_dollars": 0,
+                "h_mult": 0,
+                "h_size": 0,
+                "h_x_mult": 0,
+                "hands_played_at_create": 6,
+                "mult": 0,
+                "name": "The World",
+                "order": 22,
+                "p_dollars": 0,
+                "perma_bonus": 0,
+                "set": "Tarot",
+                "t_chips": 0,
+                "t_mult": 0,
+                "type": "",
+                "x_mult": 1
+              }
+            }
+          ],
+          "hand_levels": {
+            "Five of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush": {
+              "level": 1,
+              "played": 5
+            },
+            "Flush Five": {
+              "level": 1,
+              "played": 0
+            },
+            "Flush House": {
+              "level": 1,
+              "played": 0
+            },
+            "Four of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Full House": {
+              "level": 1,
+              "played": 1
+            },
+            "High Card": {
+              "level": 1,
+              "played": 0
+            },
+            "Pair": {
+              "level": 2,
+              "played": 1
+            },
+            "Straight": {
+              "level": 1,
+              "played": 1
+            },
+            "Straight Flush": {
+              "level": 1,
+              "played": 0
+            },
+            "Three of a Kind": {
+              "level": 1,
+              "played": 0
+            },
+            "Two Pair": {
+              "level": 1,
+              "played": 0
+            }
+          },
+          "deck_population": 52,
+          "composition": {
+            "rank": {
+              "2": 4,
+              "3": 4,
+              "4": 4,
+              "5": 4,
+              "6": 4,
+              "7": 4,
+              "8": 4,
+              "9": 4,
+              "14": 4,
+              "11": 4,
+              "13": 4,
+              "12": 4,
+              "10": 4
+            },
+            "suit": {
+              "Clubs": 11,
+              "Hearts": 16,
+              "Diamonds": 13,
+              "Spades": 12
+            },
+            "enhancement": {
+              "None": 52
+            },
+            "seal": {
+              "None": 52
+            }
+          },
+          "editions": {
+            "null": 52
+          }
+        }
+      }
+    ]
+  }
+]

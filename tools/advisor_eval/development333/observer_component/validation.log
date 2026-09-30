@@ -1,0 +1,19 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tools\advisor_eval\development333\observer_component\reproduce_hook_growth.lua
+PASS tools\advisor_eval\development333\observer_component\reproduce_hook_growth.lua
+Running tools\advisor_eval\development333\observer_component\reproduce_idle_allocations.lua
+PASS tools\advisor_eval\development333\observer_component\reproduce_idle_allocations.lua
+Running tools\advisor_eval\development333\observer_component\test_callback_hooks.lua
+PASS tools\advisor_eval\development333\observer_component\test_callback_hooks.lua
+Running tools\advisor_eval\development333\observer_component\test_existing_acorn.lua
+PASS tools\advisor_eval\development333\observer_component\test_existing_acorn.lua
+4/4 fixtures passed
+ticks=0 callback=1 begin_action=1 journal_events=2 accepted=true reason=played
+ticks=10 callback=1 begin_action=11 journal_events=22 accepted=true reason=played
+ticks=50 callback=1 begin_action=51 journal_events=102 accepted=true reason=played
+ticks=100 callback=1 begin_action=101 journal_events=202 accepted=true reason=played
+baseline332: idle_ticks=1000 retained_entrypoint_replacements=16000 collected_memory_delta_KiB=2059.5234375
+candidate333: idle_ticks=1000 retained_entrypoint_replacements=0 collected_memory_delta_KiB=3.234375
+callback_hooks333: 60 checks passed
+advisor_acorn_public: 115 checks passed
+

@@ -1,0 +1,373 @@
+{
+  "closed": {
+    "at": "2026-09-27T19:58:42.451448+00:00",
+    "seconds": 419.3289999999979,
+    "jobs": 302,
+    "remaining_authority": 0,
+    "allowance_closed": true,
+    "no_auto_resume": true,
+    "frozen_inputs_unchanged": true,
+    "counts": {
+      "complete": 302,
+      "error": 0,
+      "timeout": 0,
+      "not_started": 0
+    }
+  },
+  "decision": {
+    "old_unused": {
+      "registered": 60,
+      "paired_complete": 60,
+      "baseline_matches_recorded": 56,
+      "candidate_matches_recorded": 51,
+      "changed_ids": [
+        "old-2579",
+        "old-2710",
+        "old-3150",
+        "old-7047",
+        "old-7895"
+      ],
+      "worker_statuses": {
+        "baseline": {
+          "complete": 60
+        },
+        "candidate": {
+          "complete": 60
+        }
+      },
+      "baseline": {
+        "decisions": 60,
+        "action_kinds": {
+          "null": 4,
+          "play": 56
+        },
+        "discard_actions": 0,
+        "cards_discarded": 0,
+        "cards_per_discard": null,
+        "five_card_discards": 0,
+        "discard_size_distribution": {}
+      },
+      "candidate": {
+        "decisions": 60,
+        "action_kinds": {
+          "null": 4,
+          "play": 51,
+          "discard": 5
+        },
+        "discard_actions": 5,
+        "cards_discarded": 21,
+        "cards_per_discard": 4.2,
+        "five_card_discards": 3,
+        "discard_size_distribution": {
+          "2": 1,
+          "5": 3,
+          "4": 1
+        }
+      },
+      "action_transitions": {
+        "None -> None": 4,
+        "play -> play": 51,
+        "play -> discard": 5
+      }
+    },
+    "old_short_control": {
+      "registered": 40,
+      "paired_complete": 40,
+      "baseline_matches_recorded": 39,
+      "candidate_matches_recorded": 39,
+      "changed_ids": [],
+      "worker_statuses": {
+        "baseline": {
+          "complete": 40
+        },
+        "candidate": {
+          "complete": 40
+        }
+      },
+      "baseline": {
+        "decisions": 40,
+        "action_kinds": {
+          "discard": 39,
+          "null": 1
+        },
+        "discard_actions": 39,
+        "cards_discarded": 126,
+        "cards_per_discard": 3.230769230769231,
+        "five_card_discards": 0,
+        "discard_size_distribution": {
+          "4": 17,
+          "3": 17,
+          "2": 2,
+          "1": 3
+        }
+      },
+      "candidate": {
+        "decisions": 40,
+        "action_kinds": {
+          "discard": 39,
+          "null": 1
+        },
+        "discard_actions": 39,
+        "cards_discarded": 126,
+        "cards_per_discard": 3.230769230769231,
+        "five_card_discards": 0,
+        "discard_size_distribution": {
+          "4": 17,
+          "3": 17,
+          "2": 2,
+          "1": 3
+        }
+      },
+      "action_transitions": {
+        "discard -> discard": 39,
+        "None -> None": 1
+      }
+    },
+    "old_full_control": {
+      "registered": 20,
+      "paired_complete": 20,
+      "baseline_matches_recorded": 18,
+      "candidate_matches_recorded": 18,
+      "changed_ids": [],
+      "worker_statuses": {
+        "baseline": {
+          "complete": 20
+        },
+        "candidate": {
+          "complete": 20
+        }
+      },
+      "baseline": {
+        "decisions": 20,
+        "action_kinds": {
+          "null": 2,
+          "discard": 18
+        },
+        "discard_actions": 18,
+        "cards_discarded": 90,
+        "cards_per_discard": 5.0,
+        "five_card_discards": 18,
+        "discard_size_distribution": {
+          "5": 18
+        }
+      },
+      "candidate": {
+        "decisions": 20,
+        "action_kinds": {
+          "null": 2,
+          "discard": 18
+        },
+        "discard_actions": 18,
+        "cards_discarded": 90,
+        "cards_per_discard": 5.0,
+        "five_card_discards": 18,
+        "discard_size_distribution": {
+          "5": 18
+        }
+      },
+      "action_transitions": {
+        "None -> None": 2,
+        "discard -> discard": 18
+      }
+    },
+    "current_reported": {
+      "registered": 7,
+      "paired_complete": 7,
+      "baseline_matches_recorded": 7,
+      "candidate_matches_recorded": 4,
+      "changed_ids": [
+        "current-3661",
+        "current-3839",
+        "current-4008"
+      ],
+      "worker_statuses": {
+        "baseline": {
+          "complete": 7
+        },
+        "candidate": {
+          "complete": 7
+        }
+      },
+      "baseline": {
+        "decisions": 7,
+        "action_kinds": {
+          "play": 7
+        },
+        "discard_actions": 0,
+        "cards_discarded": 0,
+        "cards_per_discard": null,
+        "five_card_discards": 0,
+        "discard_size_distribution": {}
+      },
+      "candidate": {
+        "decisions": 7,
+        "action_kinds": {
+          "play": 4,
+          "discard": 3
+        },
+        "discard_actions": 3,
+        "cards_discarded": 10,
+        "cards_per_discard": 3.3333333333333335,
+        "five_card_discards": 1,
+        "discard_size_distribution": {
+          "3": 1,
+          "5": 1,
+          "2": 1
+        }
+      },
+      "action_transitions": {
+        "play -> play": 4,
+        "play -> discard": 3
+      }
+    },
+    "all": {
+      "registered": 127,
+      "paired_complete": 127,
+      "baseline_matches_recorded": 120,
+      "candidate_matches_recorded": 112,
+      "changed_ids": [
+        "old-2579",
+        "old-2710",
+        "old-3150",
+        "old-7047",
+        "old-7895",
+        "current-3661",
+        "current-3839",
+        "current-4008"
+      ],
+      "worker_statuses": {
+        "baseline": {
+          "complete": 127
+        },
+        "candidate": {
+          "complete": 127
+        }
+      },
+      "baseline": {
+        "decisions": 127,
+        "action_kinds": {
+          "null": 7,
+          "play": 63,
+          "discard": 57
+        },
+        "discard_actions": 57,
+        "cards_discarded": 216,
+        "cards_per_discard": 3.789473684210526,
+        "five_card_discards": 18,
+        "discard_size_distribution": {
+          "4": 17,
+          "3": 17,
+          "2": 2,
+          "1": 3,
+          "5": 18
+        }
+      },
+      "candidate": {
+        "decisions": 127,
+        "action_kinds": {
+          "null": 7,
+          "play": 55,
+          "discard": 65
+        },
+        "discard_actions": 65,
+        "cards_discarded": 247,
+        "cards_per_discard": 3.8,
+        "five_card_discards": 22,
+        "discard_size_distribution": {
+          "2": 4,
+          "5": 22,
+          "4": 18,
+          "3": 18,
+          "1": 3
+        }
+      },
+      "action_transitions": {
+        "None -> None": 7,
+        "play -> play": 55,
+        "play -> discard": 8,
+        "discard -> discard": 57
+      }
+    }
+  },
+  "continuation": {
+    "registered_rounds": 12,
+    "registered_round_world_pairs": 24,
+    "statuses": {
+      "baseline": {
+        "supported_clear": 24
+      },
+      "candidate": {
+        "supported_clear": 24
+      }
+    },
+    "primary_complete_two_world_rounds": {
+      "round_world_pairs": 24,
+      "distinct_rounds": 12,
+      "baseline": {
+        "discards_per_round": 1.1666666666666667,
+        "cards_discarded_per_round": 3.5,
+        "cards_per_discard": 3.0,
+        "continuation_discards": 0,
+        "continuation_cards": 0,
+        "continuation_cards_per_discard": null,
+        "continuation_five_card_discards": 0,
+        "mean_remaining_discards_at_clear": 1.9166666666666667
+      },
+      "candidate": {
+        "discards_per_round": 1.3333333333333333,
+        "cards_discarded_per_round": 4.125,
+        "cards_per_discard": 3.09375,
+        "continuation_discards": 4,
+        "continuation_cards": 15,
+        "continuation_cards_per_discard": 3.75,
+        "continuation_five_card_discards": 1,
+        "mean_remaining_discards_at_clear": 1.75
+      }
+    },
+    "secondary_both_clear_worlds": {
+      "round_world_pairs": 24,
+      "distinct_rounds": 12,
+      "baseline": {
+        "discards_per_round": 1.1666666666666667,
+        "cards_discarded_per_round": 3.5,
+        "cards_per_discard": 3.0,
+        "continuation_discards": 0,
+        "continuation_cards": 0,
+        "continuation_cards_per_discard": null,
+        "continuation_five_card_discards": 0,
+        "mean_remaining_discards_at_clear": 1.9166666666666667
+      },
+      "candidate": {
+        "discards_per_round": 1.3333333333333333,
+        "cards_discarded_per_round": 4.125,
+        "cards_per_discard": 3.09375,
+        "continuation_discards": 4,
+        "continuation_cards": 15,
+        "continuation_cards_per_discard": 3.75,
+        "continuation_five_card_discards": 1,
+        "mean_remaining_discards_at_clear": 1.75
+      }
+    },
+    "improved_discard_worlds": [
+      {
+        "id": "old-7895",
+        "world": 1,
+        "before": 0,
+        "after": 2
+      },
+      {
+        "id": "old-7895",
+        "world": 2,
+        "before": 0,
+        "after": 2
+      }
+    ],
+    "fewer_discard_worlds": []
+  },
+  "limits": [
+    "Selected suspect states and controls, not representative rounds or fresh full runs.",
+    "Hypothetical private draw permutations, not the actual unobserved future.",
+    "Supported-clear results condition on adapter coverage; censoring is explicit.",
+    "Two worlds per round are correlated; primary continuation averages weight each round equally."
+  ]
+}

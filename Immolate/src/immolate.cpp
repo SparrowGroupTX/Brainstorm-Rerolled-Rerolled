@@ -5,6 +5,7 @@
 #include "opening_batch.hpp"
 #include "search.hpp"
 #include "seed_anchor_index.hpp"
+#include "collection_targets.hpp"
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -100,6 +101,16 @@ std::atomic<int> BRAINSTORM_SEARCH_THREAD_MODE{0};
 // subquery. Normal searches always reset this to false.
 bool BRAINSTORM_FORCE_CHARM_ROUTE = false;
 bool BRAINSTORM_ESTIMATE_ASSUME_CHARM_TAG = false;
+BrainstormCollectionQuery BRAINSTORM_COLLECTION;
+std::atomic<bool> BRAINSTORM_V9_CANCELLED{false};
+bool BRAINSTORM_V9_RUNNING = false;
+std::chrono::steady_clock::time_point BRAINSTORM_V9_DEADLINE;
+
+bool brainstormV9Stopped() {
+    return BRAINSTORM_V9_RUNNING
+        && (BRAINSTORM_V9_CANCELLED.load(std::memory_order_relaxed)
+            || std::chrono::steady_clock::now() >= BRAINSTORM_V9_DEADLINE);
+}
 
 int brainstormJokerLocationDeadline(
     BrainstormJokerLocationRequirement location) {
@@ -1326,6 +1337,7 @@ bool brainstormSelectedTargetMayReceivePerishableSticker() {
 }
 
 bool brainstormNeedsV5ChronologicalJokerScan() {
+    if (BRAINSTORM_COLLECTION.active()) return true;
     if (!BRAINSTORM_V5_OCCURRENCE_MODE) {
         return false;
     }
@@ -1578,8 +1590,9 @@ struct BrainstormV5JokerMatcher {
         for (std::size_t i = 0; i < requirement; i++) {
             if (!matched[i]
                 && (BRAINSTORM_V5_ORDERED_MODE
-                    || BRAINSTORM_TARGET_JOKERS[i]
-                        == BRAINSTORM_TARGET_JOKERS[requirement])) {
+                    || BRAINSTORM_COLLECTION.identityMatches(
+                        BRAINSTORM_TARGET_JOKERS[i],
+                        BRAINSTORM_TARGET_JOKERS[requirement]))) {
                 return false;
             }
         }
@@ -1592,7 +1605,8 @@ struct BrainstormV5JokerMatcher {
         if (requirement >= BRAINSTORM_TARGET_JOKER_COUNT
             || matched[requirement]
             || !priorRequirementsMatched(requirement)
-            || BRAINSTORM_TARGET_JOKERS[requirement] != joker.joker
+            || !BRAINSTORM_COLLECTION.identityMatches(
+                BRAINSTORM_TARGET_JOKERS[requirement], joker.joker)
             || !BrainstormJokerTargetMatcher::locationAccepts(
                 BRAINSTORM_TARGET_JOKER_LOCATIONS[requirement], source)) {
             return false;
@@ -1626,7 +1640,8 @@ struct BrainstormV5JokerMatcher {
 
     bool hasUnmatched(Item joker) const {
         for (std::size_t i = 0; i < BRAINSTORM_TARGET_JOKER_COUNT; i++) {
-            if (!matched[i] && BRAINSTORM_TARGET_JOKERS[i] == joker) {
+            if (!matched[i] && BRAINSTORM_COLLECTION.identityMatches(
+                    BRAINSTORM_TARGET_JOKERS[i], joker)) {
                 return true;
             }
         }
@@ -1674,6 +1689,7 @@ struct BrainstormV5VisibleJokers {
 struct BrainstormV5TimelineState {
     Instance inst;
     BrainstormV5JokerMatcher matcher;
+    BrainstormCollectionProgress collection;
     std::array<BrainstormV5OwnedJoker, 8> ownedJokers{};
     unsigned char ownedJokerCount = 0;
     JokerStickerGeneration stickerGeneration =
@@ -1683,6 +1699,14 @@ struct BrainstormV5TimelineState {
         const Instance& source,
         JokerStickerGeneration requestedStickerGeneration)
         : inst(source), stickerGeneration(requestedStickerGeneration) {}
+
+    bool complete() const {
+        return matcher.complete() && collection.complete(BRAINSTORM_COLLECTION);
+    }
+    void observe(const JokerData& joker, int ante) {
+        collection.observe(BRAINSTORM_COLLECTION, joker.joker, ante,
+            joker.stickers.perishable, BRAINSTORM_REJECT_PERISHABLE_TARGETS);
+    }
 
     void acquireOwnedJoker(const JokerData& joker) {
         if (ownedJokerCount >= ownedJokers.size()) {
@@ -1809,7 +1833,8 @@ int brainstormLocationLastAnte(
 }
 
 int brainstormV5MaximumRequestedAnte() {
-    int result = 1;
+    int result = BRAINSTORM_COLLECTION.minimum > 0
+        ? BRAINSTORM_COLLECTION.lastAnte : 1;
     for (std::size_t i = 0; i < BRAINSTORM_TARGET_JOKER_COUNT; i++) {
         result = std::max(
             result,
@@ -1822,7 +1847,8 @@ int brainstormV5MaximumRequestedAnte() {
 JokerStickerGeneration brainstormV5TimelineStickerGeneration() {
     if (BRAINSTORM_REJECT_PERISHABLE_TARGETS
         && BRAINSTORM_STAKE >= Item::Orange_Stake
-        && brainstormSelectedTargetMayReceivePerishableSticker()) {
+        && (BRAINSTORM_COLLECTION.minimum > 0
+            || brainstormSelectedTargetMayReceivePerishableSticker())) {
         // Eternal and Perishable share one poll. Retain both decisions while
         // skipping the independent Rental node, which cannot affect target
         // eligibility or duplicate-selling behavior.
@@ -1865,6 +1891,7 @@ BrainstormV5VisibleJokers generateBrainstormV5ShopStock(
             continue;
         }
         jokers.push_back(joker);
+        state.observe(joker, ante);
         if (!state.inst.params.showman) {
             state.inst.lockTransient(joker.joker);
             transientJokers[transientCount++] = joker.joker;
@@ -1892,6 +1919,7 @@ BrainstormV5VisibleJokers generateBrainstormV5BuffoonContents(
                 ItemSource::Buffoon_Pack, ante,
                 state.stickerGeneration);
         jokers.push_back(joker);
+        state.observe(joker, ante);
         if (!state.inst.params.showman) {
             state.inst.lockTransient(joker.joker);
             transientJokers[transientCount++] = joker.joker;
@@ -1911,7 +1939,21 @@ void appendBrainstormV5UniqueBranch(
     const BrainstormV5TimelineState& candidate) {
     const unsigned int candidateMask = candidate.matcher.matchedMask();
     for (const BrainstormV5TimelineState& branch : branches) {
-        if (branch.matcher.matchedMask() == candidateMask) {
+        // OR targets can acquire different centers with different pool locks;
+        // never collapse those routes merely because their target bits match.
+        bool sameOwned = branch.ownedJokerCount == candidate.ownedJokerCount;
+        if (BRAINSTORM_COLLECTION.active() && sameOwned) {
+            for (std::size_t i = 0; i < branch.ownedJokerCount; ++i) {
+                const auto& a = branch.ownedJokers[i];
+                const auto& b = candidate.ownedJokers[i];
+                if (a.joker != b.joker || a.eternal != b.eternal
+                    || a.active != b.active || a.invisibleAge != b.invisibleAge)
+                    sameOwned = false;
+            }
+        }
+        if (branch.matcher.matchedMask() == candidateMask
+            && (!BRAINSTORM_COLLECTION.active()
+                || (sameOwned && branch.collection.seen == candidate.collection.seen))) {
             return;
         }
     }
@@ -1991,6 +2033,7 @@ BrainstormV5AcquisitionPlan brainstormV5PlanVisibleAcquisition(
 
     unsigned int reachableRequirements = 0;
     bool foundFirst = false;
+    bool alternativeIdentity = false;
     std::size_t firstCardIndex = 0;
     std::size_t firstRequirement = 0;
     for (std::size_t i = 0; i < visibleJokers.size(); i++) {
@@ -1998,6 +2041,10 @@ BrainstormV5AcquisitionPlan brainstormV5PlanVisibleAcquisition(
             state.matcher.matchingRequirementMask(
                 visibleJokers[i], source);
         reachableRequirements |= requirements;
+        if (foundFirst && requirements != 0
+            && visibleJokers[i].joker != visibleJokers[firstCardIndex].joker) {
+            alternativeIdentity = true;
+        }
         if (!foundFirst && requirements != 0) {
             for (std::size_t requirement = 0;
                  requirement < BRAINSTORM_TARGET_JOKER_COUNT;
@@ -2019,13 +2066,15 @@ BrainstormV5AcquisitionPlan brainstormV5PlanVisibleAcquisition(
         (1u << BRAINSTORM_TARGET_JOKER_COUNT) - 1u;
     const unsigned int unmatchedRequirements =
         targetMask & ~state.matcher.matchedMask();
-    if ((unmatchedRequirements & (unmatchedRequirements - 1u)) == 0) {
+    if ((unmatchedRequirements & (unmatchedRequirements - 1u)) == 0
+        && state.collection.complete(BRAINSTORM_COLLECTION)) {
         return BrainstormV5AcquisitionPlan{
             BrainstormV5AcquisitionPlanKind::ImmediateSuccess,
             firstCardIndex, firstRequirement};
     }
 
-    if ((reachableRequirements & (reachableRequirements - 1u)) != 0) {
+    if ((reachableRequirements & (reachableRequirements - 1u)) != 0
+        || (BRAINSTORM_COLLECTION.interchangeableCopies && alternativeIdentity)) {
         return BrainstormV5AcquisitionPlan{
             BrainstormV5AcquisitionPlanKind::General,
             firstCardIndex, firstRequirement};
@@ -2067,7 +2116,8 @@ bool scanBrainstormV5DisplayedPacks(
     std::size_t packIndex, BrainstormJokerObservationSource source,
     const std::vector<BrainstormV5ShopPoint>& shops,
     std::size_t shopIndex) {
-    if (state.matcher.complete()) {
+    if (brainstormV9Stopped()) return false;
+    if (state.complete()) {
         return true;
     }
     if (packIndex >= packs.size()) {
@@ -2094,6 +2144,7 @@ bool scanBrainstormV5DisplayedPacks(
     const BrainstormV5VisibleJokers contents =
         generateBrainstormV5BuffoonContents(
             state, pack.size, shops[shopIndex].ante);
+    if (state.complete()) return true;
     const BrainstormV5AcquisitionPlan acquisitionPlan =
         brainstormV5PlanVisibleAcquisition(
             state, contents, source, pack.choices);
@@ -2145,7 +2196,8 @@ bool scanBrainstormV5TimelineAt(
     BrainstormV5TimelineState state,
     const std::vector<BrainstormV5ShopPoint>& shops,
     std::size_t shopIndex) {
-    if (state.matcher.complete()) {
+    if (brainstormV9Stopped()) return false;
+    if (state.complete()) {
         return true;
     }
     if (shopIndex >= shops.size()) {
@@ -2166,6 +2218,7 @@ bool scanBrainstormV5TimelineAt(
     // Initial stock and both pack types exist before the player can sell.
     const BrainstormV5VisibleJokers stock =
         generateBrainstormV5ShopStock(state, shop.ante);
+    if (state.complete()) return true;
     const std::array<Pack, 2> packs = {
         packInfo(state.inst.nextPack(shop.ante)),
         packInfo(state.inst.nextPack(shop.ante)),
@@ -2242,6 +2295,7 @@ std::vector<BrainstormV5ShopPoint> buildBrainstormV5ShopTimeline(
 void matchAndAcquireBrainstormV5GeneratedJoker(
     BrainstormV5TimelineState& state, const JokerData& joker,
     BrainstormJokerObservationSource source) {
+    state.observe(joker, 1);
     const unsigned int requirements =
         state.matcher.matchingRequirementMask(joker, source);
     if (requirements != 0) {
@@ -2280,7 +2334,7 @@ bool passesBrainstormV5JokerTargetsOnRoute(
         }
     }
 
-    if (BRAINSTORM_TARGET_JOKER_COUNT == 0) {
+    if (BRAINSTORM_TARGET_JOKER_COUNT == 0 && BRAINSTORM_COLLECTION.minimum == 0) {
         return true;
     }
 
@@ -3897,6 +3951,7 @@ bool configureBrainstormSearch(
     const std::string& targetJokerLocations,
     bool retainJokerOccurrences, bool allowDeadlineLocations,
     int stakeLevel, bool rejectPerishableTargets) {
+    BRAINSTORM_COLLECTION = {};
     const Item parsedDeck = stringToItem(deck);
     if (!isSupportedBrainstormDeck(parsedDeck)
         || parsedDeck == Item::Challenge_Deck
@@ -3968,6 +4023,7 @@ std::string brainstorm_versioned_cpp(
     std::string targetJokerLocations, bool retainJokerOccurrences,
     bool allowDeadlineLocations, int stakeLevel,
     bool rejectPerishableTargets) {
+    BRAINSTORM_COLLECTION = {};
     const Item parsedDeck = stringToItem(deck);
     if (!isSupportedBrainstormDeck(parsedDeck)
         || parsedDeck == Item::Challenge_Deck
@@ -4311,6 +4367,114 @@ std::string brainstorm_v8_cpp(
         customFilter, targetRank, targetSuit, specificRankMin, anyRankMin,
         targetJokers, deck, targetJokerLocations, true, true, stakeLevel,
         rejectPerishableTargets);
+}
+
+bool configureBrainstormCollection(const std::string& names, int minimum,
+    int firstAnte, int lastAnte, bool interchangeableCopies) {
+    BRAINSTORM_COLLECTION = {};
+    if (minimum < 0 || minimum > 150 || firstAnte < 1 || lastAnte > 8
+        || firstAnte > lastAnte || names.size() > 8192) return false;
+    BrainstormCollectionQuery query;
+    query.minimum = minimum;
+    query.firstAnte = firstAnte;
+    query.lastAnte = lastAnte;
+    query.interchangeableCopies = interchangeableCopies;
+    if (!names.empty()) {
+        std::size_t start = 0;
+        do {
+            const auto end = names.find(BRAINSTORM_JOKER_TARGET_SEPARATOR, start);
+            const auto token = names.substr(start,
+                end == std::string::npos ? std::string::npos : end - start);
+            const Item joker = parseJokerTargetName(token);
+            if (!isVanillaJoker(joker)) return false;
+            query.eligible.set(static_cast<std::size_t>(joker));
+            if (end == std::string::npos) break;
+            start = end + 1;
+        } while (true);
+    }
+    if (minimum > static_cast<int>(query.eligible.count())) return false;
+    BRAINSTORM_COLLECTION = query;
+    return true;
+}
+
+// Isolated bounded entry point for a user-started worker. No game callbacks,
+// player profile access, acquisition, cash or blind-survival claims. Existing
+// v1-v8 configuration and API contracts remain unchanged.
+std::string brainstormV9BoundedSearch(const std::string& startText, int budgetMs) {
+    const auto started = std::chrono::steady_clock::now();
+    BRAINSTORM_V9_DEADLINE = started + std::chrono::milliseconds(budgetMs);
+    BRAINSTORM_V9_CANCELLED.store(false, std::memory_order_relaxed);
+    BRAINSTORM_V9_RUNNING = true;
+    struct Reset {
+        ~Reset() { BRAINSTORM_V9_RUNNING = false; BRAINSTORM_COLLECTION = {}; }
+    } reset;
+    const auto start = Seed(startText).getID();
+    const auto limit = getBrainstormSearchLimit();
+    const bool opening = canUseOpeningCharmSoulBatch();
+    const auto batch = opening ? openingCharmSoulBatchPrefilter() : SeedBatchPrefilter{};
+    std::atomic<long long> next{0}, screened{0}, exact{0};
+    std::atomic<bool> found{false};
+    std::mutex resultMutex;
+    std::string result;
+    const auto work = [&]() {
+        void* context = batch ? batch.createContext(batch.configuration) : nullptr;
+        struct FreeContext {
+            SeedBatchPrefilter batch; void* context;
+            ~FreeContext() { if (batch) batch.destroyContext(context); }
+        } freeContext{batch, context};
+        std::vector<std::uint32_t> survivors;
+        while (!found.load(std::memory_order_relaxed) && !brainstormV9Stopped()) {
+            const auto offset = next.fetch_add(4096, std::memory_order_relaxed);
+            if (offset >= limit) break;
+            const auto count = std::min(4096LL, limit - offset);
+            const auto first = normalizeSeedId(start + offset);
+            survivors.clear();
+            if (batch) {
+                batch.collect(context, first, static_cast<std::size_t>(count), survivors);
+                screened.fetch_add(count, std::memory_order_relaxed);
+            } else {
+                for (std::uint32_t i = 0; i < count; ++i) survivors.push_back(i);
+            }
+            for (auto delta : survivors) {
+                if (found.load(std::memory_order_relaxed) || brainstormV9Stopped()) break;
+                Seed seed(normalizeSeedId(first + delta));
+                long passed;
+                if (batch) passed = authoritativeConfiguredAfterOpeningSeedFilter(seed);
+                else {
+                    Instance instance(seed);
+                    passed = rankFiltersNeedSeedEvaluation()
+                        ? filterWithRankPrefilter(instance) : filterWithoutRankPrefilter(instance);
+                    screened.fetch_add(1, std::memory_order_relaxed);
+                }
+                exact.fetch_add(1, std::memory_order_relaxed);
+                if (passed && !brainstormV9Stopped()) {
+                    std::lock_guard<std::mutex> lock(resultMutex);
+                    if (!found.load(std::memory_order_relaxed)) {
+                        result = seed.tostring();
+                        found.store(true, std::memory_order_relaxed);
+                    }
+                    break;
+                }
+            }
+        }
+    };
+    std::vector<std::thread> workers;
+    const int threadCount = getBrainstormSearchThreads();
+    for (int i = 0; i < threadCount; ++i) workers.emplace_back(work);
+    for (auto& worker : workers) worker.join();
+    const bool cancelled = BRAINSTORM_V9_CANCELLED.load(std::memory_order_relaxed);
+    const bool timedOut = std::chrono::steady_clock::now() >= BRAINSTORM_V9_DEADLINE;
+    const double elapsed = std::chrono::duration<double>(
+        std::chrono::steady_clock::now() - started).count();
+    const char* status = found.load() ? "found" : cancelled ? "cancelled"
+        : timedOut ? "timeout" : "not_found";
+    std::ostringstream out;
+    out << "{\"schema\":1,\"status\":\"" << status << "\",\"seed\":\""
+        << result << "\",\"screened\":" << screened.load()
+        << ",\"exact_candidates\":" << exact.load() << ",\"seconds\":" << elapsed
+        << ",\"budget_ms\":" << budgetMs << ",\"threads\":" << threadCount
+        << ",\"route\":\"conditional_no_reroll_stock_and_buffoon\"}";
+    return out.str();
 }
 
 namespace {
@@ -5469,6 +5633,48 @@ std::string stringOrEmpty(const char* value) {
 }
 
 extern "C" {
+    const char* brainstorm_v9(
+        const char* seed, const char* voucher, const char* pack,
+        const char* tag, int souls, bool observatory,
+        int observatoryDeadline, bool perkeo, bool copymoney, bool retcon,
+        bool bean, bool burglar, const char* customFilter,
+        const char* targetRank, const char* targetSuit,
+        int specificRankMin, int anyRankMin, const char* targetJokers,
+        const char* deck, const char* targetJokerLocations,
+        int stakeLevel, bool rejectPerishableTargets,
+        bool interchangeableCopies, const char* missingNames,
+        int minimumDistinct, int firstAnte, int lastAnte, int budgetMs) {
+        // This mutex excludes simultaneous v9 jobs. The caller must also
+        // suspend legacy searches/estimates, which share normal native globals.
+        static std::mutex jobs;
+        std::unique_lock<std::mutex> job(jobs, std::try_to_lock);
+        if (!job.owns_lock()) return copyBrainstormResult("{\"status\":\"busy\"}");
+        const std::string start = stringOrEmpty(seed);
+        if (budgetMs < 1 || budgetMs > 30000 || start.empty() || start.size() > 8
+            || start.find_first_not_of("123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ") != std::string::npos
+            || !configureBrainstormSearch(
+                stringOrEmpty(voucher), stringOrEmpty(pack), stringOrEmpty(tag),
+                souls, observatory, observatoryDeadline, perkeo, copymoney,
+                retcon, bean, burglar, stringOrEmpty(customFilter),
+                stringOrEmpty(targetRank), stringOrEmpty(targetSuit),
+                specificRankMin, anyRankMin, stringOrEmpty(targetJokers),
+                stringOrEmpty(deck), stringOrEmpty(targetJokerLocations),
+                true, true, stakeLevel, rejectPerishableTargets)
+            || !configureBrainstormCollection(stringOrEmpty(missingNames),
+                minimumDistinct, firstAnte, lastAnte, interchangeableCopies)) {
+            BRAINSTORM_COLLECTION = {};
+            return copyBrainstormResult("{\"status\":\"invalid\"}");
+        }
+        if (rankFiltersDeterministicallyFail()) {
+            BRAINSTORM_COLLECTION = {};
+            return copyBrainstormResult("{\"status\":\"not_found\",\"screened\":0,\"reason\":\"impossible_fixed_deck_counts\"}");
+        }
+        return copyBrainstormResult(brainstormV9BoundedSearch(start, budgetMs));
+    }
+
+    void brainstorm_cancel_v9() {
+        BRAINSTORM_V9_CANCELLED.store(true, std::memory_order_relaxed);
+    }
     const char* brainstorm(const char* seed, const char* voucher, const char* pack, const char* tag, double souls, bool observatory, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin) {
         const std::string result = brainstorm_cpp(
             stringOrEmpty(seed), stringOrEmpty(voucher), stringOrEmpty(pack),

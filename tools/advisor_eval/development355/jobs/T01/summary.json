@@ -1,0 +1,33 @@
+{
+  "mode": "learn",
+  "simulator_qualified": false,
+  "real_game_win_claim": false,
+  "transitions": 100000,
+  "episodes_started": 3546,
+  "outcomes": {
+    "loss": 3040,
+    "unsupported": 499,
+    "censored": 7
+  },
+  "censored_transitions": 499,
+  "updates": 391,
+  "elapsed_seconds": 406.25,
+  "stage_seconds": {
+    "policy_and_transfer": 98.77899999800138,
+    "simulator_wait_and_record": 104.83100000175182,
+    "optimization_and_bootstrap": 193.17299999995157
+  },
+  "transition_rate": 246.15384615384616,
+  "observed_completion_lower_bound": 0.0,
+  "wilson_95_all_started": null,
+  "interval_limit": "Wilson interval emitted only when every started attempt has an actual terminal win/loss. With censoring only an observed completion lower bound is emitted. Development training trajectories change policy and are not a fixed-policy evaluation. This is not a player win rate.",
+  "mean_blinds_cleared": 2.5891144952058656,
+  "device": {
+    "name": "NVIDIA GeForce RTX 5090",
+    "torch": "2.9.0.dev20250801+cu128",
+    "precision": "bf16",
+    "parameters": 5431874,
+    "input_checkpoint_sha256": null
+  },
+  "cuda_peak_bytes": 1448128512
+}

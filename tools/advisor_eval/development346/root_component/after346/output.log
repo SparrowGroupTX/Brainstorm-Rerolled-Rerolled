@@ -1,0 +1,34 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tests\advisor_consumable_constructor_params.lua
+PASS tests\advisor_consumable_constructor_params.lua
+Running tests\advisor_gold_tarot_lifecycle_shape.lua
+PASS tests\advisor_gold_tarot_lifecycle_shape.lua
+Running tests\advisor_gold_acquisition_runtime.lua
+PASS tests\advisor_gold_acquisition_runtime.lua
+Running tests\advisor_gold_cartomancer.lua
+PASS tests\advisor_gold_cartomancer.lua
+Running tests\advisor_gold_retention_runtime.lua
+PASS tests\advisor_gold_retention_runtime.lua
+Running tests\advisor_gold_tarot_hold.lua
+PASS tests\advisor_gold_tarot_hold.lua
+Running tests\advisor_gold_tarot_hold_scope.lua
+PASS tests\advisor_gold_tarot_hold_scope.lua
+Running tests\advisor_gold_tarot_rows.lua
+PASS tests\advisor_gold_tarot_rows.lua
+Running tests\advisor_perkeo_inventory.lua
+PASS tests\advisor_perkeo_inventory.lua
+Running tests\advisor_gold_planet_policy.lua
+PASS tests\advisor_gold_planet_policy.lua
+10/10 fixtures passed
+PASS source-shaped consumable parameters 206 checks
+advisor_gold_tarot_lifecycle_shape: 112 manufactured constructor/update/copy checks
+gold acquisition coroutine runtime wiring: 67 checks; 360 actual floor passes; 4 yields; sale and fresh purchase, no source/game execution
+advisor_gold_cartomancer: 5846 checks; 300 score calls; 300 floors; 300 Leaf floors; 3 cooperative yields
+advisor_gold_retention_runtime: 33 actual production Decision checks; 360 score passes; 360 supported floors
+PASS Tarot fixed-hold equivalence 70 checks
+PASS expanded unused Tarot source family 508 checks
+advisor_gold_tarot_rows: 812 manufactured source-identity and complete mixed-offer checks passed
+advisor_perkeo_inventory: 153 checks passed
+pace manufactured comparison: current hold 12 score calls / 0 preparation actions; full family 72 score calls / 1 consumable action
+advisor_gold_planet_policy: 194 checks passed; 6636 actual score calls across independent synthetic cases
+

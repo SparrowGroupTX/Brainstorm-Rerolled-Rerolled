@@ -1,0 +1,1 @@
+G.FUNCS.start_run = function(e) if e then return e end end

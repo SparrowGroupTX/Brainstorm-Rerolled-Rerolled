@@ -1,0 +1,16 @@
+{
+  "exit_code": 0,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tests\\advisor_scoring_reuse.lua\nPASS tests\\advisor_scoring_reuse.lua\n1/1 fixtures passed\nscoring reuse checks=2938 complete comparison cases=410\nall score_calls baseline=1896 candidate=1896\nall lowest_visits baseline=8985 candidate=1778\nall enh_calls baseline=82133 candidate=61326\nall enhancement baseline=72014 candidate=1\nall blind baseline=1874 candidate=1\nall classification_suits baseline=186 candidate=1\nall seeing_double_suits baseline=33 candidate=1\nall flower_pot_suits baseline=33 candidate=1\nplain score_calls baseline=1090 candidate=1090\nplain lowest_visits baseline=4760 candidate=0\nplain enh_calls baseline=47802 candidate=33522\nplain enhancement baseline=47802 candidate=0\nplain blind baseline=1090 candidate=0\n",
+  "stderr": "",
+  "kind": "manufactured_production_shaped_fixture",
+  "timeout_seconds": 60,
+  "wall_seconds": 0.31299999996554106,
+  "files": {
+    "tests/advisor_scoring_reuse.lua": "c4f90beee2cafbbf3039d1af4131ef6c27db3135d9c2c5c58f059fe36f346740",
+    "tests/fixtures/advisor_scoring_reuse336/scoring_before.lua": "b77a211cf2480d55008dc96e993b66d380a92e4e466d44f58b25a9e9bc0a11cf",
+    "Brainstorm/Advisor/scoring.lua": "547b4977cf310be54cf35df3f955cc747f54ee3fad6231b4ac414da8586fa686",
+    "Brainstorm/Advisor/score_cache.lua": "bd3221ca67824117b47e596ff4ff196cc98d873ee4bbbe46d7b822ffa8c40b32",
+    "Brainstorm/Advisor/snapshot.lua": "63a1ec4b77f0608923b0e906dab56fa0853f3be4aeb7dec8a2beb22f03a30648",
+    "tests/run_lua_tests.py": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+  }
+}

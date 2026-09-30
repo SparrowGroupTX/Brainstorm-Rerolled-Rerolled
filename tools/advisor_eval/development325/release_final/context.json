@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-15T17:00:02.464826+00:00",
+  "release": 325,
+  "summary": "Release 325 preserves auto-run through ordinary input and adds explicit Stop/Resume within the same in-memory session, including verified manual checkpoint continuation. After a cancelled search drains, user-clicked Resume authorizes a distinct new product search of at most 30 seconds; the prior request remains spent. Candidate validation2 and final exact-installed regression passed 177 Lua fixtures and 341 Python tests with unchanged frozen policy/test hashes. The first full regression failure (two obsolete input-stop expectations) and their original fixtures remain preserved; the passing replacement validation is separate. No source, captured, search or complete experiment and no new external player-log read occurred. The original gold299 cycle remains CLOSED; every count below is historical, with zero release-325 jobs.",
+  "outcome_summary": "Historical complete-attempt outcomes remain one selected synthetic win (C01, frozen policy300), three losses (C03/C05/C08) and four timeouts (C02/C04/C06/C07), with zero errors, unsupported or separately labeled censored results. C01 won Red Gold final Cerulean Bell 705600/400000 in 172.14000000001397 seconds, with 225 actions, 28 exact plays and 13 preserved ordinary score-cap overruns. C07 retained all 163 shared C06 inputs/actions; C08 lost Pillar 592/600 with all 22 C05 inputs/actions unchanged. C09 was never registered, reserved or run. Policies 321 through 325 have no complete-attempt result. Prior passive logs remain separate: the loaded-321 review recorded a loss and ongoing prefix; the release-324 loaded-323 tail recorded two losses, including Amber Acorn 98808/400000 despite an incidental won flag. Its out-of-tail aggregate win remains unaudited. Release 325 adds no terminal observation.",
+  "limits_summary": "The original attempts are selected dependent synthetic all_unlocked_discovered_v1 development data, not player odds, representative cohorts, untouched holdouts, achievement completion or general adapter qualification. No complete Jokerless win, 50%/75% per-challenge target or human superiority is demonstrated. Prior logs declare loaded 2.123 without attesting module hashes; no new external log was read for 325. Activation waits for the user normal restart. Timing 324 still needs a fresh bounded measurement review to isolate the reported freezes; mixed action intervals and payload sizes do not establish CPU usage, causality or speedup. Invalid, truncated, unflushed and incomplete evidence must not be imputed. Resume never renews persistent retry counts or historical experiment authority.",
+  "budget_summary": "The original cycle expired on 2026-09-14 at 22:40 UTC and is CLOSED. Its 60 slots/5400 seconds of authority covered 38 spent jobs, 2340 seconds of registered caps and exactly 1012.71499999973457357 recorded worker seconds (closure float 1012.7149999997346). All 22 unused slots, including C09 and 3060 seconds, are closed. Historical job counts remain 18 source components, 6 captured-pair jobs/18 policy evaluations, 6 searches and 8 complete attempts. Every release-325 count is zero. Fresh tool experiments require concrete new authorization and frozen one-use provenance; user product Resume is a separate explicit control, not such authority.",
+  "counts_scope": "historical_closed_cycle",
+  "counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "complete_attempt_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "verified_complete_win": true,
+  "verified_complete_win_scope": "historical_C01_policy300_only",
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/authority.json",
+      "sha256": "072acbbdbbe8698913ab474a17b0d36023550b4d2c0a54ae67ca2d6d101526bb"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/status321closed/context.json",
+      "sha256": "aac44c8a5f654541183c4ae9225d7dd0c901fae8b1ee722c710b26af64956002"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/CLOSED.json",
+      "sha256": "3699b13e0dbe829c5bfd8486ab4f235118200f3ee3f20a7ac28614e12a7c0f91"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development325/release_notes/limits.json",
+      "sha256": "01a84c82fdb98b9367f374b5c59578edf8dbbb0401cbff38a46b4b4fdd395bb7"
+    }
+  },
+  "preparation_status": "installed_and_exact_regression_passed_activation_unconfirmed",
+  "prepared_context_preserved": {
+    "path": "tools/advisor_eval/development325/release_notes/context.json",
+    "sha256": "bd34a625b85af5b680a2070bcd47bbc508c187fdffd0a30b0d7e5cce713c7006"
+  },
+  "release_validation": {
+    "version": "2.125.0-alpha",
+    "installed_at": "2026-09-15T11:58:43.4968762-05:00",
+    "backup": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\Mods\\Brainstorm\\deployment-backups\\advisor-20260915-115842",
+    "policy_digest": "4cba7714a6a4b1997d2b0a3755106ca702b55551632d11f1b11a74315a6d4059",
+    "lua_fixtures": 177,
+    "python_tests": 341,
+    "candidate": {
+      "path": "tools/advisor_eval/runs/resume325_candidate/validation2/report.json",
+      "sha256": "791cd2e3ab570cb920b9bec1f83b56553bd38067ca8109578c4f3be207c3304a"
+    },
+    "installed": {
+      "path": "tools/advisor_eval/runs/resume325_installed/record.json",
+      "sha256": "19fd38e3c68814d49225b5acce12b0b4ba60861520fda7712ab785e23679f9ed"
+    },
+    "exact_installed": {
+      "path": "tools/advisor_eval/runs/resume325_installed_validation/report.json",
+      "sha256": "45700452c3306c375e60c6b5c142cb921326d71452b147b9936306a19bd3c69d"
+    },
+    "first_failed_validation": {
+      "path": "tools/advisor_eval/runs/resume325_candidate/validation/report.json",
+      "sha256": "e3e135cb895e8d753b6973bec301db566d406a8e28adcfc62503d17629d70c5c"
+    },
+    "fixture_repair": {
+      "path": "tools/advisor_eval/development325/resume_tests/behavior_fixture_addendum.json",
+      "sha256": "8c207c2d329e63223256e3a28249ed05d2241fba0d38e699c5ad020097147f70"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "job": "S05",
+  "native_api_version": 9,
+  "seed": "UGPZ221",
+  "start_index": 2000000001,
+  "max_indices": 1000000000000,
+  "budget_ms": 27000,
+  "outer_cap_seconds": 30,
+  "targets": [
+    "Yorick",
+    "Brainstorm",
+    "Burnt Joker",
+    "Perkeo",
+    ""
+  ],
+  "locations": [
+    "soul_pack",
+    "by_ante_5",
+    "by_ante_5",
+    "soul_pack",
+    "ante_1"
+  ],
+  "deck": "Red Deck",
+  "stake": 8,
+  "no_perishable_targets": true,
+  "copy_alternatives": true,
+  "minimum_distinct": 0,
+  "missing_names": [],
+  "first_ante": 1,
+  "last_ante": 8,
+  "cpu": "maximum",
+  "matches": 1,
+  "native_sha256": "ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf",
+  "native_file": "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll",
+  "profile": "all_unlocked_discovered_v1",
+  "native_profile_semantics": "Synthetic complete-unlock/discovery assumption; native API reads no player profile.",
+  "selection": "Explicitly selected development start index; not an unseen holdout or representative seed sample.",
+  "range_semantics": "One bounded parallel query; actual screened count is reported, not inferred from requested index ceiling.",
+  "route": "conditional_no_reroll_stock_and_buffoon",
+  "later_requirement": [
+    {
+      "any_of": [
+        "j_brainstorm",
+        "j_blueprint"
+      ],
+      "by_ante": 5
+    },
+    {
+      "key": "j_burnt",
+      "by_ante": 5
+    }
+  ],
+  "qualification": false
+}

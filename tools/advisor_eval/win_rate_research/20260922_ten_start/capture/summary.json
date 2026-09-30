@@ -1,0 +1,2655 @@
+{
+  "kinds": {
+    "teacher_observation": 3104,
+    "teacher_advice": 5350,
+    "auto_run": 5563,
+    "collection_search_started": 10,
+    "collection_search_finished": 10,
+    "collection_run_start": 10,
+    "action_requested": 1852,
+    "action_callback_result": 1852,
+    "state_after_actions": 1830,
+    "joker_public_observation": 28,
+    "joker_public_action_complete": 4,
+    "teacher_collection_ended": 1
+  },
+  "versions": {
+    "Brainstorm v2.164.0-alpha": 17729
+  },
+  "snapshot_profiles": {
+    "perkeo_yorick_win_v1": 3104
+  },
+  "converter_error": null,
+  "converter": {
+    "schema": "brainstorm_teacher_demonstrations_v1",
+    "counts": {
+      "events": 19614,
+      "observations": 3104,
+      "recommendations": 5350,
+      "action_requests": 1852,
+      "callback_results": 1852,
+      "settled_observations": 1830,
+      "wins": 3,
+      "losses": 6,
+      "abandoned_stall": 0,
+      "unsupported": 1,
+      "error": 0
+    },
+    "collections": 1,
+    "actions_without_callback": 0,
+    "accepted_callbacks_without_settled_observation": 0,
+    "legacy_checkpoint_compatible": false,
+    "expert_labels_assigned": 0,
+    "limitations": [
+      "No legal-candidate reconstruction or training is performed.",
+      "Callback acceptance and first settled state do not prove complete queued effects.",
+      "Outcomes are audited journal evidence, not independent game replay verification.",
+      "Unfinished collections remain incomplete; no missing outcome is imputed."
+    ]
+  },
+  "lifecycle": [
+    {
+      "sequence": 3,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:12:47Z",
+      "monotonic_seconds": 66.9605052,
+      "observation_id": "teacher356-1790100767-1:1",
+      "advice_sequence": 2,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "6ML3E8TK",
+      "run_instance": "observed-game:1",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000001.brj",
+        "ordinal": 3,
+        "raw_sha256": "33d05690f3f31222b06f9ced0e0a0c2e09bd43243196e2d4f93177a78180b77a"
+      },
+      "details": {
+        "event": "explicit_start_requested",
+        "options": {
+          "collection_receipt": {
+            "deleted_bytes": 11173199,
+            "deleted_files": [
+              "advisor_player_log_v2/session-20260922T175946Z-1-000001.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000002.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000003.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000004.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000005.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000006.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000007.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000008.brj",
+              "advisor_player_log_v2/session-20260922T175946Z-1-000009.brj",
+              "advisor_player_log_v2/session-20260922T181229Z-1-000001.brj",
+              "advisor_player_log_v2/session-20260922T181229Z-1-000002.brj"
+            ],
+            "preserved_files": {},
+            "remaining_bytes": 0,
+            "schema": 1,
+            "scope": "owned_player_observation_logs",
+            "writer_closed_before_removal": true
+          },
+          "max_actions": 500,
+          "max_runs": 10,
+          "run_seconds": 1800,
+          "search_request": {
+            "budget_ms": 30000,
+            "burnt_fallback": true,
+            "deck_name": "Red Deck",
+            "first_ante": 1,
+            "interchangeable_copies": true,
+            "last_ante": 8,
+            "legendary_fallback": false,
+            "minimum_distinct": 0,
+            "quota_mode": "strict"
+          },
+          "search_seconds": 30,
+          "session_seconds": 21600,
+          "stall_seconds": 30,
+          "teacher_batch": true
+        },
+        "profile_id": 1,
+        "run_id": "game:1",
+        "scope": "User requested ten real win-first teacher runs; old observation journals cleared. No win or expert label is assumed.",
+        "teacher_profile": "perkeo_yorick_win_v1",
+        "teacher_quality": "unreviewed_heuristic",
+        "version": "Brainstorm v2.164.0-alpha"
+      }
+    },
+    {
+      "sequence": 5,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:12:47Z",
+      "monotonic_seconds": 67.0819318,
+      "observation_id": "teacher356-1790100767-1:1",
+      "advice_sequence": 4,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "6ML3E8TK",
+      "run_instance": "observed-game:1",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000001.brj",
+        "ordinal": 5,
+        "raw_sha256": "0778ccbaa899f651c5841ecbc48c3892acaf2f696b6747b4de427819ecefe105"
+      },
+      "details": {
+        "binding": {
+          "checkpoint_generation": 0,
+          "consent_generation": 1,
+          "manual_generation": 0,
+          "profile_id": 1,
+          "settings_generation": 0
+        },
+        "event": "session_started",
+        "goal": {
+          "by_key": {
+            "j_8_ball": {
+              "key": "j_8_ball",
+              "status": "complete"
+            },
+            "j_abstract": {
+              "key": "j_abstract",
+              "status": "complete"
+            },
+            "j_acrobat": {
+              "key": "j_acrobat",
+              "status": "missing"
+            },
+            "j_ancient": {
+              "key": "j_ancient",
+              "status": "missing"
+            },
+            "j_arrowhead": {
+              "key": "j_arrowhead",
+              "status": "complete"
+            },
+            "j_astronomer": {
+              "key": "j_astronomer",
+              "status": "complete"
+            },
+            "j_banner": {
+              "key": "j_banner",
+              "status": "complete"
+            },
+            "j_baron": {
+              "key": "j_baron",
+              "status": "complete"
+            },
+            "j_baseball": {
+              "key": "j_baseball",
+              "status": "missing"
+            },
+            "j_blackboard": {
+              "key": "j_blackboard",
+              "status": "complete"
+            },
+            "j_bloodstone": {
+              "key": "j_bloodstone",
+              "status": "missing"
+            },
+            "j_blue_joker": {
+              "key": "j_blue_joker",
+              "status": "complete"
+            },
+            "j_blueprint": {
+              "key": "j_blueprint",
+              "status": "complete"
+            },
+            "j_bootstraps": {
+              "key": "j_bootstraps",
+              "status": "complete"
+            },
+            "j_brainstorm": {
+              "key": "j_brainstorm",
+              "status": "complete"
+            },
+            "j_bull": {
+              "key": "j_bull",
+              "status": "complete"
+            },
+            "j_burglar": {
+              "key": "j_burglar",
+              "status": "missing"
+            },
+            "j_burnt": {
+              "key": "j_burnt",
+              "status": "complete"
+            },
+            "j_business": {
+              "key": "j_business",
+              "status": "complete"
+            },
+            "j_caino": {
+              "key": "j_caino",
+              "status": "complete"
+            },
+            "j_campfire": {
+              "key": "j_campfire",
+              "status": "complete"
+            },
+            "j_card_sharp": {
+              "key": "j_card_sharp",
+              "status": "complete"
+            },
+            "j_cartomancer": {
+              "key": "j_cartomancer",
+              "status": "complete"
+            },
+            "j_castle": {
+              "key": "j_castle",
+              "status": "missing"
+            },
+            "j_cavendish": {
+              "key": "j_cavendish",
+              "status": "complete"
+            },
+            "j_ceremonial": {
+              "key": "j_ceremonial",
+              "status": "missing"
+            },
+            "j_certificate": {
+              "key": "j_certificate",
+              "status": "complete"
+            },
+            "j_chaos": {
+              "key": "j_chaos",
+              "status": "complete"
+            },
+            "j_chicot": {
+              "key": "j_chicot",
+              "status": "complete"
+            },
+            "j_clever": {
+              "key": "j_clever",
+              "status": "missing"
+            },
+            "j_cloud_9": {
+              "key": "j_cloud_9",
+              "status": "complete"
+            },
+            "j_constellation": {
+              "key": "j_constellation",
+              "status": "missing"
+            },
+            "j_crafty": {
+              "key": "j_crafty",
+              "status": "missing"
+            },
+            "j_crazy": {
+              "key": "j_crazy",
+              "status": "complete"
+            },
+            "j_credit_card": {
+              "key": "j_credit_card",
+              "status": "complete"
+            },
+            "j_delayed_grat": {
+              "key": "j_delayed_grat",
+              "status": "complete"
+            },
+            "j_devious": {
+              "key": "j_devious",
+              "status": "complete"
+            },
+            "j_diet_cola": {
+              "key": "j_diet_cola",
+              "status": "missing"
+            },
+            "j_dna": {
+              "key": "j_dna",
+              "status": "complete"
+            },
+            "j_drivers_license": {
+              "key": "j_drivers_license",
+              "status": "complete"
+            },
+            "j_droll": {
+              "key": "j_droll",
+              "status": "complete"
+            },
+            "j_drunkard": {
+              "key": "j_drunkard",
+              "status": "complete"
+            },
+            "j_duo": {
+              "key": "j_duo",
+              "status": "complete"
+            },
+            "j_dusk": {
+              "key": "j_dusk",
+              "status": "complete"
+            },
+            "j_egg": {
+              "key": "j_egg",
+              "status": "complete"
+            },
+            "j_erosion": {
+              "key": "j_erosion",
+              "status": "complete"
+            },
+            "j_even_steven": {
+              "key": "j_even_steven",
+              "status": "complete"
+            },
+            "j_faceless": {
+              "key": "j_faceless",
+              "status": "missing"
+            },
+            "j_family": {
+              "key": "j_family",
+              "status": "complete"
+            },
+            "j_fibonacci": {
+              "key": "j_fibonacci",
+              "status": "complete"
+            },
+            "j_flash": {
+              "key": "j_flash",
+              "status": "complete"
+            },
+            "j_flower_pot": {
+              "key": "j_flower_pot",
+              "status": "complete"
+            },
+            "j_fortune_teller": {
+              "key": "j_fortune_teller",
+              "status": "complete"
+            },
+            "j_four_fingers": {
+              "key": "j_four_fingers",
+              "status": "complete"
+            },
+            "j_gift": {
+              "key": "j_gift",
+              "status": "complete"
+            },
+            "j_glass": {
+              "key": "j_glass",
+              "status": "complete"
+            },
+            "j_gluttenous_joker": {
+              "key": "j_gluttenous_joker",
+              "status": "complete"
+            },
+            "j_golden": {
+              "key": "j_golden",
+              "status": "complete"
+            },
+            "j_greedy_joker": {
+              "key": "j_greedy_joker",
+              "status": "missing"
+            },
+            "j_green_joker": {
+              "key": "j_green_joker",
+              "status": "complete"
+            },
+            "j_gros_michel": {
+              "key": "j_gros_michel",
+              "status": "complete"
+            },
+            "j_hack": {
+              "key": "j_hack",
+              "status": "complete"
+            },
+            "j_half": {
+              "key": "j_half",
+              "status": "missing"
+            },
+            "j_hallucination": {
+              "key": "j_hallucination",
+              "status": "complete"
+            },
+            "j_hanging_chad": {
+              "key": "j_hanging_chad",
+              "status": "complete"
+            },
+            "j_hiker": {
+              "key": "j_hiker",
+              "status": "complete"
+            },
+            "j_hit_the_road": {
+              "key": "j_hit_the_road",
+              "status": "missing"
+            },
+            "j_hologram": {
+              "key": "j_hologram",
+              "status": "missing"
+            },
+            "j_ice_cream": {
+              "key": "j_ice_cream",
+              "status": "complete"
+            },
+            "j_idol": {
+              "key": "j_idol",
+              "status": "missing"
+            },
+            "j_invisible": {
+              "key": "j_invisible",
+              "status": "missing"
+            },
+            "j_joker": {
+              "key": "j_joker",
+              "status": "missing"
+            },
+            "j_jolly": {
+              "key": "j_jolly",
+              "status": "complete"
+            },
+            "j_juggler": {
+              "key": "j_juggler",
+              "status": "complete"
+            },
+            "j_loyalty_card": {
+              "key": "j_loyalty_card",
+              "status": "missing"
+            },
+            "j_luchador": {
+              "key": "j_luchador",
+              "status": "missing"
+            },
+            "j_lucky_cat": {
+              "key": "j_lucky_cat",
+              "status": "complete"
+            },
+            "j_lusty_joker": {
+              "key": "j_lusty_joker",
+              "status": "missing"
+            },
+            "j_mad": {
+              "key": "j_mad",
+              "status": "complete"
+            },
+            "j_madness": {
+              "key": "j_madness",
+              "status": "missing"
+            },
+            "j_mail": {
+              "key": "j_mail",
+              "status": "complete"
+            },
+            "j_marble": {
+              "key": "j_marble",
+              "status": "complete"
+            },
+            "j_matador": {
+              "key": "j_matador",
+              "status": "complete"
+            },
+            "j_merry_andy": {
+              "key": "j_merry_andy",
+              "status": "complete"
+            },
+            "j_midas_mask": {
+              "key": "j_midas_mask",
+              "status": "complete"
+            },
+            "j_mime": {
+              "key": "j_mime",
+              "status": "complete"
+            },
+            "j_misprint": {
+              "key": "j_misprint",
+              "status": "complete"
+            },
+            "j_mr_bones": {
+              "key": "j_mr_bones",
+              "status": "missing"
+            },
+            "j_mystic_summit": {
+              "key": "j_mystic_summit",
+              "status": "missing"
+            },
+            "j_obelisk": {
+              "key": "j_obelisk",
+              "status": "missing"
+            },
+            "j_odd_todd": {
+              "key": "j_odd_todd",
+              "status": "complete"
+            },
+            "j_onyx_agate": {
+              "key": "j_onyx_agate",
+              "status": "complete"
+            },
+            "j_oops": {
+              "key": "j_oops",
+              "status": "complete"
+            },
+            "j_order": {
+              "key": "j_order",
+              "status": "complete"
+            },
+            "j_pareidolia": {
+              "key": "j_pareidolia",
+              "status": "complete"
+            },
+            "j_perkeo": {
+              "key": "j_perkeo",
+              "status": "complete"
+            },
+            "j_photograph": {
+              "key": "j_photograph",
+              "status": "complete"
+            },
+            "j_popcorn": {
+              "key": "j_popcorn",
+              "status": "complete"
+            },
+            "j_raised_fist": {
+              "key": "j_raised_fist",
+              "status": "complete"
+            },
+            "j_ramen": {
+              "key": "j_ramen",
+              "status": "missing"
+            },
+            "j_red_card": {
+              "key": "j_red_card",
+              "status": "complete"
+            },
+            "j_reserved_parking": {
+              "key": "j_reserved_parking",
+              "status": "complete"
+            },
+            "j_ride_the_bus": {
+              "key": "j_ride_the_bus",
+              "status": "complete"
+            },
+            "j_riff_raff": {
+              "key": "j_riff_raff",
+              "status": "complete"
+            },
+            "j_ring_master": {
+              "key": "j_ring_master",
+              "status": "complete"
+            },
+            "j_rocket": {
+              "key": "j_rocket",
+              "status": "complete"
+            },
+            "j_rough_gem": {
+              "key": "j_rough_gem",
+              "status": "complete"
+            },
+            "j_runner": {
+              "key": "j_runner",
+              "status": "complete"
+            },
+            "j_satellite": {
+              "key": "j_satellite",
+              "status": "missing"
+            },
+            "j_scary_face": {
+              "key": "j_scary_face",
+              "status": "complete"
+            },
+            "j_scholar": {
+              "key": "j_scholar",
+              "status": "complete"
+            },
+            "j_seance": {
+              "key": "j_seance",
+              "status": "missing"
+            },
+            "j_seeing_double": {
+              "key": "j_seeing_double",
+              "status": "missing"
+            },
+            "j_selzer": {
+              "key": "j_selzer",
+              "status": "missing"
+            },
+            "j_shoot_the_moon": {
+              "key": "j_shoot_the_moon",
+              "status": "complete"
+            },
+            "j_shortcut": {
+              "key": "j_shortcut",
+              "status": "missing"
+            },
+            "j_sixth_sense": {
+              "key": "j_sixth_sense",
+              "status": "complete"
+            },
+            "j_sly": {
+              "key": "j_sly",
+              "status": "complete"
+            },
+            "j_smeared": {
+              "key": "j_smeared",
+              "status": "complete"
+            },
+            "j_smiley": {
+              "key": "j_smiley",
+              "status": "complete"
+            },
+            "j_sock_and_buskin": {
+              "key": "j_sock_and_buskin",
+              "status": "complete"
+            },
+            "j_space": {
+              "key": "j_space",
+              "status": "complete"
+            },
+            "j_splash": {
+              "key": "j_splash",
+              "status": "complete"
+            },
+            "j_square": {
+              "key": "j_square",
+              "status": "complete"
+            },
+            "j_steel_joker": {
+              "key": "j_steel_joker",
+              "status": "complete"
+            },
+            "j_stencil": {
+              "key": "j_stencil",
+              "status": "complete"
+            },
+            "j_stone": {
+              "key": "j_stone",
+              "status": "missing"
+            },
+            "j_stuntman": {
+              "key": "j_stuntman",
+              "status": "missing"
+            },
+            "j_supernova": {
+              "key": "j_supernova",
+              "status": "missing"
+            },
+            "j_superposition": {
+              "key": "j_superposition",
+              "status": "complete"
+            },
+            "j_swashbuckler": {
+              "key": "j_swashbuckler",
+              "status": "complete"
+            },
+            "j_throwback": {
+              "key": "j_throwback",
+              "status": "missing"
+            },
+            "j_ticket": {
+              "key": "j_ticket",
+              "status": "missing"
+            },
+            "j_to_the_moon": {
+              "key": "j_to_the_moon",
+              "status": "complete"
+            },
+            "j_todo_list": {
+              "key": "j_todo_list",
+              "status": "complete"
+            },
+            "j_trading": {
+              "key": "j_trading",
+              "status": "complete"
+            },
+            "j_tribe": {
+              "key": "j_tribe",
+              "status": "complete"
+            },
+            "j_triboulet": {
+              "key": "j_triboulet",
+              "status": "complete"
+            },
+            "j_trio": {
+              "key": "j_trio",
+              "status": "complete"
+            },
+            "j_troubadour": {
+              "key": "j_troubadour",
+              "status": "missing"
+            },
+            "j_trousers": {
+              "key": "j_trousers",
+              "status": "complete"
+            },
+            "j_turtle_bean": {
+              "key": "j_turtle_bean",
+              "status": "missing"
+            },
+            "j_vagabond": {
+              "key": "j_vagabond",
+              "status": "missing"
+            },
+            "j_vampire": {
+              "key": "j_vampire",
+              "status": "missing"
+            },
+            "j_walkie_talkie": {
+              "key": "j_walkie_talkie",
+              "status": "complete"
+            },
+            "j_wee": {
+              "key": "j_wee",
+              "status": "missing"
+            },
+            "j_wily": {
+              "key": "j_wily",
+              "status": "complete"
+            },
+            "j_wrathful_joker": {
+              "key": "j_wrathful_joker",
+              "status": "complete"
+            },
+            "j_yorick": {
+              "key": "j_yorick",
+              "status": "complete"
+            },
+            "j_zany": {
+              "key": "j_zany",
+              "status": "complete"
+            }
+          },
+          "catalog_status": "complete",
+          "counts": {
+            "complete": 108,
+            "missing": 42,
+            "total": 150,
+            "unknown": 0
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": {},
+            "status": "eligible"
+          },
+          "goal": "gold_stickers",
+          "held_keys": {},
+          "held_status": "complete",
+          "held_target_count": 0,
+          "held_target_keys": {},
+          "held_unknown_keys": {},
+          "metadata_status": "complete",
+          "profile_id": 1,
+          "schema": 1,
+          "scope": "Loaded active-profile vanilla Gold sticker history; holding a target is not a completed win.",
+          "stake_status": "complete",
+          "targets": [
+            {
+              "key": "j_8_ball",
+              "status": "complete"
+            },
+            {
+              "key": "j_abstract",
+              "status": "complete"
+            },
+            {
+              "key": "j_acrobat",
+              "status": "missing"
+            },
+            {
+              "key": "j_ancient",
+              "status": "missing"
+            },
+            {
+              "key": "j_arrowhead",
+              "status": "complete"
+            },
+            {
+              "key": "j_astronomer",
+              "status": "complete"
+            },
+            {
+              "key": "j_banner",
+              "status": "complete"
+            },
+            {
+              "key": "j_baron",
+              "status": "complete"
+            },
+            {
+              "key": "j_baseball",
+              "status": "missing"
+            },
+            {
+              "key": "j_blackboard",
+              "status": "complete"
+            },
+            {
+              "key": "j_bloodstone",
+              "status": "missing"
+            },
+            {
+              "key": "j_blue_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_blueprint",
+              "status": "complete"
+            },
+            {
+              "key": "j_bootstraps",
+              "status": "complete"
+            },
+            {
+              "key": "j_brainstorm",
+              "status": "complete"
+            },
+            {
+              "key": "j_bull",
+              "status": "complete"
+            },
+            {
+              "key": "j_burglar",
+              "status": "missing"
+            },
+            {
+              "key": "j_burnt",
+              "status": "complete"
+            },
+            {
+              "key": "j_business",
+              "status": "complete"
+            },
+            {
+              "key": "j_caino",
+              "status": "complete"
+            },
+            {
+              "key": "j_campfire",
+              "status": "complete"
+            },
+            {
+              "key": "j_card_sharp",
+              "status": "complete"
+            },
+            {
+              "key": "j_cartomancer",
+              "status": "complete"
+            },
+            {
+              "key": "j_castle",
+              "status": "missing"
+            },
+            {
+              "key": "j_cavendish",
+              "status": "complete"
+            },
+            {
+              "key": "j_ceremonial",
+              "status": "missing"
+            },
+            {
+              "key": "j_certificate",
+              "status": "complete"
+            },
+            {
+              "key": "j_chaos",
+              "status": "complete"
+            },
+            {
+              "key": "j_chicot",
+              "status": "complete"
+            },
+            {
+              "key": "j_clever",
+              "status": "missing"
+            },
+            {
+              "key": "j_cloud_9",
+              "status": "complete"
+            },
+            {
+              "key": "j_constellation",
+              "status": "missing"
+            },
+            {
+              "key": "j_crafty",
+              "status": "missing"
+            },
+            {
+              "key": "j_crazy",
+              "status": "complete"
+            },
+            {
+              "key": "j_credit_card",
+              "status": "complete"
+            },
+            {
+              "key": "j_delayed_grat",
+              "status": "complete"
+            },
+            {
+              "key": "j_devious",
+              "status": "complete"
+            },
+            {
+              "key": "j_diet_cola",
+              "status": "missing"
+            },
+            {
+              "key": "j_dna",
+              "status": "complete"
+            },
+            {
+              "key": "j_drivers_license",
+              "status": "complete"
+            },
+            {
+              "key": "j_droll",
+              "status": "complete"
+            },
+            {
+              "key": "j_drunkard",
+              "status": "complete"
+            },
+            {
+              "key": "j_duo",
+              "status": "complete"
+            },
+            {
+              "key": "j_dusk",
+              "status": "complete"
+            },
+            {
+              "key": "j_egg",
+              "status": "complete"
+            },
+            {
+              "key": "j_erosion",
+              "status": "complete"
+            },
+            {
+              "key": "j_even_steven",
+              "status": "complete"
+            },
+            {
+              "key": "j_faceless",
+              "status": "missing"
+            },
+            {
+              "key": "j_family",
+              "status": "complete"
+            },
+            {
+              "key": "j_fibonacci",
+              "status": "complete"
+            },
+            {
+              "key": "j_flash",
+              "status": "complete"
+            },
+            {
+              "key": "j_flower_pot",
+              "status": "complete"
+            },
+            {
+              "key": "j_fortune_teller",
+              "status": "complete"
+            },
+            {
+              "key": "j_four_fingers",
+              "status": "complete"
+            },
+            {
+              "key": "j_gift",
+              "status": "complete"
+            },
+            {
+              "key": "j_glass",
+              "status": "complete"
+            },
+            {
+              "key": "j_gluttenous_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_golden",
+              "status": "complete"
+            },
+            {
+              "key": "j_greedy_joker",
+              "status": "missing"
+            },
+            {
+              "key": "j_green_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_gros_michel",
+              "status": "complete"
+            },
+            {
+              "key": "j_hack",
+              "status": "complete"
+            },
+            {
+              "key": "j_half",
+              "status": "missing"
+            },
+            {
+              "key": "j_hallucination",
+              "status": "complete"
+            },
+            {
+              "key": "j_hanging_chad",
+              "status": "complete"
+            },
+            {
+              "key": "j_hiker",
+              "status": "complete"
+            },
+            {
+              "key": "j_hit_the_road",
+              "status": "missing"
+            },
+            {
+              "key": "j_hologram",
+              "status": "missing"
+            },
+            {
+              "key": "j_ice_cream",
+              "status": "complete"
+            },
+            {
+              "key": "j_idol",
+              "status": "missing"
+            },
+            {
+              "key": "j_invisible",
+              "status": "missing"
+            },
+            {
+              "key": "j_joker",
+              "status": "missing"
+            },
+            {
+              "key": "j_jolly",
+              "status": "complete"
+            },
+            {
+              "key": "j_juggler",
+              "status": "complete"
+            },
+            {
+              "key": "j_loyalty_card",
+              "status": "missing"
+            },
+            {
+              "key": "j_luchador",
+              "status": "missing"
+            },
+            {
+              "key": "j_lucky_cat",
+              "status": "complete"
+            },
+            {
+              "key": "j_lusty_joker",
+              "status": "missing"
+            },
+            {
+              "key": "j_mad",
+              "status": "complete"
+            },
+            {
+              "key": "j_madness",
+              "status": "missing"
+            },
+            {
+              "key": "j_mail",
+              "status": "complete"
+            },
+            {
+              "key": "j_marble",
+              "status": "complete"
+            },
+            {
+              "key": "j_matador",
+              "status": "complete"
+            },
+            {
+              "key": "j_merry_andy",
+              "status": "complete"
+            },
+            {
+              "key": "j_midas_mask",
+              "status": "complete"
+            },
+            {
+              "key": "j_mime",
+              "status": "complete"
+            },
+            {
+              "key": "j_misprint",
+              "status": "complete"
+            },
+            {
+              "key": "j_mr_bones",
+              "status": "missing"
+            },
+            {
+              "key": "j_mystic_summit",
+              "status": "missing"
+            },
+            {
+              "key": "j_obelisk",
+              "status": "missing"
+            },
+            {
+              "key": "j_odd_todd",
+              "status": "complete"
+            },
+            {
+              "key": "j_onyx_agate",
+              "status": "complete"
+            },
+            {
+              "key": "j_oops",
+              "status": "complete"
+            },
+            {
+              "key": "j_order",
+              "status": "complete"
+            },
+            {
+              "key": "j_pareidolia",
+              "status": "complete"
+            },
+            {
+              "key": "j_perkeo",
+              "status": "complete"
+            },
+            {
+              "key": "j_photograph",
+              "status": "complete"
+            },
+            {
+              "key": "j_popcorn",
+              "status": "complete"
+            },
+            {
+              "key": "j_raised_fist",
+              "status": "complete"
+            },
+            {
+              "key": "j_ramen",
+              "status": "missing"
+            },
+            {
+              "key": "j_red_card",
+              "status": "complete"
+            },
+            {
+              "key": "j_reserved_parking",
+              "status": "complete"
+            },
+            {
+              "key": "j_ride_the_bus",
+              "status": "complete"
+            },
+            {
+              "key": "j_riff_raff",
+              "status": "complete"
+            },
+            {
+              "key": "j_ring_master",
+              "status": "complete"
+            },
+            {
+              "key": "j_rocket",
+              "status": "complete"
+            },
+            {
+              "key": "j_rough_gem",
+              "status": "complete"
+            },
+            {
+              "key": "j_runner",
+              "status": "complete"
+            },
+            {
+              "key": "j_satellite",
+              "status": "missing"
+            },
+            {
+              "key": "j_scary_face",
+              "status": "complete"
+            },
+            {
+              "key": "j_scholar",
+              "status": "complete"
+            },
+            {
+              "key": "j_seance",
+              "status": "missing"
+            },
+            {
+              "key": "j_seeing_double",
+              "status": "missing"
+            },
+            {
+              "key": "j_selzer",
+              "status": "missing"
+            },
+            {
+              "key": "j_shoot_the_moon",
+              "status": "complete"
+            },
+            {
+              "key": "j_shortcut",
+              "status": "missing"
+            },
+            {
+              "key": "j_sixth_sense",
+              "status": "complete"
+            },
+            {
+              "key": "j_sly",
+              "status": "complete"
+            },
+            {
+              "key": "j_smeared",
+              "status": "complete"
+            },
+            {
+              "key": "j_smiley",
+              "status": "complete"
+            },
+            {
+              "key": "j_sock_and_buskin",
+              "status": "complete"
+            },
+            {
+              "key": "j_space",
+              "status": "complete"
+            },
+            {
+              "key": "j_splash",
+              "status": "complete"
+            },
+            {
+              "key": "j_square",
+              "status": "complete"
+            },
+            {
+              "key": "j_steel_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_stencil",
+              "status": "complete"
+            },
+            {
+              "key": "j_stone",
+              "status": "missing"
+            },
+            {
+              "key": "j_stuntman",
+              "status": "missing"
+            },
+            {
+              "key": "j_supernova",
+              "status": "missing"
+            },
+            {
+              "key": "j_superposition",
+              "status": "complete"
+            },
+            {
+              "key": "j_swashbuckler",
+              "status": "complete"
+            },
+            {
+              "key": "j_throwback",
+              "status": "missing"
+            },
+            {
+              "key": "j_ticket",
+              "status": "missing"
+            },
+            {
+              "key": "j_to_the_moon",
+              "status": "complete"
+            },
+            {
+              "key": "j_todo_list",
+              "status": "complete"
+            },
+            {
+              "key": "j_trading",
+              "status": "complete"
+            },
+            {
+              "key": "j_tribe",
+              "status": "complete"
+            },
+            {
+              "key": "j_triboulet",
+              "status": "complete"
+            },
+            {
+              "key": "j_trio",
+              "status": "complete"
+            },
+            {
+              "key": "j_troubadour",
+              "status": "missing"
+            },
+            {
+              "key": "j_trousers",
+              "status": "complete"
+            },
+            {
+              "key": "j_turtle_bean",
+              "status": "missing"
+            },
+            {
+              "key": "j_vagabond",
+              "status": "missing"
+            },
+            {
+              "key": "j_vampire",
+              "status": "missing"
+            },
+            {
+              "key": "j_walkie_talkie",
+              "status": "complete"
+            },
+            {
+              "key": "j_wee",
+              "status": "missing"
+            },
+            {
+              "key": "j_wily",
+              "status": "complete"
+            },
+            {
+              "key": "j_wrathful_joker",
+              "status": "complete"
+            },
+            {
+              "key": "j_yorick",
+              "status": "complete"
+            },
+            {
+              "key": "j_zany",
+              "status": "complete"
+            }
+          ]
+        },
+        "limits": {
+          "max_actions": 500,
+          "max_runs": 10,
+          "retire_runs": true,
+          "retire_unsupported": false,
+          "run_seconds": 1800,
+          "search_request": {
+            "budget_ms": 30000,
+            "burnt_fallback": true,
+            "deck_name": "Red Deck",
+            "first_ante": 1,
+            "interchangeable_copies": true,
+            "last_ante": 8,
+            "legendary_fallback": false,
+            "minimum_distinct": 0,
+            "quota_mode": "strict"
+          },
+          "search_seconds": 30,
+          "session_seconds": 21600,
+          "stall_seconds": 30,
+          "teacher_batch": true
+        },
+        "profile_id": 1,
+        "schema": 1,
+        "session": 1,
+        "state": "waiting",
+        "time": 67.0603704
+      },
+      "advice_timing": {
+        "action_kind": "select_blind",
+        "active_seconds": 5.3199999996422775e-05,
+        "decision_id": 5,
+        "elapsed_seconds": 5.790000000160944e-05,
+        "evaluations": 0,
+        "finished_seconds": 66.9700426,
+        "max_resume_seconds": 5.3199999996422775e-05,
+        "phase": "blind",
+        "resume_calls": 1,
+        "started_seconds": 66.9699847,
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 19,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:12:47Z",
+      "monotonic_seconds": 67.3808775,
+      "observation_id": "teacher356-1790100767-1:17",
+      "advice_sequence": 18,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000002.brj",
+        "ordinal": 8,
+        "raw_sha256": "46f4e9b6bcc493d1b76d2b51ff5aac67fba4b95405ba704b813fe985a5912f92"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 67.3419351
+      }
+    },
+    {
+      "sequence": 2407,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:18:56Z",
+      "monotonic_seconds": 436.0179691,
+      "observation_id": "teacher356-1790100767-1:2401",
+      "advice_sequence": 2404,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000003.brj",
+        "ordinal": 348,
+        "raw_sha256": "db938e533a974831b8a5996ae4124e393df790cbbb7f84a248d9c048192cf175"
+      },
+      "details": {
+        "actual_terminal": false,
+        "detail": "Estimated | 44420 scores compared",
+        "event": "run_abandoned",
+        "evidence": {
+          "event_id": "abandon:1",
+          "method": "settled_run_retired_before_owned_search",
+          "reason": "unsupported",
+          "run_id": "game:2",
+          "terminal": false,
+          "verified": true
+        },
+        "last_action": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              5,
+              6,
+              8
+            ],
+            "kind": "play"
+          },
+          "action_token": "advice:298",
+          "advice": {
+            "lines": [
+              "#2 10H, #3 10C, #5 6S, #6 6D, #8 2C",
+              "Need 143658 more chips; 3 hands left.",
+              "Two Pair level 2.",
+              "Cycle with this play: #8 2C",
+              "Sampled redraws favor cycling these extra cards while keeping the current estimated score.",
+              "Mouth: the first played hand locks your hand type for this round.",
+              "Note: Keeping this inventory preserves more valuable Perkeo copies or Observatory multipliers.",
+              "Note: Two-consumable sequences were shortlisted within the shared budget; only complete play comparisons are reported.",
+              "Heuristic advice, not a guaranteed win. Card numbers follow left-to-right hand order."
+            ],
+            "title": "Play Two Pair (~67032)"
+          },
+          "callback_reason": "true",
+          "callback_status": "accepted",
+          "run_action": 226,
+          "time": 434.0154335
+        },
+        "outcome": "unsupported",
+        "profile_id": 1,
+        "reason": "unsupported",
+        "run_actions": 226,
+        "run_id": "game:2",
+        "run_number": 1,
+        "run_seconds": 368.743239,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "abandoned",
+        "time": 435.9694075
+      },
+      "advice_timing": {
+        "active_seconds": 0.060254599999495895,
+        "decision_id": 531,
+        "elapsed_seconds": 0.18697919999999613,
+        "evaluations": 44420,
+        "finished_seconds": 435.9693906,
+        "max_resume_seconds": 0.001055899999983012,
+        "phase": "hand",
+        "resume_calls": 1388,
+        "started_seconds": 435.7824114,
+        "status": "completed"
+      }
+    },
+    {
+      "sequence": 2421,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:18:56Z",
+      "monotonic_seconds": 436.2822883,
+      "observation_id": "teacher356-1790100767-1:2419",
+      "advice_sequence": 2420,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "YVYN2Z11",
+      "run_instance": "observed-game:3",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000004.brj",
+        "ordinal": 8,
+        "raw_sha256": "1d631508dd07abd464b9d4c3ba6edb148a9629460e2650c69d34bff47b432aa7"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:3",
+        "run_number": 2,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "playing",
+        "time": 436.2453411
+      }
+    },
+    {
+      "sequence": 4894,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:24:01Z",
+      "monotonic_seconds": 741.5022544,
+      "observation_id": "teacher356-1790100767-1:4892",
+      "advice_sequence": 4893,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "YVYN2Z11",
+      "run_instance": "observed-game:3",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000005.brj",
+        "ordinal": 433,
+        "raw_sha256": "48120513609e723766618e2348fdd3be579adfaaceb5749dcfade49f135a7cfb"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "callbacks": [
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 477000,
+                "deck": "b_red",
+                "deck_wins": 40,
+                "jokers": {
+                  "j_brainstorm": 37,
+                  "j_caino": 17,
+                  "j_cartomancer": 17,
+                  "j_devious": 17,
+                  "j_perkeo": 49,
+                  "j_yorick": 43
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 477000,
+                "deck": "b_red",
+                "deck_wins": 40,
+                "jokers": {
+                  "j_brainstorm": 36,
+                  "j_caino": 16,
+                  "j_cartomancer": 16,
+                  "j_devious": 16,
+                  "j_perkeo": 48,
+                  "j_yorick": 42
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_joker_win",
+              "verified": true
+            },
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 477000,
+                "deck": "b_red",
+                "deck_wins": 41,
+                "jokers": {
+                  "j_brainstorm": 37,
+                  "j_caino": 17,
+                  "j_cartomancer": 17,
+                  "j_devious": 17,
+                  "j_perkeo": 49,
+                  "j_yorick": 43
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 477000,
+                "deck": "b_red",
+                "deck_wins": 40,
+                "jokers": {
+                  "j_brainstorm": 37,
+                  "j_caino": 17,
+                  "j_cartomancer": 17,
+                  "j_devious": 17,
+                  "j_perkeo": 49,
+                  "j_yorick": 43
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_deck_win",
+              "verified": true
+            }
+          ],
+          "event_id": "win:game:3",
+          "final_context": {
+            "ante": 8,
+            "boss": true,
+            "chips": 477000,
+            "deck": "b_red",
+            "deck_wins": 40,
+            "jokers": {
+              "j_brainstorm": 36,
+              "j_caino": 16,
+              "j_cartomancer": 16,
+              "j_devious": 16,
+              "j_perkeo": 48,
+              "j_yorick": 42
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 19,
+            "target": 400000,
+            "win_ante": 8,
+            "won": false
+          },
+          "game_over": false,
+          "kind": "win",
+          "result_surface_seen": false,
+          "run_id": "game:3",
+          "source": "original_win_callback",
+          "source_saved": false,
+          "threshold_met": true,
+          "verified": true
+        },
+        "gold_award": {
+          "new_count": 0,
+          "new_keys": {},
+          "schema": 1,
+          "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+          "source": "original_set_joker_win",
+          "status": "confirmed"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "win",
+        "profile_id": 1,
+        "run_actions": 241,
+        "run_id": "game:3",
+        "run_number": 2,
+        "run_seconds": 305.3380664,
+        "schema": 1,
+        "search_id": "auto:1:1:2",
+        "session": 1,
+        "state": "terminal",
+        "time": 741.4641521
+      }
+    },
+    {
+      "sequence": 4915,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:24:04Z",
+      "monotonic_seconds": 743.8651965,
+      "observation_id": "teacher356-1790100767-1:4913",
+      "advice_sequence": 4914,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "S7PXV521",
+      "run_instance": "observed-game:4",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000007.brj",
+        "ordinal": 8,
+        "raw_sha256": "7f8a3f46e83aa8ac6a3541a6b277f730329552855c59f17d76d4f46af2a78ea9"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:4",
+        "run_number": 3,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "playing",
+        "time": 743.8263128
+      }
+    },
+    {
+      "sequence": 5446,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:25:23Z",
+      "monotonic_seconds": 822.7869032,
+      "observation_id": "teacher356-1790100767-1:5443",
+      "advice_sequence": 5444,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "S7PXV521",
+      "run_instance": "observed-game:4",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000007.brj",
+        "ordinal": 539,
+        "raw_sha256": "2619998ab88f798565727a3dace3604c0a4842ff7a723767daab7fc071494a45"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:4",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:4",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 50,
+        "run_id": "game:4",
+        "run_number": 3,
+        "run_seconds": 79.06734740000002,
+        "schema": 1,
+        "search_id": "auto:1:1:3",
+        "session": 1,
+        "state": "terminal",
+        "time": 822.7808642
+      }
+    },
+    {
+      "sequence": 5463,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:25:23Z",
+      "monotonic_seconds": 823.535252,
+      "observation_id": "teacher356-1790100767-1:5461",
+      "advice_sequence": 5462,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "RH45AD21",
+      "run_instance": "observed-game:5",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000009.brj",
+        "ordinal": 8,
+        "raw_sha256": "765dd2b91e32a3913b22b789e72d6894fd342f4bb2ebad019d82c5970008999c"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:5",
+        "run_number": 4,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "playing",
+        "time": 823.4969046
+      }
+    },
+    {
+      "sequence": 7013,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:30:19Z",
+      "monotonic_seconds": 1118.635503,
+      "observation_id": "teacher356-1790100767-1:7010",
+      "advice_sequence": 7011,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "RH45AD21",
+      "run_instance": "observed-game:5",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000009.brj",
+        "ordinal": 1558,
+        "raw_sha256": "904dc636176bfeba49ab0fe47bf043789270802174f6c96269fc35ee119b188c"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:5",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:5",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 144,
+        "run_id": "game:5",
+        "run_number": 4,
+        "run_seconds": 295.2534034999999,
+        "schema": 1,
+        "search_id": "auto:1:1:4",
+        "session": 1,
+        "state": "terminal",
+        "time": 1118.629992
+      }
+    },
+    {
+      "sequence": 7032,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:30:21Z",
+      "monotonic_seconds": 1121.0653519,
+      "observation_id": "teacher356-1790100767-1:7030",
+      "advice_sequence": 7031,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "YAEARC31",
+      "run_instance": "observed-game:6",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000011.brj",
+        "ordinal": 8,
+        "raw_sha256": "f6e93a1702477cbae1f2a3e26fef22dbe0eecc3fe6ec1599e6e748177c4c8ce5"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:6",
+        "run_number": 5,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "playing",
+        "time": 1121.0201809
+      }
+    },
+    {
+      "sequence": 9133,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:35:44Z",
+      "monotonic_seconds": 1444.33552,
+      "observation_id": "teacher356-1790100767-1:9130",
+      "advice_sequence": 9131,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "YAEARC31",
+      "run_instance": "observed-game:6",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000012.brj",
+        "ordinal": 61,
+        "raw_sha256": "dedb329a8d9c53a3a2949fb8088459ad447451042d8c04fc69b267bb7abd8bf2"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:6",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:6",
+          "source": "GAME_OVER",
+          "source_won_field": true,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 1
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 196,
+        "run_id": "game:6",
+        "run_number": 5,
+        "run_seconds": 323.44485740000005,
+        "schema": 1,
+        "search_id": "auto:1:1:5",
+        "session": 1,
+        "state": "terminal",
+        "time": 1444.329696
+      }
+    },
+    {
+      "sequence": 9157,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:35:46Z",
+      "monotonic_seconds": 1445.7857388,
+      "observation_id": "teacher356-1790100767-1:9155",
+      "advice_sequence": 9156,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "I8VUSV31",
+      "run_instance": "observed-game:7",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000014.brj",
+        "ordinal": 8,
+        "raw_sha256": "a3835b597ff24f7b8ec4dbe52b80ffb279aa75fee629cd1f3c47a75d498c3706"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:7",
+        "run_number": 6,
+        "schema": 1,
+        "search_id": "auto:1:1:6",
+        "session": 1,
+        "state": "playing",
+        "time": 1445.7476702
+      }
+    },
+    {
+      "sequence": 11750,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:43:06Z",
+      "monotonic_seconds": 1885.8623824,
+      "observation_id": "teacher356-1790100767-1:11748",
+      "advice_sequence": 11749,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "I8VUSV31",
+      "run_instance": "observed-game:7",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000015.brj",
+        "ordinal": 553,
+        "raw_sha256": "45c643524dab65d5ebafe59506a7b1c9f67d141ab664ee31b003417cd5aff735"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "callbacks": [
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 552492,
+                "deck": "b_red",
+                "deck_wins": 41,
+                "jokers": {
+                  "j_brainstorm": 38,
+                  "j_perkeo": 50,
+                  "j_sly": 2,
+                  "j_swashbuckler": 8,
+                  "j_yorick": 44
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 552492,
+                "deck": "b_red",
+                "deck_wins": 41,
+                "jokers": {
+                  "j_brainstorm": 37,
+                  "j_perkeo": 49,
+                  "j_sly": 1,
+                  "j_swashbuckler": 7,
+                  "j_yorick": 43
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_joker_win",
+              "verified": true
+            },
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 552492,
+                "deck": "b_red",
+                "deck_wins": 42,
+                "jokers": {
+                  "j_brainstorm": 38,
+                  "j_perkeo": 50,
+                  "j_sly": 2,
+                  "j_swashbuckler": 8,
+                  "j_yorick": 44
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 552492,
+                "deck": "b_red",
+                "deck_wins": 41,
+                "jokers": {
+                  "j_brainstorm": 38,
+                  "j_perkeo": 50,
+                  "j_sly": 2,
+                  "j_swashbuckler": 8,
+                  "j_yorick": 44
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 400000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_deck_win",
+              "verified": true
+            }
+          ],
+          "event_id": "win:game:7",
+          "final_context": {
+            "ante": 8,
+            "boss": true,
+            "chips": 552492,
+            "deck": "b_red",
+            "deck_wins": 41,
+            "jokers": {
+              "j_brainstorm": 37,
+              "j_perkeo": 49,
+              "j_sly": 1,
+              "j_swashbuckler": 7,
+              "j_yorick": 43
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 19,
+            "target": 400000,
+            "win_ante": 8,
+            "won": false
+          },
+          "game_over": false,
+          "kind": "win",
+          "result_surface_seen": false,
+          "run_id": "game:7",
+          "source": "original_win_callback",
+          "source_saved": false,
+          "threshold_met": true,
+          "verified": true
+        },
+        "gold_award": {
+          "new_count": 0,
+          "new_keys": {},
+          "schema": 1,
+          "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+          "source": "original_set_joker_win",
+          "status": "confirmed"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 2
+        },
+        "outcome": "win",
+        "profile_id": 1,
+        "run_actions": 244,
+        "run_id": "game:7",
+        "run_number": 6,
+        "run_seconds": 440.2071148,
+        "schema": 1,
+        "search_id": "auto:1:1:6",
+        "session": 1,
+        "state": "terminal",
+        "time": 1885.8281781
+      }
+    },
+    {
+      "sequence": 11771,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:43:08Z",
+      "monotonic_seconds": 1888.0362318,
+      "observation_id": "teacher356-1790100767-1:11769",
+      "advice_sequence": 11770,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "X8XU8Y31",
+      "run_instance": "observed-game:8",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000017.brj",
+        "ordinal": 8,
+        "raw_sha256": "852ab1e07622a041808f15294cf446beef637374a56103c6396ea20228f61395"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:8",
+        "run_number": 7,
+        "schema": 1,
+        "search_id": "auto:1:1:7",
+        "session": 1,
+        "state": "playing",
+        "time": 1887.9985895
+      }
+    },
+    {
+      "sequence": 13534,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:48:41Z",
+      "monotonic_seconds": 2220.6598389,
+      "observation_id": "teacher356-1790100767-1:13531",
+      "advice_sequence": 13532,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "X8XU8Y31",
+      "run_instance": "observed-game:8",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000017.brj",
+        "ordinal": 1771,
+        "raw_sha256": "628ec829646092750fd97c8192bf623e30e764264265f3e423808c957b2e1859"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:8",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:8",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 2
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 165,
+        "run_id": "game:8",
+        "run_number": 7,
+        "run_seconds": 332.7684042000001,
+        "schema": 1,
+        "search_id": "auto:1:1:7",
+        "session": 1,
+        "state": "terminal",
+        "time": 2220.6515672
+      }
+    },
+    {
+      "sequence": 13551,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:48:43Z",
+      "monotonic_seconds": 2223.2238478,
+      "observation_id": "teacher356-1790100767-1:13549",
+      "advice_sequence": 13550,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "BWHHPZ41",
+      "run_instance": "observed-game:9",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000019.brj",
+        "ordinal": 8,
+        "raw_sha256": "845d2a2bfa75b1fc160f1485812e64fc859eb8d761b5e6070639a650e9bfcb7b"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:9",
+        "run_number": 8,
+        "schema": 1,
+        "search_id": "auto:1:1:8",
+        "session": 1,
+        "state": "playing",
+        "time": 2223.1852447
+      }
+    },
+    {
+      "sequence": 14561,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:51:13Z",
+      "monotonic_seconds": 2372.7882396,
+      "observation_id": "teacher356-1790100767-1:14558",
+      "advice_sequence": 14559,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "BWHHPZ41",
+      "run_instance": "observed-game:9",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000019.brj",
+        "ordinal": 1018,
+        "raw_sha256": "f97d028edc047494f58f9ddad78fcc6c8f0bcd6a9b9d7bded3f8da8befbcfa28"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:9",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:9",
+          "source": "GAME_OVER",
+          "source_won_field": false,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 2
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 95,
+        "run_id": "game:9",
+        "run_number": 8,
+        "run_seconds": 149.7213440999999,
+        "schema": 1,
+        "search_id": "auto:1:1:8",
+        "session": 1,
+        "state": "terminal",
+        "time": 2372.783814
+      }
+    },
+    {
+      "sequence": 14580,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:51:13Z",
+      "monotonic_seconds": 2373.4762881,
+      "observation_id": "teacher356-1790100767-1:14578",
+      "advice_sequence": 14579,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "8TCSQ651",
+      "run_instance": "observed-game:10",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000021.brj",
+        "ordinal": 8,
+        "raw_sha256": "26834a30aa5efeb8d8d1882c188a8fd350ac096807378c878532943d8d3f4d42"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:10",
+        "run_number": 9,
+        "schema": 1,
+        "search_id": "auto:1:1:9",
+        "session": 1,
+        "state": "playing",
+        "time": 2373.4382097
+      }
+    },
+    {
+      "sequence": 17033,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:58:19Z",
+      "monotonic_seconds": 2799.569342,
+      "observation_id": "teacher356-1790100767-1:17031",
+      "advice_sequence": 17032,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "8TCSQ651",
+      "run_instance": "observed-game:10",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000022.brj",
+        "ordinal": 413,
+        "raw_sha256": "cc60bbcfda112bb1466032e33af99dd0ac75d0dd80ee2a0cbdb76c9f109dc649"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "callbacks": [
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 1230592,
+                "deck": "b_red",
+                "deck_wins": 42,
+                "jokers": {
+                  "j_brainstorm": 39,
+                  "j_perkeo": 51,
+                  "j_smeared": 2,
+                  "j_walkie_talkie": 2,
+                  "j_yorick": 45
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 1200000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 1230592,
+                "deck": "b_red",
+                "deck_wins": 42,
+                "jokers": {
+                  "j_brainstorm": 38,
+                  "j_perkeo": 50,
+                  "j_smeared": 1,
+                  "j_walkie_talkie": 1,
+                  "j_yorick": 44
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 1200000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_joker_win",
+              "verified": true
+            },
+            {
+              "after": {
+                "ante": 9,
+                "boss": true,
+                "chips": 1230592,
+                "deck": "b_red",
+                "deck_wins": 43,
+                "jokers": {
+                  "j_brainstorm": 39,
+                  "j_perkeo": 51,
+                  "j_smeared": 2,
+                  "j_walkie_talkie": 2,
+                  "j_yorick": 45
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 1200000,
+                "win_ante": 8,
+                "won": true
+              },
+              "before": {
+                "ante": 9,
+                "boss": true,
+                "chips": 1230592,
+                "deck": "b_red",
+                "deck_wins": 42,
+                "jokers": {
+                  "j_brainstorm": 39,
+                  "j_perkeo": 51,
+                  "j_smeared": 2,
+                  "j_walkie_talkie": 2,
+                  "j_yorick": 45
+                },
+                "round": 23,
+                "seeded": false,
+                "stake": 8,
+                "state": 8,
+                "target": 1200000,
+                "win_ante": 8,
+                "won": true
+              },
+              "name": "set_deck_win",
+              "verified": true
+            }
+          ],
+          "event_id": "win:game:10",
+          "final_context": {
+            "ante": 8,
+            "boss": true,
+            "chips": 1230592,
+            "deck": "b_red",
+            "deck_wins": 42,
+            "jokers": {
+              "j_brainstorm": 38,
+              "j_perkeo": 50,
+              "j_smeared": 1,
+              "j_walkie_talkie": 1,
+              "j_yorick": 44
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 19,
+            "target": 1200000,
+            "win_ante": 8,
+            "won": false
+          },
+          "game_over": false,
+          "kind": "win",
+          "result_surface_seen": false,
+          "run_id": "game:10",
+          "source": "original_win_callback",
+          "source_saved": false,
+          "threshold_met": true,
+          "verified": true
+        },
+        "gold_award": {
+          "new_count": 0,
+          "new_keys": {},
+          "schema": 1,
+          "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+          "source": "original_set_joker_win",
+          "status": "confirmed"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 3
+        },
+        "outcome": "win",
+        "profile_id": 1,
+        "run_actions": 230,
+        "run_id": "game:10",
+        "run_number": 9,
+        "run_seconds": 426.2211255000002,
+        "schema": 1,
+        "search_id": "auto:1:1:9",
+        "session": 1,
+        "state": "terminal",
+        "time": 2799.5309562
+      }
+    },
+    {
+      "sequence": 17054,
+      "kind": "auto_run",
+      "at": "2026-09-22T18:58:22Z",
+      "monotonic_seconds": 2802.5302207,
+      "observation_id": "teacher356-1790100767-1:17052",
+      "advice_sequence": 17053,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "NVXU7E51",
+      "run_instance": "observed-game:11",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000024.brj",
+        "ordinal": 8,
+        "raw_sha256": "571957a8fce61a76d6d67363c7fadb854d3093fd8f2142c9bb267910d7660f68"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:11",
+        "run_number": 10,
+        "schema": 1,
+        "search_id": "auto:1:1:10",
+        "session": 1,
+        "state": "playing",
+        "time": 2802.4923076
+      }
+    },
+    {
+      "sequence": 19612,
+      "kind": "auto_run",
+      "at": "2026-09-22T19:06:52Z",
+      "monotonic_seconds": 3311.8920414,
+      "observation_id": "teacher356-1790100767-1:19609",
+      "advice_sequence": 19610,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "NVXU7E51",
+      "run_instance": "observed-game:11",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000025.brj",
+        "ordinal": 518,
+        "raw_sha256": "c160a5621c2d4cce74bccb76ecaddbf1901d36cd798b56a17a288d51785532f8"
+      },
+      "details": {
+        "event": "run_finished",
+        "evidence": {
+          "event_id": "loss:game:11",
+          "kind": "loss",
+          "result_surface_seen": true,
+          "run_id": "game:11",
+          "source": "GAME_OVER",
+          "source_won_field": true,
+          "verified": true
+        },
+        "gold_award": {
+          "schema": 1,
+          "status": "not_applicable"
+        },
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 3
+        },
+        "outcome": "loss",
+        "profile_id": 1,
+        "run_actions": 239,
+        "run_id": "game:11",
+        "run_number": 10,
+        "run_seconds": 509.5184598000001,
+        "schema": 1,
+        "search_id": "auto:1:1:10",
+        "session": 1,
+        "state": "terminal",
+        "time": 3311.88765
+      }
+    },
+    {
+      "sequence": 19613,
+      "kind": "auto_run",
+      "at": "2026-09-22T19:06:52Z",
+      "monotonic_seconds": 3311.9053296,
+      "observation_id": "teacher356-1790100767-1:19609",
+      "advice_sequence": 19610,
+      "collection_id": "teacher356-1790100767-1",
+      "seed": "NVXU7E51",
+      "run_instance": "observed-game:11",
+      "teacher": "perkeo_yorick_win_v1",
+      "anchor": {
+        "segment": "session-20260922T181247Z-1-000026.brj",
+        "ordinal": 1,
+        "raw_sha256": "249dacbf435625dd9f538beea9321a69591e5ee7c6d56e0a3fdd7e5a8f1f9b3d"
+      },
+      "details": {
+        "actions": 1830,
+        "event": "session_stopped",
+        "gold_progress": {
+          "confirmed_new_count": 0,
+          "confirmed_new_keys": {},
+          "schema": 1,
+          "unknown_wins": 0,
+          "zero_new_wins": 3
+        },
+        "outcomes": {
+          "abandoned_stall": 0,
+          "error": 0,
+          "losses": 6,
+          "unsupported": 1,
+          "wins": 3
+        },
+        "profile_id": 1,
+        "reason": "run_limit",
+        "run_id": "game:11",
+        "runs_started": 10,
+        "schema": 1,
+        "search_draining": false,
+        "search_id": "auto:1:1:10",
+        "session": 1,
+        "start_attempts": 10,
+        "state": "stopped",
+        "time": 3311.9010431,
+        "uncertain_starts": 0
+      }
+    }
+  ]
+}

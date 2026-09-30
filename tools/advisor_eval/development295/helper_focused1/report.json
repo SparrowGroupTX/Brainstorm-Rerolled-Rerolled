@@ -1,0 +1,46 @@
+{
+  "kind": "routine_synthetic_fixture",
+  "status": "passed",
+  "timeout_seconds": 60,
+  "seconds": 0.2252165999962017,
+  "runs": [
+    {
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "tools/advisor_eval/development295/test_search_source_names.py"
+      ],
+      "returncode": 0,
+      "status": "passed"
+    },
+    {
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "tests/run_lua_tests.py",
+        "tests/advisor_gold_search.lua"
+      ],
+      "returncode": 0,
+      "status": "passed"
+    }
+  ],
+  "sha256": {
+    "Brainstorm/Advisor/gold_search.lua": "107280cd7f63f94b8070bf7934ebccd0da80617ba85f10c30d054cc7bcc5dbb3",
+    "tests/advisor_gold_search.lua": "05baa4786588372baa8bb96cc6241b0f471b8e98e1fa0a3eb033efd30c2c4ac4",
+    "tools/advisor_eval/development295/test_search_source_names.py": "5c78f9702a5998225ae5e7c97661c04ec6e563026d8d79a614b72d8194b78c84",
+    "tools/advisor_eval/runs/roi247_catalog_source/source_probe.lua": "3310afd07d9737975af3fd068150258203403f13958d86ed8c7961f601b3054c",
+    "tools/advisor_eval/runs/roi247_catalog_source/report.json": "5fa9d97d5dbad53a58599cf43abea339c4de6a09c343a5e0bdfa05590eeb5d27",
+    "Immolate/src/items.hpp": "b0d9ef28b798ab6a84858ddb009a49288a126b4b49613c22326631475accb3e9",
+    "Brainstorm/UI/ui.lua": "fa35e93f8b2d611fa54e90235aa221f406d24b7aa2757103f6fff4ee1f21fb86"
+  },
+  "inputs_unchanged": {
+    "Brainstorm/Advisor/gold_search.lua": true,
+    "tests/advisor_gold_search.lua": true,
+    "tools/advisor_eval/development295/test_search_source_names.py": true,
+    "tools/advisor_eval/runs/roi247_catalog_source/source_probe.lua": true,
+    "tools/advisor_eval/runs/roi247_catalog_source/report.json": true,
+    "Immolate/src/items.hpp": true,
+    "Brainstorm/UI/ui.lua": true
+  },
+  "scope": "Pure synthetic preparation and read-only preserved-source naming comparison only. No search, native execution, original-source execution, game/profile/save access or complete-attempt worker."
+}

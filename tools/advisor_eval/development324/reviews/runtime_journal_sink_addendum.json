@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "kind": "read_only_logging_failure_integration_review_addendum",
+  "prior_review": {
+    "path": "tools\\advisor_eval\\development324\\reviews\\runtime_journal_review.json",
+    "sha256": "388069d3c1b2027ae983a1c2a2012bfc2f3ae1b95b9c84cc15b05e2673e67eb1"
+  },
+  "current_files": {
+    "Brainstorm/Advisor/runtime.lua": "c1601fdb2a11e0cb740aedbfec49f665ad28b00b2f0c0e43efa9d7c9389a2eb7",
+    "Brainstorm/Advisor/player_journal.lua": "fbf8871d82fe93e659beaf4a6d1b2cc5feef3122516d1cee34ed22dfc1c4e329",
+    "Brainstorm/Advisor/performance.lua": "6595aba266db35f34237803ba85b568aeb57218879da661dafc04f78dcc9cc1c",
+    "tests/advisor_runtime.lua": "d673007e4d087169b0dcd1a39a99812e69ea70abecea67169af8798a1b6fb282"
+  },
+  "preserved_failure_files": {
+    "tools\\advisor_eval\\development324\\failed_journal_stop\\advisor_runtime.lua": "d673007e4d087169b0dcd1a39a99812e69ea70abecea67169af8798a1b6fb282",
+    "tools\\advisor_eval\\development324\\failed_journal_stop\\fixture.log": "e5cf8c002c03ca87e3266e5056a12749d3e4fbfd61ab5036b3a0ad5642cea35f",
+    "tools\\advisor_eval\\development324\\failed_journal_stop\\performance.lua": "660a004a34fd405759298fc2bfa49a9310a99d962ff24551c4e9ee1fcc3573f4",
+    "tools\\advisor_eval\\development324\\failed_journal_stop\\runtime.lua": "e2fd46c81287deb6822e1ce1c32caacb3af2e40bd6a9c51301a380af378fbedc"
+  },
+  "result": "narrow_config_and_flush_guards_resolve_retention_gap_without_callback_or_policy_changes",
+  "review": "The runtime collector predicate now follows only explicit player_logging opt-in. P.flush samples the safe clock then returns before emission when journal.error exists. A failed real journal append therefore preserves at most one pending and one current bounded window, and future frames do not ask the failed journal to write again. Explicit opt-out still clears the unflushed tail. Journal implementation and original callback/error paths are unchanged.",
+  "validation": "Read the integrated manufactured failure fixture: one failing append sets J.error, pending identity remains, separate current window survives, a later flush performs no second write, and explicit opt-out clears pending. Root reported607runtime+181collector checks passing after repair; reviewer did not rerun fixtures.",
+  "history": "Initial timing324_candidate is preserved unvalidated/superseded, not a failed full regression. The failing focused real-journal fixture is preserved before repair/install. Earlier scoped review remains immutable.",
+  "remaining_limit": "Synchronous decision exceptions propagate without timing error receipt, as previously documented. Separate collector/full regression approval remains external.",
+  "runtime_or_test_edits": false,
+  "source_policy_gameplay_execution": 0
+}

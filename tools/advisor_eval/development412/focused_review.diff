@@ -1,0 +1,259 @@
+--- before/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -1,7 +1,7 @@
+ -- Pure, deterministic run advice. Scores below are strategic priorities, not
+ -- simulated win probabilities. Only detached snapshot tables may enter here.
+ local Strategy = {}
+-local inventory_value, inventory_marginal, preservation_cost
++local inventory_value, inventory_marginal, preservation_cost, perkeo_copy_exchange
+ 
+ local function num(value, fallback)
+     return type(value) == 'number' and value or (fallback or 0)
+@@ -83,7 +83,8 @@
+     if after and before.teacher_profile=='perkeo_yorick_win_v1' and
+         future_core_horizon(before) and not sampled_rescue(evidence) then
+         for _,c in ipairs(before.jokers or {}) do
+-            if engine_keys[c.key] and active_durable(c) and not retained_engine(after,c.key) then
++            if engine_keys[c.key] and active_durable(c) and not retained_engine(after,c.key) and
++                not (c.key=='j_perkeo' and perkeo_copy_exchange(before,after,evidence)) then
+                 return false,{schema=1,kind='last_durable_engine_guard',core_key=c.key,
+                     reason='Retain the last active durable engine of this kind before the final Boss unless a complete paired immediate rescue justifies its loss; a copy Joker cannot replace the underlying engine.'}
+             end
+@@ -93,7 +94,8 @@
+ end
+ -- Focused copy pursuit may spend a duplicate engine, but must leave its actual
+ -- durable source available. Copy Jokers retain their separate victim protection.
+-local function protected_copy_victim(snapshot,sold,after)
++local function protected_copy_victim(snapshot,sold,after,card,evidence)
++    if sold.key=='j_perkeo' and after and perkeo_copy_exchange(snapshot,after,evidence,card) then return false end
+     if engine_keys[sold.key] then
+         local except;if not after then except=sold end
+         return not retained_engine(after or snapshot,sold.key,except)
+@@ -1450,14 +1452,8 @@
+ -- A complete supported acquisition can outweigh the additive retained-row
+ -- rating (which undervalues multiplicative copies). Cash is actual endpoint
+ -- cash, not future income. No fixed $20 floor, first-copy or rental veto.
+-local function supported_copy_priority(snapshot,sold,card,after,evidence)
++local function supported_copy_evidence(after,evidence)
+     local function finite(v) return type(v)=='number' and v==v and math.abs(v)<math.huge end
+-    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or not card or
+-        (card.key~='j_blueprint' and card.key~='j_brainstorm') or card.debuff or card.unknown or
+-        card.identity_redacted or card.face_down or
+-        ability(card).perishable and num(ability(card).perish_tally,5)<2 or not useful_copy_target(snapshot) then return false end
+-    if sold and (sold.pinned or ability(sold).pinned or ability(sold).eternal or edition(sold,'negative') or
+-        protected_copy_victim(snapshot,sold,after)) then return false end
+     if not after or not finite(after.dollars) or after.dollars<copy_cash_reserve(after) or
+         not evidence or evidence.incomplete or evidence.uncertain or evidence.samples~=4 or
+         not evidence.complete_finishing or not finite(evidence.ratio) or evidence.ratio<1.05 or
+@@ -1478,6 +1474,47 @@
+             b.progress<0 or b.progress>1 or b.progress+0.000000001<a.progress then return false end
+     end
+     return true
++end
++-- Selling Perkeo retains its existing consumables. Its future copying is an
++-- opportunity cost, not a blanket veto against another supported Yorick copy.
++perkeo_copy_exchange=function(before,after,evidence,offered)
++    if before.teacher_profile~='perkeo_yorick_win_v1' or not supported_copy_evidence(after,evidence) then return false end
++    local ordering=evidence.after_ordering
++    if not ordering or ordering.samples~=4 or type(ordering.order)~='table' or #ordering.order~=#(after.jokers or {}) then return false end
++    local original,retained,row,seen={},{},{},{}
++    for _,c in ipairs(before.jokers or {}) do
++        if c.id then original[c.id]=true
++            if c.key=='j_yorick' and active_durable(c) and num(ability(c).x_mult)>1 then retained[c.id]=true end
++        end
++    end
++    for position,index in ipairs(ordering.order) do
++        local c=after.jokers[index]
++        if not c or seen[index] or (c.pinned or ability(c).pinned) and position~=index then return false end
++        row[position]=c;seen[index]=true
++    end
++    local function resolves(index,visited)
++        local c=row[index]
++        if not c or visited[index] or not active_durable(c) then return false end
++        visited[index]=true
++        if c.key=='j_blueprint' then return resolves(index+1,visited) end
++        if c.key=='j_brainstorm' then return resolves(1,visited) end
++        return c.key=='j_yorick' and retained[c.id]==true and c.blueprint_compat~=false and
++            (c.name=='Yorick' or ability(c).name=='Yorick') and num(ability(c).x_mult)>1
++    end
++    for index,c in ipairs(row) do
++        if c.id and not original[c.id] and (not offered or c.id==offered.id) and
++            (c.key=='j_blueprint' or c.key=='j_brainstorm') and active_durable(c) and resolves(index,{}) then return true end
++    end
++    return false
++end
++local function supported_copy_priority(snapshot,sold,card,after,evidence)
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or not card or
++        (card.key~='j_blueprint' and card.key~='j_brainstorm') or card.debuff or card.unknown or
++        card.identity_redacted or card.face_down or
++        ability(card).perishable and num(ability(card).perish_tally,5)<2 or not useful_copy_target(snapshot) then return false end
++    if sold and (sold.pinned or ability(sold).pinned or ability(sold).eternal or edition(sold,'negative') or
++        protected_copy_victim(snapshot,sold,after,card,evidence)) then return false end
++    return supported_copy_evidence(after,evidence)
+ end
+ Strategy.supported_copy_priority=supported_copy_priority
+ 
+@@ -2029,6 +2066,8 @@
+     end
+     for index,sold in ipairs(snapshot.jokers or {}) do
+         local _,_,known=joker_value(snapshot,sold,stats,components(snapshot))
++        local prospective_perkeo=snapshot._copy_acquisition and sold.key=='j_perkeo' and
++            active_durable(sold) and retained_engine(snapshot,'j_yorick')
+         local focused_duplicate=snapshot._copy_acquisition and engine_keys[sold.key] and
+             active_durable(sold) and not protected_copy_victim(snapshot,sold)
+         -- Unknown effects are preserved; Diet Cola is a known non-scoring sale
+@@ -2037,7 +2076,7 @@
+         -- Eggs retain their specialized Omelette economy policy.
+         if not ability(sold).eternal and (known or focused_duplicate or expired(sold) or sold.key=='j_diet_cola') and
+             (not snapshot._copy_acquisition or not (sold.pinned or ability(sold).pinned or edition(sold,'negative') or
+-              protected_copy_victim(snapshot,sold))) and
++              not prospective_perkeo and protected_copy_victim(snapshot,sold))) and
+             not (omelette(snapshot) and sold.key=='j_egg') then
+             local state=after_joker_sale(snapshot,index)
+             local candidate,_,family
+@@ -2118,7 +2157,8 @@
+                     entry.finishing_complete=evidence and evidence.complete_finishing==true or false
+                     entry.finishing_supported=finish and finish.supported==true and finish.known_mechanics==true or false
+                     entry.finishing_all_clear=finish and finish.selected and finish.selected.clearing_samples==4 or false
+-                    entry.reason=copy_priority and 'supported_copy_priority' or merit==-math.huge and 'survival_dominated' or merit<26 and not exception and not copy_exception and 'insufficient_gain' or
++                    entry.reason=copy_priority and (sold.key=='j_perkeo' and perkeo_copy_exchange(snapshot,after,evidence,candidate.card) and
++                        'perkeo_yorick_copy_exchange' or 'supported_copy_priority') or merit==-math.huge and 'survival_dominated' or merit<26 and not exception and not copy_exception and 'insufficient_gain' or
+                         direct and direct.score>=26 and merit<=direct.score and 'ordinary_purchase_preferred' or 'eligible'
+                 end
+                 if Strategy.joker_admission(snapshot,candidate.card,after,evidence) and
+@@ -3258,14 +3298,15 @@
+                         entry.collection_admitted=admitted
+                         local supported_sale=ordinary_sale or duplicate and
+                             supported_copy_priority(snapshot,sold,card,after,evidence)
+-                        local priority=snapshot.teacher_profile~='perkeo_yorick_win_v1' and supported_copy_priority(snapshot,sold,card,after,evidence)
++                        local perkeo_exchange=sold.key=='j_perkeo' and perkeo_copy_exchange(snapshot,after,evidence,card)
++                        local priority=(snapshot.teacher_profile~='perkeo_yorick_win_v1' or perkeo_exchange) and supported_copy_priority(snapshot,sold,card,after,evidence)
+                         entry.copy_priority=priority or nil
+                         local valuable=priority or merit>=26 and (snapshot.teacher_profile=='perkeo_yorick_win_v1' or score>=26)
+                         entry.admitted=not not (admitted and supported_sale and candidate_known and valuable and preserves_score)
+                         entry.reason=not admitted and (type(admission_reason)=='table' and admission_reason.kind or 'objective_admission_rejected') or
+                             not supported_sale and 'unsupported_duplicate_copy_sale' or
+                             not candidate_known and 'unknown_candidate' or not preserves_score and 'survival_ratio_guard' or
+-                            not valuable and 'insufficient_endpoint_merit' or 'eligible_endpoint'
++                            not valuable and 'insufficient_endpoint_merit' or perkeo_exchange and 'perkeo_yorick_copy_exchange' or 'eligible_endpoint'
+                         if entry.admitted and
+                             (priority and not (best and best.copy_priority) or not best or best.score<26 or merit>best.score) and
+                             (not replacement or priority and not replacement.copy_priority or
+--- before/tests/advisor_perkeo_copy412.lua
++++ tests/advisor_perkeo_copy412.lua
+@@ -0,0 +1,115 @@
++-- Invented public rows/decks and paired receipts, never captured-state replay.
++local P='Brainstorm/Advisor/';local S=dofile(P..'strategy.lua');local Snap=dofile(P..'snapshot.lua')
++local Shop=dofile(P..'shop_scoring.lua');local Seq=dofile(P..'shop_sequences.lua')
++local checks,failures=0,0
++local function check(v,m)checks=checks+1;if not v then failures=failures+1;print('FAIL: '..m)end end
++local function j(key,id,a)
++ a=a or {};a.set='Joker';a.name=({j_perkeo='Perkeo',j_yorick='Yorick',j_blueprint='Blueprint',j_brainstorm='Brainstorm'})[key] or key
++ return {key=key,id=id,name=a.name,ability=a,blueprint_compat=true,cost=6,sell_cost=8}
++end
++local function state(key)
++ return {phase='shop',teacher_profile='perkeo_yorick_win_v1',ante=4,win_ante=8,
++ dollars=28,bankrupt_at=0,joker_limit=2,consumable_limit=2,
++ jokers={j('j_yorick','source',{x_mult=4,eternal=true,yorick_discards=8,extra={discards=23,xmult=1}}),j('j_perkeo','victim',{})},
++ shop_jokers={j(key or 'j_blueprint','incoming',{})},shop_vouchers={},shop_booster={},
++ consumeables={{id='negative_death',key='c_death',edition='negative',ability={set='Tarot',name='Death'}}},
++ hand={},deck={},playing_cards={},hands={},hand_size=5,hand_limit=5,round_resets={hands=4,discards=3},current_round={},
++ modifiers={},probabilities={normal=1},blind={key='bl_small',name='Small Blind'},
++ next_blind={key='bl_big',label='Big',ante=4,chips=1800},interest_cap=25,reroll_cost=5}
++end
++local function endpoint(s)
++ local after=assert(Seq.transition(s,{kind='sell',area='jokers',index=2},{strategy=S,shop_scoring=Shop}))
++ return assert(Seq.transition(after,{kind='buy',area='shop_jokers',index=1},{strategy=S,shop_scoring=Shop}))
++end
++local function worlds()
++ local rows={};for i=1,4 do rows[i]={clear=true,progress=1}end
++ return {samples=4,complete=true,supported=true,known_mechanics=true,selected={clearing_samples=4,worlds=rows}}
++end
++local function evidence(key)
++ return {samples=4,ratio=4,adjustment=100,before_mean=2100,after_mean=8400,before_target=1800,after_target=1800,
++ complete_finishing=true,before_finishing=worlds(),after_finishing=worlds(),
++ before_readiness={supported=true,status='sampled_safe',target=1800,opening_mean=2100},
++ after_readiness={supported=true,status='sampled_safe',target=1800,opening_mean=8400},
++ common_worlds={kind='shop_four_common_worlds_v1',samples=4,world_ids={1,2,3,4},family_key='invented412'},
++ after_ordering={samples=4,order=key=='j_brainstorm' and {1,2} or {2,1}},reason='Invented complete common-world comparison.'}
++end
++local function context(key)
++ local c={evaluations=0,truncated=false,max_evaluations=50000}
++ function c:compare()self.evaluations=self.evaluations+4;return evidence(key)end
++ function c:readiness()return evidence(key).before_readiness end
++ return c
++end
++for _,key in ipairs({'j_blueprint','j_brainstorm'}) do
++ local s=state(key);local after=endpoint(s);local e=evidence(key);local fp=Snap.fingerprint(s)
++ check(S.joker_admission(s,s.shop_jokers[1],after,e),key..' may replace sole Perkeo for retained Yorick')
++ check(S.shop_sequence_admission(s,after,e),key..' full sequence endpoint admits Perkeo exchange')
++ check(S.supported_copy_priority(s,s.jokers[2],s.shop_jokers[1],after,e),key..' strong copy priority survives Perkeo sale')
++ local plan=S.copy_acquisition(s,context(key))
++ check(plan and plan.action.kind=='sell' and plan.action.index==2,key..' focused acquisition enumerates and selects Perkeo')
++ if plan then
++  local sold=assert(Seq.transition(s,plan.action,{strategy=S,shop_scoring=Shop}))
++  local fresh=S.copy_acquisition(sold,context(key))
++  check(fresh and fresh.action.kind=='buy' and fresh.action.index==1,key..' fresh advice completes the visible copy purchase')
++ end
++ local exhausted={truncated=true,evaluations=1,max_evaluations=1,compare=function()return nil end}
++ check(not S.copy_acquisition(s,exhausted),key..' exhausted proof cannot publish a sale')
++ local ordinary=S.advise(s,{shop_scoring=context(key)})
++ check(ordinary.action.kind=='sell' and ordinary.action.index==2,key..' ordinary direct arbitration admits exchange')
++ local trace_context=context(key);S.advise(s,{shop_scoring=trace_context})
++ local public=dofile(P..'player_journal.lua').compact_replacement_review({shop_diagnostics={replacements=trace_context.replacement_diagnostics}})
++ local identified=false
++ for _,r in ipairs(public and public.candidates or {})do if r.sale_id=='victim' and r.offer_id=='incoming' and r.reason=='perkeo_yorick_copy_exchange' then identified=true end end
++ check(identified,key..' named public receipt identifies actual Perkeo/copy exchange')
++ local pack=Snap.copy(s);pack.phase='pack';pack.pack_type='BUFFOON_PACK';pack.pack_choices=1;pack.pack_cards=pack.shop_jokers;pack.shop_jokers={}
++ local packed=S.advise(pack,{shop_scoring=context(key)})
++ check(packed.action.kind=='sell' and packed.action.index==2,key..' full Buffoon row admits Perkeo sale')
++ local seq=context(key)
++ function seq:readiness()return {supported=true,status='sampled_deficit',target=1800,opening_mean=1000}end
++ local _,diagnostic=Seq.suggest(s,{strategy=S,shop_scoring=Shop},nil,seq);local admitted=false
++ for _,p in ipairs(diagnostic.plans or {})do if p.gold_slot_admitted and #p.actions==2 and p.actions[1].kind=='sell' then admitted=true end end
++ check(diagnostic.complete and admitted,key..' actual sequence graph includes admitted exchange')
++ check(Snap.fingerprint(s)==fp and after.consumeables[1].id=='negative_death',key..' held Negative inventory survives sale')
++ local function reject(label,change)
++  local x=state(key);local a=endpoint(x);local ev=evidence(key);change(x,a,ev)
++  check(not S.joker_admission(x,x.shop_jokers[1],a,ev),key..' rejects '..label)
++ end
++ reject('missing Yorick',function(x,a) x.jokers[1].key='j_joker';a.jokers[1].key='j_joker' end)
++ reject('unscaled Yorick',function(x,a)x.jokers[1].ability.x_mult=1;a.jokers[1].ability.x_mult=1 end)
++ reject('different physical Yorick',function(x,a)a.jokers[1].id='different' end)
++ reject('debuffed source',function(x,a)a.jokers[1].debuff=true end)
++ reject('Perishable source',function(x,a)a.jokers[1].ability.perishable=true end)
++ reject('incompatible source',function(x,a)a.jokers[1].blueprint_compat=false end)
++ reject('unknown source',function(x,a)a.jokers[1].unknown=true end)
++ reject('temporary copy',function(x,a)a.jokers[2].ability.perishable=true;a.jokers[2].ability.perish_tally=5 end)
++ reject('debuffed copy',function(x,a)a.jokers[2].debuff=true end)
++ reject('permanently debuffed copy',function(x,a)a.jokers[2].ability.perma_debuff=true end)
++ reject('concealed copy',function(x,a)a.jokers[2].identity_redacted=true end)
++ reject('no new physical copy',function(x,a)x.jokers[1].id='incoming' end)
++ reject('unaffordable upkeep',function(x,a)a.jokers[2].ability.rental=true;a.dollars=0 end)
++ reject('uncertain evidence',function(x,a,ev)ev.uncertain=true end)
++ reject('incomplete evidence',function(x,a,ev)ev.complete_finishing=false end)
++ reject('unsupported mechanics',function(x,a,ev)ev.after_finishing.known_mechanics=false end)
++ reject('one losing world',function(x,a,ev)ev.after_finishing.selected.worlds[2].clear=false end)
++ reject('wrong paired IDs',function(x,a,ev)ev.common_worlds.world_ids={2,1,3,4} end)
++ reject('no material scoring gain',function(x,a,ev)ev.ratio=1 end)
++ reject('missing supported order',function(x,a,ev)ev.after_ordering=nil end)
++ reject('loop or empty copy target',function(x,a,ev)ev.after_ordering.order=key=='j_brainstorm' and {2,1} or {1,2} end)
++ reject('invalid permutation',function(x,a,ev)ev.after_ordering.order={1,1} end)
++ reject('pinned illegal reorder',function(x,a,ev)a.jokers[2].pinned=true;ev.after_ordering.order={2,1} end)
++ local funded=Snap.copy(s);funded.shop_jokers[1].ability.rental=true
++ check(S.joker_admission(funded,funded.shop_jokers[1],endpoint(funded),e),key..' affordable rental copy permitted')
++ local wrong=Snap.copy(s);wrong.jokers[1].ability.eternal=nil;local no_y=Snap.copy(after);table.remove(no_y.jokers,1)
++ check(not S.shop_sequence_admission(wrong,no_y,e),key..' exception never waives sole Yorick loss')
++end
++local Score=dofile(P..'scoring.lua');local Finish=dofile(P..'blind_finishing.lua');local D=dofile(P..'decision.lua')
++for _,n in ipairs({'search','draws','sampled_outcomes','multi_discard','finish_rewards'})do Finish[n]=dofile(P..n..'.lua')end
++Finish.strategy=S;Shop.blind_finishing=Finish;Shop.strategy=S;Shop.paired_deck=dofile(P..'paired_deck.lua')
++for _,key in ipairs({'j_blueprint','j_brainstorm'})do
++ local s=state(key);s.hands={Pair={level=4,played=6,chips=55,mult=5}}
++ for i=1,12 do s.playing_cards[i]={id='invented:'..i,rank=7,suit='Clubs',nominal=7,ability={},enhancement='c_base'}end
++ local r=D.run(s,{strategy=S,scoring=Score,shop_scoring=Shop,shop_sequences=Seq},nil,{prepared_scoring=false})
++ check(r.action.kind=='sell' and r.action.index==2 and r.copy_acquisition_diagnostics and r.copy_acquisition_diagnostics.reason=='supported_copy_priority',key..' production scorer and arbitration choose Perkeo exchange')
++ check(r.evaluations<=50000,key..' unchanged production work limit')
++end
++print('Perkeo copy412: '..checks..' checks, '..failures..' failures')
++assert(failures==0,'Perkeo copy412 failures')

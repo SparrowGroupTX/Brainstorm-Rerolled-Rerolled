@@ -1,0 +1,26 @@
+{
+  "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\Balatro.exe",
+  "source_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+  "static_read_only": true,
+  "original_source_executed": false,
+  "entries": [
+    {
+      "entry": "cardarea.lua",
+      "sha256": "e995e91d5ca97a5f9bfcab7438f3b2c6f3d79782be8e89161ab6b39f0030fc87",
+      "line": 577,
+      "excerpt": "function CardArea:sort(method)\n    self.config.sort = method or self.config.sort\n    if self.config.sort == 'desc' then\n        table.sort(self.cards, function (a, b) return a:get_nominal() > b:get_nominal() end )\n    elseif self.config.sort == 'asc' then \n        table.sort(self.cards, function (a, b) return a:get_nominal() < b:get_nominal() end )\n    elseif self.config.sort == 'suit desc' then \n        table.sort(self.cards, function (a, b) return a:get_nominal('suit') > b:get_nominal('suit') end )\n    elseif self.config.sort == 'suit asc' then \n        table.sort(self.cards, function (a, b) return a:get_nominal('suit') < b:get_nominal('suit') end )\n    elseif self.config.sort == 'order' then \n        table.sort(self.cards, function (a, b) return (a.config.card.order or a.config.center.order) < (b.config.card.order or b.config.center.order) end )\n    end\nend\n\nfunction CardArea:draw_card_from(area, stay_flipped, discarded_only)\n    if area:is(CardArea) then\n        if #self.cards < self.config.card_limit or self == G.deck or self == G.hand then\n            local card = area:remove_card(nil, discarded_only)\n            if card then\n                if area == G.discard then\n        "
+    },
+    {
+      "entry": "card.lua",
+      "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+      "line": 950,
+      "excerpt": "function Card:get_nominal(mod)\n    local mult = 1\n    if mod == 'suit' then mult = 1000 end\n    if self.ability.effect == 'Stone Card' then mult = -1000 end\n    return self.base.nominal + self.base.suit_nominal*mult + (self.base.suit_nominal_original or 0)*0.0001*mult + self.base.face_nominal + 0.000001*self.unique_val\nend\n\nfunction Card:get_id()\n    if self.ability.effect == 'Stone Card' and not self.vampired then\n        return -math.random(100, 1000000)\n    end\n    return self.base.id\nend\n\nfunction Card:is_face(from_boss)\n    if self.debuff and not from_boss then return end\n    local id = self:get_id()\n    if id == 11 or id == 12 or id == 13 or next(find_joker(\"Pareidolia\")) then\n        return true\n    end\nend\n\nfunction Card:get_original_rank()\n    return self.base.original_value\nend\n\nfunction Card:get_chip_bonus()\n    if self.debuff then return 0 end\n    if self.ability.effect == 'Stone Card' then\n        return self.ability.bonus + (self.ability.perma_bonus or 0)\n    end\n    return self.base.nominal + self.ability.bonus + (self.ability.perma_bonus or 0)\nend\n\nfunction Card:get_chip_mult()\n    if self.debuff then return 0 end\n    if self.ability.set == 'Joker' then return 0 end"
+    },
+    {
+      "entry": "card.lua",
+      "sha256": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453",
+      "line": 40,
+      "excerpt": "self.unique_val = 1-self.ID/1603301\n    self.edition = nil\n    self.zoom = true\n    self:set_ability(center, true)\n    self:set_base(card, true)\n\n    self.discard_pos = {\n        r = 3.6*(math.random()-0.5),\n        x = math.random(),\n        y = math.random()\n    }\n \n    self.facing = 'front'\n    self.sprite_facing = 'front'\n    self.flipping = nil\n    self.area = nil\n    self.highlighted = false\n    self.click_timeout = 0.3\n    self.T.scale = 0.95\n    self.debuff = false\n\n    self.rank = nil\n    self.added_to_deck = nil\n\n    if self.children.front then self.children.front.VT.w = 0 end\n    self.children.back.VT.w = 0\n    self.children.center.VT.w = 0\n\n    if self.children.front then self.children.front.parent = self; self.children.front.layered_parallax = nil end\n    self.children.back.parent = self; self.children.back.layered_parallax = nil\n    self.children.center.parent = self; self.children.center.layered_parallax = nil\n\n    self:set_cost()\n\n    if getmetatable(self) == Card then \n        table.insert(G.I.CARD, self)\n    end\nend\n\nfunction Card:update_alert()\n    if (self.ability.set == 'Joker' or self.ability.set == 'Voucher' or self.ability.consumeable or self.ability.set == "
+    }
+  ]
+}

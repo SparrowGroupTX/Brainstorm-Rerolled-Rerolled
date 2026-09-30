@@ -1,0 +1,1011 @@
+{
+  "baseline_file": "BASELINE_COMPARISONS.json",
+  "cases": [
+    {
+      "actual": {
+        "events": [
+          {
+            "cash_after": 8,
+            "cash_before": 7,
+            "delta": 1,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 8,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 8
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "current_round": {
+            "discards_left": 3,
+            "discards_used": 1,
+            "hands_left": 4,
+            "hands_played": 3,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 8
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "minimal_stale_resources",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "cash_after": 8,
+            "cash_before": 7,
+            "delta": 1,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 8,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 8
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development455-source-fidelity-v4",
+          "fixture_sha256": "43cf648d578960c0810933b10cbfacdba72e3f951fe8639c8e7ff63f5b8d8147",
+          "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+          "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+          "reference": "source-derived handwritten settled model; original cash_out not executed",
+          "sources_sha256": {
+            "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+            "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+            "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+            "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+            "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_455 -v",
+          "fixture_id": "minimal_stale_resources"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "cash_after": 8,
+            "cash_before": 7,
+            "delta": 1,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 8,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 8
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 8,
+          "current_round": {
+            "discards_left": 3,
+            "discards_used": 1,
+            "hands_left": 4,
+            "hands_played": 3,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 8
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "cash_after": 10,
+            "cash_before": 8,
+            "delta": 2,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 10,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 10
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 10,
+          "current_round": {
+            "discards_left": 3,
+            "discards_used": 0,
+            "hands_left": 4,
+            "hands_played": 2,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 10
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "already_correct_resources",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "cash_after": 10,
+            "cash_before": 8,
+            "delta": 2,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 10,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 10
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development455-source-fidelity-v4",
+          "fixture_sha256": "a2dcc2656dd8cf5bf3b41dd17f0b1303236161e473e8cc6d799e92816f75b0f5",
+          "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+          "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+          "reference": "source-derived handwritten settled model; original cash_out not executed",
+          "sources_sha256": {
+            "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+            "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+            "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+            "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+            "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_455 -v",
+          "fixture_id": "already_correct_resources"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "cash_after": 10,
+            "cash_before": 8,
+            "delta": 2,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 10,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 10
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 10,
+          "current_round": {
+            "discards_left": 3,
+            "discards_used": 0,
+            "hands_left": 4,
+            "hands_played": 2,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 10
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "cash_after": 6,
+            "cash_before": 2,
+            "delta": 4,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 6,
+            "discards_left": 4,
+            "event": "shop_population_input",
+            "hands_left": 6,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 6
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 6,
+          "current_round": {
+            "discards_left": 4,
+            "discards_used": 2,
+            "hands_left": 6,
+            "hands_played": 4,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 6
+          },
+          "round_bonus": {
+            "discards": 1,
+            "next_hands": 2
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "shop_entry_bonus_composition",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "cash_after": 6,
+            "cash_before": 2,
+            "delta": 4,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 6,
+            "discards_left": 4,
+            "event": "shop_population_input",
+            "hands_left": 6,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 6
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development455-source-fidelity-v4",
+          "fixture_sha256": "19d4f9d01a276ac975e1d912121b21143139c456c6fe27aae9f9d2867f984e27",
+          "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+          "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+          "reference": "source-derived handwritten settled model; original cash_out not executed",
+          "sources_sha256": {
+            "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+            "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+            "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+            "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+            "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_455 -v",
+          "fixture_id": "shop_entry_bonus_composition"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "cash_after": 6,
+            "cash_before": 2,
+            "delta": 4,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 6,
+            "discards_left": 4,
+            "event": "shop_population_input",
+            "hands_left": 6,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 6
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 6,
+          "current_round": {
+            "discards_left": 4,
+            "discards_used": 2,
+            "hands_left": 6,
+            "hands_played": 4,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 6
+          },
+          "round_bonus": {
+            "discards": 1,
+            "next_hands": 2
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "delta": 0,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 0,
+            "discards_left": 0,
+            "event": "shop_population_input",
+            "hands_left": 1,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 0
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 0,
+          "current_round": {
+            "discards_left": 0,
+            "discards_used": 0,
+            "hands_left": 1,
+            "hands_played": 1,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 0
+          },
+          "round_bonus": {
+            "discards": -1,
+            "next_hands": -2
+          },
+          "round_resets": {
+            "discards": 0,
+            "hands": 0
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "shop_entry_lower_bounds",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "delta": 0,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 0,
+            "discards_left": 0,
+            "event": "shop_population_input",
+            "hands_left": 1,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 0
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development455-source-fidelity-v4",
+          "fixture_sha256": "a0300266d583ed54c7a4c84c9c58db584c6f57be8a5e1d6032142193a4e20fe3",
+          "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+          "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+          "reference": "source-derived handwritten settled model; original cash_out not executed",
+          "sources_sha256": {
+            "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+            "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+            "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+            "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+            "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_455 -v",
+          "fixture_id": "shop_entry_lower_bounds"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "cash_after": 0,
+            "cash_before": 0,
+            "delta": 0,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 0,
+            "discards_left": 0,
+            "event": "shop_population_input",
+            "hands_left": 1,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": 0
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 0,
+          "current_round": {
+            "discards_left": 0,
+            "discards_used": 0,
+            "hands_left": 1,
+            "hands_played": 1,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": 0
+          },
+          "round_bonus": {
+            "discards": -1,
+            "next_hands": -2
+          },
+          "round_resets": {
+            "discards": 0,
+            "hands": 0
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "cash_after": 12,
+            "cash_before": 12,
+            "delta": 0,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 12,
+            "discards_left": 2,
+            "event": "shop_population_input",
+            "hands_left": 5,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "carry_marker": "retain",
+              "dollars": 12
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 12,
+          "current_round": {
+            "discards_left": 2,
+            "discards_used": 1,
+            "hands_left": 5,
+            "hands_played": 2,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "carry_marker": "retain",
+            "dollars": 12
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 2,
+            "hands": 5
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "heldout_zero_payment_with_carry",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "cash_after": 12,
+            "cash_before": 12,
+            "delta": 0,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 12,
+            "discards_left": 2,
+            "event": "shop_population_input",
+            "hands_left": 5,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "carry_marker": "retain",
+              "dollars": 12
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development455-source-fidelity-v4",
+          "fixture_sha256": "34cab711a82135e2bd7ef782d2add7eb60853aef1a43dfcb16040415b8e5ed82",
+          "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+          "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+          "reference": "source-derived handwritten settled model; original cash_out not executed",
+          "sources_sha256": {
+            "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+            "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+            "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+            "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+            "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_455 -v",
+          "fixture_id": "heldout_zero_payment_with_carry"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "cash_after": 12,
+            "cash_before": 12,
+            "delta": 0,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": 12,
+            "discards_left": 2,
+            "event": "shop_population_input",
+            "hands_left": 5,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "carry_marker": "retain",
+              "dollars": 12
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": 12,
+          "current_round": {
+            "discards_left": 2,
+            "discards_used": 1,
+            "hands_left": 5,
+            "hands_played": 2,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "carry_marker": "retain",
+            "dollars": 12
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 2,
+            "hands": 5
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      }
+    },
+    {
+      "actual": {
+        "events": [
+          {
+            "cash_after": -1,
+            "cash_before": 2,
+            "delta": -3,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": -1,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": -1
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": -1,
+          "current_round": {
+            "discards_left": 3,
+            "discards_used": 2,
+            "hands_left": 4,
+            "hands_played": 3,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": -1
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      },
+      "comparison": {
+        "agreement": true,
+        "case_id": "negative_payment_control",
+        "classification": "manufactured",
+        "common_event_prefix": [
+          {
+            "cash_after": -1,
+            "cash_before": 2,
+            "delta": -3,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": -1,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": -1
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "first_difference": null,
+        "manifest": {
+          "candidate_patch": "development455-source-fidelity-v4",
+          "fixture_sha256": "ca7f24a64be7b11e2e89de6948cb532f5d8a2f14411916e04c5fe194277fda99",
+          "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+          "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+          "reference": "source-derived handwritten settled model; original cash_out not executed",
+          "sources_sha256": {
+            "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+            "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+            "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+            "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+            "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+            "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+            "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+            "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+            "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+            "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+          }
+        },
+        "minimization_status": "not_minimized",
+        "reproduction": {
+          "command": "python -m unittest tools.advisor_learning.test_lifecycle_455 -v",
+          "fixture_id": "negative_payment_control"
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "cash_after": -1,
+            "cash_before": 2,
+            "delta": -3,
+            "event": "payment_settled",
+            "phase": "cash_out"
+          },
+          {
+            "cash": -1,
+            "discards_left": 3,
+            "event": "shop_population_input",
+            "hands_left": 4,
+            "jokers_purchased": 0,
+            "phase": "shop_entry",
+            "previous_round": {
+              "dollars": -1
+            },
+            "shop_d6ed_present": false,
+            "shop_free_present": false,
+            "shop_phase": "shop"
+          }
+        ],
+        "state": {
+          "cash": -1,
+          "current_round": {
+            "discards_left": 3,
+            "discards_used": 2,
+            "hands_left": 4,
+            "hands_played": 3,
+            "jokers_purchased": 0
+          },
+          "phase": "shop",
+          "previous_round": {
+            "dollars": -1
+          },
+          "round_bonus": {
+            "discards": 0,
+            "next_hands": 0
+          },
+          "round_resets": {
+            "discards": 3,
+            "hands": 4
+          },
+          "shop_boosters": [],
+          "shop_cards": [],
+          "shop_d6ed_present": false,
+          "shop_free_present": false,
+          "shop_vouchers": []
+        }
+      }
+    }
+  ],
+  "execution": {
+    "Balatro_process": false,
+    "episode": false,
+    "original_cash_out_callback": false,
+    "save_or_profile_read": false,
+    "training": false
+  },
+  "fixture_set_sha256": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+  "negative_order_control": {
+    "agreement": false,
+    "case_id": "minimal_stale_resources_wrong_order",
+    "classification": "manufactured_negative_control",
+    "common_event_prefix": [],
+    "first_difference": {
+      "actual": 8,
+      "expected": "<missing>",
+      "field": "events[0].cash"
+    },
+    "manifest": {
+      "candidate_patch": "development455-source-fidelity-v4",
+      "fixture_sha256": "43cf648d578960c0810933b10cbfacdba72e3f951fe8639c8e7ff63f5b8d8147",
+      "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+      "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+      "reference": "source-derived handwritten settled model; original cash_out not executed",
+      "sources_sha256": {
+        "candidate_overlay_455": "bcb944fd196bb302b4676be661c4a6a66994d64554d4092252a33d6802177022",
+        "comparator": "5558f718f8f98862de6274fb049a6e54d572edb376fcbdbe75046e15a9fd3cd9",
+        "fixture_set": "12e3855cd9bdfd7e354b867db2dde864f7645d7dddb66ab185dfdd4cdadd4239",
+        "overlay_integration": "3f16ff73198bee8c93a5d552f7547c609bee8bae38958ff3428ad8724c824469",
+        "pinned_economy": "f4e2491fc1baa999991700e0353f6df3baa3f9c49c5f1b0bf6713c5d3125ed73",
+        "pinned_game": "05ba662b03be86b7e879d9ef001844522497afe9653029e4da5251971bbb009c",
+        "pinned_shop": "ce45ba3936151f8098ea2204be0daba781176d4d24d3a071c71c381b37bf5d0f",
+        "receipt_writer": "fd3b370905c7e9f1d519350a0c0aa72f32487182f8c48acd4aad1c6b8f7e277f",
+        "reference_model": "5815512ed67e1e4bba0c4721239b81949231f625f58f603c7bbf31f552424d98",
+        "test_harness": "5c73ce98b8410d4e4cd985f79b3f319b025880aa68972a129f5e8d4005253eba"
+      }
+    },
+    "minimization_status": "not_minimized",
+    "reproduction": {
+      "fixture_id": "minimal_stale_resources",
+      "mutation": "swap first two observations"
+    }
+  },
+  "original_archive_sha256": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47",
+  "original_button_callbacks_sha256": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101",
+  "schema": "cashout_shop_bookkeeping_v1",
+  "status": "manufactured_tested_only"
+}

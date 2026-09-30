@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "read_only_collector_runtime_journal_review",
+  "timestamp_utc": "2026-09-15T16:01:08.710591+00:00",
+  "status": "no_blocking_issue_found",
+  "reviewed": [
+    {
+      "path": "Brainstorm/Advisor/performance.lua",
+      "sha256": "660a004a34fd405759298fc2bfa49a9310a99d962ff24551c4e9ee1fcc3573f4"
+    },
+    {
+      "path": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "e2fd46c81287deb6822e1ce1c32caacb3af2e40bd6a9c51301a380af378fbedc"
+    },
+    {
+      "path": "Brainstorm/Advisor/player_journal.lua",
+      "sha256": "fbf8871d82fe93e659beaf4a6d1b2cc5feef3122516d1cee34ed22dfc1c4e329"
+    }
+  ],
+  "frozen_baselines": [
+    {
+      "path": "tools/advisor_eval/runs/idle323_installed/policy/Brainstorm/Advisor/runtime.lua",
+      "sha256": "ef167d8894c26e3b5d0f7f70ce4f4a2fad402a1753363a5bd3994bb6b631fe15"
+    },
+    {
+      "path": "tools/advisor_eval/runs/idle323_installed/policy/Brainstorm/Advisor/player_journal.lua",
+      "sha256": "38b081ea58c53f9dba98046a64ddb9601e62f9d414b35851172684ff8d379fe9"
+    }
+  ],
+  "note": {
+    "path": "tools/advisor_eval/development324/frame_hooks/COLLECTOR_REVIEW.md",
+    "sha256": "3d5e11701a250d59a3ce9924399f449004fd28a1980409c14ab1bf08e9348efc"
+  },
+  "validation": {
+    "path": "tools/advisor_eval/development324/frame_hooks/collector_report.json",
+    "sha256": "be92495845553f875af2a3e03d0ede584dede3f45ca9e4adc2ab1666fa1eebea"
+  },
+  "runtime_changed_by_reviewer": false,
+  "player_files_read": false,
+  "source_execution": false,
+  "live_measurement": false,
+  "new_experiments": 0
+}

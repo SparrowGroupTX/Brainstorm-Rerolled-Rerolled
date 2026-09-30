@@ -1,0 +1,49 @@
+{
+  "job": "D-old-599-baseline",
+  "mode": "decision",
+  "case": "old-599",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 2.1560000000172295,
+  "log_sha256": "138d52ada859ecd7c1ed8ea9c4ffdc6603a0fdeea7d9c04264b90cd846855699",
+  "status": "complete",
+  "result": {
+    "case": "old-599",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          3,
+          4,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 98461,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 1040,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

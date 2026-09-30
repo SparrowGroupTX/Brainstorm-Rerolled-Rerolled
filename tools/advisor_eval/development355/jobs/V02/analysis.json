@@ -1,0 +1,701 @@
+{
+  "schema": "learning_evaluation_artifact_audit_v1",
+  "simulator_qualified": false,
+  "real_game_win_claim": false,
+  "actual_player_awards": 0,
+  "scope": "Recorded simulator attempts under the same initial collection ledger; not cumulative player campaign awards.",
+  "episode_records": 64,
+  "action_records": 3268,
+  "unassigned_action_records": 0,
+  "starter_catalog_ids": {
+    "j_perkeo": 170,
+    "j_yorick": 223
+  },
+  "missing_joker_bound": 91,
+  "policies": {
+    "heuristic": {
+      "attempts": 32,
+      "reported_outcome_counts": {
+        "loss": 23,
+        "unsupported": 9
+      },
+      "verified_terminal_attempts": 23,
+      "verified_terminal_wins": 0,
+      "unresolved_attempts": 9,
+      "unresolved_records": [
+        {
+          "episode_index": 10,
+          "seed": "D6D34C83",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 20,
+          "seed": "D8234A67",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 5
+        },
+        {
+          "episode_index": 26,
+          "seed": "D73D2599",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 28,
+          "seed": "DD35C18C",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 32,
+          "seed": "D207B132",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 36,
+          "seed": "D265ABD7",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 5
+        },
+        {
+          "episode_index": 40,
+          "seed": "D3448646",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 44,
+          "seed": "D8022E1E",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 48,
+          "seed": "D3EE131D",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 5
+        }
+      ],
+      "audit_issue_counts": {
+        "unresolved_outcome": 9
+      },
+      "observed_terminal_new_gold_sum": 0,
+      "distinct_new_gold_keys_across_verified_wins": [],
+      "mean_new_gold_full_cohort": null,
+      "sample_new_gold_mean_bounds": [
+        0.0,
+        25.59375
+      ],
+      "sample_win_fraction_bounds": [
+        0.0,
+        0.28125
+      ],
+      "bounds_interpretation": "Finite-sample partial identification from unresolved attempts; NOT a confidence interval or retail win probability.",
+      "per_unknown_attempt_award_upper_bound": 91,
+      "observed_progress_records": 32,
+      "missing_progress_records": 0,
+      "mean_observed_blinds_cleared_prefix": 3.15625,
+      "mean_blinds_cleared_full_cohort": null,
+      "behavior": {
+        "action_records": 1091,
+        "episodes_with_invalid_action_steps": 0,
+        "episodes_with_observed_first_two_actions": 32,
+        "episodes_first_two_actions_sell_both_starters": 0,
+        "episodes_selling_any_starter": 0,
+        "episodes_selling_both_starters": 0,
+        "reorder_like_actions": 0,
+        "consecutive_reorder_streaks_at_least_two": 0,
+        "maximum_consecutive_reorder_actions": 0,
+        "starter_sale_actions": {}
+      }
+    },
+    "learned": {
+      "attempts": 32,
+      "reported_outcome_counts": {
+        "loss": 28,
+        "unsupported": 2,
+        "censored": 2
+      },
+      "verified_terminal_attempts": 28,
+      "verified_terminal_wins": 0,
+      "unresolved_attempts": 4,
+      "unresolved_records": [
+        {
+          "episode_index": 41,
+          "seed": "D3448646",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 4
+        },
+        {
+          "episode_index": 49,
+          "seed": "D3EE131D",
+          "reported_outcome": "unsupported",
+          "reason": "fidelity_perishable_expiry_order",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 5
+        },
+        {
+          "episode_index": 11,
+          "seed": "D6D34C83",
+          "reported_outcome": "censored",
+          "reason": "step_limit",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 3
+        },
+        {
+          "episode_index": 59,
+          "seed": "D00202AA",
+          "reported_outcome": "censored",
+          "reason": "step_limit",
+          "audit_reason": "unresolved_outcome",
+          "observed_blinds_cleared_prefix": 2
+        }
+      ],
+      "audit_issue_counts": {
+        "unresolved_outcome": 4
+      },
+      "observed_terminal_new_gold_sum": 0,
+      "distinct_new_gold_keys_across_verified_wins": [],
+      "mean_new_gold_full_cohort": null,
+      "sample_new_gold_mean_bounds": [
+        0.0,
+        11.375
+      ],
+      "sample_win_fraction_bounds": [
+        0.0,
+        0.125
+      ],
+      "bounds_interpretation": "Finite-sample partial identification from unresolved attempts; NOT a confidence interval or retail win probability.",
+      "per_unknown_attempt_award_upper_bound": 91,
+      "observed_progress_records": 32,
+      "missing_progress_records": 0,
+      "mean_observed_blinds_cleared_prefix": 1.5,
+      "mean_blinds_cleared_full_cohort": null,
+      "behavior": {
+        "action_records": 2177,
+        "episodes_with_invalid_action_steps": 0,
+        "episodes_with_observed_first_two_actions": 32,
+        "episodes_first_two_actions_sell_both_starters": 32,
+        "episodes_selling_any_starter": 32,
+        "episodes_selling_both_starters": 32,
+        "reorder_like_actions": 1564,
+        "consecutive_reorder_streaks_at_least_two": 5,
+        "maximum_consecutive_reorder_actions": 778,
+        "starter_sale_actions": {
+          "j_yorick": 32,
+          "j_perkeo": 32
+        }
+      }
+    }
+  },
+  "pairing": {
+    "reference_policy": "heuristic",
+    "candidate_policy": "learned",
+    "valid_pair_count": 32,
+    "all_seeds_validly_paired": true,
+    "issues": [],
+    "progress_counts": {
+      "all_observed_pairs": {
+        "lower": 21,
+        "equal": 11
+      },
+      "fully_terminal_pairs": {
+        "lower": 13,
+        "equal": 9
+      },
+      "unresolved_pairs": {
+        "lower": 8,
+        "equal": 2
+      }
+    },
+    "pairs": [
+      {
+        "seed": "D00202AA",
+        "reference_episode_index": 58,
+        "candidate_episode_index": 59,
+        "reference_outcome": "loss",
+        "candidate_outcome": "censored",
+        "reference_unresolved": false,
+        "candidate_unresolved": true,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 2,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D1A641BC",
+        "reference_episode_index": 56,
+        "candidate_episode_index": 57,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 3,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "D207B132",
+        "reference_episode_index": 32,
+        "candidate_episode_index": 33,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "loss",
+        "reference_unresolved": true,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D265ABD7",
+        "reference_episode_index": 36,
+        "candidate_episode_index": 37,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "loss",
+        "reference_unresolved": true,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 5,
+        "candidate_observed_blinds_cleared_prefix": 2,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D298CEE5",
+        "reference_episode_index": 16,
+        "candidate_episode_index": 17,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 5,
+        "candidate_observed_blinds_cleared_prefix": 5,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "D2F208C9",
+        "reference_episode_index": 8,
+        "candidate_episode_index": 9,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 0,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "D3448646",
+        "reference_episode_index": 40,
+        "candidate_episode_index": 41,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "unsupported",
+        "reference_unresolved": true,
+        "candidate_unresolved": true,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 4,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D3EE131D",
+        "reference_episode_index": 48,
+        "candidate_episode_index": 49,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "unsupported",
+        "reference_unresolved": true,
+        "candidate_unresolved": true,
+        "reference_observed_blinds_cleared_prefix": 5,
+        "candidate_observed_blinds_cleared_prefix": 5,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D3F8876A",
+        "reference_episode_index": 34,
+        "candidate_episode_index": 35,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "D4D680EC",
+        "reference_episode_index": 22,
+        "candidate_episode_index": 23,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 0,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "D631589F",
+        "reference_episode_index": 24,
+        "candidate_episode_index": 25,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 2,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "D6D34C83",
+        "reference_episode_index": 10,
+        "candidate_episode_index": 11,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "censored",
+        "reference_unresolved": true,
+        "candidate_unresolved": true,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 3,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D73D2599",
+        "reference_episode_index": 26,
+        "candidate_episode_index": 27,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "loss",
+        "reference_unresolved": true,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D8022E1E",
+        "reference_episode_index": 44,
+        "candidate_episode_index": 45,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "loss",
+        "reference_unresolved": true,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 3,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D8234A67",
+        "reference_episode_index": 20,
+        "candidate_episode_index": 21,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "loss",
+        "reference_unresolved": true,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 5,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "D947EE5B",
+        "reference_episode_index": 30,
+        "candidate_episode_index": 31,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DA092CA4",
+        "reference_episode_index": 62,
+        "candidate_episode_index": 63,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 7,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DA4F53EB",
+        "reference_episode_index": 38,
+        "candidate_episode_index": 39,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 2,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DA6F943C",
+        "reference_episode_index": 0,
+        "candidate_episode_index": 1,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DB2DE9E7",
+        "reference_episode_index": 54,
+        "candidate_episode_index": 55,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 7,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DBCFA5E4",
+        "reference_episode_index": 2,
+        "candidate_episode_index": 3,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 6,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DC755A5F",
+        "reference_episode_index": 52,
+        "candidate_episode_index": 53,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 3,
+        "candidate_observed_blinds_cleared_prefix": 2,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DC9A1EA2",
+        "reference_episode_index": 42,
+        "candidate_episode_index": 43,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 2,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DD35C18C",
+        "reference_episode_index": 28,
+        "candidate_episode_index": 29,
+        "reference_outcome": "unsupported",
+        "candidate_outcome": "loss",
+        "reference_unresolved": true,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 3,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "observed_prefix_only_not_final_progress",
+        "candidate_new_gold_difference": null
+      },
+      {
+        "seed": "DD90F979",
+        "reference_episode_index": 50,
+        "candidate_episode_index": 51,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DD92B725",
+        "reference_episode_index": 14,
+        "candidate_episode_index": 15,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 2,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DDABFE85",
+        "reference_episode_index": 4,
+        "candidate_episode_index": 5,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 0,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DDDC59BC",
+        "reference_episode_index": 6,
+        "candidate_episode_index": 7,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DF3FC599",
+        "reference_episode_index": 18,
+        "candidate_episode_index": 19,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 4,
+        "candidate_observed_blinds_cleared_prefix": 2,
+        "candidate_progress_comparison": "lower",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DF7135BC",
+        "reference_episode_index": 12,
+        "candidate_episode_index": 13,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DFBF19E9",
+        "reference_episode_index": 60,
+        "candidate_episode_index": 61,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 1,
+        "candidate_observed_blinds_cleared_prefix": 1,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      },
+      {
+        "seed": "DFC3EEBB",
+        "reference_episode_index": 46,
+        "candidate_episode_index": 47,
+        "reference_outcome": "loss",
+        "candidate_outcome": "loss",
+        "reference_unresolved": false,
+        "candidate_unresolved": false,
+        "reference_observed_blinds_cleared_prefix": 5,
+        "candidate_observed_blinds_cleared_prefix": 5,
+        "candidate_progress_comparison": "equal",
+        "progress_scope": "final_observed_progress",
+        "candidate_new_gold_difference": 0
+      }
+    ]
+  },
+  "behavior_limit": "Reorder counts/streaks are observed action sequences. Exact repeated-state loops are not proved without public-state fingerprints.",
+  "job_directory": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development355\\jobs\\V02",
+  "completed_receipt": {
+    "job": "V02",
+    "status": "completed",
+    "returncode": 0,
+    "finished_utc": "2026-09-16T16:07:49.558496+00:00"
+  },
+  "artifact_sha256": {
+    "episodes": "e78016d805346c349423e61d82af1eff4804fdfb7dc34d5c365228a78126b6ee",
+    "actions": "12301b0af672eb08288c848d8a767c87078c3c49fc3f3a831933db964f3e9cd1",
+    "goal": "7d66a6eb7f03edff83c151958dd4b9e9375cb460b724d7baf1088fe9d21a6db8",
+    "catalog": "6de51cf3751ad957baf50fbe2ac632644b4f0178e82674e7f2e818e1befb5d71",
+    "receipt": "652f9b87e12da6621408702e3c1e7a84928025ead7da803b0b516b42a54684b4",
+    "summary": "7a1912f77081d0820eb1ecd04e960295b85caa0e7e5c8af8fcf5eae34a369358",
+    "analyzer": "1429cc19babc1cb943196bd8bd457b54378c68e5d160813ffe6b905831aebd56"
+  }
+}

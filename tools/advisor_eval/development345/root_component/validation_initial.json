@@ -1,0 +1,9 @@
+{
+  "scope": "Manufactured fixture harness failure; no experiment worker",
+  "command": ["python", "tests/run_lua_tests.py", "tests/advisor_gold_retention.lua", "tests/advisor_gold_cartomancer.lua", "tests/advisor_gold_journal.lua", "tests/advisor_gold_acquisition_budget.lua", "tests/advisor_gold_acquisition_runtime.lua"],
+  "exit_code": 1,
+  "passed": 4,
+  "total": 5,
+  "failure": "advisor_gold_journal ordinary-result case cleared three diagnostic groups but not the newly added retention group; expected nil but received a table",
+  "correction": "Clear the manufactured retention diagnostic in the no-diagnostics case; runtime behavior was correct"
+}

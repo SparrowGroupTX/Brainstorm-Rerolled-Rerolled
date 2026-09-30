@@ -1,0 +1,48 @@
+{
+  "job": "D-old-2567-baseline",
+  "mode": "decision",
+  "case": "old-2567",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 2.2179999999934807,
+  "log_sha256": "cb64fe6cde6e6f1be6b0d205c7414af7b74c110ee0609b25d092269778197fac",
+  "status": "complete",
+  "result": {
+    "case": "old-2567",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          2,
+          5,
+          7,
+          8
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 135610,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 134589,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

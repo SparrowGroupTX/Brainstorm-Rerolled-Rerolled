@@ -1,0 +1,1 @@
+Win-first Yorick/Perkeo survival via public supported risk comparisons. Preserve all workspace/logs/settings/saves/DLLs, score caps and product limits. No new captured/source/search/simulation/training authority.

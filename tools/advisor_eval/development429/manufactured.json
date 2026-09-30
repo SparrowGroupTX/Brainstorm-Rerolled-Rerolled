@@ -1,0 +1,7462 @@
+[
+  {
+    "mode": "decision",
+    "case": "manufactured",
+    "policy": "baseline",
+    "snapshot": {
+      "phase": "hand",
+      "teacher_profile": "perkeo_yorick_win_v1",
+      "ante": 5,
+      "win_ante": 8,
+      "hand_size": 8,
+      "hand_limit": 5,
+      "hands_left": 3,
+      "hands_played": 0,
+      "discards_left": 3,
+      "discards_used": 0,
+      "chips": 0,
+      "dollars": 30,
+      "current_round": {},
+      "modifiers": {},
+      "probabilities": {
+        "normal": 1
+      },
+      "consumable_limit": 2,
+      "joker_limit": 5,
+      "blind": {
+        "key": "bl_big",
+        "name": "Big Blind",
+        "chips": 900
+      },
+      "hand": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "deck": [
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "consumeables": [],
+      "hands": {
+        "Pair": {
+          "chips": 30,
+          "mult": 5,
+          "level": 3,
+          "l_chips": 15,
+          "l_mult": 1,
+          "played": 9
+        },
+        "High Card": {
+          "chips": 5,
+          "mult": 1,
+          "level": 1,
+          "l_chips": 10,
+          "l_mult": 1,
+          "played": 0
+        }
+      },
+      "jokers": [
+        {
+          "key": "j_yorick",
+          "id": "j_yorick",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Yorick",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 4,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0,
+            "yorick_discards": 23,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          }
+        },
+        {
+          "key": "j_perkeo",
+          "id": "j_perkeo",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Perkeo",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 1,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0
+          }
+        }
+      ],
+      "playing_cards": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ]
+    },
+    "world": 1,
+    "world_seed": 429,
+    "world_order": [
+      "made:d0",
+      "made:d1",
+      "made:d2",
+      "made:d3",
+      "made:d4",
+      "made:d5",
+      "made:d6",
+      "made:d7",
+      "made:d8",
+      "made:d9",
+      "made:d10",
+      "made:d11",
+      "made:d12",
+      "made:d13",
+      "made:d14",
+      "made:d15",
+      "made:d16",
+      "made:d17",
+      "made:d18",
+      "made:d19",
+      "made:d20",
+      "made:d21",
+      "made:d22",
+      "made:d23"
+    ],
+    "sorting": "rank",
+    "action_cap": 8
+  },
+  {
+    "mode": "decision",
+    "case": "manufactured",
+    "policy": "candidate",
+    "snapshot": {
+      "phase": "hand",
+      "teacher_profile": "perkeo_yorick_win_v1",
+      "ante": 5,
+      "win_ante": 8,
+      "hand_size": 8,
+      "hand_limit": 5,
+      "hands_left": 3,
+      "hands_played": 0,
+      "discards_left": 3,
+      "discards_used": 0,
+      "chips": 0,
+      "dollars": 30,
+      "current_round": {},
+      "modifiers": {},
+      "probabilities": {
+        "normal": 1
+      },
+      "consumable_limit": 2,
+      "joker_limit": 5,
+      "blind": {
+        "key": "bl_big",
+        "name": "Big Blind",
+        "chips": 900
+      },
+      "hand": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "deck": [
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "consumeables": [],
+      "hands": {
+        "Pair": {
+          "chips": 30,
+          "mult": 5,
+          "level": 3,
+          "l_chips": 15,
+          "l_mult": 1,
+          "played": 9
+        },
+        "High Card": {
+          "chips": 5,
+          "mult": 1,
+          "level": 1,
+          "l_chips": 10,
+          "l_mult": 1,
+          "played": 0
+        }
+      },
+      "jokers": [
+        {
+          "key": "j_yorick",
+          "id": "j_yorick",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Yorick",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 4,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0,
+            "yorick_discards": 23,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          }
+        },
+        {
+          "key": "j_perkeo",
+          "id": "j_perkeo",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Perkeo",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 1,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0
+          }
+        }
+      ],
+      "playing_cards": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ]
+    },
+    "world": 1,
+    "world_seed": 429,
+    "world_order": [
+      "made:d0",
+      "made:d1",
+      "made:d2",
+      "made:d3",
+      "made:d4",
+      "made:d5",
+      "made:d6",
+      "made:d7",
+      "made:d8",
+      "made:d9",
+      "made:d10",
+      "made:d11",
+      "made:d12",
+      "made:d13",
+      "made:d14",
+      "made:d15",
+      "made:d16",
+      "made:d17",
+      "made:d18",
+      "made:d19",
+      "made:d20",
+      "made:d21",
+      "made:d22",
+      "made:d23"
+    ],
+    "sorting": "rank",
+    "action_cap": 8
+  },
+  {
+    "mode": "continuation",
+    "case": "manufactured",
+    "policy": "baseline",
+    "snapshot": {
+      "phase": "hand",
+      "teacher_profile": "perkeo_yorick_win_v1",
+      "ante": 5,
+      "win_ante": 8,
+      "hand_size": 8,
+      "hand_limit": 5,
+      "hands_left": 3,
+      "hands_played": 0,
+      "discards_left": 3,
+      "discards_used": 0,
+      "chips": 0,
+      "dollars": 30,
+      "current_round": {},
+      "modifiers": {},
+      "probabilities": {
+        "normal": 1
+      },
+      "consumable_limit": 2,
+      "joker_limit": 5,
+      "blind": {
+        "key": "bl_big",
+        "name": "Big Blind",
+        "chips": 900
+      },
+      "hand": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "deck": [
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "consumeables": [],
+      "hands": {
+        "Pair": {
+          "chips": 30,
+          "mult": 5,
+          "level": 3,
+          "l_chips": 15,
+          "l_mult": 1,
+          "played": 9
+        },
+        "High Card": {
+          "chips": 5,
+          "mult": 1,
+          "level": 1,
+          "l_chips": 10,
+          "l_mult": 1,
+          "played": 0
+        }
+      },
+      "jokers": [
+        {
+          "key": "j_yorick",
+          "id": "j_yorick",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Yorick",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 4,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0,
+            "yorick_discards": 23,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          }
+        },
+        {
+          "key": "j_perkeo",
+          "id": "j_perkeo",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Perkeo",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 1,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0
+          }
+        }
+      ],
+      "playing_cards": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ]
+    },
+    "world": 1,
+    "world_seed": 429,
+    "world_order": [
+      "made:d0",
+      "made:d1",
+      "made:d2",
+      "made:d3",
+      "made:d4",
+      "made:d5",
+      "made:d6",
+      "made:d7",
+      "made:d8",
+      "made:d9",
+      "made:d10",
+      "made:d11",
+      "made:d12",
+      "made:d13",
+      "made:d14",
+      "made:d15",
+      "made:d16",
+      "made:d17",
+      "made:d18",
+      "made:d19",
+      "made:d20",
+      "made:d21",
+      "made:d22",
+      "made:d23"
+    ],
+    "sorting": "rank",
+    "action_cap": 8
+  },
+  {
+    "mode": "continuation",
+    "case": "manufactured",
+    "policy": "candidate",
+    "snapshot": {
+      "phase": "hand",
+      "teacher_profile": "perkeo_yorick_win_v1",
+      "ante": 5,
+      "win_ante": 8,
+      "hand_size": 8,
+      "hand_limit": 5,
+      "hands_left": 3,
+      "hands_played": 0,
+      "discards_left": 3,
+      "discards_used": 0,
+      "chips": 0,
+      "dollars": 30,
+      "current_round": {},
+      "modifiers": {},
+      "probabilities": {
+        "normal": 1
+      },
+      "consumable_limit": 2,
+      "joker_limit": 5,
+      "blind": {
+        "key": "bl_big",
+        "name": "Big Blind",
+        "chips": 900
+      },
+      "hand": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "deck": [
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ],
+      "consumeables": [],
+      "hands": {
+        "Pair": {
+          "chips": 30,
+          "mult": 5,
+          "level": 3,
+          "l_chips": 15,
+          "l_mult": 1,
+          "played": 9
+        },
+        "High Card": {
+          "chips": 5,
+          "mult": 1,
+          "level": 1,
+          "l_chips": 10,
+          "l_mult": 1,
+          "played": 0
+        }
+      },
+      "jokers": [
+        {
+          "key": "j_yorick",
+          "id": "j_yorick",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Yorick",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 4,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0,
+            "yorick_discards": 23,
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            }
+          }
+        },
+        {
+          "key": "j_perkeo",
+          "id": "j_perkeo",
+          "blueprint_compat": true,
+          "ability": {
+            "name": "Perkeo",
+            "set": "Joker",
+            "effect": "",
+            "mult": 0,
+            "x_mult": 1,
+            "bonus": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "h_size": 0,
+            "d_size": 0
+          }
+        }
+      ],
+      "playing_cards": [
+        {
+          "id": "made:h0",
+          "rank": 13,
+          "suit": "Clubs",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_glass",
+          "name": "Glass Card",
+          "enhancement": "m_glass",
+          "ability": {
+            "name": "Glass Card",
+            "set": "Enhanced",
+            "effect": "Glass Card",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 2,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0,
+            "extra": 4
+          }
+        },
+        {
+          "id": "made:h1",
+          "rank": 13,
+          "suit": "Hearts",
+          "nominal": 10,
+          "base": {
+            "id": 13,
+            "nominal": 10
+          },
+          "key": "m_mult",
+          "name": "Mult",
+          "enhancement": "m_mult",
+          "ability": {
+            "name": "Mult",
+            "set": "Enhanced",
+            "effect": "Mult Card",
+            "bonus": 0,
+            "mult": 4,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h2",
+          "rank": 2,
+          "suit": "Spades",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h3",
+          "rank": 4,
+          "suit": "Diamonds",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h4",
+          "rank": 6,
+          "suit": "Clubs",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h5",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h6",
+          "rank": 10,
+          "suit": "Spades",
+          "nominal": 10,
+          "base": {
+            "id": 10,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:h7",
+          "rank": 12,
+          "suit": "Diamonds",
+          "nominal": 10,
+          "base": {
+            "id": 12,
+            "nominal": 10
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d0",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d1",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d2",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d3",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d4",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d5",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d6",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d7",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d8",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d9",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d10",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d11",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d12",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d13",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d14",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d15",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d16",
+          "rank": 2,
+          "suit": "Hearts",
+          "nominal": 2,
+          "base": {
+            "id": 2,
+            "nominal": 2
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d17",
+          "rank": 3,
+          "suit": "Hearts",
+          "nominal": 3,
+          "base": {
+            "id": 3,
+            "nominal": 3
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d18",
+          "rank": 4,
+          "suit": "Hearts",
+          "nominal": 4,
+          "base": {
+            "id": 4,
+            "nominal": 4
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d19",
+          "rank": 5,
+          "suit": "Hearts",
+          "nominal": 5,
+          "base": {
+            "id": 5,
+            "nominal": 5
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d20",
+          "rank": 6,
+          "suit": "Hearts",
+          "nominal": 6,
+          "base": {
+            "id": 6,
+            "nominal": 6
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d21",
+          "rank": 7,
+          "suit": "Hearts",
+          "nominal": 7,
+          "base": {
+            "id": 7,
+            "nominal": 7
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d22",
+          "rank": 8,
+          "suit": "Hearts",
+          "nominal": 8,
+          "base": {
+            "id": 8,
+            "nominal": 8
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        },
+        {
+          "id": "made:d23",
+          "rank": 9,
+          "suit": "Hearts",
+          "nominal": 9,
+          "base": {
+            "id": 9,
+            "nominal": 9
+          },
+          "key": "c_base",
+          "name": "Default Base",
+          "enhancement": "c_base",
+          "ability": {
+            "name": "Default Base",
+            "set": "Default",
+            "effect": "Base",
+            "bonus": 0,
+            "mult": 0,
+            "x_mult": 1,
+            "h_mult": 0,
+            "h_x_mult": 0,
+            "h_dollars": 0,
+            "p_dollars": 0,
+            "t_mult": 0,
+            "t_chips": 0
+          }
+        }
+      ]
+    },
+    "world": 1,
+    "world_seed": 429,
+    "world_order": [
+      "made:d0",
+      "made:d1",
+      "made:d2",
+      "made:d3",
+      "made:d4",
+      "made:d5",
+      "made:d6",
+      "made:d7",
+      "made:d8",
+      "made:d9",
+      "made:d10",
+      "made:d11",
+      "made:d12",
+      "made:d13",
+      "made:d14",
+      "made:d15",
+      "made:d16",
+      "made:d17",
+      "made:d18",
+      "made:d19",
+      "made:d20",
+      "made:d21",
+      "made:d22",
+      "made:d23"
+    ],
+    "sorting": "rank",
+    "action_cap": 8
+  }
+]

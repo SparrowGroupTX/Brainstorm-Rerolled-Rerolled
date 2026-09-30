@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "scope": "Independent read-only preserved-source cash_out binding audit; no source/game/ZIP execution or live profile read",
+  "source": {
+    "path": "tools/advisor_eval/runs/chicot_order_source1/source/functions/common_events.lua",
+    "sha256": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc",
+    "lines": [
+      1065,
+      1093
+    ],
+    "qualification": "Hash matches M13 original source member"
+  },
+  "finding": "Original constructor places cash_out_button in a separate UIBox with config.major=G.round_eval; production searches only G.round_eval child tree.",
+  "production": {
+    "path": "Brainstorm/Advisor/execution.lua",
+    "sha256": "dadb0283616217d9547eba505bc72b24855dde85fa79fbf3fb6b220f003543a1",
+    "line": 172
+  },
+  "fixture_gap": {
+    "path": "tests/advisor_execution.lua",
+    "line": 51,
+    "description": "Manufactured fixture places button directly inside round_eval.elements."
+  },
+  "source_adapter_gap": {
+    "path": "tools/advisor_eval/development299/drafts/complete_adapter315/engine_run.lua",
+    "lines": [
+      230,
+      751,
+      753
+    ],
+    "description": "Source adapter detects any cashout UIBox then invokes callback without production binding lookup."
+  },
+  "unqualified": "Original UIBox:init/remove, registry and post-construction ownership fields are not retained in inspected source excerpts; adapter stand-ins are not source proof.",
+  "recommendation": "Qualify owned detached UIBox lookup; share pure readiness gate with dispatch; reject ambiguity/stale or disabled buttons; do not bypass readiness or synthesize callback elements."
+}

@@ -1,0 +1,61 @@
+{
+  "job": "D-current-4008-candidate",
+  "mode": "decision",
+  "case": "current-4008",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 0.8129999999946449,
+  "log_sha256": "3256c5bc286a1e31121c8f550c2fb08de44a7eda253f424679f163f1455251f0",
+  "status": "complete",
+  "result": {
+    "case": "current-4008",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          6,
+          7
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 8,
+        "final_action_kind": "discard",
+        "reason": "supported_retained_clear",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 23,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 325134,
+        "uncertain": false
+      },
+      "yorick_review": {
+        "anchor": {
+          "changed": true,
+          "considered": 7,
+          "qualified": 1,
+          "selected_cards": 5,
+          "selected_score": 325134
+        },
+        "growth": {
+          "bounded_growth": true,
+          "candidates": 3,
+          "max_evaluations": 12
+        },
+        "schema": 1
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "kind": "release328_fresh_loss_validation_limits",
+  "status": "ACTIVE",
+  "fresh_authority": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+    "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+  },
+  "initial_status": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/status_initial.json",
+    "sha256": "70e000b2efb2fae5df72e4eedfa365ac9bd54ddb0730bbd9893e5d6208b5e081"
+  },
+  "historical_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_authority": "CLOSED",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 0,
+    "error": 0,
+    "timeout": 0,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 6
+  },
+  "registered_jobs": 0,
+  "launched_jobs": 0,
+  "reserved_worker_seconds": 0,
+  "actual_worker_seconds": 0,
+  "fresh_limits": {
+    "detached_comparison_jobs": 6,
+    "seconds_per_comparison_job": 30,
+    "complete_attempt_jobs": 6,
+    "seconds_per_complete_attempt": 180,
+    "total_worker_seconds": 1260,
+    "search_jobs": 0,
+    "other_source_component_jobs": 0
+  },
+  "remaining_authority_seconds": 1260,
+  "unused_capacity": "retained_under_existing_authority",
+  "release_scope": "Public-only preserved-log postmortem, repository implementation and manufactured regression; no experiment job.",
+  "score_caps": {
+    "ordinary": 140000,
+    "shop": 50000,
+    "consumable": 25000,
+    "fast_clear": 70
+  },
+  "component_manifest": {
+    "path": "tools/advisor_eval/development328/pillar_component/integration_manifest.json",
+    "sha256": "ba3ae2a179f5ad1dd1f6c62f75e163e7a427f899f69661adaef687b649d7ad0c"
+  },
+  "component_report": {
+    "path": "tools/advisor_eval/development328/pillar_component/report.json",
+    "sha256": "ef640376a00812dc76ec6a074dd3260ff7d393a881422c705b02d219f98fc44f"
+  },
+  "public_trace": {
+    "path": "tools/advisor_eval/development328/public_trace/run3.json",
+    "sha256": "8abd7909d80a2410afafd6b49f34c55aa73e319fe5728ed75de78c186694eaca"
+  },
+  "outcome_limits": "Selected dependent development seeds and manufactured fixtures are not representative calibration or unseen holdouts. No verified complete Jokerless win, numerical player win odds, fifty/seventy-five percent per-challenge target, achievement completion or human superiority is demonstrated. Use only redacted public snapshots and recorded advice/action metadata; old raw internal fingerprint text may contain concealed identities. Preserve all original logs, failures, unsupported/timeouts and censored outcomes. No saves/profiles for evaluation, seed search, game control, native changes, training or automation. Installed activation remains a normal user restart. Existing score, population, inventory, retry and session safeguards remain unchanged.",
+  "unchanged": [
+    "Deterministic complete common-world comparisons",
+    "Whole inventory and capacity",
+    "Population and Glass safeguards",
+    "Perkeo/Observatory/Negative handling",
+    "Current settings and native DLLs",
+    "Persistent manual retry and product session caps",
+    "Original current logs and historical evidence"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "kind": "prospective_complete_adapter310_v1",
+  "status": "prepared_not_registered_not_run",
+  "future_job": "C05",
+  "seed": "S7PXV521",
+  "selection": "S05/C03 dependent synthetic development; not unseen",
+  "target_policy": "exact verified installed310; not frozen in this draft",
+  "gold_objective": "synthetic_fresh_all_missing_v1",
+  "retry_context": "disabled_clean",
+  "proposed_caps": {
+    "seconds": 180,
+    "actions": 500,
+    "uses": 1
+  },
+  "authority": "Parent must separately preregister; this manifest consumes no lease",
+  "adapter_files": [
+    {
+      "file": "benchmark.py",
+      "sha256": "b089d4fe7d3e79201b8ef279aeda9731c5b0aca63e26a885ad9040fa7515faca"
+    },
+    {
+      "file": "development_report.py",
+      "sha256": "77b11ee72f4c26b474f208fa38232e34ca13b5f6c09730d5fbc13438643f3218"
+    },
+    {
+      "file": "engine_contract.lua",
+      "sha256": "49b6e7abcd403d146734d1c58549842cd0026d26bdc3f52920259c7f90e8b4da"
+    },
+    {
+      "file": "engine_probe.lua",
+      "sha256": "ce2e507a767f5aeb928ef42f27f4b0dea8e8b88daf32dfc32ae088deeae2f0cd"
+    },
+    {
+      "file": "engine_probe.py",
+      "sha256": "0d845a1fbb970dee58f02bd2bd16596ca02620ecff70a506d14557353991011e"
+    },
+    {
+      "file": "engine_run.lua",
+      "sha256": "e4b98a61c9671addfc464c45bb2452b115d8f1c7cc3612f9dec880469ea60a01"
+    },
+    {
+      "file": "gold_objective_context.lua",
+      "sha256": "19258ddc347893f638f5f35c672e20337b5cec0c8a3f171c6296ee1dda1d0301"
+    },
+    {
+      "file": "gold_objective_spec.py",
+      "sha256": "1f34401ff20f227c93c98451535c6369d208b250549d21f6c2c646b06241b660"
+    },
+    {
+      "file": "normal_terminal.lua",
+      "sha256": "a1dedbce48d4ea506312f153d1490aac64dd098a8d936ea57f17988ce0bc523a"
+    },
+    {
+      "file": "opening_support.py",
+      "sha256": "0137f401a4d44d99610053aa406d3be8beec99b2b26d6818cf27c306ed21729f"
+    },
+    {
+      "file": "normal_recipe.py",
+      "sha256": "712574e7cc8f8e55829d35acd9ec7fb8151d415e2a40bc48d5022f8c6391eb8d"
+    },
+    {
+      "file": "normal_opening_recipe.json",
+      "sha256": "0ee88998d964ab04f038f7235fbee70c0bf4f74b65f418b62f239dd6d477608c"
+    },
+    {
+      "file": "normal_seed_selection.json",
+      "sha256": "c831a5dcf2d58d6ea07857564ab949ca8a95d87ad79dd4fcb23241c69c8eab09"
+    },
+    {
+      "file": "policy_wiring.lua",
+      "sha256": "1c04ed601dbce4bd0518138eae61b98160974c7bd868261f03b17db07858275e"
+    },
+    {
+      "file": "run_attempt5.py",
+      "sha256": "6238de1304aa4a16df26be3d578929c04478ceee7192d4ac907abb89a236ff96"
+    }
+  ],
+  "tests": [
+    {
+      "file": "test_wiring.lua",
+      "sha256": "8dad10b2c55a8b457ca247a87199756ef42f6cab915037beda8d99f2ce74a694"
+    },
+    {
+      "file": "test_adapter_spec.py",
+      "sha256": "0137fc28afdc2624b558288c1f6c1d856a70bdebf14f2085bee111a43133342b"
+    }
+  ],
+  "validation": {
+    "lua_fixtures": 1,
+    "inert_lua_assertions": 2142,
+    "python_tests": 6,
+    "source_or_policy_execution": false
+  },
+  "prior_inputs": "base_manifest.json",
+  "notes": "INTEGRATION.md"
+}

@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-15T17:36:11.339540+00:00",
+  "release": 326,
+  "summary": "Release 326 installs the user-authorized 1 GiB combined observation-log allowance, readable persistent recording errors, and no periodic disk writes during an idle title screen. Bounded timing metrics remain in memory until activity resumes. The user also explicitly requested deletion of prior observation logs: 53 direct files totaling 134,216,592 bytes were removed from the v1/v2 folders, verified empty at cleanup. Saves, checkpoints and repository evidence were not targets. Historical external log originals are therefore no longer preserved, while repository audit receipts remain. Full candidate and exact-installed validation passed 178 Lua fixtures and 343 Python tests with unchanged frozen policy/test hashes. No log contents were decoded, no game was controlled and no source/captured/search/complete experiment occurred. All historical experiment authority remains CLOSED. Activation and a fresh recorder wait for the next normal restart; user-reported prior restart does not attest loaded version or hashes.",
+  "outcome_summary": "Historical complete-attempt outcomes remain one selected synthetic win (C01, frozen policy300), three losses (C03/C05/C08) and four timeouts (C02/C04/C06/C07), with zero errors, unsupported or separately labeled censored results. C01 won Red Gold final Cerulean Bell 705600/400000 in 172.14000000001397 seconds, with 225 actions, 28 exact plays and 13 preserved ordinary score-cap overruns. C07 retained all 163 shared C06 inputs/actions; C08 lost Pillar 592/600 with all 22 C05 inputs/actions unchanged. C09 was never registered, reserved or run. Policies 321 through 326 have no complete-attempt result. Prior passive logs remain separate: the loaded-321 review recorded a loss and ongoing prefix; the release-324 loaded-323 tail recorded two losses, including Amber Acorn 98808/400000 despite an incidental won flag. Its out-of-tail aggregate win remains unaudited. Release 326 adds no terminal observation. The external public-log originals were deleted at the user's request; existing repository audits remain historical evidence.",
+  "limits_summary": "The original attempts are selected dependent synthetic all_unlocked_discovered_v1 development data, not player odds, representative cohorts, untouched holdouts, achievement completion or general adapter qualification. No complete Jokerless win, 50%/75% per-challenge target or human superiority is demonstrated. Release 326 reads public-log metadata only, then deletes the explicitly requested prior observations; it decodes no new log content and reads no saves. The user restart report does not attest loaded version or module hashes. New code and a fresh writer load at the next normal restart. The larger allowance and idle flush change establish no CPU reduction, freeze cause, timing overhead or speedup. Invalid, truncated, unflushed and incomplete historical evidence must not be imputed. Storage capacity and deletion renew no retry, product-session or historical experiment limits.",
+  "budget_summary": "The original cycle expired on 2026-09-14 at 22:40 UTC and is CLOSED. Its 60 slots/5400 seconds of authority covered 38 spent jobs, 2340 seconds of registered caps and exactly 1012.71499999973457357 recorded worker seconds (closure float 1012.7149999997346). All 22 unused slots, including C09 and 3060 seconds, are closed. Historical job counts remain 18 source components, 6 captured-pair jobs/18 policy evaluations, 6 searches and 8 complete attempts. Every release-326 count is zero. Fresh tool experiments require concrete new authorization and frozen one-use provenance; user product Resume is a separate explicit control, not such authority.",
+  "counts_scope": "historical_closed_cycle",
+  "counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "complete_attempt_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "verified_complete_win": true,
+  "verified_complete_win_scope": "historical_C01_policy300_only",
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/authority.json",
+      "sha256": "072acbbdbbe8698913ab474a17b0d36023550b4d2c0a54ae67ca2d6d101526bb"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/status321closed/context.json",
+      "sha256": "aac44c8a5f654541183c4ae9225d7dd0c901fae8b1ee722c710b26af64956002"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/gold299_20260914/CLOSED.json",
+      "sha256": "3699b13e0dbe829c5bfd8486ab4f235118200f3ee3f20a7ac28614e12a7c0f91"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development326/release_notes/limits.json",
+      "sha256": "c4ca990db351bd527dffaafbcd6cab674031fbbab008394082f24712acf9c7f6"
+    }
+  },
+  "preparation_status": "installed_and_exact_regression_passed_activation_unconfirmed",
+  "release_observation_scope": {
+    "authorization": "User selected 1 GiB, then explicitly requested deletion of all previous logs.",
+    "metadata": {
+      "path": "tools/advisor_eval/development326/storage_metadata.json",
+      "sha256": "d7b8e403f5a936442c6ed76e7881bca01d32715820cfa8ea6299a047c0c02180"
+    },
+    "cleanup": {
+      "path": "tools/advisor_eval/development326/log_cleanup.json",
+      "sha256": "f52ec8becda45e3268e8a680eb81eca08ebae0f45a52cc20cf5e595512d9d573"
+    },
+    "removed_files": 53,
+    "removed_bytes": 134216592,
+    "directories_empty_at_receipt": true,
+    "external_originals": "deleted_at_user_request",
+    "historical_repository_audits": "retained",
+    "save_checkpoint_profile_repository_evidence": "outside_cleanup_scope",
+    "decoded_contents_read": false
+  },
+  "prepared_context_preserved": {
+    "path": "tools/advisor_eval/development326/release_notes/context.json",
+    "sha256": "a986a9120b8fef118665c1db0a6f2632adfe24af9eb20f8ca3a1e0f3f0c2c612"
+  },
+  "release_validation": {
+    "version": "2.126.0-alpha",
+    "installed_at": "2026-09-15T12:34:49.8877046-05:00",
+    "backup": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\Mods\\Brainstorm\\deployment-backups\\advisor-20260915-123448",
+    "policy_digest": "d39d037778c80791bef38bd9404b89da006c1864a6a041c2777ea937404dba1b",
+    "lua_fixtures": 178,
+    "python_tests": 343,
+    "candidate": {
+      "path": "tools/advisor_eval/runs/storage326_candidate/validation/report.json",
+      "sha256": "f49a94c5f0d95b97f2172fb210353c47f9b117acd47dacc79794dcee0af6b97e"
+    },
+    "installed": {
+      "path": "tools/advisor_eval/runs/storage326_installed/record.json",
+      "sha256": "87a451dce695c0f84236c081a2296d9a6e152a0419bb849a98d160c0ed391cb0"
+    },
+    "exact_installed": {
+      "path": "tools/advisor_eval/runs/storage326_installed_validation/report.json",
+      "sha256": "d4012a467692ec150d7a1c6a8607e1d84a1f374dbe980bd4f4acb40354a16ff3"
+    },
+    "user_authorized_cleanup": {
+      "path": "tools/advisor_eval/development326/log_cleanup.json",
+      "sha256": "f52ec8becda45e3268e8a680eb81eca08ebae0f45a52cc20cf5e595512d9d573"
+    }
+  }
+}

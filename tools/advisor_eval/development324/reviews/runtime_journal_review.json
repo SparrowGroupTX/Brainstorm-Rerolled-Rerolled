@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "kind": "independent_read_only_integrated_runtime_journal_review",
+  "created_at_utc": "2026-09-15T16:02:22.261931+00:00",
+  "result": "no_blocking_behavior_regression_found_in_scoped_review",
+  "scope": "Compare current runtime/player_journal timing integration with exact frozen323 policy; inspect new runtime/journal fixture additions. Collector complete robustness and frame hooks are reviewed separately.",
+  "current_files": {
+    "Brainstorm/Advisor/runtime.lua": "e2fd46c81287deb6822e1ce1c32caacb3af2e40bd6a9c51301a380af378fbedc",
+    "Brainstorm/Advisor/player_journal.lua": "fbf8871d82fe93e659beaf4a6d1b2cc5feef3122516d1cee34ed22dfc1c4e329",
+    "Brainstorm/Advisor/performance.lua": "660a004a34fd405759298fc2bfa49a9310a99d962ff24551c4e9ee1fcc3573f4",
+    "tests/advisor_runtime.lua": "4ff1812de0a276628f2641759d22d5a14dbe84683181f5e636419ec466136fea",
+    "tests/advisor_player_journal_timing.lua": "4f0dd01995eb1f1311fca06e56df1a5c313d3b874953aabd8f2705a0e57b2890"
+  },
+  "frozen323_files": {
+    "tools/advisor_eval/runs/idle323_installed/policy/Brainstorm/Advisor/runtime.lua": "ef167d8894c26e3b5d0f7f70ce4f4a2fad402a1753363a5bd3994bb6b631fe15",
+    "tools/advisor_eval/runs/idle323_installed/policy/Brainstorm/Advisor/player_journal.lua": "38b081ea58c53f9dba98046a64ddb9601e62f9d414b35851172684ff8d379fe9"
+  },
+  "reviewed_behavior": [
+    {
+      "area": "Callback/yield/error behavior",
+      "assessment": "A.present and A.refresh wrappers still call original bodies directly and retain no-value returns; no new protected-call boundary surrounds yieldable decision execution. Original coroutine resume and stale publication checks remain. Coroutine errors retain safe existing cleanup and now get an explicit error timing receipt."
+    },
+    {
+      "area": "Receipt linkage",
+      "assessment": "Invalidation and new public-key paths clear worker/completed receipt fields. Completed advice timing attaches only with current captured public fingerprint, matching game instance and exact last_decision_result==A.result. Timing remains separate from policy snapshots and fingerprints."
+    },
+    {
+      "area": "Disabled recording and failures",
+      "assessment": "Collector now() checks existing opt-in before reading the clock; disabled journal exits before clock/performance/capture/append. Journal catches injected clock/measurement errors and emits explicit unavailable monotonic status without failing an otherwise valid event. Runtime depends on its owned collector methods remaining safe; separate collector review is required."
+    },
+    {
+      "area": "Privacy and bounded event shape",
+      "assessment": "Added advice timing is a scalar collector receipt, not a card or hidden-RNG snapshot. Compact J:timing passes explicit empty context and avoids full observe. Existing public_snapshot redaction, callback linkage, archive encoder/append handling and settled scheduling remain unchanged."
+    },
+    {
+      "area": "Fixture additions",
+      "assessment": "Read fixtures for separated drag elapsed/active resume time, exact completed counts, result reuse, stale receipt exclusion, cancellation/error records, synchronous completion and disabled state clearing. Journal fixtures cover disabled work, precise anchors, invalid/backward clock, failed metrics, compact context, failed append and idle capture counts."
+    }
+  ],
+  "findings": [
+    {
+      "severity": "nonblocking_diagnostic_limit",
+      "file": "Brainstorm/Advisor/runtime.lua",
+      "line": 597,
+      "title": "Synchronous decision exceptions do not create an error timing receipt",
+      "detail": "The synchronous A.decision.run/A.present path is unchanged in propagating errors, but those errors bypass resume_finished and finish_decision. The new error receipt currently exists only for coroutine-resume failures. This preserves prior policy/error behavior but means diagnostic error coverage is incomplete for blind/pack/round synchronous failures. Document the limit or add a separately tested catch-and-rethrow mechanism that preserves original error objects/behavior; do not wrap yieldable paths casually."
+    }
+  ],
+  "validation_scope": {
+    "reviewer_ran_fixtures": false,
+    "root_reported_runtime_checks": 601,
+    "root_reported_focused_journal_frame_pass": true,
+    "root_reports_not_reclassified_as_independent_execution": true
+  },
+  "source_or_policy_execution": 0,
+  "search_workers": 0,
+  "captured_replays": 0,
+  "gameplay_actions": 0,
+  "additional_external_log_reads": 0,
+  "source_runtime_test_edits": false,
+  "full_release_or_install_approval": false
+}

@@ -1,0 +1,73 @@
+{
+  "discard_actions": 423,
+  "discarded_cards": 1637,
+  "discard_size_counts": {
+    "4": 100,
+    "1": 30,
+    "3": 87,
+    "5": 178,
+    "2": 28
+  },
+  "cards_per_discard": 3.8699763593380614,
+  "discard_resource_mismatches": [],
+  "unused_clear_count": 27,
+  "unused_total": 67,
+  "unused_by_run": {
+    "3": {
+      "rounds": 3,
+      "unused": 4
+    },
+    "4": {
+      "rounds": 5,
+      "unused": 12
+    },
+    "5": {
+      "rounds": 2,
+      "unused": 5
+    },
+    "6": {
+      "rounds": 4,
+      "unused": 14
+    },
+    "7": {
+      "rounds": 6,
+      "unused": 13
+    },
+    "8": {
+      "rounds": 3,
+      "unused": 9
+    },
+    "9": {
+      "rounds": 4,
+      "unused": 10
+    }
+  },
+  "unused_reasons": {
+    "A Joker lacks a monotone public held-card floor.": 1,
+    "Automatic hand sorting can change scoring-card order.": 20,
+    "The complete investment arrays exceed their bounds or are not dense.": 1,
+    "No visible retained-clear proof completed within the allowance.": 3,
+    "Draw or play changes the finishing conditions.": 1,
+    "The complete public retained-clear family exceeds the twelve-score allowance.": 1
+  },
+  "final_boss_unused_clears": 2,
+  "hand_rounds_observed": 164,
+  "short_receipts": {
+    "total": 245,
+    "risk_compared": 123,
+    "five_compared": 121,
+    "best_sampled_all_clear": 121
+  },
+  "development_deferred": 20,
+  "development_deferred_then_non_discard": 0,
+  "enhancement_then_clear_without_discard": 16,
+  "continuation_unavailable": {
+    "Note: Remaining-blind comparison unavailable: A compared continuation could not be modeled.": 2,
+    "Note: Remaining-blind comparison unavailable: Random score or growth outcomes are not sampled by this continuation.": 77,
+    "Note: Remaining-blind comparison unavailable: The Mouth requires Pair.": 1,
+    "Note: Remaining-blind comparison unavailable: The Mouth requires Straight.": 1,
+    "Note: Remaining-blind comparison unavailable: A future hand is concealed; no hidden-card play policy is modeled.": 4
+  },
+  "burnt_first_discards": 0,
+  "terminal_losses": 5
+}

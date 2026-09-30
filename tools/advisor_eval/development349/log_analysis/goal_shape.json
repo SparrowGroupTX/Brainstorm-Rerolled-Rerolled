@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "scope": "Static field-shape audit; no Lua execution, evaluation or new player-data access.",
+  "event": {
+    "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development349\\log_analysis\\original_event_85.json",
+    "sha256": "151b348cb93835d925c07f965b889fac583aacdadaaf5bd2411f616bade6be6e",
+    "sequence": 85,
+    "version": "Brainstorm v2.148.0-alpha"
+  },
+  "source_read_receipts": [
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Advisor\\runtime.lua",
+      "bytes": 42070,
+      "sha256": "d5496602dacc577b606375d06512292c0af54cd517e2ea4cf7ef9bf4a09f4353"
+    },
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Advisor\\gold_stickers.lua",
+      "bytes": 13047,
+      "sha256": "1c365a174c4533b8e19d3790e6e745c61249af63aed386f44ee7b7969cf559c4"
+    },
+    {
+      "path": "C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Advisor\\snapshot.lua",
+      "bytes": 17196,
+      "sha256": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba"
+    }
+  ],
+  "public_goal": {
+    "schema": 1,
+    "goal": "gold_stickers",
+    "metadata_status": "complete",
+    "catalog_status": "complete",
+    "held_status": "complete",
+    "stake_status": "complete",
+    "eligibility": {
+      "eligible": true,
+      "reasons": {},
+      "status": "eligible"
+    },
+    "counts": {
+      "complete": 59,
+      "missing": 91,
+      "total": 150,
+      "unknown": 0
+    }
+  },
+  "goal_enabled_present": false,
+  "goal_active_present": false,
+  "offer": {
+    "id": "card:337",
+    "key": "j_droll",
+    "ability_set": "Joker",
+    "ability_eternal": true,
+    "top_level_eternal_present": false,
+    "edition_present": false,
+    "edition": null,
+    "goal_record": {
+      "key": "j_droll",
+      "status": "complete"
+    }
+  },
+  "modifiers_all_eternal": null,
+  "mismatch_risks": [
+    "The goal table has no enabled/active flag. Runtime attaches it only while the gold_stickers setting is true; presence plus validated metadata is the existing opt-in shape.",
+    "Per-card Eternal is ability.eternal; challenge-wide Eternal may instead be represented by snapshot.modifiers.all_eternal.",
+    "Normal edition may be absent. Non-Negative slot protection should not accidentally exempt Holographic/Foil/Polychrome Eternals.",
+    "A public seed string is present in ordinary generated runs too; eligibility must use the explicit verified eligibility metadata, not context.seed presence.",
+    "Empty reasons and held-target lists are serialized as objects when Lua tables are empty. Do not require a JSON array shape or a nonempty reasons field to recognize eligibility.",
+    "status belongs to by_key[card.key].status, with complete/missing/unknown values; no per-card gold boolean is supplied.",
+    "Detached snapshots from the underlying snapshot module do not automatically include runtime objective context; tests need realistic completionist_goal metadata and cannot assume capture adds it."
+  ],
+  "conclusion": "All existing public metadata needed to classify the observed Droll as an already-complete, non-Negative Eternal is present. No new profile or source execution is needed."
+}

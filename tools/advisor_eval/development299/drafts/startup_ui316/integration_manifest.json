@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "kind": "startup_diagnostics316_detached_ready",
+  "files": {
+    "advisor.lua": "4577863f0afbdf187169ee8695d236b0a5f65589f254cce4be3508aa0977c840",
+    "base_hashes.json": "78ea8172dc5d777778465d676effc595a34e3bd0039d099ae6f4217c8a0a2789",
+    "collection_run.lua": "4f1635c3b6ac8fed7e93b5630d11688ad9dbd05ba90c456b3e734210d8021210",
+    "INTEGRATION.md": "78820d7617fec9176a06de753bb6b1971a6d7fef9c77b4f99668ecf48b3158c0",
+    "integration.patch": "fd592a546b94d36a2da8636738c0f3e10f5d005a1995261da0652ddf24fd0881",
+    "integration_manifest_before_notice_expiry_fix.json": "878f0170b5b867506a471a0265e8cef2bb4188a9cc84144ffced3eea21a3b252",
+    "integration_manifest_before_stage_helper.json": "795252aa14b6ab9b73369ad140c1ea469a5b12b43c391c00364c558f0bbaa475",
+    "production_tests/advisor_collection_status.lua": "02bed2b39ebb3baaa468bf1dfc8e79e6cd51351b713d113e23de3399fe40e5b2",
+    "production_tests/advisor_runtime.lua": "442a4114223131d149a7d12436ad18a3711ab06a01ffee95e10696e9214c3a35",
+    "production_tests/advisor_startup_ui.lua": "fcf4897578e16e7669c72e09d83ba8dea76875f08f70ea35c8608cc3097eefe5",
+    "stage.py": "af62e84612f980cd712815823eacffee87fea623b075622d7543dca0cc935871",
+    "test_layout.lua": "046414f95ccc6a5dcf9896a9699c6dcf2ef2238a820aa541e0bda18fc6009e5f",
+    "test_runtime.lua": "30edd6122dfab0f5b3c8b23b57bfc8c2c2dfa85584fd1af0ad9d65d758d90068",
+    "test_status.lua": "7d9b972f0fa06af2858cd85e6ab7975f36feab0c08bb62d6259bf6b0715baf73",
+    "test_ui.lua": "dd5d35d47ce1ea91ad3d63aefff6802cbbd05fb0c098345b11bd480059526d1e"
+  },
+  "integration": {
+    "Brainstorm/UI/advisor.lua": {
+      "draft": "advisor.lua",
+      "base_sha256": "3de8ec699e802be2750ff25d43bb129572123d0a99821747b8f8217a70900c95",
+      "candidate_sha256": "4577863f0afbdf187169ee8695d236b0a5f65589f254cce4be3508aa0977c840"
+    },
+    "Brainstorm/UI/collection_run.lua": {
+      "draft": "collection_run.lua",
+      "base_sha256": "43ae55ea452a478c056ca62118e630b6e270d2ae55d5eccbb603780f5e45ce65",
+      "candidate_sha256": "4f1635c3b6ac8fed7e93b5630d11688ad9dbd05ba90c456b3e734210d8021210"
+    },
+    "tests/advisor_startup_ui.lua": {
+      "draft": "production_tests/advisor_startup_ui.lua",
+      "base_sha256": null,
+      "candidate_sha256": "fcf4897578e16e7669c72e09d83ba8dea76875f08f70ea35c8608cc3097eefe5"
+    },
+    "tests/advisor_collection_status.lua": {
+      "draft": "production_tests/advisor_collection_status.lua",
+      "base_sha256": "576e8d1c680851a1600e75c09847b55cc891247ef713438f83cc6f94ac9dcf6c",
+      "candidate_sha256": "02bed2b39ebb3baaa468bf1dfc8e79e6cd51351b713d113e23de3399fe40e5b2"
+    },
+    "tests/advisor_runtime.lua": {
+      "draft": "production_tests/advisor_runtime.lua",
+      "base_sha256": "0b6b6212a380cd3a5077b665cd0758a05a9638c462c2742dc7fbb7028296fc82",
+      "candidate_sha256": "442a4114223131d149a7d12436ad18a3711ab06a01ffee95e10696e9214c3a35"
+    }
+  },
+  "validation": {
+    "passed": true,
+    "lua_entries": 4,
+    "checks": 906,
+    "new_ui_checks": 33,
+    "status_checks": 22,
+    "runtime_checks": 470,
+    "layout_checks": 381
+  },
+  "depends_on": "development300/start_status316 pure status_report getters",
+  "root_files_changed": false,
+  "installed": false,
+  "source_experiment": false,
+  "live_activation": "unobserved",
+  "M22": "on hold; not registered"
+}

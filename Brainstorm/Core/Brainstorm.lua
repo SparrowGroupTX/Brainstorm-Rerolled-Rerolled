@@ -4,7 +4,8 @@ local ffi = require("ffi")
 
 Brainstorm = {}
 
-Brainstorm.VERSION = "Brainstorm v2.10.0-alpha"
+Brainstorm.VERSION = "Brainstorm v2.226.0-alpha"
+Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
 
 Brainstorm.SMODS = nil
 
@@ -546,6 +547,10 @@ function Brainstorm.getRequiredSoulCount()
 end
 
 function Brainstorm.validateAutoRerollFilters()
+  if G and G.GAME and G.GAME.challenge then
+    if Brainstorm.validateChallengeOpening then return Brainstorm.validateChallengeOpening() end
+    return false, "Challenge opening search is unavailable"
+  end
   local filters = Brainstorm.config.ar_filters
   local current_deck_name = getCurrentDeckName()
   local legendary_target_count = getRequiredLegendaryTargetCount(filters)
@@ -570,6 +575,21 @@ function Brainstorm.validateAutoRerollFilters()
     local target = joker_targets[slot]
     local location = joker_target_locations[slot]
     if target ~= "" then
+      if target == "Stone Joker" then
+        return false,
+          "Normal opening search cannot yet model the Stone Card prerequisite for Stone Joker. Search for Marble Joker first, then find Stone Joker during play."
+      end
+      local prerequisite = ({
+        ["Steel Joker"] = "a Steel Card",
+        ["Glass Joker"] = "a Glass Card",
+        ["Golden Ticket"] = "a Gold Card",
+        ["Lucky Cat"] = "a Lucky Card",
+        ["Cavendish"] = "Gros Michel destroying itself",
+      })[target]
+      if prerequisite then
+        return false, "Normal opening search cannot yet model " .. prerequisite ..
+          " before " .. target .. ". Meet this prerequisite and find the Joker during play."
+      end
       if legendary_jokers[target] then
         if seen_legendary_targets[target] then
           return false,
@@ -764,11 +784,15 @@ local function ensureImmolateLoaded()
       const char* brainstorm_v6(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations);
       const char* brainstorm_v7(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int stakeLevel);
       const char* brainstorm_v8(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int stakeLevel, bool noPerishableJokers);
+      const char* brainstorm_v9(const char* seed, const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int stakeLevel, bool noPerishableJokers, bool interchangeableCopies, const char* missingNames, int minimumDistinct, int firstAnte, int lastAnte, int budgetMs);
+      void brainstorm_cancel_v9();
       const char* brainstorm_estimate_v1(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms);
       const char* brainstorm_estimate_v2(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms);
       const char* brainstorm_estimate_v3(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms, int stakeLevel);
       const char* brainstorm_estimate_v4(const char* voucher, const char* pack, const char* tag, int souls, bool observatory, int observatoryDeadline, bool perkeo, bool copymoney, bool retcon, bool bean, bool burglar, const char* customFilter, const char* targetRank, const char* targetSuit, int specificRankMin, int anyRankMin, const char* targetJokers, const char* deck, const char* targetLocations, int budget_ms, int stakeLevel, bool noPerishableJokers);
       void brainstorm_set_search_thread_mode(int mode);
+      const char* brainstorm_challenge_opening_v1(const char* seed, const char* challenge_id, const char* targetJokersCSV);
+      const char* brainstorm_challenge_opening_v2(const char* seed, const char* challenge_id, const char* targetJokersCSV, const char* laterJoker, int deadlineAnte, const char* rarePoolMask);
       void free_result(const char* result);
     ]])
     immolate_cdef_loaded = true
@@ -778,7 +802,7 @@ local function ensureImmolateLoaded()
     preloadImmolateRuntime()
     local library_name
     if ffi.os == "Windows" then
-      library_name = "Immolate.dll"
+      library_name = Brainstorm.NATIVE_FILE
     elseif ffi.os == "Linux" then
       library_name = "Immolate.so"
     else
@@ -1431,7 +1455,11 @@ local function finishSearchEstimate(
 end
 
 function Brainstorm.requestSearchEstimate()
+  if Brainstorm.native_search_busy then return false end
   local valid, validation_message = Brainstorm.validateAutoRerollFilters()
+  if G and G.GAME and G.GAME.challenge then
+    valid, validation_message = false, "Use the Challenge opening page; normal-filter estimates do not apply"
+  end
   if not valid then
     Brainstorm.search_estimate_generation =
       Brainstorm.search_estimate_generation + 1
@@ -1489,7 +1517,7 @@ function Brainstorm.requestSearchEstimate()
     blockable = false,
     blocking = false,
     func = function()
-      if generation ~= Brainstorm.search_estimate_generation then
+      if Brainstorm.native_search_busy or generation ~= Brainstorm.search_estimate_generation then
         return true
       end
 
@@ -1629,6 +1657,7 @@ function Brainstorm.createCharmArcanaCard(
     and (tonumber(required_souls) or 0) > 1
     and pack
     and pack.from_tag
+    and (not Brainstorm.ChallengeOpening or Brainstorm.ChallengeOpening.matching_pack(G.GAME, pack))
     and (
       center_key == "p_arcana_mega_1"
       or center_key == "p_arcana_mega_2"
@@ -1643,6 +1672,13 @@ function Brainstorm.createCharmArcanaCard(
     -- later Charm-tag pack in the same filtered run remains fully vanilla.
     pack.brainstorm_multi_soul_pack = true
     filter_info.multi_soul_pack_consumed = true
+    if filter_info.challenge_opening and area then area.brainstorm_challenge_opening = true end
+    if not G.GAME.challenge and area and G.GAME.round==0 and
+        (G.GAME.round_resets or {}).ante==1 and G.GAME.blind_on_deck=='Big' and
+        ((G.GAME.round_resets or {}).blind_states or {}).Small=='Skipped' and
+        (G.GAME.skips or 0)==1 then
+      area.brainstorm_normal_opening=true
+    end
   end
 
   if not is_matching_charm_pack or not G.GAME.used_jokers.c_soul then
@@ -1663,7 +1699,7 @@ function Brainstorm.createCharmArcanaCard(
   -- Soul roll; every other duplicate and banned-card rule still applies.
   local soul_was_used = G.GAME.used_jokers.c_soul
   G.GAME.used_jokers.c_soul = nil
-  local card = create_card(
+  local ok, card = pcall(create_card,
     card_type,
     area,
     legendary,
@@ -1674,47 +1710,107 @@ function Brainstorm.createCharmArcanaCard(
     key_append
   )
   G.GAME.used_jokers.c_soul = soul_was_used
+  if not ok then error(card) end
   return card
 end
 
 function Brainstorm.init()
   Brainstorm.PATH = findBrainstormDirectory(lovely.mod_dir)
   Brainstorm.loadConfig()
+  local opening = assert(load(nfs.read(Brainstorm.PATH .. "/Core/challenge_opening.lua")))()
+  opening.attach(Brainstorm, {alert = saveManagerAlert, search = function(seed, challenge, targets, later)
+    local lib = ensureImmolateLoaded()
+    lib.brainstorm_set_search_thread_mode(Brainstorm.config.ar_prefs.native_cpu_mode == "maximum" and 1 or 0)
+    local ptr
+    if later then
+      ptr = lib.brainstorm_challenge_opening_v2(seed, challenge, targets,
+        later.target_key, later.deadline, later.rare_pool_mask)
+    else
+      ptr = lib.brainstorm_challenge_opening_v1(seed, challenge, targets)
+    end
+    if ptr == nil then error("The native opening search returned no result") end
+    local ok, result = pcall(ffi.string, ptr)
+    lib.free_result(ptr)
+    if not ok then error(result) end
+    return result
+  end})
+  Brainstorm.JokerlessOpening = assert(load(nfs.read(Brainstorm.PATH .. "/Core/jokerless_opening.lua")))()
+  local jokerless_search = assert(load(nfs.read(Brainstorm.PATH .. "/Core/jokerless_search_runtime.lua")))()
+  jokerless_search.attach(Brainstorm, {opening=Brainstorm.JokerlessOpening,alert=saveManagerAlert,
+    now=function() return love.timer.getTime() end})
+  local start_opening=Brainstorm.startChallengeOpeningSearch
+  Brainstorm.startChallengeOpeningSearch=function(...)
+    if Brainstorm.native_search_busy then return false,'A bounded search is already running.' end
+    return start_opening(...)
+  end
+  Brainstorm.Advisor = assert(load(nfs.read(Brainstorm.PATH .. "/Advisor/runtime.lua")))()
+  Brainstorm.CollectionSearch=assert(load(nfs.read(Brainstorm.PATH .. "/Advisor/collection_search.lua")))()
+  local collection_runtime=assert(load(nfs.read(Brainstorm.PATH .. "/Core/collection_search_runtime.lua")))()
+  collection_runtime.attach(Brainstorm,{native=function()return ensureImmolateLoaded()end,
+    now=function()return love.timer.getTime()end})
+  local collection_product=assert(load(nfs.read(Brainstorm.PATH .. "/Core/collection_search_product.lua")))()
+  collection_product.attach(Brainstorm)
+  local checkpoint_store = assert(load(nfs.read(Brainstorm.PATH .. "/Core/checkpoint_store.lua")))()
+  local checkpoints = assert(load(nfs.read(Brainstorm.PATH .. "/Core/checkpoint_runtime.lua")))()
+  checkpoints.attach(Brainstorm, {store=checkpoint_store,codec=Brainstorm.Advisor.retry_journal,
+    fs=love.filesystem,alert=saveManagerAlert,
+    hash=function(bytes)return (love.data.hash('sha256',bytes):gsub('.',function(c)return string.format('%02x',string.byte(c)) end)) end,
+    compress=function(bytes)return love.data.compress('string','deflate',bytes,1) end,
+    decompress=function(bytes)return love.data.decompress('string','deflate',bytes) end,
+    is_down=function(key)return love.keyboard.isDown(key) end})
+  local auto_controller=assert(load(nfs.read(Brainstorm.PATH .. "/Advisor/auto_run.lua")))()
+  local auto_terminal=assert(load(nfs.read(Brainstorm.PATH .. "/Core/auto_terminal.lua")))()
+  local auto_settlement=assert(load(nfs.read(Brainstorm.PATH .. "/Core/auto_run_settlement.lua")))()
+  local auto_product=assert(load(nfs.read(Brainstorm.PATH .. "/Core/auto_run_product.lua")))()
+  auto_product.attach(Brainstorm,{controller=auto_controller,terminal=auto_terminal,settlement=auto_settlement})
+  local manual_log=assert(load(nfs.read(Brainstorm.PATH .. "/Advisor/manual_run_log.lua")))()
+  manual_log.attach(Brainstorm.Advisor,Brainstorm)
+  Brainstorm.EventCadence=assert(load(nfs.read(Brainstorm.PATH .. "/Core/event_cadence.lua")))().new()
+  assert(load(nfs.read(Brainstorm.PATH .. "/UI/advisor.lua")))()
+  assert(load(nfs.read(Brainstorm.PATH .. "/UI/challenge_opening.lua")))()
+  assert(load(nfs.read(Brainstorm.PATH .. "/UI/collection_run.lua")))()
   assert(load(nfs.read(Brainstorm.PATH .. "/UI/ui.lua")))()
+  assert(load(nfs.read(Brainstorm.PATH .. "/UI/game_speed.lua")))().attach(_G)
 end
 
 local key_press_update_ref = Controller.key_press_update
 function Controller:key_press_update(key, dt)
+    if Brainstorm.AutoRun then Brainstorm.AutoRun:manual('Keyboard input.') end
+    if Brainstorm.CollectionSearchProduct and not (Brainstorm.AutoRun and Brainstorm.AutoRun.engaged and Brainstorm.AutoRun:engaged()) then Brainstorm.CollectionSearchProduct.stop('Keyboard input.') end
     local keybinds = Brainstorm.config.keybinds
-    key_press_update_ref(self, key, dt)
-    for i, k in ipairs(saveKeys) do
-        --  SaveState
-        if key == k and love.keyboard.isDown(keybinds.s_state) then
-            if G.STAGE == G.STAGES.RUN then
-                compress_and_save(G.SETTINGS.profile .. "/" .. "saveState" .. k .. ".jkr", G.ARGS.save_run)
-                saveManagerAlert("Saved state to slot [" .. k .. "]")
-            end
+    if key == "h" and love.keyboard.isDown(keybinds.modifier)
+      and not self.text_input_hook and Brainstorm.Advisor then
+      if not Brainstorm.Advisor.hotkey_down then
+        Brainstorm.Advisor.hotkey_down = true
+        if Brainstorm.Advisor.menu_open then
+          G.FUNCS.brainstorm_advisor_close()
+        elseif not G.OVERLAY_MENU then
+          Brainstorm.Advisor.open()
         end
-        --  LoadState
-        if key == k and love.keyboard.isDown(keybinds.l_state) then
-            G:delete_run()
-            G.SAVED_GAME = get_compressed(G.SETTINGS.profile .. "/" .. "saveState" .. k .. ".jkr")
-            if G.SAVED_GAME ~= nil then
-                G.SAVED_GAME = STR_UNPACK(G.SAVED_GAME)
-            end
-            G:start_run({
-                savetext = G.SAVED_GAME,
-            })
-            saveManagerAlert("Loaded save from slot [" .. k .. "]")
-        end
+      end
+      return
     end
+    if Brainstorm.Checkpoints and Brainstorm.Checkpoints:hotkey(key,
+      love.keyboard.isDown(keybinds.s_state),love.keyboard.isDown(keybinds.l_state),self.text_input_hook) then return end
+    key_press_update_ref(self, key, dt)
   
     if love.keyboard.isDown(keybinds.modifier) then
         if key == keybinds.f_reroll then
+            if Brainstorm.AutoRun and Brainstorm.AutoRun.engaged and Brainstorm.AutoRun:engaged() then return end
             Brainstorm.reroll()
         elseif key == keybinds.a_reroll then
-            if Brainstorm.ar_active then
-                Brainstorm.ar_active = false
+            if Brainstorm.ar_hotkey_down then return end
+            Brainstorm.ar_hotkey_down = true
+            -- An engaged auto session owns its search; this hotkey cannot
+            -- cancel it, renew its budget or start an overlapping reroll.
+            if Brainstorm.AutoRun and Brainstorm.AutoRun.engaged and Brainstorm.AutoRun:engaged() then return end
+            if Brainstorm.native_search_busy then
+                Brainstorm.CollectionSearchProduct.stop('Search hotkey pressed.')
+            elseif Brainstorm.ar_active then
+                if Brainstorm.stopChallengeOpeningSearch then Brainstorm.stopChallengeOpeningSearch()
+                else Brainstorm.ar_active = false end
+            elseif G.GAME and G.GAME.challenge and Brainstorm.startChallengeOpeningSearch then
+                Brainstorm.startChallengeOpeningSearch()
             else
                 local valid, validation_message =
                     Brainstorm.validateAutoRerollFilters()
@@ -1775,9 +1871,47 @@ function Brainstorm.reroll()
   G:start_run({ stake = stake, seed = seed, challenge = G.challenge_tab })
 end
 
+-- Actual input invalidates auto action context without stopping its session.
+for _,method in ipairs({'queue_L_cursor_press','queue_R_cursor_press'}) do
+  local original=Controller[method]
+  if type(original)=='function' then
+    Controller[method]=function(self,...)
+      if Brainstorm.AutoRun then Brainstorm.AutoRun:manual('Mouse input.') end
+      if Brainstorm.CollectionSearchProduct and not (Brainstorm.AutoRun and Brainstorm.AutoRun.engaged and Brainstorm.AutoRun:engaged()) then Brainstorm.CollectionSearchProduct.stop('Mouse input.') end
+      return original(self,...)
+    end
+  end
+end
+
 local update_ref = Game.update
 function Game:update(dt)
+  local P=Brainstorm.Advisor and Brainstorm.Advisor.performance
+  local frame_start,gap
+  if P then frame_start,gap=P:begin_frame(dt) end
+  local mark=frame_start
+  if Brainstorm.EventCadence then Brainstorm.EventCadence:update(self) end
   update_ref(self, dt)
+  if mark then mark=P:finish('game_update',mark) end
+  if Brainstorm.Checkpoints then Brainstorm.Checkpoints:update(dt) end
+  if mark then mark=P:finish('checkpoint_update',mark) end
+  if Brainstorm.CollectionSearchProduct then Brainstorm.CollectionSearchProduct.update() end
+  if mark then mark=P:finish('search_update',mark) end
+  if Brainstorm.Advisor and Brainstorm.Advisor.player_log then
+    Brainstorm.Advisor.player_log:install_hooks(G)
+    if Brainstorm.ManualLog then Brainstorm.ManualLog:update(G) end
+    Brainstorm.Advisor.player_log:update(G)
+  end
+  if mark then mark=P:finish('journal_update',mark) end
+  if not love.keyboard.isDown(Brainstorm.config.keybinds.a_reroll) then Brainstorm.ar_hotkey_down = false end
+
+  if Brainstorm.Advisor then
+    if not love.keyboard.isDown("h") then Brainstorm.Advisor.hotkey_down = false end
+    Brainstorm.Advisor.update(dt)
+  end
+  if mark then mark=P:finish('advisor_update',mark) end
+  local auto_status
+  if Brainstorm.AutoRun then auto_status=Brainstorm.AutoRun:update(dt) end
+  if mark then mark=P:finish('auto_update',mark) end
 
   if Brainstorm.ar_active then
     Brainstorm.ar_frames = Brainstorm.ar_frames + 1
@@ -1796,20 +1930,51 @@ function Game:update(dt)
     end
 
     if Brainstorm.ar_frames == 60 and not Brainstorm.ar_text then
+      local jokerless_progress = Brainstorm.JokerlessOpeningSearch
+      jokerless_progress = jokerless_progress and jokerless_progress.searching and jokerless_progress
       Brainstorm.ar_text = Brainstorm.attentionText({
-        scale = 1.4,
-        text = "Rerolling...",
+        scale = jokerless_progress and 0.55 or 1.4,
+        text = jokerless_progress and {{ref_table = jokerless_progress, ref_value = 'progress_count'}} or "Rerolling...",
+        maxw = jokerless_progress and 8 or nil,
         align = "cm",
         offset = { x = 0, y = -3.5 },
         major = G.STAGE == G.STAGES.RUN and G.play or G.title_top,
       })
     end
   end
+  if mark then P:finish('legacy_reroll',mark) end
+  if frame_start then
+    -- Only scalar public flags: no snapshot, status callback or identity copy.
+    local g=G or {};local game=g.GAME or {};local settings=g.SETTINGS or {}
+    local controller=g.CONTROLLER or {};local advisor=Brainstorm.Advisor
+    local flags={paused=settings.paused==true,
+      dragging=not not (controller.dragging and controller.dragging.target),
+      advisor_worker=not not (advisor and advisor.worker)}
+    local function number(key,value)
+      if type(value)=='number' and value==value and value~=math.huge and value~=-math.huge then flags[key]=value end
+    end
+    number('state',g.STATE);number('stage',g.STAGE)
+    number('ante',(game.round_resets or {}).ante);number('round',game.round)
+    number('game_speed',settings.GAMESPEED)
+    if type(auto_status)=='table' and type(auto_status.active)=='boolean' then flags.auto_active=auto_status.active end
+    flags.idle_menu=not not (g.STAGES and g.STAGES.MAIN_MENU~=nil and g.STAGE==g.STAGES.MAIN_MENU
+      and not Brainstorm.ar_active and not Brainstorm.native_search_busy
+      and not (type(auto_status)=='table' and (auto_status.busy or auto_status.active or auto_status.resume_pending)))
+    -- update_total excludes the trailing bounded emission; performance_emit
+    -- is recorded separately by the collector for the following window.
+    P:end_frame(frame_start,gap,flags)
+    local manual=advisor and advisor.manual_log
+    P:flush(manual and manual:is_active(G) and manual:journal_for(G) or advisor and advisor.player_log,flags)
+  end
 end
 
 function Brainstorm.autoReroll()
+  if Brainstorm.native_search_busy then return nil end
   local valid, validation_message = Brainstorm.validateAutoRerollFilters()
   if not valid then
+    if Brainstorm.JokerlessOpeningSearch and Brainstorm.JokerlessOpeningSearch.searching then
+      Brainstorm.stopChallengeOpeningSearch('invalidated',validation_message)
+    end
     Brainstorm.ar_active = false
     Brainstorm.ar_frames = 0
     if Brainstorm.ar_text then
@@ -1820,12 +1985,16 @@ function Brainstorm.autoReroll()
     return nil
   end
 
+  if G.GAME.challenge=='c_jokerless_1' and Brainstorm.JokerlessOpeningSearch then
+    return Brainstorm.challengeOpeningSearch()
+  end
   local seed_found = random_string(
     8,
     G.CONTROLLER.cursor_hover.T.x * 0.33411983
       + G.CONTROLLER.cursor_hover.T.y * 0.874146
       + 0.412311010 * G.CONTROLLER.cursor_hover.time
   )
+  if G.GAME.challenge then return Brainstorm.challengeOpeningSearch(seed_found) end
   local search_query = Brainstorm.ar_native_query
     or Brainstorm.refreshAutoRerollQuery()
   if not search_query then

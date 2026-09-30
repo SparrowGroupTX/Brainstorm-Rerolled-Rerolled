@@ -1,0 +1,24 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tests\advisor_inventory_reuse.lua
+PASS tests\advisor_inventory_reuse.lua
+Running tests\advisor_marathon_repairs366.lua
+PASS tests\advisor_marathon_repairs366.lua
+2/2 fixtures passed
+METRIC ten Negative Death, 28 complete targets | profiles 56 -> 1 | original inventory 28 -> 1 | retained inventory 28 -> 28 | score calls 6104 -> 6104
+METRIC mixed Perkeo Observatory | profiles 84 -> 1 | original inventory 42 -> 1 | retained inventory 42 -> 42 | score calls 1302 -> 1302
+METRIC ordinary inventory | profiles 80 -> 1 | original inventory 40 -> 1 | retained inventory 40 -> 40 | score calls 1240 -> 1240
+METRIC Observatory without Perkeo | profiles 24 -> 1 | original inventory 12 -> 1 | retained inventory 12 -> 12 | score calls 372 -> 372
+METRIC last useful Perkeo source | profiles 30 -> 1 | original inventory 15 -> 1 | retained inventory 15 -> 15 | score calls 465 -> 465
+METRIC last matching Planet source | profiles 2 -> 1 | original inventory 1 -> 1 | retained inventory 1 -> 1 | score calls 31 -> 31
+METRIC different after ranks | profiles 50 -> 1 | original inventory 25 -> 1 | retained inventory 25 -> 25 | score calls 775 -> 775
+METRIC changed population and generated cards | profiles 60 -> 1 | original inventory 30 -> 1 | retained inventory 30 -> 30 | score calls 1050 -> 1050
+METRIC cash payouts with full inventory | profiles 36 -> 1 | original inventory 18 -> 1 | retained inventory 18 -> 18 | score calls 558 -> 558
+METRIC ordered metadata-distinct copies | profiles 62 -> 1 | original inventory 31 -> 1 | retained inventory 31 -> 31 | score calls 465 -> 465
+METRIC Planet Tarot sequence false | profiles 4 -> 1 | original inventory 2 -> 1 | retained inventory 2 -> 2 | score calls 3 -> 3
+METRIC Planet Tarot sequence true | profiles 4 -> 1 | original inventory 2 -> 1 | retained inventory 2 -> 2 | score calls 3 -> 3
+METRIC bounded clear development false | profiles 8 -> 1 | original inventory 4 -> 1 | retained inventory 4 -> 4 | score calls 4 -> 4
+METRIC bounded clear development true | profiles 8 -> 1 | original inventory 4 -> 1 | retained inventory 4 -> 4 | score calls 2 -> 2
+METRIC empty inventory | profiles 0 -> 0 | original inventory 0 -> 0 | retained inventory 0 -> 0 | score calls 0 -> 0
+METRIC empty hand | profiles 0 -> 0 | original inventory 0 -> 0 | retained inventory 0 -> 0 | score calls 0 -> 0
+inventory decision reuse: 263 checks passed
+marathon_repairs366: 92909 manufactured checks passed

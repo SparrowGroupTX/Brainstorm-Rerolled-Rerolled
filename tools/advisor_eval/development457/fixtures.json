@@ -1,0 +1,14 @@
+{
+  "schema": "manufactured_booster_slots_457_v1",
+  "conditions": "no tags/voucher/Joker slots; first-shop Buffoon already consumed; plain normal pack prices",
+  "cases": [
+    {"id": "used_first_stored_second", "used_packs": ["USED", "p_arcana_normal_1"], "draws": [], "cash": 4},
+    {"id": "two_empty_slots", "used_packs": [], "draws": ["p_arcana_normal_1", "p_celestial_normal_1"], "cash": 8},
+    {"id": "two_stored_slots", "used_packs": ["p_standard_normal_1", "p_arcana_normal_1"], "draws": [], "cash": 4},
+    {"id": "stored_first_empty_second_unaffordable", "used_packs": ["p_arcana_normal_1"], "draws": ["p_standard_normal_1"], "cash": 3},
+    {"id": "both_used", "used_packs": ["USED", "USED"], "draws": [], "cash": 8},
+    {"id": "heldout_gap_before_stored", "used_packs": [null, "p_celestial_normal_1"], "draws": ["p_standard_normal_1"], "cash": 4},
+    {"id": "heldout_used_first_empty_second", "used_packs": ["USED"], "draws": ["p_arcana_normal_1"], "cash": 5},
+    {"id": "heldout_reversed_stored", "used_packs": ["p_celestial_normal_1", "p_arcana_normal_1"], "draws": [], "cash": 4}
+  ]
+}

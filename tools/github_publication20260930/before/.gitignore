@@ -1,0 +1,64 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vscode
+/.zip
+/tools/advisor_eval/runs/
+/tools/advisor_eval/__pycache__/
+/tests/__pycache__/
+/Brainstorm-Rerolled-1.0.2-alpha.zip
+
+################################################################################
+# Local CMake, benchmark, and seed-research output
+################################################################################
+
+# The Immolate research/build folders contain thousands of generated objects,
+# executables, shards, profiles, and raw datasets. Keep those local by default;
+# the small source files and reports needed to reproduce or document the shipped
+# indexes are explicitly retained below.
+/Immolate/build-*/*
+
+# v2.10 Charm/Perkeo/Mega full-domain index builder.
+!/Immolate/build-charm-perkeo-mega-index/.gitignore
+!/Immolate/build-charm-perkeo-mega-index/CMakeLists.txt
+!/Immolate/build-charm-perkeo-mega-index/build.ps1
+!/Immolate/build-charm-perkeo-mega-index/charm_perkeo_mega_index_builder.cpp
+!/Immolate/build-charm-perkeo-mega-index/README.md
+
+# v2.9 exact-index builder and verification report.
+!/Immolate/build-anchor-index-full/CMakeLists.txt
+!/Immolate/build-anchor-index-full/anchor_index_builder.cpp
+!/Immolate/build-anchor-index-full/build.ps1
+!/Immolate/build-anchor-index-full/README.md
+!/Immolate/build-anchor-index-full/REPORT.md
+
+# Architecture and research records cited by the release notes.
+!/Immolate/build-candidate-seed-index/BROADER_ARCHITECTURE.md
+!/Immolate/build-candidate-seed-index/INTEGRATION_DESIGN.md
+!/Immolate/build-inversion-math-20260806/build.ps1
+!/Immolate/build-inversion-math-20260806/candidate_index_probe.cpp
+!/Immolate/build-inversion-math-20260806/inversion_math_probe.cpp
+!/Immolate/build-inversion-math-20260806/REPORT.md
+!/Immolate/build-contrarian-seed-cracking-20260806/cuda_exact_tag_probe.cu
+!/Immolate/build-contrarian-seed-cracking-20260806/cuda_perkeo_first_probe.cu
+!/Immolate/build-contrarian-seed-cracking-20260806/perkeo_first_avx512.cpp
+!/Immolate/build-contrarian-seed-cracking-20260806/perkeo_first_cpu_benchmark.cpp
+!/Immolate/build-contrarian-seed-cracking-20260806/REPORT.md
+!/Immolate/build-contrarian-seed-cracking-20260806/scalar_tag_fixture.cpp
+!/Immolate/build-contrarian-seed-cracking-20260806/z3_exact_tag_probe.py
+!/Immolate/build-structure-stats/analyze_structure.py
+!/Immolate/build-structure-stats/balanced_suffix_probe.cpp
+!/Immolate/build-structure-stats/structure_probe.cpp
+!/Immolate/build-structure-stats/analysis-final/
+
+# Large raw feature datasets are intentionally shared through Git LFS so the
+# same research inputs are available on other machines. Keep their neighboring
+# generated CSVs local unless they are explicitly promoted later.
+!/Immolate/build-structure-stats/pilot-100m/
+/Immolate/build-structure-stats/pilot-100m/*
+!/Immolate/build-structure-stats/pilot-100m/features.csv
+!/Immolate/build-structure-stats/scan-4b/
+/Immolate/build-structure-stats/scan-4b/*
+!/Immolate/build-structure-stats/scan-4b/features.csv

@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "created_utc": "2026-09-15T18:29:36.224232+00:00",
+  "component": "Bounded context inspection and exact selected-event extraction tooling",
+  "owned_source_files": [
+    "tools/advisor_eval/inspect_player_log.py",
+    "tests/test_advisor_log_inspection.py"
+  ],
+  "files": {
+    "tools/advisor_eval/inspect_player_log.py": "4907aeec2e9966a02cd7af60b209b4faad8b42cc3b7ee406aa42dafae969c08f",
+    "tests/test_advisor_log_inspection.py": "6efd9a5b5c0dd958a2e23e7c5f22902231690a67c71a652c74c9200543aa5a5b",
+    "tools/advisor_eval/read_player_log.py": "81fe0b98ce1afdcf7b9670eb22ac65ce501c055b4873d9d0bfd155c3289418ea",
+    "tools/advisor_eval/analyze_player_timing.py": "c2b588f75639028131c1b3bf37bb7a1703d52a27e67208d8e73ac1537252da8f",
+    "tools/advisor_eval/development327/context_reader/README.md": "33c9f04f79c2502acf1d4ce3bf8826401b94e31eb5e17d518f24771d103fb6a6",
+    "tools/advisor_eval/development327/context_reader/record_final.py": "8952350b81da49f6e57a471fcea4e98344ca701bf0d0790cb9c72fff5e3fa764",
+    "tools/advisor_eval/development327/context_reader/validation_final.log": "d896084da5515b2f94bf7021bd49d868ad9d53245d2e10bf51c9d1cf99d4568b",
+    "tools/advisor_eval/development327/context_reader/captured_tail_report.json": "ff33881133a5636e7779d3ff175b01575334d70243622dc306f34557633e766d"
+  },
+  "validation": {
+    "command": [
+      "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-m",
+      "unittest",
+      "tests.test_advisor_log_inspection",
+      "tests.test_advisor_player_timing"
+    ],
+    "exit_code": 0,
+    "seconds": 0.39099999994505197,
+    "tests": 41,
+    "manufactured_data_only": true
+  },
+  "existing_copied_tail": {
+    "files": 4,
+    "events": 1071,
+    "decoded_bytes": 172716754,
+    "report_bytes": 16001,
+    "report_status": "parsed_supplied_records",
+    "captured_inputs_unchanged": true,
+    "scope": "Root authorized already-captured segments 000011\u00e2\u20ac\u201c000014 only."
+  },
+  "source_jobs": 0,
+  "search_jobs": 0,
+  "complete_attempt_jobs": 0,
+  "captured_gameplay_experiments": 0,
+  "external_log_reads": 0,
+  "save_reads": 0,
+  "game_control": false,
+  "original_logs_modified_or_removed": false,
+  "summary_replaces_originals": false,
+  "all_historical_experiment_authority": "closed",
+  "reported_terminal_labels_are_not_verified_wins": true
+}

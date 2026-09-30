@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "scope": "Manufactured journal observations only. No real journal reads, captured evaluations, source component, search, terminal attempt or game control.",
+  "input_hashes": {
+    "tools/advisor_eval/development347/journal_component/tests/advisor_gold_journal.lua": "6b0d035ea643bc15244460478abc904da7e81185d21da96547b0797ce4298687",
+    "tools/advisor_eval/development347/journal_component/Brainstorm/Advisor/player_journal.lua": "97d83097e2f91cd30d34c3c75bc63a635eec97a5ecd9c4b4eedbc93e4cb2215d",
+    "tools/advisor_eval/development347/journal_component/before/Brainstorm/Advisor/player_journal.lua": "e4374657c4d84dce1350ea4631e1bf0cdfde73d575e0ba3e5286b9a5a34a6ffd",
+    "Brainstorm/Advisor/snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+    "tests/run_lua_tests.py": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7",
+    "tests/advisor_player_journal.lua": "bbf3141a4e468e233f1690aaa1fd9d2c6e3883166edbf37002bfcc2ee3cb37a2",
+    "tests/advisor_player_journal_timing.lua": "4f0dd01995eb1f1311fca06e56df1a5c313d3b874953aabd8f2705a0e57b2890",
+    "tests/advisor_journal_reuse.lua": "c7b5110783c3b6989f64c15ecdf4b1f82c282c6641279d432e7dee491f511c92",
+    "tests/fixtures/journal_reuse335/player_journal334.lua": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b"
+  },
+  "input_hashes_after": {
+    "tools/advisor_eval/development347/journal_component/tests/advisor_gold_journal.lua": "6b0d035ea643bc15244460478abc904da7e81185d21da96547b0797ce4298687",
+    "tools/advisor_eval/development347/journal_component/Brainstorm/Advisor/player_journal.lua": "97d83097e2f91cd30d34c3c75bc63a635eec97a5ecd9c4b4eedbc93e4cb2215d",
+    "tools/advisor_eval/development347/journal_component/before/Brainstorm/Advisor/player_journal.lua": "e4374657c4d84dce1350ea4631e1bf0cdfde73d575e0ba3e5286b9a5a34a6ffd",
+    "Brainstorm/Advisor/snapshot.lua": "6e29203446b1a2d166ac4118815cb3853aa5eb2753eb4a2a8cfe7ad0e3e695ba",
+    "tests/run_lua_tests.py": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7",
+    "tests/advisor_player_journal.lua": "bbf3141a4e468e233f1690aaa1fd9d2c6e3883166edbf37002bfcc2ee3cb37a2",
+    "tests/advisor_player_journal_timing.lua": "4f0dd01995eb1f1311fca06e56df1a5c313d3b874953aabd8f2705a0e57b2890",
+    "tests/advisor_journal_reuse.lua": "c7b5110783c3b6989f64c15ecdf4b1f82c282c6641279d432e7dee491f511c92",
+    "tests/fixtures/journal_reuse335/player_journal334.lua": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b"
+  },
+  "inputs_unchanged": true,
+  "runs": [
+    {
+      "exit_code": 1,
+      "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development347\\journal_component\\run_01_before_1.lua\nFAIL tools\\advisor_eval\\development347\\journal_component\\run_01_before_1.lua\n0/1 fixtures passed\n",
+      "stderr": "...ment347/journal_component/tests/advisor_gold_journal.lua:5: declared order row count retained without arrays: nil ~= 6\n",
+      "phase": "before",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development347\\journal_component\\run_01_before_1.lua"
+      ],
+      "cap_seconds": 60,
+      "seconds": 0.125,
+      "expected_exit": "nonzero manufactured diagnostic mismatch",
+      "wrapper_hashes": {
+        "tools/advisor_eval/development347/journal_component/run_01_before_1.lua": "e4d0ad8695df3a4bcde412a0a0f7b30bb543c0df3dd1b36a74e6a91ff7ccaf08"
+      }
+    },
+    {
+      "exit_code": 0,
+      "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development347\\journal_component\\run_01_after_1.lua\nPASS tools\\advisor_eval\\development347\\journal_component\\run_01_after_1.lua\nRunning tools\\advisor_eval\\development347\\journal_component\\run_01_after_2.lua\nPASS tools\\advisor_eval\\development347\\journal_component\\run_01_after_2.lua\nRunning tools\\advisor_eval\\development347\\journal_component\\run_01_after_3.lua\nPASS tools\\advisor_eval\\development347\\journal_component\\run_01_after_3.lua\nRunning tools\\advisor_eval\\development347\\journal_component\\run_01_after_4.lua\nPASS tools\\advisor_eval\\development347\\journal_component\\run_01_after_4.lua\n4/4 fixtures passed\nadvisor_gold_journal: 227 manufactured checks passed; compact current-only diagnostics, no gameplay\nadvisor_player_journal: 25 checks passed\nplayer_journal_timing: 105 manufactured checks passed; elapsed wall time only\njournal_work335: 236 checks; avoided detail gathers=9; avoided full fingerprints=16; all serialized event bytes equivalent\n",
+      "stderr": "",
+      "phase": "after",
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development347\\journal_component\\run_01_after_1.lua",
+        "tools\\advisor_eval\\development347\\journal_component\\run_01_after_2.lua",
+        "tools\\advisor_eval\\development347\\journal_component\\run_01_after_3.lua",
+        "tools\\advisor_eval\\development347\\journal_component\\run_01_after_4.lua"
+      ],
+      "cap_seconds": 60,
+      "seconds": 0.14000000001396984,
+      "expected_exit": "zero",
+      "wrapper_hashes": {
+        "tools/advisor_eval/development347/journal_component/run_01_after_1.lua": "e04d2c4883355fc2ca9e62e8b39e753bdd4c59c35262339c11892c20f1daef4a",
+        "tools/advisor_eval/development347/journal_component/run_01_after_2.lua": "998d9cf2b2e3c95be02093e037e5c181e13330c291a5fea8bd7d828ae5981e28",
+        "tools/advisor_eval/development347/journal_component/run_01_after_3.lua": "727b92a72dcb9923291a6a8ae66b4c93e1938651192f3d307f5a186fcfae84cb",
+        "tools/advisor_eval/development347/journal_component/run_01_after_4.lua": "7a59ede66fecf7b6e60c9d541c47092a51d7ccb3ef84010c18c2c4d1ffa881a1"
+      }
+    }
+  ],
+  "passed": true
+}

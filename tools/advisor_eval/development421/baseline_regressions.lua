@@ -1,0 +1,9 @@
+local F=dofile('tests/fixtures/retained418.lua');local S=dofile('tools/advisor_eval/runs/repair420_candidate4/policy/Brainstorm/Advisor/strategy.lua');local J=dofile('Brainstorm/Advisor/joker_plan.lua');local C=dofile('tools/advisor_eval/runs/repair420_candidate4/policy/Brainstorm/Advisor/conditional_value.lua');S.conditional_value=C
+local s=F.state();s.phase='pack';s.hands={Pair={played=12,level=4}};s.round_resets={hands=4,discards=3};s.next_blind={key='bl_big',ante=3};s.jokers={F.j('j_yorick'),F.j('j_perkeo')}
+local catalog={};for _,c in ipairs(dofile('tests/fixtures/joker_centers421.lua'))do catalog[c.key]=c end
+local unknown=0;for _,c in pairs(catalog)do local _,_,known=S.owned_joker_value(s,c);if not known then unknown=unknown+1 end end;print('unknown count observed',unknown);assert(unknown>=25,'baseline unknown count changed');print('Baseline420 generic-unknown Joker identities: '..unknown)
+local c=F.copy(catalog.j_castle);c.ability.t_chips=0;local old=S.owned_joker_value(s,c);c.ability.extra.chips=160;assert(S.owned_joker_value(s,c)==old,'baseline Castle defect not reproduced')
+local after=F.copy(s);after.jokers[#after.jokers+1]=c;local mature=S.shop_sequence_api.build_value(after);c.ability.extra.chips=0;assert(S.shop_sequence_api.build_value(after)==mature,'baseline zero-shadowing not reproduced')
+print('Baseline420 mature Castle gets no growth credit in direct or row values')
+local delayed=C.assess(s,catalog.j_delayed_grat,{base_value=55,readiness={supported=true,status='sampled_safe',hands=4,discards=3}});assert(delayed.cash_end_round==6);print('Baseline420 teacher incorrectly credits $6 retained-discard payout')
+local Y=dofile('tools/advisor_eval/runs/repair420_candidate4/policy/Brainstorm/Advisor/synergies.lua');s.jokers={F.copy(catalog.j_hologram)};s.next_blind.key='bl_needle';assert(Y.forecast(s,catalog.j_dna).bonus==35);print('Baseline420 Needle incorrectly credits DNA spare-hand combo')

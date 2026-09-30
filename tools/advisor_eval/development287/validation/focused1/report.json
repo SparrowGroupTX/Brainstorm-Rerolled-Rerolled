@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "kind": "synthetic_tooling_validation",
+  "timestamp_utc": "2026-09-13T22:29:01.451913+00:00",
+  "results": {
+    "python": {
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/advisor_eval/development287",
+        "-p",
+        "test_lucky_source_truth.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 30
+    },
+    "lua": {
+      "command": [
+        "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "tests/run_lua_tests.py",
+        "tools/advisor_eval/development287/test_lucky_source_truth.lua"
+      ],
+      "exit_code": 0,
+      "timeout_seconds": 30
+    }
+  },
+  "files": {
+    "tools\\advisor_eval\\development287\\lucky_source_truth.lua": "2460cccbecaf27bf39f1bdadb19a6830ec8633950cf289a0b83868455bd17b11",
+    "tools\\advisor_eval\\development287\\lucky_source_truth.py": "b5020232574d7a6228ff26cd51d8c463f125d032380e9e43d831b6e509c64102",
+    "tools\\advisor_eval\\development287\\lucky_source_worker.py": "268d8aa4b5f24603fb8d630dd48ecbc2fdffadca3793900c69fb896bd886e916",
+    "tools\\advisor_eval\\development287\\prepare_lucky287.py": "6be0002f8125a5861a72904bc7354bccf889f1027befd12168e35280824994c1",
+    "tools\\advisor_eval\\development287\\test_lucky_source_truth.lua": "85947aada1d2780b59e21009f0a4dcc530aa1a1fa6cb68505572a42873c2d46a",
+    "tools\\advisor_eval\\development287\\test_lucky_source_truth.py": "00451c6c8c29d86c35464ab47a0dd26c299ce9df41d3c9c53b7f224e819b3006"
+  },
+  "original_source_executions": 0,
+  "captured_decisions": 0,
+  "searches": 0,
+  "complete_attempts": 0,
+  "qualification": false
+}

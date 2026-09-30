@@ -1,0 +1,106 @@
+{
+  "event_count": 2512,
+  "input_bytes": 5833895,
+  "decoded_bytes": 42454044,
+  "versions": {
+    "Brainstorm v2.158.0-alpha": 2276
+  },
+  "kinds": {
+    "teacher_observation": 385,
+    "teacher_advice": 705,
+    "auto_run": 712,
+    "collection_search_started": 1,
+    "collection_search_finished": 1,
+    "collection_run_start": 1,
+    "action_requested": 236,
+    "action_callback_result": 236,
+    "state_after_actions": 235
+  },
+  "last_at": "2026-09-16T19:17:59Z",
+  "last_sequence": 2512,
+  "decode_errors": [],
+  "converter_error": null,
+  "converter": {
+    "schema": "brainstorm_teacher_demonstrations_v1",
+    "counts": {
+      "events": 2512,
+      "observations": 385,
+      "recommendations": 705,
+      "action_requests": 236,
+      "callback_results": 236,
+      "settled_observations": 235,
+      "wins": 0,
+      "losses": 0,
+      "abandoned_stall": 0,
+      "unsupported": 0,
+      "error": 0
+    },
+    "collections": 1,
+    "actions_without_callback": 0,
+    "accepted_callbacks_without_settled_observation": 0,
+    "legacy_checkpoint_compatible": false,
+    "expert_labels_assigned": 0,
+    "limitations": [
+      "No legal-candidate reconstruction or training is performed.",
+      "Callback acceptance and first settled state do not prove complete queued effects.",
+      "Outcomes are audited journal evidence, not independent game replay verification.",
+      "Unfinished collections remain incomplete; no missing outcome is imputed."
+    ]
+  },
+  "lifecycle": [
+    {
+      "sequence": 18,
+      "kind": "auto_run",
+      "at": "2026-09-16T19:10:59Z",
+      "monotonic_seconds": 16.8858256,
+      "observation_id": "teacher356-1789585859-1:14",
+      "advice_sequence": 17,
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "anchor": {
+        "segment": "session-20260916T191059Z-1-000002.brj",
+        "ordinal": 5,
+        "raw_sha256": "f3ab606034021f3f9274d7572bc574f60eb62a9f1fd8f2ece9efddd8d8e32eb4"
+      },
+      "details": {
+        "event": "run_launch_accepted",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "starting",
+        "time": 16.811137
+      },
+      "advice": null
+    },
+    {
+      "sequence": 21,
+      "kind": "auto_run",
+      "at": "2026-09-16T19:10:59Z",
+      "monotonic_seconds": 16.9769282,
+      "observation_id": "teacher356-1789585859-1:19",
+      "advice_sequence": 20,
+      "seed": "M4BVSY11",
+      "run_instance": "observed-game:2",
+      "anchor": {
+        "segment": "session-20260916T191059Z-1-000002.brj",
+        "ordinal": 8,
+        "raw_sha256": "9f7c2716b2e964eca9a252791a920fb1e3aee9efd8c6edccd70d9d86180bc3c0"
+      },
+      "details": {
+        "event": "run_started",
+        "profile_id": 1,
+        "run_id": "game:2",
+        "run_number": 1,
+        "schema": 1,
+        "search_id": "auto:1:1:1",
+        "session": 1,
+        "state": "playing",
+        "time": 16.9351931
+      },
+      "advice": null
+    }
+  ]
+}

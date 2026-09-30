@@ -1,0 +1,26 @@
+{
+  "kind": "manufactured_fixture_only",
+  "source_execution": false,
+  "live_game": false,
+  "captured_replay": false,
+  "timeout_seconds": 60,
+  "files": {
+    "Brainstorm/Advisor/auto_run.lua": "5ed858a4a03b089d64e5af46fcf6d5319182108ceb832841c1243636c7cb3303",
+    "Brainstorm/Core/auto_run_product.lua": "dbc68a1768ed894e9dc73303aef3926f9cf5de00909847c6c7cd71cb802cf5d0",
+    "tests/advisor_auto_run.lua": "18ce917a0b2de5a1d54614b88723a8f1be7171181a653a7978ed0660a5588ba2",
+    "tests/advisor_auto_run_product.lua": "7b125da1e3678792039939f903c57374a1d68f3703867e45039c02fdb3102418",
+    "tests/advisor_auto_terminal.lua": "ba835be1983976289f80a11c85148022ee97d4509b3038afc254221d0881d980"
+  },
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tests/advisor_auto_run.lua",
+    "tests/advisor_auto_run_product.lua",
+    "tests/advisor_auto_terminal.lua"
+  ],
+  "exit_code": 1,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tests\\advisor_auto_run.lua\nFAIL tests\\advisor_auto_run.lua\nRunning tests\\advisor_auto_run_product.lua\nPASS tests\\advisor_auto_run_product.lua\nRunning tests\\advisor_auto_terminal.lua\nPASS tests\\advisor_auto_terminal.lua\n2/3 fixtures passed\nadvisor_auto_run_product: 1068 checks passed\nadvisor_auto_terminal: 30 checks passed\n",
+  "stderr": "...\\Brainstorm-Rerolled-Rerolled\\tests\\advisor_auto_run.lua:529: attempt to index a nil value\n",
+  "duration_seconds": 0.15600000007543713,
+  "files_unchanged": true
+}

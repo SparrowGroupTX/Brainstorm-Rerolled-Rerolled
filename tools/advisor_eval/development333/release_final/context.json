@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "created_at_utc": "2026-09-15T20:43:41.840088+00:00",
+  "release": 333,
+  "summary": "Fix the journal and public-Joker observer repeatedly wrapping each other during idle updates. One shared weak wrapper-to-original registry lets each installer recognize its existing hook below another product-owned wrapper. A manufactured1000-tick/eight-callback workload changes16000 retained new wrappers to zero; one action retains exactly one public action beginning and one journal request/result pair. Genuine replacements, callback return tuples/errors, nested actions and observed state information are preserved. No archive format, compression, storage limit, scoring policy or native code changed. Full candidate and exact-installed regressions passed 188 Lua fixtures and 361 Python tests with unchanged frozen policy/test hashes. 2.133.0-alpha is installed; activation waits for the user's normal restart.",
+  "outcome_summary": "Release333 uses routine manufactured/regression fixtures and read-only timing analysis only, with zero new source attempts, source components, captured-policy comparisons or searches. A stable copy of one live-written log prefix contains78 complete compact performance windows:120593 stored bytes and435636 decoded bytes. The final six frames average0.8915426-second intervals while the one journal event takes0.0063389seconds. This confirms severe stalls, not their complete cause. The callback-growth defect is independently reproduced; restored live FPS and garbage-collector attribution remain unmeasured. The historical closed loss328 batch remains3losses/1error/1timeout/1unsupported and0wins; its policies327/329/331 are not333 validation.",
+  "limits_summary": "The captured log has no action or loaded-version records, so it does not establish the active game version or live duplicate action counts. Low direct journal duration does not prove the sole stall cause; the larger original-game-update duration does not identify garbage collection. Manufactured callback counts and allocation work are not measured live FPS recovery. Installing files cannot remove chains in the running process; the user normal restart activates the repair. Weak ancestry covers only registered product wrappers, with bounded128-step inspection and no debug/upvalue or hidden-state access. Opaque external wrappers can retain duplicate old observation layers without exposing ancestry; no arbitrary-mod exactly-once guarantee is claimed. Public Joker inference, complete-world planning, all score/resource/population/retry protections remain as documented in332. Keep all logs, dirty/untracked work, settings and native DLLs. No complete win, numerical odds, achievement completion or human superiority follows.",
+  "budget_summary": "All experiment allowances remain CLOSED. Historical loss328 used four public pairs and six source attempts,1200seconds reserved and685.3740000000689seconds actual; unusedP05/P06 and60seconds were closed. None is renewed. Release333 runs zero experiment workers and performs no source archive/runtime initialization, seed search, policy replay, game control or save/profile evaluation. One explicit observation-log prefix was copied read-only under a4MiB cap and strictly decoded with the existing bounded analyzer. Routine candidate and exact-installed fixture suites retain their60-second per-suite limits. No worker, source attempt, search or scheduled continuation remains pending.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 4,
+    "captured_policy_evaluations": 8,
+    "search_workers": 0,
+    "complete_attempts": 6
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 3,
+    "error": 1,
+    "timeout": 1,
+    "unsupported": 1,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "remaining_authority_seconds": 0,
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/authority.json",
+      "sha256": "7bd5086a7de41d3f1150727fb7fad4075dc9fa7f92e4c2b249abaf0e1b7ce0e2"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_SOURCE_EVIDENCE_332.json",
+      "sha256": "b185730878f01b1974f2ed0fcfb80cf8a09a309e8235e3b0f7b9098d68235924"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/runs/loss328_validation_20260915/FINAL_BUDGET_332.json",
+      "sha256": "ebe6ec19dc594cb8b260883b761fe8d285edb523d5db584412b68cf1ec7b097d"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development328/shop_release_notes/limits.json",
+      "sha256": "abe07aa95ae18a8bf1704748f643e3b99b27a3c72c8e1fa7eb05917d02731d8c"
+    }
+  },
+  "historical_closed_context": {
+    "path": "tools/advisor_eval/development327/release_final/context.json",
+    "sha256": "7ebcb52bfb0af256d0772d51637efadc5edc18bad5a871c640093c408341b3d8"
+  },
+  "historical_closed_counts": {
+    "source_components": 18,
+    "captured_pair_jobs": 6,
+    "captured_policy_evaluations": 18,
+    "search_workers": 6,
+    "complete_attempts": 8
+  },
+  "historical_closed_outcomes": {
+    "win": 1,
+    "loss": 3,
+    "error": 0,
+    "timeout": 4,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 16
+  },
+  "diagnostic_evidence": {
+    "previous_current_context": {
+      "path": "tools/advisor_eval/development328/acorn_release_final/context.json",
+      "sha256": "1453c615c575478fc6e020ab417a166b9a83470084fc39b63525ea6a0a05b0c2"
+    },
+    "capture_receipt": {
+      "path": "tools/advisor_eval/development333/captured_log/receipt.json",
+      "sha256": "56f2ac7b41f4cb4cbcfb52eb8ce03d07aa22f0231b4c5e3cba2aee115eea16f7"
+    },
+    "captured_segment": {
+      "path": "tools/advisor_eval/development333/captured_log/session-20260915T202738Z-1-000001.brj",
+      "sha256": "a19bc8bb2775f0fc904e0cf3c42dcc9d52f1ed92c8720da92731e8eaca0de686"
+    },
+    "timing": {
+      "path": "tools/advisor_eval/development333/captured_log/timing.json",
+      "sha256": "28412ae4b3fb71916ba515f36f37c08f9759f60ada642eba10b3d307aa604b02"
+    },
+    "stall_index": {
+      "path": "tools/advisor_eval/development333/captured_log/stall_index.json",
+      "sha256": "7a6c96a0019c2ec2d73cf0401db6935f35770f85ea0593a5d1424583abacfd62"
+    },
+    "logger_component": {
+      "path": "tools/advisor_eval/development333/logger_component/manifest.json",
+      "sha256": "b4dc7c888a279d6ff5acd4de8133b3bebf91b04c5b9ce5a0929f3e4c6aab4b36"
+    },
+    "observer_component": {
+      "path": "tools/advisor_eval/development333/observer_component/manifest.json",
+      "sha256": "5e5e3bd28b53f0953fe5c45fdabc6a7ea87ece648f017686b4c2248997a19713"
+    },
+    "integration": {
+      "path": "tools/advisor_eval/development333/integration/receipt.json",
+      "sha256": "ef1ddb12d2d3423a42b01fb7524d70b1090341b7cb0d05557f510c832ed6a117"
+    },
+    "prepared_notes": {
+      "path": "tools/advisor_eval/development333/release_notes/manifest.json",
+      "sha256": "a182d85ab9baac429c99de16df9713d466193371e8538723fb6e86535a3527d4"
+    }
+  },
+  "preparation_status": "installed_and_exact_regression_passed_activation_unconfirmed",
+  "prepared_context_preserved": {
+    "path": "tools/advisor_eval/development333/release_context/context.json",
+    "sha256": "1a625168a70a5d21452760901e49f79f2fe3fefeb86b77f87ef819b02bd532c6"
+  },
+  "release_validation": {
+    "version": "2.133.0-alpha",
+    "installed_at": "2026-09-15T15:41:53.0201102-05:00",
+    "backup": "C:\\Users\\trevo\\AppData\\Roaming\\Balatro\\Mods\\Brainstorm\\deployment-backups\\advisor-20260915-154152",
+    "policy_digest": "ed30472fb2227912e521a692afb9152206a5e90918e1d972a321857c269bcfea",
+    "lua_fixtures": 188,
+    "python_tests": 361,
+    "candidate": {
+      "path": "tools/advisor_eval/runs/hooks333_candidate/validation/report.json",
+      "sha256": "e50bb4fc0400d7c5a553ffcdfa753955ed579ebbca24081c1d31726390a0dc8e"
+    },
+    "installed": {
+      "path": "tools/advisor_eval/runs/hooks333_installed/record.json",
+      "sha256": "7b45d8b2a9dcd0aab765f717343c4ce55d403c8252748717ae187c7bf5605c01"
+    },
+    "exact_installed": {
+      "path": "tools/advisor_eval/runs/hooks333_installed_validation/report.json",
+      "sha256": "6c8905558b6c90b00422cd84bd14193044f47e0900e66c73b264a44f3612ceb2"
+    }
+  },
+  "counts_scope": "historical_closed_cycle",
+  "release_counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "previous_checkpoint_context": {
+    "path": "tools/advisor_eval/development328/acorn_release_final/context.json",
+    "sha256": "1453c615c575478fc6e020ab417a166b9a83470084fc39b63525ea6a0a05b0c2"
+  }
+}

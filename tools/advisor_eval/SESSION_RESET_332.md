@@ -1,0 +1,33 @@
+# Current checkpoint — installed 2.132.0-alpha
+
+Installed checkpoint: **2.132.0-alpha**, 2026-09-15T15:03:20.9476855-05:00.
+All 82 deployment and 98 frozen product/dependency files match repository and installation.
+Candidate and exact-installed full regression: **186 Lua fixtures / 361 Python tests pass**, unchanged frozen policy and tests; 60s cap per suite.
+Policy digest: `1f27a0d0952ed090c95289f8112e5957f067e95d56a589a7684ae67024ddcec5`.
+Backup: `C:\Users\trevo\AppData\Roaming\Balatro\Mods\Brainstorm\deployment-backups\advisor-20260915-150319`.
+Current settings and every existing native DLL were preserved. Active native file: `Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll`. Activation of this installation has not been confirmed; it waits for the user's normal restart. Any earlier observed loaded version is recorded separately in the component evidence.
+
+Infer hidden Joker positions from public activations and compare complete bounded play/order choices; preserve all closed loss-validation outcomes.
+
+Component/source/test scope: `PUBLIC_JOKER_OBSERVATION_332.md`.
+
+Evidence: `runs/acorn332_candidate/validation/report.json`, `runs/acorn332_installed/record.json` and `policy/`, `runs/acorn332_installed_validation/report.json`, and `runs/acorn332_final/final_verification.json`. Exact current checkpoint hashes are also in `SESSION_RESET_332.json`.
+
+Installed public Joker-effect observation and bounded iterative ordering. Concealed identities are redacted before capture and ordinary decision paths; remembered public unordered inventory plus actually displayed popups constrains complete possible slot assignments. Observed drags and certified Execute reorders transport slot beliefs. Current-order plays compare all legal subsets and all consistent worlds within140000 calls; reordering additionally requires a complete order family within30000 calls and an immediate clear in every world. Ambiguity, unsupported mechanics and missing observations remain explicit. Full candidate and exact-installed regressions passed 186 Lua fixtures and 361 Python tests with unchanged frozen policy/test hashes. 2.132.0-alpha is installed; activation waits for the user's normal restart.
+
+Four public comparison jobs support the Purple continuation, complete affordable Blueprint replacement, retained Perkeo inventory and evidence-forwarding changes. Six selected source attempts ended with no wins: C01 baseline327 Pillar loss592/600; C02 policy329 cleared616/600 but ERROR at a nine-card House; C03 baseline327 Ante5Big loss18340/37500; C04 policy329 cleared that Big115080/37500 and reached Ante6 before TIMEOUT; C05 policy331 passed the same House stoppage, clearedHouse4164/2000 and Ante3Small6102/3200, then lostBig2436/4800; C06 policy329 stopped UNSUPPORTED before the first concealed Joker decision at Ante8 Acorn. The first two C05 House forecasts are sampled expectations, not exact scores or guaranteed floors. No source attempt evaluated332 public observation.
+
+Source attempts use selected dependent development seeds with synthetic all-unlocked/discovered and150-missing Gold profiles, not the player profile or unseen holdouts. No verified complete Jokerless win, numerical player odds, per-challenge50/75percent targets, achievement completion or human superiority. Public observation has manufactured capture/Execute/decision/scoring regression evidence and static preserved-source grounding, but no live activation or original-source observer qualification. Immediate all-world score floors are not joint future hand/discard/consumable comparisons or a globally ideal order. At most6Jokers/720worlds/9visiblecards and256events; Glass/Lucky and Blue/Purple/Gold resource effects remain unsupported in this immediate path. The next concrete planning gap is nonempty shop-exit Perkeo copying combined with Certificate: C05shops55/60/62 return zero profiles and pack61 falls back; full-row Judgement copies accumulate. Do not drop that transition guard to manufacture support. Preserve existing score caps, inventory/population and persistent retry protections, settings/native DLLs and all dirty work. No saves/profile evaluation or game control. Activation waits for the user normal restart; no future experiment authority is granted.
+
+The user-authorized loss328 cycle is CLOSED. Four30-second public pairs and six180-second source attempts reserved1200seconds; actual worker time685.3740000000689seconds, including reported cleanup. UnusedP05/P06 and60seconds are closed. All workers are reaped and stdout drains complete; every original error, timeout, unsupported and incomplete capture remains preserved. No source components or seed searches were launched; no historical allowance was reused. There is no pending experiment, worker, search or scheduled continuation.
+
+The current cycle is closed; its unused capacity remains closed and this installation grants no additional jobs.
+
+Exact current-cycle evidence and authority references: `tools\advisor_eval\development328\acorn_release_final\context.json`.
+
+Preserve every tracked and untracked change on codex/exact-search-speedups. No commit/reset/clean/deletion/PR. Tools must never launch Balatro.exe, foreground/restart/stop/control the running game, execute live gameplay, or read/evaluate player saves. Product save/load remains user-keyed. Product autonomous execution requires an explicit user-started mode, with a stop control; installing an update does not activate it. Never restore old settings. Preserve existing native DLLs; changed native work requires its existing sidecar/evidence gate. No neural/GPU training or scheduled tasks. Retry 270 keeps its persistent five-report protection; metadata restoration or changing marks never renews the count. Source evaluation keeps retries disabled and clean.
+
+
+
+Fix concrete causes of recorded losses while minimizing expected real time to earn the remaining Gold Joker stickers and complete all twenty challenges, including failed attempts, retries, search/opening costs, computation, purchases and user actions. Use public information, flexible sufficient scaling and complete bounded comparisons; preserve cash, population/Glass, Blue generation, Perkeo/Negative/Observatory inventory and persistent retry protections. The public Joker slice adds visible-effect inference and immediate common-world play/order comparisons. It does not demonstrate global optimality, joint resource planning, a terminal rescue, achievement completion, numerical win odds or superiority over a good human player. Jokerless and Knife's Edge remain unfinished broader priorities.
+

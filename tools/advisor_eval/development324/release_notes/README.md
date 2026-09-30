@@ -1,0 +1,12 @@
+# Detached release324 checkpoint inputs
+
+These inputs do not change current START, HANDOFF, RESUME, architecture maps, runtime, tests, version metadata or installation. Root owns final implementation/review, routine validation, installation and checkpoint publication. The implementation/collector limits are concrete; authoritative full regression/install values come from the generated records. Initial preparation drafts are preserved under `draft_v1/`.
+
+- `context.json` and `limits.json` preserve the CLOSED historical gold299 authority, original cohort/dispositions and exact references, with all-zero324 release counts. `verified_complete_win=true` belongs solely to historical C01 policy300; the finalizer emits `complete_win=false` for this release.
+- The fresh passive loaded323 public-log audit is separately bound in limits. It records two consistent loss receipts and an out-of-scope earlier aggregate win; it is neither a new source experiment nor newly verified earlier win. Only the loaded2.123 version string is observed;324 activation remains pending.
+- `OBJECTIVE_324.md`, `NEXT_324.md` and `ARCHITECTURE_NAVIGATION_324.md` are finalizer input notes under `development324/release_notes/`. Use their exact paths with `--objective-note`, `--priorities-note` and `--architecture-note` after final review.
+- `TIMING_324.md` is the component-note input. Its accepted bytes may be copied to the initially absent `tools/advisor_eval/TIMING_324.md`, then bound with `--component`. The finalizer prefix/candidate suffix must refer to the actual validated and installed records. A first unvalidated freeze is not a failed regression and must not displace a later accepted candidate.
+- `build_context.py` validates immutable prior references and writes only this directory. It imports only finalizer schema/accounting helpers, never finalizer main. `validation.json` means those reference/accounting checks passed; it is not runtime/test/install validation.
+- `INPUT_MANIFEST.json` binds the current exact input bytes, excluding itself. Any accepted later edit requires rebuilding this input manifest before root finalization. Previous frozen histories and source/player files are not modified.
+
+No additional external journal was read to prepare these documents. All new source/captured/search/complete experiment counts remain zero; no old unused capacity is renewed. No worker, gameplay, save/profile file read, installation or scheduled continuation is pending or authorized by this package.

@@ -1,0 +1,29 @@
+{
+  "kind": "manufactured_fixtures",
+  "source_execution": false,
+  "captured_replay": false,
+  "live_game": false,
+  "max_seconds": 60,
+  "command": [
+    "C:\\Users\\trevo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "tests/run_lua_tests.py",
+    "tools\\advisor_eval\\development343\\objective_component\\before_advisor_gold_goal.lua",
+    "tools\\advisor_eval\\development343\\objective_component\\before_advisor_bell_opening.lua",
+    "tools\\advisor_eval\\development343\\objective_component\\before_advisor_perkeo_inventory.lua",
+    "tools\\advisor_eval\\development343\\objective_component\\before_advisor_gold_planet_policy.lua"
+  ],
+  "expected_failure": true,
+  "inputs": {
+    "Brainstorm/Advisor/gold_goal.lua": "a997000c66802949dd102d6ed1723b0246445f4176f7effcb2aeab82484e9008",
+    "Brainstorm/Advisor/perkeo_inventory.lua": "34840071e1956a8d6f743f962af30cc6945b76d024271b42ab2e518de2769710",
+    "tests/advisor_gold_goal.lua": "ec572cfdbcd8d920417010b72f4b953155c4b1a3f7d333ba20482696ef9af4e8",
+    "tests/advisor_bell_opening.lua": "eefb41c281e6a721194538bdd2fc5c0b7d7d054dcadeeb96a69685b82bf9b29b",
+    "tests/advisor_perkeo_inventory.lua": "43c231ab666ae2e0c36c49ea0b0daabb57c4cbba7e801494798d4da04e7c2246",
+    "tests/advisor_gold_planet_policy.lua": "b0fc02ef69a623095d4caec7211f5d573482773922a8ce713eac7567ca91b793"
+  },
+  "exit_code": 1,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tools\\advisor_eval\\development343\\objective_component\\before_advisor_gold_goal.lua\nFAIL tools\\advisor_eval\\development343\\objective_component\\before_advisor_gold_goal.lua\nRunning tools\\advisor_eval\\development343\\objective_component\\before_advisor_bell_opening.lua\nFAIL tools\\advisor_eval\\development343\\objective_component\\before_advisor_bell_opening.lua\nRunning tools\\advisor_eval\\development343\\objective_component\\before_advisor_perkeo_inventory.lua\nFAIL tools\\advisor_eval\\development343\\objective_component\\before_advisor_perkeo_inventory.lua\nRunning tools\\advisor_eval\\development343\\objective_component\\before_advisor_gold_planet_policy.lua\nFAIL tools\\advisor_eval\\development343\\objective_component\\before_advisor_gold_planet_policy.lua\n0/4 fixtures passed\n",
+  "stderr": "tests/advisor_gold_goal.lua:13: retain a missing Joker instead of replacing it with unnecessary extra score\ntests/advisor_bell_opening.lua:13: every forced branch can sacrifice excess score while retaining the clearing margin\ntests/advisor_perkeo_inventory.lua:7: explicit own-family protection can trade excess score from a different Joker endpoint\ntests/advisor_gold_planet_policy.lua:20: actual joint inventory can trade unnecessary copying power for a missing Joker\n",
+  "seconds": 0.3279999999795109,
+  "inputs_unchanged": true
+}

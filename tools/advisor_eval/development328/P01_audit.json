@@ -1,0 +1,255 @@
+{
+  "schema": 1,
+  "kind": "read_only_completed_public_pair_audit",
+  "job": "P01",
+  "status": "pass",
+  "checks": [
+    "worker completed and was reaped",
+    "shared worker wall cap complied",
+    "one-use receipt remains spent",
+    "registration hashes match",
+    "trace hash matches",
+    "all frozen file hashes unchanged",
+    "registered runtime hashes unchanged",
+    "input is exact declared redacted public event",
+    "input hash matches source provenance and pair",
+    "missing public shop forecast remains missing in hand input",
+    "retained card index4 is Purple",
+    "baseline completed on unchanged input",
+    "baseline full evidence hash matches",
+    "baseline full result preserved despite summary omissions",
+    "baseline same exact input",
+    "baseline actual/reported scores agree within ordinary cap",
+    "baseline summary preserves full selected action",
+    "baseline retries disabled",
+    "baseline exact verifier module/identity-edge receipt",
+    "baseline complete ordinary discard comparison",
+    "baseline selected Purple alternatives excluded",
+    "candidate completed on unchanged input",
+    "candidate full evidence hash matches",
+    "candidate full result preserved despite summary omissions",
+    "candidate same exact input",
+    "candidate actual/reported scores agree within ordinary cap",
+    "candidate summary preserves full selected action",
+    "candidate retries disabled",
+    "candidate exact verifier module/identity-edge receipt",
+    "candidate complete ordinary discard comparison",
+    "candidate selected Purple alternatives excluded",
+    "both frozen policies retain recorded discard",
+    "baseline has no remaining-blind comparison",
+    "baseline rejection matches observed blocker",
+    "candidate removes blanket retained-Purple rejection",
+    "candidate completes eight worlds over four hands",
+    "future discard omission stays explicit",
+    "play has eight world receipts",
+    "play world threshold consistency",
+    "play sampled count consistent",
+    "play mean capped progress consistent",
+    "prior_discard has eight world receipts",
+    "prior_discard world threshold consistency",
+    "prior_discard sampled count consistent",
+    "prior_discard mean capped progress consistent",
+    "prior has eight world receipts",
+    "prior world threshold consistency",
+    "prior sampled count consistent",
+    "prior mean capped progress consistent",
+    "best has eight world receipts",
+    "best world threshold consistency",
+    "best sampled count consistent",
+    "best mean capped progress consistent",
+    "complete sample family favors incumbent discard",
+    "selected branch retains incumbent",
+    "one-draw incumbent evidence unchanged",
+    "aggregate score receipt consistent"
+  ],
+  "input_sequence": 2722,
+  "phase": "hand",
+  "record": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/record.json",
+    "sha256": "6cb8a0755ab508dac21af94a0fa2d30b53d9bdfb640ee0c0949795037b02c683"
+  },
+  "registration": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/registration.json",
+    "sha256": "9907d048554914d14a66465267a1b5f5fce28b10c152c2df3979b46f44094b1f"
+  },
+  "comparison": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/comparison.json",
+    "sha256": "166e923a6abe0d58537d0b1dce68fae1f81639a5990fd552135b5c155ae36181"
+  },
+  "input": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/snapshot.json",
+    "sha256": "644828448d02a09b07b418b3a9c3807f51e62c5a56f4de36eac60e4e79ff862e"
+  },
+  "input_provenance": {
+    "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/input_provenance.json",
+    "sha256": "748103b018a5ab0dae0631c6f46bc0f667568a87e324d8e88ca42cb75cf24110"
+  },
+  "results": {
+    "baseline": {
+      "full": {
+        "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/baseline_result.json",
+        "sha256": "2ac605cd88e4de79baae8b4c4ccf6cc0be5fcc28583baf3b7d567279364cb2b4"
+      },
+      "summary": {
+        "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/baseline_summary.json",
+        "sha256": "8bf88aa4d7c7466804009d6dc61953700e39466d16d64d54b5ffd602241a90dd"
+      },
+      "score_calls": 71701,
+      "decision_wall_seconds": 0.99558300001081,
+      "decision_cpu_seconds": 0.996,
+      "policy_digest": "77e1c1bf260301395d2018a069f1952a12908ce7a117e6958e03953458b1a294",
+      "summary_omissions": {
+        "cycles": 0,
+        "depth": 0,
+        "nodes": 390,
+        "string_bytes": 0,
+        "unsupported_values": 0
+      }
+    },
+    "candidate": {
+      "full": {
+        "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/candidate_result.json",
+        "sha256": "7b1877c2333910b011623b869e55fc8b1a63a196761457ddaa1b843a1ef03dc4"
+      },
+      "summary": {
+        "path": "tools/advisor_eval/runs/loss328_validation_20260915/P01/candidate_summary.json",
+        "sha256": "e4292c7cc4e4a62377e939a24cee3dbd60cbaa7f2b8b5b1cc5aa5c48cecf2122"
+      },
+      "score_calls": 91318,
+      "decision_wall_seconds": 1.4457832000917,
+      "decision_cpu_seconds": 1.446,
+      "policy_digest": "0012f84ff812038cf2f2e1b82220877314897b33188b4d9ca6cd6b0a0a87f64c",
+      "summary_omissions": {
+        "cycles": 0,
+        "depth": 0,
+        "nodes": 391,
+        "string_bytes": 0,
+        "unsupported_values": 0
+      }
+    }
+  },
+  "action": {
+    "area": "hand",
+    "indices": [
+      3,
+      7,
+      8,
+      9
+    ],
+    "kind": "discard"
+  },
+  "actions_unchanged": true,
+  "branch_comparison": {
+    "play": {
+      "kind": "play",
+      "indices": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "clears": 3,
+      "worlds": 8,
+      "mean_capped_chips": 528.625,
+      "mean_hands": 3.75,
+      "scores": [
+        448,
+        432,
+        600,
+        567,
+        452,
+        600,
+        600,
+        530
+      ]
+    },
+    "prior_discard": {
+      "kind": "discard",
+      "indices": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "clears": 5,
+      "worlds": 8,
+      "mean_capped_chips": 542.25,
+      "mean_hands": 3.5,
+      "scores": [
+        600,
+        600,
+        600,
+        351,
+        414,
+        600,
+        600,
+        573
+      ]
+    },
+    "prior": {
+      "kind": "discard",
+      "indices": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "clears": 5,
+      "worlds": 8,
+      "mean_capped_chips": 542.25,
+      "mean_hands": 3.5,
+      "scores": [
+        600,
+        600,
+        600,
+        351,
+        414,
+        600,
+        600,
+        573
+      ]
+    },
+    "best": {
+      "kind": "discard",
+      "indices": [
+        3,
+        7,
+        8,
+        9
+      ],
+      "clears": 5,
+      "worlds": 8,
+      "mean_capped_chips": 542.25,
+      "mean_hands": 3.5,
+      "scores": [
+        600,
+        600,
+        600,
+        351,
+        414,
+        600,
+        600,
+        573
+      ]
+    }
+  },
+  "candidate_additional_score_calls": 19617,
+  "worker_seconds": 3.219000000040978,
+  "score_cap_each": 140000,
+  "score_cap_total": 280000,
+  "input_gaps": {
+    "completionist_goal_absent": false,
+    "deck_absent": false,
+    "normal_opening_absent": false,
+    "shop_forecast_absent": true
+  },
+  "interpretation": "The repair restores a complete remaining-blind comparison but retains the same observed discard. This P01 result does not fix the observed terminal loss.",
+  "limitations": [
+    "Eight paired composition samples are not a calibrated win probability.",
+    "No future discards are searched in this four-hand family.",
+    "Only the first captured Pillar discard was evaluated; later decisions and terminal outcome were not executed.",
+    "Public shop_forecast is absent and was not reconstructed; hand/deck/objective inputs are present.",
+    "This read-only audit performs zero policy/source execution and consumes no further experiment slot."
+  ]
+}

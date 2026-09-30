@@ -1,0 +1,1233 @@
+{
+  "status": "complete",
+  "seconds": 2.187999999994645,
+  "exit_code": 0,
+  "output_sha256": "aab58e72f6434e5b14ddab3462a57c9652241edd39ba875ee7d99598788ca332",
+  "result": {
+    "cards_discarded": 15,
+    "case": "run02_round12",
+    "chips": 0,
+    "clear_floor": 103032,
+    "discards": 3,
+    "final_resources_supported": false,
+    "five_card_discards": 3,
+    "full_run": false,
+    "initial": {
+      "consumables": [
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:505",
+          "key": "c_chariot"
+        },
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:514",
+          "key": "c_chariot"
+        },
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:515",
+          "key": "c_chariot"
+        }
+      ],
+      "deck_remaining": 44,
+      "discards_left": 3,
+      "dollars": 30,
+      "hand_size": 8,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 2
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 60,
+          "level": 1,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 2
+        },
+        "High Card": {
+          "chips": 35,
+          "level": 4,
+          "mult": 4,
+          "played": 1
+        },
+        "Pair": {
+          "chips": 85,
+          "level": 6,
+          "mult": 7,
+          "played": 5
+        },
+        "Straight": {
+          "chips": 30,
+          "level": 1,
+          "mult": 4,
+          "played": 3
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "chips": 110,
+          "level": 5,
+          "mult": 11,
+          "played": 4
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 2
+        }
+      },
+      "hands_left": 4,
+      "held": [
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:2",
+          "rank": 13,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:41",
+          "rank": 13,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:42",
+          "rank": 12,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:31",
+          "rank": 10,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:20",
+          "rank": 9,
+          "suit": "Hearts"
+        },
+        {
+          "debuff": false,
+          "id": "playing:46",
+          "rank": 8,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:34",
+          "rank": 7,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:24",
+          "rank": 5,
+          "suit": "Hearts"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 19,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:507",
+          "key": "j_blueprint"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:393",
+          "key": "j_perkeo"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "eternal": true,
+            "extra": 8,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 13,
+            "mult": 0,
+            "name": "Matador",
+            "order": 129,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:440",
+          "key": "j_matador"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 14,
+            "mult": 0,
+            "name": "Bull",
+            "order": 93,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:449",
+          "key": "j_bull"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 6,
+            "yorick_discards": 17
+          },
+          "debuff": false,
+          "id": "card:392",
+          "key": "j_yorick"
+        }
+      ],
+      "population": 52
+    },
+    "input_unchanged": true,
+    "plays": 1,
+    "reason": "Final transition/resources unresolved: Matador earnings are not modeled for a follow-up hand.",
+    "remaining_discards": 0,
+    "resources": {
+      "consumables": [
+        {
+          "edition": {
+            "negative": true,
+            "type": "negative"
+          },
+          "id": "card:515",
+          "key": "c_chariot"
+        }
+      ],
+      "deck_remaining": 29,
+      "discards_left": 0,
+      "dollars": 30,
+      "hand_size": 8,
+      "hands": {
+        "Five of a Kind": {
+          "chips": 120,
+          "level": 1,
+          "mult": 12,
+          "played": 0
+        },
+        "Flush": {
+          "chips": 35,
+          "level": 1,
+          "mult": 4,
+          "played": 2
+        },
+        "Flush Five": {
+          "chips": 160,
+          "level": 1,
+          "mult": 16,
+          "played": 0
+        },
+        "Flush House": {
+          "chips": 140,
+          "level": 1,
+          "mult": 14,
+          "played": 0
+        },
+        "Four of a Kind": {
+          "chips": 60,
+          "level": 1,
+          "mult": 7,
+          "played": 0
+        },
+        "Full House": {
+          "chips": 40,
+          "level": 1,
+          "mult": 4,
+          "played": 2
+        },
+        "High Card": {
+          "chips": 35,
+          "level": 4,
+          "mult": 4,
+          "played": 1
+        },
+        "Pair": {
+          "chips": 85,
+          "level": 6,
+          "mult": 7,
+          "played": 5
+        },
+        "Straight": {
+          "chips": 30,
+          "level": 1,
+          "mult": 4,
+          "played": 3
+        },
+        "Straight Flush": {
+          "chips": 100,
+          "level": 1,
+          "mult": 8,
+          "played": 0
+        },
+        "Three of a Kind": {
+          "chips": 110,
+          "level": 5,
+          "mult": 11,
+          "played": 4
+        },
+        "Two Pair": {
+          "chips": 20,
+          "level": 1,
+          "mult": 2,
+          "played": 2
+        }
+      },
+      "hands_left": 4,
+      "held": [
+        {
+          "debuff": false,
+          "enhancement": "m_steel",
+          "id": "playing:1",
+          "rank": 14,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:39",
+          "rank": 14,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "id": "playing:44",
+          "rank": 10,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "edition": {
+            "polychrome": true,
+            "type": "polychrome",
+            "x_mult": 1.5
+          },
+          "enhancement": "m_steel",
+          "id": "playing:9",
+          "rank": 8,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "id": "playing:36",
+          "rank": 5,
+          "suit": "Clubs"
+        },
+        {
+          "debuff": false,
+          "id": "playing:51",
+          "rank": 3,
+          "suit": "Diamonds"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_steel",
+          "id": "playing:14",
+          "rank": 2,
+          "suit": "Spades"
+        },
+        {
+          "debuff": false,
+          "enhancement": "m_mult",
+          "id": "playing:38",
+          "rank": 2,
+          "suit": "Clubs"
+        }
+      ],
+      "jokers": [
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "extra": 2,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 14,
+            "mult": 0,
+            "name": "Bull",
+            "order": 93,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "rental": true,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:449",
+          "key": "j_bull"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Perkeo",
+            "order": 150,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:393",
+          "key": "j_perkeo"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "eternal": true,
+            "extra": 8,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 13,
+            "mult": 0,
+            "name": "Matador",
+            "order": 129,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:440",
+          "key": "j_matador"
+        },
+        {
+          "ability": {
+            "blueprint_compat": "compatible",
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "Copycat",
+            "eternal": true,
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 19,
+            "mult": 0,
+            "name": "Blueprint",
+            "order": 123,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 1
+          },
+          "debuff": false,
+          "id": "card:507",
+          "key": "j_blueprint"
+        },
+        {
+          "ability": {
+            "bonus": 0,
+            "d_size": 0,
+            "effect": "",
+            "extra": {
+              "discards": 23,
+              "xmult": 1
+            },
+            "extra_value": 0,
+            "h_dollars": 0,
+            "h_mult": 0,
+            "h_size": 0,
+            "h_x_mult": 0,
+            "hands_played_at_create": 0,
+            "mult": 0,
+            "name": "Yorick",
+            "order": 148,
+            "p_dollars": 0,
+            "perma_bonus": 0,
+            "set": "Joker",
+            "t_chips": 0,
+            "t_mult": 0,
+            "type": "",
+            "x_mult": 6,
+            "yorick_discards": 2
+          },
+          "debuff": false,
+          "id": "card:392",
+          "key": "j_yorick"
+        }
+      ],
+      "population": 52
+    },
+    "resources_prefix_supported": false,
+    "role": "candidate_2_217",
+    "round_rewards_modeled": false,
+    "score_evaluations": 141930,
+    "status": "supported_clear_floor",
+    "steps": [
+      {
+        "action": {
+          "kind": "reorder_jokers",
+          "order": [
+            4,
+            2,
+            3,
+            1,
+            5
+          ]
+        },
+        "before_chips": 0,
+        "before_discards": 3,
+        "card_ids": {},
+        "decision": {
+          "action": {
+            "kind": "reorder_jokers",
+            "order": [
+              4,
+              2,
+              3,
+              1,
+              5
+            ]
+          },
+          "evaluations": 107068,
+          "play": {
+            "hand": "Pair",
+            "score": 10890,
+            "uncertain": false
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 14016,
+            "continuation_skipped": "Matador earnings are not modeled for a follow-up hand.",
+            "discard_candidates": 16,
+            "discard_pass_cost": 3488,
+            "discard_samples_limited": false,
+            "sampled_clear_scope": "Supported score floors count as clears; random means and hidden identities do not."
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            3,
+            5,
+            6,
+            7,
+            8
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 3,
+        "card_ids": [
+          "playing:42",
+          "playing:20",
+          "playing:46",
+          "playing:34",
+          "playing:24"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              3,
+              5,
+              6,
+              7,
+              8
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 0,
+            "final_action_kind": "discard",
+            "reason": "existing_discard_plan",
+            "remaining_discards": 3,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 32795,
+          "play": {
+            "hand": "High Card",
+            "score": 30240,
+            "uncertain": false
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 14016,
+            "continuation_skipped": "Matador earnings are not modeled for a follow-up hand.",
+            "discard_candidates": 16,
+            "discard_pass_cost": 3504,
+            "discard_samples_limited": false,
+            "sampled_clear_scope": "Supported score floors count as clears; random means and hidden identities do not.",
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "risk": {
+              "bonus": 0.009,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 4,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 1,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 1,
+                  "transition": 0,
+                  "utility": 4
+                },
+                {
+                  "cards": 2,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 2,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 2,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 3,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 3,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 4,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 1,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 5,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 1,
+                  "qualified": 2,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                }
+              ],
+              "candidate_count": 16,
+              "compared": true,
+              "compared_five_count": 3,
+              "development_deferred_for_discard": true,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": true,
+              "full_batch_preference": true,
+              "late_margin": true,
+              "minimum_score": 42084,
+              "qualified_count": 2,
+              "qualified_five_count": 2,
+              "required_fraction": 1,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": true,
+              "selected": true,
+              "selected_cards": 5,
+              "taper": 0.012
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 2,
+        "card_ids": [
+          "playing:2",
+          "playing:28",
+          "playing:41",
+          "playing:30",
+          "playing:31"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 6,
+            "final_action_kind": "discard",
+            "reason": "supported_retained_clear",
+            "remaining_discards": 2,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 844,
+          "play": {
+            "hand": "High Card",
+            "score": 45792,
+            "uncertain": false
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 14016,
+            "continuation_skipped": "Matador earnings are not modeled for a follow-up hand.",
+            "discard_candidates": 16,
+            "discard_pass_cost": 3504,
+            "discard_samples_limited": false,
+            "sampled_clear_scope": "Supported score floors count as clears; random means and hidden identities do not.",
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 218,
+              "qualified": 3,
+              "selected_cards": 1,
+              "selected_score": 45792
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 6,
+              "max_evaluations": 12
+            },
+            "risk": {
+              "bonus": 0.0036,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 4,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 2,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 4
+                },
+                {
+                  "cards": 2,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 2,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 3,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 4,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 5,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 1,
+                  "transition": 0,
+                  "utility": 1
+                }
+              ],
+              "candidate_count": 16,
+              "compared": true,
+              "compared_five_count": 3,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": false,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "minimum_score": 129600,
+              "qualified_count": 0,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": false,
+              "selected": false,
+              "taper": 0.012
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            1,
+            3,
+            4,
+            5,
+            6
+          ],
+          "kind": "discard"
+        },
+        "before_chips": 0,
+        "before_discards": 1,
+        "card_ids": [
+          "playing:16",
+          "playing:17",
+          "playing:5",
+          "playing:22",
+          "playing:49"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              1,
+              3,
+              4,
+              5,
+              6
+            ],
+            "kind": "discard"
+          },
+          "discard_before_clear": {
+            "evaluations": 6,
+            "final_action_kind": "discard",
+            "reason": "supported_retained_clear",
+            "remaining_discards": 1,
+            "schema": 1,
+            "selected": true,
+            "status": "discard_selected"
+          },
+          "evaluations": 1191,
+          "play": {
+            "hand": "High Card",
+            "score": 30528,
+            "uncertain": false
+          },
+          "search_diagnostics": {
+            "continuation_reserve": 14016,
+            "continuation_skipped": "Matador earnings are not modeled for a follow-up hand.",
+            "discard_candidates": 16,
+            "discard_pass_cost": 3504,
+            "discard_samples_limited": false,
+            "yorick_budgeted_samples": 24,
+            "yorick_required_samples": 24
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 218,
+              "qualified": 1,
+              "selected_cards": 1,
+              "selected_score": 30528
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 6,
+              "max_evaluations": 12
+            },
+            "risk": {
+              "bonus": 0.005399999999999999,
+              "by_size": [
+                {
+                  "cards": 1,
+                  "compared": 4,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 1,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 4
+                },
+                {
+                  "cards": 2,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 2,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 3,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 2,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 4,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 3
+                },
+                {
+                  "cards": 5,
+                  "compared": 3,
+                  "incomplete": 0,
+                  "margin": 0,
+                  "progress": 3,
+                  "qualified": 0,
+                  "samples": 0,
+                  "survival": 0,
+                  "transition": 0,
+                  "utility": 0
+                }
+              ],
+              "candidate_count": 16,
+              "compared": true,
+              "compared_five_count": 3,
+              "exact_transition": true,
+              "final_action_kind": "discard",
+              "final_action_matches_search": false,
+              "full_batch_preference": false,
+              "late_margin": true,
+              "minimum_score": 30528,
+              "qualified_count": 0,
+              "qualified_five_count": 0,
+              "required_fraction": 1,
+              "sampled_clears": 24,
+              "samples": 24,
+              "search_selected": false,
+              "selected": false,
+              "taper": 0.012
+            },
+            "schema": 1
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "consumeables",
+          "index": 1,
+          "kind": "use",
+          "targets": [
+            4
+          ]
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": {},
+        "decision": {
+          "action": {
+            "area": "consumeables",
+            "index": 1,
+            "kind": "use",
+            "targets": [
+              4
+            ]
+          },
+          "evaluations": 11,
+          "play": {
+            "hand": "High Card",
+            "score": 45792,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "consumeables",
+          "index": 1,
+          "kind": "use",
+          "targets": [
+            7
+          ]
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": {},
+        "decision": {
+          "action": {
+            "area": "consumeables",
+            "index": 1,
+            "kind": "use",
+            "targets": [
+              7
+            ]
+          },
+          "evaluations": 11,
+          "play": {
+            "hand": "High Card",
+            "score": 68688,
+            "uncertain": false
+          }
+        }
+      },
+      {
+        "action": {
+          "area": "hand",
+          "indices": [
+            2
+          ],
+          "kind": "play"
+        },
+        "before_chips": 0,
+        "before_discards": 0,
+        "card_ids": [
+          "playing:39"
+        ],
+        "decision": {
+          "action": {
+            "area": "hand",
+            "indices": [
+              2
+            ],
+            "kind": "play"
+          },
+          "evaluations": 10,
+          "play": {
+            "hand": "High Card",
+            "score": 103032,
+            "uncertain": false
+          },
+          "yorick_review": {
+            "anchor": {
+              "changed": false,
+              "considered": 0,
+              "qualified": 0
+            },
+            "growth": {
+              "bounded_growth": true,
+              "candidates": 0,
+              "max_evaluations": 12
+            },
+            "schema": 1
+          }
+        }
+      }
+    ],
+    "target": 25000,
+    "unsupported": {
+      "code": "transition_unavailable",
+      "phase": "play",
+      "reason": "Matador earnings are not modeled for a follow-up hand.",
+      "schema": 1,
+      "status": "unsupported"
+    },
+    "world": 0
+  },
+  "job": "run02_round12"
+}

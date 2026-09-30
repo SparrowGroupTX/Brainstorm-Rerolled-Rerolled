@@ -1,0 +1,43 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.module]
+source = 'nativefs.lua'
+before = 'main.lua'
+name = 'nativefs'
+
+[[patches]]
+[patches.copy]
+target = "main.lua"
+position = "append"
+sources = ["Core/Brainstorm.lua"]
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "self:load_profile(G.SETTINGS.profile or 1)"
+position = "after"
+payload = "Brainstorm.init()"
+match_indent = true
+overwrite = false
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''card = create_card("Spectral", G.pack_cards, nil, nil, true, true, nil, 'ar2')'''
+position = "at"
+payload = '''card = Brainstorm.createCharmArcanaCard(self, "Spectral", G.pack_cards, nil, nil, true, true, nil, 'ar2')'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''card = create_card("Tarot", G.pack_cards, nil, nil, true, true, nil, 'ar1')'''
+position = "at"
+payload = '''card = Brainstorm.createCharmArcanaCard(self, "Tarot", G.pack_cards, nil, nil, true, true, nil, 'ar1')'''
+match_indent = true
+times = 1

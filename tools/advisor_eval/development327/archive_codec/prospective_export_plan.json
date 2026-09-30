@@ -1,0 +1,41 @@
+{
+  "scope": "Prospective public-export logging reencoding of already captured repository observations. Not a lossless replacement for historical logs; only declared internal identity strings are replaced with SHA256 and byte length. No policy, scoring, game or save execution.",
+  "limits": {
+    "files": 8,
+    "wire_bytes": 67108864,
+    "decoded_bytes": 536870912,
+    "events": 12000,
+    "seconds": 45
+  },
+  "paths": [
+    "session-20260915T173716Z-1-000007.brj",
+    "session-20260915T173716Z-1-000008.brj",
+    "session-20260915T173716Z-1-000009.brj",
+    "session-20260915T173716Z-1-000010.brj",
+    "session-20260915T173716Z-1-000011.brj",
+    "session-20260915T173716Z-1-000012.brj",
+    "session-20260915T173716Z-1-000013.brj",
+    "session-20260915T173716Z-1-000014.brj"
+  ],
+  "transform_paths": [
+    "auto_run.details.fingerprint",
+    "auto_run.details.before",
+    "auto_run.details.after",
+    "auto_run.details.interrupted_action.fingerprint"
+  ],
+  "schema": {
+    "schema": 1,
+    "kind": "snapshot_fingerprint_sha256",
+    "status": "available",
+    "byte_length": "exact UTF-8/Lua source string byte length",
+    "sha256": "lowercase SHA256 of exact source string bytes"
+  },
+  "source_sha256": {
+    "Brainstorm/Core/auto_run_product.lua": "def5c4c878ddcacd114e832ae8c24f186c249c3bac12a0ad13e0a863359a06ff",
+    "Brainstorm/Advisor/player_log_archive.lua": "f583927de83d9536d6b20d3c207805d126430a496528e16fd8052ea255713d11",
+    "Brainstorm/Advisor/player_journal.lua": "5e306140c9eebb328815edcd5e960ada6931a72d913c3c4fc0f5c8a7fe66b93b",
+    "tools/advisor_eval/read_player_log.py": "81fe0b98ce1afdcf7b9670eb22ac65ce501c055b4873d9d0bfd155c3289418ea"
+  },
+  "no_original_mutations": true,
+  "no_policy_or_game_execution": true
+}

@@ -1,0 +1,7 @@
+# M14: source-shaped boot-cache startup regression
+
+Compare original302's product preflight against the repaired304 facade in the same fresh isolated original-source preblind state. M13 proved that `boot_timer` leaves `G.LOADING={font=Font}` as a persistent display cache. This component explicitly injects only that source-proven shape using an inert font table because the existing source adapter omits real graphics boot. It does not execute `boot_timer` itself or modify gameplay/profile/terminal data.
+
+Reuse M12's immutable observed-S05 receipt stand-in, with no new native search. First require original302's `can_begin` to reproduce its false pending-save/loading rejection without dispatch or launch. Then the repaired facade must pass its real guards, prepare/begin/poll the same effective fixed opening, call authentic `Game.delete_run`, `Game.start_run` and `Back` once, and reach Red Deck Gold Stake at seed `S7PXV521` with actual Small Charm Tag, a valid Yorick/Perkeo normal-opening binding, round0/Ante1,52 cards,zero owned Jokers and unchanged synthetic progress. Preserve the same boot cache. Stop before any gameplay action.
+
+Root registers and dispatches the single fresh M14 30-second mechanical lease against the exact frozen304 candidate. Prior M12/S05 receipts are evidence, not new authority. Scope is the startup mechanic only; neither complete autonomous play nor the main-menu source lifecycle is executed here. The main-menu fix separately has M13 read-only source and relevant synthetic fixture evidence.

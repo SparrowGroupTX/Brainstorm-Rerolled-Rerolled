@@ -1,0 +1,32 @@
+Lua runtime: C:\Program Files (x86)\Steam\steamapps\common\Balatro\lua51.dll
+Running tests\advisor_burnt_pair_inert.lua
+PASS tests\advisor_burnt_pair_inert.lua
+Running tests\advisor_yorick_pair.lua
+PASS tests\advisor_yorick_pair.lua
+Running tests\advisor_yorick_margin.lua
+PASS tests\advisor_yorick_margin.lua
+Running tests\advisor_burnt_margin.lua
+PASS tests\advisor_burnt_margin.lua
+Running tests\advisor_growth.lua
+PASS tests\advisor_growth.lua
+Running tests\advisor_growth_additive.lua
+PASS tests\advisor_growth_additive.lua
+Running tests\advisor_growth_retained_steel.lua
+PASS tests\advisor_growth_retained_steel.lua
+Running tests\advisor_phase_copy.lua
+PASS tests\advisor_phase_copy.lua
+Running tests\advisor_runtime.lua
+PASS tests\advisor_runtime.lua
+9/9 fixtures passed
+advisor post-first Burnt inert pair: 48363 checks passed; 2160 complete draw orders; 3 physical Joker layouts
+advisor Yorick paired threshold: 18630 checks passed; 720 complete draw orders; 24 complete count families
+advisor_yorick_margin: 108 checks passed; four production decisions 48 score evaluations
+advisor_burnt_margin: 149 checks passed; twelve production stages 181568 score evaluations
+production stage counts (reorder/discard/restore): 23/39701/5668, 23/39701/5668, 23/39701/5668, 23/39701/5668
+advisor growth: 56 checks passed
+advisor additive growth: 2559 checks passed
+advisor growth retained Steel: 19 checks passed
+advisor_phase_copy: 184 checks passed
+advisor_runtime: 770 checks passed
+advisor_public_runtime_total: 776 checks passed
+

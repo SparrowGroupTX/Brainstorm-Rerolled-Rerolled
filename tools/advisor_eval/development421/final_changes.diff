@@ -1,0 +1,729 @@
+--- before421/Brainstorm/Advisor/conditional_value.lua
++++ Brainstorm/Advisor/conditional_value.lua
+@@ -144,7 +144,10 @@
+   elseif key=='j_delayed_grat' then
+     local _,discards=resources(s,r);out.opportunities=discards
+     out.trigger='No discards used and at least one discard retained at cashout.'
+-    if discards<=0 then out.trigger_weight=0;out.trigger_note='The next blind supplies no retained-discard payout.'
++    if s.teacher_profile=='perkeo_yorick_win_v1' then
++      out.trigger_weight=0;out.discard_conflict=true
++      out.trigger_note='This strategy spends discards to develop the run; a safe opening score does not establish a no-discard payout.'
++    elseif discards<=0 then out.trigger_weight=0;out.trigger_note='The next blind supplies no retained-discard payout.'
+     elseif r.status=='sampled_safe' and r.supported then
+       out.trigger_weight=1
+       out.trigger_note='All supported opening samples clear with margin; retaining discards is a credible plan.'
+--- before421/Brainstorm/Advisor/joker_plan.lua
++++ Brainstorm/Advisor/joker_plan.lua
+@@ -0,0 +1,214 @@
++-- Bounded strategic utility for the discard/Death teacher. This is neither a
++-- score bound nor a forecast of future offers/draws. The scorer and admission
++-- checks still decide immediate feasibility. No rarity-based preference.
++local M={}
++local min,max,sqrt,log=math.min,math.max,math.sqrt,math.log
++local function num(x,d)return type(x)=='number' and x==x and math.abs(x)<math.huge and x or (d or 0)end
++local function ability(c)return c.ability or {} end
++local function active(c)local a=ability(c);return not c.debuff and not a.perma_debuff and not(c.unknown or c.identity_redacted) and not(a.perishable and num(a.perish_tally,5)<=0)end
++local function has(s,k)for _,c in ipairs(s.jokers or {})do if c.key==k and active(c) then return c end end end
++local function owned(s,c)for _,v in ipairs(s.jokers or {})do if v==c or c.id and v.id==c.id then return true end end end
++local sizes={['High Card']=1,Pair=2,['Two Pair']=4,['Three of a Kind']=3,Straight=5,Flush=5,
++ ['Full House']=5,['Four of a Kind']=4,['Straight Flush']=5,['Five of a Kind']=5,['Flush House']=5,['Flush Five']=5}
++local order={'High Card','Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush','Five of a Kind','Flush House','Flush Five'}
++local contains={Pair={Pair=true,['Two Pair']=true,['Three of a Kind']=true,['Full House']=true,['Four of a Kind']=true,['Five of a Kind']=true,['Flush House']=true,['Flush Five']=true},
++ ['Three of a Kind']={['Three of a Kind']=true,['Full House']=true,['Four of a Kind']=true,['Five of a Kind']=true,['Flush House']=true,['Flush Five']=true},
++ ['Two Pair']={['Two Pair']=true,['Full House']=true,['Flush House']=true},
++ ['Four of a Kind']={['Four of a Kind']=true,['Five of a Kind']=true,['Flush Five']=true},
++ Straight={Straight=true,['Straight Flush']=true},Flush={Flush=true,['Straight Flush']=true,['Flush House']=true,['Flush Five']=true}}
++function M.profile(s)
++ local p={weights={},scoring_cards=0,small=0,repeated=0,total=0,source='public_hand_history_and_levels'}
++ for _,h in ipairs(order)do local v=(s.hands or {})[h] or {};local w=(sqrt(max(0,num(v.played)))+2*max(0,num(v.level,1)-1))^2
++  p.weights[h]=w;p.total=p.total+w
++ end
++ if p.total==0 then p.weights.Pair=1;p.total=1;p.source='uncommitted_pair_prior' end
++ for _,h in ipairs(order)do local w=p.weights[h]/p.total;p.weights[h]=w;p.scoring_cards=p.scoring_cards+w*sizes[h]
++  if sizes[h]<=3 then p.small=p.small+w end
++  if contains.Pair[h] then p.repeated=p.repeated+w end
++ end
++ local bonus=s.round_bonus or (s.shop_forecast or {}).round_bonus or {}
++ p.hands=max(0,num((s.round_resets or {}).hands,4)+num(bonus.next_hands))
++ p.discards=max(0,num((s.round_resets or {}).discards,3)+num(bonus.discards))
++ if has(s,'j_burglar') then p.discards=0 end
++ if not has(s,'j_chicot') then
++  if (s.next_blind or {}).key=='bl_needle' then p.hands=max(1,1+num(bonus.next_hands)) end
++  if (s.next_blind or {}).key=='bl_water' then p.discards=0 end
++  if (s.next_blind or {}).key=='bl_psychic' then p.small=0 end
++ end
++ local burglar=has(s,'j_burglar');if burglar then p.hands=p.hands+max(0,num(ability(burglar).extra,3)) end
++ -- Scoring-card count and cards physically played are different quantities.
++ -- Psychic can score a Pair but still consumes five cards from the hand.
++ p.minimum_played=p.scoring_cards
++ if (s.next_blind or {}).key=='bl_psychic' and not has(s,'j_chicot') then p.minimum_played=max(5,p.minimum_played) end
++ p.held=max(0,num(s.hand_size,8)-p.minimum_played)
++ return p
++end
++function M.match(p,target)
++ local rate=0
++ for _,h in ipairs(order)do
++  if h==target or contains[target] and contains[target][h] then rate=rate+p.weights[h]
++  elseif h=='Flush' and (target=='Pair' or target=='Three of a Kind' or target=='Two Pair' or target=='Four of a Kind') then
++   -- A modified-deck Flush may embed ranks; the label alone cannot decide.
++   rate=rate+p.weights[h]*0.25
++  end
++ end
++ return rate
++end
++local targets={j_jolly='Pair',j_sly='Pair',j_duo='Pair',j_zany='Three of a Kind',j_wily='Three of a Kind',j_trio='Three of a Kind',
++ j_mad='Two Pair',j_clever='Two Pair',j_trousers='Two Pair',j_family='Four of a Kind',j_crazy='Straight',j_devious='Straight',j_runner='Straight',j_order='Straight',j_droll='Flush',j_crafty='Flush',j_tribe='Flush'}
++local per_rank={j_fibonacci={2,3,5,8,14},j_even_steven={2,4,6,8,10},j_odd_todd={3,5,7,9,14},j_scholar={14},j_walkie_talkie={4,10},j_hack={2,3,4,5}}
++local per_suit={j_greedy_joker='Diamonds',j_lusty_joker='Hearts',j_wrathful_joker='Spades',j_gluttenous_joker='Clubs',j_arrowhead='Spades',j_onyx_agate='Clubs',j_bloodstone='Hearts',j_rough_gem='Diamonds'}
++local growing_mult={j_ride_the_bus=true,j_green_joker=true,j_red_card=true,j_ceremonial=true,j_trousers=true,j_flash=true}
++local growing_chips={j_runner=true,j_square=true,j_wee=true,j_castle=true,j_ice_cream=true}
++local growing_x={j_hologram=true,j_constellation=true,j_vampire=true,j_lucky_cat=true,j_glass=true,j_obelisk=true,j_madness=true,j_hit_the_road=true,j_campfire=true,j_yorick=true,j_throwback=true,j_ramen=true}
++local function population(s,stats,p)
++ local out={known=type(s.playing_cards)=='table' and #s.playing_cards>0,size=0,faces=0,kq=0,steel=0,gold=0,glass=0,lucky=0,wild=0,quality=0,ranks={},suits={}}
++ for _,c in ipairs(s.playing_cards or {})do
++  out.size=out.size+1
++  if c.unknown or c.identity_redacted then out.known=false else
++  local a=ability(c);local enh=c.enhancement or a.effect;local stone=enh=='m_stone' or enh=='Stone Card'
++  if not stone then
++   local r=num(c.rank,num((c.base or {}).id));out.ranks[r]=(out.ranks[r] or 0)+1
++   if r>=11 and r<=13 or has(s,'j_pareidolia') then out.faces=out.faces+1 end
++   if r==12 or r==13 then out.kq=out.kq+1 end
++   if enh=='m_wild' or enh=='Wild Card' then out.wild=out.wild+1
++   elseif c.suit then out.suits[c.suit]=(out.suits[c.suit] or 0)+1 end
++  end
++  if enh=='m_steel' or enh=='Steel Card' then out.steel=out.steel+1 end
++  if enh=='m_gold' or enh=='Gold Card' then out.gold=out.gold+1 end
++  if enh=='m_glass' or enh=='Glass Card' then out.glass=out.glass+1;out.quality=out.quality+3 end
++  if enh=='m_lucky' or enh=='Lucky Card' then out.lucky=out.lucky+1 end
++  if enh=='m_mult' or enh=='Mult Card' or enh=='m_bonus' or enh=='Bonus Card' then out.quality=out.quality+1 end
++  if type(c.edition)=='table' and c.edition.polychrome then out.quality=out.quality+3 end
++  end
++ end
++ out.size=max(1,out.size)
++ local rank,count,second=nil,0,0
++ for r=2,14 do local n=out.ranks[r] or 0;if n>count then second=count;rank,count=r,n elseif n>second then second=n end end
++ if p.repeated>=0.5 and count>=5 and count>=second*1.4 and count/out.size>=0.2 then out.focus_rank=rank end
++ return out
++end
++-- Actual counters, not the generic initialized zero fields shadowing extra.
++-- Hand-conditional factors are discounted here as well as in the base rating:
++-- otherwise complete-row replacement would silently add them back unconditionally.
++function M.strength(s,c,p)
++ p=p or M.profile(s);local a=ability(c);local e=type(a.extra)=='table' and a.extra or {};local k=c.key
++ local mult,chips,factor=0,0,1
++ if growing_mult[k] then mult=max(0,num(a.mult)) end
++ if growing_chips[k] then chips=max(0,num(e.chips)) end
++ if growing_x[k] then factor=max(1,num(a.x_mult,1)) end
++ if k=='j_caino' then factor=max(1,num(a.caino_xmult,1)) end
++ if k=='j_popcorn' then mult=max(0,num(a.mult,num(e.mult,20))) end
++ if k=='j_fortune_teller' then mult=max(0,num((s.consumeable_usage_total or {}).tarot)) end
++ if k=='j_supernova' then for _,h in ipairs(order)do mult=mult+p.weights[h]*num(((s.hands or {})[h] or {}).played) end end
++ if k=='j_bull' then chips=max(0,num(s.dollars))*num(a.extra,2) end
++ if k=='j_bootstraps' then mult=math.floor(max(0,num(s.dollars))/max(1,num(e.dollars,5)))*num(e.mult,2) end
++ if k=='j_erosion' and type(s.playing_cards)=='table' then mult=max(0,num(s.starting_deck_size,52)-#s.playing_cards)*num(a.extra,4) end
++ if a.type and targets[k] then
++  local match=M.match(p,a.type);mult=mult+num(a.t_mult)*match;chips=chips+num(a.t_chips)*match
++  factor=1+(max(1,num(a.x_mult,1))-1)*match
++ end
++ if k=='j_hit_the_road' then factor=1 end -- resets at round end; old XMult cannot finance the next blind
++ return 14*log(1+mult/4)+12*log(1+chips/40)+30*log(factor),growing_mult[k] or growing_chips[k] or growing_x[k] or k=='j_caino' or k=='j_popcorn' or k=='j_fortune_teller' or k=='j_supernova' or k=='j_bull' or k=='j_bootstraps' or k=='j_erosion' or targets[k]~=nil
++end
++function M.assess(s,c,stats,base,known)
++ if s.teacher_profile~='perkeo_yorick_win_v1' then return end
++ local p=M.profile(s);local pop=population(s,stats,p);local a=ability(c);local e=type(a.extra)=='table' and a.extra or {};local k=c.key
++ local value=base;local reason='Public hand mix and trigger opportunities; heuristic utility, not a survival guarantee.'
++ local faces=pop.known and min(1,pop.faces/pop.size*p.scoring_cards) or 0.35
++ local held=min(p.held,pop.steel+(has(s,'j_baron') and (pop.ranks[13] or 0) or 0))
++ local future=max(0,min(3,(num(s.win_ante,8)-num((s.next_blind or {}).ante,num(s.ante,1)))*3+((s.next_blind or {}).boss and 0 or 1)))
++ if a.perishable then future=min(future,max(0,num(a.perish_tally,5)-1)) end
++ if targets[k] then
++  local rate=M.match(p,targets[k]);value=base*(0.2+0.8*rate)
++  reason='Values contained '..targets[k]..' hands across the public hand mix, including higher rank-repeat hands.'
++ end
++ if pop.known and (per_rank[k] or per_suit[k] or k=='j_smiley' or k=='j_scary_face' or k=='j_sock_and_buskin') then
++  local fraction,focus=0,false
++  if per_rank[k] then for _,r in ipairs(per_rank[k])do fraction=fraction+(pop.ranks[r] or 0)/pop.size;if r==pop.focus_rank then focus=true end end
++  elseif per_suit[k] then
++   local suit=per_suit[k];local matches=num(stats.suits[suit]);if has(s,'j_smeared') then matches=min(pop.size,matches+num(stats.suits[({Clubs='Spades',Spades='Clubs',Hearts='Diamonds',Diamonds='Hearts'})[suit]])) end
++   fraction=matches/pop.size
++  else fraction=pop.faces/pop.size;focus=pop.focus_rank and (pop.focus_rank>=11 and pop.focus_rank<=13 or has(s,'j_pareidolia')) end
++  if pop.focus_rank and not per_suit[k] and fraction>0 then fraction=0.5*fraction+(focus and 0.5 or 0) end
++  value=fraction>0 and base*(0.25+0.75*min(1.5,p.scoring_cards*fraction/2)) or 0
++  reason='Scoring-card count and owned rank/suit concentration determine trigger opportunity; membership alone is not a promised scoring trigger.'
++ end
++ if growing_mult[k] or growing_chips[k] or growing_x[k] or k=='j_caino' then
++  -- Existing strength is added once by the whole-row endpoint. This term
++  -- values only bounded growth opportunity, never imaginary future counters.
++  value=min(value,18+8*future)
++  if targets[k] then value=value*(0.25+0.75*M.match(p,targets[k])) end
++  if k=='j_red_card' then value=6+2*future end
++  if k=='j_green_joker' then value=p.discards>0 and 6 or 18+6*future end
++  if k=='j_yorick' then value=22+(p.discards>0 and 12*future or 0) end
++  if k=='j_castle' then value=p.discards>0 and 20+10*future or 6 end
++  if k=='j_hit_the_road' then value=p.discards>0 and 10+30*min(1,(pop.ranks[11] or 0)/max(1,pop.size)*p.discards*5) or 0 end
++  if k=='j_glass' then value=6+min(18,pop.glass*3)*min(1,future) end
++  if k=='j_wee' then value=pop.known and (pop.ranks[2] or 0)==0 and 0 or value end
++  if k=='j_lucky_cat' then value=pop.known and pop.lucky==0 and 0 or value end
++  if k=='j_ride_the_bus' and has(s,'j_pareidolia') then value=0 end
++  if k=='j_caino' then value=8 end -- no free destroyed faces
++  if k=='j_vampire' then value=8 end -- removes the valuable enhancements Death copies
++  if k=='j_obelisk' then local dominant=0;for _,w in pairs(p.weights)do dominant=max(dominant,w)end;value=6+6*(1-dominant) end
++  if k=='j_ramen' then value=p.discards>0 and 0 or 28 end
++  if k=='j_throwback' then value=4 end -- no future blind skip assumed
++  known=true
++ end
++ if k=='j_half' then value=12+52*p.small
++ elseif k=='j_flower_pot' then
++  value=8+50*max(0,min(1,p.scoring_cards-3));if has(s,'j_splash') or num(stats.stone)>0 then value=max(value,25) end
++  if pop.known then
++   local missing=0
++   if has(s,'j_smeared') then
++    missing=4-min(2,num(pop.suits.Hearts)+num(pop.suits.Diamonds))-min(2,num(pop.suits.Clubs)+num(pop.suits.Spades))
++   else for _,suit in ipairs({'Clubs','Spades','Hearts','Diamonds'})do if num(pop.suits[suit])==0 then missing=missing+1 end end end
++   if missing>pop.wild or pop.size-num(stats.stone)<4 then value=0 end
++  end
++ elseif k=='j_seeing_double' then
++  local smear=has(s,'j_smeared');value=12+45*min(1,max(0,p.scoring_cards-1))
++  if pop.known then
++   local clubs=num(pop.suits.Clubs)+(smear and num(pop.suits.Spades) or 0)
++   local other=num(pop.suits.Spades)+num(pop.suits.Hearts)+num(pop.suits.Diamonds)
++   local possible=clubs>0 and (other>0 or pop.wild>0 or smear) or pop.wild>0 and (other>0 or pop.wild>1)
++   if not possible then value=0 elseif smear and clubs>0 then value=57 end
++  end
++ elseif k=='j_photograph' then value=faces>0 and 18+40*faces or 0;known=true
++ elseif k=='j_triboulet' then value=pop.known and (pop.kq>0 and 22+20*min(4,p.scoring_cards*pop.kq/pop.size) or 0) or 22;known=true
++ elseif k=='j_hanging_chad' then value=38+8*min(3,max(0,num(a.extra,2)))+min(18,pop.quality*3);known=true
++ elseif k=='j_mime' then value=pop.known and min(78,held*18+min(p.held,pop.gold)*5+(has(s,'j_shoot_the_moon') and min(p.held,pop.ranks[12] or 0)*10 or 0)) or 12;known=true
++ elseif k=='j_dusk' or k=='j_acrobat' then value=base*(p.hands<=1 and 1 or 0.45)
++ elseif k=='j_card_sharp' then value=p.hands<=1 and 0 or base*0.65
++ elseif k=='j_selzer' then value=num(a.extra,10)>0 and base*min(1,num(a.extra,10)/3) or 0
++ elseif k=='j_drunkard' or k=='j_merry_andy' then value=p.discards>0 and (k=='j_drunkard' and 42 or 54)+(has(s,'j_yorick') and 20 or 0) or 0;known=true
++ elseif k=='j_delayed_grat' or k=='j_banner' then value=0
++ elseif k=='j_space' then value=12+6*future;known=true
++ elseif k=='j_hiker' then value=10+future*4*min(4,p.scoring_cards);known=true
++ elseif k=='j_splash' then value=6+5*(5-p.scoring_cards);known=true
++ elseif k=='j_8_ball' then value=pop.known and min(35,(pop.ranks[8] or 0)*4)*min(1,future) or 8;known=true
++ elseif k=='j_sixth_sense' then value=p.hands>1 and (pop.ranks[6] or 0)>0 and #(s.consumeables or {})<num(s.consumable_limit,2) and 20 or 0;known=true
++ elseif k=='j_superposition' or k=='j_seance' then value=24*M.match(p,k=='j_superposition' and 'Straight' or 'Straight Flush');if k=='j_superposition' and pop.known and not pop.ranks[14] then value=0 end;known=true
++ elseif k=='j_marble' then value=has(s,'j_hologram') and 35 or has(s,'j_stone') and 28 or 6;known=true
++ elseif k=='j_midas_mask' then value=has(s,'j_ticket') and 22*faces or 4*faces;known=true
++ elseif k=='j_erosion' or k=='j_flash' then value=6;known=true
++ elseif k=='j_chaos' then value=8+10*min(3,future);known=true
++ elseif k=='j_hallucination' then value=8+5*future;known=true
++ elseif k=='j_ring_master' then value=(has(s,'j_blueprint') or has(s,'j_brainstorm')) and 22 or 12;value=value*min(1,future);known=true
++ elseif k=='j_astronomer' then value=8+8*future;known=true
++ elseif k=='j_diet_cola' then value=10*min(1,future);known=true
++ elseif k=='j_matador' then value=0;known=true
++ elseif k=='j_oops' then value=min(30,pop.lucky*6+(has(s,'j_bloodstone') and 15 or 0))-min(35,pop.glass*5);known=true
++ elseif k=='j_riff_raff' then local slots=max(0,num(s.joker_limit,5)-#(s.jokers or {})-(owned(s,c) and 0 or 1));value=slots>0 and 14+8*min(2,slots) or 0;known=true
++ elseif k=='j_vagabond' then value=num(s.dollars)>num(e.dollars,4) and 0 or #(s.consumeables or {})>=num(s.consumable_limit,2) and 0 or 32
++ elseif k=='j_cartomancer' then value=#(s.consumeables or {})<num(s.consumable_limit,2) and 25+8*future or 4
++ elseif k=='j_baseball' then local count=0;for _,j in ipairs(s.jokers or {})do if j.rarity==2 then count=count+1 end end;value=count>0 and 18+18*min(4,count) or 0
++ elseif k=='j_turtle_bean' then value=12+8*max(0,num(e.h_size,5))
++ elseif k=='j_troubadour' then value=p.hands<=1 and 8 or 38
++ elseif k=='j_shortcut' then value=8+54*M.match(p,'Straight')
++ elseif k=='j_smeared' then value=8+54*M.match(p,'Flush')
++ elseif k=='j_four_fingers' then value=8+54*min(1,M.match(p,'Straight')+M.match(p,'Flush')) end
++ local strength,handled=M.strength(s,c,p)
++ if handled then value=value+strength end
++ return {value=value,known=known,reason=reason,profile=p}
++end
++return M
+--- before421/Brainstorm/Advisor/runtime.lua
++++ Brainstorm/Advisor/runtime.lua
+@@ -36,6 +36,7 @@
+ A.consumables = module('consumables')
+ A.strategy.consumables = A.consumables
+ A.strategy.conditional_value = module('conditional_value')
++A.strategy.joker_plan = module('joker_plan')
+ A.deck_development = module('deck_development')
+ A.spectral_development = module('spectral_development')
+ A.deck_development.spectral = A.spectral_development
+--- before421/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -341,6 +341,7 @@
+         steel = 0, gold = 0, ranks = {}, suits = {}}
+     for _, card in ipairs(snapshot.playing_cards or snapshot.deck or {}) do
+         out.size = out.size + 1
++        if card.unknown or card.identity_redacted then out.incomplete=true else
+         local enhancement = card.enhancement or ''
+         if enhancement == 'm_stone' or enhancement == 'Stone Card' then
+             out.stone = out.stone + 1
+@@ -358,8 +359,9 @@
+         if enhancement == 'm_glass' or enhancement == 'Glass Card' then out.glass = out.glass + 1 end
+         if enhancement == 'm_steel' or enhancement == 'Steel Card' then out.steel = out.steel + 1 end
+         if enhancement == 'm_gold' or enhancement == 'Gold Card' then out.gold = out.gold + 1 end
+-    end
+-    out.known = out.size > 0
++        end
++    end
++    out.known = out.size > 0 and not out.incomplete
+     out.size = math.max(1, out.size)
+     return out
+ end
+@@ -708,9 +710,13 @@
+     end
+     if key == 'j_stencil' then
+         local other_stencils = 0
+-        for _, owned in ipairs(snapshot.jokers or {}) do if owned.key == 'j_stencil' then other_stencils = other_stencils + 1 end end
++        local is_owned=false
++        for _, owned in ipairs(snapshot.jokers or {}) do
++            if owned.key == 'j_stencil' then other_stencils = other_stencils + 1 end
++            if owned==card or card.id and owned.id==card.id then is_owned=true end
++        end
+         local factor = num(snapshot.joker_limit, 5) - #(snapshot.jokers or {}) + other_stencils
+-        if edition(card, 'negative') then factor = factor + 1 end
++        if edition(card, 'negative') and not is_owned then factor = factor + 1 end
+         score = factor > 1 and 35 + math.min(55, factor * 10) or 8
+         reason = 'Scales with empty Joker slots; each non-Stencil Joker reduces that multiplier.'
+     end
+@@ -758,10 +764,14 @@
+     local target = ({j_jolly='Pair',j_sly='Pair',j_zany='Three of a Kind',j_wily='Three of a Kind',
+         j_mad='Two Pair',j_clever='Two Pair',j_crazy='Straight',j_devious='Straight',
+         j_droll='Flush',j_crafty='Flush',j_order='Straight',j_tribe='Flush'})[key]
+-    if target then
++    if target and not (Strategy.joker_plan and snapshot.teacher_profile=='perkeo_yorick_win_v1') then
+         local preferred, plays = favored_hand(snapshot)
+         if target == preferred then score = score + 12
+         elseif plays > 3 then score = score - 15 end
++    end
++    if Strategy.joker_plan then
++        local plan=Strategy.joker_plan.assess(snapshot,card,stats,score,known)
++        if plan then score,known=plan.value,plan.known;reason=reason..' '..plan.reason end
+     end
+     if Strategy.conditional_value then
+         local value=Strategy.conditional_value.assess(snapshot,card,{base_value=score,readiness=snapshot._readiness,no_interest=no_interest(snapshot)})
+@@ -999,6 +1009,10 @@
+             snapshot.teacher_profile=='perkeo_yorick_win_v1' and 0.05 or 0.18
+         return weight*(8+math.min(100,65*relative))
+     elseif card.key=='c_strength' then
++        -- Redaction removes evidence for a particular rank plan, not evidence
++        -- that held Strength is surplus. Preserve the existing conservative
++        -- unknown-population reserve without reading any redacted rank.
++        if profile.stats.incomplete then return 120 end
+         if profile.rank then
+             local available=profile.stats.ranks[profile.predecessor] or 0
+             return available>0 and math.min(120,40+available*12) or 0
+@@ -2060,11 +2074,17 @@
+             if card.key=='j_bull' then chips=math.max(0,num(state.dollars))*num(a.extra,2) end
+             if card.key=='j_bootstraps' then mult=math.floor(math.max(0,num(state.dollars))/5)*num(extra.mult,2) end
+             strengths[i]=14*math.log(1+mult/4)+12*math.log(1+chips/40)+30*math.log(factor)
++            local included=false
++            if Strategy.joker_plan and state.teacher_profile=='perkeo_yorick_win_v1' then
++                local strength,handled=Strategy.joker_plan.strength(state,card)
++                if handled then strengths[i]=strength;included=true end
++            end
+             strengths[i]=strengths[i]*commitment_factor(state,card)
+-            value=value+strengths[i]
++            if not included then value=value+strengths[i] end
+             if Strategy.synergies then
+                 local synergy=Strategy.synergies.forecast(state,card)
+-                if #(synergy.existing or {})>0 then value=value+num(synergy.bonus) end
++                -- A missing future partner is not part of this retained row.
++                value=value+num(synergy.owned_bonus)
+             end
+         end
+         total=total+value
+--- before421/Brainstorm/Advisor/synergies.lua
++++ Brainstorm/Advisor/synergies.lua
+@@ -26,7 +26,11 @@
+ 
+ local function condition(s, pair)
+   if pair.needs == 'spare_hand' then
+-    return num((s.round_resets or {}).hands, 4) > 1 and 1 or 0
++    local base=num((s.round_resets or {}).hands,4)
++    if (s.next_blind or {}).key=='bl_needle' and not has(s,'j_chicot') then base=1 end
++    local bonus=s.round_bonus or (s.shop_forecast or {}).round_bonus or {}
++    local burglar=has(s,'j_burglar')
++    return base+num(bonus.next_hands)+(burglar and num(ability(burglar).extra,3) or 0)>1 and 1 or 0
+   end
+   if not pair.needs then return 1 end
+   local deck = s.playing_cards or s.deck or {}
+@@ -45,6 +49,11 @@
+     end
+   end
+   if count == 0 then return 0 end
++  if s.teacher_profile=='perkeo_yorick_win_v1' then
++    -- Owned population is an opportunity, not a guaranteed draw/trigger. One
++    -- matching card in a broad deck cannot earn the full concentrated combo.
++    return math.min(1,count/math.max(4,#deck*0.2))
++  end
+   if pair.needs == 'kings' then return math.min(1, count / 4) end
+   return 1
+ end
+@@ -117,9 +126,10 @@
+     local a = ability(c)
+     if a.rental then rent = rent + num(meta.rental_rate,3) end
+     if not c.debuff and (not a.perishable or num(a.perish_tally,5) >= round_index) then
+-      if c.key == 'j_golden' then total = total + num(a.extra,3)
+-      elseif c.key == 'j_rocket' then total = total + num(type(a.extra)=='table' and a.extra.dollars,1)
+-      elseif c.key == 'j_cloud_9' then
++      local cashout=not a.perishable or num(a.perish_tally,5)>round_index
++      if c.key == 'j_golden' and cashout then total = total + num(a.extra,4)
++      elseif c.key == 'j_rocket' and cashout then total = total + num(type(a.extra)=='table' and a.extra.dollars,1)
++      elseif c.key == 'j_cloud_9' and cashout then
+         local nines=0
+         for _, playing in ipairs(s.playing_cards or {}) do if playing.rank==9 and playing.enhancement~='m_stone' then nines=nines+1 end end
+         total = total + nines*num(a.extra,1)
+@@ -154,6 +164,7 @@
+   local reserve=partner_cost+4
+   local position=round_position(s)
+   local future=math.min(3,math.max(0,(8-num(s.ante,1))*3+(3-position)-1))
++  if ability(candidate).perishable then future=math.min(future,math.max(0,num(ability(candidate).perish_tally,5)-1)) end
+   local out={slots=0,rerolls=0,reroll_spend=0,future_shops=future,projected_income=0,
+     resale_growth=0,rental_drain=0,reserve=reserve,starting_cash=cash,stages={}}
+   local reset_free=0
+@@ -190,7 +201,7 @@
+ end
+ 
+ function M.forecast(s,candidate)
+-  local out={bonus=0,lines={},existing={},potential={}}
++  local out={bonus=0,owned_bonus=0,lines={},existing={},potential={}}
+   if not candidate or not candidate.key or candidate.debuff or
+     ability(candidate).perishable and num(ability(candidate).perish_tally,5)<=0 then return out end
+   local matching={}
+@@ -207,6 +218,7 @@
+     if has(s,entry.key) then
+       out.existing[#out.existing+1]=entry.key
+       out.bonus=math.max(out.bonus,entry.value)
++      out.owned_bonus=math.max(out.owned_bonus,entry.value)
+       out.lines[#out.lines+1]='Owned synergy: '..(names[entry.key] or entry.key)..'. '..entry.pair.text
+     else missing[#missing+1]=entry end
+   end
+--- before421/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.204.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.205.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before421/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.204.0-alpha
++--- VERSION: 2.205.0-alpha
+--- before421/tests/advisor_joker_decisions421.lua
++++ tests/advisor_joker_decisions421.lua
+@@ -0,0 +1,32 @@
++local P='Brainstorm/Advisor/';local F=dofile('tests/fixtures/retained418.lua');local m=F.modules();local S=m.strategy
++S.joker_plan=dofile(P..'joker_plan.lua');S.conditional_value=dofile(P..'conditional_value.lua');S.synergies=dofile(P..'synergies.lua')
++m.shop_scoring=dofile(P..'shop_scoring.lua');m.shop_sequences=dofile(P..'shop_sequences.lua')
++local n=0;local function check(x,t)n=n+1;assert(x,t)end
++local centers={};for _,c in ipairs(dofile('tests/fixtures/joker_centers421.lua'))do centers[c.key]=c end
++local function card(k)local c=F.copy(centers[k]);c.id=k;c.ability.mult=c.ability.mult or 0;c.ability.t_chips=c.ability.t_chips or 0;c.sell_cost=2;return c end
++local function state()
++ local s=F.state();s.phase='pack';s.ante=2;s.pack_type='BUFFOON_PACK';s.pack_choices=1;s.hand={};s.deck={}
++ s.jokers={F.j('j_yorick'),F.j('j_perkeo')};s.jokers[1].ability.x_mult=2
++ s.round_resets={hands=4,discards=3};s.next_blind={key='bl_big',label='Big',ante=2,chips=900}
++ s.hands={Pair={level=3,played=12,chips=40,mult=4},['High Card']={level=1,played=0,chips=5,mult=1}}
++ s.playing_cards={};for i=1,24 do s.playing_cards[i]=F.card('decision:'..i,13,({'Clubs','Spades','Diamonds','Hearts'})[i%4+1],i%3==0 and 'm_mult' or 'c_base')end
++ return s
++end
++local function choose(s,k)
++ local a=m.decision.run(s,m,nil,{prepared_scoring=false})
++ check(a.action.kind=='choose' and s.pack_cards[a.action.index].key==k,'complete production pack chose '..k..', got '..tostring(a.action.kind)..':'..tostring(a.action.index))
++ check(a.evaluations<=50000 and a.strategy.pack_diagnostics.complete,'complete shared-budget comparison')
++ local after=S.shop_sequence_api.after_joker_purchase(s,s.pack_cards[a.action.index]);check(after.dollars==s.dollars and after.jokers[#after.jokers].key==k,'free endpoint retains selected card')
++ return a
++end
++local s=state();s.pack_cards={card('j_red_card'),card('j_hanging_chad')};choose(s,'j_hanging_chad')
++s=state();s.pack_cards={card('j_order'),card('j_duo')};choose(s,'j_duo')
++s=state();s.pack_cards={card('j_hack'),card('j_triboulet')};choose(s,'j_triboulet')
++s=state();s.pack_cards={card('j_red_card'),card('j_burnt')};s.pack_cards[2].edition={polychrome=true,type='polychrome',x_mult=1.5};choose(s,'j_burnt')
++-- Full row uses the same contextual values at both physical sale endpoints.
++s=state();s.jokers[#s.jokers+1]=card('j_order');s.joker_limit=3;s.pack_cards={card('j_duo')}
++local a=S.advise(s)
++check(a.action.kind=='sell' and a.action.index==3,'unsupported Straight effect is the replacement victim, preserving core')
++local sold=S.shop_sequence_api.after_joker_sale(s,3);check(sold and #sold.jokers==2 and sold.jokers[1].key=='j_yorick' and sold.jokers[2].key=='j_perkeo','sale model preserves core')
++local acquired=S.shop_sequence_api.after_joker_purchase(sold,s.pack_cards[1]);check(S.shop_sequence_api.replacement_value(acquired)>S.shop_sequence_api.replacement_value(s),'whole-row utility agrees with incoming pair upgrade')
++print('Joker decisions421: '..n..' checks passed')
+--- before421/tests/advisor_joker_forecasts421.lua
++++ tests/advisor_joker_forecasts421.lua
+@@ -0,0 +1,35 @@
++local P='Brainstorm/Advisor/';local F=dofile('tests/fixtures/retained418.lua')
++local C=dofile(P..'conditional_value.lua');local Y=dofile(P..'synergies.lua');local S=dofile(P..'strategy.lua');S.synergies=Y
++local n=0;local function check(x,t)n=n+1;assert(x,t)end
++local function state()
++ local s=F.state();s.phase='shop';s.ante=2;s.hands_left=2;s.next_blind={key='bl_big',ante=2}
++ s.round_resets={hands=4,discards=3,reroll_cost=5};s.current_round={reroll_cost=5,reroll_cost_increase=0,free_rerolls=0}
++ s.jokers={F.joker('j_hologram','Hologram',{x_mult=2})};s.dollars=40
++ s.shop_forecast={slots=2,rental_rate=3,blind_rewards={Small=0,Big=0,Boss=0},rates={joker=1,tarot=0,planet=0,playing=0,spectral=0},
++  pools={{{key='j_hanging_chad',rarity=1,cost=4}},{{key='j_hack',rarity=2,cost=6}},{{key='j_wee',rarity=3,cost=8}}}}
++ s.modifiers={no_interest=true,no_extra_hand_money=true};return s
++end
++local s=state();local delayed=F.joker('j_delayed_grat','Delayed Gratification',{extra=2})
++local r={supported=true,status='sampled_safe',hands=4,discards=3}
++check(C.assess(s,delayed,{base_value=55,readiness=r}).cash_end_round==0,'teacher safe opener is not a no-discard policy')
++local ordinary=F.copy(s);ordinary.teacher_profile=nil
++check(C.assess(ordinary,delayed,{base_value=55,readiness=r}).cash_end_round==6,'generic no-discard control keeps legal payout')
++local dna=F.joker('j_dna','DNA',{})
++check(Y.forecast(s,dna).owned_bonus==35,'ordinary spare-hand opportunity')
++s.next_blind.key='bl_needle';check(Y.forecast(s,dna).owned_bonus==0,'Needle removes false spare hand')
++s.jokers[2]=F.joker('j_chicot','Chicot',{});check(Y.forecast(s,dna).owned_bonus==35,'Chicot restores real spare hands')
++s=state();local candidate=F.joker('j_wee','Wee Joker',{extra={chips=0},perishable=true,perish_tally=1});candidate.cost=8
++local h=Y.opportunities(s,candidate,4);check(h.future_shops==0 and #h.stages==1 and h.rerolls>0,'tally1 piece allows current partner searches only')
++candidate.ability.perishable=false
++for _,spec in ipairs({{'j_golden','Golden Joker',{extra=4},4},{'j_rocket','Rocket',{extra={dollars=7,increase=2}},7},{'j_cloud_9','Cloud 9',{extra=1},2}})do
++ s=state();s.playing_cards={F.card('n1',9),F.card('n2',9),F.card('other',13)};local j=F.joker(spec[1],spec[2],spec[3]);j.ability.perishable=true;j.ability.perish_tally=1;s.jokers[2]=j
++ check(Y.opportunities(s,candidate,4).projected_income==0,'expiration precedes cashout: '..spec[1])
++ j.ability.perish_tally=2;check(Y.opportunities(s,candidate,4).projected_income==spec[4],'exactly one surviving payout: '..spec[1])
++end
++s=state();s.jokers[2]=F.joker('j_egg','Egg',{extra=3,perishable=true,perish_tally=1})
++check(Y.opportunities(s,candidate,4).resale_growth==3,'Egg growth precedes expiration; no cash conflation')
++s=state();s.jokers={F.joker('j_wee','Wee Joker',{extra={chips=0}}),F.joker('j_hanging_chad','Hanging Chad',{extra=2})}
++local rich=Y.forecast(s,s.jokers[1]);local unknown=F.copy(s);unknown.shop_forecast=nil;local poor=Y.forecast(unknown,unknown.jokers[1])
++check(#rich.existing==1 and #rich.potential==1 and rich.owned_bonus==poor.owned_bonus,'missing Hack is not owned synergy')
++check(S.shop_sequence_api.build_value(s)==S.shop_sequence_api.build_value(unknown),'retained row cannot acquire speculative value from future metadata')
++print('Joker forecasts421: '..n..' checks passed')
+--- before421/tests/advisor_joker_plan421.lua
++++ tests/advisor_joker_plan421.lua
+@@ -0,0 +1,85 @@
++-- Manufactured counterfactuals; no captured-state replay or game execution.
++local P='Brainstorm/Advisor/';local F=dofile('tests/fixtures/retained418.lua')
++local S=dofile(P..'strategy.lua');local J=dofile(P..'joker_plan.lua');S.joker_plan=J
++S.conditional_value=dofile(P..'conditional_value.lua');S.synergies=dofile(P..'synergies.lua')
++local catalog={};for _,c in ipairs(dofile('tests/fixtures/joker_centers421.lua'))do catalog[c.key]=c end
++local function card(k)local c=F.copy(assert(catalog[k],k));c.id=k;c.ability.mult=c.ability.mult or 0;c.ability.t_chips=c.ability.t_chips or 0;c.sell_cost=2;return c end
++local n=0;local function check(x,t)n=n+1;assert(x,t)end
++local function state(h)
++ local s=F.state();s.phase='pack';s.hand={};s.deck={};s.hands={[h or 'Pair']={played=12,level=4}}
++ s.round_resets={hands=4,discards=3};s.next_blind={key='bl_big',ante=3};s.jokers={F.j('j_yorick'),F.j('j_perkeo')}
++ return s
++end
++local function value(s,k)return S.owned_joker_value(s,card(k))end
++local s=state();local fingerprint=dofile(P..'snapshot.lua').fingerprint
++local before=fingerprint(s)
++local count=0;for k in pairs(catalog)do local v,reason,known=value(s,k);check(known and v==v and math.abs(v)<math.huge and type(reason)=='string','explicit finite vanilla value: '..k);count=count+1 end
++check(count==150,'all150 vanilla identities audited');check(before==fingerprint(s),'valuation leaves public data unchanged')
++local full=state('Full House');local pair=state('Pair');local high=state('High Card');local flush=state('Flush');local straight=state('Straight')
++check(J.match(J.profile(full),'Pair')==1 and J.match(J.profile(full),'Three of a Kind')==1 and J.match(J.profile(full),'Two Pair')==1,'Full House activates contained pair/trips/two-pair')
++local five=state('Flush Five');check(J.match(J.profile(five),'Pair')==1 and J.match(J.profile(five),'Four of a Kind')==1 and J.match(J.profile(five),'Flush')==1 and J.match(J.profile(five),'Two Pair')==0,'Flush Five containment does not invent two distinct pairs')
++check(value(full,'j_jolly')>value(straight,'j_jolly'),'Pair joker follows contained ranks')
++check(value(full,'j_jolly')==value(pair,'j_jolly'),'contained Pair receives the same unconditional type-Mult benefit')
++check(value(pair,'j_duo')>value(straight,'j_duo'),'Duo shares rank-repeat activation')
++check(value(straight,'j_order')>value(pair,'j_order'),'Order keeps real Straight value')
++check(value(high,'j_half')>value(flush,'j_half'),'Half supports one-card scoring plans')
++local psychic=F.copy(pair);psychic.next_blind.key='bl_psychic'
++check(value(psychic,'j_half')<value(pair,'j_half'),'Psychic forces5 played despite2 scoring cards')
++local steel=F.copy(psychic);steel.hand_size=8;steel.playing_cards={};for i=1,8 do steel.playing_cards[i]=F.card('steel:'..i,13,'Clubs',i<=6 and 'm_steel' or 'c_base')end
++check(J.profile(steel).scoring_cards==2 and J.profile(steel).held==3,'Psychic preserves scoring count but constrains physical held capacity')
++check(value(steel,'j_mime')==54,'Mime cannot retain six Steel effects after playing five of eight cards')
++steel.jokers[#steel.jokers+1]=card('j_chicot');check(value(steel,'j_mime')>54,'Chicot restores held capacity')
++check(value(high,'j_flower_pot')<value(full,'j_flower_pot'),'four scoring suits unsupported by singleton plan')
++check(value(high,'j_seeing_double')<value(pair,'j_seeing_double'),'Seeing Double needs separate scoring suits')
++check(value(straight,'j_shortcut')>value(pair,'j_shortcut') and value(flush,'j_smeared')>value(straight,'j_smeared'),'enablers distinguish Straight from Flush')
++local needle=F.copy(pair);needle.next_blind.key='bl_needle'
++check(value(needle,'j_card_sharp')<value(pair,'j_card_sharp'),'one hand cannot activate repeated-play Card Sharp')
++check(value(needle,'j_dusk')>value(pair,'j_dusk') and value(needle,'j_acrobat')>value(pair,'j_acrobat'),'last-hand effects match Needle opportunity')
++needle.jokers[#needle.jokers+1]=card('j_burglar');check(value(needle,'j_card_sharp')>0,'Burglar adds hands after Needle restriction')
++needle.jokers[#needle.jokers]=nil;needle.round_bonus={next_hands=1};check(value(needle,'j_card_sharp')>0,'actual extra next hand survives Needle reset subtraction')
++local clean=F.copy(pair);clean.playing_cards={};for i=1,24 do clean.playing_cards[i]=F.card('rank:'..i,13,'Clubs')end
++check(value(clean,'j_triboulet')>value(pair,'j_triboulet'),'repeated kings increase Triboulet opportunity')
++check(value(clean,'j_sock_and_buskin')>value(pair,'j_sock_and_buskin'),'face retrigger follows repeated rank concentration')
++check(value(clean,'j_hack')==0 and value(clean,'j_scholar')==0,'wrong-rank engines earn no nonexistent triggers')
++check(value(clean,'j_flower_pot')==0 and value(clean,'j_seeing_double')==0,'all ordinary Clubs cannot fill other required scoring suits')
++local suits=F.copy(clean);suits.hands={['Five of a Kind']={level=4,played=12}}
++check(value(suits,'j_flower_pot')==0,'five scoring cards alone do not establish four suits')
++for i,c in ipairs(suits.playing_cards)do c.suit=({'Clubs','Hearts','Diamonds','Spades'})[i%4+1]end
++check(value(suits,'j_flower_pot')>0,'four-suit population remains a real opportunity')
++local wild=F.copy(clean);wild.playing_cards[1]=F.card('wild',13,'Clubs','m_wild')
++check(value(wild,'j_flower_pot')==0 and value(wild,'j_seeing_double')>0,'one Wild can fill only one missing suit')
++wild.playing_cards[2]=F.card('wild2',13,'Clubs','m_wild');wild.playing_cards[3]=F.card('wild3',13,'Clubs','m_wild');check(value(wild,'j_flower_pot')>0,'three Wilds can fill three missing suits')
++local smear=F.copy(clean);smear.jokers[#smear.jokers+1]=card('j_smeared');smear.hands={['High Card']={played=12,level=4}}
++check(value(smear,'j_seeing_double')>0 and value(smear,'j_flower_pot')==0,'Smeared one black card can satisfy Double but not four distinct Pot cards')
++local redacted=F.copy(clean);redacted.playing_cards[1]={id='opaque',unknown=true,identity_redacted=true}
++local opaque={};for _,k in ipairs({'j_hanging_chad','j_glass','j_hit_the_road','j_sixth_sense','j_oops','j_scholar'})do opaque[k]=value(redacted,k)end
++redacted.playing_cards[1].rank=14;redacted.playing_cards[1].enhancement='m_glass';redacted.playing_cards[1].edition={polychrome=true}
++for k,v in pairs(opaque)do check(value(redacted,k)==v,'redacted stale payload cannot change utility: '..k)end
++check(value(redacted,'j_flower_pot')>0,'incomplete composition is not proof of impossible suit coverage')
++check(value(clean,'j_mime')==0,'Mime has no vanilla held effect to repeat')
++clean.jokers[#clean.jokers+1]=card('j_baron');check(value(clean,'j_mime')>50,'held Kings plus Baron create real Mime value')
++for _,c in ipairs(clean.playing_cards)do c.rank=10;c.base.id=10 end
++check(value(clean,'j_photograph')==0 and value(clean,'j_triboulet')==0,'no face/KQ population earns no face XMult')
++local red=card('j_red_card');local unscaled=S.owned_joker_value(pair,red);red.ability.mult=60
++check(S.owned_joker_value(pair,red)>unscaled+25,'existing Red Card Mult is retained while unearned skips lose value')
++for _,k in ipairs({'j_castle','j_runner','j_square','j_wee'})do local c=card(k);local old=S.owned_joker_value(pair,c);c.ability.extra.chips=160;c.ability.t_chips=0
++ check(S.owned_joker_value(pair,c)>old+15,'extra.chips not shadowed by initialized zero: '..k)
++end
++local ca=card('j_caino');local old=S.owned_joker_value(pair,ca);ca.ability.caino_xmult=8;check(S.owned_joker_value(pair,ca)>old+50,'Caino uses real counter')
++local gl=card('j_glass');old=S.owned_joker_value(pair,gl);gl.ability.x_mult=6;check(S.owned_joker_value(pair,gl)>old+40,'Glass Joker retains growth after glass population disappears')
++local road=card('j_hit_the_road');old=S.owned_joker_value(pair,road);road.ability.x_mult=10;check(S.owned_joker_value(pair,road)==old,'resetting Hit the Road cannot carry last-round multiplier')
++check(value(pair,'j_green_joker')<value(pair,'j_mystic_summit'),'full-discard strategy favors exhausted-discard Mult over unscaled Green')
++check(value(pair,'j_drunkard')>value(pair,'j_banner') and value(pair,'j_merry_andy')>value(pair,'j_delayed_grat'),'discard enablers beat discard-hoarding triggers')
++local empty=F.copy(pair);empty.consumeables={card('j_joker'),card('j_joker')};check(value(empty,'j_cartomancer')<value(pair,'j_cartomancer'),'full consumable slots constrain generator')
++check(value(pair,'j_vagabond')==0,'cash-rich plan cannot trigger Vagabond')
++check(value(pair,'j_baseball')==0,'legendary row is not uncommon Baseball support')
++local uncommon=F.copy(pair);uncommon.jokers[#uncommon.jokers+1]=card('j_mime');check(value(uncommon,'j_baseball')>0,'Baseball recognizes actual Uncommon partner')
++local stencil=card('j_stencil');stencil.edition={negative=true};local incoming=S.owned_joker_value(pair,stencil)
++local retained=F.copy(pair);retained.joker_limit=retained.joker_limit+1;retained.jokers[#retained.jokers+1]=stencil
++check(S.owned_joker_value(retained,stencil)==incoming,'owned Negative Stencil capacity is counted once')
++local generic=F.copy(pair);generic.teacher_profile=nil;local _,_,known=S.owned_joker_value(generic,card('j_hanging_chad'));check(not known,'generic objective retains prior strategy contract')
++local unknown=card('j_hanging_chad');unknown.key='mod_unknown';local _,_,k=S.owned_joker_value(pair,unknown);check(not k,'unknown mod Joker never becomes known by generic ability fields')
++-- A self-owned hand affinity must not manufacture evidence for the new policy.
++local without=J.profile(pair);local with=F.copy(pair);with.jokers[#with.jokers+1]=card('j_order');check(fingerprint(J.profile(with))==fingerprint(without),'Joker cannot justify its own hand plan')
++local levels=F.copy(pair);levels.hands['Four of a Kind']={played=1,level=20};check(J.match(J.profile(levels),'Four of a Kind')>0.8,'newly developed hand levels can outweigh old history')
++print('Joker plan421: '..n..' checks passed')
+--- before421/tests/fixtures/joker_centers421.lua
++++ tests/fixtures/joker_centers421.lua
+@@ -0,0 +1,154 @@
++-- Detached literal center metadata parsed as data, never original-game execution.
++-- Source game.lua SHA256 0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47
++return {
++{key="j_joker",name="Joker",ability={mult=4,x_mult=1,name="Joker",set="Joker",effect="Mult"},rarity=1,cost=2,blueprint_compat=true},
++{key="j_greedy_joker",name="Greedy Joker",ability={extra={s_mult=3,suit="Diamonds"},x_mult=1,name="Greedy Joker",set="Joker",effect="Suit Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_lusty_joker",name="Lusty Joker",ability={extra={s_mult=3,suit="Hearts"},x_mult=1,name="Lusty Joker",set="Joker",effect="Suit Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_wrathful_joker",name="Wrathful Joker",ability={extra={s_mult=3,suit="Spades"},x_mult=1,name="Wrathful Joker",set="Joker",effect="Suit Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_gluttenous_joker",name="Gluttonous Joker",ability={extra={s_mult=3,suit="Clubs"},x_mult=1,name="Gluttonous Joker",set="Joker",effect="Suit Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_jolly",name="Jolly Joker",ability={t_mult=8,type="Pair",x_mult=1,name="Jolly Joker",set="Joker",effect="Type Mult"},rarity=1,cost=3,blueprint_compat=true},
++{key="j_zany",name="Zany Joker",ability={t_mult=12,type="Three of a Kind",x_mult=1,name="Zany Joker",set="Joker",effect="Type Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_mad",name="Mad Joker",ability={t_mult=10,type="Two Pair",x_mult=1,name="Mad Joker",set="Joker",effect="Type Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_crazy",name="Crazy Joker",ability={t_mult=12,type="Straight",x_mult=1,name="Crazy Joker",set="Joker",effect="Type Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_droll",name="Droll Joker",ability={t_mult=10,type="Flush",x_mult=1,name="Droll Joker",set="Joker",effect="Type Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_sly",name="Sly Joker",ability={t_chips=50,type="Pair",x_mult=1,name="Sly Joker",set="Joker"},rarity=1,cost=3,blueprint_compat=true},
++{key="j_wily",name="Wily Joker",ability={t_chips=100,type="Three of a Kind",x_mult=1,name="Wily Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_clever",name="Clever Joker",ability={t_chips=80,type="Two Pair",x_mult=1,name="Clever Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_devious",name="Devious Joker",ability={t_chips=100,type="Straight",x_mult=1,name="Devious Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_crafty",name="Crafty Joker",ability={t_chips=80,type="Flush",x_mult=1,name="Crafty Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_half",name="Half Joker",ability={extra={mult=20,size=3},x_mult=1,name="Half Joker",set="Joker",effect="Hand Size Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_stencil",name="Joker Stencil",ability={x_mult=1,name="Joker Stencil",set="Joker",effect="Hand Size Mult"},rarity=2,cost=8,blueprint_compat=true},
++{key="j_four_fingers",name="Four Fingers",ability={x_mult=1,name="Four Fingers",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=false},
++{key="j_mime",name="Mime",ability={extra=1,x_mult=1,name="Mime",set="Joker",effect="Hand card double"},rarity=2,cost=5,blueprint_compat=true},
++{key="j_credit_card",name="Credit Card",ability={extra=20,x_mult=1,name="Credit Card",set="Joker",effect="Credit"},rarity=1,cost=1,blueprint_compat=false},
++{key="j_ceremonial",name="Ceremonial Dagger",ability={mult=0,x_mult=1,name="Ceremonial Dagger",set="Joker",effect=""},rarity=2,cost=6,blueprint_compat=true},
++{key="j_banner",name="Banner",ability={extra=30,x_mult=1,name="Banner",set="Joker",effect="Discard Chips"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_mystic_summit",name="Mystic Summit",ability={extra={mult=15,d_remaining=0},x_mult=1,name="Mystic Summit",set="Joker",effect="No Discard Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_marble",name="Marble Joker",ability={extra=1,x_mult=1,name="Marble Joker",set="Joker",effect="Stone card hands"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_loyalty_card",name="Loyalty Card",ability={extra={Xmult=4,every=5,remaining="5 remaining"},x_mult=1,name="Loyalty Card",set="Joker",effect="1 in 10 mult"},rarity=2,cost=5,blueprint_compat=true},
++{key="j_8_ball",name="8 Ball",ability={extra=4,x_mult=1,name="8 Ball",set="Joker",effect="Spawn Tarot"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_misprint",name="Misprint",ability={extra={max=23,min=0},x_mult=1,name="Misprint",set="Joker",effect="Random Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_dusk",name="Dusk",ability={extra=1,x_mult=1,name="Dusk",set="Joker",effect=""},rarity=2,cost=5,blueprint_compat=true},
++{key="j_raised_fist",name="Raised Fist",ability={x_mult=1,name="Raised Fist",set="Joker",effect="Socialized Mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_chaos",name="Chaos the Clown",ability={extra=1,x_mult=1,name="Chaos the Clown",set="Joker",effect="Bonus Rerolls"},rarity=1,cost=4,blueprint_compat=false},
++{key="j_fibonacci",name="Fibonacci",ability={extra=8,x_mult=1,name="Fibonacci",set="Joker",effect="Card Mult"},rarity=2,cost=8,blueprint_compat=true},
++{key="j_steel_joker",name="Steel Joker",ability={extra=0.2,x_mult=1,name="Steel Joker",set="Joker",effect="Steel Card Buff"},rarity=2,cost=7,blueprint_compat=true},
++{key="j_scary_face",name="Scary Face",ability={extra=30,x_mult=1,name="Scary Face",set="Joker",effect="Scary Face Cards"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_abstract",name="Abstract Joker",ability={extra=3,x_mult=1,name="Abstract Joker",set="Joker",effect="Joker Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_delayed_grat",name="Delayed Gratification",ability={extra=2,x_mult=1,name="Delayed Gratification",set="Joker",effect="Discard dollars"},rarity=1,cost=4,blueprint_compat=false},
++{key="j_hack",name="Hack",ability={extra=1,x_mult=1,name="Hack",set="Joker",effect="Low Card double"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_pareidolia",name="Pareidolia",ability={x_mult=1,name="Pareidolia",set="Joker",effect="All face cards"},rarity=2,cost=5,blueprint_compat=false},
++{key="j_gros_michel",name="Gros Michel",ability={extra={odds=6,mult=15},x_mult=1,name="Gros Michel",set="Joker",effect=""},rarity=1,cost=5,blueprint_compat=true},
++{key="j_even_steven",name="Even Steven",ability={extra=4,x_mult=1,name="Even Steven",set="Joker",effect="Even Card Buff"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_odd_todd",name="Odd Todd",ability={extra=31,x_mult=1,name="Odd Todd",set="Joker",effect="Odd Card Buff"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_scholar",name="Scholar",ability={extra={mult=4,chips=20},x_mult=1,name="Scholar",set="Joker",effect="Ace Buff"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_business",name="Business Card",ability={extra=2,x_mult=1,name="Business Card",set="Joker",effect="Face Card dollar Chance"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_supernova",name="Supernova",ability={extra=1,x_mult=1,name="Supernova",set="Joker",effect="Hand played mult"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_ride_the_bus",name="Ride the Bus",ability={extra=1,x_mult=1,name="Ride the Bus",set="Joker",effect=""},rarity=1,cost=6,blueprint_compat=true},
++{key="j_space",name="Space Joker",ability={extra=4,x_mult=1,name="Space Joker",set="Joker",effect="Upgrade Hand chance"},rarity=2,cost=5,blueprint_compat=true},
++{key="j_egg",name="Egg",ability={extra=3,x_mult=1,name="Egg",set="Joker"},rarity=1,cost=4,blueprint_compat=false},
++{key="j_burglar",name="Burglar",ability={extra=3,x_mult=1,name="Burglar",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_blackboard",name="Blackboard",ability={extra=3,x_mult=1,name="Blackboard",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_runner",name="Runner",ability={extra={chips=0,chip_mod=15},x_mult=1,name="Runner",set="Joker"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_ice_cream",name="Ice Cream",ability={extra={chips=100,chip_mod=5},x_mult=1,name="Ice Cream",set="Joker"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_dna",name="DNA",ability={x_mult=1,name="DNA",set="Joker"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_splash",name="Splash",ability={x_mult=1,name="Splash",set="Joker"},rarity=1,cost=3,blueprint_compat=false},
++{key="j_blue_joker",name="Blue Joker",ability={extra=2,x_mult=1,name="Blue Joker",set="Joker"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_sixth_sense",name="Sixth Sense",ability={x_mult=1,name="Sixth Sense",set="Joker"},rarity=2,cost=6,blueprint_compat=false},
++{key="j_constellation",name="Constellation",ability={extra=0.1,x_mult=1,name="Constellation",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_hiker",name="Hiker",ability={extra=5,x_mult=1,name="Hiker",set="Joker"},rarity=2,cost=5,blueprint_compat=true},
++{key="j_faceless",name="Faceless Joker",ability={extra={dollars=5,faces=3},x_mult=1,name="Faceless Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_green_joker",name="Green Joker",ability={extra={hand_add=1,discard_sub=1},x_mult=1,name="Green Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_superposition",name="Superposition",ability={x_mult=1,name="Superposition",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_todo_list",name="To Do List",ability={extra={dollars=4,poker_hand="High Card"},x_mult=1,name="To Do List",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_cavendish",name="Cavendish",ability={extra={odds=1000,Xmult=3},x_mult=1,name="Cavendish",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_card_sharp",name="Card Sharp",ability={extra={Xmult=3},x_mult=1,name="Card Sharp",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_red_card",name="Red Card",ability={extra=3,x_mult=1,name="Red Card",set="Joker"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_madness",name="Madness",ability={extra=0.5,x_mult=1,name="Madness",set="Joker"},rarity=2,cost=7,blueprint_compat=true},
++{key="j_square",name="Square Joker",ability={extra={chips=0,chip_mod=4},x_mult=1,name="Square Joker",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_seance",name="Seance",ability={extra={poker_hand="Straight Flush"},x_mult=1,name="Seance",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_riff_raff",name="Riff-raff",ability={extra=2,x_mult=1,name="Riff-raff",set="Joker"},rarity=1,cost=6,blueprint_compat=true},
++{key="j_vampire",name="Vampire",ability={extra=0.1,x_mult=1,name="Vampire",set="Joker"},rarity=2,cost=7,blueprint_compat=true},
++{key="j_shortcut",name="Shortcut",ability={x_mult=1,name="Shortcut",set="Joker"},rarity=2,cost=7,blueprint_compat=false},
++{key="j_hologram",name="Hologram",ability={extra=0.25,x_mult=1,name="Hologram",set="Joker"},rarity=2,cost=7,blueprint_compat=true},
++{key="j_vagabond",name="Vagabond",ability={extra=4,x_mult=1,name="Vagabond",set="Joker"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_baron",name="Baron",ability={extra=1.5,x_mult=1,name="Baron",set="Joker"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_cloud_9",name="Cloud 9",ability={extra=1,x_mult=1,name="Cloud 9",set="Joker"},rarity=2,cost=7,blueprint_compat=false},
++{key="j_rocket",name="Rocket",ability={extra={dollars=1,increase=2},x_mult=1,name="Rocket",set="Joker"},rarity=2,cost=6,blueprint_compat=false},
++{key="j_obelisk",name="Obelisk",ability={extra=0.2,x_mult=1,name="Obelisk",set="Joker"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_midas_mask",name="Midas Mask",ability={x_mult=1,name="Midas Mask",set="Joker"},rarity=2,cost=7,blueprint_compat=false},
++{key="j_luchador",name="Luchador",ability={x_mult=1,name="Luchador",set="Joker"},rarity=2,cost=5,blueprint_compat=true},
++{key="j_photograph",name="Photograph",ability={extra=2,x_mult=1,name="Photograph",set="Joker"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_gift",name="Gift Card",ability={extra=1,x_mult=1,name="Gift Card",set="Joker"},rarity=2,cost=6,blueprint_compat=false},
++{key="j_turtle_bean",name="Turtle Bean",ability={extra={h_size=5,h_mod=1},x_mult=1,name="Turtle Bean",set="Joker"},rarity=2,cost=6,blueprint_compat=false},
++{key="j_erosion",name="Erosion",ability={extra=4,x_mult=1,name="Erosion",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_reserved_parking",name="Reserved Parking",ability={extra={odds=2,dollars=1},x_mult=1,name="Reserved Parking",set="Joker"},rarity=1,cost=6,blueprint_compat=true},
++{key="j_mail",name="Mail-In Rebate",ability={extra=5,x_mult=1,name="Mail-In Rebate",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_to_the_moon",name="To the Moon",ability={extra=1,x_mult=1,name="To the Moon",set="Joker"},rarity=2,cost=5,blueprint_compat=false},
++{key="j_hallucination",name="Hallucination",ability={extra=2,x_mult=1,name="Hallucination",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_fortune_teller",name="Fortune Teller",ability={extra=1,x_mult=1,name="Fortune Teller",set="Joker",effect=""},rarity=1,cost=6,blueprint_compat=true},
++{key="j_juggler",name="Juggler",ability={h_size=1,x_mult=1,name="Juggler",set="Joker",effect="Hand Size"},rarity=1,cost=4,blueprint_compat=false},
++{key="j_drunkard",name="Drunkard",ability={d_size=1,x_mult=1,name="Drunkard",set="Joker",effect="Discard Size"},rarity=1,cost=4,blueprint_compat=false},
++{key="j_stone",name="Stone Joker",ability={extra=25,x_mult=1,name="Stone Joker",set="Joker",effect="Stone Card Buff"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_golden",name="Golden Joker",ability={extra=4,x_mult=1,name="Golden Joker",set="Joker",effect="Bonus dollars"},rarity=1,cost=6,blueprint_compat=false},
++{key="j_lucky_cat",name="Lucky Cat",ability={extra=0.25,x_mult=1,name="Lucky Cat",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_baseball",name="Baseball Card",ability={extra=1.5,x_mult=1,name="Baseball Card",set="Joker"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_bull",name="Bull",ability={extra=2,x_mult=1,name="Bull",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_diet_cola",name="Diet Cola",ability={x_mult=1,name="Diet Cola",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_trading",name="Trading Card",ability={extra=3,x_mult=1,name="Trading Card",set="Joker"},rarity=2,cost=6,blueprint_compat=false},
++{key="j_flash",name="Flash Card",ability={extra=2,mult=0,x_mult=1,name="Flash Card",set="Joker"},rarity=2,cost=5,blueprint_compat=true},
++{key="j_popcorn",name="Popcorn",ability={mult=20,extra=4,x_mult=1,name="Popcorn",set="Joker"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_trousers",name="Spare Trousers",ability={extra=2,x_mult=1,name="Spare Trousers",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_ancient",name="Ancient Joker",ability={extra=1.5,x_mult=1,name="Ancient Joker",set="Joker"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_ramen",name="Ramen",ability={extra=0.01,x_mult=2,name="Ramen",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_walkie_talkie",name="Walkie Talkie",ability={extra={chips=10,mult=4},x_mult=1,name="Walkie Talkie",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_selzer",name="Seltzer",ability={extra=10,x_mult=1,name="Seltzer",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_castle",name="Castle",ability={extra={chips=0,chip_mod=3},x_mult=1,name="Castle",set="Joker"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_smiley",name="Smiley Face",ability={extra=5,x_mult=1,name="Smiley Face",set="Joker"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_campfire",name="Campfire",ability={extra=0.25,x_mult=1,name="Campfire",set="Joker"},rarity=3,cost=9,blueprint_compat=true},
++{key="j_ticket",name="Golden Ticket",ability={extra=4,x_mult=1,name="Golden Ticket",set="Joker",effect="dollars for Gold cards"},rarity=1,cost=5,blueprint_compat=true},
++{key="j_mr_bones",name="Mr. Bones",ability={x_mult=1,name="Mr. Bones",set="Joker",effect="Prevent Death"},rarity=2,cost=5,blueprint_compat=false},
++{key="j_acrobat",name="Acrobat",ability={extra=3,x_mult=1,name="Acrobat",set="Joker",effect="Shop size"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_sock_and_buskin",name="Sock and Buskin",ability={extra=1,x_mult=1,name="Sock and Buskin",set="Joker",effect="Face card double"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_swashbuckler",name="Swashbuckler",ability={mult=1,x_mult=1,name="Swashbuckler",set="Joker",effect="Set Mult"},rarity=1,cost=4,blueprint_compat=true},
++{key="j_troubadour",name="Troubadour",ability={extra={h_size=2,h_plays=-1},x_mult=1,name="Troubadour",set="Joker",effect="Hand Size, Plays"},rarity=2,cost=6,blueprint_compat=false},
++{key="j_certificate",name="Certificate",ability={x_mult=1,name="Certificate",set="Joker",effect=""},rarity=2,cost=6,blueprint_compat=true},
++{key="j_smeared",name="Smeared Joker",ability={x_mult=1,name="Smeared Joker",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=false},
++{key="j_throwback",name="Throwback",ability={extra=0.25,x_mult=1,name="Throwback",set="Joker",effect=""},rarity=2,cost=6,blueprint_compat=true},
++{key="j_hanging_chad",name="Hanging Chad",ability={extra=2,x_mult=1,name="Hanging Chad",set="Joker",effect=""},rarity=1,cost=4,blueprint_compat=true},
++{key="j_rough_gem",name="Rough Gem",ability={extra=1,x_mult=1,name="Rough Gem",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=true},
++{key="j_bloodstone",name="Bloodstone",ability={extra={odds=2,Xmult=1.5},x_mult=1,name="Bloodstone",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=true},
++{key="j_arrowhead",name="Arrowhead",ability={extra=50,x_mult=1,name="Arrowhead",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=true},
++{key="j_onyx_agate",name="Onyx Agate",ability={extra=7,x_mult=1,name="Onyx Agate",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=true},
++{key="j_glass",name="Glass Joker",ability={extra=0.75,x_mult=1,name="Glass Joker",set="Joker",effect="Glass Card"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_ring_master",name="Showman",ability={x_mult=1,name="Showman",set="Joker",effect=""},rarity=2,cost=5,blueprint_compat=false},
++{key="j_flower_pot",name="Flower Pot",ability={extra=3,x_mult=1,name="Flower Pot",set="Joker",effect=""},rarity=2,cost=6,blueprint_compat=true},
++{key="j_blueprint",name="Blueprint",ability={x_mult=1,name="Blueprint",set="Joker",effect="Copycat"},rarity=3,cost=10,blueprint_compat=true},
++{key="j_wee",name="Wee Joker",ability={extra={chips=0,chip_mod=8},x_mult=1,name="Wee Joker",set="Joker",effect=""},rarity=3,cost=8,blueprint_compat=true},
++{key="j_merry_andy",name="Merry Andy",ability={d_size=3,h_size=-1,x_mult=1,name="Merry Andy",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=false},
++{key="j_oops",name="Oops! All 6s",ability={x_mult=1,name="Oops! All 6s",set="Joker",effect=""},rarity=2,cost=4,blueprint_compat=false},
++{key="j_idol",name="The Idol",ability={extra=2,x_mult=1,name="The Idol",set="Joker",effect=""},rarity=2,cost=6,blueprint_compat=true},
++{key="j_seeing_double",name="Seeing Double",ability={extra=2,x_mult=1,name="Seeing Double",set="Joker",effect="X1.5 Mult club 7"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_matador",name="Matador",ability={extra=8,x_mult=1,name="Matador",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=true},
++{key="j_hit_the_road",name="Hit the Road",ability={extra=0.5,x_mult=1,name="Hit the Road",set="Joker",effect="Jack Discard Effect"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_duo",name="The Duo",ability={type="Pair",x_mult=2,name="The Duo",set="Joker",effect="X1.5 Mult"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_trio",name="The Trio",ability={type="Three of a Kind",x_mult=3,name="The Trio",set="Joker",effect="X2 Mult"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_family",name="The Family",ability={type="Four of a Kind",x_mult=4,name="The Family",set="Joker",effect="X3 Mult"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_order",name="The Order",ability={type="Straight",x_mult=3,name="The Order",set="Joker",effect="X3 Mult"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_tribe",name="The Tribe",ability={type="Flush",x_mult=2,name="The Tribe",set="Joker",effect="X3 Mult"},rarity=3,cost=8,blueprint_compat=true},
++{key="j_stuntman",name="Stuntman",ability={extra={h_size=2,chip_mod=250},x_mult=1,name="Stuntman",set="Joker",effect=""},rarity=3,cost=7,blueprint_compat=true},
++{key="j_invisible",name="Invisible Joker",ability={extra=2,x_mult=1,name="Invisible Joker",set="Joker",effect=""},rarity=3,cost=8,blueprint_compat=false},
++{key="j_brainstorm",name="Brainstorm",ability={x_mult=1,name="Brainstorm",set="Joker",effect="Copycat"},rarity=3,cost=10,blueprint_compat=true},
++{key="j_satellite",name="Satellite",ability={extra=1,x_mult=1,name="Satellite",set="Joker",effect=""},rarity=2,cost=6,blueprint_compat=false},
++{key="j_shoot_the_moon",name="Shoot the Moon",ability={extra=13,x_mult=1,name="Shoot the Moon",set="Joker",effect=""},rarity=1,cost=5,blueprint_compat=true},
++{key="j_drivers_license",name="Driver's License",ability={extra=3,x_mult=1,name="Driver's License",set="Joker",effect=""},rarity=3,cost=7,blueprint_compat=true},
++{key="j_cartomancer",name="Cartomancer",ability={x_mult=1,name="Cartomancer",set="Joker",effect="Tarot Buff"},rarity=2,cost=6,blueprint_compat=true},
++{key="j_astronomer",name="Astronomer",ability={x_mult=1,name="Astronomer",set="Joker",effect=""},rarity=2,cost=8,blueprint_compat=false},
++{key="j_burnt",name="Burnt Joker",ability={h_size=0,extra=4,x_mult=1,name="Burnt Joker",set="Joker",effect=""},rarity=3,cost=8,blueprint_compat=true},
++{key="j_bootstraps",name="Bootstraps",ability={extra={mult=2,dollars=5},x_mult=1,name="Bootstraps",set="Joker",effect=""},rarity=2,cost=7,blueprint_compat=true},
++{key="j_caino",name="Caino",ability={extra=1,x_mult=1,name="Caino",set="Joker",effect=""},rarity=4,cost=20,blueprint_compat=true},
++{key="j_triboulet",name="Triboulet",ability={extra=2,x_mult=1,name="Triboulet",set="Joker",effect=""},rarity=4,cost=20,blueprint_compat=true},
++{key="j_yorick",name="Yorick",ability={extra={xmult=1,discards=23},x_mult=1,name="Yorick",set="Joker",effect=""},rarity=4,cost=20,blueprint_compat=true},
++{key="j_chicot",name="Chicot",ability={x_mult=1,name="Chicot",set="Joker",effect=""},rarity=4,cost=20,blueprint_compat=false},
++{key="j_perkeo",name="Perkeo",ability={x_mult=1,name="Perkeo",set="Joker",effect=""},rarity=4,cost=20,blueprint_compat=true}
++}

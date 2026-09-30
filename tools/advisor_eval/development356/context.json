@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "kind": "checkpoint_experiment_context",
+  "status": "CLOSED",
+  "release": 356,
+  "created_utc": "2026-09-16T17:44:41.332928+00:00",
+  "summary": "Prepare an explicit ten-match real-game teacher collection: win-first Perkeo/Yorick profile, current-ante public blind context, referenced state-change records and bounded safe abandonment.",
+  "outcome_summary": "No 356 games, searches, GPU jobs or log purges were executed by development tools. The ten-match product pilot is prepared, not started. No new win, strategy gain or numerical win probability is demonstrated. The rejected355 neural policy and its failed simulator outcomes remain preserved and are not deployed.",
+  "limits_summary": "Teacher actions remain unreviewed heuristic demonstrations. Real-game records reduce simulator mismatch but do not establish optimality, reconstruct hidden RNG or make failures negative labels for every action. Thirty-second retirement waits for safe settled actions; search/log/profile errors can stop early. Legacy355 80/530-vector models do not consume the new public-context schema. No live game control or save/profile file access occurred.",
+  "budget_summary": "Development used only routine manufactured fixtures/regression and source review. Product preset: at most10 starts,500 actions/1800seconds perrun,30seconds persearch,21600seconds session. Observation cap1GiB. User explicitly starts the prepared product batch after normal restart; cleanup occurs then. All historical detached/source/search/training allowances remain closed.",
+  "counts": {
+    "source_components": 0,
+    "captured_pair_jobs": 0,
+    "captured_policy_evaluations": 0,
+    "search_workers": 0,
+    "complete_attempts": 0
+  },
+  "complete_attempt_outcomes": {
+    "win": 0,
+    "loss": 0,
+    "error": 0,
+    "timeout": 0,
+    "unsupported": 0,
+    "censored": 0,
+    "running": 0,
+    "not_started": 0
+  },
+  "verified_complete_win": false,
+  "unused_capacity": "closed",
+  "product_pilot": {
+    "schema": 1,
+    "release": 356,
+    "status": "prepared_not_started",
+    "live_tool_control": false,
+    "real_matches_started": 0,
+    "source_or_simulator_attempts": 0,
+    "search_workers_started": 0,
+    "log_files_deleted_by_tools": 0,
+    "verified_wins": 0,
+    "numerical_win_probability": null,
+    "teacher_quality": "unreviewed_heuristic",
+    "reason": "New product mode requires normal activation and explicit user start; manufactured tests are not games."
+  },
+  "evidence": {
+    "authority": {
+      "path": "tools/advisor_eval/development356/AUTHORITY.md",
+      "sha256": "d9e0561f7b7ed02b91b10b1877c033890eee765e398863a4e37d6b50eb4fa628"
+    },
+    "outcomes": {
+      "path": "tools/advisor_eval/development356/OUTCOMES.json",
+      "sha256": "3e199c2bf46082e01ac330ca806ee4081877d71ddb20a0f6887a91d78b689737"
+    },
+    "budget": {
+      "path": "tools/advisor_eval/development356/BUDGET.json",
+      "sha256": "142d41a9459cd9447af9dd6e09d99d6839d7e8ac94c49011e9cba0b9261a9170"
+    },
+    "limits": {
+      "path": "tools/advisor_eval/development356/AUTHORITY.md",
+      "sha256": "d9e0561f7b7ed02b91b10b1877c033890eee765e398863a4e37d6b50eb4fa628"
+    }
+  }
+}

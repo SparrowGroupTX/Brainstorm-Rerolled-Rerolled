@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "suite_cap_seconds": 60,
+  "results": [
+    {
+      "mode": "before",
+      "command": [
+        "python",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development345\\row_component\\run_before.lua"
+      ],
+      "exit_code": 1,
+      "seconds": 0.12131149997003376,
+      "log": "tools\\advisor_eval\\development345\\row_component\\before.log",
+      "sha256": "badbb4b7ce8a8273af746526654658f755657a1332176e24c7d8bb140142b6c3"
+    },
+    {
+      "mode": "candidate",
+      "command": [
+        "python",
+        "tests/run_lua_tests.py",
+        "tools\\advisor_eval\\development345\\row_component\\run_candidate.lua"
+      ],
+      "exit_code": 0,
+      "seconds": 0.7357114000478759,
+      "log": "tools\\advisor_eval\\development345\\row_component\\candidate.log",
+      "sha256": "f017543fb8b4513229c342bdf1e9c0c6ef60949e6994d1d3cc0c25e2be473895"
+    }
+  ],
+  "scope": "Manufactured fixtures only; no source execution, captured policy replay, search or complete attempt."
+}

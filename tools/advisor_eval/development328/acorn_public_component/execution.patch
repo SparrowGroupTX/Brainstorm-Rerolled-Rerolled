@@ -1,0 +1,17 @@
+--- a/Brainstorm/Advisor/execution.lua
++++ b/Brainstorm/Advisor/execution.lua
+@@ -268,11 +268,13 @@
+       local ordered=indices(action.order,area.cards,#area.cards,#area.cards)
+       require_value(type(area.align_cards)=='function' and type(area.set_ranks)=='function', 'Card ordering is unavailable.')
+       require_value(not area.shuffle_amt or area.shuffle_amt==0, 'Wait for the cards to finish shuffling.')
++      local public_back_order=kind=='reorder_jokers' and type(M.public_joker_reorder_check)=='function' and
++        M.public_joker_reorder_check(g,action.public_belief)==true
+       for position,card in ipairs(ordered) do
+         require_value(card.states and card.states.drag and card.states.drag.can and not card.states.drag.is,
+           'A card cannot be moved right now.')
+         require_value(not card.pinned or area.cards[position]==card, 'A pinned card cannot be moved.')
+-        require_value(kind=='reorder_hand' or card.facing=='front', 'Face-down Jokers cannot be reordered by the advisor.')
++        require_value(kind=='reorder_hand' or card.facing=='front' or public_back_order, 'Face-down Jokers require a current complete public-slot belief.')
+       end
+       old_order=copy_list(area.cards);changed_area=area
+       reorder_started=true

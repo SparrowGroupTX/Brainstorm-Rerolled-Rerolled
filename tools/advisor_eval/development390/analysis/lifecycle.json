@@ -1,0 +1,676 @@
+[
+  {
+    "anchor": {
+      "sequence": 21,
+      "segment": "session-20260925T190519Z-1-000002.brj",
+      "ordinal": 8,
+      "raw_sha256": "8c4e6318f5bba1c8986f815db3534f611d35106d1d02806731388171e46ef6ed"
+    },
+    "event": "run_started",
+    "run_number": 1,
+    "run_id": "game:2",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 3072,
+      "segment": "session-20260925T190519Z-1-000003.brj",
+      "ordinal": 1011,
+      "raw_sha256": "94a3c137b7c2996dbd294d94bc5044b92799d04db191ec4abfb9df47ef67f2b7"
+    },
+    "event": "run_finished",
+    "run_number": 1,
+    "run_id": "game:2",
+    "outcome": "win",
+    "reason": null,
+    "evidence": {
+      "callbacks": [
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 473184,
+            "deck": "b_red",
+            "deck_wins": 72,
+            "jokers": {
+              "j_brainstorm": 57,
+              "j_odd_todd": 3,
+              "j_perkeo": 76,
+              "j_raised_fist": 2,
+              "j_yorick": 75
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 473184,
+            "deck": "b_red",
+            "deck_wins": 72,
+            "jokers": {
+              "j_brainstorm": 56,
+              "j_odd_todd": 2,
+              "j_perkeo": 75,
+              "j_raised_fist": 1,
+              "j_yorick": 74
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_joker_win",
+          "verified": true
+        },
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 473184,
+            "deck": "b_red",
+            "deck_wins": 73,
+            "jokers": {
+              "j_brainstorm": 57,
+              "j_odd_todd": 3,
+              "j_perkeo": 76,
+              "j_raised_fist": 2,
+              "j_yorick": 75
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 473184,
+            "deck": "b_red",
+            "deck_wins": 72,
+            "jokers": {
+              "j_brainstorm": 57,
+              "j_odd_todd": 3,
+              "j_perkeo": 76,
+              "j_raised_fist": 2,
+              "j_yorick": 75
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_deck_win",
+          "verified": true
+        }
+      ],
+      "event_id": "win:game:2",
+      "final_context": {
+        "ante": 8,
+        "boss": true,
+        "chips": 473184,
+        "deck": "b_red",
+        "deck_wins": 72,
+        "jokers": {
+          "j_brainstorm": 56,
+          "j_odd_todd": 2,
+          "j_perkeo": 75,
+          "j_raised_fist": 1,
+          "j_yorick": 74
+        },
+        "round": 23,
+        "seeded": false,
+        "stake": 8,
+        "state": 19,
+        "target": 400000,
+        "win_ante": 8,
+        "won": false
+      },
+      "game_over": false,
+      "kind": "win",
+      "result_surface_seen": false,
+      "run_id": "game:2",
+      "source": "original_win_callback",
+      "source_saved": false,
+      "threshold_met": true,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 3093,
+      "segment": "session-20260925T190519Z-1-000005.brj",
+      "ordinal": 8,
+      "raw_sha256": "8432f9edfc642d324753fb1d83841d15e995597aecda312ef3a43e4a63abc962"
+    },
+    "event": "run_started",
+    "run_number": 2,
+    "run_id": "game:3",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 5084,
+      "segment": "session-20260925T190519Z-1-000005.brj",
+      "ordinal": 1999,
+      "raw_sha256": "0be79716fc09540f113d1250ed27b3e74694c8538cf477c87afacbd377bcc40e"
+    },
+    "event": "run_finished",
+    "run_number": 2,
+    "run_id": "game:3",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:3",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:3",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 5103,
+      "segment": "session-20260925T190519Z-1-000007.brj",
+      "ordinal": 8,
+      "raw_sha256": "71964c1cfd147bf556a0977d52a1dbec94240a141c38ed900141b53d88260b83"
+    },
+    "event": "run_started",
+    "run_number": 3,
+    "run_id": "game:4",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 8238,
+      "segment": "session-20260925T190519Z-1-000008.brj",
+      "ordinal": 1095,
+      "raw_sha256": "0a9b35cd95e023b9b64c95cf135ddb8470acf7119bc6dbc00dac747e5a8614ba"
+    },
+    "event": "run_abandoned",
+    "run_number": 3,
+    "run_id": "game:4",
+    "outcome": "unsupported",
+    "reason": "unsupported",
+    "evidence": {
+      "event_id": "abandon:1",
+      "method": "settled_run_retired_before_owned_search",
+      "reason": "unsupported",
+      "run_id": "game:4",
+      "terminal": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 8254,
+      "segment": "session-20260925T190519Z-1-000009.brj",
+      "ordinal": 8,
+      "raw_sha256": "82ebb9b62a78a5b390f3768f1fa3e96830a9a997c664a4aade65f66cf796b229"
+    },
+    "event": "run_started",
+    "run_number": 4,
+    "run_id": "game:5",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 8608,
+      "segment": "session-20260925T190519Z-1-000009.brj",
+      "ordinal": 362,
+      "raw_sha256": "0c4bb92e10d0d036486174d5e2cc446e3625a7601d00d15505df01cdc80b8a1b"
+    },
+    "event": "run_finished",
+    "run_number": 4,
+    "run_id": "game:5",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:5",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:5",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 8625,
+      "segment": "session-20260925T190519Z-1-000011.brj",
+      "ordinal": 8,
+      "raw_sha256": "acea4f8dd2d03bf1a9b106c48a2ea1e4983b9dd32044eaded60b7be0420218c1"
+    },
+    "event": "run_started",
+    "run_number": 5,
+    "run_id": "game:6",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 11368,
+      "segment": "session-20260925T190519Z-1-000012.brj",
+      "ordinal": 703,
+      "raw_sha256": "a958c7dbb159270089625f4c70a0bad2ccd9a0927e61374854f7445bf4e0792a"
+    },
+    "event": "run_finished",
+    "run_number": 5,
+    "run_id": "game:6",
+    "outcome": "win",
+    "reason": null,
+    "evidence": {
+      "callbacks": [
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 477000,
+            "deck": "b_red",
+            "deck_wins": 73,
+            "jokers": {
+              "j_blueprint": 56,
+              "j_half": 2,
+              "j_jolly": 3,
+              "j_perkeo": 77,
+              "j_sly": 4,
+              "j_yorick": 76
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 477000,
+            "deck": "b_red",
+            "deck_wins": 73,
+            "jokers": {
+              "j_blueprint": 55,
+              "j_half": 1,
+              "j_jolly": 2,
+              "j_perkeo": 76,
+              "j_sly": 3,
+              "j_yorick": 75
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_joker_win",
+          "verified": true
+        },
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 477000,
+            "deck": "b_red",
+            "deck_wins": 74,
+            "jokers": {
+              "j_blueprint": 56,
+              "j_half": 2,
+              "j_jolly": 3,
+              "j_perkeo": 77,
+              "j_sly": 4,
+              "j_yorick": 76
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 477000,
+            "deck": "b_red",
+            "deck_wins": 73,
+            "jokers": {
+              "j_blueprint": 56,
+              "j_half": 2,
+              "j_jolly": 3,
+              "j_perkeo": 77,
+              "j_sly": 4,
+              "j_yorick": 76
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_deck_win",
+          "verified": true
+        }
+      ],
+      "event_id": "win:game:6",
+      "final_context": {
+        "ante": 8,
+        "boss": true,
+        "chips": 477000,
+        "deck": "b_red",
+        "deck_wins": 73,
+        "jokers": {
+          "j_blueprint": 55,
+          "j_half": 1,
+          "j_jolly": 2,
+          "j_perkeo": 76,
+          "j_sly": 3,
+          "j_yorick": 75
+        },
+        "round": 23,
+        "seeded": false,
+        "stake": 8,
+        "state": 19,
+        "target": 400000,
+        "win_ante": 8,
+        "won": false
+      },
+      "game_over": false,
+      "kind": "win",
+      "result_surface_seen": false,
+      "run_id": "game:6",
+      "source": "original_win_callback",
+      "source_saved": false,
+      "threshold_met": true,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 11389,
+      "segment": "session-20260925T190519Z-1-000014.brj",
+      "ordinal": 8,
+      "raw_sha256": "7f784f6749e32d847ae83b9c21e795b96e1bbd84f64cb2b0f655fac5e8f171be"
+    },
+    "event": "run_started",
+    "run_number": 6,
+    "run_id": "game:7",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 14024,
+      "segment": "session-20260925T190519Z-1-000015.brj",
+      "ordinal": 595,
+      "raw_sha256": "ade41a988de5ab44cce2dd2aa01ae6ae39b6e0df28eca6b6224f1644798cc507"
+    },
+    "event": "run_finished",
+    "run_number": 6,
+    "run_id": "game:7",
+    "outcome": "win",
+    "reason": null,
+    "evidence": {
+      "callbacks": [
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 503010,
+            "deck": "b_red",
+            "deck_wins": 74,
+            "jokers": {
+              "j_blueprint": 57,
+              "j_duo": 8,
+              "j_perkeo": 78,
+              "j_walkie_talkie": 5,
+              "j_yorick": 77
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 503010,
+            "deck": "b_red",
+            "deck_wins": 74,
+            "jokers": {
+              "j_blueprint": 56,
+              "j_duo": 7,
+              "j_perkeo": 77,
+              "j_walkie_talkie": 4,
+              "j_yorick": 76
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_joker_win",
+          "verified": true
+        },
+        {
+          "after": {
+            "ante": 9,
+            "boss": true,
+            "chips": 503010,
+            "deck": "b_red",
+            "deck_wins": 75,
+            "jokers": {
+              "j_blueprint": 57,
+              "j_duo": 8,
+              "j_perkeo": 78,
+              "j_walkie_talkie": 5,
+              "j_yorick": 77
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "before": {
+            "ante": 9,
+            "boss": true,
+            "chips": 503010,
+            "deck": "b_red",
+            "deck_wins": 74,
+            "jokers": {
+              "j_blueprint": 57,
+              "j_duo": 8,
+              "j_perkeo": 78,
+              "j_walkie_talkie": 5,
+              "j_yorick": 77
+            },
+            "round": 23,
+            "seeded": false,
+            "stake": 8,
+            "state": 8,
+            "target": 400000,
+            "win_ante": 8,
+            "won": true
+          },
+          "name": "set_deck_win",
+          "verified": true
+        }
+      ],
+      "event_id": "win:game:7",
+      "final_context": {
+        "ante": 8,
+        "boss": true,
+        "chips": 503010,
+        "deck": "b_red",
+        "deck_wins": 74,
+        "jokers": {
+          "j_blueprint": 56,
+          "j_duo": 7,
+          "j_perkeo": 77,
+          "j_walkie_talkie": 4,
+          "j_yorick": 76
+        },
+        "round": 23,
+        "seeded": false,
+        "stake": 8,
+        "state": 19,
+        "target": 400000,
+        "win_ante": 8,
+        "won": false
+      },
+      "game_over": false,
+      "kind": "win",
+      "result_surface_seen": false,
+      "run_id": "game:7",
+      "source": "original_win_callback",
+      "source_saved": false,
+      "threshold_met": true,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 14045,
+      "segment": "session-20260925T190519Z-1-000017.brj",
+      "ordinal": 8,
+      "raw_sha256": "c8fea33915f5394fcb40cd5d326129a0c82af6b0ca6638f1008a2779c3fa05b6"
+    },
+    "event": "run_started",
+    "run_number": 7,
+    "run_id": "game:8",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 15473,
+      "segment": "session-20260925T190519Z-1-000017.brj",
+      "ordinal": 1436,
+      "raw_sha256": "317e0206c789286a1adc9596a25649008b22b04c5e518368dc2632e9804937fb"
+    },
+    "event": "run_finished",
+    "run_number": 7,
+    "run_id": "game:8",
+    "outcome": "loss",
+    "reason": null,
+    "evidence": {
+      "event_id": "loss:game:8",
+      "kind": "loss",
+      "result_surface_seen": true,
+      "run_id": "game:8",
+      "source": "GAME_OVER",
+      "source_won_field": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 15494,
+      "segment": "session-20260925T190519Z-1-000019.brj",
+      "ordinal": 8,
+      "raw_sha256": "519d0bcd7eb8cab496a5d3497dbe4c5642471db22efdfdbc715827676ed34d2f"
+    },
+    "event": "run_started",
+    "run_number": 8,
+    "run_id": "game:9",
+    "outcome": null,
+    "reason": null,
+    "evidence": null,
+    "runs_started": null,
+    "outcomes": null
+  },
+  {
+    "anchor": {
+      "sequence": 18523,
+      "segment": "session-20260925T190519Z-1-000020.brj",
+      "ordinal": 989,
+      "raw_sha256": "a590c3519bbebe6bb7e74779fddfed8b7075e644ebff058eec69af2be2270d7b"
+    },
+    "event": "run_abandoned",
+    "run_number": 8,
+    "run_id": "game:9",
+    "outcome": "unsupported",
+    "reason": "unsupported",
+    "evidence": {
+      "event_id": "abandon:2",
+      "method": "settled_run_retired_before_owned_search",
+      "reason": "unsupported",
+      "run_id": "game:9",
+      "terminal": false,
+      "verified": true
+    },
+    "runs_started": null,
+    "outcomes": null
+  }
+]

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development435\run.py", line 158, in <module>
+    if args.worker:worker(args.worker)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development435\run.py", line 77, in worker
+    print(json.dumps(evaluate(job),allow_nan=False),flush=True)
+                     ^^^^^^^^^^^^^
+  File "C:\Users\trevo\Documents\GitHub\Brainstorm-Rerolled-Rerolled\tools\advisor_eval\development435\run.py", line 55, in evaluate
+    if status:raise RuntimeError(result)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: frozen/player_journal.lua:6: Observation exceeds its structure bound.

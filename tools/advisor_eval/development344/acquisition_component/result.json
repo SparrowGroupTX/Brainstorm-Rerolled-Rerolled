@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "release": 344,
+  "status": "staged_review_ready",
+  "production_paths_written_by_component": false,
+  "files": [
+    {
+      "destination": "Brainstorm/Advisor/gold_acquisition.lua",
+      "staged_path": "tools\\advisor_eval\\development344\\acquisition_component\\Brainstorm\\Advisor\\gold_acquisition.lua",
+      "sha256": "96630da01936ef730ce45f4af5016dbefd2270515974ff93b0adfce54a6348ea",
+      "new_file": true
+    },
+    {
+      "destination": "tests/advisor_gold_acquisition.lua",
+      "staged_path": "tools\\advisor_eval\\development344\\acquisition_component\\tests\\advisor_gold_acquisition.lua",
+      "sha256": "46dc00cc2a8f57a5b721421e57d0ce16aa7d23e10ab05a13cce5f0a364d479ba",
+      "new_file": true
+    }
+  ],
+  "validation": [
+    {
+      "path": "tools\\advisor_eval\\development344\\acquisition_component\\validation_01.json",
+      "sha256": "efee034dcd8bd9d857e54373fc8389a09586862a16369a3edae46262b856d057",
+      "exit_code": 1,
+      "seconds": 0.14000000001396984,
+      "inputs_unchanged": true
+    },
+    {
+      "path": "tools\\advisor_eval\\development344\\acquisition_component\\validation_02.json",
+      "sha256": "0fb66f35349246a61855d0cd58aa4fa25dfd329be84b2ce4731ef38aed2c509a",
+      "exit_code": 1,
+      "seconds": 0.1559999999590218,
+      "inputs_unchanged": true
+    },
+    {
+      "path": "tools\\advisor_eval\\development344\\acquisition_component\\validation_03.json",
+      "sha256": "b2f441ae5283f14b5053a3218519544f4e92afde7ae613a3e4ab66294c8ee5c9",
+      "exit_code": 0,
+      "seconds": 0.25,
+      "inputs_unchanged": true
+    },
+    {
+      "path": "tools\\advisor_eval\\development344\\acquisition_component\\validation_04.json",
+      "sha256": "5ef39299731d6ede1bb79da707fae254122459d970c5b8f2bb4672ca2960826c",
+      "exit_code": 0,
+      "seconds": 0.23499999998603016,
+      "inputs_unchanged": true
+    }
+  ],
+  "latest_checks": 149,
+  "latest_score_floor_calls": 1690,
+  "fixed_policy": "Current physical Joker order, hold every original consumable; no generated copy is used or valued.",
+  "declared_family": "Hold, each admitted direct visible distinct-missing Joker buy, and each legal completed-original sale then buy; <=22 endpoints, <=3 offers and <=6 owned Jokers.",
+  "boundary": "Winning-Ante pre-Small/Big shops only. Complete four common public-composition worlds with >=1.25 actual next-blind target. This is not later-blind or terminal survival evidence.",
+  "dependency": {
+    "helper": "gold_tarot_hold.certify",
+    "scope": "fixed_hold_tarot_copy_score_equivalence_v1",
+    "held_inventory": "Nonempty Perkeo uses the qualified mixed Magician/Hermit Tarot helper; all original inventory is retained unchanged."
+  },
+  "accounting": "One lower_bound call per scored subset; exact actual-call charge survives incomplete evidence, context mismatch or thrown comparison. Requested remaining shop allowance is capped at50000 with no separate extra allowance.",
+  "failed_evidence": "validation01/02 preserve fixture harness failures caused by using data-only Snapshot.copy for module tables; shallow module copying repaired the harness. Neither failure ran game/source workers.",
+  "manufactured_main_case": "Five completed Jokers, $170, fourteen mixed Negative Magician/Hermit Tarots, a visible missing Crazy Joker, and winning-Ante Big next. Old final-boss goal declines; complete new family selects a paid sale then fresh purchase while preserving every held Tarot.",
+  "experiment_jobs": {
+    "source_components": 0,
+    "captured_policy_replays": 0,
+    "searches": 0,
+    "complete_attempts": 0
+  },
+  "live_game_control": false,
+  "save_profile_reads": false,
+  "promotion_note": "Root owns runtime/decision/snapshot integration, production fixture path binding, versioning and candidate/exact-installed validation."
+}

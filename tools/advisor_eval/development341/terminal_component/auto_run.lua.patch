@@ -1,0 +1,28 @@
+diff --git "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before\\Brainstorm\\Advisor\\auto_run.lua" "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Advisor\\auto_run.lua"
+index 05875ff..ab28053 100644
+--- "a/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\tools\\advisor_eval\\development341\\terminal_component\\before\\Brainstorm\\Advisor\\auto_run.lua"
++++ "b/C:\\Users\\trevo\\Documents\\GitHub\\Brainstorm-Rerolled-Rerolled\\Brainstorm\\Advisor\\auto_run.lua"
+@@ -359,7 +359,9 @@ function M.new(callbacks)
+       resumes=state.resumes,manual_continuations=state.manual_continuations,session_serial=state.session_serial,
+       search_draining=state.search_pending and not state.active,cancel_requested=state.cancel_requested,
+       cancel_error=state.cancel_error,log_error=state.log_error,search_id=state.search_id,
+-      runs_started=state.runs_started,actions=state.actions,run_actions=state.run_actions,
++      runs_started=state.runs_started,max_runs=state.config and state.config.max_runs,
++      run_limit_reached=state.config~=nil and state.runs_started>=state.config.max_runs,
++      actions=state.actions,run_actions=state.run_actions,
+       outcomes=state.outcomes,profile_id=state.binding and state.binding.profile_id,run_id=state.run_id,
+       session_started_at=state.session_started_at,search_deadline=state.search_deadline,
+       pending_action=state.pending_action~=nil})
+@@ -410,9 +412,9 @@ function M.new(callbacks)
+       -- This is a different observe() call from the terminal receipt. The
+       -- adapter must reread loaded sticker metadata each time, never cache it.
+       if not goal then stop('goal_unavailable',goal_reason)
+-      elseif ready(obs) and obs.transition_ready==true then
+-        if goal=='complete' then stop('collection_complete',nil,true)
+-        else begin_search(obs,t) end
++      elseif goal=='complete' then stop('collection_complete',nil,true)
++      elseif state.runs_started>=state.config.max_runs then stop('run_limit')
++      elseif ready(obs) and obs.transition_ready==true then begin_search(obs,t)
+       else stalled(t,'terminal_transition_stalled') end
+       return api.status()
+     end

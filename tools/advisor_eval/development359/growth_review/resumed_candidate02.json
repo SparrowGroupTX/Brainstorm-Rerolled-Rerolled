@@ -1,0 +1,17 @@
+{
+  "scope": "manufactured regression only",
+  "started_unix": 1790090785.8029995,
+  "seconds": 0.6404726505279541,
+  "fixtures": [
+    "tests/advisor_growth_copy359.lua",
+    "tests/advisor_yorick_pair.lua",
+    "tests/advisor_burnt_pair_inert.lua",
+    "tests/advisor_weighted_growth.lua",
+    "tests/advisor_yorick_margin.lua",
+    "tests/advisor_growth.lua",
+    "tests/advisor_growth_priority359.lua"
+  ],
+  "returncode": 1,
+  "stdout": "Lua runtime: C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\lua51.dll\nRunning tests\\advisor_growth_copy359.lua\nPASS tests\\advisor_growth_copy359.lua\nRunning tests\\advisor_yorick_pair.lua\nFAIL tests\\advisor_yorick_pair.lua\nRunning tests\\advisor_burnt_pair_inert.lua\nPASS tests\\advisor_burnt_pair_inert.lua\nRunning tests\\advisor_weighted_growth.lua\nPASS tests\\advisor_weighted_growth.lua\nRunning tests\\advisor_yorick_margin.lua\nPASS tests\\advisor_yorick_margin.lua\nRunning tests\\advisor_growth.lua\nPASS tests\\advisor_growth.lua\nRunning tests\\advisor_growth_priority359.lua\nPASS tests\\advisor_growth_priority359.lua\n6/7 fixtures passed\nadvisor growth copied Yorick359: 86 checks passed\nadvisor post-first Burnt inert pair: 48363 checks passed; 2160 complete draw orders; 3 physical Joker layouts\nweighted growth: 12 checks passed\nadvisor_yorick_margin: 108 checks passed; four production decisions 48 score evaluations\nadvisor growth: 56 checks passed\nadvisor_growth_priority359: 118 manufactured checks passed\n",
+  "stderr": "...ainstorm-Rerolled-Rerolled\\tests\\advisor_yorick_pair.lua:10: discard interest/reward cost charged declines new pair proof\n"
+}

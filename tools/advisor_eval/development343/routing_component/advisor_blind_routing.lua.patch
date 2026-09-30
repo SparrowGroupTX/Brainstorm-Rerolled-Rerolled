@@ -1,0 +1,62 @@
+--- before/tests/advisor_blind_routing.lua
++++ tests/advisor_blind_routing.lua
+@@ -55,6 +55,59 @@
+ eq(Route.suggest(s,modules),nil,'early no-cash skip loses to income and shop opportunity')
+ s.ante=8;out,diag=Route.suggest(s,modules)
+ check(out~=nil,'late mature deck may skip for time even without immediate tag cash')
++
++-- A high-scoring final route with surplus cash still needs a missing sticker
++-- passenger. Otherwise playing this blind preserves the last shop opportunity.
++local function gold_state(boss,label,missing)
++  local x=state(label);x.ante=8;x.win_ante=8;x.dollars=170
++  x.route_blinds.Boss={key=boss,name=({bl_final_vessel='Violet Vessel',bl_final_leaf='Verdant Leaf',bl_wall='The Wall'})[boss],chips=1000,dollars=5,boss=true}
++  x.completionist_goal={schema=1,goal='gold_stickers',metadata_status='complete',catalog_status='complete',held_status='complete',
++    eligibility={eligible=true},counts={total=150,complete=149,missing=1,unknown=0},
++    held_target_keys=missing and {'j_caino'} or {},held_target_count=missing and 1 or 0,
++    by_key={j_joker={status='complete'},j_caino={status=missing and 'missing' or 'complete'}}}
++  return x
++end
++for _,boss in ipairs({'bl_final_vessel','bl_final_leaf'}) do
++  for _,label in ipairs({'Small','Big'}) do
++    local empty=gold_state(boss,label,false);local before=Snapshot.fingerprint(empty)
++    local advice,d=Route.suggest(empty,modules)
++    eq(advice,nil,'no missing cargo preserves '..label..' shop opportunity before '..boss)
++    check(d.reason and d.reason:find('shop opportunity',1,true),'empty final cargo explains retained shop opportunity')
++    eq(d.evaluations,0,'empty final cargo does not spend the routing score budget')
++    eq(Snapshot.fingerprint(empty),before,'empty final cargo check preserves cash and public state')
++    local held=gold_state(boss,label,true)
++    advice,d=Route.suggest(held,modules)
++    check(advice and advice.action.kind=='skip_blind','confirmed missing cargo retains supported '..label..' skip before '..boss..': '..tostring(d.reason))
++    eq(d.gold_cargo,1,'non-Bell winning route reconciles distinct missing cargo')
++    check(d.evaluations>0 and d.evaluations<=5000,'admitted non-Bell route retains complete bounded scoring')
++  end
++end
++do
++  local cases={
++    {'unknown loaded metadata',function(x) x.completionist_goal.metadata_status='unavailable' end},
++    {'unknown held metadata',function(x) x.completionist_goal.held_status='unavailable' end},
++    {'unknown held sticker',function(x) x.completionist_goal.by_key.j_caino.status='unknown' end},
++    {'stale cargo count',function(x) x.completionist_goal.held_target_count=2 end},
++    {'stale cargo key',function(x) x.completionist_goal.held_target_keys={'j_joker'} end},
++    {'sparse cargo keys',function(x) x.completionist_goal.held_target_keys={[2]='j_caino'} end},
++    {'ineligible run',function(x) x.completionist_goal.eligibility.eligible=false end},
++  }
++  for _,entry in ipairs(cases) do
++    local x=gold_state('bl_final_vessel','Big',true);entry[2](x)
++    local advice,d=Route.suggest(x,modules)
++    eq(advice,nil,entry[1]..' cannot authorize a final shortcut')
++    eq(d.evaluations,0,entry[1]..' is rejected before route scoring')
++    check(type(d.reason)=='string' and d.reason~='',entry[1]..' is explicit')
++  end
++  local earlier=gold_state('bl_wall','Big',false);earlier.ante=7
++  check(Route.suggest(earlier,modules),'earlier-ante routing remains unchanged with no missing cargo')
++  local ordinary=gold_state('bl_final_vessel','Big',false);ordinary.completionist_goal=nil
++  check(Route.suggest(ordinary,modules),'opted-out final route remains available without Gold metadata')
++  modules.strategy=setmetatable({advise=function() return {action={kind='select_blind'}} end},{__index=Strategy})
++  local selected=Decision.run(gold_state('bl_final_vessel','Big',false),modules)
++  eq(selected.action.kind,'select_blind','whole decision retains played-blind shop opportunity with no missing cargo')
++  modules.strategy=original_strategy
++end
+ s=state();s.jokers[#s.jokers+1]=joker('j_perkeo','Perkeo')
+ s.consumeables={{key='c_mercury',ability={set='Planet',consumeable={hand_type='Pair'}}}}
+ _,diag=Route.suggest(s,modules);check(diag.growth_cost>0,'forgone Perkeo shop copying opportunity valued')

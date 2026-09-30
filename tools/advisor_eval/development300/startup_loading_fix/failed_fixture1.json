@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "scope": "Synthetic fixture only; no original-source/native worker",
+  "failure": "A new test expected start_manual to queue despite checkpoint.pending. The existing correct immediate checkpoint guard rejects that request before queuing.",
+  "observed": "Automatic facade passed104 checks; manual product fixture failed its test-only queue expectation.",
+  "repair": "Accept immediate rejection or queued waiting, requiring zero search/run dispatch in either case.",
+  "production_safeguard_weakened": false,
+  "preserved": true
+}

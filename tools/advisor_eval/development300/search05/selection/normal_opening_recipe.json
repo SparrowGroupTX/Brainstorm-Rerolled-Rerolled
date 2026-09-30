@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "kind": "normal_filtered_product_v1",
+  "qualification": false,
+  "seed": "S7PXV521",
+  "deck": "b_red",
+  "stake": 8,
+  "expected_opening_jokers": [
+    "j_yorick",
+    "j_perkeo"
+  ],
+  "filter_info": {
+    "native_api_version": 9,
+    "stake_level": 8,
+    "soul_count": 2,
+    "required_soul_count": 2,
+    "joker_targets": "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+    "joker_target_locations": "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+    "no_perishable_jokers": true,
+    "observatory_deadline": 0,
+    "deck_name": "Red Deck",
+    "multi_soul_pack_consumed": false,
+    "filter_params": [
+      "S7PXV521",
+      "",
+      "",
+      "Charm Tag",
+      2,
+      false,
+      0,
+      false,
+      false,
+      false,
+      false,
+      false,
+      "No Filter",
+      "Kings",
+      "Any Suit",
+      0,
+      0,
+      "Yorick\u001fBrainstorm\u001fBurnt Joker\u001fPerkeo\u001f",
+      "Red Deck",
+      "soul_pack\u001fby_ante_5\u001fby_ante_5\u001fsoul_pack\u001fante_1",
+      8,
+      true,
+      true,
+      "",
+      0,
+      1,
+      8,
+      27000
+    ],
+    "normal_opening": {
+      "schema": 1,
+      "kind": "normal_two_soul_v1",
+      "seed": "S7PXV521",
+      "deck_key": "b_red",
+      "stake": 8,
+      "required_souls": 2,
+      "no_perishable_targets": true,
+      "targets": [
+        {
+          "key": "j_yorick",
+          "location": "soul_pack",
+          "edition": "any"
+        },
+        {
+          "key": "j_perkeo",
+          "location": "soul_pack",
+          "edition": "any"
+        }
+      ]
+    },
+    "collection_search": {
+      "schema": 1,
+      "interchangeable_copies": true,
+      "copy_alternatives": [
+        "j_brainstorm",
+        "j_blueprint"
+      ],
+      "minimum_distinct": 0,
+      "first_ante": 1,
+      "last_ante": 8,
+      "route": "conditional_no_reroll_stock_and_buffoon",
+      "observed_copy_key": null,
+      "future_acquisition_verified": false,
+      "native_result": {
+        "schema": 1,
+        "status": "found",
+        "seed": "S7PXV521",
+        "screened": 156557312,
+        "exact_candidates": 912,
+        "seconds": 0.247699,
+        "budget_ms": 27000,
+        "threads": 32,
+        "route": "conditional_no_reroll_stock_and_buffoon",
+        "qualification": false,
+        "acquisition_retention_survival_verified": false,
+        "worker_elapsed_seconds": 0.2647679999936372,
+        "native_call_elapsed_seconds": 0.24786099995253608,
+        "search_calls": 1,
+        "native_profile": "synthetic_complete_unlock_discovery_assumption"
+      }
+    }
+  },
+  "conditional_later_requirements": [
+    {
+      "any_of": [
+        "j_brainstorm",
+        "j_blueprint"
+      ],
+      "by_ante": 5
+    },
+    {
+      "key": "j_burnt",
+      "by_ante": 5
+    }
+  ],
+  "discovery": {
+    "job": "S05",
+    "api": 9,
+    "copy_alternatives": true,
+    "missing_quota": 0,
+    "evidence_sha256": {
+      "record.json": "a16e8e699366f927b0fa61de3c8fbf4792390e28e1c4660859e08d0320be581e",
+      "result.json": "4d08f3ae147d8c0082313524e9aa54e4aeee50c757b82a5bd2dfd2f304a593b4",
+      "raw_result.json": "b0ddbb74b57ee090149f836254240e84816f893edca6560dc60c97fbaf766382",
+      "request.json": "56665d163c4348104e324703676f6da31192ded4b193d93a72e99bc63a76969b",
+      "registration.json": "994fc0eb50568c24ccec520d56cd2a8d5198826f7d9604b6e61c2516b48112c7"
+    },
+    "interpretation": "The native result does not disclose which copy branch matched. The opening recipe requires only the two Legendary acquisitions; later offers remain conditional and unobserved."
+  }
+}

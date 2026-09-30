@@ -1,0 +1,68 @@
+--- candidate447/Brainstorm/Advisor/shop_scoring.lua
++++ candidate448/Brainstorm/Advisor/shop_scoring.lua
+@@ -65,6 +65,36 @@
+   Dusk='last',Acrobat='last',['Card Sharp']='repeat',['Mystic Summit']='discards'}
+ local function expired(j)
+   local a=j.ability or {}; return a.perma_debuff or a.perishable and num(a.perish_tally,5)<=0
++end
++-- An observed exhausted Riff-raff cannot generate a Joker at the next blind.
++-- Keep the physical slot/value/edition/rental; only its unsupported callback is
++-- absent. Current boss debuff alone is not evidence of permanent inactivity.
++local function exhausted_riff(j)
++  if type(j)~='table' or getmetatable(j) or j.key~='j_riff_raff' or
++      j.name~=nil and j.name~='Riff-raff' or j.debuff~=true or j.getting_sliced or
++      j.face_down or j.facing=='back' or j.unknown or j.identity_unknown or
++      j.identity_redacted or j.concealed then return false end
++  local a=j.ability
++  if type(a)~='table' or getmetatable(a) or a.name~='Riff-raff' or a.set~='Joker' or
++      a.extra~=2 or a.x_mult~=1 or a.perishable~=true or a.perish_tally~=0 or
++      a.effect~=nil and a.effect~='' or a.type~=nil and a.type~='' then return false end
++  local metadata={name=true,set=true,effect=true,type=true,extra=true,x_mult=true,
++    perishable=true,perish_tally=true,eternal=true,rental=true,perma_debuff=true,
++    order=true,extra_value=true,hands_played_at_create=true,blueprint_compat=true}
++  local neutral={bonus=true,mult=true,t_mult=true,t_chips=true,h_mult=true,h_x_mult=true,
++    h_dollars=true,p_dollars=true,h_size=true,d_size=true,perma_bonus=true}
++  for k,v in pairs(a) do
++    if neutral[k] then if v~=0 then return false end
++    elseif not metadata[k] then return false end
++  end
++  for _,k in ipairs({'eternal','rental','perma_debuff'}) do
++    if a[k]~=nil and type(a[k])~='boolean' then return false end
++  end
++  for _,k in ipairs({'order','extra_value','hands_played_at_create'}) do
++    local v=a[k]
++    if v~=nil and (type(v)~='number' or v~=v or v<0 or v==math.huge or v%1~=0) then return false end
++  end
++  return true
+ end
+ local function deck(cards)
+   local out={}
+@@ -543,7 +573,8 @@
+       local supported=Shop.blind_start and Shop.blind_start.supports(j)
+       local certificate=Shop.certificate and j.key=='j_certificate'
+       local inert=context.current_order_opening_only and Shop.gold_goal and Shop.gold_goal.cartomancer_inert(s,j)
+-      if (skip_rows[j.key] or skip_rows[name(j)]) and not supported and not certificate and not inert then return unavailable('Blind-start Joker changes are left to the existing strategy.') end
++      if (skip_rows[j.key] or skip_rows[name(j)]) and not supported and not certificate and not inert and
++          not exhausted_riff(j) then return unavailable('Blind-start Joker changes are left to the existing strategy.') end
+       startup=startup or supported or certificate;first_draw=first_draw or certificate
+       if not canonical_road(j) then return unavailable('Modified Hit the Road mechanics are outside the real-discard comparison.') end
+       local c=clone(j); c.debuff=not not expired(c)
+--- candidate447/Brainstorm/Core/Brainstorm.lua
++++ candidate448/Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.222.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.223.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- candidate447/Brainstorm/steamodded_compat.lua
++++ candidate448/Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.222.0-alpha
++--- VERSION: 2.223.0-alpha

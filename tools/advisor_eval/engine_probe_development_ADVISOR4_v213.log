@@ -1,0 +1,85 @@
+{"type": "engine_probe_sources", "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Balatro\\Balatro.exe", "lua_modules": 47, "source_sha256": {"game.lua": "bbc67bd3fbadd1ea3f3f0aba07ef8596118d89ff1e9758718f9e17c07a96e912", "globals.lua": "e39b5bf91b907c593d72735dc8119aff891bd67ee6e4560254e8ee0a3824d546", "card.lua": "5073d834e08119da9516f1795a8c3d93110669aeb409c29ad1b308e0eb0be453", "cardarea.lua": "e995e91d5ca97a5f9bfcab7438f3b2c6f3d79782be8e89161ab6b39f0030fc87", "blind.lua": "0a7e5fde144da36d4ca1a96950b4bf51e3c95be55fb02764a555de53a3bd8afb", "back.lua": "c4d0b83f2f7a614a3b0c52c127f50290fd5f7bcad427fceb534c541ff8a4c0e1", "tag.lua": "42b589519d7f6e4dd14fc4628198386daae1bbc011ba4125f86eec4e1ec29fe3", "challenges.lua": "7f79aa7a5527f30a8b7068f44e220967ab2907ddcbd0729840be5ddf957c45e9", "engine/event.lua": "98d4e954397b9ddc81c6ec8eadae257960d1cc0ba10e9993f4b241c5dd15159e", "functions/state_events.lua": "6c86aefb42d0323d737f87aaa84f53e42b755e72cd0bfd163b7d9cca5c0a99a9", "functions/common_events.lua": "522ea0810101de1004685e13e7ed05a750b4e115e5231dca2cbc97aeb8c3e5fc", "functions/button_callbacks.lua": "c88a74ca3a8fa8ace0ce46ad10a97238f347c292842c9164d11136fe9952c101", "functions/misc_functions.lua": "c36ed54d8ab441be994a9afc5d38b8ac530f3b93995dfed424ec11f02e633198"}}
+{"type": "engine_probe_provenance", "challenge": "c_omelette_1", "seed": "ADVISOR4", "validation": "experimental", "rules_digest": "0d75fe164accf3312734d4b37ac98788dd15f0b8e4f9bb8b7f90c4e59de93f47", "runtime_digest": "d0039528d0c48acf9e4b93e39f929ecd8def2b08c429971b809d8751aae49fb2", "adapter_digest": "7eaa7a863a66e3a47f7b667c7aa21d6672136c9b397460fc139519484275ce86", "policy_digest": "2c872c8690ec1c9327f4de6edf4add14db6953502a14d3f9873c4f368cdfb31d", "policy_files": {"Brainstorm/Advisor/consumables.lua": "177528c140835737f7c1c09b646d757dd034986a7c9085549fe0082c8860d806", "Brainstorm/Advisor/decision.lua": "f0a6f07b52e354def3c65247124f506ca7df70164d4e8061115ca369b3ea697c", "Brainstorm/Advisor/ordering.lua": "6acdf301888633a9d1d842a76ce1de6af6c39a647b740bd8f8d55ac4bbfe1ede", "Brainstorm/Advisor/runtime.lua": "e7f68a81758cf409e9aa7f0adb17252d0f896ec32dfb796bdf28c679d719c142", "Brainstorm/Advisor/scoring.lua": "f1e772abad0362b2598a8cfb846a3817cf457d6283bcbbde7f7e020308f58f54", "Brainstorm/Advisor/search.lua": "39fcadce79db3db17a8b51452f3b1e8d1d92c70b87ada1c743cd4a19b800784a", "Brainstorm/Advisor/snapshot.lua": "edb82202804ec47e4da2f6998680ac45823a90036f92acfdeb300c349916d486", "Brainstorm/Advisor/strategy.lua": "9e655b99f1609548965020f78914abe60bcdabe6d6199384e22abbcb9fd2716a", "Brainstorm/Advisor/synergies.lua": "46f9d30d92f89ec81bee15b6b94c575501c86f3b0d6a91291f0fe971fbf3cc37", "Brainstorm/UI/advisor.lua": "acce4bda321bfbaa7ba51858e245800d4dc96acec1c543703aba851f8f9c7b9c", "Brainstorm/Core/Brainstorm.lua": "4d72e3a558ad60776cea18fe8310c5dcab1bcac834fb7d7286cbfcb5db894969"}}
+PROBE original item prototypes loaded	150	20
+PROBE original shop pool sampled	Joker3sho1	j_vagabond	20
+PROBE original boss sampled	bl_hook
+PROBE original voucher sampled	v_telescope
+PROBE original tag sampled	tag_voucher
+PROBE native LuaJIT/game RNG deterministic	0.85708188579859
+PROBE no physical save access; in-memory storage calls	2
+PROBE full-run adapter qualification	false
+PROBE authentic challenge initialization	c_omelette_1	52	5
+PROBE authentic start_run completed	true
+PROBE challenge created before boundary	c_omelette_1	52	true
+EPISODE action	1	blind	select_blind		nil	4
+{"action":{"blind":"Small","kind":"select_blind"},"ante":1,"dollars":4,"evaluations":0,"phase":"blind","round":0,"step":1,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":1,"type":"engine_episode_resolved"}
+EPISODE action	2	hand	discard	1,2,7,8	240	4
+{"action":{"area":"hand","indices":[1,2,7,8],"kind":"discard"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":110090,"phase":"hand","round":1,"step":2,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	2
+{"chips_delta":0,"discards_left":2,"dollars_delta":0,"hands_left":4,"state":1,"step":2,"type":"engine_episode_resolved"}
+EPISODE action	3	hand	discard	1,2	268.66666666667	4
+{"action":{"area":"hand","indices":[1,2],"kind":"discard"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":110090,"phase":"hand","round":1,"step":3,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	1
+{"chips_delta":0,"discards_left":1,"dollars_delta":0,"hands_left":4,"state":1,"step":3,"type":"engine_episode_resolved"}
+EPISODE action	4	hand	play	2,4,5,6,7	260	4
+{"action":{"area":"hand","indices":[2,4,5,6,7],"kind":"play"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":110090,"expected_score":260,"phase":"hand","round":1,"step":4,"type":"engine_episode_action"}
+EPISODE action resolved	1	260	0	3	1
+{"chips_delta":260,"discards_left":1,"dollars_delta":0,"hands_left":3,"state":1,"step":4,"type":"engine_episode_resolved"}
+EPISODE action	5	hand	play	3,4	60	4
+{"action":{"area":"hand","indices":[3,4],"kind":"play"},"ante":1,"blind":"bl_small","dollars":4,"evaluations":26378,"expected_score":60,"phase":"hand","round":1,"step":5,"type":"engine_episode_action"}
+EPISODE action resolved	8	60	0	2	1
+{"chips_delta":60,"discards_left":1,"dollars_delta":0,"hands_left":2,"state":8,"step":5,"type":"engine_episode_resolved"}
+EPISODE action	6	round	cash_out		nil	4
+{"action":{"kind":"cash_out"},"ante":1,"dollars":4,"evaluations":0,"phase":"round","round":1,"step":6,"type":"engine_episode_action"}
+EPISODE round payout	0
+EPISODE action resolved	5	-320	0	4	3
+{"chips_delta":-320,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":6,"type":"engine_episode_resolved"}
+EPISODE action	7	shop	sell	j_egg	nil	4
+{"action":{"area":"jokers","followup":{"area":"shop_booster","index":1,"kind":"open"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":4,"evaluations":0,"phase":"shop","round":1,"step":7,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":5,"hands_left":4,"state":5,"step":7,"type":"engine_episode_resolved"}
+EPISODE action	8	shop	open	p_buffoon_normal_2	nil	9
+{"action":{"area":"shop_booster","index":1,"kind":"open"},"ante":1,"card_key":"p_buffoon_normal_2","dollars":9,"evaluations":0,"phase":"shop","round":1,"step":8,"type":"engine_episode_action"}
+EPISODE action resolved	18	0	-4	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-4,"hands_left":4,"state":18,"step":8,"type":"engine_episode_resolved"}
+EPISODE action	9	pack	choose	j_devious	nil	5
+{"action":{"area":"pack_cards","index":2,"kind":"choose"},"ante":1,"card_key":"j_devious","dollars":5,"evaluations":0,"phase":"pack","round":1,"step":9,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":5,"step":9,"type":"engine_episode_resolved"}
+EPISODE action	10	shop	sell	j_egg	nil	5
+{"action":{"area":"jokers","followup":{"area":"shop_jokers","index":2,"kind":"buy"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":5,"evaluations":0,"phase":"shop","round":1,"step":10,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":5,"hands_left":4,"state":5,"step":10,"type":"engine_episode_resolved"}
+EPISODE action	11	shop	buy	j_faceless	nil	10
+{"action":{"area":"shop_jokers","index":2,"kind":"buy"},"ante":1,"card_key":"j_faceless","dollars":10,"evaluations":0,"phase":"shop","round":1,"step":11,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-4	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-4,"hands_left":4,"state":5,"step":11,"type":"engine_episode_resolved"}
+EPISODE action	12	shop	sell	j_egg	nil	6
+{"action":{"area":"jokers","followup":{"area":"shop_jokers","index":1,"kind":"buy"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":6,"evaluations":0,"phase":"shop","round":1,"step":12,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":5,"hands_left":4,"state":5,"step":12,"type":"engine_episode_resolved"}
+EPISODE action	13	shop	buy	j_turtle_bean	nil	11
+{"action":{"area":"shop_jokers","index":1,"kind":"buy"},"ante":1,"card_key":"j_turtle_bean","dollars":11,"evaluations":0,"phase":"shop","round":1,"step":13,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-6	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-6,"hands_left":4,"state":5,"step":13,"type":"engine_episode_resolved"}
+EPISODE action	14	shop	sell	j_egg	nil	5
+{"action":{"area":"jokers","followup":{"area":"shop_vouchers","index":1,"kind":"buy"},"index":1,"kind":"sell"},"ante":1,"card_key":"j_egg","dollars":5,"evaluations":0,"phase":"shop","round":1,"step":14,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	5	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":5,"hands_left":4,"state":5,"step":14,"type":"engine_episode_resolved"}
+EPISODE action	15	shop	buy	v_clearance_sale	nil	10
+{"action":{"area":"shop_vouchers","index":1,"kind":"buy"},"ante":1,"card_key":"v_clearance_sale","dollars":10,"evaluations":0,"phase":"shop","round":1,"step":15,"type":"engine_episode_action"}
+EPISODE action resolved	5	0	-10	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":-10,"hands_left":4,"state":5,"step":15,"type":"engine_episode_resolved"}
+EPISODE action	16	shop	leave_shop		nil	0
+{"action":{"kind":"leave_shop"},"ante":1,"dollars":0,"evaluations":0,"phase":"shop","round":1,"step":16,"type":"engine_episode_action"}
+EPISODE action resolved	7	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":7,"step":16,"type":"engine_episode_resolved"}
+EPISODE action	17	blind	select_blind		nil	0
+{"action":{"blind":"Big","kind":"select_blind"},"ante":1,"dollars":0,"evaluations":0,"phase":"blind","round":1,"step":17,"type":"engine_episode_action"}
+EPISODE action resolved	1	0	0	4	3
+{"chips_delta":0,"discards_left":3,"dollars_delta":0,"hands_left":4,"state":1,"step":17,"type":"engine_episode_resolved"}
+{"type": "engine_probe_profile", "profile": "synthetic_source_defaults", "description": "Fresh in-memory profile and original default center unlock/discovery flags; no user save read", "unlock_profile_digest": "59a012422935e88481fa9fccd940d903e20aeb9f2c456f80fb28a2f4a57d7ddc", "qualification_compatible": false}
+{"type": "engine_probe_timing", "elapsed_seconds": 9.132}
+{"type": "engine_probe_blocked", "full_episode": false, "reason": "engine_run.lua:176: HEADLESS_BOUNDARY advisor returned no machine action: hand nil"}

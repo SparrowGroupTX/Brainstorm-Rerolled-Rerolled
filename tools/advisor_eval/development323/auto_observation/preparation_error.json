@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "kind": "preparation_only",
+  "evaluation_started": false,
+  "command": "python -B tools/advisor_eval/development323/auto_observation/prepare.py",
+  "exit_code": 1,
+  "error": "prepare.py line43: assert prefix.endswith('end\\n'); AssertionError",
+  "correction": "Assert prefix.rstrip().endswith(\"end\") to accept the existing fixture separator.",
+  "earlier_detached_outputs": [
+    "base/auto_run_product.lua",
+    "auto_run_product.lua"
+  ],
+  "root_runtime_or_tests_modified": false
+}

@@ -1,0 +1,21 @@
+# C08 prospective preparation, exact installed320
+
+One fresh complete original-source attempt is proposed on the already observed S05 S7PXV521 Red Deck Gold Stake recipe, using exact installed320 digest e1d66be72a88ccf553811cb7cdb6358fb265ce9ac7e7bd85eaca7e70023b1966. This package is unregistered, unreserved and unrun. Root owns final review, C08 registration and serial launch after C07 is reaped. Its original one-use allowance is180 seconds and500 actions, expiring2026-09-14T22:40UTC. There is no new authority or replacement job.
+
+Hypothesis: observe whether the exact-five pack/history and additive-growth integration changes the actual Certificate/CardSharp pack choice, subsequent discard decisions and Pillar progression on the previously lost C05 development seed. This fresh run imports no captured state or prefix and cannot isolate one intervention, count as an unseen holdout or establish player win odds/human superiority. Every loss, timeout, unsupported, error and censored outcome must remain explicit.
+
+Source-adapter bodies are byte-identical to registered C07, including normal_recipe.py's existing API9 OR-copy validation and the original500-action loop. C05 supplies the exact unchanged normal_opening_recipe.json and normal_seed_selection.json; every S05 receipt hash is checked. The receipt requires actual opening Yorick/Perkeo, later Brainstorm OR Blueprint byAnte5 and Burnt byAnte5 with no perishable targets. Search did not identify which copy branch matched, and neither affordable acquisition nor survival is promised. No seed search is performed.
+
+Gold context is naturally fresh synthetic150missing0unknown under all_unlocked_discovered_v1, with empty loaded Joker history verified by frozen capture before any decision. The Gold objective context/spec are byte-identical to C05 and C07. No player files, preexisting wins or checkpoint/retry context are read or fabricated. Original terminal/Gold callbacks run only in synthetic source memory; no player achievement progress can be inferred.
+
+The full installed320 policy map, exact reviewed feature bytes, final verification and unchanged passing validation are required. The graph proof is C07's frozen final320 receipt,2,498 inert checks/49 distinct modules/40 edges. It is reused because engine_run, policy_wiring, test_wiring and check_graph are exactly identical, and its raw report/stdout hashes are checked against C07's immutable frozen inputs. The c07_v1 graph label remains the shared adapter contract identifier, not the new attempt ID; the worker/registration/attempt-scope fields explicitly identify C08. No graph/source/policy decision is rerun during preparation. The copied old compile fixture is preserved for origin provenance; test_compile8.lua targets the actual C08 copies.
+
+All Core/UI/native bytes remain in the frozen product map, but source dispatch bypasses product UI/execution/automatic-controller wrappers. This does not qualify Start, CashOut, auto-run, logging, checkpoint controls or8x/16x timing. No source archive, native search, live game or player file is accessed in preparation.
+
+Validation: eight manufactured Python setup/registration-guard tests and seven compile-only Lua chunks pass. Fixtures verify exact S05 recipe hashes and unknown copy branch, clean context flags, all18 unchanged origin files, identical graph-bound adapter bytes, wrong job/budget/policy/profile rejection, completed-job refusal and the original500 loop. No source initialization or actual policy decision is executed.
+
+Root can inspect the concrete plan with:
+
+`python -B tools/advisor_eval/development300/complete_attempt8/register.py --describe --installed-dir tools/advisor_eval/runs/pack320_installed --expected-policy-digest e1d66be72a88ccf553811cb7cdb6358fb265ce9ac7e7bd85eaca7e70023b1966`
+
+This verifies files and original unused authority without reading external source/runtime files or reserving C08. After root review and C07 completion, replace --describe with --register. Registration additionally requires C07/record.json, freezes that record, verifies the declared source/runtime/Python hashes and invokes cycle.register C08. It never launches the worker; root must separately use the existing serial cycle runner. Never run run_attempt8.py directly outside its one-use registered directory.

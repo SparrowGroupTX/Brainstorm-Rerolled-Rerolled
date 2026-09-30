@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "kind": "detached_replacement_evidence_forwarding",
+  "status": "ready_for_root_review",
+  "production_source_modified": false,
+  "production_tests_modified": false,
+  "baseline_version": "2.129.0-alpha",
+  "files": {
+    "baseline.lua": "88ab98dd4a0e16214fb96d46ba580069bf80b410ca458a988afa41d2ff48b2fb",
+    "prepare.py": "8072fd0c3ee7d44a8b85002dcf50e0a5a444d578ea35d0ee346bae6a248c67d1",
+    "prepare_regressions.py": "1edd1fed265922df6ac8d3c9f377cf0f30ad052c0cdae2661531774d7fb3eff9",
+    "README.md": "d05475f3294dc3585b7c3eba4b3ba90470118020df2628e77796845a70496df1",
+    "regression_01.lua": "3e032016336c41131152ec5d91e57d1f4f3ba5d2463aecd85e58aeed93ddc50a",
+    "regression_02.lua": "680b93876187bd6ec9922c1724947830e7a82a4b304149a77eeb8385d9c66d9c",
+    "regression_03.lua": "6d134499009455dbbc917ba0735e9697ab0ee881020f33ba4bf4d8ad47c978d0",
+    "regression_04.lua": "40a7b511f2306d4bdb71a67b98dcb87fdea5fa0014a58e0ea07f696cb838aae8",
+    "regression_05.lua": "73510fd6f697ccbe8b314873f2a6b59a4ef2ac0bdd5069c911ee4fa72aeae5f8",
+    "regression_06.lua": "e393f1d10e0093ad42ce7b27f5dff2efab9ac3954079c97b00bb7e3cd48ba65a",
+    "regression_07.lua": "3f06c2cd8a9b505c308ff182af36e4da4d0011dc34d1864493ba2989753ddaf2",
+    "strategy.lua": "0766b5cfca986d4adeb88568e5a5231db6f1b47239e5eaff46904f3b1a895292",
+    "strategy.patch": "8917b5c1f8197714cf5e8ea939535ca69944e7853d998111af641b8dbc91d773",
+    "test.lua": "d02e472866557e09bbc12ae82a682b8b3b70170f7a25a431458378aa02c717b5"
+  },
+  "change": "Return the existing sale.scoring_evidence from the shared shop/pack replacement advice helper.",
+  "validation": {
+    "new_manufactured_checks": 156,
+    "new_fixture_passes": 1,
+    "existing_fixture_passes": 7,
+    "existing_checks": {
+      "shop_replacement_baseline": 96,
+      "replacement_inventory": 25,
+      "pack_comparison": 134,
+      "shop_sequences": 55,
+      "catalog_replacements": 22,
+      "gold_goal": 81,
+      "shop_order": 103
+    },
+    "exit_codes": [
+      0,
+      0
+    ],
+    "worker_wall_seconds": [
+      0.178326,
+      2.6819417
+    ],
+    "failed_fixtures": 0,
+    "action_and_work_parity": "Both shop/pack direct Strategy.advise and Decision.run preserve actions, prior fields, inputs and two comparison counts; full already-computed evidence is forwarded once."
+  },
+  "new_experiment_jobs": 0,
+  "captured_policy_decisions": 0,
+  "original_source_executions": 0,
+  "complete_attempts": 0,
+  "search_jobs": 0,
+  "limitations": "Existing P02 paired replacement worlds remain absent. Forwarding only helps future decisions. No outcome or win claim; root integration and installation required."
+}

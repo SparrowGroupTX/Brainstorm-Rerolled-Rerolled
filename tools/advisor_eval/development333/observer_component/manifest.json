@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "component": "callback hook cooperation333",
+  "production": [
+    {
+      "path": "Brainstorm/Advisor/callback_hooks.lua",
+      "candidate": "tools\\advisor_eval\\development333\\observer_component\\callback_hooks.lua",
+      "candidate_sha256": "834d7b854d1139e5514a474a6c7e5bf1e505c747cd6bcc9afa20327e439dfe71",
+      "new": true
+    },
+    {
+      "path": "Brainstorm\\Advisor\\acorn_public_hooks.lua",
+      "baseline_sha256": "7cec3e6ac4f122b0a5915109626a7d4b4f9da7cb8de2c368f6038887daef18e6",
+      "candidate": "tools\\advisor_eval\\development333\\observer_component\\acorn_public_hooks.lua",
+      "candidate_sha256": "0f84dd699a393a20f8329566899b7b87e2a671bc3ba6cafa404d54682713f2a6"
+    }
+  ],
+  "journal_dependency": {
+    "candidate": "tools/advisor_eval/development333/logger_component/player_journal.lua",
+    "sha256": "eae2209780c9c7d97571c123cb5988a496a9b94fcf39345934a6c5c27265699b"
+  },
+  "files": {
+    "acorn_public_hooks.lua": "0f84dd699a393a20f8329566899b7b87e2a671bc3ba6cafa404d54682713f2a6",
+    "acorn_public_hooks.patch": "ca17ab3a786d2505380da57b6764e30c4ea034ae01866336198bc6cf08c22d6e",
+    "callback_hooks.lua": "834d7b854d1139e5514a474a6c7e5bf1e505c747cd6bcc9afa20327e439dfe71",
+    "INTEGRATION.md": "15a1a06cdb70bc1f6fbb9894f59c2a415553477c10c71f4987e2586943e8f7fb",
+    "report.json": "ea01277024da8ad2f62fedd4829f5adec84d3a5de0870052671c9e4ee4d9b396",
+    "reproduce_hook_growth.lua": "4c65295cc197e3607942ee7fc149e7200f82761cd4dd636ec7336854d9bda934",
+    "reproduce_idle_allocations.lua": "f74873151a98adbf323032371f37ba3c24ef2472f9b8d78dc8c36b0bf1779a24",
+    "test_callback_hooks.lua": "e685d4c3d7aed477b8bf7d6141dd98dd14d39f3c622b52c61292f9005849d0f5",
+    "test_existing_acorn.lua": "6d02d0588319a7b87f1fc7c99eb8f7f0669ab355269ef5048996bd4deb35b2fa",
+    "validation.log": "0c1ea91feb98aaf94fe946d1748c71f88a85b99bcebfe1a696de9674818832b3"
+  }
+}

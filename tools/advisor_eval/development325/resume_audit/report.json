@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "purpose": "Prospective325 Stop/Resume state-machine design audit, before implementation",
+  "scope": "Read-only current source and existing manufactured test inspection; report writing only",
+  "status": "design_hazards_and_required_tests_reported; implementation_not_reviewed",
+  "runtime_base": "2.124.0-alpha; currently inspected files, not loaded-game hash attestation",
+  "authority": "All historical experiment allowances CLOSED; no new experiment authority used",
+  "executions": {
+    "tests": 0,
+    "policy": 0,
+    "source": 0,
+    "search": 0,
+    "captured": 0,
+    "gameplay": 0
+  },
+  "external_reads": {
+    "player_logs": 0,
+    "saves": 0,
+    "profiles": 0,
+    "game_executable": 0
+  },
+  "inspected_sources": [
+    {
+      "path": "Brainstorm/Advisor/auto_run.lua",
+      "inspected_sha256": "9d7b3734094ca7c4fd344cfe7d5be2970f3ae5c6876af2a705b17074e526a4bf",
+      "current_sha256_at_report": "1cfe8d65e4b8171a9abd5731647cef9d79b352306b1928e289670dba7761dfbd",
+      "still_matches_inspected_bytes": false
+    },
+    {
+      "path": "Brainstorm/Core/auto_run_product.lua",
+      "inspected_sha256": "db73ff21f768719961da9b40b3e36fb59e25496ea977c82e6e814f71eb2b5795",
+      "current_sha256_at_report": "db73ff21f768719961da9b40b3e36fb59e25496ea977c82e6e814f71eb2b5795",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "Brainstorm/Core/auto_terminal.lua",
+      "inspected_sha256": "341f2c7e0163780aeafa6c37a727a16488402d33e1ee0abe7331a232b4fe7b00",
+      "current_sha256_at_report": "341f2c7e0163780aeafa6c37a727a16488402d33e1ee0abe7331a232b4fe7b00",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "tests/advisor_auto_run.lua",
+      "inspected_sha256": "e1a18a13f0e8c4fa9f8a42b1a6280038d2aa261ca94ab25507bc572952e88388",
+      "current_sha256_at_report": "e1a18a13f0e8c4fa9f8a42b1a6280038d2aa261ca94ab25507bc572952e88388",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "tests/advisor_auto_run_product.lua",
+      "inspected_sha256": "dfec9c85b2ab331c44ca829751a4fca99878aeaf85f0e9a17d5d6bedbce5e650",
+      "current_sha256_at_report": "dfec9c85b2ab331c44ca829751a4fca99878aeaf85f0e9a17d5d6bedbce5e650",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "tests/advisor_auto_observation.lua",
+      "inspected_sha256": "8bc691700b20b7956e430879200abee1e2cc5fee10866f84e3d7a7a49ca4d346",
+      "current_sha256_at_report": "8bc691700b20b7956e430879200abee1e2cc5fee10866f84e3d7a7a49ca4d346",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "Brainstorm/Core/Brainstorm.lua",
+      "inspected_sha256": "18b3fc7a2e11015aaafc6947b29851ecea74a9938fbba8d88af3f5db69413b3a",
+      "current_sha256_at_report": "18b3fc7a2e11015aaafc6947b29851ecea74a9938fbba8d88af3f5db69413b3a",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "Brainstorm/UI/advisor.lua",
+      "inspected_sha256": "4034c88ce8cd2fc7e4ae4da175aac63d02c9243e64f3872e75e96531d1c4c454",
+      "current_sha256_at_report": "4034c88ce8cd2fc7e4ae4da175aac63d02c9243e64f3872e75e96531d1c4c454",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "ADVISOR_START_HERE.md",
+      "inspected_sha256": "cc90517270e362471c6662616f145d04018ebf8ee04fba919ddfe56eff6eab15",
+      "current_sha256_at_report": "cc90517270e362471c6662616f145d04018ebf8ee04fba919ddfe56eff6eab15",
+      "still_matches_inspected_bytes": true
+    },
+    {
+      "path": "tools/advisor_eval/ARCHITECTURE_MAP_324.md",
+      "inspected_sha256": "c01d03ee106e3f172aca843ab55de0134b1eb14764ee24e1e810e4977ec14eed",
+      "current_sha256_at_report": "c01d03ee106e3f172aca843ab55de0134b1eb14764ee24e1e810e4977ec14eed",
+      "still_matches_inspected_bytes": true
+    }
+  ],
+  "references": {
+    "start_resets_session": [
+      "Brainstorm/Advisor/auto_run.lua:231",
+      "Brainstorm/Core/auto_run_product.lua:254"
+    ],
+    "stop_discards_phase_and_bindings": [
+      "Brainstorm/Advisor/auto_run.lua:79",
+      "Brainstorm/Core/auto_run_product.lua:242"
+    ],
+    "ordinary_input_generation_and_stop": [
+      "Brainstorm/Core/auto_run_product.lua:246",
+      "Brainstorm/Advisor/auto_run.lua:117",
+      "Brainstorm/Core/Brainstorm.lua:1774",
+      "Brainstorm/Core/Brainstorm.lua:1871",
+      "Brainstorm/UI/advisor.lua:564"
+    ],
+    "owned_cancel_drain_deadline": [
+      "Brainstorm/Advisor/auto_run.lua:72",
+      "Brainstorm/Advisor/auto_run.lua:141",
+      "Brainstorm/Advisor/auto_run.lua:169",
+      "Brainstorm/Core/auto_run_product.lua:171"
+    ],
+    "accepted_found_and_starting": [
+      "Brainstorm/Advisor/auto_run.lua:166",
+      "Brainstorm/Advisor/auto_run.lua:198",
+      "Brainstorm/Advisor/auto_run.lua:293",
+      "Brainstorm/Core/auto_run_product.lua:195"
+    ],
+    "spent_pending_action": [
+      "Brainstorm/Advisor/auto_run.lua:311",
+      "Brainstorm/Advisor/auto_run.lua:339",
+      "Brainstorm/Core/auto_run_product.lua:148"
+    ],
+    "limits_watchdogs": [
+      "Brainstorm/Advisor/auto_run.lua:24",
+      "Brainstorm/Advisor/auto_run.lua:138",
+      "Brainstorm/Advisor/auto_run.lua:275",
+      "Brainstorm/Advisor/auto_run.lua:309"
+    ],
+    "terminal_monitor_rearm_and_once_only": [
+      "Brainstorm/Core/auto_terminal.lua:15",
+      "Brainstorm/Core/auto_terminal.lua:44",
+      "Brainstorm/Core/auto_terminal.lua:150",
+      "Brainstorm/Advisor/auto_run.lua:214",
+      "Brainstorm/Advisor/auto_run.lua:300"
+    ],
+    "actual_run_and_profile_table_binding": [
+      "Brainstorm/Core/auto_run_product.lua:56",
+      "Brainstorm/Core/auto_run_product.lua:108",
+      "Brainstorm/Core/auto_run_product.lua:319"
+    ],
+    "existing_cancel_and_invalidation_tests": [
+      "tests/advisor_auto_run.lua:120",
+      "tests/advisor_auto_run.lua:136",
+      "tests/advisor_auto_run_product.lua:120"
+    ],
+    "existing_pending_limits_failure_tests": [
+      "tests/advisor_auto_run.lua:106",
+      "tests/advisor_auto_run.lua:149",
+      "tests/advisor_auto_run.lua:197",
+      "tests/advisor_auto_run.lua:281"
+    ],
+    "existing_status_input_tests_to_update": [
+      "tests/advisor_auto_run_product.lua:272",
+      "tests/advisor_auto_run_product.lua:280",
+      "tests/advisor_auto_run_product.lua:290",
+      "tests/advisor_auto_observation.lua:144"
+    ]
+  },
+  "findings_file": {
+    "path": "AUDIT.md",
+    "sha256": "959bafebc03c48ceab34ba7ad61438d4bf0a9bd7626768ca299d0916520d3340"
+  },
+  "implementation_requirements": [
+    "Separate Resume from Start; same session identity, recipe, counters and elapsed origins",
+    "Preserve pre-stop phase, profile table, original terminal binding and pending action",
+    "Ordinary input does not revoke consent/manual generation; explicit Stop has a separate path",
+    "No duplicate action/start/search or implicit replacement lease on Resume",
+    "Cancellation remains owned and drains; cancelled late found is never launched",
+    "Retain original accepted found receipt and recognize an already-started run",
+    "Preserve hard limits and uncertainty; specify benign-input versus stall-clock behavior",
+    "Reject implicit profile/checkpoint/GAME replacement equivalence",
+    "Terminal outcomes counted once and only from valid retained original evidence",
+    "Resume failures and pure status getters preserve counters and ownership"
+  ],
+  "limitations": [
+    "No implementation acceptance",
+    "No fixture execution",
+    "No terminal or performance result",
+    "No player win-rate inference",
+    "Source line references bind inspected hashes, not future325 edits"
+  ]
+}

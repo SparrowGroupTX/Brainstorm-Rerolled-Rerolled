@@ -1,0 +1,776 @@
+{
+  "schema": 1,
+  "kind": "read_only_public_teacher_shop_postmortem",
+  "experiments_executed": 0,
+  "game_or_saves_accessed": false,
+  "source_files": {
+    "tools/advisor_eval/development357/logs1/events.json": {
+      "bytes": 40229000,
+      "sha256": "9f18fd8106c108d78272789455a06337da26838ac4cad83336cb2e35ae779301"
+    },
+    "tools/advisor_eval/development357/logs1/observations.json": {
+      "bytes": 29067893,
+      "sha256": "3a86d59088dd1b831f7faf01ae56ff7e56b3c60559425f1cc6ed422136e5e68b"
+    },
+    "tools/advisor_eval/development357/logs1/manifest.json": {
+      "bytes": 7179,
+      "sha256": "9be46d55e8dda1af7271ce6c9bfd07942d5061a7a9e9c24bb475f74bdc30d068"
+    }
+  },
+  "completed_outcomes": [
+    {
+      "seed": "M4BVSY11",
+      "sequence": 1945,
+      "outcome": "loss",
+      "blind": {
+        "boss": true,
+        "chips": 120000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_serpent",
+        "mult": 2,
+        "name": "The Serpent"
+      },
+      "chips": 112910,
+      "cash_at_result_record": 109,
+      "ante_at_result_record": 6,
+      "hands_left": 0,
+      "discards_left": 0,
+      "source_won_field": false,
+      "verified": true,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      }
+    },
+    {
+      "seed": "YVYN2Z11",
+      "sequence": 4278,
+      "outcome": "win",
+      "blind": {
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "disabled": true,
+        "key": "bl_final_leaf",
+        "mult": 2,
+        "name": "Verdant Leaf"
+      },
+      "chips": 674187,
+      "cash_at_result_record": 138,
+      "ante_at_result_record": 9,
+      "hands_left": 4,
+      "discards_left": 3,
+      "source_won_field": null,
+      "verified": true,
+      "gold_award": {
+        "new_count": 0,
+        "new_keys": {},
+        "schema": 1,
+        "scope": "Distinct vanilla Gold counters changing from zero to positive in this verified original win callback.",
+        "source": "original_set_joker_win",
+        "status": "confirmed"
+      }
+    },
+    {
+      "seed": "S7PXV521",
+      "sequence": 4850,
+      "outcome": "loss",
+      "blind": {
+        "boss": true,
+        "chips": 2000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_house",
+        "mult": 2,
+        "name": "The House"
+      },
+      "chips": 648,
+      "cash_at_result_record": 5,
+      "ante_at_result_record": 2,
+      "hands_left": 0,
+      "discards_left": 0,
+      "source_won_field": false,
+      "verified": true,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      }
+    },
+    {
+      "seed": "RH45AD21",
+      "sequence": 6968,
+      "outcome": "loss",
+      "blind": {
+        "boss": false,
+        "chips": 165000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_big",
+        "mult": 1.5,
+        "name": "Big Blind"
+      },
+      "chips": 130932,
+      "cash_at_result_record": 242,
+      "ante_at_result_record": 7,
+      "hands_left": 0,
+      "discards_left": 0,
+      "source_won_field": false,
+      "verified": true,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      }
+    },
+    {
+      "seed": "YAEARC31",
+      "sequence": 9185,
+      "outcome": "loss",
+      "blind": {
+        "boss": true,
+        "chips": 400000,
+        "debuff": {},
+        "disabled": false,
+        "key": "bl_final_acorn",
+        "mult": 2,
+        "name": "Amber Acorn"
+      },
+      "chips": 147894,
+      "cash_at_result_record": 5,
+      "ante_at_result_record": 8,
+      "hands_left": 0,
+      "discards_left": 3,
+      "source_won_field": true,
+      "verified": true,
+      "gold_award": {
+        "schema": 1,
+        "status": "not_applicable"
+      }
+    }
+  ],
+  "in_progress_excluded": 1,
+  "issues": [
+    {
+      "id": "duplicate_buy_pending_cash",
+      "status": "observed_execution_defect",
+      "seed": "S7PXV521",
+      "sequences": [
+        4552,
+        4561,
+        4568,
+        4570,
+        4575,
+        4579,
+        4584
+      ],
+      "physical_card": "card:683",
+      "repeat_delta_seconds": 0.2838314000000537,
+      "cash_arithmetic": {
+        "before": 7,
+        "judgement": 3,
+        "first_droll": 4,
+        "repeated_droll": 4,
+        "arcana": 4,
+        "observed_after": -8
+      },
+      "limit": "No replay or repaired terminal outcome. Earlier action cash mutation acknowledged later action.",
+      "evidence": [
+        {
+          "sequence": 4552,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:52Z",
+          "monotonic_seconds": 1126.0855219,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4546",
+          "advice_sequence": 4549,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 261,
+            "raw_sha256": "66e58a1c02fbab477741eb1461ba23fce8bec10d8d01313185f511bdc28b171b"
+          }
+        },
+        {
+          "sequence": 4561,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:52Z",
+          "monotonic_seconds": 1126.5114455,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4557",
+          "advice_sequence": 4558,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 270,
+            "raw_sha256": "6f5536772f49f3da401bf17a03167df3845054fc236527fbd55cd11423cd4499"
+          }
+        },
+        {
+          "sequence": 4568,
+          "kind": "auto_run",
+          "at": "2026-09-16T18:13:53Z",
+          "monotonic_seconds": 1126.7234142,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4566",
+          "advice_sequence": 4567,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 277,
+            "raw_sha256": "a0c2ef0403a3768dd0d26e404eae4394aa3db8e76a137206ee6d30e1fa2843bd"
+          }
+        },
+        {
+          "sequence": 4570,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:53Z",
+          "monotonic_seconds": 1126.7952769,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4566",
+          "advice_sequence": 4567,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 279,
+            "raw_sha256": "a9206572061f03baff53a4c763298735267a35289c0d8f6c793f5641ecf82f24"
+          }
+        },
+        {
+          "sequence": 4575,
+          "kind": "teacher_observation",
+          "at": "2026-09-16T18:13:53Z",
+          "monotonic_seconds": 1126.9385401,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4575",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 284,
+            "raw_sha256": "69457b7502dcd0bafbfab8520028f71cc2bed87c3418bfa607b2fcd37dc03144"
+          }
+        },
+        {
+          "sequence": 4579,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:53Z",
+          "monotonic_seconds": 1127.0408799,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4575",
+          "advice_sequence": 4576,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 288,
+            "raw_sha256": "d176c16a687c149e6292f07c56c85fcdb41ba57a9f1a9270c338b02b5641515b"
+          }
+        },
+        {
+          "sequence": 4584,
+          "kind": "teacher_observation",
+          "at": "2026-09-16T18:13:55Z",
+          "monotonic_seconds": 1128.8343365,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4584",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 293,
+            "raw_sha256": "972e2de9c7468d52e5ec5743016526e176d5aa76108911417b7cc9a6dc0768c5"
+          }
+        }
+      ]
+    },
+    {
+      "id": "expired_rental_retention",
+      "status": "observed_strategic_gap",
+      "seed": "RH45AD21",
+      "sequences": [
+        6272,
+        6327,
+        6467,
+        6606,
+        6702,
+        6863,
+        6968
+      ],
+      "joker": "j_trio",
+      "public_expired_shop_exits": 5,
+      "limit": "Replacement and reroll outcomes unknown; individual purchases require complete comparison.",
+      "evidence": [
+        {
+          "sequence": 6272,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:20:36Z",
+          "monotonic_seconds": 1529.8486614,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6266",
+          "advice_sequence": 6269,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1413,
+            "raw_sha256": "b8a692fccb9c32a023be5258c8630d3ed9c3f76d4a19dde6d6fda22ae5481a64"
+          }
+        },
+        {
+          "sequence": 6327,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:20:55Z",
+          "monotonic_seconds": 1549.2420501,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6319",
+          "advice_sequence": 6324,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1468,
+            "raw_sha256": "8335dde30709fc1683408f8f269ccf7a994de70fe27d4f660a9519b55449832e"
+          }
+        },
+        {
+          "sequence": 6467,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:21:38Z",
+          "monotonic_seconds": 1592.3404079,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6459",
+          "advice_sequence": 6464,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1608,
+            "raw_sha256": "e0eb697dbfee16247f7e685f5356f87a5a4743fdcbb4c19cf8e2908f821e2e17"
+          }
+        },
+        {
+          "sequence": 6606,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:22:12Z",
+          "monotonic_seconds": 1625.8091208,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6598",
+          "advice_sequence": 6603,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1747,
+            "raw_sha256": "df3b85c4cf192f5c26d9b47898f1e21dda209d9cc16343fdcaf955e9f11c205f"
+          }
+        },
+        {
+          "sequence": 6702,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:22:32Z",
+          "monotonic_seconds": 1645.8893322,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6694",
+          "advice_sequence": 6699,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1843,
+            "raw_sha256": "caa6e92e1ee854b9ae02d65b3bded6912c9c1dad19f615a163c7d594198cd925"
+          }
+        },
+        {
+          "sequence": 6863,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:23:19Z",
+          "monotonic_seconds": 1693.4253816,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6855",
+          "advice_sequence": 6860,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 2004,
+            "raw_sha256": "5a939029a7b4f1be7eace66c9c511a016bff4162c102ea3722c70926da635356"
+          }
+        },
+        {
+          "sequence": 6968,
+          "kind": "auto_run",
+          "at": "2026-09-16T18:23:45Z",
+          "monotonic_seconds": 1719.519807,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6965",
+          "advice_sequence": 6966,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000010.brj",
+            "ordinal": 61,
+            "raw_sha256": "6f79a4e65fd7ad84629fb7e64470886fef989148d61a9855667042b48df1e0b9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "last_template_spent_for_safe_development",
+      "status": "observed_comparison_gap",
+      "seed": "RH45AD21",
+      "sequences": [
+        6024,
+        6241,
+        6251,
+        6327,
+        6863
+      ],
+      "templates": [
+        "c_venus",
+        "c_death"
+      ],
+      "remaining_pool": "c_hermit",
+      "limit": "Preserving copying pool is a counterfactual hypothesis; no rescued run demonstrated.",
+      "evidence": [
+        {
+          "sequence": 6024,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:19:43Z",
+          "monotonic_seconds": 1476.7902882,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6019",
+          "advice_sequence": 6020,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1165,
+            "raw_sha256": "752563ace2334717c8e506c639079199418b1e96ded7a2a0681ee3730919c899"
+          }
+        },
+        {
+          "sequence": 6241,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:20:33Z",
+          "monotonic_seconds": 1527.3907175,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6235",
+          "advice_sequence": 6238,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1382,
+            "raw_sha256": "85d178a8bc775ff52c39ff5cca1f182ccb0766ad810c45afd554eaa0b32c74e3"
+          }
+        },
+        {
+          "sequence": 6251,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:20:34Z",
+          "monotonic_seconds": 1527.7543028,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6246",
+          "advice_sequence": 6247,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1392,
+            "raw_sha256": "982fa2c14909769c4baf076f18e4e8b2c14c1aa5525ac5f8f0b113595038547e"
+          }
+        },
+        {
+          "sequence": 6327,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:20:55Z",
+          "monotonic_seconds": 1549.2420501,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6319",
+          "advice_sequence": 6324,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 1468,
+            "raw_sha256": "8335dde30709fc1683408f8f269ccf7a994de70fe27d4f660a9519b55449832e"
+          }
+        },
+        {
+          "sequence": 6863,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:23:19Z",
+          "monotonic_seconds": 1693.4253816,
+          "seed": "RH45AD21",
+          "run_instance": "observed-game:5",
+          "observation_id": "teacher356-1789581331-1:6855",
+          "advice_sequence": 6860,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000009.brj",
+            "ordinal": 2004,
+            "raw_sha256": "5a939029a7b4f1be7eace66c9c511a016bff4162c102ea3722c70926da635356"
+          }
+        }
+      ]
+    },
+    {
+      "id": "verdant_perkeo_sale_correct",
+      "status": "observed_successful_terminal_rescue",
+      "seed": "YVYN2Z11",
+      "sequences": [
+        4256,
+        4259,
+        4263,
+        4278
+      ],
+      "score": 674187,
+      "target": 400000,
+      "new_gold": 0,
+      "limit": "Does not establish optimality of all earlier choices or population win rate.",
+      "evidence": [
+        {
+          "sequence": 4256,
+          "kind": "teacher_advice",
+          "at": "2026-09-16T18:12:57Z",
+          "monotonic_seconds": 1071.487348,
+          "seed": "YVYN2Z11",
+          "run_instance": "observed-game:3",
+          "observation_id": "teacher356-1789581331-1:4251",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000005.brj",
+            "ordinal": 256,
+            "raw_sha256": "55e0286a2eb2b5213f624037c7f331959b2001e3f17db7dc830352e1164329ce"
+          }
+        },
+        {
+          "sequence": 4259,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:12:57Z",
+          "monotonic_seconds": 1071.5618509,
+          "seed": "YVYN2Z11",
+          "run_instance": "observed-game:3",
+          "observation_id": "teacher356-1789581331-1:4251",
+          "advice_sequence": 4256,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000005.brj",
+            "ordinal": 259,
+            "raw_sha256": "c825f7099a5fb2851d1b95a264133069a9a95a212950a436d31b9a9509d17edc"
+          }
+        },
+        {
+          "sequence": 4263,
+          "kind": "teacher_observation",
+          "at": "2026-09-16T18:12:58Z",
+          "monotonic_seconds": 1071.695379,
+          "seed": "YVYN2Z11",
+          "run_instance": "observed-game:3",
+          "observation_id": "teacher356-1789581331-1:4263",
+          "advice_sequence": null,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000005.brj",
+            "ordinal": 263,
+            "raw_sha256": "40c6afecb46982cb4fd7c770c893048026245648143bd324e698473e4daf4b2e"
+          }
+        },
+        {
+          "sequence": 4278,
+          "kind": "auto_run",
+          "at": "2026-09-16T18:12:58Z",
+          "monotonic_seconds": 1072.5437195,
+          "seed": "YVYN2Z11",
+          "run_instance": "observed-game:3",
+          "observation_id": "teacher356-1789581331-1:4276",
+          "advice_sequence": 4277,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000005.brj",
+            "ordinal": 278,
+            "raw_sha256": "91543f72fe6f80570a904be0717243567e8bd4eece5aabc90e1b546fc804306c"
+          }
+        }
+      ]
+    },
+    {
+      "id": "acorn_immediate_only_coverage",
+      "status": "observed_scope_gap",
+      "seed": "YAEARC31",
+      "sequences": [
+        9115,
+        9133,
+        9151,
+        9169,
+        9185
+      ],
+      "discards_left_at_loss": 3,
+      "consistent_order_worlds": [
+        120,
+        4,
+        4,
+        4
+      ],
+      "limit": "No hidden position inference or winning discard/reorder counterfactual executed.",
+      "evidence": [
+        {
+          "sequence": 9115,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:31:16Z",
+          "monotonic_seconds": 2170.2255248,
+          "seed": "YAEARC31",
+          "run_instance": "observed-game:6",
+          "observation_id": "teacher356-1789581331-1:9108",
+          "advice_sequence": 9112,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000013.brj",
+            "ordinal": 88,
+            "raw_sha256": "f5b54a8e9e600001579fbc9a4243ded18808a51d67b486546a8c97304bdb7fbb"
+          }
+        },
+        {
+          "sequence": 9133,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:31:17Z",
+          "monotonic_seconds": 2171.3133858,
+          "seed": "YAEARC31",
+          "run_instance": "observed-game:6",
+          "observation_id": "teacher356-1789581331-1:9127",
+          "advice_sequence": 9130,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000013.brj",
+            "ordinal": 106,
+            "raw_sha256": "67dd66368306171fb549ec1a9c06c377cb7fbed8b53964348cef7d5d60836d3b"
+          }
+        },
+        {
+          "sequence": 9151,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:31:18Z",
+          "monotonic_seconds": 2172.5233646,
+          "seed": "YAEARC31",
+          "run_instance": "observed-game:6",
+          "observation_id": "teacher356-1789581331-1:9145",
+          "advice_sequence": 9148,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000013.brj",
+            "ordinal": 124,
+            "raw_sha256": "ccf2385455c900b51eadd8b7c395fe36a9078d0f9a2539caa0f05212a7b5d965"
+          }
+        },
+        {
+          "sequence": 9169,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:31:20Z",
+          "monotonic_seconds": 2173.8869302,
+          "seed": "YAEARC31",
+          "run_instance": "observed-game:6",
+          "observation_id": "teacher356-1789581331-1:9163",
+          "advice_sequence": 9166,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000013.brj",
+            "ordinal": 142,
+            "raw_sha256": "b807292ae9501a4cd32aca0a916e7b48674bf5776ef6ee07233e2e7028ab3929"
+          }
+        },
+        {
+          "sequence": 9185,
+          "kind": "auto_run",
+          "at": "2026-09-16T18:31:21Z",
+          "monotonic_seconds": 2174.9994586,
+          "seed": "YAEARC31",
+          "run_instance": "observed-game:6",
+          "observation_id": "teacher356-1789581331-1:9182",
+          "advice_sequence": 9183,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000013.brj",
+            "ordinal": 158,
+            "raw_sha256": "c31453b7c0306d2b3d2057f21c4fc159df326a4f29c2cb22e2e48437a56bb9ef"
+          }
+        }
+      ]
+    },
+    {
+      "id": "certificate_faceless_vs_survival",
+      "status": "review_hypothesis",
+      "seed": "S7PXV521",
+      "sequences": [
+        4421,
+        4433,
+        4552,
+        4755,
+        4850
+      ],
+      "limit": "Alternative Card Sharp route not executed; combined Certificate+Perkeo unsupported and later cash contaminated.",
+      "evidence": [
+        {
+          "sequence": 4421,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:21Z",
+          "monotonic_seconds": 1095.3952031,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4416",
+          "advice_sequence": 4417,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 130,
+            "raw_sha256": "af6db65649a54855fb080bbf1a69fab53d2dac5d328dca2275d26ff0714b336e"
+          }
+        },
+        {
+          "sequence": 4433,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:29Z",
+          "monotonic_seconds": 1102.7548877,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4426",
+          "advice_sequence": 4430,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 142,
+            "raw_sha256": "20bb87be578e7068cc00d2c7a899374825a18b1d75e2bcde42c6b423874fc0d2"
+          }
+        },
+        {
+          "sequence": 4552,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:13:52Z",
+          "monotonic_seconds": 1126.0855219,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4546",
+          "advice_sequence": 4549,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 261,
+            "raw_sha256": "66e58a1c02fbab477741eb1461ba23fce8bec10d8d01313185f511bdc28b171b"
+          }
+        },
+        {
+          "sequence": 4755,
+          "kind": "action_requested",
+          "at": "2026-09-16T18:14:34Z",
+          "monotonic_seconds": 1168.5645711,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4750",
+          "advice_sequence": 4751,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 464,
+            "raw_sha256": "3ed7e9d930a42f6cf5f1fa91f6e93e137f083efff35bfb0ee841118d1fb37fe4"
+          }
+        },
+        {
+          "sequence": 4850,
+          "kind": "auto_run",
+          "at": "2026-09-16T18:14:55Z",
+          "monotonic_seconds": 1188.6951316,
+          "seed": "S7PXV521",
+          "run_instance": "observed-game:4",
+          "observation_id": "teacher356-1789581331-1:4847",
+          "advice_sequence": 4848,
+          "anchor": {
+            "segment": "session-20260916T175531Z-1-000007.brj",
+            "ordinal": 559,
+            "raw_sha256": "f10a4af37817702c0cd69e6ea777b3d98997a41681b286d481956e8cfbb2121f"
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Frozen public-log prefix only.",
+    "No policy, scorer, replay, simulation, seed search, or source component executed.",
+    "Selected runs are development evidence, not a representative win-rate cohort.",
+    "Four losses plus one verified win; incidental won flag does not override loss evidence.",
+    "No counterfactual wins or numerical improvement inferred."
+  ]
+}

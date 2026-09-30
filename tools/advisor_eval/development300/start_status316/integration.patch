@@ -1,0 +1,335 @@
+--- a/Brainstorm/Core/collection_search_product.lua
++++ b/Brainstorm/Core/collection_search_product.lua
+@@ -10,6 +10,23 @@
+   if type(font)~='userdata' and type(font)~='table' then return true end
+   for key in next,value do if key~='font' then return true end end
+   return false
++end
++-- Diagnostic names only: never stringify live values or userdata addresses.
++local function diagnostic_fields(value,active_only)
++  local names={}
++  for key,item in next,value do
++    if not active_only or item then
++      names[#names+1]=type(key)=='string' and key:gsub('%c','?'):sub(1,24) or ('<'..type(key)..' key>')
++    end
++  end
++  table.sort(names)
++  if #names>4 then while #names>4 do table.remove(names)end;names[#names+1]='...' end
++  return #names>0 and table.concat(names,', ') or 'none'
++end
++local function loading_reason(value)
++  local shape=type(value)
++  if shape=='table'then shape=shape..(getmetatable(value)~=nil and ' with metatable' or ' fields: '..diagnostic_fields(value))end
++  return 'Game loading is active ('..shape..').'
+ end
+ local function settled_main_menu(g)
+   return g and g.STAGES and g.STATES and g.STAGES.MAIN_MENU~=nil and g.STATES.MENU~=nil
+@@ -83,7 +100,7 @@
+   assert(type(B)=='table','Brainstorm table required');deps=deps or {}
+   local api={status='Search is idle. Starting replaces the current run.'}
+   local prepared=setmetatable({},{__mode='k'})
+-  local active,manual
++  local active,manual,manual_request_owner
+   local game=deps.game or function()return G end
+   local runtime=deps.runtime or B.CollectionSearchRuntime
+   local query=deps.query or B.CollectionSearch
+@@ -128,23 +145,30 @@
+   local function safe(g)
+     if not g or not g.GAME or not g.STAGES or not g.STATES then return nil,'The game menu is unavailable.' end
+     if B.ar_active then return nil,'A normal reroll is active.' end
+-    if B.Checkpoints and (B.Checkpoints.pending or B.Checkpoints.saving) or B.save_pending or B.checkpoint_busy or
+-      g.SAVING then return nil,'Save/checkpoint pending.' end
+-    if loading_pending(g.LOADING)then return nil,'Game loading is active.' end
++    if B.Checkpoints and B.Checkpoints.pending then return nil,'Checkpoint request is pending.' end
++    if B.Checkpoints and B.Checkpoints.saving then return nil,'Checkpoint save is pending.' end
++    if B.save_pending then return nil,'Brainstorm save is pending.' end
++    if B.checkpoint_busy then return nil,'Checkpoint operation is busy.' end
++    if g.SAVING then return nil,'Game saving is active.' end
++    if loading_pending(g.LOADING)then return nil,loading_reason(g.LOADING) end
+     if deps.pending then
+       local ok,pending=pcall(deps.pending,g)
+       if not ok or pending then return nil,'A game save or transition is pending.' end
+     end
+     local stop_use=g.GAME.STOP_USE
+     if stop_use~=nil and (type(stop_use)~='number' or stop_use~=stop_use or stop_use<0)then return nil,'The pending game action state is unavailable.' end
+-    if not g.STATE_COMPLETE and not settled_main_menu(g) or g.screenwipe or g.OVERLAY_MENU or (g.SETTINGS or {}).paused or
+-      (stop_use or 0)>0 then return nil,'Wait for the game screen to settle.' end
++    if not g.STATE_COMPLETE and not settled_main_menu(g) then return nil,'Game transition incomplete.' end
++    if g.screenwipe then return nil,'Screen transition active.' end
++    if g.OVERLAY_MENU then return nil,'Menu is still open.' end
++    if (g.SETTINGS or {}).paused then return nil,'Game is paused.' end
++    if (stop_use or 0)>0 then return nil,'Card action pending.' end
+     local c=g.CONTROLLER
+-    if type(c)~='table' or c.text_input_hook or c.locked or c.dragging and c.dragging.target then
+-      return nil,'Wait for the current input to finish.'
+-    end
++    if type(c)~='table' then return nil,'Game input controller is unavailable.' end
++    if c.text_input_hook then return nil,'Finish text entry.' end
++    if c.locked then return nil,'Controls are settling.' end
++    if c.dragging and c.dragging.target then return nil,'Release the dragged card.' end
+     if c.locks~=nil and type(c.locks)~='table' then return nil,'The game control locks are unavailable.' end
+-    for _,locked in pairs(c.locks or {})do if locked then return nil,'The game controls are locked.' end end
++    for _,locked in pairs(c.locks or {})do if locked then return nil,'Input locks active: '..diagnostic_fields(c.locks,true)..'.' end end
+     if g.play and g.play.cards and #g.play.cards>0 then return nil,'Wait for the played cards to settle.' end
+     local allowed=settled_main_menu(g)
+     if g.STAGE==g.STAGES.RUN then
+@@ -420,8 +444,17 @@
+       local ok,err=pcall(exit);if not ok then return nil,'The overlay could not close: '..tostring(err)end
+     end
+     manual={owner='manual:'..request.request_id,request=request,input=input(),identity=run_identity(game()),phase='waiting'}
++    manual_request_owner=manual.owner
+     api.status='Waiting for the menu to close before searching.'
+     return true,request.request_id
++  end
++  -- Public observation only: reading status cannot arm, poll or cancel work.
++  function api.status_report()
++    local job=active and active.owner==manual_request_owner and active or nil
++    local requested=manual_request_owner~=nil
++    return {requested=requested,busy=manual~=nil or job~=nil and not job.exited,
++      text=api.status,phase=manual and manual.phase or job and job.status or requested and 'stopped' or 'idle',
++      owner=requested and (manual~=nil or not active or job~=nil) and 'manual' or nil}
+   end
+   function api.stop(reason)
+     local stopped=manual~=nil;manual=nil
+--- a/Brainstorm/Core/auto_run_product.lua
++++ b/Brainstorm/Core/auto_run_product.lua
+@@ -10,6 +10,23 @@
+   if type(font)~='userdata' and type(font)~='table' then return true end
+   for key in next,value do if key~='font' then return true end end
+   return false
++end
++-- Diagnostic names only: never stringify live values or userdata addresses.
++local function diagnostic_fields(value,active_only)
++  local names={}
++  for key,item in next,value do
++    if not active_only or item then
++      names[#names+1]=type(key)=='string' and key:gsub('%c','?'):sub(1,24) or ('<'..type(key)..' key>')
++    end
++  end
++  table.sort(names)
++  if #names>4 then while #names>4 do table.remove(names)end;names[#names+1]='...' end
++  return #names>0 and table.concat(names,', ') or 'none'
++end
++local function loading_reason(value)
++  local shape=type(value)
++  if shape=='table'then shape=shape..(getmetatable(value)~=nil and ' with metatable' or ' fields: '..diagnostic_fields(value))end
++  return 'Game loading is active ('..shape..').'
+ end
+ local function settled_main_menu(g)
+   return g and g.STAGES and g.STATES and g.STAGES.MAIN_MENU~=nil and g.STATES.MENU~=nil
+@@ -72,10 +89,14 @@
+     if c.locked then return true,'Controls are settling.' end
+     if c.text_input_hook then return true,'Finish text entry.' end
+     if c.dragging and c.dragging.target then return true,'Release the dragged card.' end
+-    for _,v in pairs(c.locks or {})do if v then return true,'Input lock is active.' end end
++    for _,v in pairs(c.locks or {})do if v then return true,'Input locks active: '..diagnostic_fields(c.locks,true)..'.' end end
+     if g.play and g.play.cards and #g.play.cards>0 then return true,'Played cards are settling.' end
+-    if B.Checkpoints and (B.Checkpoints.pending or B.Checkpoints.saving) or B.save_pending or B.checkpoint_busy or g.SAVING then return true,'Save/checkpoint pending.' end
+-    if loading_pending(g.LOADING)then return true,'Game loading is active.' end
++    if B.Checkpoints and B.Checkpoints.pending then return true,'Checkpoint request is pending.' end
++    if B.Checkpoints and B.Checkpoints.saving then return true,'Checkpoint save is pending.' end
++    if B.save_pending then return true,'Brainstorm save is pending.' end
++    if B.checkpoint_busy then return true,'Checkpoint operation is busy.' end
++    if g.SAVING then return true,'Game saving is active.' end
++    if loading_pending(g.LOADING)then return true,loading_reason(g.LOADING) end
+     return false
+   end
+   local function search_busy()
+@@ -195,6 +216,13 @@
+     if state.search_draining then self.status_text=self.status_text..' Waiting for the owned search worker to exit.'end
+     return state
+   end
++  -- Controller.status returns a copy; this getter does not update status or work.
++  function api:status_report()
++    local state=controller.status()
++    local requested=generations.consent_generation>0
++    return {requested=requested,busy=pending~=nil or state.busy==true,text=self.status_text,
++      phase=pending and 'waiting' or state.state or 'idle',owner=requested and 'auto' or nil}
++  end
+   function api:stop(reason)
+     pending=nil;profile_binding=nil;terminal:disarm()
+     local stopped=controller.stop(reason or 'User stopped auto-run');self:status();return stopped
+--- a/tests/advisor_collection_product.lua
++++ b/tests/advisor_collection_product.lua
+@@ -256,12 +256,12 @@
+   e.finish();e.api.update()
+   check(e.starts==1 and e.g.LOADING.font.synthetic_font,'found receipt starts once while preserving the boot cache')
+ end
+-for _,value in ipairs({true,{}, {font={synthetic_font=true},active=true},{font='unexpected'},17,
++for shape_index,value in ipairs({true,{}, {font={synthetic_font=true},active=true},{font='unexpected'},17,
+     {font={synthetic_font=true},[1]='unknown_extra'},setmetatable({font={}},{})})do
+   local e=env();e.g.LOADING=value
+   check(e.api.start_manual({}),'loading guard remains deferred until fresh explicit-start update')
+   e.api.update()
+-  check(e.searches==0 and e.starts==0 and e.api.status=='Waiting: Game loading is active.',
++  check(e.searches==0 and e.starts==0 and e.api.status=='Waiting: Game loading is active ('..({'boolean','table fields: none','table fields: active, font','table fields: font','number','table fields: <number key>, font','table with metatable'})[shape_index]..').',
+       'active/unknown loading shape blocks and explains the actual wait')
+ end
+ for _,block in ipairs({function(e)e.g.STATE_COMPLETE=false end,function(e)e.g.CONTROLLER.locked=true end,
+@@ -308,4 +308,80 @@
+       'a genuinely pending manual owner is still cancelled by settings invalidation')
+   e.g.OVERLAY_MENU=nil;e.api.update();check(e.searches==0 and e.starts==0,'pending invalidation never dispatches later')
+ end
++do
++  local e=env()
++  local initial=e.api.status_report()
++  check(initial.requested==false and initial.busy==false and initial.owner==nil and initial.phase=='idle',
++    'new manual status getter has no implied request')
++  e.api.prepare({})
++  check(not e.api.status_report().requested,'preparing only does not set explicit manual request')
++  local invalid=env();invalid.goal.metadata_status='unknown'
++  check(not invalid.api.start_manual({}) and not invalid.api.status_report().requested,'rejected request remains unarmed')
++  e.g.OVERLAY_MENU={};e.delay_close=true
++  assert(e.api.start_manual({}))
++  local before={searches=e.searches,starts=e.starts,deletes=e.deletes,cancels=e.cancels,
++    changed=e.changed,closed=e.closed,input=e.input,status=e.api.status,enabled=e.B.config.advisor.enabled}
++  for i=1,5 do
++    local r=e.api.status_report()
++    check(r.requested and r.busy and r.phase=='waiting' and r.owner=='manual' and r.text==e.api.status,
++      'pending manual report remains observable without updating')
++    r.text='mutated output';r.busy=false;r.requested=false
++  end
++  check(e.searches==before.searches and e.starts==before.starts and e.deletes==before.deletes and
++    e.cancels==before.cancels and e.changed==before.changed and e.closed==before.closed and e.input==before.input and
++    e.api.status==before.status and e.B.config.advisor.enabled==before.enabled and e.last_poll_token==nil,
++    'manual reads preserve input, settings, status, events and native/game counts')
++  e.api.stop('Mouse input.')
++  local cancelled=e.api.status_report()
++  check(cancelled.requested and not cancelled.busy and cancelled.phase=='stopped' and cancelled.text=='Mouse input.',
++    'pre-worker cancellation remains visible after pending owner clears')
++  e.g.OVERLAY_MENU=nil;e.api.update()
++  check(e.searches==0,'reading a cancelled pending report never starts later')
++end
++do
++  local e=env();assert(e.api.start_manual({}));e.api.update()
++  local r=e.api.status_report()
++  check(r.busy and r.phase=='searching' and r.owner=='manual','active manual worker is busy')
++  e.api.stop('Stopped by the user.')
++  r=e.api.status_report()
++  check(r.requested and r.busy and r.phase=='stopping','cancelled worker remains busy until exit')
++  local calls=e.cancels;for i=1,3 do e.api.status_report()end
++  check(e.cancels==calls,'status reads do not resend cancellation')
++  e.finish('cancelled');e.api.update()
++  r=e.api.status_report()
++  check(r.requested and not r.busy and r.phase=='cancelled','drained worker reports terminal cancellation')
++end
++do
++  local e=env();assert(e.api.start_manual({}));e.api.update();e.finish();e.api.update()
++  local r=e.api.status_report()
++  check(r.requested and not r.busy and r.phase=='started' and r.owner=='manual' and
++    r.text=='Gold run started. Advisor play remains user-controlled.','consumed successful manual start is not busy')
++end
++
++for _,case in ipairs({
++  {set=function(e)e.g.STATE_COMPLETE=false end,text='Game transition incomplete.'},
++  {set=function(e)e.g.screenwipe=true end,text='Screen transition active.'},
++  {set=function(e)e.g.OVERLAY_MENU={} end,text='Menu is still open.'},
++  {set=function(e)e.g.SETTINGS.paused=true end,text='Game is paused.'},
++  {set=function(e)e.g.GAME.STOP_USE=1 end,text='Card action pending.'},
++  {set=function(e)e.B.Checkpoints={pending={}} end,text='Checkpoint request is pending.'},
++  {set=function(e)e.B.Checkpoints={saving=true} end,text='Checkpoint save is pending.'},
++  {set=function(e)e.B.save_pending=true end,text='Brainstorm save is pending.'},
++  {set=function(e)e.B.checkpoint_busy=true end,text='Checkpoint operation is busy.'},
++  {set=function(e)e.g.SAVING=true end,text='Game saving is active.'},
++  {set=function(e)e.g.CONTROLLER.locks={zeta=true,alpha=true,ignore=false} end,text='Input locks active: alpha, zeta.'},
++  {set=function(e)e.g.LOADING={font={},extra={secret='must not print'}}end,text='Game loading is active (table fields: extra, font).'},
++})do
++  local e=env();assert(e.api.start_manual({}));case.set(e);e.api.update()
++  local r=e.api.status_report()
++  check(r.busy and r.text=='Waiting: '..case.text and e.searches==0 and e.starts==0,
++    'specific manual blocker remains enforced: '..case.text)
++end
++do
++  local e=env();assert(e.api.start_manual({}));e.g.LOADING={}
++  for i=1,10 do e.g.LOADING['field'..string.rep('x',100)..i]={secret='hidden'}end
++  e.api.update();local text=e.api.status_report().text
++  check(#text<160 and not text:find('hidden',1,true) and text:find('...',1,true),'diagnostic table keys are bounded and values stay private')
++end
++
+ print('collection_product_fixture passed '..checks..' checks')
+--- a/tests/advisor_auto_run_product.lua
++++ b/tests/advisor_auto_run_product.lua
+@@ -181,21 +181,21 @@
+   x.api:update();x.api:update()
+   check(x.stats().begins==1 and x.g.LOADING.font.synthetic_font,'automatic search starts while preserving persistent boot cache')
+ end
+-for _,value in ipairs({true,{}, {font={synthetic_font=true},active=true},{font='unexpected'},17,
++for shape_index,value in ipairs({true,{}, {font={synthetic_font=true},active=true},{font='unexpected'},17,
+     {font={synthetic_font=true},[1]='unknown_extra'},setmetatable({font={}},{})})do
+   local x=fixture();x.g.LOADING=value
+   check(x.api:start(),'automatic Start queues one explicit request')
+   x.api:update();x.api:update()
+-  check(x.stats().begins==0 and x.stats().starts==0 and x.api.status_text=='Waiting: Game loading is active.',
++  check(x.stats().begins==0 and x.stats().starts==0 and x.api.status_text=='Waiting: Game loading is active ('..({'boolean','table fields: none','table fields: active, font','table fields: font','number','table fields: <number key>, font','table with metatable'})[shape_index]..').',
+       'active/unknown loading blocks with a concise visible reason')
+ end
+ for _,case in ipairs({
+   {set=function(x)x.g.STATE_COMPLETE=false end,reason='Game transition incomplete.'},
+   {set=function(x)x.g.CONTROLLER.locked=true end,reason='Controls are settling.'},
+-  {set=function(x)x.g.CONTROLLER.locks.frame=true end,reason='Input lock is active.'},
+-  {set=function(x)x.g.CONTROLLER.locks.frame_set=true end,reason='Input lock is active.'},
+-  {set=function(x)x.B.Checkpoints={pending={slot=1}}end,reason='Save/checkpoint pending.'},
+-  {set=function(x)x.g.SAVING=true end,reason='Save/checkpoint pending.'},
++  {set=function(x)x.g.CONTROLLER.locks.frame=true end,reason='Input locks active: frame.'},
++  {set=function(x)x.g.CONTROLLER.locks.frame_set=true end,reason='Input locks active: frame_set.'},
++  {set=function(x)x.B.Checkpoints={pending={slot=1}}end,reason='Checkpoint request is pending.'},
++  {set=function(x)x.g.SAVING=true end,reason='Game saving is active.'},
+   {set=function(x)x.g.GAME.STOP_USE=1 end,reason='Card action pending.'},
+ })do
+   local x=fixture();x.g.LOADING={font={}};case.set(x)
+@@ -256,4 +256,55 @@
+   check(y.api:status().state=='searching'and y.api.status_text==y.search.status,
+     'automatic searching status exposes actual relaxed query rather than generic searching')
+ end
++do
++  local x=fixture()
++  local r=x.api:status_report()
++  check(not r.requested and not r.busy and r.owner==nil,'initial auto report does not imply consent')
++  check(not x.api:start({search_request='bad'}) and not x.api:status_report().requested,
++    'pre-consent rejection remains unrequested')
++  x.g.OVERLAY_MENU={};x.g.SETTINGS.paused=true
++  assert(x.api:start())
++  local before=x.stats();local events=#x.events;local input=x.g.CONTROLLER;local text=x.api.status_text
++  local config=snapshot.copy(x.B.config);local key=x.A.published_key
++  for i=1,5 do
++    r=x.api:status_report()
++    check(r.requested and r.busy and r.phase=='waiting' and r.owner=='auto' and r.text==text,
++      'accepted auto request reports pending state without running an update')
++    r.text='mutated output';r.requested=false;r.busy=false
++  end
++  local after=x.stats()
++  check(after.actions==before.actions and after.begins==before.begins and after.starts==before.starts and after.closed==before.closed
++    and #x.events==events and x.g.CONTROLLER==input and x.api.status_text==text and x.A.published_key==key and
++    x.B.config.advisor.enabled==config.advisor.enabled and x.B.config.advisor.player_logging==config.advisor.player_logging,
++    'auto status reads preserve input, settings, status, logs and native/game counts')
++  x.api:manual('Keyboard input.')
++  r=x.api:status_report()
++  check(r.requested and not r.busy and r.owner=='auto' and r.text:find('Keyboard input.',1,true),
++    'auto pending cancellation reason remains observable with consent flag')
++  x.api:update();check(x.stats().begins==0 and x.stats().actions==0,'pure reports cannot rearm stopped auto-run')
++end
++do
++  local x=fixture();assert(x.api:start());x.api:update();x.api:update()
++  local r=x.api:status_report()
++  check(r.requested and r.busy and r.phase=='searching','actual auto controller phase is exposed')
++  x.api:manual('Stop while native worker drains.')
++  r=x.api:status_report()
++  check(r.requested and r.busy,'auto drain remains busy')
++  x.api:update();r=x.api:status_report()
++  check(r.requested and not r.busy and x.stats().starts==0,'auto drain completion is observable without launching')
++end
++
++for _,case in ipairs({
++  {set=function(x)x.B.Checkpoints={saving=true}end,text='Checkpoint save is pending.'},
++  {set=function(x)x.B.save_pending=true end,text='Brainstorm save is pending.'},
++  {set=function(x)x.B.checkpoint_busy=true end,text='Checkpoint operation is busy.'},
++  {set=function(x)x.g.CONTROLLER.locks={zeta=true,alpha=true,ignore=false}end,text='Input locks active: alpha, zeta.'},
++  {set=function(x)x.g.LOADING={font={},extra={secret='hidden'}}end,text='Game loading is active (table fields: extra, font).'},
++})do
++  local x=fixture();assert(x.api:start());case.set(x);x.api:update()
++  local r=x.api:status_report()
++  check(r.busy and r.text=='Waiting: '..case.text and x.stats().begins==0 and x.stats().starts==0,
++    'specific auto blocker remains enforced: '..case.text)
++end
++
+ print('advisor_auto_run_product: '..checks..' checks passed')

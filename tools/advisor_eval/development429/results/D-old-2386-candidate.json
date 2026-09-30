@@ -1,0 +1,49 @@
+{
+  "job": "D-old-2386-candidate",
+  "mode": "decision",
+  "case": "old-2386",
+  "policy": "candidate",
+  "exit_code": 0,
+  "seconds": 1.7349999999860302,
+  "log_sha256": "4956508c932a4aeadcf8c174f9a4457aa30671e95f45dee4493a9436bbd75b3b",
+  "status": "complete",
+  "result": {
+    "case": "old-2386",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          3
+        ],
+        "kind": "play"
+      },
+      "discard_before_clear": {
+        "category": "public_model_gap",
+        "evaluations": 1,
+        "final_action_kind": "play",
+        "final_play_score": 57600,
+        "needed_score": 62400,
+        "reason": "The supported floor is below target; a random clear remains possible.",
+        "remaining_discards": 2,
+        "schema": 1,
+        "selected": false,
+        "status": "exception"
+      },
+      "evaluations": 133510,
+      "play": {
+        "hand": "Pair",
+        "legal": true,
+        "score": 90720,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "candidate",
+    "status": "complete"
+  }
+}

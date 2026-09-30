@@ -1,0 +1,227 @@
+cardarea.lua
+function CardArea:remove_from_highlighted(card, force)
+    if (not force) and  card and card.ability.forced_selection and self == G.hand then return end
+    for i = #self.highlighted,1,-1 do
+        if self.highlighted[i] == card then
+            table.remove(self.highlighted, i)
+            break
+        end
+    end
+    card:highlight(false)
+    if self == G.hand and G.STATE == G.STATES.SELECTING_HAND then
+        self:parse_highlighted()
+    end
+end
+
+function CardArea:unhighlight_all()
+    for i = #self.highlighted,1,-1 do
+        if self.highlighted[i].ability.forced_selection and self == G.hand then
+        else
+            self.highlighted[i]:highlight(false)
+            table.remove(self.highlighted, i)
+        end
+    end 
+    if self == G.hand and G.STATE == G.STATES.SELECTING_HAND then
+        self:parse_highlighted()
+    end
+end
+
+function CardArea:set_ranks()
+    for k, card in ipairs(self.cards) do
+        card.rank = k
+        card.states.collide.can = true
+        if k > 1 and self.config.type == 'deck' then 
+            card.states.drag.can = false 
+            card.states.collide.can = false 
+        elseif self.config.type == 'play' or self.config.type == 'shop' or self.config.type == 'consumeable' then 
+            card.states.drag.can = false
+        else
+            card.states.drag.can = true
+        end
+    end
+end
+
+function CardArea:move(dt)
+    --Set sliding up/down for the hand area
+    if self == G.hand then 
+        local desired_y = G.TILE_H - G.hand.T.h - 1.9*((not G.deck_preview and (G.STATE == G.STATES.SELECTING_HAND or G.STATE == G.STATES.DRAW_TO_HAND)) and 1 or 0)
+        G.hand.T.y = 15*G.real_dt*desired_y + (1-15*G.real_dt)*G.hand.T.y
+        if math.abs(desired_y - G.hand.T.y) < 0.01 then G.hand.T.y = desired_y end
+        if G.STATE == G.STATES.TUTORIAL then 
+            G.play.T.y = G.hand.T.y - (3 + 0.6)
+        end
+    end
+    Moveable.move(self, dt)
+    self:align_cards()
+end
+
+function CardArea:update(dt)
+    if self == G.hand then
+        if G.GAME.modifiers.minus_hand_size_per_X_dollar then
+            self.config.last_poll_size = self.config.last_poll_size or 0
+            if math.floor(G.GAME.dollars/G.GAME.modifiers.m
+cardarea.lua
+function CardArea:unhighlight_all()
+    for i = #self.highlighted,1,-1 do
+        if self.highlighted[i].ability.forced_selection and self == G.hand then
+        else
+            self.highlighted[i]:highlight(false)
+            table.remove(self.highlighted, i)
+        end
+    end 
+    if self == G.hand and G.STATE == G.STATES.SELECTING_HAND then
+        self:parse_highlighted()
+    end
+end
+
+function CardArea:set_ranks()
+    for k, card in ipairs(self.cards) do
+        card.rank = k
+        card.states.collide.can = true
+        if k > 1 and self.config.type == 'deck' then 
+            card.states.drag.can = false 
+            card.states.collide.can = false 
+        elseif self.config.type == 'play' or self.config.type == 'shop' or self.config.type == 'consumeable' then 
+            card.states.drag.can = false
+        else
+            card.states.drag.can = true
+        end
+    end
+end
+
+function CardArea:move(dt)
+    --Set sliding up/down for the hand area
+    if self == G.hand then 
+        local desired_y = G.TILE_H - G.hand.T.h - 1.9*((not G.deck_preview and (G.STATE == G.STATES.SELECTING_HAND or G.STATE == G.STATES.DRAW_TO_HAND)) and 1 or 0)
+        G.hand.T.y = 15*G.real_dt*desired_y + (1-15*G.real_dt)*G.hand.T.y
+        if math.abs(desired_y - G.hand.T.y) < 0.01 then G.hand.T.y = desired_y end
+        if G.STATE == G.STATES.TUTORIAL then 
+            G.play.T.y = G.hand.T.y - (3 + 0.6)
+        end
+    end
+    Moveable.move(self, dt)
+    self:align_cards()
+end
+
+function CardArea:update(dt)
+    if self == G.hand then
+        if G.GAME.modifiers.minus_hand_size_per_X_dollar then
+            self.config.last_poll_size = self.config.last_poll_size or 0
+            if math.floor(G.GAME.dollars/G.GAME.modifiers.minus_hand_size_per_X_dollar) ~= self.config.last_poll_size then
+                 self:change_size(self.config.last_poll_size - math.floor(G.GAME.dollars/G.GAME.modifiers.minus_hand_size_per_X_dollar))
+                 self.config.last_poll_size = math.floor(G.GAME.dollars/G.GAME.modifiers.minus_hand_size_per_X_dollar)
+            end
+        end
+        for k, v in pairs(self.cards) do
+            if v.ability.forced_selection and not self.highlighted[1
+functions/button_callbacks.lua
+G.FUNCS.can_discard = function(e)
+    if G.GAME.current_round.discards_left <= 0 or #G.hand.highlighted <= 0 then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.RED
+        e.config.button = 'discard_cards_from_highlighted'
+    end
+  end
+  
+  G.FUNCS.can_use_consumeable = function(e)
+    if e.config.ref_table:can_use_consumeable() then 
+        e.config.colour = G.C.RED
+        e.config.button = 'use_card'
+    else
+      e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+      e.config.button = nil
+    end
+  end
+
+  G.FUNCS.can_select_card = function(e)
+    if e.config.ref_table.ability.set ~= 'Joker' or (e.config.ref_table.edition and e.config.ref_table.edition.negative) or #G.jokers.cards < G.jokers.config.card_limit then 
+        e.config.colour = G.C.GREEN
+        e.config.button = 'use_card'
+    else
+      e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+      e.config.button = nil
+    end
+  end
+
+  G.FUNCS.can_sell_card = function(e)
+    if e.config.ref_table:can_sell_card() then 
+        e.config.colour = G.C.GREEN
+        e.config.button = 'sell_card'
+    else
+      e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+      e.config.button = nil
+    end
+  end
+
+  G.FUNCS.can_skip_booster = function(e)
+    if G.pack_cards and (G.pack_cards.cards[1]) and 
+    (G.STATE == G.STATES.PLANET_PACK or G.STATE == G.STATES.STANDARD_PACK or G.STATE == G.STATES.BUFFOON_PACK or (G.hand and (G.hand.cards[1] or (G.hand.config.card_limit <= 0)))) then 
+        e.config.colour = G.C.GREY
+        e.config.button = 'skip_booster'
+    else
+      e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+      e.config.button = nil
+    end
+  end
+
+  G.FUNCS.show_infotip = function(e)
+    if e.config.ref_table then 
+      e.children.info = UIBox{
+        definition = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, padding = 0.02}, nodes=e.config.ref_table},
+        config = {offset = {x=-0.03,y=0}, align = 'cl', parent = e}
+      }
+      e.children.info:align_to_major()
+      e.config.ref_table = nil
+    end
+  end
+  
+
+  G.FUNCS.use_card = function(e, mute, nosave)
+    e.config.button = nil
+    local card = e.config.ref_table
+ 
+functions/state_events.lua
+G.FUNCS.discard_cards_from_highlighted = function(e, hook)
+    stop_use()
+    G.CONTROLLER.interrupt.focus = true
+    G.CONTROLLER:save_cardarea_focus('hand')
+
+    for k, v in ipairs(G.playing_cards) do
+        v.ability.forced_selection = nil
+    end
+
+    if G.CONTROLLER.focused.target and G.CONTROLLER.focused.target.area == G.hand then G.card_area_focus_reset = {area = G.hand, rank = G.CONTROLLER.focused.target.rank} end
+    local highlighted_count = math.min(#G.hand.highlighted, G.discard.config.card_limit - #G.play.cards)
+    if highlighted_count > 0 then 
+        update_hand_text({immediate = true, nopulse = true, delay = 0}, {mult = 0, chips = 0, level = '', handname = ''})
+        table.sort(G.hand.highlighted, function(a,b) return a.T.x < b.T.x end)
+        inc_career_stat('c_cards_discarded', highlighted_count)
+        for j = 1, #G.jokers.cards do
+            G.jokers.cards[j]:calculate_joker({pre_discard = true, full_hand = G.hand.highlighted, hook = hook})
+        end
+        local cards = {}
+        local destroyed_cards = {}
+        for i=1, highlighted_count do
+            G.hand.highlighted[i]:calculate_seal({discard = true})
+            local removed = false
+            for j = 1, #G.jokers.cards do
+                local eval = nil
+                eval = G.jokers.cards[j]:calculate_joker({discard = true, other_card =  G.hand.highlighted[i], full_hand = G.hand.highlighted})
+                if eval then
+                    if eval.remove then removed = true end
+                    card_eval_status_text(G.jokers.cards[j], 'jokers', nil, 1, nil, eval)
+                end
+            end
+            table.insert(cards, G.hand.highlighted[i])
+            if removed then
+                destroyed_cards[#destroyed_cards + 1] = G.hand.highlighted[i]
+                if G.hand.highlighted[i].ability.name == 'Glass Card' then 
+                    G.hand.highlighted[i]:shatter()
+                else
+                    G.hand.highlighted[i]:start_dissolve()
+                end
+            else 
+                G.hand.highlighted[i].ability.discarded = true
+                draw_card(G.hand, G.discard, i*100/highlighted_count, 'down', false, G.hand.highlighted

@@ -1,0 +1,65 @@
+{
+  "schema": "cashout_shop_bookkeeping_v1",
+  "cases": [
+    {
+      "id": "minimal_stale_resources",
+      "cash": 7,
+      "earnings_total": 1,
+      "current_round": {"hands_left": 0, "discards_left": 0, "jokers_purchased": 2, "hands_played": 3, "discards_used": 1},
+      "round_resets": {"hands": 4, "discards": 3},
+      "round_bonus": {"next_hands": 0, "discards": 0},
+      "previous_round": {"dollars": 4},
+      "flags": {"shop_free": true, "shop_d6ed": true}
+    },
+    {
+      "id": "already_correct_resources",
+      "cash": 8,
+      "earnings_total": 2,
+      "current_round": {"hands_left": 4, "discards_left": 3, "jokers_purchased": 0, "hands_played": 2, "discards_used": 0},
+      "round_resets": {"hands": 4, "discards": 3},
+      "round_bonus": {"next_hands": 0, "discards": 0},
+      "previous_round": {"dollars": 5},
+      "flags": {}
+    },
+    {
+      "id": "shop_entry_bonus_composition",
+      "cash": 2,
+      "earnings_total": 4,
+      "current_round": {"hands_left": 0, "discards_left": 1, "jokers_purchased": 1, "hands_played": 4, "discards_used": 2},
+      "round_resets": {"hands": 4, "discards": 3},
+      "round_bonus": {"next_hands": 2, "discards": 1},
+      "previous_round": {"dollars": 1},
+      "flags": {}
+    },
+    {
+      "id": "shop_entry_lower_bounds",
+      "cash": 0,
+      "earnings_total": 0,
+      "current_round": {"hands_left": 0, "discards_left": 0, "jokers_purchased": 3, "hands_played": 1, "discards_used": 0},
+      "round_resets": {"hands": 0, "discards": 0},
+      "round_bonus": {"next_hands": -2, "discards": -1},
+      "previous_round": {"dollars": 9},
+      "flags": {}
+    },
+    {
+      "id": "heldout_zero_payment_with_carry",
+      "cash": 12,
+      "earnings_total": 0,
+      "current_round": {"hands_left": 3, "discards_left": 2, "jokers_purchased": 4, "hands_played": 2, "discards_used": 1},
+      "round_resets": {"hands": 5, "discards": 2},
+      "round_bonus": {"next_hands": 0, "discards": 0},
+      "previous_round": {"dollars": 5, "carry_marker": "retain"},
+      "flags": {"shop_free": true, "shop_d6ed": true}
+    },
+    {
+      "id": "negative_payment_control",
+      "cash": 2,
+      "earnings_total": -3,
+      "current_round": {"hands_left": 1, "discards_left": 0, "jokers_purchased": 0, "hands_played": 3, "discards_used": 2},
+      "round_resets": {"hands": 4, "discards": 3},
+      "round_bonus": {"next_hands": 0, "discards": 0},
+      "previous_round": {"dollars": 2},
+      "flags": {}
+    }
+  ]
+}

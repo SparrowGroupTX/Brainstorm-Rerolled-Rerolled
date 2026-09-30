@@ -1,0 +1,48 @@
+{
+  "job": "D-old-4643-baseline",
+  "mode": "decision",
+  "case": "old-4643",
+  "policy": "baseline",
+  "exit_code": 0,
+  "seconds": 2.0929999999934807,
+  "log_sha256": "768f6a3d2b9115211085de1c2dd8fea7ce53b797980cf9fbaafbe10555933c4e",
+  "status": "complete",
+  "result": {
+    "case": "old-4643",
+    "decision": {
+      "action": {
+        "area": "hand",
+        "indices": [
+          1,
+          2,
+          3,
+          6
+        ],
+        "kind": "discard"
+      },
+      "discard_before_clear": {
+        "evaluations": 0,
+        "final_action_kind": "discard",
+        "reason": "existing_discard_plan",
+        "remaining_discards": 3,
+        "schema": 1,
+        "selected": true,
+        "status": "discard_selected"
+      },
+      "evaluations": 119956,
+      "play": {
+        "hand": "High Card",
+        "legal": true,
+        "score": 9765,
+        "uncertain": true
+      }
+    },
+    "input_unchanged": true,
+    "legality": {
+      "status": "modeled_legal"
+    },
+    "mode": "decision",
+    "policy": "baseline",
+    "status": "complete"
+  }
+}

@@ -1,0 +1,1143 @@
+--- before420/Brainstorm/Advisor/consumables.lua
++++ Brainstorm/Advisor/consumables.lua
+@@ -550,7 +550,8 @@
+     local d=definition(owned)
+     if d and not owned.debuff and not seen[d.key] and evaluations<cap then
+       seen[d.key]=true
+-      if d.kind~='hermit' and d.kind~='temperance' and d.kind~='generator' then
++      if d.kind~='hermit' and d.kind~='temperance' and d.kind~='generator' and
++          (not options.discard_preparation or options.discard_preparation.min_count==0 or d.kind=='death') then
+         local deck_action=M.deck_development and M.deck_development.supports(owned.key)
+         local targets,hand_order
+         if deck_action then targets=M.deck_development.targets(snapshot,owned,profile,baseline,strategy)
+@@ -614,9 +615,64 @@
+               if modeled and options.arm_cost and strategy then
+                 modeled=options.arm_cost(state,play.hand)<=options.arm_cost(snapshot,baseline.hand)
+               end
++              local preparation,prepared_indices
++              local prep=options.discard_preparation
++              if d.kind=='death' and prep and prep.modules and prep.modules.growth and
++                  number(snapshot.discards_left)>0 and evaluations<cap and number(prep.max_evaluations)>0 then
++                -- A real copy can create a smaller rank hand. Prove the full
++                -- discard endpoint using held cards only, then execute just
++                -- the copy (or its necessary reorder) and refresh afterward.
++                local rank=state.hand[targets[2]].rank or (state.hand[targets[2]].base or {}).id
++                local group={}
++                for i,c in ipairs(state.hand) do
++                  if not c.unknown and not c.identity_redacted and not c.face_down and
++                      (c.rank or (c.base or {}).id)==rank then group[#group+1]=i end
++                end
++                for size=2,math.min(3,#group,#baseline.indices-1) do
++                  if evaluations>=cap or #state.hand-size<=number(prep.min_count) then break end
++                  local compact_indices={};for i=1,size do compact_indices[i]=group[i] end
++                  evaluations=evaluations+1
++                  local compact=scorer.lower_bound and scorer.lower_bound(state,compact_indices) or scorer.score(state,compact_indices)
++                  local safe=scorer.lower_bound and floor_supported(compact) or not scorer.lower_bound and
++                    finite_score(compact) and compact.legal~=false and not compact.uncertain
++                  local previously_played={};for _,i in ipairs(clear_indices) do previously_played[i]=true end
++                  for _,i in ipairs(compact_indices) do
++                    local held=working.hand[i]
++                    if held and not previously_played[i] and not held.debuff and
++                        (held.enhancement=='m_gold' or held.seal=='Blue') then safe=false end
++                  end
++                  for _,entry in ipairs(compact and compact.glass_exposure or {}) do
++                    local c=state.hand[entry.index]
++                    if number(entry.probability)>number(exposure[c and c.id or entry.index])+0.000001 then safe=false end
++                  end
++                  if safe and options.arm_cost then safe=options.arm_cost(state,compact.hand)<=options.arm_cost(snapshot,baseline.hand) end
++                  local search=prep.modules.search
++                  if safe and search and search.population_cost and search.population_profile then
++                    compact.indices=compact_indices
++                    safe=search.population_cost(state,compact,search.population_profile(state))<=
++                      search.population_cost(snapshot,baseline,search.population_profile(snapshot))+0.000000001
++                  end
++                  local allowance=math.min(cap-evaluations,number(prep.max_evaluations)-number(diagnostics.discard_preparation_evaluations))
++                  if safe and allowance>0 then
++                    compact.indices=compact_indices
++                    local plan,work=prep.modules.growth.suggest(state,prep.modules,compact,
++                      {exhaust_discards=true,max_evaluations=allowance})
++                    evaluations=evaluations+number(work)
++                    diagnostics.discard_preparation_evaluations=number(diagnostics.discard_preparation_evaluations)+number(work)
++                    if plan and plan.action.kind=='discard' and #plan.action.indices>number(prep.min_count) then
++                      preparation={cards=#plan.action.indices,anchor_cards=size,retained_score=plan.play.score,
++                        source_id=state.hand[targets[2]].id,target_id=state.hand[targets[1]].id,
++                        scope='copy then supported retained discard; fresh observation required',
++                        future_draw_assumed=false,growth_evaluations=number(work)}
++                      compact.indices=compact_indices;prepared_indices=compact_indices;play=compact;modeled=true;break
++                    end
++                  end
++                end
++              end
++              if prep and number(prep.min_count)>0 and not preparation then modeled=false end
+               if modeled and (not best or merit>best.merit) then
+-                play=copy(play);play.indices=list(indices)
+-                best={index=index,targets=targets,definition=d,play=play,merit=merit,bounded=bounded,hand_order=hand_order}
++                play=copy(play);play.indices=list(prepared_indices or indices)
++                best={index=index,targets=targets,definition=d,play=play,merit=merit,bounded=bounded,hand_order=hand_order,discard_preparation=preparation}
+               end
+             end
+           end
+@@ -630,10 +686,11 @@
+     lines[#lines+1]='Copy hand card '..best.targets[2]..' (right) onto card '..best.targets[1]..' (left).'
+   elseif #best.targets>0 then lines[#lines+1]='Target hand card'..(#best.targets>1 and 's ' or ' ')..table.concat(best.targets,', ')..'.' end
+   lines[#lines+1]='This develops '..(profile.rank and (value_name(profile.rank)..'s for ') or '')..profile.hand..' for later blinds.'
+-  lines[#lines+1]=best.bounded and
++  lines[#lines+1]=best.discard_preparation and
++    'A smaller winning rank hand supports a larger safe discard after this copy; refresh advice after the actual action.' or best.bounded and
+     'The supported minimum for the same clearing play still clears without favorable random activations; refresh advice after using it.' or
+     'The existing clearing play was rescored after the change and still clears; refresh advice after using it.'
+-  local development={utility=best.merit,hand=profile.hand,rank=profile.rank}
++  local development={utility=best.merit,hand=profile.hand,rank=profile.rank,discard_preparation=best.discard_preparation}
+   if best.definition.kind=='death' then
+     development.death=true;development.source_index=best.targets[2];development.target_index=best.targets[1]
+     development.reorder_first=best.hand_order~=nil
+--- before420/Brainstorm/Advisor/decision.lua
++++ Brainstorm/Advisor/decision.lua
+@@ -570,9 +570,17 @@
+     if exhaust_discards(snapshot) or discard_growth_available(snapshot) or held_death then consider_growth() end
+     local discard_growth=growth and growth.action and growth.action.kind=='discard'
+     if discard_growth then clear_shortcut.development_deferred_for_discard=true end
+-    if not discard_growth and modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
++    local discard_count=discard_growth and #growth.action.indices or 0
++    local death_preparation=held_death and exhaust_discards(snapshot) and discard_count<5 and
++      math.max(0,12-(result.discard_preference_work or 0))>0
++    if (not discard_growth or death_preparation) and modules.consumables and modules.consumables.develop and #(snapshot.consumeables or {})>0 then
+       local suggestion,count,diagnostics=modules.consumables.develop(snapshot,modules.scoring,result.play,
+-        {strategy=modules.strategy,max_development_evaluations=available(6),arm_cost=modules.search.arm_cost})
++        {strategy=modules.strategy,max_development_evaluations=available(6),arm_cost=modules.search.arm_cost,
++         discard_preparation=death_preparation and {modules=modules,min_count=discard_count,
++           max_evaluations=math.max(0,12-(result.discard_preference_work or 0))} or nil})
++      if diagnostics and (diagnostics.discard_preparation_evaluations or 0)>0 then
++        result.discard_preference_work=(result.discard_preference_work or 0)+diagnostics.discard_preparation_evaluations
++      end
+       result.consumable,result.consumable_diagnostics=suggestion,diagnostics
+       result.evaluations=(result.evaluations or 0)+(count or 0)
+     end
+@@ -807,7 +815,12 @@
+     (result.action.kind=='leave_shop' or result.action.kind=='reorder_jokers') and
+     result.strategy and result.strategy.gold_retention and result.gold_retention_diagnostics and
+     result.gold_retention_diagnostics.complete
+-  if modules.phase_copy and not (result and result.reorder_only) and not fixed_retention then
++  local first_burnt=false
++  if snapshot.phase=='hand' and snapshot.teacher_profile=='perkeo_yorick_win_v1' and
++      (snapshot.discards_used or (snapshot.current_round or {}).discards_used or 0)==0 then
++    for _,j in ipairs(snapshot.jokers or {}) do if j.key=='j_burnt' and not j.debuff then first_burnt=true end end
++  end
++  if modules.phase_copy and (not (result and result.reorder_only) or first_burnt) and not fixed_retention then
+     result=modules.phase_copy.apply(snapshot,modules,result,options and options.phase_copy)
+   end
+   local retry=options and options.retry
+--- before420/Brainstorm/Advisor/growth.lua
++++ Brainstorm/Advisor/growth.lua
+@@ -20,7 +20,7 @@
+   j_cloud_9='Cloud 9',j_popcorn='Popcorn',j_flower_pot='Flower Pot',j_even_steven='Even Steven',
+   j_greedy_joker='Greedy Joker',j_hanging_chad='Hanging Chad',j_ice_cream='Ice Cream',
+   j_fortune_teller='Fortune Teller',j_devious='Devious Joker',j_card_sharp='Card Sharp',
+-  j_hiker='Hiker',j_stencil='Joker Stencil'}
++  j_hiker='Hiker',j_stencil='Joker Stencil',j_selzer='Seltzer'}
+ local joker_effects={j_yorick='',j_perkeo='',j_brainstorm='Copycat',j_blueprint='Copycat',
+   j_supernova='Hand played mult',j_droll='Type Mult',j_burnt='',j_smiley='',
+   j_duo='X1.5 Mult',j_wily='',j_swashbuckler='Set Mult',j_flower_pot='',
+@@ -46,6 +46,12 @@
+   end
+   return true
+ end
++local function seltzer_edition(e)
++  if neutral_edition(e) then return true end
++  if not plain(e) or e.holo~=true or e.mult~=10 or e.type~=nil and e.type~='holo' then return false end
++  for k in pairs(e) do if k~='holo' and k~='mult' and k~='type' then return false end end
++  return true
++end
+ local extra_shapes={j_greedy_joker={s_mult=3,suit='Diamonds'},j_ice_cream={chip_mod=5,chips='integer'},
+   j_card_sharp={Xmult=3}}
+ local extra_scalars={j_flower_pot=3,j_even_steven=4,j_hanging_chad=2,j_fortune_teller=1,j_hiker=5}
+@@ -156,6 +162,8 @@
+       if value~=1 then return false end
+     elseif key=='extra' and joker_key=='j_smiley' then
+       if value~=5 then return false end
++    elseif key=='extra' and joker_key=='j_selzer' then
++      if not small_integer(value) or value<1 then return false end
+     elseif key=='extra' and joker_key=='j_cloud_9' then
+       if value~=1 then return false end
+     elseif key=='nine_tally' and joker_key=='j_cloud_9' then
+@@ -215,7 +223,8 @@
+   if not plain(j) then return false end
+   if j.key=='j_hanging_chad' and not j.debuff and not allow_chad then return false end
+   local a=j.ability
+-  if not plain(j) or not ordinary_ability(a,j.key) or not neutral_edition(j.edition) or not additive_jokers[j.key] or
++  local edition_ok=j.key=='j_selzer' and seltzer_edition(j.edition) or neutral_edition(j.edition)
++  if not plain(j) or not ordinary_ability(a,j.key) or not edition_ok or not additive_jokers[j.key] or
+     a.name~=additive_jokers[j.key] or a.set~='Joker' or
+     a.effect~=nil and a.effect~=joker_effects[j.key] then return false end
+   if not j.debuff then
+@@ -239,6 +248,9 @@
+     elseif a.x_mult~=1 then return false end
+     if j.key=='j_wily' and a.type~='Three of a Kind' or j.key=='j_devious' and a.type~='Straight' then return false end
+     if (extra_shapes[j.key] or extra_scalars[j.key]) and not qualified_extra(j.key,a.extra) then return false end
++    -- One repeat per scoring card; the public counter decreases only on play.
++    -- Its canonical Holo adds fixed Joker-stage Mult after all card additions.
++    if j.key=='j_selzer' and (not small_integer(a.extra) or a.extra<1) then return false end
+     -- Both effects are independent of scoring-card order and discards:
+     -- Cloud9 pays at round end; Popcorn contributes its current main-stage
+     -- Mult and decays only at round end. Qualify actual vanilla fields.
+@@ -1021,6 +1033,100 @@
+     end
+   end
+ 
++  -- Before Burnt's first discard, one plain spare play can improve the hand
++  -- category of a full five-card batch. Price every identity in the public
++  -- unordered deck, but prove the retained finish without drawing any of them.
++  -- This is one opening setup only; all discards and enough deck for their full
++  -- batches remain available even if the desired category is not drawn.
++  if exhaust and not options.disable_burnt_setup and unused_setup and burnt and best and best.action.kind=='discard' and
++      #best.action.indices==5 and #known_clear.indices==1 and evaluations+3<=cap and
++      scorer.after_play and scorer.classify and modules.search and modules.search.hand_growth_value and
++      num(s.hands_left,round.hands_left)>=2 and num(profile.horizon)>0 and not s.challenge and
++      #(s.deck or {})>=1+5*num(s.discards_left,round.discards_left) then
++    local b=s.blind or {};local qualified=(b.disabled or b.key=='bl_small' or b.key=='bl_big') and ordinary_held_inputs(s)
++    local public,seen={},{}
++    for _,c in ipairs(s.playing_cards or {}) do
++      if c.id==nil or public[c.id] or c.unknown or c.identity_redacted then qualified=false end
++      if c.id~=nil then public[c.id]=c end
++    end
++    for _,area in ipairs({s.hand,s.deck}) do for _,c in ipairs(area) do
++      if c.id==nil or not public[c.id] or seen[c.id] or c.unknown or c.identity_redacted or
++          public[c.id].rank~=c.rank or public[c.id].suit~=c.suit then qualified=false end
++      if c.id~=nil then seen[c.id]=true end
++    end end
++    for _,c in ipairs(s.hand) do if c.face_down or c.facing=='back' then qualified=false end end
++    local allowed={j_yorick=true,j_perkeo=true,j_burnt=true,j_blueprint=true,j_brainstorm=true}
++    for _,j in ipairs(s.jokers or {}) do
++      local checked=j;local e=j.edition
++      if j.key=='j_burnt' and plain(e) and e.polychrome==true and e.x_mult==1.5 and
++          (e.type==nil or e.type=='polychrome') then
++        local exact=true;for k in pairs(e) do if k~='polychrome' and k~='x_mult' and k~='type' then exact=false end end
++        if exact then checked=copy(j);checked.edition=nil end
++      end
++      if not allowed[j.key] or not ordinary_additive_joker(checked,true) then qualified=false end
++    end
++    for key,value in pairs(s.modifiers or {}) do
++      if value~=nil and value~=false and value~=0 and not pair_modifiers[key] then qualified=false end
++    end
++    local function ordinary(c)
++      return c and not c.unknown and not c.identity_redacted and not c.debuff and not c.seal and not c.edition and
++        (c.enhancement==nil or c.enhancement=='c_base') and
++        small_integer(c.rank) and c.rank>=2 and c.rank<=14 and
++        num((c.ability or {}).h_mult)==0 and num((c.ability or {}).h_x_mult)<=1 and
++        num((c.ability or {}).h_dollars)==0 and not (c.ability or {}).forced_selection
++    end
++    for _,c in ipairs(s.deck or {}) do if not ordinary(c) then qualified=false end end
++    local wanted=profile.hand;local category=best.growth.effects.burnt_hand
++    local value=modules.search.hand_growth_value
++    local current_value=value(s,category,profile);local wanted_value=value(s,wanted,profile)
++    if qualified and wanted~=category and wanted_value>current_value then
++      local attempt
++      for _,index in ipairs(best.action.indices) do if ordinary(s.hand[index]) then
++        local projected=copy(s);projected.hand=list(s.hand)
++        local total,hits=0,0
++        for _,card in ipairs(s.deck) do
++          projected.hand[index]=card
++          local next_category=scorer.classify(projected,best.action.indices)
++          total=total+value(s,next_category,profile)
++          if next_category==wanted then hits=hits+1 end
++        end
++        local gain=10*(total/#s.deck-current_value)*num(best.growth.effects.burnt_levels)*math.min(1,profile.horizon/3)
++        if hits>0 and gain>0 and (not attempt or gain>attempt.gain) then
++          attempt={index=index,gain=gain,hits=hits}
++        end
++      end end
++      if attempt then
++        local setup_scorer=options.setup_scoring or scorer
++        local indices={attempt.index};evaluations=evaluations+1
++        local setup=setup_scorer.score(s,indices)
++        if reliable(setup) and setup.legal==true and setup.bound_kind==nil and finite(setup.score) and
++            setup.score<remaining and num(setup.glass_loss)==0 then
++          evaluations=evaluations+1
++          local state=setup_scorer.after_play(s,indices)
++          if state and num(state.hands_left)>=1 and state.discards_left==s.discards_left and
++              num(state.dollars)>=num(s.dollars) and draw_count(s,state)==1 then
++            local merit=attempt.gain-cash_cost(s,state,true,indices)
++            if merit>0 then
++              local discarded=best;best=nil
++              local receipt={mode='one_spare_play_before_first_burnt_discard',desired_hand=wanted,
++                current_discard_hand=category,matching_cards=attempt.hits,population=#s.deck,
++                target_probability=attempt.hits/#s.deck,expected_growth_gain=attempt.gain,
++                discards_preserved=s.discards_left,full_discard_size=5,draws=1,
++                guaranteed_target=false,retained_finish_independent_of_draw=true,requires_fresh_observation=true}
++              accept({kind='play',area='hand',indices=indices},state,
++                remap(known_clear.indices,{[attempt.index]=true},#s.hand),merit,
++                'Use one spare play before Burntâ€™s first discard',
++                {'Keep the winning card and every discard; cycle one spare card for a more useful five-card first discard.',
++                  'The retained card still clears if the draw misses. Refresh after the actual draw; do not keep fishing.'},
++                {kind='burnt_setup',burnt_preparation=receipt})
++              if best then diagnostics.burnt_preparation=receipt else best=discarded end
++            end
++          end
++        end
++      end
++    end
++  end
++
+   if not exhaust and unused_setup and scorer.after_play and strategy.development_gain and strategy.preservation_cost and
+     (s.teacher_profile~='perkeo_yorick_win_v1' or death_option) and
+     num(s.hands_left,round.hands_left)>=2 and #(s.deck or {})>0 and not (s.modifiers or {}).debuff_played_cards then
+@@ -1086,7 +1192,7 @@
+     diagnostics.reasons[1]=evaluations>=cap and 'The bounded discard proof allowance is exhausted.' or
+       'No shortlisted legal discard preserved the supported clearing score and held resources.'
+   end
+-  if exhaust and best then
++  if exhaust and best and best.action.kind=='discard' then
+     best.lines={'Spend a remaining discard while the retained cards still have a supported clearing score.',
+       'Refresh after the actual draw. Continue using discards while that proof remains valid.'}
+   end
+--- before420/Brainstorm/Advisor/phase_copy.lua
++++ Brainstorm/Advisor/phase_copy.lua
+@@ -184,6 +184,7 @@
+ end
+ local function reliable(play) return play and play.legal~=false and play.uncertain~=true and type(play.score)=='number' end
+ local function burnt(s,modules,base,cap,d)
++  if base.growth and base.growth.growth and base.growth.growth.kind=='burnt_setup' then return nil,0 end
+   if not base.action or (base.action.kind~='play' and base.action.kind~='discard' and
+       not (base.action.kind=='reorder_jokers' and base.ordering)) or
+       base.consumable or base.mixed_rescue or base.boss_rescue or base.hand_ordering then return nil,0 end
+@@ -202,7 +203,8 @@
+   if #selected==0 or cap<scoring_cost+12 then d.reason='No budget for the complete paired order and retained-clear comparison.';return nil,0 end
+   local scored,best,best_order=0,nil,nil
+   -- Match Growth's exact retained-finish floor before considering copy setup.
+-  local needed=math.max(1,num((s.blind or {}).chips)-num(s.chips))*1.05
++  local exhaust=s.teacher_profile=='perkeo_yorick_win_v1'
++  local needed=math.max(1,num((s.blind or {}).chips)-num(s.chips))*(exhaust and 1 or 1.05)
+   for _,order in ipairs(scoring_orders) do
+     local state=reorder(s,order)
+     for _,indices in ipairs(selected) do
+@@ -225,11 +227,33 @@
+     if not ready then return nil end
+     return modules.scoring.score(ready,indices)
+   end
++  proxy.lower_bound=function(state,indices)
++    local ready=restore(state,burnt_order,best_order)
++    if not ready then return nil end
++    return (modules.scoring.lower_bound or modules.scoring.score)(ready,indices)
++  end
+   local scoped=shallow(modules);scoped.scoring=proxy
+-  local growth,work,gd=modules.growth.suggest(prepared,scoped,best,{max_evaluations=12})
++  local growth,work,gd=modules.growth.suggest(prepared,scoped,best,
++    {max_evaluations=12,exhaust_discards=exhaust,setup_scoring=modules.scoring})
+   scored=scored+num(work)
+   d.growth=gd
++  if growth and growth.action.kind=='play' and growth.growth and growth.growth.kind=='burnt_setup' then
++    d.complete=true;d.scope='nonwinning_burnt_setup';d.finish_order=list(best_order)
++    d.retained_finish=copy(growth.play);d.setup_indices=list(growth.action.indices)
++    d.burnt_preparation=copy(growth.growth.burnt_preparation);d.score_calls=scored
++    d.proof='Actual setup scoring uses the Burnt arrangement; a separate legal scoring restoration retains an independent finish without assuming a draw.'
++    if not equal(burnt_order,original) then
++      return suggestion(s,burnt_order,'Move copies off Yorick before the non-winning setup',{
++        'This arrangement copies Burnt and keeps the proposed spare play below the current blind target.',
++        'The held finish was checked in a separately legal scoring order. Refresh after each reorder, play and discard.'},d),scored
++    end
++    growth.phase_copy=d;growth.needs_refresh=true
++    return growth,scored
++  end
+   if not growth or growth.action.kind~='discard' then return nil,scored end
++  if base.action.kind=='discard' and #growth.action.indices<#(base.action.indices or {}) then
++    d.reason='Copying Burnt cannot reduce the selected discard volume.';return nil,scored
++  end
+   local before_state,before_effects=modules.scoring.after_discard(s,growth.action.indices)
+   local after_state,after_effects=modules.scoring.after_discard(prepared,growth.action.indices)
+   if not before_state or not after_state then d.reason='Discard effects are not supported in both orders.';return nil,scored end
+@@ -247,11 +271,11 @@
+   if not equal(normalized,before_state) then d.reason='Another discard resource or physical Joker effect changes with this setup.';return nil,scored end
+   local moves=(equal(burnt_order,original) and 0 or 1)+(equal(burnt_order,best_order) and 0 or 1)
+   local action_cost=math.max(0,weight(modules,'growth_action_cost',4))*moves
+-  if num(growth.merit)<=action_cost then d.reason='The growth does not justify the extra arrangement actions.';return nil,scored end
++  if not exhaust and num(growth.merit)<=action_cost then d.reason='The growth does not justify the extra arrangement actions.';return nil,scored end
+   if extra>0 then
+     local profile=modules.strategy.build_profile(s)
+     local incremental=10*modules.search.hand_growth_value(s,hand,profile)*extra*math.min(1,num(profile.horizon)/3)*weight(modules,'growth_utility_scale',1)
+-    if incremental<=action_cost then d.reason='The extra Burnt levels do not justify rearranging twice.';return nil,scored end
++    if not exhaust and incremental<=action_cost then d.reason='The extra Burnt levels do not justify rearranging twice.';return nil,scored end
+     d.incremental_growth_utility=incremental
+   end
+   d.complete=true;d.scope='first_discard_burnt';d.events_before=before_effects.burnt_levels
+@@ -270,6 +294,38 @@
+   growth.lines[#growth.lines+1]='Burnt is already copied. After the discard, refresh advice to restore a useful scoring order before playing.'
+   return growth,scored
+ end
++local function restore_yorick(s,modules,base,cap,d)
++  if s.teacher_profile~='perkeo_yorick_win_v1' or num(s.discards_used,(s.current_round or {}).discards_used)<=0 or
++      not base.action or (base.action.kind~='play' and base.action.kind~='discard') or
++      not modules.scoring or not modules.scoring.after_play or cap<2 then return nil,0 end
++  for _,j in ipairs(s.jokers) do if not ({j_yorick=true,j_perkeo=true,j_burnt=true,j_blueprint=true,j_brainstorm=true})[j.key] then return nil,0 end end
++  local order,count=target_order(s,'j_yorick');local before_count=effects(s,'j_yorick')
++  if count<=before_count then return nil,0 end
++  local indices=base.action.kind=='play' and base.action.indices or base.play and base.play.indices
++  if not indices or #indices==0 then return nil,0 end
++  local before,be,bp=modules.scoring.after_play(s,indices)
++  local after,ae,ap=modules.scoring.after_play(reorder(s,order),indices)
++  local function exact(play)
++    return reliable(play) and play.legal==true and play.uncertain==false and
++      play.score==play.score and play.score>=0 and play.score<math.huge
++  end
++  if not before or not after or not exact(bp) or not exact(ap) or ap.score<=bp.score then return nil,2 end
++  after=restore(after,order,identity(s));if not after then return nil,2 end
++  after.chips=before.chips
++  if not equal(before,after) or not equal(be,ae) then d.reason='Scoring restoration changes non-score play resources.';return nil,2 end
++  if base.action.kind=='discard' then
++    local left,le=modules.scoring.after_discard(s,base.action.indices)
++    local right,re=modules.scoring.after_discard(reorder(s,order),base.action.indices)
++    right=right and restore(right,order,identity(s))
++    if not left or not right or not equal(left,right) or not equal(le,re) then return nil,2 end
++  end
++  d.complete=true;d.scope='restore_yorick_after_first_discard';d.events_before=before_count;d.events_after=count
++  d.score_before=bp.score;d.score_after=ap.score;d.score_calls=2
++  d.proof='The same actual play gains score; complete paired after-play states and effects agree after normalizing only scored chips and physical Joker order.'
++  return suggestion(s,order,'Restore Yorick copies after the first discard',{
++    'Burnt has already triggered. Restore the stronger scoring arrangement before reassessing the next discard or play.',
++    'The same held play improves without changing its modeled cash, inventory, population or other non-score effects.'},d),2
++end
+ function M.suggest(s,modules,base,options)
+   options=options or {};base=base or {}
+   local d={complete=false,score_calls=0,bounded=true,needs_refresh=true}
+@@ -279,6 +335,8 @@
+   if s.phase=='shop' then local result=shop(s,modules,base,d);return result,0,d end
+   if s.phase~='hand' then return nil,0,d end
+   local cap=math.max(0,math.min(30,math.floor(num(options.max_evaluations,0))))
++  local restored,restoration_work=restore_yorick(s,modules,base,cap,d)
++  if restored or restoration_work>0 then d.score_calls=restoration_work;d.max_evaluations=cap;return restored,restoration_work,d end
+   local result,work=burnt(s,modules,base,cap,d);d.score_calls=work or 0;d.max_evaluations=cap
+   return result,work or 0,d
+ end
+--- before420/Brainstorm/Advisor/player_journal.lua
++++ Brainstorm/Advisor/player_journal.lua
+@@ -583,8 +583,15 @@
+   end
+   scalars('choice',result.strategy and result.strategy.copy_acquisition_review)
+   scalars('development',result.consumable and result.consumable.development)
++  scalars('discard_preparation',result.consumable and result.consumable.development and result.consumable.development.discard_preparation)
+   scalars('death',result.death_review or result.consumable and result.consumable.development)
+   scalars('fishing',result.death_fishing_review or result.growth and result.growth.growth and result.growth.growth.death_source)
++  local growth=result.growth and result.growth.growth
++  scalars('burnt',growth and growth.burnt_preparation or result.phase_copy and result.phase_copy.burnt_preparation)
++  if growth and growth.first_burnt_discard and growth.effects then
++    scalars('burnt',{mode='first_discard',projected_hand=growth.effects.burnt_hand,
++      projected_levels=growth.effects.burnt_levels,remaining_discards=growth.remaining_discards})
++  end
+   local pack=result.strategy and result.strategy.pack_diagnostics
+   if type(pack)=='table' and not getmetatable(pack) then
+     scalars('pack',pack);out.pack=out.pack or {};out.pack.candidates={}
+@@ -610,7 +617,7 @@
+     out.pack.candidates,out.pack.truncated=entries(pack.comparisons)
+     if pack.attempted_comparisons then out.pack.attempted,out.pack.attempted_truncated=entries(pack.attempted_comparisons) end
+   end
+-  if out.acquisition or out.choice or out.death or out.fishing or out.pack then
++  if out.acquisition or out.choice or out.death or out.fishing or out.pack or out.burnt then
+     local a=result.action or {};out.final_kind=a.kind;out.final_area=a.area;out.final_index=a.index
+     return out
+   end
+@@ -645,10 +652,12 @@
+ function M.compact_phase_copy_review(result)
+   if type(result)~='table' or getmetatable(result) then return end
+   local d=rawget(result,'phase_copy_diagnostics')
+-  if type(d)~='table' or getmetatable(d) or rawget(d,'scope')~='shop_perkeo' then return end
++  local scopes={shop_perkeo=true,first_discard_burnt=true,nonwinning_burnt_setup=true,restore_yorick_after_first_discard=true}
++  if type(d)~='table' or getmetatable(d) or not scopes[rawget(d,'scope')] then return end
+   local out={schema=1}
+   for _,k in ipairs({'scope','complete','reason','events_before','events_after','orders',
+-      'inventory_before','inventory_after','inventory_value_gain','inventory_value_tie','valuation','score_calls','aggregate_limit'}) do
++      'inventory_before','inventory_after','inventory_value_gain','inventory_value_tie','valuation','score_calls','aggregate_limit',
++      'burnt_hand','score_before','score_after','extra_arrangement_actions','incremental_growth_utility'}) do
+     local v=rawget(d,k)
+     if type(v)=='string' and #v<=256 or type(v)=='boolean' or
+       type(v)=='number' and v==v and math.abs(v)<1e300 then out[k]=v end
+@@ -656,7 +665,8 @@
+   local a=rawget(result,'action')
+   local kind=type(a)=='table' and not getmetatable(a) and rawget(a,'kind')
+   if type(kind)=='string' and #kind<=64 then out.final_action_kind=kind end
+-  out.selected=rawget(result,'phase_copy')==d and out.complete==true and kind=='reorder_jokers'
++  out.selected=rawget(result,'phase_copy')==d and out.complete==true and
++    (kind=='reorder_jokers' or out.scope~='shop_perkeo' and (kind=='play' or kind=='discard'))
+   return out
+ end
+ function M.attach(A,B,deps)
+--- before420/Brainstorm/Advisor/strategy.lua
++++ Brainstorm/Advisor/strategy.lua
+@@ -2,6 +2,7 @@
+ -- simulated win probabilities. Only detached snapshot tables may enter here.
+ local Strategy = {}
+ local inventory_value, inventory_marginal, preservation_cost, perkeo_copy_exchange
++local target_value
+ 
+ local function num(value, fallback)
+     return type(value) == 'number' and value or (fallback or 0)
+@@ -607,6 +608,18 @@
+         score = 55 - math.max(0, ante - 3) * 5 - engine.economy * 12
+         reason, known = no_interest(snapshot) and 'Generates cash for upgrades; interest is disabled.' or
+             'Generates income for upgrades and interest over later rounds.', true
++    end
++    if key=='j_burnt' and snapshot.teacher_profile=='perkeo_yorick_win_v1' then
++        local next_blind=snapshot.next_blind or {}
++        local label=next_blind.label or next_blind.name
++        local current=(next_blind.key=='bl_small' or label=='Small' or label=='Small Blind') and 3 or
++            (next_blind.key=='bl_big' or label=='Big' or label=='Big Blind') and 2 or 1
++        local rounds=math.max(0,(num(snapshot.win_ante,8)-num(next_blind.ante,ante))*3+current)
++        if a.perishable then rounds=math.min(rounds,math.max(0,num(a.perish_tally,5))) end
++        if num(snapshot.round_resets and snapshot.round_resets.discards,3)+num((snapshot.round_bonus or {}).discards)<=0 or has(snapshot,'j_burglar') then rounds=0
++        elseif next_blind.key=='bl_water' and not has(snapshot,'j_chicot') then rounds=math.max(0,rounds-1) end
++        score=rounds>0 and 22+12*math.min(3,rounds) or 0
++        reason,known='First-discard hand levels support the discard strategy. Bounded future opportunity value does not promise a particular hand or a safe discard.',true
+     end
+     if key == 'j_blueprint' or key == 'j_brainstorm' then
+         local compatible = false
+@@ -936,6 +949,29 @@
+     end
+     return profile.hand~='Flush' or not jupiter
+ end
++local function copy_source_profile(snapshot,profile)
++    local cards=snapshot.playing_cards
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or type(cards)~='table' or
++        #cards<2 or #cards>200 or not target_value then return end
++    local values,best,best_value={},nil,-math.huge
++    for i,c in ipairs(cards) do
++        local rank=c.rank or (c.base or {}).id
++        if c.unknown or c.identity_redacted or type(rank)~='number' or rank<2 or rank>14 then return end
++        local value=target_value(snapshot,c,profile.stats)
++        if value~=value or math.abs(value)==math.huge then return end
++        values[i]=value
++        if not c.debuff and value>best_value then best,best_value=c,value end
++    end
++    if not best then return end
++    local improvement,recipients=0,0
++    for i,c in ipairs(cards) do if c~=best and not c.debuff then
++        local gain=best_value-values[i]
++        if gain>8 then recipients=recipients+1;improvement=math.max(improvement,gain) end
++    end end
++    local upgraded=best.enhancement and best.enhancement~='c_base' and best.enhancement~='Base' or
++        best.edition~=nil or best.seal~=nil
++    return {source=best,value=best_value,improvement=improvement,recipients=recipients,upgraded=not not upgraded}
++end
+ local function copy_utility(snapshot,card,profile)
+     if card.debuff then return 0 end
+     if unusable_fool_stock(snapshot,card,profile) then return 0 end
+@@ -969,7 +1005,15 @@
+         end
+         return 18
+     elseif card.key=='c_death' or card.key=='c_cryptid' then
+-        if profile.rank then return math.min(120,35+math.max(0,profile.stats.size-profile.rank_count)*6) end
++        local base=profile.rank and math.min(120,35+math.max(0,profile.stats.size-profile.rank_count)*6) or math.max(0,value)
++        local source=card.key=='c_death' and copy_source_profile(snapshot,profile)
++        if source and source.upgraded then
++            -- Public composition supplies a strategic copying opportunity,
++            -- never a promised draw or a certificate that Death is usable now.
++            if source.recipients==0 then return 0 end
++            return math.min(180,base+1.5*source.improvement)
++        end
++        return base
+     elseif card.key=='c_heirophant' or card.key=='c_empress' then
+         local h=(snapshot.hands or {})[profile.hand] or {}
+         local increase=card.key=='c_heirophant' and 60/math.max(20,num(h.chips,20)) or 8/math.max(4,num(h.mult,4))
+@@ -986,6 +1030,10 @@
+     if snapshot.teacher_profile~='perkeo_yorick_win_v1' then return math.huge end
+     if unusable_fool_stock(snapshot,card,profile) then return 0 end
+     if weak_copy_filler(snapshot,card,profile) then return 1 end
++    if card.key=='c_death' then
++        local source=copy_source_profile(snapshot,profile)
++        if source and source.upgraded then return math.min(source.recipients,math.max(0,math.ceil(profile.horizon*2))) end
++    end
+     if card.key=='c_strength' then
+         -- Physical Negative copies still enter the random Perkeo pool, but an
+         -- unlimited direct reward for each copy makes it rational to hoard
+@@ -1350,20 +1398,20 @@
+ end
+ 
+ local function needs_death_source(snapshot)
+-    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or num(snapshot.ante,1)>6 or
+-        perkeo_effects(snapshot)==0 or #(snapshot.playing_cards or {})==0 then return false end
++    if snapshot.teacher_profile~='perkeo_yorick_win_v1' or
++        not future_core_horizon(snapshot) or #(snapshot.playing_cards or {})==0 then return false end
+     local death=false
+     for _,held in ipairs(snapshot.consumeables or {}) do
+         if held.key=='c_death' and not held.debuff then death=true end
+     end
+     if not death then return false end
+-    for _,owned in ipairs(snapshot.playing_cards) do
+-        if owned.unknown or owned.identity_redacted or
+-            owned.enhancement=='m_glass' or owned.enhancement=='m_steel' or
+-            edition(owned,'polychrome') or edition(owned,'holo') or edition(owned,'foil') or
+-            owned.seal=='Red' or owned.seal=='Blue' then return false end
+-    end
+-    return true
++    local source=copy_source_profile(snapshot,build_profile(snapshot))
++    if not source then return false end
++    -- Modest upgrades do not finish source hunting. A fully stacked preferred
++    -- source is a practical stopping point, not a claim no better card exists.
++    local c=source.source
++    return not (num(c.rank,num((c.base or {}).id))==13 and c.suit=='Clubs' and
++        c.enhancement=='m_glass' and edition(c,'polychrome') and c.seal=='Red')
+ end
+ 
+ local known_buffoon_packs={p_buffoon_normal_1=true,p_buffoon_normal_2=true,
+@@ -1389,7 +1437,8 @@
+ local function booster_value(snapshot, card, engine)
+     local key = card.key or ''
+     local source_search=needs_death_source(snapshot) and
+-        num(snapshot.dollars)-num(card.cost)>=num(snapshot.interest_cap,25)+12
++        num(snapshot.dollars)-num(card.cost)>=math.max(num(snapshot.interest_cap,25)+12,
++            25+near_term_cash_reserve(snapshot),15+copy_cash_reserve(snapshot))
+     if key:find('buffoon', 1, true) then
+         if known_buffoon_packs[key] and seeking_blueprint(snapshot) and
+             num(snapshot.dollars)-num(card.cost)<15+copy_cash_reserve(snapshot) then
+@@ -1417,7 +1466,7 @@
+             'Look for money, deck shaping, or enhancements; contents are unknown.'
+     elseif key:find('spectral', 1, true) then
+         if source_search then return 65,
+-            'Death has no strong public source yet; look for a useful seal or edition, but reassess the revealed Spectral choices and costs.' end
++            'Death can reuse a better public source; explore for useful upgrades, then reassess the revealed Spectral choices and costs.' end
+         return 40, 'Look for seals or strong deck upgrades; several Spectral choices have major costs.'
+     elseif key:find('standard', 1, true) then
+         if source_search then return 68,
+@@ -2511,15 +2560,17 @@
+         if edition(old_card,'negative') or
+             #(snapshot.consumeables or {})<num(snapshot.consumable_limit,2) then return end
+         local possible={}
++        local source_upgrade=old_card.key=='c_empress' and #(snapshot.consumeables or {})==1
+         for _,offer in ipairs(snapshot.shop_jokers or {}) do
+             if kind(offer)=='consumable' and (hand_type(offer) or ability(offer).set=='Tarot') and
+                 not offer.debuff and not offer.unknown and not offer.identity_redacted and
+                 not offer.face_down and offer.facing~='back' and
+                 type(offer.cost)=='number' and offer.cost==offer.cost and offer.cost>=0 and
+                 offer.cost<math.huge and not weak_copy_filler(after,offer,profile) and
+-                copy_utility(after,offer,profile)>=copy_utility(snapshot,old_card,profile)+12 and
++                copy_utility(after,offer,profile)>=copy_utility(snapshot,old_card,profile)+(source_upgrade and 0 or 12) and
+                 not capacity(snapshot,offer,false) and capacity(after,offer,false) and
+-                num(after.dollars)-offer.cost>=num(after.bankrupt_at) then
++                num(after.dollars)-offer.cost>=math.max(num(after.bankrupt_at),near_term_cash_reserve(after)) and
++                (not source_upgrade or offer.key=='c_death') then
+                 possible[offer]=true
+             end
+         end
+@@ -2527,6 +2578,15 @@
+         local selected=best_shop_purchase(after,deck_stats(after),components(after),true)
+         if snapshot._shop_scoring and snapshot._shop_scoring.truncated then return end
+         if selected and selected.area=='shop_jokers' and possible[selected.card] and selected.score>=26 then
++            if source_upgrade then
++                local endpoint=shallow_copy(after);endpoint.consumeables={selected.card}
++                endpoint.dollars=num(after.dollars)-num(selected.card.cost)
++                if edition(selected.card,'negative') then endpoint.consumable_limit=num(after.consumable_limit,2)+1 end
++                local value,detail=inventory_value(endpoint,nil,{profile=profile})
++                local merit=value-old+2*(endpoint.dollars-num(snapshot.dollars))-6
++                if detail.approximate or merit<=0 then return end
++                selected.replacement_merit=merit
++            end
+             return selected
+         end
+     end
+@@ -2610,7 +2670,10 @@
+                 end
+             end
+             local replacement
+-            if filler and not retained_good and not retained_source then replacement=visible_replacement(after,card) end
++            if (filler and not retained_good and not retained_source) or
++                card.key=='c_empress' and #(snapshot.consumeables or {})==1 then
++                replacement=visible_replacement(after,card)
++            end
+             -- A sole early placeholder stays until a better source is retained
+             -- or a complete, affordable visible purchase follows its sale.
+             local exact_capacity=type(snapshot.consumable_limit)=='number' and
+@@ -2626,6 +2689,7 @@
+                 (cheap_cleanup and interest_merit(num(snapshot.dollars),after.dollars) or 0)+
+                 (filler and retained_good and 4 or 0)+
+                 (replacement and replacement.score or 0)
++            if replacement and replacement.replacement_merit then merit=replacement.replacement_merit end
+             if filler_safe and not detail.approximate and merit>0 and (not best or merit>best.merit) then
+               best={merit=merit,kind='sell',index=index,card=card,replacement=replacement}
+             end
+@@ -2671,6 +2735,12 @@
+         result.copy_opportunity_review=best.copy_opportunity
+         result.shop_planet_commitment=best.planet_commitment
+         result.perkeo_stock_review=best.stock_seed
++        if best.card.key=='c_death' then
++            local source=copy_source_profile(snapshot,build_profile(snapshot,stats))
++            if source then result.perkeo_stock_review={schema=1,mode='death_source_acquisition',
++                source_id=source.source.id,source_value=source.value,copy_improvement=source.improvement,
++                usable_recipients=source.recipients,future_draw_assumed=false} end
++        end
+         if best.known == false then result.warnings[#result.warnings + 1] = 'This Joker has only a generic strategic rating.' end
+         if num(snapshot.dollars) - num(best.card.cost) < 0 then
+             result.warnings[#result.warnings + 1] = 'This purchase uses Credit Card debt; future income must repay it.'
+@@ -2763,7 +2833,7 @@
+     end
+     return false
+ end
+-local function target_value(snapshot, card, stats)
++target_value=function(snapshot, card, stats)
+     local value = playing_value(snapshot, card, stats)
+     local rank = num(card.rank, num(card.base and card.base.id))
+     local stone = card.enhancement == 'm_stone'
+@@ -3679,11 +3749,13 @@
+ -- This buys a public opportunity, not a forecast hit or a simulated win.
+ function Strategy.late_cash_spend(snapshot,base)
+     if snapshot.teacher_profile~='perkeo_yorick_win_v1' or snapshot.phase~='shop' or
+-        num(snapshot.ante,1)<7 or num(snapshot.ante,1)>num(snapshot.win_ante,8) or
++        num(snapshot.ante,1)<5 or num(snapshot.ante,1)>num(snapshot.win_ante,8) or
+         not base or not base.action or base.action.kind~='leave_shop' then return end
+     local cash=snapshot.dollars
+     if type(cash)~='number' or cash~=cash or math.abs(cash)==math.huge then return end
+-    local reserve=near_term_cash_reserve(snapshot);local floor=25+reserve
++    local reserve=near_term_cash_reserve(snapshot)
++    local target=num(snapshot.ante,1)>=7 and 25 or 40
++    local floor=target+reserve
+     local chosen
+     for index,card in ipairs(snapshot.shop_booster or {}) do
+         local cost=card.cost
+@@ -3694,13 +3766,13 @@
+     end
+     local cost=chosen and chosen.cost or num(snapshot.reroll_cost,num((snapshot.current_round or {}).reroll_cost,5))
+     local receipt={schema=1,mode='late_cash_spending_preference',cash=cash,cost=cost,
+-        floor=floor,reserve=reserve,scoring_claim=false}
++        floor=floor,target=target,reserve=reserve,scoring_claim=false}
+     if cost~=cost or cost<=0 and not chosen or cost==math.huge or cash<=floor or cash-cost<floor then
+         receipt.status='no_affordable_spend_above_buffer';base.late_spend_review=receipt;return
+     end
+     receipt.status='admitted';receipt.cash_after=cash-cost
+     return {title=chosen and ('Open '..name(chosen.card)..' with late-run surplus') or 'Spend late-run surplus on a shop refresh',
+-        lines={'From ante 7, spend cash above the $25 buffer and reserved rental/discard costs.',
++        lines={'Spend cash above the $'..target..' buffer and reserved rental/discard costs at this ante.',
+             'Reassess after this one action; no unopened pack contents or future shop offer are assumed.'},warnings={},
+         action=chosen and {kind='open',area='shop_booster',index=chosen.index} or {kind='reroll'},late_spend_review=receipt}
+ end
+--- before420/Brainstorm/Core/Brainstorm.lua
++++ Brainstorm/Core/Brainstorm.lua
+@@ -4,7 +4,7 @@
+ 
+ Brainstorm = {}
+ 
+-Brainstorm.VERSION = "Brainstorm v2.203.0-alpha"
++Brainstorm.VERSION = "Brainstorm v2.204.0-alpha"
+ Brainstorm.NATIVE_FILE = "Immolate-advisor-ecf7343e5cc19be0cf10d55e04a18b54b3456134e79acbd0dc1513ad73070acf.dll"
+ 
+ Brainstorm.SMODS = nil
+--- before420/Brainstorm/steamodded_compat.lua
++++ Brainstorm/steamodded_compat.lua
+@@ -4,4 +4,4 @@
+ --- PREFIX: brainstorm
+ --- MOD_AUTHOR: [ABGamma]
+ --- MOD_DESCRIPTION: Automatic seed searching and an in-game challenge advisor for hands, shops, packs, and blinds.
+---- VERSION: 2.203.0-alpha
++--- VERSION: 2.204.0-alpha
+--- before420/tests/advisor_burnt_setup420.lua
++++ tests/advisor_burnt_setup420.lua
+@@ -0,0 +1,108 @@
++-- Independent manufactured openings; no journal replay or full-game attempts.
++local P='Brainstorm/Advisor/';local F=dofile('tests/fixtures/retained418.lua');local m=F.modules()
++if GROWTH420_PATH then m.growth=dofile(GROWTH420_PATH)end
++m.phase_copy=dofile(PHASE420_PATH or P..'phase_copy.lua');m.gold_stickers=dofile(P..'gold_stickers.lua')
++local n=0;local function check(v,msg)n=n+1;assert(v,msg)end
++local function state()
++ local s=F.state();s.ante=2;s.hand={};s.deck={};s.hands_left=3;s.hand_size=8
++ s.jokers={F.j('j_yorick'),F.joker('j_burnt','Burnt Joker',{extra=4})};s.jokers[1].ability.x_mult=30
++ s.hands={Pair={level=1,played=20,chips=10,mult=2,l_chips=15,l_mult=1},['High Card']={level=1,played=0,chips=5,mult=1,l_chips=10,l_mult=1}}
++ s.blind={key='bl_big',name='Big Blind',chips=475}
++ for i,r in ipairs({14,2,4,6,8,10,11,12})do s.hand[i]=F.card('burnt-hand:'..i,r,({'Clubs','Spades','Hearts','Diamonds'})[i%4+1])end
++ for i=1,24 do s.deck[i]=F.card('burnt-deck:'..i,i<=20 and 2 or 9,({'Clubs','Hearts','Spades','Diamonds'})[i%4+1])end
++ F.population(s);return s
++end
++local function suggest(s,cap)
++ return m.growth.suggest(s,m,F.clear(m,s,{1}),{exhaust_discards=true,max_evaluations=cap or 12})
++end
++do
++ local s=state();local a,work,d=suggest(s)
++ check(a and a.action.kind=='play' and a.growth.kind=='burnt_setup','one supported spare play improves the first full Burnt discard')
++ check(work<=12 and a.growth.burnt_preparation.discards_preserved==3 and a.growth.burnt_preparation.full_discard_size==5,'setup preserves discard count and full batch capacity within existing work')
++ check(m.scoring.score(s,a.action.indices).score<s.blind.chips,'the actual setup cannot clear and waste discards')
++ local after=assert(m.scoring.after_play(s,a.action.indices))
++ check(after.discards_used==0 and after.discards_left==3 and after.hands_left==2,'exact setup spends one hand and zero discards')
++ for i=1,#after.deck do
++  local observed=F.copy(after);observed.hand[#observed.hand+1]=table.remove(observed.deck,i)
++  local fresh=m.decision.run(observed,m,nil,{search={fast_clear=true}})
++  check(fresh.action.kind=='discard' and #fresh.action.indices==5,'every public one-card draw retains a full safe next discard')
++  local discarded,effects=assert(m.scoring.after_discard(observed,fresh.action.indices))
++  check(discarded.discards_used==1 and effects.burnt_levels==1,'actual first discard is tracked and triggers Burnt once')
++ end
++ local result=m.decision.run(s,m,nil,{search={fast_clear=true}})
++ check(result.action.kind=='play' and result.growth.growth.kind=='burnt_setup' and result.evaluations<=70,'production arbitration retains the safe setup under the fast allowance')
++ local receipt=dofile(P..'player_journal.lua').compact_copy_death_review(result)
++ check(receipt.burnt and receipt.burnt.desired_hand=='Pair' and not receipt.burnt.guaranteed_target,'public receipt distinguishes desired category from an actual upgrade')
++ for _,edit in ipairs({function(x)x.hands_left=1 end,function(x)x.hands_played=1 end,
++  function(x)x.discards_used=1 end,function(x)x.blind.key='bl_eye';x.blind.name='The Eye' end,
++  function(x)x.deck[1].unknown=true end,function(x)x.deck[1].seal='Blue' end,
++  function(x)while #x.deck>5 do table.remove(x.deck)end;F.population(x)end})do
++  local x=state();edit(x);local b=suggest(x)
++  check(not b or b.action.kind~='play','unsupported state cannot spend a fishing hand')
++ end
++ local b=suggest(state(),2);check(not b or b.action.kind~='play','partial proof budget cannot dispatch setup')
++end
++-- First-discard copying must preserve five-card volume even when time-cost
++-- heuristics previously preferred a tiny unscaled category or no arrangement.
++for _,copy_keys in ipairs({{'j_brainstorm'},{'j_blueprint'},{'j_blueprint','j_brainstorm'}})do
++ local s=state();s.hands_played=1;s.jokers[1].ability.x_mult=8;s.blind.chips=500
++ s.jokers={s.jokers[1],F.j(copy_keys[1]),s.jokers[2]}
++ if copy_keys[2] then s.jokers[#s.jokers+1]=F.j(copy_keys[2])end
++ s.hand[3].rank=2;s.hand[3].base.id=2;s.hand[3].nominal=2;s.hand[3].base.nominal=2;F.population(s)
++ local base={action={kind='discard',area='hand',indices={2,3,4,5,6}},play=F.clear(m,s,{1})}
++ local a,work,d=m.phase_copy.suggest(s,m,base,{max_evaluations=30})
++ check(a and (a.action.kind=='reorder_jokers' or a.action.kind=='discard') and d.events_after==1+#copy_keys,
++  'every legal copy routes to Burnt before first discard')
++ check(#d.discard_indices==5 and work<=30,'Burnt copying preserves full discard batch and existing phase allowance')
++ local arranged=a.action.kind=='reorder_jokers' and m.phase_copy.reorder(s,a.action.order) or s
++ local fresh=m.phase_copy.suggest(arranged,m,base,{max_evaluations=30})
++ check(fresh and fresh.action.kind=='discard','fresh Burnt arrangement actually discards instead of reordering back')
++ local after,effects=m.scoring.after_discard(arranged,fresh.action.indices)
++ check(effects.burnt_levels==1+#copy_keys,'settled manufactured discard applies physical Burnt plus all copy callbacks')
++ local ready=m.phase_copy.reorder(after,fresh.phase_copy.finish_order)
++ check(m.scoring.score(ready,fresh.play.indices).score>=ready.blind.chips-ready.chips,'separate scoring restoration keeps the held winning continuation')
++ local restoration,_,rd=m.phase_copy.suggest(after,m,base,{max_evaluations=30})
++ check(not restoration or rd.scope=='restore_yorick_after_first_discard','used first discard can only restore scoring copies, never repeat Burnt setup')
++end
++do
++ local s=state();s.hands_played=1;s.ante=8;s.blind={key='bl_wall',name='The Wall',boss=true,chips=500}
++ s.jokers[1].ability.x_mult=8;s.jokers={s.jokers[1],F.j('j_brainstorm'),s.jokers[2]}
++ local base={action={kind='discard',area='hand',indices={2,3,4,5,6}},play=F.clear(m,s,{1})}
++ local choice,_,d=m.phase_copy.suggest(s,m,base,{max_evaluations=30})
++ check(choice and d.events_after==2 and #d.discard_indices==5,'teacher copies Burnt even when future-growth utility is too small to pay an arrangement-time heuristic')
++ local ready=m.phase_copy.reorder(s,choice.action.order)
++ m.ordering=dofile(P..'ordering.lua');m.hand_copy_preflight=dofile(P..'hand_copy_preflight.lua')
++ local live=m.decision.run(ready,m,nil,{search={samples=0}})
++ check(live.action.kind=='discard' and #live.action.indices==5,'production first-discard copy arrangement does not bounce back to a scoring reorder')
++ local after,e=m.scoring.after_discard(ready,live.action.indices)
++ check(e.burnt_levels==2,'production-selected first discard realizes the copy callback')
++end
++do
++ local s=state();s.hand={s.hand[1],s.hand[2],s.hand[3],s.hand[4],s.hand[5],s.hand[6]};s.hand_size=6
++ s.jokers[1].ability.x_mult=16;s.jokers={s.jokers[1],F.j('j_brainstorm'),s.jokers[2]};s.blind.chips=1500;F.population(s)
++ for i=2,#s.hand do check(m.scoring.score(s,{i}).score>=1500,'every plain singleton would prematurely win with Yorick copied')end
++ local first=m.decision.run(s,m,nil,{search={samples=0}})
++ check(first.action.kind=='reorder_jokers' and first.phase_copy.scope=='nonwinning_burnt_setup','production temporarily removes Yorick copy to make fishing nonwinning')
++  local prepared=m.phase_copy.reorder(s,first.action.order)
++  local jr=dofile(P..'player_journal.lua').compact_phase_copy_review(first)
++  check(jr and jr.selected and jr.scope=='nonwinning_burnt_setup','public journal exposes the reduced-score setup phase')
++ local fish=m.decision.run(prepared,m,nil,{search={samples=0}})
++ check(fish.action.kind=='play' and fish.growth.growth.kind=='burnt_setup','fresh reduced row plays the actual nonwinning setup')
++ check(m.scoring.score(prepared,fish.action.indices).score<1500,'setup score is measured in the real reduced row')
++ local after=m.scoring.after_play(prepared,fish.action.indices)
++ after.hand[#after.hand+1]=table.remove(after.deck,1)
++ local discard=m.decision.run(after,m,nil,{search={samples=0}})
++ check(discard.action.kind=='discard' and #discard.action.indices==5,'after fishing the copied Burnt row spends a full first discard')
++ local used,e=m.scoring.after_discard(after,discard.action.indices)
++  check(e.burnt_levels==2 and used.discards_left==2,'first discard receives both Burnt effects and leaves the other discards intact')
++  jr=dofile(P..'player_journal.lua').compact_phase_copy_review(discard)
++  check(jr and jr.selected and jr.events_after==2 and jr.burnt_hand==e.burnt_hand,'first-discard receipt names the actual category and expected copy count for settlement checking')
++ for i=1,5 do used.hand[#used.hand+1]=table.remove(used.deck,1)end
++ local restored=m.decision.run(used,m,nil,{search={samples=0}})
++ check(restored.action.kind=='reorder_jokers' and restored.phase_copy.scope=='restore_yorick_after_first_discard','scoring copies restore after Burnt even when another current play could already clear')
++ local ready=m.phase_copy.reorder(used,restored.action.order)
++  check(m.phase_copy.copy_effects(ready,'j_yorick')==2,'actual restoration reconnects the copy to Yorick')
++  jr=dofile(P..'player_journal.lua').compact_phase_copy_review(restored)
++  check(jr and jr.selected and jr.scope=='restore_yorick_after_first_discard' and jr.score_after>jr.score_before,'restored scoring improvement is publicly auditable')
++end
++print('Burnt setup420: '..n..' checks passed')
+--- before420/tests/advisor_burnt_value420.lua
++++ tests/advisor_burnt_value420.lua
+@@ -0,0 +1,44 @@
++-- Manufactured offer families, not captured game states.
++local P='Brainstorm/Advisor/';local F=dofile('tests/fixtures/retained418.lua');local m=F.modules()
++local S=dofile(STRATEGY420_PATH or P..'strategy.lua');m.strategy=S
++S.conditional_value=dofile(P..'conditional_value.lua')
++local n=0;local function check(v,msg)n=n+1;assert(v,msg)end
++local function state()
++ local s=F.state();s.phase='pack';s.ante=2;s.pack_type='BUFFOON_PACK';s.pack_choices=1;s.hand={};s.deck={}
++ s.jokers={F.j('j_yorick'),F.j('j_perkeo')};s.jokers[1].ability.x_mult=2
++ s.round_resets={hands=4,discards=3};s.next_blind={key='bl_big',label='Big',ante=2,chips=900}
++ s.hands={Pair={level=1,played=3,chips=10,mult=2},['High Card']={level=1,played=0,chips=5,mult=1}}
++ s.playing_cards={};for i=1,28 do s.playing_cards[i]=F.card('burnt-manufactured:'..i,2+i%13,({'Clubs','Spades','Diamonds','Hearts'})[i%4+1])end
++ local b=F.joker('j_burnt','Burnt Joker',{extra=4});b.edition={polychrome=true,type='polychrome',x_mult=1.5}
++ b.cost=13;b.sell_cost=6
++ local r=F.joker('j_red_card','Red Card',{extra=3});r.ability.effect=nil;r.cost=5
++ s.pack_cards={b,r};return s
++end
++local s=state();local a=S.advise(s)
++check(a.action.kind=='choose' and a.action.index==1,'Polychrome Burnt outranks an unscaled Red Card with a real discard horizon')
++local value,reason,known=S.owned_joker_value(s,s.pack_cards[1])
++check(known and reason:find('First-discard',1,true),'Burnt has explicit qualified growth value instead of generic unknown rating')
++local none=F.copy(s);none.round_resets.discards=0
++check(S.owned_joker_value(none,none.pack_cards[1])<value,'no available discards removes Burnt growth opportunity')
++none=F.copy(s);none.jokers[3]=F.joker('j_burglar','Burglar',{extra=3})
++check(S.owned_joker_value(none,none.pack_cards[1])<value,'Burglar removes the discard horizon')
++none=F.copy(s);none.ante=8;none.next_blind={key='bl_water',boss=true,ante=8}
++check(S.owned_joker_value(none,none.pack_cards[1])<value,'final Water cannot receive nonexistent later discard value')
++none.jokers[3]=F.joker('j_chicot','Chicot',{})
++check(S.owned_joker_value(none,none.pack_cards[1])>21,'Chicot restores the final-blind growth opportunity')
++none=F.copy(s);none.pack_cards[1].ability.perishable=true;none.pack_cards[1].ability.perish_tally=0
++check(S.advise(none).action.index~=1,'expired Burnt is not automatically preferred')
++none=F.copy(s);none.pack_cards[2].ability.mult=60
++check(S.advise(none).action.index==2,'already developed Red Card can still win the complete endpoint comparison')
++none=F.copy(s);none.teacher_profile=nil
++local _,_,ordinary_known=S.owned_joker_value(none,none.pack_cards[1])
++check(not ordinary_known,'other objective profiles retain their prior rating contract')
++-- Exercise actual scoring and shared-budget final pack arbitration.
++m.shop_scoring=dofile(P..'shop_scoring.lua');m.shop_sequences=dofile(P..'shop_sequences.lua')
++local decision=m.decision.run(s,m,nil,{prepared_scoring=false})
++check(decision.action.kind=='choose' and decision.action.index==1,'production scored pack chooses Polychrome Burnt over unscaled Red Card')
++check(decision.evaluations<=50000 and decision.strategy.pack_diagnostics.complete,'complete production choice stays inside shared shop budget')
++local after=S.shop_sequence_api.after_joker_purchase(s,s.pack_cards[decision.action.index])
++check(after.jokers[#after.jokers].key=='j_burnt' and after.jokers[#after.jokers].edition.polychrome and after.dollars==s.dollars,
++ 'the compared free-pack endpoint retains Burnt and its edition without charging its shop sticker price')
++print('Burnt valuation420: '..n..' checks passed')
+--- before420/tests/advisor_death_discard420.lua
++++ tests/advisor_death_discard420.lua
+@@ -0,0 +1,88 @@
++local F=dofile('tests/fixtures/retained418.lua');local m=F.modules()
++if GROWTH420_PATH then m.growth=dofile(GROWTH420_PATH)end
++if CONSUMABLES420_PATH then m.consumables=dofile(CONSUMABLES420_PATH)end
++local checks=0;local function check(v,msg)checks=checks+1;assert(v,msg)end
++-- Seltzer repeats every scoring card once, including on its last remaining play.
++for _,holo in ipairs({false,true})do for _,chad in ipairs({false,true})do
++ local s=F.state(false);s.blind={key='bl_psychic',name='The Psychic',chips=1}
++ local sel=F.joker('j_selzer','Seltzer',{extra=1,rental=true});sel.ability.effect=nil
++ if holo then sel.edition={holo=true,mult=10,type='holo'}end
++ s.jokers={F.j('j_yorick'),F.j('j_blueprint'),sel,F.joker('j_smiley','Smiley Face',{extra=5})}
++ if chad then s.jokers[#s.jokers+1]=F.j('j_hanging_chad')end
++ local clear=F.clear(m,s);s.blind.chips=clear.score*.5
++ local a,n=m.growth.suggest(s,m,clear,{exhaust_discards=true,max_evaluations=12})
++ check(a and a.action.kind=='discard' and n<=12,'canonical Seltzer row can use discards within the same allowance')
++ local after=assert(m.scoring.after_discard(s,a.action.indices));local minimum=math.huge
++ F.permutations(a.play.indices,function(order)
++  local score=m.scoring.score(after,order).score;minimum=math.min(minimum,score)
++  check(score>=a.play.score,'all physical scoring orders respect Seltzer retained floor')
++ end)
++ check(minimum==a.play.score,'complete independent order oracle matches the published minimum')
++ check(after.jokers[3].ability.extra==1,'discard does not spend Seltzer lifetime')
++ local bad=F.copy(s);bad.jokers[3].ability.extra=0
++ check(not m.growth.suggest(bad,m,clear,{exhaust_discards=true,max_evaluations=12}),'expired Seltzer contract refused')
++ bad=F.copy(s);bad.jokers[3].edition={holo=true,mult=11,type='holo'}
++ check(not m.growth.suggest(bad,m,clear,{exhaust_discards=true,max_evaluations=12}),'modified Holo amount refused')
++end end
++local function death(id)return {id=id,key='c_death',ability={name='Death',set='Tarot',consumeable={mod_conv='card',mod_num=2,max_highlighted=2,min_highlighted=2}}}end
++local function prepare()
++ local s=F.state(false);s.hand={};s.jokers={F.j('j_yorick')};s.consumeables={death('one'),death('two')}
++ s.hands={Straight={level=3,played=6,chips=100,mult=8},Pair={level=8,played=5,chips=200,mult=12},['High Card']={level=1,played=0,chips=5,mult=1}}
++ for i,r in ipairs({9,10,11,12,13,2,3,5})do s.hand[i]=F.card('copy:'..i,r,'Clubs',r==13 and 'm_mult' or nil)end
++ s.blind={key='bl_big',name='Big Blind',chips=6000};F.population(s)
++ return s
++end
++do
++ local s=prepare();local baseline=F.clear(m,s,{1,2,3,4,5});check(baseline.score>=s.blind.chips,'manufactured baseline is a supported five-card clear')
++ local decision=m.decision.run(s,m,nil,{search={fast_clear=true}})
++ check(decision.consumable and decision.consumable.development.discard_preparation and
++  (decision.action.kind=='reorder_hand' or decision.action.kind=='use'),'production arbitration prepares Death instead of settling for a smaller discard')
++ check(decision.evaluations<=70 and decision.discard_preference_work<=12 and
++  decision.consumable_diagnostics.evaluations<=6,'production total and both local proof allowances remain bounded')
++ local a,n,d=m.consumables.develop(s,m.scoring,baseline,{strategy=m.strategy,max_development_evaluations=6,
++  arm_cost=m.search.arm_cost,discard_preparation={modules=m,min_count=3,max_evaluations=6}})
++ check(a and a.development.discard_preparation and a.development.discard_preparation.cards==5,'legal Death prepares a full five-card discard from a smaller winning pair')
++ check(n<=6 and d.discard_preparation_evaluations<=6,'joint proof is charged inside existing development and remaining growth budgets')
++ local action=a.action
++ if action.kind=='reorder_hand' then
++  local fresh=F.copy(s);fresh.hand={};for i,k in ipairs(action.order)do fresh.hand[i]=s.hand[k]end
++  s=fresh;baseline=F.clear(m,s,{1,2,3,4,8})
++  a=m.consumables.develop(s,m.scoring,baseline,{strategy=m.strategy,max_development_evaluations=6,
++   arm_cost=m.search.arm_cost,discard_preparation={modules=m,min_count=3,max_evaluations=6}})
++ end
++ check(a and a.action.kind=='use','fresh observation publishes Death use only after legal source order')
++ local after=assert(m.consumables.apply(s,a.action.index,a.action.targets))
++ local r=m.decision.run(after,m)
++ check(r.action.kind=='discard' and #r.action.indices==5,'actual refreshed decision takes the prepared five-card discard')
++ local receipt=dofile('Brainstorm/Advisor/player_journal.lua').compact_copy_death_review({consumable=a,action=a.action})
++ check(receipt.discard_preparation and receipt.discard_preparation.cards==5 and not receipt.discard_preparation.future_draw_assumed,'public receipt reports legal retained proof without a promised draw')
++ local bad=prepare();bad.consumeables={death('last')};bad.jokers[2]=F.j('j_perkeo')
++ local none=m.consumables.develop(bad,m.scoring,F.clear(m,bad,{1,2,3,4,5}),{strategy=m.strategy,max_development_evaluations=6,
++  discard_preparation={modules=m,min_count=3,max_evaluations=6}})
++ check(not none,'last valuable Perkeo source is not consumed merely to inflate discard volume')
++ for _,change in ipairs({function(x)x.modifiers.discard_cost=1 end,
++  function(x)x.hand[5]=F.card('copy:5',13,'Clubs','m_glass');F.population(x)end})do
++  local x=prepare();change(x)
++  local unsafe=m.consumables.develop(x,m.scoring,F.clear(m,x,{1,2,3,4,5}),{strategy=m.strategy,max_development_evaluations=6,
++   discard_preparation={modules=m,min_count=3,max_evaluations=6}})
++  check(not unsafe,'paid discard or increased Glass exposure cannot receive a preparation certificate')
++ end
++ local x=prepare()
++ for _,allowance in ipairs({0,1,2})do
++  check(not m.consumables.develop(x,m.scoring,F.clear(m,x,{1,2,3,4,5}),{strategy=m.strategy,max_development_evaluations=allowance,
++   discard_preparation={modules=m,min_count=3,max_evaluations=6}}),'incomplete bounded preparation never publishes a speculative action')
++ end
++ local rewards=prepare();rewards.hand={}
++ for i,r in ipairs({4,6,8,10,12,13,2,3})do
++  rewards.hand[i]=F.card('reward:'..i,r,i<=5 and 'Clubs' or 'Hearts',i==6 and 'm_gold' or nil)
++ end
++ rewards.hand[6].seal='Blue'
++ rewards.hands.Flush={level=5,played=8,chips=180,mult=12}
++ F.population(rewards)
++ local kept=F.clear(m,rewards,{1,2,3,4,5})
++ check(kept.score>=rewards.blind.chips,'held Gold/Blue control starts with an independently verified clear')
++ local lost=m.consumables.develop(rewards,m.scoring,kept,{strategy=m.strategy,max_development_evaluations=6,
++  discard_preparation={modules=m,min_count=3,max_evaluations=6}})
++ check(not lost,'compact Death anchor must not play a previously held Gold or Blue source to claim extra discards')
++end
++print('Death/discard420: '..checks..' checks passed')
+--- before420/tests/advisor_death_progression420.lua
++++ tests/advisor_death_progression420.lua
+@@ -0,0 +1,115 @@
++-- Independent manufactured states; never copied from a public journal.
++local F=dofile('tests/fixtures/retained418.lua');local m=F.modules()
++local S=dofile(STRATEGY420_PATH or 'Brainstorm/Advisor/strategy.lua');m.strategy=S
++S.consumables=m.consumables
++local checks=0;local function check(v,msg)checks=checks+1;assert(v,msg)end
++local function tarot(key,id,negative)
++ local names={c_death='Death',c_empress='The Empress'}
++ return {key=key,id=id or key,cost=3,sell_cost=1,edition=negative and {negative=true} or nil,
++  ability={set='Tarot',name=names[key],consumeable=key=='c_death' and {mod_conv='card',mod_num=2,min_highlighted=2,max_highlighted=2} or {mod_conv='m_mult',mod_num=2,max_highlighted=2}}}
++end
++local function shop()
++ local s=F.state();s.phase='shop';s.ante=3;s.dollars=20;s.jokers={F.j('j_perkeo'),F.j('j_yorick')}
++ s.shop_jokers={tarot('c_death','offer')};s.shop_booster={};s.shop_vouchers={};s.hand={};s.deck={};s.playing_cards={}
++ s.consumeables={tarot('c_empress','held',true)};s.consumable_limit=3;s.consumeable_buffer=0;s.reroll_cost=5
++ s.next_blind={key='bl_big',label='Big',ante=3,chips=2000};s.blind={key='bl_small',chips=1000}
++ s.hands={Pair={played=8,level=1,chips=10,mult=2}}
++ for i=1,39 do s.playing_cards[i]=F.card('public:'..i,2+(i%13),'Spades')end
++ s.playing_cards[1]=F.card('owned_source',13,'Clubs','m_mult')
++ return s
++end
++local function utility(s,key)local _,i=S.inventory_value(s,{tarot(key)});return i.direct end
++do
++ local s=shop();local fp=m.snapshot.fingerprint(s);local a=S.advise(s)
++ check(a.action.kind=='buy' and a.action.index==1,'visible Death is acquired beside Empress once useful upgraded stock exists')
++ check(m.snapshot.fingerprint(s)==fp,'source valuation does not mutate public inventory')
++ local mult=utility(s,'c_death');s.playing_cards[1]=F.card('owned_source',13,'Clubs','m_glass')
++ local glass=utility(s,'c_death');check(glass>mult,'Glass source raises Death value over Mult source')
++ s.playing_cards[1].edition={polychrome=true};s.playing_cards[1].seal='Red'
++ check(utility(s,'c_death')>=glass,'stacked source does not reduce copying utility')
++ local hidden=F.copy(s);hidden.playing_cards[1].identity_redacted=true
++ check(utility(hidden,'c_death')<glass,'redacted public identity cannot receive source-quality credit')
++ local plain=F.copy(s);plain.teacher_profile=nil
++ local ordinary=utility(plain,'c_death');plain.playing_cards[1]=F.card('owned_source',13,'Clubs')
++ check(utility(plain,'c_death')==ordinary,'nonteacher stock contract unchanged')
++ s=shop();s.playing_cards={F.card('a',13,'Clubs','m_glass'),F.card('b',13,'Clubs','m_glass')}
++ check(utility(s,'c_death')==0,'identical upgraded deck has no useful copying recipient')
++ -- Room remains after a Negative sale only if it already existed; never
++ -- manufacture an ordinary slot by removing a Negative source.
++ s=shop();s.consumeables={tarot('c_empress','sole')};s.consumable_limit=1
++ local sale=S.advise(s)
++ check(sale.action.kind=='sell' and sale.action.area=='consumeables','full ordinary slot can compare complete Empress-to-Death endpoint')
++ local fresh=F.copy(s);fresh.dollars=fresh.dollars+fresh.consumeables[1].sell_cost;fresh.consumeables={}
++ check(S.advise(fresh).action.kind=='buy','fresh empty-slot advice acquires the intended Death')
++ fresh.shop_jokers={};check(S.advise(fresh).action.kind~='buy','vanished offer is not followed by a stale purchase')
++ s=shop();s.consumeables={tarot('c_empress','sole',true)};s.consumable_limit=1
++ check(S.advise(s).action.kind~='sell','Negative sale cannot invent replacement space')
++ s=shop();s.consumeables={tarot('c_empress','sole')};s.consumable_limit=1;s.dollars=0;s.jokers[1].ability.rental=true
++ check(S.advise(s).action.kind~='sell','unfunded replacement preserves its existing source')
++ s=shop();s.consumeables={tarot('c_empress','sole')};s.consumable_limit=1;s.shop_jokers[1].unknown=true
++ check(S.advise(s).action.kind~='sell','unknown offer cannot authorize a source sale')
++ s=shop();s.consumeables={tarot('c_empress','sole')};s.consumable_limit=1;s.dollars=40
++ local copy=F.j('j_blueprint');copy.id='visible_copy';copy.cost=3;s.shop_jokers[2]=copy
++ local ctx={evaluations=0,truncated=false}
++ function ctx:compare(before,after)
++  self.evaluations=self.evaluations+4
++  local worlds={};for i=1,4 do worlds[i]={clear=true,progress=1}end
++  local finish={complete=true,supported=true,known_mechanics=true,samples=4,selected={clearing_samples=4,worlds=worlds}}
++  return {samples=4,ratio=2,adjustment=15,before_target=1000,after_target=1000,before_mean=2000,after_mean=4000,
++   before_finishing=finish,after_finishing=finish,complete_finishing=true,
++   common_worlds={kind='shop_four_common_worlds_v1',samples=4,world_ids={1,2,3,4},family_key='invented420'},reason='Manufactured paired support.'}
++ end
++ check(S.advise(s,{shop_scoring=ctx}).action.area~='consumeables','a stronger supported fresh Blueprint purchase prevents a consumable sale plan')
++end
++do
++ local s=shop();s.dollars=48;s.ante=6;s.shop_jokers={};s.consumeables={tarot('c_death')}
++ s.playing_cards[1]=F.card('modest',2,'Hearts');s.playing_cards[1].edition={foil=true}
++ local pack={id='standard',key='p_standard_normal_1',cost=4,ability={set='Booster',name='Standard Pack'}}
++ s.shop_booster={pack};local score=S.shop_sequence_api.card_value(s,pack)
++ check(score>50 and S.advise(s).action.kind=='open','funded Death source exploration continues after a modest Foil source')
++ s.ante=7;check(S.shop_sequence_api.card_value(s,pack)>50,'Ante7 does not impose a binary source-search cutoff')
++ s.dollars=40;s.jokers[1].ability.rental=true;s.modifiers.discard_cost=3;s.round_resets={discards=4}
++ check(S.shop_sequence_api.card_value(s,pack)<50,'paid discards and rentals remain reserved')
++ s=shop();s.dollars=48;s.shop_jokers={};s.consumeables={tarot('c_death')};s.shop_booster={pack}
++ s.playing_cards[1]=F.card('stacked',13,'Clubs','m_glass');s.playing_cards[1].edition={polychrome=true};s.playing_cards[1].seal='Red'
++ check(S.shop_sequence_api.card_value(s,pack)<50,'fully stacked preferred source ends the extra hunt premium')
++ s=shop();s.dollars=48;s.consumeables={tarot('c_death')};s.next_blind={label='Boss',ante=8};s.ante=8
++ check(S.shop_sequence_api.card_value(s,pack)<50,'no future-horizon stock premium before the final boss')
++end
++-- Actual fresh target selection switches physical sources and uses a real reorder.
++do
++ local s=F.state();s.jokers={F.j('j_yorick')};s.consumeables={tarot('c_death','one'),tarot('c_death','two')}
++ s.hand={F.card('weak',2,'Hearts'),F.card('old',12,'Spades','m_mult'),F.card('new',13,'Clubs','m_steel')}
++ F.population(s)
++ local targets=S.development_targets(s,s.consumeables[1])
++ check(targets and s.hand[targets[2]].id=='new','current stronger source supersedes the former source')
++ s.hand={s.hand[3],s.hand[1],s.hand[2]};F.population(s)
++ local _,_,order=S.development_targets(s,s.consumeables[1]);check(order and s.hand[order[#order]].id=='new','source on the left requires physical rearrangement')
++ local fresh=F.copy(s);fresh.hand={};for i,k in ipairs(order)do fresh.hand[i]=s.hand[k]end
++ targets=S.development_targets(fresh,fresh.consumeables[1]);local after=assert(m.consumables.apply(fresh,1,targets))
++ check(fresh.hand[targets[2]].id=='new' and after.hand[targets[1]].enhancement=='m_steel','fresh legal Death copies the new source')
++ local hidden=F.copy(s);hidden.hand[1].face_down=true
++ local _,_,bad=S.development_targets(hidden,hidden.consumeables[1])
++ check(not bad or hidden.hand[bad[#bad]].id~='new','concealed source is never targeted from its hidden identity')
++ local absent=F.copy(s);table.remove(absent.hand,1)
++ targets=S.development_targets(absent,absent.consumeables[1]);check(not targets or not absent.hand[targets[2]] or absent.hand[targets[2]].id~='new','not-yet-drawn source is not a current legal target')
++end
++do
++ local s=shop();s.phase='pack';s.pack_type='STANDARD_PACK';s.pack_choices=1;s.shop_jokers={};s.consumeables={tarot('c_death')}
++ s.pack_cards={F.card('plain_offer',2,'Hearts'),F.card('better_offer',13,'Clubs','m_glass')}
++ s.pack_cards[2].edition={polychrome=true};s.pack_cards[2].seal='Red'
++ local a=S.advise(s);check(a.action.kind=='choose' and a.action.index==2,'revealed stacked source wins over weak Standard dilution')
++ s.pack_cards={s.pack_cards[1]};a=S.advise(s)
++ check(a.action.kind=='skip_pack','Death ownership does not justify adding a weak revealed card')
++end
++do
++ local s=shop();s.jokers[2].ability.x_mult=10;s.next_blind.chips=500;s.shop_booster={}
++ local modules={strategy=S,scoring=m.scoring,shop_scoring=dofile('Brainstorm/Advisor/shop_scoring.lua'),
++  shop_sequences=dofile('Brainstorm/Advisor/shop_sequences.lua'),consumables=m.consumables}
++ local r=m.decision.run(s,modules,nil,{prepared_scoring=false})
++ check(r.action.kind=='buy' and r.action.index==1,'real complete shop path buys useful Death beside retained Empress')
++ check(r.evaluations<=50000,'source acquisition stays within the shared shop allowance')
++ check(r.strategy.perkeo_stock_review and r.strategy.perkeo_stock_review.source_id=='owned_source',
++  'public source-acquisition receipt names the actual known physical source')
++end
++print('Death progression420: '..checks..' checks passed')
+--- before420/tests/advisor_shop_alignment419.lua
++++ tests/advisor_shop_alignment419.lua
+@@ -128,7 +128,7 @@
+ for _,ante in ipairs({6,7,8})do
+  local s=state();s.ante=ante;s.dollars=36;s.shop_jokers={};local base={action={kind='leave_shop'}}
+  local a=S.late_cash_spend(s,base)
+- check((a~=nil)==(ante>=7),'late spending starts at ante7')
++ check((a~=nil)==(ante>=7),'$36 is surplus at ante7 but below the ante6 $40 buffer')
+  if a then check(a.action.kind=='reroll' and a.late_spend_review.cash_after==31,'refresh preserves $25 plus rental reserve')end
+  s.dollars=32;check(not S.late_cash_spend(s,base),'indivisible paid action cannot cross reserved buffer')
+  s.dollars=36;s.shop_booster={{key='p_buffoon_normal_1',name='Buffoon Pack',cost=4,ability={set='Booster'}}}
+@@ -136,6 +136,24 @@
+  if ante>=7 then check(a and a.action.kind=='open','use affordable visible pack before otherwise idle cash')end
+  check(not S.late_cash_spend(s,{action={kind='buy',area='shop_jokers',index=1}}),'never displace a chosen purchase')
+  s.teacher_profile='collection_progress';check(not S.late_cash_spend(s,base),'generic spending unchanged')
++end
++for _,ante in ipairs({4,5,6,7,8})do
++ local s=state();s.ante=ante;s.dollars=51;s.shop_jokers={};s.shop_booster={}
++ local base={action={kind='leave_shop'}};local a=S.late_cash_spend(s,base)
++ check((a~=nil)==(ante>=5),'surplus spending starts at ante5')
++ if a then
++  local target=ante>=7 and 25 or 40
++  check(a.action.kind=='reroll' and a.late_spend_review.target==target and a.late_spend_review.floor==target+3,'ante-specific cash target retains rental cost')
++  s.dollars=target+3;check(not S.late_cash_spend(s,base),'exact reserve floor is not surplus')
++  s.dollars=target+7;check(not S.late_cash_spend(s,base),'indivisible reroll never spends the reserved floor')
++  s.shop_booster={{key='p_buffoon_normal_1',name='Buffoon Pack',cost=4,ability={set='Booster'}}}
++  local pack=S.late_cash_spend(s,base)
++  check(pack and pack.action.kind=='open' and pack.late_spend_review.cash_after==target+3,'visible pack can spend the remaining affordable surplus')
++  s.shop_booster={};s.dollars=target+13
++  local first=S.late_cash_spend(s,base);s.dollars=first.late_spend_review.cash_after
++  local second=S.late_cash_spend(s,base);s.dollars=second.late_spend_review.cash_after
++  check(not S.late_cash_spend(s,base),'fresh repeated spending stops at the correct ante buffer')
++ end
+ end
+ -- Production paid Planet comparison must retain the source, and the decision
+ -- fallback must enforce the late spending preference too.
+--- before420/tests/advisor_win_first384.lua
++++ tests/advisor_win_first384.lua
+@@ -65,6 +65,10 @@
+  eq(advice.action.area,'shop_booster','source search names the actually visible pack')
+  s.playing_cards[1].enhancement='m_glass'
+  advice=S.advise(s)
+- check(advice.action.kind~='open','known Glass source removes the speculative Death-source premium')
++ eq(advice.action.kind,'open','420: one Glass source does not end funded exploration for a stronger source')
++ s.playing_cards[1].rank=13;s.playing_cards[1].suit='Clubs'
++ s.playing_cards[1].edition={polychrome=true};s.playing_cards[1].seal='Red'
++ advice=S.advise(s)
++ check(advice.action.kind~='open','fully stacked preferred source removes the extra Death-source premium')
+ end
+ print('advisor_win_first384: '..checks..' manufactured checks passed')

@@ -1,0 +1,22 @@
+--- a/Brainstorm/Advisor/concealed_belief.lua
++++ b/Brainstorm/Advisor/concealed_belief.lua
+@@ -199,8 +199,8 @@
+   options=options or {};local d={supported=false,evaluations=0,complete=false,scope='immediate_fixed_play',comparisons={}}
+   local hands=s.hands_left or (s.current_round or {}).hands_left or 0
+   if hands<1 then return unsupported('No playable hands remain.',d) end
+-  if #(s.hand or {})<1 or #s.hand>8 or #(s.deck or {})>120 then
+-    return unsupported('The concealed immediate-play comparison requires at most eight held cards and a bounded deck.',d)
++  if #(s.hand or {})<1 or #s.hand>9 or #(s.deck or {})>120 then
++    return unsupported('The concealed immediate-play comparison requires at most nine held cards and a bounded deck.',d)
+   end
+   for _,j in ipairs(s.jokers or {}) do if j.face_down or j.facing=='back' then return unsupported('A concealed Joker row is not supported.',d) end end
+   local o,why=M.observe(s);if not o then return unsupported(why,d) end
+@@ -395,7 +395,7 @@
+     return p and not p.uncertain and type(p.score)=='number' and p.score==p.score and p.score>=0 and p.score<math.huge
+   end
+   local function future_policy(state)
+-    if #state.hand<1 or #state.hand>8 or #state.deck>120 then aborted='A future observation has no held cards or exceeds the bounded hand/deck size.';return nil end
++    if #state.hand<1 or #state.hand>9 or #state.deck>120 then aborted='A future observation has no held cards or exceeds the bounded hand/deck size.';return nil end
+     local worlds,public={},state
+     if M.has_hidden(state) then
+       local o,why=M.observe(state);if not o then aborted=why;return nil end

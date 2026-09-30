@@ -1,0 +1,192 @@
+{
+  "schema": 1,
+  "kind": "detached_input_ui325_integration",
+  "status": "ready_for_independent_review",
+  "root_runtime_changed": false,
+  "root_tests_changed": false,
+  "new_experiments": 0,
+  "integration": [
+    {
+      "source": "Brainstorm.lua",
+      "target": "Brainstorm/Core/Brainstorm.lua",
+      "sha256": "e0a5540eb6682b53d2dc4842c79a80c94957f9eecae39fe44658acaeb4b5085e",
+      "base_sha256": "18b3fc7a2e11015aaafc6947b29851ecea74a9938fbba8d88af3f5db69413b3a",
+      "current_base_matches": true
+    },
+    {
+      "source": "advisor.lua",
+      "target": "Brainstorm/UI/advisor.lua",
+      "sha256": "5ff37af0aaa52c817e167b9b5f71c13ae425e324d04fddefae2d24904c3a3e64",
+      "base_sha256": "4034c88ce8cd2fc7e4ae4da175aac63d02c9243e64f3872e75e96531d1c4c454",
+      "current_base_matches": true
+    },
+    {
+      "source": "collection_run.lua",
+      "target": "Brainstorm/UI/collection_run.lua",
+      "sha256": "d9f16127c82ae74c2d874ed991b5fabb8dc4ad05317b3d9aa9ec61dfcc53bd26",
+      "base_sha256": "4f1635c3b6ac8fed7e93b5630d11688ad9dbd05ba90c456b3e734210d8021210",
+      "current_base_matches": true
+    },
+    {
+      "source": "runtime.lua",
+      "target": "Brainstorm/Advisor/runtime.lua",
+      "sha256": "7c845e4cf63ba015dc181614c1b3c6e8723cfbb1c5e9c5bea2d06e9c5d3eef3c",
+      "base_sha256": "c1601fdb2a11e0cb740aedbfec49f665ad28b00b2f0c0e43efa9d7c9389a2eb7",
+      "current_base_matches": true
+    },
+    {
+      "source": "checkpoint_runtime.lua",
+      "target": "Brainstorm/Core/checkpoint_runtime.lua",
+      "sha256": "f3a09005f08716a248a9eea049b1ad10726d4484f1b66bdec0afb7d3cb2289aa",
+      "base_sha256": "5de43af1c99834a819fa825405be112db61d43c4e5305e44beafab95fc77a906",
+      "current_base_matches": true
+    },
+    {
+      "source": "test_advisor_input_ui.lua",
+      "target": "tests/advisor_input_ui.lua",
+      "sha256": "70e5328179222ffb1da2fb360026b206e5f35bfa800cc818879e8d6813453d18",
+      "base_sha256": null,
+      "current_base_matches": true
+    }
+  ],
+  "validation": {
+    "path": "focused_report.json",
+    "sha256": "40f6c87e1a056d27ca67e438537a7a8dccee07037e5ab41d4ca2480f713be16b"
+  },
+  "dependencies": [
+    {
+      "path": "tests/advisor_collection_core.lua",
+      "sha256": "59ac56af71e296dd9c22cd4ffdcf75235b9381634abf4f314051ed4d93075b7c"
+    },
+    {
+      "path": "tests/advisor_collection_status.lua",
+      "sha256": "02bed2b39ebb3baaa468bf1dfc8e79e6cd51351b713d113e23de3399fe40e5b2"
+    },
+    {
+      "path": "tests/advisor_startup_ui.lua",
+      "sha256": "fcf4897578e16e7669c72e09d83ba8dea76875f08f70ea35c8608cc3097eefe5"
+    },
+    {
+      "path": "tests/advisor_gold_layout.lua",
+      "sha256": "780bfd3ab07bb092585d9d2ede9aadfc95fa073218e3e04f421745a0f0ceef09"
+    },
+    {
+      "path": "tests/advisor_checkpoint_runtime.lua",
+      "sha256": "1d3c50874ac36688f973fb2831a6a4d40bdc581fefd87c1ae6d14466b5df2ccd"
+    },
+    {
+      "path": "tests/run_lua_tests.py",
+      "sha256": "92b892b944499d4a49b955cb59b451c3471230b427c40497067b865a3ea0a4d7"
+    }
+  ],
+  "files": [
+    {
+      "path": "advisor.base.lua",
+      "sha256": "4034c88ce8cd2fc7e4ae4da175aac63d02c9243e64f3872e75e96531d1c4c454"
+    },
+    {
+      "path": "advisor.lua",
+      "sha256": "5ff37af0aaa52c817e167b9b5f71c13ae425e324d04fddefae2d24904c3a3e64"
+    },
+    {
+      "path": "Brainstorm.base.lua",
+      "sha256": "18b3fc7a2e11015aaafc6947b29851ecea74a9938fbba8d88af3f5db69413b3a"
+    },
+    {
+      "path": "Brainstorm.lua",
+      "sha256": "e0a5540eb6682b53d2dc4842c79a80c94957f9eecae39fe44658acaeb4b5085e"
+    },
+    {
+      "path": "build_candidate.py",
+      "sha256": "a70d04db236b8805567d010f2082d1078eddba79deb385950ba42be732990e59"
+    },
+    {
+      "path": "checkpoint_runtime.base.lua",
+      "sha256": "5de43af1c99834a819fa825405be112db61d43c4e5305e44beafab95fc77a906"
+    },
+    {
+      "path": "checkpoint_runtime.lua",
+      "sha256": "f3a09005f08716a248a9eea049b1ad10726d4484f1b66bdec0afb7d3cb2289aa"
+    },
+    {
+      "path": "collection_run.base.lua",
+      "sha256": "4f1635c3b6ac8fed7e93b5630d11688ad9dbd05ba90c456b3e734210d8021210"
+    },
+    {
+      "path": "collection_run.lua",
+      "sha256": "d9f16127c82ae74c2d874ed991b5fabb8dc4ad05317b3d9aa9ec61dfcc53bd26"
+    },
+    {
+      "path": "failed_fixture1/failure.txt",
+      "sha256": "8af64fd81c8067fae659815baf82be383f0991d765527d21f17df1c2fb046687"
+    },
+    {
+      "path": "failed_fixture1/test_advisor_input_ui.lua",
+      "sha256": "3f4064d31240d76cbaf5ca4adfae0e7d26ca6d855c8f955f7a48ebbb8e3a6a0e"
+    },
+    {
+      "path": "focused_output.txt",
+      "sha256": "0b6048927974c36d794bff7b898d59b6dc1b445d8eaf6cd66897f229dbeddb36"
+    },
+    {
+      "path": "focused_report.json",
+      "sha256": "40f6c87e1a056d27ca67e438537a7a8dccee07037e5ab41d4ca2480f713be16b"
+    },
+    {
+      "path": "input_audit.json",
+      "sha256": "5c9cb6b9695cf1c3d9bda74eb52ab3f775512acc13893cb05c466edb90b4a4f4"
+    },
+    {
+      "path": "INPUT_AUDIT.md",
+      "sha256": "46a75b5b5b9d94cc8b9f94e01f71f6faf53bf347d52dc30f4d8cbe7e69ca24ee"
+    },
+    {
+      "path": "INTEGRATION.md",
+      "sha256": "7918c57ac067cf633898109ffae9b042c5fca3db7c6db41b0ce9825c4dc8f23d"
+    },
+    {
+      "path": "package.py",
+      "sha256": "4b93ebdb75795c34df98e9d2e2b0219adbb3d69448531266fb08eff1bb1b8338"
+    },
+    {
+      "path": "run_advisor_checkpoint_runtime.lua",
+      "sha256": "22a277085d6473db64be8440b85e754ea39b193d61ec8194364fc856a806571b"
+    },
+    {
+      "path": "run_advisor_collection_core.lua",
+      "sha256": "c4167da5d7926520d20125974ed70c06793caf7ae7ea8cd411fae9cc030313b7"
+    },
+    {
+      "path": "run_advisor_collection_status.lua",
+      "sha256": "36173c542d0aa846d6fde0ee6f1a653077a03b22bcbaff282a285f1f9487358f"
+    },
+    {
+      "path": "run_advisor_gold_layout.lua",
+      "sha256": "bab805bd394bf2c31b3343b212e06f4f33667239cc323df0ea953b452c030e3d"
+    },
+    {
+      "path": "run_advisor_startup_ui.lua",
+      "sha256": "ac6f89aef71c810ef322f783ca981ae794671ab85de4352c3654ec54c440bc35"
+    },
+    {
+      "path": "run_candidate.lua",
+      "sha256": "2c202ae716349bc82a8b470b946600d40b3ccfa5d72346d2651f4f29d14ddf3f"
+    },
+    {
+      "path": "runtime.base.lua",
+      "sha256": "c1601fdb2a11e0cb740aedbfec49f665ad28b00b2f0c0e43efa9d7c9389a2eb7"
+    },
+    {
+      "path": "runtime.lua",
+      "sha256": "7c845e4cf63ba015dc181614c1b3c6e8723cfbb1c5e9c5bea2d06e9c5d3eef3c"
+    },
+    {
+      "path": "stage.py",
+      "sha256": "2a4ce07557ea391af1c91149be4fc0d484c6caedde8d48695af2de1af8862681"
+    },
+    {
+      "path": "test_advisor_input_ui.lua",
+      "sha256": "70e5328179222ffb1da2fb360026b206e5f35bfa800cc818879e8d6813453d18"
+    }
+  ]
+}

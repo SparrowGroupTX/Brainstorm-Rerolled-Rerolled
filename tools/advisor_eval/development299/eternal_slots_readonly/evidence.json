@@ -1,0 +1,1197 @@
+{
+  "schema": 1,
+  "kind": "read_only_later_status_supersession",
+  "policy_or_source_evaluations": 0,
+  "source_attempts": {
+    "C01": {
+      "files": {
+        "trace.log": "982d52f155c6ceac74023c0a4d2960fd6c2db62bd1757cc699007f8a8bef63a1",
+        "registration.json": "39eebb7a17fb4a74f3ce0d65b4f8ee21289803ded39e4175fd139974785d2a7a",
+        "record.json": "968ef206ce05b6ed13c6bae71cab6d8a55b3c53e408bc6ca280e3bcf710b61bd",
+        "audit.json": "7d14d47e85bcfdf5d4b9448d58e0ad86026787d25a5446b782bd2137f54e962a"
+      },
+      "policy_digest": "db3ea1cd6d6f6f0053da326aba6bce2074c23197d0ff8720dab712c0688d2ca3",
+      "decisions": [
+        {
+          "step": 14,
+          "trace_line": 118,
+          "trace_line_sha256": "6ff068e70fde11e4617b0cabd8f59ce04606536570adae4e68a7fe499a980901",
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "cash": 5,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_loyalty_card",
+              "id": "card:61",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": true,
+              "rental": true
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "evaluations": 48990,
+          "shop_truncated": true,
+          "sequence_complete": false,
+          "sequence_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "single_action_plans": [
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 1,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 4,
+              "gain_basis": "opening_mean",
+              "merit": -18.3,
+              "opening_mean": 137,
+              "readiness": "unresolved",
+              "survival_dominated": false
+            },
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 2,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 1,
+              "gain_basis": "opening_mean",
+              "merit": 20.013624171495,
+              "opening_mean": 137,
+              "readiness": "sampled_safe",
+              "survival_dominated": false
+            }
+          ],
+          "strategy": {
+            "lines": [
+              "Adds base Mult, which makes later XMult effects stronger. Eternal: this slot is permanent.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Psychic: you must play exactly five cards, even for Pair or High Card.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Droll Joker ($4)",
+            "warnings": [
+              "Shop scoring comparison reached its limit; this decision uses the strategic ratings."
+            ]
+          }
+        },
+        {
+          "step": 22,
+          "trace_line": 176,
+          "trace_line_sha256": "bed5ec5b96a9db395cfbe3657c7e25febb90d459a1f8f185fa772e2211d3a5cb",
+          "phase": "shop",
+          "ante": 2,
+          "round": 2,
+          "cash": 9,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_scary_face",
+              "id": "card:68",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_supernova",
+              "id": "card:69",
+              "cost": 5,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          },
+          "evaluations": 49058,
+          "shop_truncated": true,
+          "sequence_complete": false,
+          "sequence_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "single_action_plans": [
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 1,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 5,
+              "gain_basis": "opening_mean",
+              "merit": 39.693298326164,
+              "opening_mean": 266.75,
+              "readiness": "unresolved",
+              "survival_dominated": false
+            },
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 2,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 4,
+              "gain_basis": "opening_mean",
+              "merit": 27.841572738551,
+              "opening_mean": 259,
+              "readiness": "sampled_safe",
+              "survival_dominated": false
+            }
+          ],
+          "strategy": {
+            "lines": [
+              "Adds Chips to support your hand levels and Mult. Eternal: this slot is permanent.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Flint: base hand Chips and Mult are halved; Joker and card bonuses matter more.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Scary Face ($4)",
+            "warnings": [
+              "Shop scoring comparison reached its limit; this decision uses the strategic ratings."
+            ]
+          }
+        },
+        {
+          "step": 59,
+          "trace_line": 444,
+          "trace_line_sha256": "44bd35b80aa9098fb98043098a5f27b6f9f3e71103576037f116c625cd90cbd9",
+          "phase": "shop",
+          "ante": 3,
+          "round": 6,
+          "cash": 18,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_scary_face",
+              "id": "card:68",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_ride_the_bus",
+              "id": "card:96",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": false,
+              "rental": true
+            },
+            {
+              "key": "j_burnt",
+              "id": "card:97",
+              "cost": 8,
+              "sell_cost": 4,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_booster",
+            "index": 1,
+            "kind": "open"
+          },
+          "evaluations": 13723,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "The existing action has an outcome outside the supported sequence comparison.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "Look for money, deck shaping, or enhancements; contents are unknown.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "The complete observed policy comparison clears only some composition worlds; the next blind remains at risk.",
+              "Upcoming boss - Fish: draws after playing are face down; use discards to find visible cards.",
+              "Keep the last The Empress for Perkeo copies."
+            ],
+            "title": "Open Arcana Pack ($4)",
+            "warnings": {}
+          }
+        }
+      ]
+    },
+    "C02": {
+      "files": {
+        "trace.log": "60192f8d0b0d7774afd9bb490ceec932ac943aaf8e81dcabf683ad8b0b227bf9",
+        "registration.json": "e5cc89190b0a7c958cde739f276748ab0b9e17bcfda47d3581d664f83d6edbd3",
+        "record.json": "97ef001e31a65721b7880e13cb101801b25d904cca3ad2b9af311edef6aa73b2",
+        "audit.json": "93f1308d86b3e350a58c435252a38101fa9a8e64fd43e9db7f2bb3b2914bd353"
+      },
+      "policy_digest": "43261d71a1e644fa8fcc7dc20056c0b1bd089c0463bdad07f07ab427f781a658",
+      "decisions": [
+        {
+          "step": 14,
+          "trace_line": 118,
+          "trace_line_sha256": "6ff068e70fde11e4617b0cabd8f59ce04606536570adae4e68a7fe499a980901",
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "cash": 5,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_loyalty_card",
+              "id": "card:61",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": true,
+              "rental": true
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "evaluations": 48990,
+          "shop_truncated": true,
+          "sequence_complete": false,
+          "sequence_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "single_action_plans": [
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 1,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 4,
+              "gain_basis": "opening_mean",
+              "merit": -18.3,
+              "opening_mean": 137,
+              "readiness": "unresolved",
+              "survival_dominated": false
+            },
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 2,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 1,
+              "gain_basis": "opening_mean",
+              "merit": 20.013624171495,
+              "opening_mean": 137,
+              "readiness": "sampled_safe",
+              "survival_dominated": false
+            }
+          ],
+          "strategy": {
+            "lines": [
+              "Adds base Mult, which makes later XMult effects stronger. Eternal: this slot is permanent.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Psychic: you must play exactly five cards, even for Pair or High Card.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Droll Joker ($4)",
+            "warnings": [
+              "Shop scoring comparison reached its limit; this decision uses the strategic ratings."
+            ]
+          }
+        },
+        {
+          "step": 22,
+          "trace_line": 176,
+          "trace_line_sha256": "bed5ec5b96a9db395cfbe3657c7e25febb90d459a1f8f185fa772e2211d3a5cb",
+          "phase": "shop",
+          "ante": 2,
+          "round": 2,
+          "cash": 9,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_scary_face",
+              "id": "card:68",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_supernova",
+              "id": "card:69",
+              "cost": 5,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 1,
+            "kind": "buy"
+          },
+          "evaluations": 49058,
+          "shop_truncated": true,
+          "sequence_complete": false,
+          "sequence_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "single_action_plans": [
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 1,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 5,
+              "gain_basis": "opening_mean",
+              "merit": 39.693298326164,
+              "opening_mean": 266.75,
+              "readiness": "unresolved",
+              "survival_dominated": false
+            },
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 2,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 4,
+              "gain_basis": "opening_mean",
+              "merit": 27.841572738551,
+              "opening_mean": 259,
+              "readiness": "sampled_safe",
+              "survival_dominated": false
+            }
+          ],
+          "strategy": {
+            "lines": [
+              "Adds Chips to support your hand levels and Mult. Eternal: this slot is permanent.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Flint: base hand Chips and Mult are halved; Joker and card bonuses matter more.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Scary Face ($4)",
+            "warnings": [
+              "Shop scoring comparison reached its limit; this decision uses the strategic ratings."
+            ]
+          }
+        }
+      ]
+    },
+    "C03": {
+      "files": {
+        "trace.log": "3570932da44b7a188ac024cea8e8079b7567f74557107d8ddceadce7a939c61e",
+        "registration.json": "66d8fd87393f8ece31a33aa8dfc120b8623e4280f6a4911a14e593658e5c439a",
+        "record.json": "26e37dbe157ac0ca0a19c16a31f4c392029cfaf368f7e741e97a64584ecf0be9",
+        "audit.json": "9a8ef3b3fab94fcecfd1eb685362ac3481137a41b61f179920d83d3e476559c9"
+      },
+      "policy_digest": "e3ab539e45ba25e97909a2dd91817fd252f1b668039b821fee10a485b2e0a9b9",
+      "decisions": [
+        {
+          "step": 13,
+          "trace_line": 110,
+          "trace_line_sha256": "fe299bc0291b306f348cbdaec6788d2e00fca655a66f426d8a3757bafa703956",
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "cash": 6,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_certificate",
+              "id": "card:66",
+              "cost": 6,
+              "sell_cost": 3,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_hack",
+              "id": "card:61",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": true,
+              "rental": true
+            },
+            {
+              "key": "j_faceless",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "evaluations": 0,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "Sequence search is reserved for a supported scoring shortfall, unresolved finish or an otherwise useful purchase needing a visible rescue.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "Generates income for upgrades and interest over later rounds. A legal discard must contain enough face cards; changing the scoring plan for that discard is not free. Conditional income opportunity is unverified; no cash forecast is supplied.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Blind-start Joker changes are left to the existing strategy.",
+              "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Faceless Joker ($4)",
+            "warnings": {}
+          }
+        },
+        {
+          "step": 14,
+          "trace_line": 117,
+          "trace_line_sha256": "cb7769b788c794527cf597ec0c07c416f59203c1bd7396f7fe623327aa6fdd11",
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "cash": 2,
+          "joker_limit": 5,
+          "completionist_goal_present": false,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_certificate",
+              "id": "card:66",
+              "cost": 6,
+              "sell_cost": 3,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_faceless",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_hack",
+              "id": "card:61",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": true,
+              "rental": true
+            }
+          ],
+          "action": {
+            "kind": "leave_shop"
+          },
+          "evaluations": 0,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "Sequence search is reserved for a supported scoring shortfall, unresolved finish or an otherwise useful purchase needing a visible rescue.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Blind-start Joker changes are left to the existing strategy.",
+              "Upcoming boss - Pillar: cards played earlier this ante are debuffed. Build the scoring hand from fresh cards.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Leave the shop and save your money",
+            "warnings": {}
+          }
+        }
+      ]
+    },
+    "C04": {
+      "files": {
+        "trace.log": "7230d5f01ef34575a7417c3f1d85c034a2114891c59278dcf82396baf002b139",
+        "registration.json": "7ae385f154059f78bd31cffa56548d44e4c1c9d71897818d77f61a93fe0b42c8",
+        "record.json": "51708908da000b5b548553487ce1b4606cd0bbfd5d21ffbb5d8c07dacc3f08c9",
+        "audit.json": "bac4eb8605331d154d8af5f62534437fdfb4840edd0f431df5345d2c7cc64ac7"
+      },
+      "policy_digest": "3179b32252e53e0424af3bcd1f99384ca0bb8e5dd80db4e03cdcfe0f52c53ae8",
+      "decisions": [
+        {
+          "step": 14,
+          "trace_line": 119,
+          "trace_line_sha256": "bc7fb81f3d8c2dd1945be905f9a8b0ddc4158f9433622ea049f267c1664d166d",
+          "phase": "shop",
+          "ante": 1,
+          "round": 1,
+          "cash": 5,
+          "joker_limit": 5,
+          "completionist_goal_present": true,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_loyalty_card",
+              "id": "card:61",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": true,
+              "rental": true
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "evaluations": 48990,
+          "shop_truncated": true,
+          "sequence_complete": false,
+          "sequence_reason": "The shared scoring budget cannot complete this paired comparison.",
+          "single_action_plans": [
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 1,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 4,
+              "gain_basis": "opening_mean",
+              "merit": -18.3,
+              "opening_mean": 137,
+              "readiness": "unresolved",
+              "survival_dominated": false
+            },
+            {
+              "actions": [
+                {
+                  "area": "shop_jokers",
+                  "index": 2,
+                  "kind": "buy"
+                }
+              ],
+              "cash": 1,
+              "gain_basis": "opening_mean",
+              "merit": 20.013624171495,
+              "opening_mean": 137,
+              "readiness": "sampled_safe",
+              "survival_dominated": false
+            }
+          ],
+          "strategy": {
+            "lines": [
+              "Adds base Mult, which makes later XMult effects stronger. Eternal: this slot is permanent.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Psychic: you must play exactly five cards, even for Pair or High Card.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Droll Joker ($4)",
+            "warnings": [
+              "Shop scoring comparison reached its limit; this decision uses the strategic ratings."
+            ]
+          }
+        },
+        {
+          "step": 22,
+          "trace_line": 177,
+          "trace_line_sha256": "0a89158a56b2b5193e48d8294222238b9dd15f82e6dae80302bd3e20cfab7277",
+          "phase": "shop",
+          "ante": 2,
+          "round": 2,
+          "cash": 9,
+          "joker_limit": 5,
+          "completionist_goal_present": true,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_scary_face",
+              "id": "card:68",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_supernova",
+              "id": "card:69",
+              "cost": 5,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_jokers",
+            "index": 2,
+            "kind": "buy"
+          },
+          "evaluations": 15375,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "Sequence search is reserved for a supported scoring shortfall, unresolved finish or an otherwise useful purchase needing a visible rescue.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "Can grow across played rounds; buy early enough to scale it. Opening-hand scoring estimate; complete paired whole-blind policy progress informs build value: 137 -> 259 chips across 4 paired deck samples, allowing copy-target order shortlist (5/6 layouts); upcoming Small Blind; target 1000. Samples are not a blind-win probability.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Flint: base hand Chips and Mult are halved; Joker and card bonuses matter more.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Buy Supernova ($5)",
+            "warnings": {}
+          }
+        },
+        {
+          "step": 23,
+          "trace_line": 184,
+          "trace_line_sha256": "bef8488bf7b5e0031abe2a1e1a5ea5e76a35ccb632c58189841017fa1cf555f1",
+          "phase": "shop",
+          "ante": 2,
+          "round": 2,
+          "cash": 4,
+          "joker_limit": 5,
+          "completionist_goal_present": true,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_supernova",
+              "id": "card:69",
+              "cost": 5,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_scary_face",
+              "id": "card:68",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_booster",
+            "index": 1,
+            "kind": "open"
+          },
+          "evaluations": 25317,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "Sequence search is reserved for a supported scoring shortfall, unresolved finish or an otherwise useful purchase needing a visible rescue.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "Look for money, deck shaping, or enhancements; contents are unknown.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Flint: base hand Chips and Mult are halved; Joker and card bonuses matter more.",
+              "Perkeo has nothing to copy when you leave this shop. Retain a useful consumable if affordable after survival needs."
+            ],
+            "title": "Open Arcana Pack ($4)",
+            "warnings": {}
+          }
+        },
+        {
+          "step": 61,
+          "trace_line": 460,
+          "trace_line_sha256": "4818a8018f449c4ef427347413f260a84344a370505b1b1d458bd24c88660f23",
+          "phase": "shop",
+          "ante": 3,
+          "round": 6,
+          "cash": 16,
+          "joker_limit": 5,
+          "completionist_goal_present": true,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_supernova",
+              "id": "card:69",
+              "cost": 5,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_ride_the_bus",
+              "id": "card:96",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": false,
+              "rental": true
+            },
+            {
+              "key": "j_burnt",
+              "id": "card:97",
+              "cost": 8,
+              "sell_cost": 4,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "area": "shop_booster",
+            "index": 1,
+            "kind": "open"
+          },
+          "evaluations": 25250,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "Sequence search is reserved for a supported scoring shortfall, unresolved finish or an otherwise useful purchase needing a visible rescue.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "Look for money, deck shaping, or enhancements; contents are unknown.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Fish: draws after playing are face down; use discards to find visible cards.",
+              "Keep the last The Empress for Perkeo copies."
+            ],
+            "title": "Open Arcana Pack ($4)",
+            "warnings": {}
+          }
+        },
+        {
+          "step": 63,
+          "trace_line": 474,
+          "trace_line_sha256": "302b60ee86008749f30eafc71c7a068e58e9e96ff56e835df898b55a7930f73d",
+          "phase": "shop",
+          "ante": 3,
+          "round": 6,
+          "cash": 12,
+          "joker_limit": 5,
+          "completionist_goal_present": true,
+          "owned": [
+            {
+              "key": "j_perkeo",
+              "id": "card:59",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_supernova",
+              "id": "card:69",
+              "cost": 5,
+              "sell_cost": 2,
+              "eternal": false,
+              "rental": false
+            },
+            {
+              "key": "j_brainstorm",
+              "id": "card:66",
+              "cost": 10,
+              "sell_cost": 5,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_droll",
+              "id": "card:62",
+              "cost": 4,
+              "sell_cost": 2,
+              "eternal": true,
+              "rental": false
+            },
+            {
+              "key": "j_yorick",
+              "id": "card:60",
+              "cost": 20,
+              "sell_cost": 10,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "offers": [
+            {
+              "key": "j_ride_the_bus",
+              "id": "card:96",
+              "cost": 1,
+              "sell_cost": 1,
+              "eternal": false,
+              "rental": true
+            },
+            {
+              "key": "j_burnt",
+              "id": "card:97",
+              "cost": 8,
+              "sell_cost": 4,
+              "eternal": false,
+              "rental": false
+            }
+          ],
+          "action": {
+            "kind": "leave_shop"
+          },
+          "evaluations": 25162,
+          "shop_truncated": false,
+          "sequence_complete": false,
+          "sequence_reason": "Sequence search is reserved for a supported scoring shortfall, unresolved finish or an otherwise useful purchase needing a visible rescue.",
+          "single_action_plans": [],
+          "strategy": {
+            "lines": [
+              "No affordable upgrade clearly beats its cash and slot cost in this heuristic.",
+              "Joker slots are full; compare a sellable weak Joker before replacing it.",
+              "Build toward $25 for maximum interest, once survival is covered.",
+              "Upcoming boss - Fish: draws after playing are face down; use discards to find visible cards.",
+              "Keep the last The Empress for Perkeo copies."
+            ],
+            "title": "Leave the shop and save your money",
+            "warnings": {}
+          }
+        }
+      ]
+    }
+  },
+  "conclusion": "C04 frozen303 already selects Supernova over Eternal Scary Face; old C01/C02 step22 is not a remaining current choice failure. No new runtime slice justified by this historical case."
+}

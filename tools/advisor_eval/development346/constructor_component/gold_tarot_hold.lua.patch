@@ -1,0 +1,64 @@
+--- before/Brainstorm/Advisor/gold_tarot_hold.lua
++++ Brainstorm/Advisor/gold_tarot_hold.lua
+@@ -165,10 +165,20 @@
+   return true
+ end
+ local empty_base={nominal=0,suit_nominal=0,face_nominal=0,times_played=0}
+-local params_allowed={discover=true,bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true}
++local params_allowed={discover=true,bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true,viewed_back=true}
++local function back_position(p)
++  if not plain(p) or not integer(p.x) or not integer(p.y) then return false end
++  for k in pairs(p) do if k~='x' and k~='y' then return false end end
++  return true
++end
+ local function params_ok(p)
+   if not plain(p) or not data(p) then return false end
+-  for k,v in pairs(p) do if not params_allowed[k] or type(v)~='boolean' then return false end end
++  for k,v in pairs(p) do
++    -- create_card supplies selected_back.pos; copy_card retains it. The only
++    -- source consumer is the back Sprite atlas position, never score or size.
++    if k=='bypass_back' then if not back_position(v) then return false end
++    elseif not params_allowed[k] or type(v)~='boolean' then return false end
++  end
+   return true
+ end
+ local zero={mult=true,h_mult=true,h_x_mult=true,h_dollars=true,p_dollars=true,t_mult=true,t_chips=true,
+@@ -210,22 +220,28 @@
+   return pinch==nil or type(pinch)=='table' and not rawget(pinch,'x')
+ end
+ function M.capture(card,registry)
+-  local function no(reason) return {schema=1,supported=false,reason=reason} end
++  local function no(reason,code) return {schema=1,supported=false,reason=reason,reason_code=code} end
+   -- This guard precedes all identity/ability/constructor reads.
+-  if not visible_raw(card) then return no('A settled publicly visible Tarot is required.') end
++  if not visible_raw(card) then return no('A settled publicly visible Tarot is required.','visibility') end
+   local center=card.config and card.config.center
+   local d=type(center)=='table' and definition(center.key,center)
+-  if not d then return no('This Tarot constructor is outside the qualified fixed-hold family.') end
++  if not d then return no('This Tarot constructor is outside the qualified fixed-hold family.','constructor_identity') end
+   if not plain(center) or not data(center) or not plain(registry) or registry[center.key]~=center or
+       center.name~=d.name or center.effect~=d.effect or center.order~=d.order or center.set~='Tarot' or
+       center.consumeable~=true or center.cost~=3 or not data(center.config) or not equal(center.config,d.config) then
+-    return no('The loaded Tarot center or constructor config differs from the qualified source shape.')
+-  end
+-  if not params_ok(card.params) or not plain(card.config.card) or next(card.config.card)~=nil or
+-      not data(card.base) or not equal(card.base,empty_base) or not ability_ok(card.ability,d) or
+-      card.playing_card~=nil or card.debuff~=false or (card.pinned~=nil and card.pinned~=false) or card.seal~=nil or
+-      card.base_cost~=3 or not finite(card.cost) or card.cost<0 or not finite(card.sell_cost) or card.sell_cost<0 or
+-      negative(card.edition)==nil then return no('The copied Tarot ability, edition, front or parameters are unsupported.') end
++    return no('The loaded Tarot center or constructor config differs from the qualified source shape.','center_shape')
++  end
++  if not params_ok(card.params) then return no('The copied Tarot constructor parameters are unsupported.','copy_parameters') end
++  if not plain(card.config.card) or next(card.config.card)~=nil then return no('The copied Tarot front must be an empty nonplaying front.','front_shape') end
++  if not data(card.base) or not equal(card.base,empty_base) then return no('The copied Tarot base differs from the empty-front constructor.','base_shape') end
++  if not ability_ok(card.ability,d) then return no('The copied Tarot ability differs from its qualified constructor.','ability_shape') end
++  if card.playing_card~=nil or card.debuff~=false or (card.pinned~=nil and card.pinned~=false) or card.seal~=nil then
++    return no('The copied Tarot physical identity, activity, pin or seal is unsupported.','physical_state')
++  end
++  if card.base_cost~=3 or not finite(card.cost) or card.cost<0 or not finite(card.sell_cost) or card.sell_cost<0 then
++    return no('The copied Tarot prices differ from supported finite source prices.','price_shape')
++  end
++  if negative(card.edition)==nil then return no('Only ordinary or exact Negative copied Tarot editions are supported.','edition_shape') end
+   return {schema=1,supported=true,scope='qualified_tarot_hold_source_v1',center_key=center.key,center_name=d.name,
+     center_set='Tarot',center_effect=d.effect,center_order=d.order,center_cost=3,center_consumeable=true,
+     center_config=copy(center.config),ability=copy(card.ability),base=copy(card.base),params=copy(card.params),
